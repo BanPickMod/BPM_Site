@@ -1,0 +1,98 @@
+{
+  "releaseVersion": "v1.4.1",
+  "releaseDate": "2026-09-14",
+  "releaseLabel": "CURRENT BUILD",
+  "statusText": "현재 소스·배포 패키지 기준",
+  "eyebrow": "STARCRAFT II · COMPETITIVE EXTENSION",
+  "headline": "밴으로 흔들고,\n히든 픽으로 완성하는 전장.",
+  "summary": "BPM은 0·1·3·5밴 규칙과 그룹별 비공개 선택, 17종의 확장 유닛, 선택형 편의성 HUD를 하나의 1대1 경기 흐름으로 연결합니다.",
+  "stats": [
+    { "value": "17", "label": "확장·대체 유닛" },
+    { "value": "0·1·3·5", "label": "선택형 밴 규칙" },
+    { "value": "3", "label": "지원 전장" },
+    { "value": "v1.0", "label": "옵저버 모드" }
+  ],
+  "pillars": [
+    {
+      "number": "01",
+      "tag": "DRAFT",
+      "title": "밴과 히든 픽",
+      "description": "상대의 선택지를 밴한 뒤, 같은 전술 그룹 안에서 실제 출전 유닛을 비공개로 확정합니다."
+    },
+    {
+      "number": "02",
+      "tag": "ROSTER",
+      "title": "17종 확장 유닛",
+      "description": "기존 밀리 유닛과 페어를 이루는 캠페인·클래식 유닛을 종족별 전술 선택지로 제공합니다."
+    },
+    {
+      "number": "03",
+      "tag": "QUALITY OF LIFE",
+      "title": "선택형 편의성 HUD",
+      "description": "생산·연구·공방업·보급품을 한눈에 확인하고 가스 일꾼을 빠르게 배치할 수 있습니다."
+    },
+    {
+      "number": "04",
+      "tag": "BROADCAST",
+      "title": "옵저버 확장 모드",
+      "description": "밴픽 진행과 경기 정보를 선수 화면과 분리된 중계용 인터페이스로 제공합니다."
+    }
+  ],
+  "draftFlow": [
+    {
+      "step": "01",
+      "phase": "BAN",
+      "title": "상대 선택지 제한",
+      "description": "방에서 정한 0·1·3·5밴 규칙에 따라 공개·셀프·쉐도우 밴 라운드를 진행합니다."
+    },
+    {
+      "step": "02",
+      "phase": "HIDDEN PICK",
+      "title": "그룹별 비공개 선택",
+      "description": "밴을 통과한 전술 그룹에서 사용할 기본 또는 확장 유닛을 상대에게 숨긴 채 선택합니다."
+    },
+    {
+      "step": "03",
+      "phase": "DEPLOY",
+      "title": "테크트리 적용 후 시작",
+      "description": "밴과 픽 결과를 양측 테크트리에 반영하고 카운트다운 뒤 섬멸전을 시작합니다."
+    }
+  ],
+  "convenienceFeatures": [
+    {
+      "icon": "SUP",
+      "title": "병력·일꾼 보급품 분리",
+      "description": "우측 상단에서 전체 보급품을 병력과 일꾼으로 나누어 확인합니다."
+    },
+    {
+      "icon": "12",
+      "title": "생산 현황 12슬롯",
+      "description": "유닛 생산과 건설 진행도를 묶어 표시하고, 슬롯을 눌러 해당 생산 건물로 이동합니다."
+    },
+    {
+      "icon": "UP",
+      "title": "기본 공방업 5종",
+      "description": "종족별 핵심 공방업 단계와 연구 가능 상태를 확인하고 패널에서 바로 연구합니다."
+    },
+    {
+      "icon": "04",
+      "title": "연구 진행 오버레이",
+      "description": "최대 4개의 연구 진행률과 남은 시간, 완료·취소 상태를 실시간으로 표시합니다."
+    },
+    {
+      "icon": "GAS",
+      "title": "가스 일꾼 자동 배치",
+      "description": "가스 건물이나 본진 버튼 한 번으로 인접한 광물 일꾼을 가스에 최대 3명까지 배치합니다."
+    },
+    {
+      "icon": "8/16",
+      "title": "광물 최적화 표시 복구",
+      "description": "게임 시작 잠금 이후에도 본진의 광물 최적 일꾼 수 표시가 정상 유지됩니다."
+    },
+    {
+      "icon": "ON",
+      "title": "로비에서 기능 선택",
+      "description": "방장이 편의성 모드를 켜거나 끌 수 있으며, 기본값은 활성화 상태입니다."
+    }
+  ]
+}

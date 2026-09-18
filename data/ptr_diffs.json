@@ -1,0 +1,115 @@
+[
+  {
+    "category": "General",
+    "icon": null,
+    "title": "General",
+    "changes": [
+      "Added salvage visual effect (QoL)"
+    ],
+    "showcase": "https://www.youtube.com/watch?v=Hm4M2X3n5lc",
+    "reasoning": null
+  },
+  {
+    "category": "Terran",
+    "unitId": "supply_depot",
+    "icon": "assets/images/icons/supply-depot.png",
+    "title": "Supply Depot",
+    "changes": [
+      "Supply Drop Max Health Bonus: 100 → 250",
+      "Supply Drop Total Healing: 400 (+100) → 0 (+250)",
+      "Supply Drop Health Bonus Delay: 4s → 2.35s",
+      "Added max health increase visual effect"
+    ],
+    "reasoning": "The current Supply Drop heal timing feels unintuitive and unnecessarily difficult to use, while the amount of healing it provides is too strong. This version makes the ability more well rounded and intuitive. The large buff to the Supply Drop's Max HP increase encourages using Supply Drops to fortify depot walls, and The new Health Bonus timing matches the Supply Drop animation, improving visual clarity."
+  },
+  {
+    "category": "Terran",
+    "unitId": "reactor_techlab",
+    "icon": "assets/images/icons/reactor-techlab.png",
+    "title": "Reactor/Tech Lab",
+    "changes": [
+      "Can now be salvaged for 75% of its cost"
+    ],
+    "reasoning": "Mostly a QoL change, allows you to refund unused reactors, misplaced reactors, or reactors that are blocking your units due to other newly placed buildings."
+  },
+  {
+    "category": "Terran",
+    "unitId": "raven",
+    "icon": null,
+    "title": "Raven (밤까마귀)",
+    "changes": [
+      "New Active Ability: 수리 비행정 배치 (Deploy Repair Drone)",
+      "Deploy Repair Drone Mana Cost: 50 (시전 사거리: 7)",
+      "Repair Drone Stats: HP 50 / Energy 200 (초당 13.6 체력 수리, 1 마나당 1 체력 수복)",
+      "Anti-Armor Missile (대장갑 미사일) 제거",
+      "Added Range 6, Damage 1 basic attack weapon (사거리 6, 공격력 1 기본 무기 부여)"
+    ],
+    "reasoning": "테란 메카닉 조합의 전선 수리 유지력을 대폭 강화합니다. 사이언스 베슬의 디펜시브 매트릭스와 대등하게, 밤까마귀는 손상된 공성 전차·토르·바이킹을 실시간 수리하여 전선 이탈을 방지하고 어택땅 시 단독 돌사를 방지합니다."
+  },
+  {
+    "category": "Terran",
+    "unitId": "warhound",
+    "icon": "assets/images/icons/warhound.png",
+    "title": "WarHound (투견)",
+    "changes": [
+      "Haywire Missile (폭주 미사일) Cooldown: 6s → 4.5s",
+      "Base Movement Speed: 2.81 → 2.95",
+      "Damage vs Mechanical: 23 (+12 vs 기계) 유지"
+    ],
+    "reasoning": "투견의 기계 유닛 상대 즉시 철거 능력을 더욱 날카롭게 다듬어, 공성 전차 거치 포격 체제와 차별화된 고기동 대기계 돌파 옵션으로서의 역할을 공고히 합니다."
+  },
+  {
+    "category": "Terran",
+    "unitId": "liberator",
+    "icon": null,
+    "title": "Liberator (해방선)",
+    "changes": [
+      "Defender Mode Sight Range: 13 → 10 (일반 모드와 동일 통일)"
+    ],
+    "reasoning": "수호기 모드가 독자적으로 긴 시야를 확보해 지상에서 일방적으로 프리딜을 넣는 구도를 억제하고, 전방 해병이나 관측선 등의 능동적 시야 확보 유닛과의 연계를 유도합니다."
+  },
+  {
+    "category": "Protoss",
+    "unitId": "dragoon",
+    "icon": "assets/images/icons/dragoon.png",
+    "title": "Dragoon (용기병)",
+    "changes": [
+      "Singularity Charge (특이점 장전 연구) Weapon Range Bonus: +1 → +2 (기본 6 ➔ 8)",
+      "Turn Rate and Acceleration: +25% 개선"
+    ],
+    "reasoning": "추적자의 점멸 기동성과 차별화하여, 용기병을 채택했을 때 긴 사거리와 중장갑 압박 능력을 극대화할 수 있도록 사거리 연구 효율을 강화하고 조작 반응성을 개선했습니다."
+  },
+  {
+    "category": "Protoss",
+    "unitId": "phoenix",
+    "icon": null,
+    "title": "Phoenix (불사조)",
+    "changes": [
+      "Anion Pulse-Crystals (음이온 펄스 결정체 연구) 비용: 150/150 ➔ 100/100",
+      "Graviton Beam (중력자 광선) 에너지 소모: 50 유지"
+    ],
+    "reasoning": "커세어(웹/스플래시)와의 픽 경쟁에서 불사조의 후반 공중 사거리 확보 테크 진입 장벽을 낮추어 경장갑 공중 제어력을 보강합니다."
+  },
+  {
+    "category": "Zerg",
+    "unitId": "defiler",
+    "icon": "assets/images/icons/defiler.png",
+    "title": "Defiler (파멸충)",
+    "changes": [
+      "Plague (플레이그) Energy Cost: 150 → 125",
+      "Dark Swarm (다크 스웜) Duration: 14s → 12.5s",
+      "Consume (컨슘) 에너지 획득량: 50 유지"
+    ],
+    "reasoning": "플레이그의 높은 마나 소모로 인한 실전 진입 장벽을 완화하고, 다크 스웜의 지속시간을 소폭 조정하여 상대방이 연막이 걷힌 후 반격할 수 있는 타이밍 창을 보다 정교하게 설계했습니다."
+  },
+  {
+    "category": "Zerg",
+    "unitId": "overlord",
+    "icon": null,
+    "title": "Overlord (대군주)",
+    "changes": [
+      "Auto-Rally to Nearest Mineral Field on Hatch: 부화 시 본진 광물 뒤편으로 자동 이동"
+    ],
+    "reasoning": "게임 극초반 부화장 입구에서 갓 태어난 대군주가 일벌레의 미네랄 채취 부스팅 동선을 가로막는 불편을 제거하고, 본진 광물 뒤편의 시야를 자동으로 확보하도록 돕는 QoL 편의성 변경입니다."
+  }
+]

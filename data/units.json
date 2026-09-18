@@ -1,0 +1,746 @@
+[
+  {
+    "id": "firebat",
+    "name": "파이어뱃 (Firebat)",
+    "race": "terran",
+    "icon": "assets/images/icons/firebat.png",
+    "pairUnit": "불곰 (Marauder)",
+    "building": "병영 (기술실)",
+    "techReq": "병영 기술실",
+    "cost": { "minerals": 50, "gas": 25, "supply": 1, "time": 21 },
+    "stats": {
+      "hp": 100,
+      "shields": 0,
+      "armor": 1,
+      "speed": 2.75,
+      "range": 2,
+      "groundDmg": "8 (+2 vs 경장갑, 2회 타격)",
+      "airDmg": "-",
+      "damageType": "경장갑 광역 방사"
+    },
+    "diffFromPair": [
+      { "item": "전투 포지션", "pair": "원거리 단일 중장갑 타격 (사거리 6, 충격탄)", "unit": "초근접 경장갑 광역 방사 화염 타격 (사거리 2)" },
+      { "item": "비용 및 인구수", "pair": "광물 100 / 가스 25 / 인구 2", "unit": "광물 50 / 가스 25 / 인구 1 (생산 21초)" },
+      { "item": "특수 기능", "pair": "충격탄 감속 연구", "unit": "전투 자극제(스팀팩) 적용 가능" }
+    ],
+    "upgrades": [
+      {
+        "name": "전투 자극제 (Stimpack)",
+        "icon": "assets/images/upgrades/stimpack.png",
+        "building": "병영 기술실",
+        "requirement": "병영 기술실 (Tech Lab)",
+        "cost": "100 / 100 / 121초",
+        "statDiff": "체력 10 소모 ➔ 11초간 이동속도 +50%, 공격속도 +50%"
+      }
+    ],
+    "clip": {
+      "title": "파이어뱃 경장갑 제압 시연",
+      "src": "assets/videos/firebat_combat.mp4",
+      "poster": "assets/images/firebat_poster.webp",
+      "simulation": "firebat"
+    }
+  },
+  {
+    "id": "goliath",
+    "name": "골리앗 (Goliath)",
+    "race": "terran",
+    "icon": "assets/images/icons/goliath.png",
+    "pairUnit": "토르 (Thor)",
+    "building": "군수공장",
+    "techReq": "무기고 (Armory) 필요",
+    "cost": { "minerals": 100, "gas": 50, "supply": 2, "time": 32 },
+    "stats": {
+      "hp": 125,
+      "shields": 0,
+      "armor": 1,
+      "speed": 2.81,
+      "range": 6,
+      "groundDmg": "18 (단일)",
+      "airDmg": "10 (+10 vs 중장갑, 2회)",
+      "damageType": "대공/지상 올라운더"
+    },
+    "diffFromPair": [
+      { "item": "운용 기동성", "pair": "초대형 둔중한 결전병기 (이속 1.88)", "unit": "준족의 기동 올라운더 (이속 2.81)" },
+      { "item": "비용 및 인구수", "pair": "광물 300 / 가스 200 / 인구 6", "unit": "광물 100 / 가스 50 / 인구 2 (군수공장 즉시 양산)" },
+      { "item": "대공 타격", "pair": "천벌포/재앙로 모드 전환 필요", "unit": "즉시 반응 2연장 대공 미사일 포격 (사거리 6 ➔ 9)" }
+    ],
+    "upgrades": [
+      {
+        "name": "카론 증폭기 (Charon Boosters)",
+        "icon": "assets/images/upgrades/charon-boosters.png",
+        "building": "군수공장 기술실",
+        "requirement": "군수공장 기술실 (Tech Lab)",
+        "cost": "100 / 100 / 110초",
+        "statDiff": "대공 사거리: 6 ➔ 9 (+3)"
+      }
+    ],
+    "clip": {
+      "title": "골리앗 장거리 대공 요격",
+      "src": "assets/videos/goliath_air.mp4",
+      "poster": "assets/images/goliath_poster.webp",
+      "simulation": "goliath"
+    }
+  },
+  {
+    "id": "warhound",
+    "name": "투견 (WarHound)",
+    "race": "terran",
+    "icon": "assets/images/icons/warhound.png",
+    "pairUnit": "공성전차 (Siege Tank)",
+    "building": "군수공장 (기술실)",
+    "techReq": "군수공장 기술실",
+    "cost": { "minerals": 150, "gas": 100, "supply": 3, "time": 36 },
+    "stats": {
+      "hp": 220,
+      "shields": 0,
+      "armor": 1,
+      "speed": 2.81,
+      "range": 7,
+      "groundDmg": "23 (+12 vs 기계)",
+      "airDmg": "-",
+      "damageType": "기계 특화 탱커"
+    },
+    "diffFromPair": [
+      { "item": "전투 포지션", "pair": "시즈모드 거치 장거리 방사 포격 (사거리 13)", "unit": "무빙 돌파형 최전방 고내구 탱커 (체력 220, 사거리 7)" },
+      { "item": "기계 특화", "pair": "중장갑 대상 방사 피해 (40 +30 중장갑)", "unit": "기계 단일 즉시 철거 (기본 23 +12 기계) 및 스킬 공격" }
+    ],
+    "upgrades": [
+      {
+        "name": "폭주 미사일 (Haywire Missile)",
+        "icon": "assets/images/upgrades/haywire-missile.png",
+        "building": "군수공장 기술실",
+        "requirement": "군수공장 기술실 (Tech Lab)",
+        "cost": "100 / 100 / 110초",
+        "statDiff": "기계 대상 추가 타격 스킬 해금 (피해량 30)"
+      }
+    ],
+    "clip": {
+      "title": "투견 기계 분쇄 및 토네이도 미사일",
+      "src": "assets/videos/warhound_missile.mp4",
+      "poster": "assets/images/warhound_poster.webp",
+      "simulation": "warhound"
+    }
+  },
+  {
+    "id": "wraith",
+    "name": "레이스 (Wraith)",
+    "race": "terran",
+    "icon": "assets/images/icons/wraith.png",
+    "pairUnit": "바이킹 (Viking)",
+    "building": "우주공항",
+    "techReq": "우주공항",
+    "cost": { "minerals": 150, "gas": 100, "supply": 2, "time": 38 },
+    "stats": {
+      "hp": 120,
+      "shields": 0,
+      "armor": 0,
+      "speed": 3.75,
+      "range": 5,
+      "groundDmg": "8 (단일)",
+      "airDmg": "20 (2회 타격)",
+      "damageType": "고속 은폐 요격"
+    },
+    "diffFromPair": [
+      { "item": "형태 및 은폐", "pair": "돌격모드 지상 착륙 변신 (사거리 6/9)", "unit": "상시 공중 고속 비행 (이속 3.75) 및 은폐(클로킹)" },
+      { "item": "대공 교전", "pair": "사거리 9 중장갑 단발 (10 +4 중장갑)", "unit": "사거리 5 고속 2연장 레이저 (총 20)" }
+    ],
+    "upgrades": [
+      {
+        "name": "은폐장 (Cloaking Field)",
+        "icon": "assets/images/upgrades/cloaking-field.png",
+        "building": "우주공항 기술실",
+        "requirement": "우주공항 기술실",
+        "cost": "150 / 150 / 79초",
+        "statDiff": "은폐 능력 해금 (초당 마나 소모 1.25)"
+      },
+      {
+        "name": "아폴로 반응로 (Apollo Reactor)",
+        "icon": "assets/images/upgrades/apollo-reactor.png",
+        "building": "우주공항 기술실",
+        "requirement": "우주공항 기술실",
+        "cost": "150 / 150 / 79초",
+        "statDiff": "최대 마나: 200 ➔ 250, 시작 마나: 50 ➔ 100"
+      }
+    ],
+    "clip": {
+      "title": "레이스 은폐 기습 및 대공 교전",
+      "src": "assets/videos/wraith_cloak.mp4",
+      "poster": "assets/images/wraith_poster.webp",
+      "simulation": "wraith"
+    }
+  },
+  {
+    "id": "science_vessel",
+    "name": "사이언스 베슬 (Science Vessel)",
+    "race": "terran",
+    "icon": "assets/images/icons/science-vessel.png",
+    "pairUnit": "밤까마귀 (Raven)",
+    "building": "우주공항 (기술실)",
+    "techReq": "우주공항 기술실",
+    "cost": { "minerals": 150, "gas": 200, "supply": 3, "time": 43 },
+    "stats": {
+      "hp": 200,
+      "shields": 0,
+      "armor": 1,
+      "speed": 2.75,
+      "range": 6,
+      "groundDmg": "1 (BPM 평타 무기)",
+      "airDmg": "1 (BPM 평타 무기)",
+      "damageType": "마법 지원 (에너지 200)"
+    },
+    "diffFromPair": [
+      { "item": "스킬 구성", "pair": "자동 포탑, 대장갑 미사일, 방해 매트릭스", "unit": "디펜시브 매트릭스(체력 250 보호막), EMP, 락다운, 조사(이래디)" },
+      { "item": "내구도", "pair": "체력 140 / 방어력 1", "unit": "체력 200 / 방어력 1 (우수한 생존성)" },
+      { "item": "기본 공격", "pair": "공격력 1 (BPM 무기 사거리 6)", "unit": "공격력 1 (BPM 무기 사거리 6, A-Move 동기화)" }
+    ],
+    "upgrades": [
+      {
+        "name": "방어막 연구 (Defensive Matrix)",
+        "icon": "assets/images/upgrades/defensive-matrix.png",
+        "building": "우주공항 기술실",
+        "requirement": "융합로 (Fusion Core) 필요",
+        "cost": "150 / 150 / 79초",
+        "statDiff": "아군 피해 250 흡수 방어막 해금 (마나 100)"
+      },
+      {
+        "name": "감금 연구 (Lockdown)",
+        "icon": "assets/images/upgrades/lockdown.png",
+        "building": "우주공항 기술실",
+        "requirement": "융합로 (Fusion Core) 필요",
+        "cost": "150 / 150 / 79초",
+        "statDiff": "적 기계 유닛 20초간 완전 기능 정지 해금 (마나 100)"
+      }
+    ],
+    "clip": {
+      "title": "사이언스 베슬 방어막 및 락다운",
+      "src": "assets/videos/science_vessel_skills.mp4",
+      "poster": "assets/images/science_vessel_poster.webp",
+      "simulation": "science_vessel"
+    }
+  },
+  {
+    "id": "dragoon",
+    "name": "드라군 (Dragoon)",
+    "race": "protoss",
+    "icon": "assets/images/icons/dragoon.png",
+    "pairUnit": "추적자 (Stalker)",
+    "building": "관문 / 차원관문",
+    "techReq": "인공제어소",
+    "cost": { "minerals": 125, "gas": 50, "supply": 2, "time": 30 },
+    "stats": {
+      "hp": 100,
+      "shields": 80,
+      "armor": 1,
+      "speed": 2.95,
+      "range": 5,
+      "groundDmg": "14 (+6 vs 중장갑, 업 시 7사거리)",
+      "airDmg": "14 (+6 vs 중장갑, 업 시 7사거리)",
+      "damageType": "중장갑 포격"
+    },
+    "diffFromPair": [
+      { "item": "내구도 및 포격", "pair": "체력 80 / 쉴드 80 (총 160), 점멸 기동", "unit": "체력 100 / 쉴드 80 (총 180), 묵직한 중장갑 원거리 포격" },
+      { "item": "사거리", "pair": "사거리 6 고정", "unit": "기본 5 ➔ 특이점 강화 연구 시 7 (+2)" }
+    ],
+    "upgrades": [
+      {
+        "name": "특이점 장전 (Singularity Charge)",
+        "icon": "assets/images/upgrades/singularity-charge.png",
+        "building": "인공제어소",
+        "requirement": "인공제어소 (Cybernetics Core)",
+        "cost": "150 / 150 / 140초",
+        "statDiff": "지상/대공 공격 사거리: 5 ➔ 6 (+1)"
+      }
+    ],
+    "clip": {
+      "title": "드라군 원거리 중장갑 포격",
+      "src": "assets/videos/dragoon_combat.mp4",
+      "poster": "assets/images/dragoon_poster.webp",
+      "simulation": "dragoon"
+    }
+  },
+  {
+    "id": "energizer",
+    "name": "동력기 (Energizer)",
+    "race": "protoss",
+    "icon": "assets/images/icons/energizer.png",
+    "pairUnit": "파수기 (Sentry)",
+    "building": "관문 / 차원관문",
+    "techReq": "인공제어소",
+    "cost": { "minerals": 50, "gas": 100, "supply": 2, "time": 37 },
+    "stats": {
+      "hp": 40,
+      "shields": 40,
+      "armor": 1,
+      "speed": 2.75,
+      "range": 5,
+      "groundDmg": "6 (분해 광선)",
+      "airDmg": "6 (분해 광선)",
+      "damageType": "시간 제어 & 동력장"
+    },
+    "skills": [
+      {
+        "name": "시간 방패 (Time Shield)",
+        "cost": "마나 50 (초당 5 지속 소모)",
+        "range": "반경 3.5 범위 오라",
+        "effect": "범위 내 아군 유닛 이동/공격 속도 +5% 증가, 적군 유닛 이동/공격 속도 -5% 감소"
+      },
+      {
+        "name": "위상 모드 (Phasing Mode)",
+        "cost": "전환 시 보호막 50% 소모 (초당 0.5 지속 소모)",
+        "range": "동력장 투영 반경 (남은 보호막 비례)",
+        "effect": "차원관문 동력장 공급. ★ 주의: 위상 모드 동력장에서 소환되는 유닛은 보호막이 0인 채로 소환됩니다."
+      }
+    ],
+    "diffFromPair": [
+      { "item": "지원 스킬", "pair": "역장, 수호방패(원거리 뎀감 -2), 환상", "unit": "시간 방패(3.5 반경 아군 공/이속 +5%, 적군 -5%), 위상 모드" },
+      { "item": "이동식 파일런", "pair": "동력 공급 불가", "unit": "위상 모드로 즉시 동력장 전개 (단, 소환 유닛 보호막 0 주의)" }
+    ],
+    "upgrades": [
+      {
+        "name": "위상 모드 활성화 (Phasing Mode)",
+        "icon": "assets/images/upgrades/phasing-mode.png",
+        "building": "황혼 의회",
+        "requirement": "황혼 의회 (Twilight Council)",
+        "cost": "100 / 100 / 50초",
+        "statDiff": "동력기의 위상 모드(동력장 전개) 전환 기능 해금"
+      },
+      {
+        "name": "보호막 과충전 (Shield Overcharge)",
+        "icon": "assets/images/upgrades/shield-overcharge.png",
+        "building": "기사단 기록보관소",
+        "requirement": "기사단 기록보관소 (Templar Archive)",
+        "cost": "150 / 150 / 79초",
+        "statDiff": "동력기의 최대 보호막 증가: 40 ➔ 80 (+40)"
+      }
+    ],
+    "clip": {
+      "title": "동력기 시간 방패 및 위상 모드",
+      "src": "assets/videos/energizer_mode.mp4",
+      "poster": "assets/images/energizer_poster.webp",
+      "simulation": "energizer"
+    }
+  },
+  {
+    "id": "corsair",
+    "name": "커세어 (Corsair)",
+    "race": "protoss",
+    "icon": "assets/images/icons/corsair.png",
+    "pairUnit": "불사조 (Phoenix)",
+    "building": "우주관문",
+    "techReq": "우주관문",
+    "cost": { "minerals": 150, "gas": 100, "supply": 2, "time": 30 },
+    "stats": {
+      "hp": 100,
+      "shields": 80,
+      "armor": 1,
+      "speed": 4.0,
+      "range": 5,
+      "groundDmg": "-",
+      "airDmg": "5 (고속 2회 타격, 방사 스플래시 피해)",
+      "damageType": "대공 방사 스플래시"
+    },
+    "diffFromPair": [
+      { "item": "대공 교전", "pair": "단일 경장갑 저격 및 이동 사격 (5 +5 경장갑, 2회)", "unit": "공중 광역 스플래시 방사 피해 (뮤탈/갈귀 킬러)" },
+      { "item": "지상 견제", "pair": "중력자 광선 (단일 유닛 공중 부양 무력화)", "unit": "분열망 (광역 범위 지상 타워 및 유닛 공격 완전 차단)" }
+    ],
+    "upgrades": [
+      {
+        "name": "디스크럽션 웹 연구 (Disruption Web)",
+        "icon": "assets/images/upgrades/disruption-web.png",
+        "building": "인공제어소",
+        "requirement": "인공제어소 (Cybernetics Core)",
+        "cost": "200 / 200 / 80초",
+        "statDiff": "지상 공격 차단 에너지망 생성 해금 (마나 125, 지속 10초)"
+      }
+    ],
+    "clip": {
+      "title": "커세어 대공 방사 타격 및 분열망 시전",
+      "src": "assets/videos/corsair_dweb.mp4",
+      "poster": "assets/images/corsair_poster.webp",
+      "simulation": "corsair"
+    }
+  },
+  {
+    "id": "scout",
+    "name": "스카웃 (Scout)",
+    "race": "protoss",
+    "icon": "assets/images/icons/scout.png",
+    "pairUnit": "공허포격기 (Void Ray)",
+    "building": "우주관문",
+    "techReq": "우주관문",
+    "cost": { "minerals": 150, "gas": 100, "supply": 3, "time": 40 },
+    "stats": {
+      "hp": 150,
+      "shields": 100,
+      "armor": 0,
+      "speed": 3.0,
+      "range": 4,
+      "groundDmg": "8 (2회 타격)",
+      "airDmg": "14 (+16 vs 중장갑, 2회 타격)",
+      "damageType": "고화력 중장갑 요격"
+    },
+    "diffFromPair": [
+      { "item": "타격 방식", "pair": "단일 지속 빔 충전 (분광 정렬 가동 필요)", "unit": "즉시 최대 피해를 투사하는 2연장 중장갑 요격 미사일" },
+      { "item": "내구도", "pair": "체력 150 / 쉴드 100 (총 250)", "unit": "체력 150 / 쉴드 100 (총 250, 방어력 연구 공유)" },
+      { "item": "업그레이드", "pair": "이속 증폭 업그레이드", "unit": "원거리 센서(시야 +2) 및 중력 추진기(이속 3.0 ➔ 4.0)" }
+    ],
+    "upgrades": [
+      {
+        "name": "원거리 센서 (Apial Sensors)",
+        "icon": "assets/images/upgrades/apial-sensors.png",
+        "building": "함대신호소",
+        "requirement": "함대신호소 (Fleet Beacon)",
+        "cost": "100 / 100 / 80초",
+        "statDiff": "시야 범위: 10 ➔ 12 (+2)"
+      },
+      {
+        "name": "중력 추진기 (Gravitic Thrusters)",
+        "icon": "assets/images/upgrades/gravitic-thrusters.png",
+        "building": "함대신호소",
+        "requirement": "함대신호소 (Fleet Beacon)",
+        "cost": "150 / 150 / 100초",
+        "statDiff": "이동 속도: 3.0 ➔ 4.0 (+33%)"
+      }
+    ],
+    "clip": {
+      "title": "스카웃 2연장 미사일 및 고속 요격",
+      "src": "assets/videos/scout_air.mp4",
+      "poster": "assets/images/scout_poster.webp",
+      "simulation": "scout"
+    }
+  },
+  {
+    "id": "reaver",
+    "name": "리버 (Reaver)",
+    "race": "protoss",
+    "icon": "assets/images/icons/reaver.png",
+    "pairUnit": "분열기 (Disruptor)",
+    "building": "로봇공학시설",
+    "techReq": "로봇공학지원소",
+    "cost": { "minerals": 200, "gas": 100, "supply": 4, "time": 46 },
+    "stats": {
+      "hp": 100,
+      "shields": 80,
+      "armor": 0,
+      "speed": 0.85,
+      "range": 8,
+      "groundDmg": "스카랩 100 (업 시 125)",
+      "airDmg": "-",
+      "damageType": "자동 추적 광역 방사"
+    },
+    "diffFromPair": [
+      { "item": "조작 방식", "pair": "정화 구체 발사 후 수동 궤적 컨트롤 (적 회피 가능)", "unit": "탄환 자체 장전(4.5초) 후 목표물 자동 추적 폭격" },
+      { "item": "기동성 및 셔틀 연계", "pair": "이속 3.15 준족 기동", "unit": "초저속(0.85)으로 차원 분광기 드랍 컨트롤 필수" }
+    ],
+    "upgrades": [
+      {
+        "name": "스카랩 공격력 (Scarab Damage)",
+        "icon": "assets/images/upgrades/scarab-damage.png",
+        "building": "로봇공학지원소",
+        "requirement": "로봇공학지원소 (Robotics Bay)",
+        "cost": "200 / 200 / 100초",
+        "statDiff": "스카랩 1발 공격력: 100 ➔ 125 (+25)"
+      },
+      {
+        "name": "스카랩 적재량 (Scarab Capacity)",
+        "icon": "assets/images/upgrades/scarab-capacity.png",
+        "building": "로봇공학지원소",
+        "requirement": "로봇공학지원소 (Robotics Bay)",
+        "cost": "150 / 150 / 80초",
+        "statDiff": "최대 스카랩 장전수: 5발 ➔ 10발 (+5)"
+      }
+    ],
+    "clip": {
+      "title": "리버 스카랩 추적 폭격",
+      "src": "assets/videos/reaver_scarab.mp4",
+      "poster": "assets/images/reaver_poster.webp",
+      "simulation": "reaver"
+    }
+  },
+  {
+    "id": "arbiter",
+    "name": "아비터 (Arbiter)",
+    "race": "protoss",
+    "icon": "assets/images/icons/arbiter.png",
+    "pairUnit": "모선 (Mothership)",
+    "building": "우주관문",
+    "techReq": "함대신호소",
+    "cost": { "minerals": 100, "gas": 350, "supply": 4, "time": 54 },
+    "stats": {
+      "hp": 200,
+      "shields": 150,
+      "armor": 1,
+      "speed": 2.25,
+      "range": 5,
+      "groundDmg": "10 (단일)",
+      "airDmg": "10 (단일)",
+      "damageType": "은폐 & 시공간 전술"
+    },
+    "diffFromPair": [
+      { "item": "편제 수량", "pair": "경기당 단 1기만 보유 가능한 유일함", "unit": "자원이 허용하는 한 여러 기 편제 가능" },
+      { "item": "스킬 구성", "pair": "시간 왜곡, 소환, 은폐장", "unit": "정지장(적 광역 20초 완전 행동불가), 대규모 리콜, 주변 상시 은폐장" }
+    ],
+    "upgrades": [
+      {
+        "name": "정지장 연구 (Stasis Field)",
+        "icon": "assets/images/upgrades/stasis-field.png",
+        "building": "함대신호소",
+        "requirement": "함대신호소 (Fleet Beacon)",
+        "cost": "150 / 150 / 79초",
+        "statDiff": "범위 내 적 유닛 20초간 무적 상태로 행동 동결 해금 (마나 100)"
+      },
+      {
+        "name": "소환 연구 (Recall)",
+        "icon": "assets/images/upgrades/recall.png",
+        "building": "함대신호소",
+        "requirement": "함대신호소 (Fleet Beacon)",
+        "cost": "150 / 150 / 79초",
+        "statDiff": "지정 영역 내 아군 유닛을 아비터 위치로 순간이동 해금 (마나 150)"
+      }
+    ],
+    "clip": {
+      "title": "아비터 정지장 및 리콜 전술",
+      "src": "assets/videos/arbiter_stasis.mp4",
+      "poster": "assets/images/arbiter_poster.webp",
+      "simulation": "arbiter"
+    }
+  },
+  {
+    "id": "aberration",
+    "name": "변형체 (Aberration)",
+    "race": "zerg",
+    "icon": "assets/images/icons/aberration.png",
+    "pairUnit": "바퀴 (Roach)",
+    "building": "유충 (바퀴굴 + 번식지)",
+    "techReq": "번식지 (Lair)",
+    "cost": { "minerals": 150, "gas": 100, "supply": 3, "time": 27 },
+    "stats": {
+      "hp": 275,
+      "shields": 0,
+      "armor": 1,
+      "speed": 2.95,
+      "range": 1.25,
+      "groundDmg": "20 (+20 vs 중장갑)",
+      "airDmg": "-",
+      "damageType": "대형 보행 브루저"
+    },
+    "diffFromPair": [
+      { "item": "공격 형태", "pair": "원거리 산성액 사격 (사거리 4, 공 16)", "unit": "초근접 대형 타격 (공 20 +20 중장갑)" },
+      { "item": "내구도 및 이동", "pair": "체력 145 / 잠복 고속 재생", "unit": "체력 275 / 아군 저글링·해병 등 소형 유닛 위를 보행 통과" }
+    ],
+    "upgrades": [
+      {
+        "name": "다리 근육 보강 진화 (Leg Muscle Enhancement)",
+        "icon": "assets/images/upgrades/leg-muscle-enhancement.png",
+        "building": "산란못",
+        "requirement": "산란못 + 번식지 (Lair) 필요",
+        "cost": "150 / 150 / 80초",
+        "statDiff": "변형체 이동 속도 증가: 2.95 ➔ 3.40 (+0.45, 점막 위 3.50 ➔ 4.13)"
+      }
+    ],
+    "clip": {
+      "title": "변형체 대형 돌파 및 중장갑 파쇄",
+      "src": "assets/videos/aberration_combat.mp4",
+      "poster": "assets/images/aberration_poster.webp",
+      "simulation": "aberration"
+    }
+  },
+  {
+    "id": "ravasaur",
+    "name": "라바사우르스 (Ravasaur)",
+    "race": "zerg",
+    "icon": "assets/images/icons/ravasaur.png",
+    "pairUnit": "궤멸충 (Ravager)",
+    "building": "유충 (바퀴굴 + 번식지)",
+    "techReq": "번식지 (Lair)",
+    "cost": { "minerals": 150, "gas": 150, "supply": 2, "time": 27 },
+    "stats": {
+      "hp": 145,
+      "shields": 0,
+      "armor": 1,
+      "speed": 2.75,
+      "range": 7,
+      "groundDmg": "15 (+10 vs 중장갑, 업 시 8사거리)",
+      "airDmg": "-",
+      "damageType": "장거리 중장갑 저격"
+    },
+    "diffFromPair": [
+      { "item": "타격 메커니즘", "pair": "부식성 담즙 곡사포 스킬 조작 (사거리 9)", "unit": "안정적인 평타 사거리 8 단일 중장갑 지속 저격" },
+      { "item": "생산 방식", "pair": "바퀴 생산 후 궤멸충 변태 (총 175/100/3)", "unit": "유충에서 150/150/2로 즉시 단독 변태" }
+    ],
+    "upgrades": [
+      {
+        "name": "돌기 수축 진화 (Volatile Spines)",
+        "icon": "assets/images/upgrades/volatile-spines.png",
+        "building": "바퀴 소굴",
+        "requirement": "바퀴 소굴 + 번식지 (Lair) 필요",
+        "cost": "100 / 100 / 110초",
+        "statDiff": "일반 공격 사거리: 7 ➔ 8 (+1)"
+      }
+    ],
+    "clip": {
+      "title": "라바사우르스 장거리 중장갑 포격",
+      "src": "assets/videos/ravasaur_snipe.mp4",
+      "poster": "assets/images/ravasaur_poster.webp",
+      "simulation": "ravasaur"
+    }
+  },
+  {
+    "id": "defiler",
+    "name": "디파일러 (Defiler)",
+    "race": "zerg",
+    "icon": "assets/images/icons/defiler.png",
+    "pairUnit": "감염충 (Infestor)",
+    "building": "유충 (디파일러 언덕 + 군락)",
+    "techReq": "디파일러 언덕 (군락 필요)",
+    "cost": { "minerals": 50, "gas": 150, "supply": 2, "time": 40 },
+    "stats": {
+      "hp": 80,
+      "shields": 0,
+      "armor": 1,
+      "speed": 2.25,
+      "range": 0,
+      "groundDmg": "-",
+      "airDmg": "-",
+      "damageType": "전술 마법 (에너지 200)"
+    },
+    "diffFromPair": [
+      { "item": "전술 마법", "pair": "진균 번식(묶기), 신경 기생충, 미생물 기포", "unit": "다크 스웜(원거리 완전 면역), 플레이그(체력 300 삭감)" },
+      { "item": "에너지 수급", "pair": "시간 경과 재생 대기", "unit": "컨슘(Consume: 아군 저글링/일벌레 흡수로 마나 50 즉각 충전)" }
+    ],
+    "upgrades": [
+      {
+        "name": "역병 연구 (Plague)",
+        "icon": "assets/images/upgrades/plague.png",
+        "building": "디파일러 언덕",
+        "requirement": "디파일러 언덕 (군락 필요)",
+        "cost": "150 / 150 / 100초",
+        "statDiff": "적 유닛/구조물 대상 지속 피해 300 역병 시전 해금 (마나 150)"
+      },
+      {
+        "name": "흡수 연구 (Consume)",
+        "icon": "assets/images/upgrades/consume.png",
+        "building": "디파일러 언덕",
+        "requirement": "디파일러 언덕 (군락 필요)",
+        "cost": "100 / 100 / 80초",
+        "statDiff": "아군 저그 생체 유닛을 흡수하여 마나 50 즉각 회복 해금"
+      },
+      {
+        "name": "메타시냅스 결절 연구 (Metasynaptic Node)",
+        "icon": "assets/images/upgrades/metasynaptic-node.png",
+        "building": "디파일러 언덕",
+        "requirement": "디파일러 언덕 (군락 필요)",
+        "cost": "150 / 150 / 80초",
+        "statDiff": "최대 마나: 200 ➔ 250 (+50), 시작 마나: 50 ➔ 75 (+25)"
+      }
+    ],
+    "clip": {
+      "title": "디파일러 다크 스웜 및 플레이그",
+      "src": "assets/videos/defiler_skills.mp4",
+      "poster": "assets/images/defiler_poster.webp",
+      "simulation": "defiler"
+    }
+  },
+  {
+    "id": "queen",
+    "name": "퀸 (Queen)",
+    "race": "zerg",
+    "icon": "assets/images/icons/queen.png",
+    "pairUnit": "살모사 (Viper)",
+    "building": "유충 (감염구덩이)",
+    "techReq": "감염구덩이",
+    "cost": { "minerals": 150, "gas": 100, "supply": 2, "time": 29 },
+    "stats": {
+      "hp": 120,
+      "shields": 0,
+      "armor": 0,
+      "speed": 3.38,
+      "range": 0,
+      "groundDmg": "-",
+      "airDmg": "-",
+      "damageType": "공중 비행 마법 (에너지 200)"
+    },
+    "diffFromPair": [
+      { "item": "기동성", "pair": "비행 이속 2.95", "unit": "비행 이속 3.38 (고속 기동 전장 순회)" },
+      { "item": "스킬 구성", "pair": "납치, 흑구름, 기생 폭탄, 흡수", "unit": "인스네어(광역 이속/공속 대폭 감속 및 은폐 감지), 브루들링(지상 유닛 즉사 및 공생충 2마리 소환)" }
+    ],
+    "upgrades": [
+      {
+        "name": "배우체 분열 (Gamete Meiosis)",
+        "icon": "assets/images/upgrades/gamete-meiosis.png",
+        "building": "감염 구덩이",
+        "requirement": "감염 구덩이 (군락 불필요)",
+        "cost": "150 / 150 / 110초",
+        "statDiff": "최대 마나: 200 ➔ 250 (+50), 시작 마나: 50 ➔ 100 (+50)"
+      }
+    ],
+    "clip": {
+      "title": "퀸 인스네어 감속 및 브루들링 즉사",
+      "src": "assets/videos/queen_combat.mp4",
+      "poster": "assets/images/queen_poster.webp",
+      "simulation": "queen"
+    }
+  },
+  {
+    "id": "tyrannozor",
+    "name": "티라노조르 (Tyrannozor)",
+    "race": "zerg",
+    "icon": "assets/images/icons/tyrannozor.png",
+    "pairUnit": "울트라리스크 (Ultralisk)",
+    "building": "유충 (울트라동굴)",
+    "techReq": "울트라동굴",
+    "cost": { "minerals": 350, "gas": 250, "supply": 6, "time": 55 },
+    "stats": {
+      "hp": 500,
+      "shields": 0,
+      "armor": 3,
+      "speed": 3.15,
+      "range": 2,
+      "groundDmg": "35 (방사 피해, 피격 반사 오라)",
+      "airDmg": "-",
+      "damageType": "최종 전선 파쇄 괴수"
+    },
+    "diffFromPair": [
+      { "item": "내구도 및 방어", "pair": "체력 500 / 기본 방어력 2 (키틴질 업 시 4)", "unit": "체력 500 / 기본 방어력 3 + 피격 반사 피해 및 방어막 패시브" },
+      { "item": "공격력", "pair": "공격력 35 (+공업당 3)", "unit": "공격력 35 + 주변 적 지속 가시 반사 피해" }
+    ],
+    "upgrades": [],
+    "clip": {
+      "title": "티라노조르 최전선 돌파 및 반사 오라",
+      "src": "assets/videos/tyrannozor_rampage.mp4",
+      "poster": "assets/images/tyrannozor_poster.webp",
+      "simulation": "tyrannozor"
+    }
+  },
+  {
+    "id": "guardian",
+    "name": "가디언 (Guardian)",
+    "race": "zerg",
+    "icon": "assets/images/icons/guardian.png",
+    "pairUnit": "무리군주 (Brood Lord)",
+    "building": "뮤탈리스크 변태 (둥지탑)",
+    "techReq": "둥지탑 (Spire)",
+    "cost": { "minerals": 150, "gas": 200, "supply": 2, "time": 40 },
+    "stats": {
+      "hp": 150,
+      "shields": 0,
+      "armor": 2,
+      "speed": 1.97,
+      "range": 8,
+      "groundDmg": "20 (2회 연속 타격, 총 40 산성 폭격)",
+      "airDmg": "-",
+      "damageType": "장거리 고화력 공성 폭격"
+    },
+    "diffFromPair": [
+      { "item": "공격 방식", "pair": "사거리 10 공생충 투하 (착탄 지연 및 어그로 분산)", "unit": "사거리 8 즉시 산성탄 폭격 (지연 없는 20x2 즉시 피해)" },
+      { "item": "변태 테크", "pair": "거대둥지탑(군락 필요)", "unit": "일반 둥지탑(번식지)에서 즉시 변태 가능" }
+    ],
+    "upgrades": [],
+    "clip": {
+      "title": "가디언 장거리 산성 포격",
+      "src": "assets/videos/guardian_bombard.mp4",
+      "poster": "assets/images/guardian_poster.webp",
+      "simulation": "guardian"
+    }
+  }
+]

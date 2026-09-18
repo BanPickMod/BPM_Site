@@ -1,0 +1,285 @@
+[
+  {
+    "id": "raven",
+    "name": "밤까마귀 (Raven)",
+    "race": "terran",
+    "category": "신규 특수 능력 & 스펙 개편",
+    "pairUnit": "사이언스 베슬 (Science Vessel)",
+    "building": "우주공항 (기술실)",
+    "techReq": "우주공항 기술실",
+    "cost": {
+      "minerals": 100,
+      "gas": 200,
+      "supply": 3,
+      "time": 43
+    },
+    "stats": {
+      "hp": 140,
+      "shields": 0,
+      "armor": 1,
+      "speed": 3.85,
+      "range": 6,
+      "groundDmg": "1 (A무빙 호신용)",
+      "airDmg": "1 (A무빙 호신용)",
+      "weaponName": "해방선 포격 (BPM_RavenWeapon)"
+    },
+    "highlightFeature": {
+      "badge": "BPM 신규 추가 능력",
+      "name": "수리 비행정 배치 (Deploy Repair Drone)",
+      "hotkey": "R",
+      "cost": "에너지 50",
+      "range": "시전 사거리 7",
+      "cooldown": "1초",
+      "droneStats": {
+        "hp": 50,
+        "energy": 200,
+        "duration": "90초",
+        "type": "경장갑 · 기계 · 공중",
+        "sight": 7
+      },
+      "healMechanics": {
+        "rate": "초당 13.6 체력 수복",
+        "ratio": "1 에너지 소모당 1 체력 수리 (최대 200 회복)",
+        "range": "사거리 6 (오토캐스트 기본 활성화)",
+        "target": "손상된 아군 기계 유닛 및 건물"
+      },
+      "purpose": "테란 메카닉 조합의 전선 지속력과 긴급 야전 복구 능력을 크게 강화합니다. 대체 페어인 사이언스 베슬의 [디펜시브 매트릭스(일시적 피해 흡수)]에 대항하여, 밤까마귀는 즉시 투하되는 수리 비행정으로 손상된 토르·공성전차·바이킹을 실시간 수리해 전선 이탈을 방지합니다."
+    },
+    "abilities": [
+      {
+        "name": "수리 비행정 배치 (Deploy Repair Drone)",
+        "status": "new",
+        "statusLabel": "신규 능력",
+        "hotkey": "R",
+        "cost": "마나 50",
+        "desc": "손상된 아군 기계 유닛과 구조물을 초당 13.6의 속도로 수리하는 수리 비행정을 즉시 낙하 배치합니다."
+      },
+      {
+        "name": "호신용 기본 공격 (평타 무기)",
+        "status": "new",
+        "statusLabel": "신규 무기",
+        "hotkey": "패시브",
+        "cost": "사거리 6 / 공격력 1",
+        "desc": "어택땅(A-Move) 시 단독으로 적진에 뛰어들어 산화하는 AI 결함을 차단하고 아군 본대와 이동을 완벽히 동기화합니다."
+      },
+      {
+        "name": "자동 포탑 (Auto Turret)",
+        "status": "retained",
+        "statusLabel": "유지",
+        "hotkey": "T",
+        "cost": "마나 50",
+        "desc": "10초간 지속되는 자동 포탑을 설치하여 지상/공중 적에게 18의 공격력으로 지속 사격을 가합니다."
+      },
+      {
+        "name": "방해 매트릭스 (Interference Matrix)",
+        "status": "retained",
+        "statusLabel": "유지",
+        "hotkey": "C",
+        "cost": "마나 75",
+        "desc": "대상 기계 또는 사이오닉 유닛의 무기와 능력을 11초간 완전 비활성화합니다. (사거리 9)"
+      },
+      {
+        "name": "대장갑 미사일 (Anti-Armor Missile)",
+        "status": "removed",
+        "statusLabel": "완전 삭제",
+        "hotkey": "-",
+        "cost": "삭제됨",
+        "desc": "BPM 모드에서 대장갑 미사일이 완전히 제거되고, 메카닉 지원용 '수리 비행정 배치'로 대체되었습니다."
+      }
+    ]
+  },
+  {
+    "id": "viper",
+    "name": "살모사 (Viper)",
+    "race": "zerg",
+    "category": "신규 무기 추가 & AI 안정화",
+    "pairUnit": "일반 편제 마법 지원",
+    "building": "살모사 굴 (Viper's Nest)",
+    "techReq": "군락 (Hive) + 살모사 굴",
+    "cost": {
+      "minerals": 100,
+      "gas": 200,
+      "supply": 3,
+      "time": 29
+    },
+    "stats": {
+      "hp": 150,
+      "shields": 0,
+      "armor": 1,
+      "speed": 4.13,
+      "range": 6,
+      "groundDmg": "1 (감염성 투사체)",
+      "airDmg": "1 (감염성 투사체)",
+      "weaponName": "감염성 투사체 (BPM_ViperWeapon)"
+    },
+    "highlightFeature": {
+      "badge": "BPM 신규 추가 능력",
+      "name": "호신용 기본 공격 - 감염성 투사체 (BPM_ViperWeapon)",
+      "hotkey": "패시브 (A-Move)",
+      "cost": "마나 소모 없음",
+      "range": "사거리 6",
+      "cooldown": "기본 공속",
+      "droneStats": null,
+      "healMechanics": null,
+      "purpose": "일반 밀리에서 마법 유닛 어택땅(A-Move) 시 살모사가 홀로 최전선으로 튀어나가 자살 비행하던 고질적 AI 문제를 해결했습니다. 사거리 6의 기본 평타 무기를 장착하여 전투 병력과 함께 적정 안전 거리를 유지하며 자연스럽게 무빙을 동기화합니다."
+    },
+    "abilities": [
+      {
+        "name": "감염성 투사체 (기본 공격)",
+        "status": "new",
+        "statusLabel": "신규 무기",
+        "hotkey": "패시브",
+        "cost": "사거리 6 / 공격력 1",
+        "desc": "지상 및 공중 공격이 가능한 사거리 6의 호신용 무기입니다. 부대 어택땅 시 최전선 급발진 돌사를 방지합니다."
+      },
+      {
+        "name": "납치 (Yoink)",
+        "status": "retained",
+        "statusLabel": "유지",
+        "hotkey": "D",
+        "cost": "마나 75",
+        "desc": "사거리 9의 촉수를 뻗어 대상 적 유닛을 살모사 바로 앞으로 끌고 와 아군 화망에 노출시킵니다."
+      },
+      {
+        "name": "흑구름 (Blinding Cloud)",
+        "status": "retained",
+        "statusLabel": "유지",
+        "hotkey": "E",
+        "cost": "마나 100",
+        "desc": "반경 2.5 영역 안의 모든 지상 유닛과 방어 구조물의 사거리를 6초간 1(근접)로 강제 축소합니다."
+      },
+      {
+        "name": "흡수 (Consume)",
+        "status": "retained",
+        "statusLabel": "유지",
+        "hotkey": "C",
+        "cost": "건물 체력 소모",
+        "desc": "대상 아군 저그 건물의 체력을 초당 지속 흡수하여 살모사의 마나를 50 회복합니다. (사거리 7)"
+      },
+      {
+        "name": "기생 폭탄 (Parasitic Bomb)",
+        "status": "retained",
+        "statusLabel": "유지",
+        "hotkey": "R",
+        "cost": "마나 125",
+        "desc": "대상 공중 적에게 7초 동안 총 120의 광역 공중 지속 피해를 주는 기생 구체를 부착합니다."
+      }
+    ]
+  },
+  {
+    "id": "liberator",
+    "name": "해방선 (Liberator)",
+    "race": "terran",
+    "category": "수호기 모드 시야 밸런스 조정",
+    "pairUnit": "일반 편제 공중 함선",
+    "building": "우주공항",
+    "techReq": "우주공항",
+    "cost": {
+      "minerals": 150,
+      "gas": 150,
+      "supply": 3,
+      "time": 43
+    },
+    "stats": {
+      "hp": 180,
+      "shields": 0,
+      "armor": 0,
+      "speed": 4.72,
+      "range": 5,
+      "groundDmg": "수호기 구역 75 (단일)",
+      "airDmg": "5 (+3 vs 중장갑, 2회)",
+      "weaponName": "렉싱턴 레일건 / 콩코드 공중 어뢰"
+    },
+    "highlightFeature": {
+      "badge": "BPM 밸런스 조정",
+      "name": "수호기 모드 시야 범위 축소 조정 (13 ➔ 10)",
+      "hotkey": "수호기 모드 [E]",
+      "cost": "시야 10으로 통일",
+      "range": "시야 10 (기존 13에서 -3)",
+      "cooldown": "-",
+      "droneStats": null,
+      "healMechanics": null,
+      "purpose": "수호기 모드가 독자적으로 13의 긴 시야를 확보해 전방 시야 지원 없이도 일방적인 공성 폭격을 가하던 비대칭성을 해소했습니다. 일반 모드와 수호기 모드의 시야를 10으로 통일함으로써 관측선, 해병, 지상 유닛과의 전방 시야 협동을 유도합니다."
+    },
+    "abilities": [
+      {
+        "name": "수호기 모드 (Defender Mode)",
+        "status": "rebalanced",
+        "statusLabel": "시야 조정",
+        "hotkey": "E",
+        "cost": "변형 1.43초",
+        "desc": "지상 목표 구역에 원형 경계망을 전개하여 진입하는 적 지상 유닛에 75의 레일건 포격을 가합니다. (시야 10 통일)"
+      },
+      {
+        "name": "전투 모드 전환 (Fighter Mode)",
+        "status": "retained",
+        "statusLabel": "유지",
+        "hotkey": "D",
+        "cost": "변형 1.43초",
+        "desc": "수호기 모드를 해제하고 고속 비행 전투 모드로 복귀합니다."
+      }
+    ]
+  },
+  {
+    "id": "overlord",
+    "name": "대군주 (Overlord)",
+    "race": "zerg",
+    "category": "초반 일벌레 동선 편의 기능",
+    "pairUnit": "일반 편제 보급 유닛",
+    "building": "부화장 / 번식지 / 군락",
+    "techReq": "기본 유닛",
+    "cost": {
+      "minerals": 100,
+      "gas": 0,
+      "supply": -8,
+      "time": 18
+    },
+    "stats": {
+      "hp": 200,
+      "shields": 0,
+      "armor": 0,
+      "speed": 0.85,
+      "range": 0,
+      "groundDmg": "-",
+      "airDmg": "-",
+      "weaponName": "-"
+    },
+    "highlightFeature": {
+      "badge": "BPM 편의 기능",
+      "name": "부화장 생산 시 미네랄 뒤편 자동 이동 (Auto-Rally)",
+      "hotkey": "패시브",
+      "cost": "자원 소모 없음",
+      "range": "본진 광물 지대",
+      "cooldown": "-",
+      "droneStats": null,
+      "healMechanics": null,
+      "purpose": "기존에는 생산 직후 부화장 출구 앞에 우두커니 정지하여 극초반 일벌레의 미네랄 채취 최적화 동선(가속 부스팅)을 가로막는 불편함이 있었습니다. BPM 모드에서는 별도의 랠리 지정이 없더라도 가장 가까운 광물 지대 뒤편 안전 구역으로 자동 이동하여 동선 간섭을 방지하고 본진 후방 시야를 자동으로 밝힙니다."
+    },
+    "abilities": [
+      {
+        "name": "광물 지대 자동 집결 (Auto-Rally)",
+        "status": "new",
+        "statusLabel": "편의 추가",
+        "hotkey": "패시브",
+        "cost": "자동 동작",
+        "desc": "부화장에서 부화 직후 명령이 없을 경우, 가장 인접한 미네랄 라인 뒤편으로 자동 이동하여 일벌레 채취를 방해하지 않습니다."
+      },
+      {
+        "name": "점막 생성 (Generate Creep)",
+        "status": "retained",
+        "statusLabel": "유지",
+        "hotkey": "G",
+        "cost": "번식지 필요",
+        "desc": "제자리에 떠서 주변 지면에 점막을 지속적으로 생성합니다."
+      },
+      {
+        "name": "감시군주 변태 (Morph to Overseer)",
+        "status": "retained",
+        "statusLabel": "유지",
+        "hotkey": "V",
+        "cost": "50 / 50",
+        "desc": "탐지기 능력을 갖춘 고속 감시군주로 변태합니다."
+      }
+    ]
+  }
+]

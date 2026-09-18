@@ -1,0 +1,535 @@
+[
+  {
+    "id": "marine",
+    "name": "해병 (Marine)",
+    "race": "terran",
+    "category": "standard",
+    "icon": "assets/images/icons/marine.png",
+    "building": "병영 (Barracks)",
+    "techReq": "병영",
+    "cost": { "minerals": 50, "gas": 0, "supply": 1, "time": 18 },
+    "stats": {
+      "hp": 45,
+      "armor": 0,
+      "speed": 3.15,
+      "range": 5,
+      "groundDmg": "6 (단일)",
+      "airDmg": "6 (단일)",
+      "damageType": "원거리 속사 소총"
+    },
+    "weapons": [
+      { "name": "C-14 가우스 소총", "targets": "any", "damage": 6, "period": 0.61, "dps": 9.8, "range": 5 }
+    ],
+    "abilities": [
+      { "name": "전투 자극제 (Stimpack)", "cost": "HP 10", "description": "11초간 이동 속도 +50%, 공격 속도 +50% 증가." }
+    ],
+    "upgrades": [
+      { "name": "전투 방패 (Combat Shield)", "cost": "100M / 100G / 79초", "statDiff": "해병의 최대 생명력이 +10 증가 (45 ➔ 55)" }
+    ]
+  },
+  {
+    "id": "marauder",
+    "name": "불곰 (Marauder)",
+    "race": "terran",
+    "category": "standard",
+    "icon": "assets/images/icons/marauder.png",
+    "building": "병영 (기술실)",
+    "techReq": "병영 기술실",
+    "cost": { "minerals": 100, "gas": 25, "supply": 2, "time": 21 },
+    "stats": {
+      "hp": 125,
+      "armor": 1,
+      "speed": 3.15,
+      "range": 6,
+      "groundDmg": "10 (+10 vs 중장갑)",
+      "airDmg": "-",
+      "damageType": "중장갑 요격 충격탄"
+    },
+    "weapons": [
+      { "name": "유탄 발사기", "targets": "ground", "damage": 10, "period": 1.07, "dps": 18.7, "range": 6 }
+    ],
+    "abilities": [
+      { "name": "충격탄 (Concussive Shells)", "description": "적중된 적 지상 유닛의 이동 속도를 50% 감속시킵니다." },
+      { "name": "전투 자극제 (Stimpack)", "cost": "HP 20", "description": "11초간 이동 속도 +50%, 공격 속도 +50% 증가." }
+    ],
+    "upgrades": [
+      { "name": "충격탄 연구", "cost": "50M / 50G / 43초", "statDiff": "유탄 발사기에 적 유닛 50% 감속 효과 부여" }
+    ]
+  },
+  {
+    "id": "reaper",
+    "name": "사신 (Reaper)",
+    "race": "terran",
+    "category": "standard",
+    "icon": "assets/images/icons/reaper.png",
+    "building": "병영",
+    "techReq": "병영",
+    "cost": { "minerals": 50, "gas": 50, "supply": 1, "time": 32 },
+    "stats": {
+      "hp": 60,
+      "armor": 0,
+      "speed": 5.0,
+      "range": 5,
+      "groundDmg": "4 (2회 타격)",
+      "airDmg": "-",
+      "damageType": "언덕 기동 경장갑 견제"
+    },
+    "weapons": [
+      { "name": "P-45 가우스 권총", "targets": "ground", "damage": 4, "attacks": 2, "period": 0.79, "dps": 10.1, "range": 5 }
+    ],
+    "abilities": [
+      { "name": "KD8 지뢰", "cooldown": 14, "description": "폭탄을 투척하여 적 유닛을 튕겨내고 5의 피해를 입힙니다." },
+      { "name": "전투 회복술", "description": "비전투 상태 진입 시 초당 2.8의 체력을 자동 회복합니다." }
+    ],
+    "upgrades": []
+  },
+  {
+    "id": "ghost",
+    "name": "유령 (Ghost)",
+    "race": "terran",
+    "category": "standard",
+    "icon": "assets/images/icons/ghost.png",
+    "building": "병영 (기술실)",
+    "techReq": "유령 사관학교 (Ghost Academy)",
+    "cost": { "minerals": 150, "gas": 125, "supply": 2, "time": 29 },
+    "stats": {
+      "hp": 100,
+      "energy": 200,
+      "armor": 0,
+      "speed": 3.94,
+      "range": 6,
+      "groundDmg": "10 (+10 vs 경장갑)",
+      "airDmg": "10 (+10 vs 경장갑)",
+      "damageType": "저격 및 사이오닉 무력화"
+    },
+    "weapons": [
+      { "name": "C-10 산탄 소총", "targets": "any", "damage": 10, "period": 1.07, "dps": 9.3, "range": 6 }
+    ],
+    "abilities": [
+      { "name": "은폐 (Cloak)", "cost": "25 에너지 + 초당 1.4", "description": "적의 시야로부터 은폐합니다." },
+      { "name": "부동 조준 (Steady Targeting)", "cost": "50 에너지", "description": "생체 유닛에게 170의 절대 피해를 조준 사격합니다." },
+      { "name": "EMP 탄환", "cost": "75 에너지", "description": "반경 내 적의 보호막 100을 즉각 소멸시키고 에너지를 방전시킵니다." },
+      { "name": "전술 핵 투하", "cost": "100M / 100G (핵 사일로)", "description": "지정 구역에 괴멸적인 핵미사일을 유도 낙하시킵니다." }
+    ],
+    "upgrades": []
+  },
+  {
+    "id": "siege_tank",
+    "name": "공성 전차 (Siege Tank)",
+    "race": "terran",
+    "category": "standard",
+    "icon": "assets/images/icons/siege-tank.png",
+    "building": "군수공장 (기술실)",
+    "techReq": "군수공장 기술실",
+    "cost": { "minerals": 150, "gas": 125, "supply": 3, "time": 32 },
+    "stats": {
+      "hp": 175,
+      "armor": 1,
+      "speed": 3.15,
+      "range": 7,
+      "groundDmg": "15 (+10 vs 중장갑) / 시즈 40 (+30 vs 중장갑)",
+      "airDmg": "-",
+      "damageType": "장거리 광역 공성 포격"
+    },
+    "weapons": [
+      { "name": "90mm 포", "targets": "ground", "damage": 15, "period": 0.74, "dps": 20.2, "range": 7 },
+      { "name": "충격포 (시즈 모드)", "targets": "ground", "damage": 40, "period": 2.14, "dps": 18.7, "range": 13 }
+    ],
+    "abilities": [
+      { "name": "공성 모드 (Siege Mode)", "description": "사거리 13의 고정 포격 모드로 전환합니다." }
+    ],
+    "upgrades": []
+  },
+  {
+    "id": "thor",
+    "name": "토르 (Thor)",
+    "race": "terran",
+    "category": "standard",
+    "icon": "assets/images/icons/thor.png",
+    "building": "군수공장 (기술실)",
+    "techReq": "무기고 (Armory)",
+    "cost": { "minerals": 300, "gas": 200, "supply": 6, "time": 43 },
+    "stats": {
+      "hp": 400,
+      "armor": 2,
+      "speed": 2.25,
+      "range": 7,
+      "groundDmg": "60 (2회 타격)",
+      "airDmg": "24 (4회 타격, 방사) / 고충격 25 (+10 vs 거대)",
+      "damageType": "결전형 지상/대공 거포"
+    },
+    "weapons": [
+      { "name": "토르의 망치", "targets": "ground", "damage": 30, "attacks": 2, "period": 0.91, "dps": 65.9, "range": 7 }
+    ],
+    "abilities": [
+      { "name": "고충격 탄두 모드", "description": "단일 거대 공중 대상을 집중 관통 사격하는 모드로 전환합니다." }
+    ],
+    "upgrades": []
+  },
+  {
+    "id": "viking",
+    "name": "바이킹 (Viking)",
+    "race": "terran",
+    "category": "standard",
+    "icon": "assets/images/icons/viking.png",
+    "building": "우주공항",
+    "techReq": "우주공항",
+    "cost": { "minerals": 150, "gas": 75, "supply": 2, "time": 30 },
+    "stats": {
+      "hp": 135,
+      "armor": 0,
+      "speed": 3.85,
+      "range": 9,
+      "groundDmg": "12 (+8 vs 기계, 돌격모드)",
+      "airDmg": "10 (+4 vs 중장갑, 2회)",
+      "damageType": "장거리 대공 요격 및 지상 변신"
+    },
+    "weapons": [
+      { "name": "MT50 랜서 어뢰 (전투기)", "targets": "air", "damage": 10, "attacks": 2, "period": 1.43, "dps": 14.0, "range": 9 }
+    ],
+    "abilities": [
+      { "name": "돌격 모드 전환", "description": "지상으로 착륙하여 개틀링 포를 발사하는 워커 형태로 변신합니다." }
+    ],
+    "upgrades": []
+  },
+  {
+    "id": "raven",
+    "name": "밤까마귀 (Raven)",
+    "race": "terran",
+    "category": "standard",
+    "icon": "assets/images/icons/raven.png",
+    "building": "우주공항 (기술실)",
+    "techReq": "우주공항 기술실",
+    "cost": { "minerals": 100, "gas": 150, "supply": 2, "time": 34 },
+    "stats": {
+      "hp": 140,
+      "energy": 200,
+      "armor": 1,
+      "speed": 3.85,
+      "range": 6,
+      "groundDmg": "1 (BPM 평타)",
+      "airDmg": "1 (BPM 평타)",
+      "damageType": "전술 탐지 및 지원 마법선"
+    },
+    "weapons": [
+      { "name": "BPM 소형 레이저", "targets": "any", "damage": 1, "period": 1.0, "dps": 1.0, "range": 6 }
+    ],
+    "abilities": [
+      { "name": "수리 비행정 배치 (Deploy Repair Drone)", "cost": "50 에너지", "description": "초당 13.6 체력으로 주변 아군 기계 유닛을 수리하는 비행정을 배치합니다." },
+      { "name": "방해 매트릭스", "cost": "75 에너지", "description": "적 기계 유닛의 무장 및 특수 능력을 11초간 정지시킵니다." },
+      { "name": "자동 포탑", "cost": "50 에너지", "description": "초당 24 DPS의 속사 기관포탑을 10초간 배치합니다." }
+    ],
+    "upgrades": []
+  },
+  {
+    "id": "zealot",
+    "name": "광전사 (Zealot)",
+    "race": "protoss",
+    "category": "standard",
+    "icon": "assets/images/icons/zealot.png",
+    "building": "차원관문 / 관문",
+    "techReq": "관문 (Gateway)",
+    "cost": { "minerals": 100, "gas": 0, "supply": 2, "time": 27 },
+    "stats": {
+      "hp": 100,
+      "shields": 50,
+      "armor": 1,
+      "speed": 3.15,
+      "range": 0.1,
+      "groundDmg": "8 (2회 타격)",
+      "airDmg": "-",
+      "damageType": "전열 사이오닉 근접 격투"
+    },
+    "weapons": [
+      { "name": "사이오닉 검", "targets": "ground", "damage": 8, "attacks": 2, "period": 0.86, "dps": 18.6, "range": 0.1 }
+    ],
+    "abilities": [
+      { "name": "돌진 (Charge)", "cooldown": 7, "description": "적 유닛에게 급가속으로 돌진하여 최초 8의 피해를 가합니다." }
+    ],
+    "upgrades": [
+      { "name": "돌진 연구", "cost": "100M / 100G / 100초", "statDiff": "광전사 기본 이동 속도 영구 증가 (3.15 ➔ 4.13) 및 돌진 활성화" }
+    ]
+  },
+  {
+    "id": "stalker",
+    "name": "추적자 (Stalker)",
+    "race": "protoss",
+    "category": "standard",
+    "icon": "assets/images/icons/stalker.png",
+    "building": "차원관문 / 관문",
+    "techReq": "인공제어소 (Cybernetics Core)",
+    "cost": { "minerals": 125, "gas": 50, "supply": 2, "time": 30 },
+    "stats": {
+      "hp": 80,
+      "shields": 80,
+      "armor": 1,
+      "speed": 4.13,
+      "range": 6,
+      "groundDmg": "13 (+5 vs 중장갑)",
+      "airDmg": "13 (+5 vs 중장갑)",
+      "damageType": "기동 점멸 올라운더"
+    },
+    "weapons": [
+      { "name": "입자 분열기", "targets": "any", "damage": 13, "period": 1.03, "dps": 12.6, "range": 6 }
+    ],
+    "abilities": [
+      { "name": "점멸 (Blink)", "cooldown": 7, "description": "사거리 8 이내 지정 위치로 즉각 순간이동합니다." }
+    ],
+    "upgrades": [
+      { "name": "점멸 연구", "cost": "150M / 150G / 100초", "statDiff": "추적자 점멸 순간이동 능력 해금" }
+    ]
+  },
+  {
+    "id": "sentry",
+    "name": "파수기 (Sentry)",
+    "race": "protoss",
+    "category": "standard",
+    "icon": "assets/images/icons/sentry.png",
+    "building": "차원관문 / 관문",
+    "techReq": "인공제어소",
+    "cost": { "minerals": 50, "gas": 100, "supply": 2, "time": 26 },
+    "stats": {
+      "hp": 40,
+      "shields": 40,
+      "energy": 200,
+      "armor": 1,
+      "speed": 3.15,
+      "range": 5,
+      "groundDmg": "6 (단일)",
+      "airDmg": "6 (단일)",
+      "damageType": "전장 제어 사이오닉 로봇"
+    },
+    "weapons": [
+      { "name": "분멸 광선", "targets": "any", "damage": 6, "period": 0.71, "dps": 8.5, "range": 5 }
+    ],
+    "abilities": [
+      { "name": "역장 (Force Field)", "cost": "50 에너지", "description": "지상 유닛이 통과할 수 없는 역장을 11초간 생성합니다." },
+      { "name": "수호 방패 (Guardian Shield)", "cost": "75 에너지", "description": "주변 아군이 받는 원거리 투사체 피해를 2 감소시킵니다." },
+      { "name": "환상 (Hallucination)", "cost": "75 에너지", "description": "정찰용 가짜 유닛 환상을 생성합니다." }
+    ],
+    "upgrades": []
+  },
+  {
+    "id": "colossus",
+    "name": "거신 (Colossus)",
+    "race": "protoss",
+    "category": "standard",
+    "icon": "assets/images/icons/colossus.png",
+    "building": "로봇공학시설",
+    "techReq": "로봇공학 지원소",
+    "cost": { "minerals": 300, "gas": 200, "supply": 6, "time": 54 },
+    "stats": {
+      "hp": 200,
+      "shields": 150,
+      "armor": 1,
+      "speed": 3.15,
+      "range": 7,
+      "groundDmg": "10 (+5 vs 경장갑, 2회)",
+      "airDmg": "-",
+      "damageType": "언덕 보행 광역 열광선"
+    },
+    "weapons": [
+      { "name": "열광선", "targets": "ground", "damage": 10, "attacks": 2, "period": 1.07, "dps": 18.7, "range": 7 }
+    ],
+    "abilities": [
+      { "name": "언덕 보행", "description": "절벽 지형을 자유롭게 오르내립니다." }
+    ],
+    "upgrades": [
+      { "name": "확장 열광선 (Extended Thermal Lance)", "cost": "150M / 150G / 100초", "statDiff": "사거리 7 ➔ 9 (+2)" }
+    ]
+  },
+  {
+    "id": "disruptor",
+    "name": "분열기 (Disruptor)",
+    "race": "protoss",
+    "category": "standard",
+    "icon": "assets/images/icons/disruptor.png",
+    "building": "로봇공학시설",
+    "techReq": "로봇공학 지원소",
+    "cost": { "minerals": 150, "gas": 150, "supply": 3, "time": 36 },
+    "stats": {
+      "hp": 100,
+      "shields": 100,
+      "armor": 1,
+      "speed": 3.15,
+      "range": 0,
+      "groundDmg": "스킬 공격 145 (+55 vs 보호막)",
+      "airDmg": "-",
+      "damageType": "초고위력 정화 구체 폭격"
+    },
+    "weapons": [],
+    "abilities": [
+      { "name": "정화 구체 (Purification Nova)", "cooldown": 21, "description": "무적의 구체를 방출하여 반경 1.5 내의 지상 유닛들에게 145 (+55 실드) 광역 폭딜을 가합니다." }
+    ],
+    "upgrades": []
+  },
+  {
+    "id": "phoenix",
+    "name": "불사조 (Phoenix)",
+    "race": "protoss",
+    "category": "standard",
+    "icon": "assets/images/icons/phoenix.png",
+    "building": "우주관문",
+    "techReq": "우주관문",
+    "cost": { "minerals": 150, "gas": 100, "supply": 2, "time": 25 },
+    "stats": {
+      "hp": 120,
+      "shields": 60,
+      "energy": 200,
+      "armor": 0,
+      "speed": 5.95,
+      "range": 5,
+      "groundDmg": "스킬 중력자 광선",
+      "airDmg": "5 (+5 vs 경장갑, 2회)",
+      "damageType": "초고속 무빙샷 대공기"
+    },
+    "weapons": [
+      { "name": "이온 대포", "targets": "air", "damage": 5, "attacks": 2, "period": 0.79, "dps": 12.7, "range": 5 }
+    ],
+    "abilities": [
+      { "name": "중력자 광선 (Graviton Beam)", "cost": "50 에너지", "description": "지상 적 유닛 하나를 6초간 공중으로 띄워 무력화합니다." }
+    ],
+    "upgrades": [
+      { "name": "음이온 펄스 (Anion Pulse-Crystals)", "cost": "150M / 150G / 90초", "statDiff": "사거리 5 ➔ 7 (+2)" }
+    ]
+  },
+  {
+    "id": "zergling",
+    "name": "저글링 (Zergling)",
+    "race": "zerg",
+    "category": "standard",
+    "icon": "assets/images/icons/zergling.png",
+    "building": "산란못 (Spawning Pool)",
+    "techReq": "산란못",
+    "cost": { "minerals": 50, "gas": 0, "supply": 1, "time": 17 },
+    "stats": {
+      "hp": 35,
+      "armor": 0,
+      "speed": 4.13,
+      "range": 0.1,
+      "groundDmg": "5 (단일)",
+      "airDmg": "-",
+      "damageType": "초고속 군단 근접 포위"
+    },
+    "weapons": [
+      { "name": "발톱", "targets": "ground", "damage": 5, "period": 0.49, "dps": 10.2, "range": 0.1 }
+    ],
+    "abilities": [],
+    "upgrades": [
+      { "name": "대사 촉진 (Metabolic Boost)", "cost": "100M / 100G / 79초", "statDiff": "이동 속도 4.13 ➔ 6.58 (+60% 발업)" },
+      { "name": "아드레날린 분비선", "cost": "200M / 200G / 93초", "statDiff": "공격 속도 +43% 극대화" }
+    ]
+  },
+  {
+    "id": "roach",
+    "name": "바퀴 (Roach)",
+    "race": "zerg",
+    "category": "standard",
+    "icon": "assets/images/icons/roach.png",
+    "building": "바퀴 소굴 (Roach Warren)",
+    "techReq": "바퀴 소굴",
+    "cost": { "minerals": 75, "gas": 25, "supply": 2, "time": 19 },
+    "stats": {
+      "hp": 145,
+      "armor": 1,
+      "speed": 3.15,
+      "range": 4,
+      "groundDmg": "16 (단일)",
+      "airDmg": "-",
+      "damageType": "고내구 재생성 돌격병"
+    },
+    "weapons": [
+      { "name": "산성 침", "targets": "ground", "damage": 16, "period": 1.43, "dps": 11.2, "range": 4 }
+    ],
+    "abilities": [
+      { "name": "잠복 (Burrow)", "description": "지하에 숨어 초당 10의 초고속 체력 재생을 누립니다." }
+    ],
+    "upgrades": [
+      { "name": "신경 재구성 (Glial Reconstitution)", "cost": "100M / 100G / 79초", "statDiff": "이동 속도 3.15 ➔ 4.13 (+31% 발업)" },
+      { "name": "땅굴 발톱", "cost": "100M / 100G / 79초", "statDiff": "잠복 상태에서 이동 가능" }
+    ]
+  },
+  {
+    "id": "ravager",
+    "name": "궤멸충 (Ravager)",
+    "race": "zerg",
+    "category": "standard",
+    "icon": "assets/images/icons/ravager.png",
+    "building": "바퀴 변태",
+    "techReq": "바퀴 소굴",
+    "cost": { "minerals": 100, "gas": 100, "supply": 3, "time": 9 },
+    "stats": {
+      "hp": 120,
+      "armor": 1,
+      "speed": 3.85,
+      "range": 6,
+      "groundDmg": "16 (단일)",
+      "airDmg": "-",
+      "damageType": "담즙 박격포 지휘체"
+    },
+    "weapons": [
+      { "name": "플라스마 침", "targets": "ground", "damage": 16, "period": 1.14, "dps": 14.0, "range": 6 }
+    ],
+    "abilities": [
+      { "name": "부식성 담즙 (Corrosive Bile)", "cooldown": 7, "description": "2.5초 후 낙하하여 지상/공중 대상에게 60 절대 피해를 입히고 역장을 즉각 파괴합니다." }
+    ],
+    "upgrades": []
+  },
+  {
+    "id": "infestor",
+    "name": "감염충 (Infestor)",
+    "race": "zerg",
+    "category": "standard",
+    "icon": "assets/images/icons/infestor.png",
+    "building": "감염 구덩이",
+    "techReq": "감염 구덩이",
+    "cost": { "minerals": 100, "gas": 150, "supply": 2, "time": 36 },
+    "stats": {
+      "hp": 90,
+      "energy": 200,
+      "armor": 0,
+      "speed": 3.15,
+      "range": 0,
+      "groundDmg": "-",
+      "airDmg": "-",
+      "damageType": "잠복 조종 사이오닉 기생체"
+    },
+    "weapons": [],
+    "abilities": [
+      { "name": "진균 번식 (Fungal Growth)", "cost": "75 에너지", "description": "3초간 범위 내 적을 묶고 30 피해를 가하며 은폐를 감지합니다." },
+      { "name": "신경 기생충 (Neural Parasite)", "cost": "100 에너지", "description": "적 유닛 하나를 14초간 조종합니다." },
+      { "name": "미생물 장막", "cost": "75 에너지", "description": "공중 유닛으로부터 받는 피해를 50% 줄여주는 장막을 11초간 생성합니다." }
+    ],
+    "upgrades": []
+  },
+  {
+    "id": "viper",
+    "name": "살모사 (Viper)",
+    "race": "zerg",
+    "category": "standard",
+    "icon": "assets/images/icons/viper.png",
+    "building": "군락 (Hive)",
+    "techReq": "군락",
+    "cost": { "minerals": 100, "gas": 200, "supply": 3, "time": 29 },
+    "stats": {
+      "hp": 150,
+      "energy": 200,
+      "armor": 1,
+      "speed": 3.85,
+      "range": 6,
+      "groundDmg": "1 (BPM 평타)",
+      "airDmg": "1 (BPM 평타)",
+      "damageType": "공중 정밀 전술 비행체"
+    },
+    "weapons": [
+      { "name": "BPM 침탄환", "targets": "any", "damage": 1, "period": 1.0, "dps": 1.0, "range": 6 }
+    ],
+    "abilities": [
+      { "name": "납치 (Abduct)", "cost": "75 에너지", "description": "적 핵심 유닛을 자신의 위치로 강제 견인합니다." },
+      { "name": "흑구름 (Blinding Cloud)", "cost": "100 에너지", "description": "영역 내 모든 지상 유닛의 공격 사거리를 1로 축소합니다." },
+      { "name": "기생 폭탄 (Parasitic Bomb)", "cost": "125 에너지", "description": "공중 적 유닛에 7초간 120의 지속 방사 피해 폭탄을 부착합니다." },
+      { "name": "흡수 (Consume)", "description": "아군 건물의 생명력을 흡수하여 초당 20 에너지를 충전합니다." }
+    ],
+    "upgrades": []
+  }
+]

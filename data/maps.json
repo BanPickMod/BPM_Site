@@ -1,0 +1,38 @@
+[
+  {
+    "id": "washout",
+    "name": "워시아웃 (Washout)",
+    "version": "BPM_Washout_v0.12",
+    "searchKeyword": "BPM_Washout",
+    "terrain": "2인용 표준 래더 전장으로, 좁은 중앙 교전로와 안전한 앞마당-트리플 동선을 가집니다.",
+    "features": [
+      "BPM 밴픽 다이얼로그 및 인게임 HUD 완전 내장",
+      "중앙 젤나가 감시탑 및 풍부한 광물 지대",
+      "지상 주력 병력 간 힘싸움에 최적화된 맵 구조"
+    ]
+  },
+  {
+    "id": "fear_and_faith",
+    "name": "피어 앤 페이스 (Fear and Faith)",
+    "version": "BPM_Fear and Faith_v0.3",
+    "searchKeyword": "BPM_Fear and Faith",
+    "terrain": "2인용 전장으로, 본진 외곽의 넓은 우회로와 트리플을 둘러싼 언덕 시야 요충지가 특징입니다.",
+    "features": [
+      "공중 유닛(커세어/레이스/가디언)의 기동 전술에 유리한 지형",
+      "언덕 전술 포격 및 방어 타워 배치 중요도 높음",
+      "옵저버 전용 카메라 프리셋 지원"
+    ]
+  },
+  {
+    "id": "rorschach",
+    "name": "로르샤흐 (Rorschach)",
+    "version": "BPM_Rorschach_v0.2",
+    "searchKeyword": "BPM_Rorschach",
+    "terrain": "2인용 전장으로 공격적인 템포와 찌르기 난타전이 자주 발생합니다.",
+    "features": [
+      "빠른 밴픽 및 초반 유닛 상성 교전 중심",
+      "다양한 잔해 바위와 좁은 길목 지형",
+      "근접 유닛(파이어뱃, 변형체)의 돌파력이 강력하게 발휘되는 전장"
+    ]
+  }
+]

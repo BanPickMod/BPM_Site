@@ -1,25 +1,22 @@
 import Image from "next/image";
 import { BPMUnit } from "@/lib/bpmData";
+import { Badge, type BadgeTone } from "@/components/ui/Badge";
 import { Shield, Zap, Target, Sparkles, Building } from "lucide-react";
 
 interface UnitDetailTableProps {
   unit: BPMUnit;
   badgeLabel?: string;
-  badgeColor?: "sky" | "amber" | "purple";
+  /** Distinguishes which side of a comparison this card is — NOT a race
+   *  color, so it must come from the neutral/selected tone pair rather
+   *  than sky/amber/purple (those are reserved for race identity). */
+  badgeTone?: BadgeTone;
 }
 
 export function UnitDetailTable({
   unit,
   badgeLabel,
-  badgeColor = "sky",
+  badgeTone = "selected",
 }: UnitDetailTableProps) {
-  const colorClasses =
-    badgeColor === "sky"
-      ? "bg-sky-500/10 text-sky-400 border-sky-500/30"
-      : badgeColor === "amber"
-      ? "bg-amber-500/10 text-amber-400 border-amber-500/30"
-      : "bg-purple-500/10 text-purple-400 border-purple-500/30";
-
   return (
     <div className="bpm-glass rounded-2xl p-6 border-slate-800 shadow-xl flex flex-col justify-between h-full">
       <div>
@@ -42,11 +39,9 @@ export function UnitDetailTable({
             </div>
             <div>
               {badgeLabel && (
-                <span
-                  className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border inline-block mb-1 ${colorClasses}`}
-                >
+                <Badge tone={badgeTone} uppercase className="mb-1">
                   {badgeLabel}
-                </span>
+                </Badge>
               )}
               <h3 className="text-xl font-black text-slate-100">{unit.name}</h3>
               <div className="text-xs text-slate-400 flex items-center gap-1.5 mt-0.5">

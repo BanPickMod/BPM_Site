@@ -64,8 +64,8 @@ function CompareContent() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch mb-10">
         {/* Left Column: Standard SC2 Melee Unit */}
         <div className="flex flex-col">
-          <div className="flex items-center justify-between px-2 pb-2 mb-2 border-b border-amber-500/20">
-            <span className="text-xs font-bold uppercase tracking-wider text-amber-400">
+          <div className="flex items-center justify-between px-2 pb-2 mb-2 border-b border-slate-700">
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-300">
               [LEFT] 기존 유닛 (Standard SC2 Melee)
             </span>
             <span className="text-[11px] font-mono text-slate-400">기존 래더 표준</span>
@@ -75,7 +75,7 @@ function CompareContent() {
             <UnitDetailTable
               unit={standardPair}
               badgeLabel="기존 밀리 유닛"
-              badgeColor="amber"
+              badgeTone="neutral"
             />
           ) : (
             <div className="bpm-glass rounded-2xl p-8 text-center text-slate-400 flex flex-col items-center justify-center h-full">
@@ -99,7 +99,7 @@ function CompareContent() {
           <UnitDetailTable
             unit={bpmUnit}
             badgeLabel="BPM 확장 유닛"
-            badgeColor="sky"
+            badgeTone="selected"
           />
         </div>
       </div>

@@ -1,21 +1,47 @@
 @import "tailwindcss";
 
+/*
+ * Color role convention
+ * ----------------------------------------------------------------------
+ * Race colors (below) identify a StarCraft race and ONLY that. Never
+ * reuse sky/amber/purple for selection, status or step-sequence meaning
+ * on a page that also displays race data (e.g. Wiki).
+ *
+ * Status/selection meaning uses a separate palette, enforced through
+ * `components/ui/Badge.tsx` and `components/ui/Card.tsx` "tone" props:
+ *   selected -> sky   danger/ban -> rose   success/complete -> emerald
+ *   warning/PTR       -> amber   info/neutral -> slate
+ * When adding a new badge or card, pick a tone from those components
+ * instead of hand-picking a Tailwind color class.
+ */
 :root {
   --bg-primary: #06090e;
   --bg-secondary: #0c121c;
   --bg-card: rgba(15, 23, 38, 0.7);
   --border-card: rgba(56, 189, 248, 0.15);
-  
+
   --terran-accent: #00f0ff;
   --terran-glow: rgba(0, 240, 255, 0.25);
   --protoss-accent: #fbbf24;
   --protoss-glow: rgba(251, 191, 36, 0.25);
   --zerg-accent: #c084fc;
   --zerg-glow: rgba(192, 132, 252, 0.25);
-  
+
   --foreground: #f1f5f9;
   --foreground-muted: #94a3b8;
 }
+
+/*
+ * Typography scale convention
+ * ----------------------------------------------------------------------
+ * Page/section title  -> text-2xl / text-3xl, font-black
+ * Card title           -> text-sm / text-base, font-bold
+ * Body copy             -> text-sm, text-slate-300/400
+ * Caption / meta        -> text-xs
+ * Avoid text-[10-14px] arbitrary sizes for anything a user reads as a
+ * sentence — they collapse the hierarchy between headings and body text.
+ * Arbitrary px sizes are reserved for tight numeric/mono badges only.
+ */
 
 body {
   background-color: var(--bg-primary);

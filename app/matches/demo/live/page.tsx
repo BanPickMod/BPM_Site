@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Badge } from "@/components/ui/Badge";
 import {
   ArrowLeft,
   ShieldAlert,
@@ -39,6 +40,7 @@ export default function LiveSpectatorPage() {
 
         {/* Status Pills */}
         <div className="flex items-center gap-2">
+          <Badge tone="demo">DEMO DATA</Badge>
           <div className="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs text-slate-300 flex items-center gap-2">
             <Clock className="w-3.5 h-3.5 text-sky-400" />
             <span className="font-mono">GAME 2 / IN PROGRESS (07:42)</span>

@@ -4,7 +4,7 @@ import { ExternalLink } from "lucide-react";
 
 export function LinearPTRView() {
   return (
-    <div className="max-w-3xl mx-auto py-6 px-4 space-y-9 text-slate-200 font-sans">
+    <div className="max-w-5xl mx-auto py-6 px-4 space-y-9 text-slate-200 font-sans">
       {ptrDiffs.map((entry, idx) => (
         <article key={idx} className="space-y-2">
           {/* Icon if exists - placed directly above title */}
@@ -22,12 +22,12 @@ export function LinearPTRView() {
           )}
 
           {/* Section Header: bold title with colon */}
-          <h3 className="text-[17px] font-bold text-white tracking-tight">
+          <h3 className="text-lg font-bold text-white tracking-tight">
             {entry.title}:
           </h3>
 
           {/* Bulleted list of changes */}
-          <ul className="space-y-1.5 pl-6 text-[15px] text-slate-200">
+          <ul className="space-y-1.5 pl-6 text-base text-slate-200">
             {entry.changes.map((change, cIdx) => (
               <li key={cIdx} className="list-disc leading-relaxed">
                 {change}
@@ -53,7 +53,7 @@ export function LinearPTRView() {
 
           {/* Reasoning in italics: exact style matching screenshot */}
           {entry.reasoning && (
-            <p className="text-[14px] italic text-slate-400 leading-relaxed pt-1.5 pl-0">
+            <p className="text-sm italic text-slate-400 leading-relaxed pt-1.5 pl-0">
               Reasoning: {entry.reasoning}
             </p>
           )}

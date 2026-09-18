@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import {
   Sparkles,
   Brain,
@@ -74,14 +75,14 @@ export default function AIPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
       {/* Header */}
       <div className="pb-8 border-b border-slate-800">
-        <div className="inline-flex items-center gap-2 text-xs font-semibold text-purple-400 mb-2">
-          <Sparkles className="w-3.5 h-3.5" />
-          MACHINE LEARNING & PIPELINE
-        </div>
-        <h1 className="text-3xl font-black text-slate-100">BPM AI Intelligence Platform</h1>
-        <p className="text-sm text-slate-400 mt-1">
-          경기 전 최적 밴픽 추천부터 경기 후 리플레이 분석, 전략 통계 학습까지 이어지는 순환 파이프라인.
-        </p>
+        <SectionHeading
+          level="page"
+          eyebrow="MACHINE LEARNING & PIPELINE"
+          icon={Sparkles}
+          accent="purple"
+          title="BPM AI Intelligence Platform"
+          description="경기 전 최적 밴픽 추천부터 경기 후 리플레이 분석, 전략 통계 학습까지 이어지는 순환 파이프라인."
+        />
       </div>
 
       {/* Interactive Draft AI Widget */}
@@ -210,6 +211,68 @@ export default function AIPage() {
               ))}
             </div>
           </div>
+        </div>
+
+        {/* In-Game BPM_AI Manifest Command Generator Bar */}
+        <div className="mt-6 pt-5 border-t border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-slate-950/60 p-4 rounded-xl">
+          <div>
+            <div className="text-[11px] uppercase tracking-wider text-purple-400 font-bold flex items-center gap-2">
+              <span>🎮 갤럭시 에디터 인게임 연동 (BPM_AI Manifest)</span>
+            </div>
+            <p className="text-xs text-slate-400 mt-0.5">
+              외부 AI가 결정한 밴픽 결과를 인게임 <code className="text-purple-300 font-mono">BPM_AI</code>에 주입할 수 있는 인게임 채팅 명령어입니다.
+            </p>
+          </div>
+          <div className="flex items-center gap-2 w-full sm:w-auto">
+            <code className="px-3 py-1.5 rounded-lg bg-slate-900 border border-purple-500/30 text-xs font-mono text-purple-200 select-all flex-1 sm:flex-initial">
+              {`/bpm B:${currentRec.bans.map((b) => b.name.split(" ")[0]).join(",")}|P:${currentRec.picks.map((p) => p.name.split(" ")[0]).join(",")}`}
+            </code>
+            <button
+              onClick={() => {
+                const cmd = `/bpm B:${currentRec.bans.map((b) => b.name.split(" ")[0]).join(",")}|P:${currentRec.picks.map((p) => p.name.split(" ")[0]).join(",")}`;
+                navigator.clipboard.writeText(cmd);
+                alert("인게임 BPM_AI 명령어 복사 완료!\n" + cmd);
+              }}
+              className="px-3 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-500 text-xs font-bold text-white transition-colors whitespace-nowrap shadow-lg shadow-purple-900/30"
+            >
+              명령어 복사
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Architecture Separation Notice */}
+      <div className="my-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="bpm-glass rounded-2xl p-6 border-purple-500/20">
+          <div className="text-xs font-bold uppercase text-purple-400 mb-1 flex items-center gap-2">
+            <span>⚙️ In-Game Engine</span>
+          </div>
+          <h3 className="text-lg font-black text-slate-100 mb-2">BPM_AI (갤럭시 에디터 전용)</h3>
+          <p className="text-xs text-slate-400 leading-relaxed mb-3">
+            스타크래프트 II 갤럭시 에디터 및 인게임 엔진에 직접 연결되는 컴포넌트입니다. 외부 네트워크를 직접 호출하지 않고 인게임 AI 플레이어의 밴 유닛 차단, 픽 유닛 활성화 및 컴퓨터 AI 빌드 스톡 관리를 집행합니다.
+          </p>
+          <ul className="text-[11px] text-slate-300 space-y-1.5 list-disc list-inside">
+            <li><code className="text-purple-300">BPM_AI_Types.galaxy</code>: 밴픽 상태 및 유닛 정의</li>
+            <li><code className="text-purple-300">BPM_AI_Manifest.galaxy</code>: Bank / 채팅 코드 수신 파서</li>
+            <li><code className="text-purple-300">BPM_AI_Roster.galaxy</code>: 테크트리 유닛 허용/차단</li>
+            <li><code className="text-purple-300">BPM_AI_Commander.galaxy</code>: 컴퓨터 AI 생산 스톡 제어</li>
+          </ul>
+        </div>
+
+        <div className="bpm-glass rounded-2xl p-6 border-sky-500/20">
+          <div className="text-xs font-bold uppercase text-sky-400 mb-1 flex items-center gap-2">
+            <span>🧠 External Engine</span>
+          </div>
+          <h3 className="text-lg font-black text-slate-100 mb-2">bpm-ai-engine (외부 AI 시스템)</h3>
+          <p className="text-xs text-slate-400 leading-relaxed mb-3">
+            게임 밖에서 동작하는 머신러닝, 밴픽 연산, 리플레이 분석 및 전략 추천 엔진입니다. Python / FastAPI 기반으로 웹사이트, 컴패니언과 통신하며 인게임용 Manifest 코드를 발급합니다.
+          </p>
+          <ul className="text-[11px] text-slate-300 space-y-1.5 list-disc list-inside">
+            <li><code className="text-sky-300">bpm_ai/draft</code>: 매치업/맵/누적 룰 기반 추천 모델</li>
+            <li><code className="text-sky-300">bpm_ai/strategy</code>: 픽 맞춤형 빌드오더 플래너</li>
+            <li><code className="text-sky-300">bpm_ai/replay</code>: SC2Replay 파싱 및 피처 추출</li>
+            <li><code className="text-sky-300">bpm_ai/api</code>: REST API 엔드포인트 제공</li>
+          </ul>
         </div>
       </div>
 

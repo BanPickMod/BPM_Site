@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { bpmPatches, BPMPatch } from "@/lib/bpmData";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import {
   FileText,
   Calendar,
@@ -36,14 +37,14 @@ export default function PatchesPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
       {/* Header */}
       <div className="pb-8 border-b border-slate-800">
-        <div className="inline-flex items-center gap-2 text-xs font-semibold text-cyan-400 mb-2">
-          <FileText className="w-3.5 h-3.5" />
-          OFFICIAL CHANGELOG & RELEASES
-        </div>
-        <h1 className="text-3xl font-black text-slate-100">BPM 패치 노트</h1>
-        <p className="text-sm text-slate-400 mt-1">
-          버전을 클릭하면 해당 빌드의 세부 시스템 업데이트, 밸런스 조정, 편의성 내역을 바로 확인할 수 있습니다.
-        </p>
+        <SectionHeading
+          level="page"
+          eyebrow="OFFICIAL CHANGELOG & RELEASES"
+          icon={FileText}
+          accent="cyan"
+          title="BPM 패치 노트"
+          description="버전을 클릭하면 해당 빌드의 세부 시스템 업데이트, 밸런스 조정, 편의성 내역을 바로 확인할 수 있습니다."
+        />
       </div>
 
       {/* Main Master-Detail Layout */}

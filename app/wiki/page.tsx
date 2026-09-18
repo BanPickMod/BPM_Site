@@ -10,6 +10,7 @@ import {
 import { UnitCard } from "@/components/wiki/UnitCard";
 import { LinearWikiView } from "@/components/wiki/LinearWikiView";
 import { LinearPTRView } from "@/components/wiki/LinearPTRView";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import {
   BookOpen,
   Search,
@@ -41,16 +42,13 @@ export default function WikiPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-8 border-b border-slate-800">
-        <div>
-          <div className="inline-flex items-center gap-2 text-xs font-semibold text-sky-400 mb-2">
-            <BookOpen className="w-3.5 h-3.5" />
-            COMPREHENSIVE SC2 & BPM ENCYCLOPEDIA
-          </div>
-          <h1 className="text-3xl font-black text-slate-100">BPM 게임 위키 및 패치 예정 사항</h1>
-          <p className="text-sm text-slate-400 mt-1">
-            공식 버전 전체 위키와 PTR 예정 사항을 줄글 형태로 위에서 아래로 정독하세요.
-          </p>
-        </div>
+        <SectionHeading
+          level="page"
+          eyebrow="COMPREHENSIVE SC2 & BPM ENCYCLOPEDIA"
+          icon={BookOpen}
+          title="BPM 게임 위키 및 패치 예정 사항"
+          description="공식 버전 전체 위키와 PTR 예정 사항을 줄글 형태로 위에서 아래로 정독하세요."
+        />
 
         <div className="flex items-center gap-3">
           <Link
@@ -105,7 +103,7 @@ export default function WikiPage() {
             }`}
           >
             <Sparkles className="w-4 h-4 text-purple-400" />
-            <span>확장 유닛 도감 (17종 카드)</span>
+            <span>확장 유닛만 카드로 보기</span>
             <span className="text-[10px] px-1.5 py-0.2 rounded bg-purple-500/20 text-purple-300 font-mono">
               {bpmUnits.length}
             </span>
@@ -124,6 +122,17 @@ export default function WikiPage() {
           />
         </div>
       </div>
+
+      {/* Tab relationship note — the 17 expansion units already appear inside "전체 위키"; this
+          clarifies which tab is the full list vs. a filtered alternate view of the same data. */}
+      <p className="text-xs text-slate-500 -mt-4 mb-6">
+        {activeTab === "live_all" &&
+          `테란·프로토스·저그 전체 ${allLiveUnits.length}종(BPM 확장 유닛 ${bpmUnits.length}종 포함) 상세 스펙을 종족별로 정독하는 목록입니다.`}
+        {activeTab === "expansion" &&
+          `위 "현재 공식 버전 전체 위키"에도 포함된 BPM 확장 유닛 ${bpmUnits.length}종만 골라 카드 형태로 빠르게 훑어보는 화면입니다. 같은 데이터를 다른 형태로 보는 것뿐, 별도 목록이 아닙니다.`}
+        {activeTab === "ptr" &&
+          "차기 빌드에 반영될 예정 변경 사항이며, 실제 서비스 중인 데이터가 아닙니다."}
+      </p>
 
       {/* Race Filter Tabs (for Live and Expansion views) */}
       {activeTab !== "ptr" && (

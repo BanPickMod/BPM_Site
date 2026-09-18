@@ -34,8 +34,37 @@ export function LinearWikiView({ selectedRace, searchQuery }: LinearWikiViewProp
     });
   };
 
+  const raceSections = races
+    .map((race) => ({ race, units: getFilteredUnitsForRace(race) }))
+    .filter((s) => s.units.length > 0);
+
   return (
-    <div className="max-w-3xl mx-auto py-6 px-4 space-y-14 text-slate-200 font-sans">
+    <div className="max-w-5xl mx-auto py-6 px-4 space-y-14 text-slate-200 font-sans">
+      {/* Jump navigation — long single-scroll list, so let readers skip straight to a unit */}
+      {raceSections.length > 0 && (
+        <nav className="rounded-xl border border-slate-800 bg-slate-950/60 p-4 space-y-3">
+          <div className="text-xs font-bold uppercase tracking-wider text-slate-400">
+            목차 · 이 목록 안에서 바로 이동
+          </div>
+          {raceSections.map(({ race, units }) => (
+            <div key={race} className="flex flex-wrap items-center gap-1.5">
+              <span className="text-xs font-bold text-slate-300 mr-1">
+                {raceTitles[race]}
+              </span>
+              {units.map((unit) => (
+                <a
+                  key={unit.id}
+                  href={`#${unit.id}`}
+                  className="text-xs px-2 py-0.5 rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:text-sky-300 hover:border-sky-500/40 transition"
+                >
+                  {unit.name}
+                </a>
+              ))}
+            </div>
+          ))}
+        </nav>
+      )}
+
       {races.map((race) => {
         const units = getFilteredUnitsForRace(race);
         if (units.length === 0) return null;
@@ -54,7 +83,7 @@ export function LinearWikiView({ selectedRace, searchQuery }: LinearWikiViewProp
 
             <div className="space-y-10">
               {units.map((unit) => (
-                <article key={unit.id} className="space-y-2">
+                <article key={unit.id} id={unit.id} className="space-y-2 scroll-mt-24">
                   {/* Icon placed directly above title */}
                   <div className="pt-2 pb-1">
                     {unit.icon ? (
@@ -76,7 +105,7 @@ export function LinearWikiView({ selectedRace, searchQuery }: LinearWikiViewProp
                   </div>
 
                   {/* Unit Name Header with Colon */}
-                  <h3 className="text-[17px] font-bold text-white tracking-tight flex items-center gap-2">
+                  <h3 className="text-lg font-bold text-white tracking-tight flex items-center gap-2">
                     <span>{unit.name}:</span>
                     {unit.category === "bpm_expansion" && (
                       <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-500/30">
@@ -86,7 +115,7 @@ export function LinearWikiView({ selectedRace, searchQuery }: LinearWikiViewProp
                   </h3>
 
                   {/* Bulleted list of specs */}
-                  <ul className="space-y-1.5 pl-6 text-[15px] text-slate-200">
+                  <ul className="space-y-1.5 pl-6 text-base text-slate-200">
                     <li className="list-disc leading-relaxed">
                       <strong>생산 및 비용:</strong> {unit.building} · {unit.cost.minerals}M / {unit.cost.gas}G / {unit.cost.supply}S ({unit.cost.time}초)
                     </li>
@@ -139,7 +168,7 @@ export function LinearWikiView({ selectedRace, searchQuery }: LinearWikiViewProp
 
                   {/* Tactical Reasoning / Role in italics */}
                   {(unit.tactics || unit.description || (unit.diffFromPair && unit.diffFromPair.length > 0)) && (
-                    <p className="text-[14px] italic text-slate-400 leading-relaxed pt-1 pl-0">
+                    <p className="text-sm italic text-slate-400 leading-relaxed pt-1 pl-0">
                       Reasoning / Tactics:{" "}
                       {unit.tactics ||
                         unit.description ||

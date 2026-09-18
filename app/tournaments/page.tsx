@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Badge } from "@/components/ui/Badge";
 import {
   Trophy,
   ShieldCheck,
@@ -42,18 +44,14 @@ export default function TournamentsPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
       {/* Top Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-8 border-b border-slate-800">
-        <div>
-          <div className="inline-flex items-center gap-2 text-xs font-semibold text-amber-400 mb-2 font-mono">
-            <Trophy className="w-3.5 h-3.5" />
-            BPM MATCH & COMPETITIVE PLATFORM
-          </div>
-          <h1 className="text-3xl font-black text-slate-100">
-            대회 시스템 & 리플레이 센터
-          </h1>
-          <p className="text-sm text-slate-400 mt-1">
-            각 룰셋별 밴픽 시뮬레이션, 내 SC2 리플레이 분석기, 실시간 방송 매치 관전을 한곳에서 선택해 이용하세요.
-          </p>
-        </div>
+        <SectionHeading
+          level="page"
+          eyebrow="BPM MATCH & COMPETITIVE PLATFORM"
+          icon={Trophy}
+          accent="amber"
+          title="대회 시스템 & 리플레이 센터"
+          description="각 룰셋별 밴픽 시뮬레이션, 내 SC2 리플레이 분석기, 실시간 방송 매치 관전을 한곳에서 선택해 이용하세요."
+        />
 
         {/* Quick Spectator Pill */}
         <div className="flex items-center gap-2">
@@ -295,9 +293,10 @@ export default function TournamentsPage() {
             <h2 className="text-xl font-bold text-slate-100 flex items-center gap-2">
               <FileSearch className="w-5 h-5 text-emerald-400" />
               내 리플레이 분석기 (SC2 Replay Analyzer)
+              <Badge tone="demo">DEMO DATA</Badge>
             </h2>
             <p className="text-xs text-slate-400 mt-1">
-              스타크래프트 II에서 생성된 <span className="font-mono text-emerald-400 font-semibold">.SC2Replay</span> 파일을 업로드하면 밴픽 이력, 확장 유닛 빌드 타이밍, 전투 기여도를 자동 분석합니다.
+              스타크래프트 II에서 생성된 <span className="font-mono text-emerald-400 font-semibold">.SC2Replay</span> 파일을 업로드하면 밴픽 이력, 확장 유닛 빌드 타이밍, 전투 기여도를 자동 분석합니다. 아래 분석 결과는 실제 업로드 없이 보여주는 샘플 데이터입니다.
             </p>
           </div>
 
@@ -326,8 +325,9 @@ export default function TournamentsPage() {
                 <div className="flex items-center gap-3">
                   <FileCode className="w-6 h-6 text-emerald-400" />
                   <div>
-                    <span className="text-xs font-mono text-emerald-400 font-semibold">
+                    <span className="text-xs font-mono text-emerald-400 font-semibold inline-flex items-center gap-2">
                       PARSED REPLAY COMPLETED
+                      <Badge tone="demo" size="sm">DEMO</Badge>
                     </span>
                     <h3 className="text-base font-bold text-slate-100">
                       {uploadedFileName}
@@ -418,9 +418,10 @@ export default function TournamentsPage() {
             <h2 className="text-xl font-bold text-slate-100 flex items-center gap-2">
               <Tv className="w-5 h-5 text-rose-400" />
               실시간 대회 및 스크림 방송 관전 (Live Broadcast)
+              <Badge tone="demo">DEMO DATA</Badge>
             </h2>
             <p className="text-xs text-slate-400 mt-1">
-              OBS 인게임 오버레이 없이 웹 브라우저에서 바로 실시간 밴픽 슬롯, 세트 스코어, 맵 시야를 관전할 수 있습니다.
+              OBS 인게임 오버레이 없이 웹 브라우저에서 바로 실시간 밴픽 슬롯, 세트 스코어, 맵 시야를 관전할 수 있습니다. 아래 매치 카드는 실제 방송이 아닌 화면 예시입니다.
             </p>
           </div>
 

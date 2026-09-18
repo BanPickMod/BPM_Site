@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { BPMUnit } from "@/lib/bpmData";
+import { Badge, type BadgeTone } from "@/components/ui/Badge";
 import { Shield, Zap, Scale, Target } from "lucide-react";
 
 interface UnitCardProps {
@@ -15,12 +16,7 @@ export function UnitCard({ unit }: UnitCardProps) {
       ? "hover:border-amber-400/60 hover:shadow-amber-500/15"
       : "hover:border-purple-400/60 hover:shadow-purple-500/15";
 
-  const raceBadge =
-    unit.race === "terran"
-      ? "bg-sky-500/10 text-sky-400 border-sky-500/30"
-      : unit.race === "protoss"
-      ? "bg-amber-500/10 text-amber-400 border-amber-500/30"
-      : "bg-purple-500/10 text-purple-400 border-purple-500/30";
+  const raceTone: BadgeTone = `race-${unit.race}`;
 
   return (
     <div
@@ -29,11 +25,9 @@ export function UnitCard({ unit }: UnitCardProps) {
       <div>
         {/* Top bar: Race & Cost */}
         <div className="flex items-center justify-between gap-2 mb-3">
-          <span
-            className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border ${raceBadge}`}
-          >
+          <Badge tone={raceTone} uppercase>
             {unit.race}
-          </span>
+          </Badge>
           <div className="flex items-center gap-1 text-[11px] font-mono text-slate-400">
             <span className="text-blue-300 font-semibold">{unit.cost.minerals}M</span>
             <span>/</span>

@@ -3,12 +3,16 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { siteMeta, bpmUnits, bpmMaps, bpmSystemDiffs } from "@/lib/bpmData";
+import { siteMeta, bpmUnits, bpmMaps, bpmSystemDiffs, bpmPatches } from "@/lib/bpmData";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Card } from "@/components/ui/Card";
+import { Badge } from "@/components/ui/Badge";
 import {
   BookOpen,
   Swords,
   ArrowRight,
   ShieldCheck,
+  FileText,
 } from "lucide-react";
 
 export default function HomePage() {
@@ -127,17 +131,13 @@ export default function HomePage() {
       {/* 2. Draft & Match Flow (Ban -> Hidden Pick -> Deploy: 3 Steps) */}
       <section className="py-16 bg-slate-950/60 border-y border-slate-800/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-xs font-bold uppercase tracking-widest text-sky-400 mb-2 font-mono">
-              Match Workflow
-            </h2>
-            <p className="text-3xl font-black text-slate-100">
-              밴과 히든 픽 3단계 진행 방식
-            </p>
-            <p className="text-sm text-slate-400 mt-2">
-              0·1·3·5 밴 규칙과 비공개 선택으로 완성하는 3단계 실시간 전략 심리전
-            </p>
-          </div>
+          <SectionHeading
+            align="center"
+            eyebrow="Match Workflow"
+            title="밴과 히든 픽 3단계 진행 방식"
+            description="0·1·3·5 밴 규칙과 비공개 선택으로 완성하는 3단계 실시간 전략 심리전"
+            className="mb-12"
+          />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="p-6 sm:p-7 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-sky-500/40 transition relative flex flex-col justify-between group">
@@ -221,152 +221,67 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. Supported Tournament Rulesets (Home View) */}
+      {/* 3. Ruleset & Latest Patch Summary Strip (condensed — full detail lives on /tournaments, /patches) */}
       <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 text-xs font-semibold text-amber-400 mb-2 font-mono">
-            <ShieldCheck className="w-4 h-4" />
-            RULE ENGINE PRESETS
-          </div>
-          <h2 className="text-3xl font-black text-slate-100">
-            지원 룰셋 프리셋
-          </h2>
-          <p className="text-sm text-slate-400 mt-2">
-            단판 친선전부터 공식 eSports 다전제(Bo3/Bo5)까지 다양한 경기 규칙을 지원합니다.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Standard */}
-          <div className="bpm-glass rounded-2xl p-6 sm:p-7 border-slate-800 hover:border-emerald-500/40 transition flex flex-col justify-between group">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Ruleset summary -> links out to /tournaments for full detail */}
+          <Card tone="info" padding="lg" className="justify-between">
             <div>
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                  기본 룰 (Standard)
-                </span>
-                <span className="text-[11px] font-mono text-slate-500">
-                  단판 / 친선전
-                </span>
-              </div>
-              <h3 className="text-xl font-black text-slate-100 mb-2 group-hover:text-emerald-300 transition">
-                스탠다드
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
-                매 세트마다 밴과 픽 이력이 초기화되는 가장 직관적인 모드입니다. 단판 승부나 빠른 매치메이킹에 최적화되어 있습니다.
-              </p>
-              <div className="space-y-1.5 text-xs text-slate-400 pt-2 border-t border-slate-800/80">
-                <div className="flex items-center gap-1.5">
-                  <span className="text-emerald-400">•</span>
-                  <span>매 세트 밴/픽 데이터 리셋</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <span className="text-emerald-400">•</span>
-                  <span>자유로운 빌드 선택 보장</span>
-                </div>
+              <SectionHeading
+                eyebrow="RULE ENGINE PRESETS"
+                icon={ShieldCheck}
+                accent="amber"
+                title="지원 룰셋 3종"
+                description="단판 친선전부터 Bo3/Bo5 공식 대회까지, 룰셋에 따라 밴/픽 재사용 규칙이 달라집니다."
+              />
+              <div className="flex flex-wrap gap-2 mt-5">
+                <Badge tone="success">스탠다드 · 매 세트 초기화</Badge>
+                <Badge tone="selected">노 리피트 픽 · 누적 락</Badge>
+                <Badge tone="warning">스네이크 밴 · 교차 순서</Badge>
               </div>
             </div>
-            <div className="mt-6 pt-4 border-t border-slate-800">
-              <Link
-                href="/tournaments?tab=ruleset&preset=standard"
-                className="inline-flex items-center justify-between w-full p-2.5 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 text-xs font-bold transition border border-emerald-500/20"
-              >
-                <span>스탠다드 룰 체험</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
-          </div>
+            <Link
+              href="/tournaments?tab=ruleset"
+              className="mt-6 inline-flex items-center justify-between w-full p-2.5 rounded-lg bg-sky-500/10 hover:bg-sky-500/20 text-sky-300 text-xs font-bold transition border border-sky-500/20"
+            >
+              <span>룰셋 3종 전체 비교 및 체험하기</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </Card>
 
-          {/* No Repeat Pick */}
-          <div className="bpm-glass rounded-2xl p-6 sm:p-7 border-slate-800 hover:border-sky-500/40 transition flex flex-col justify-between group">
+          {/* Latest patch preview -> links out to /patches for full changelog */}
+          <Card tone="neutral" padding="lg" className="justify-between">
             <div>
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-sky-500/10 text-sky-400 border border-sky-500/20">
-                  공식 대회 룰 (Official)
-                </span>
-                <span className="text-[11px] font-mono text-slate-500">
-                  Bo3 / Bo5 다전제
-                </span>
-              </div>
-              <h3 className="text-xl font-black text-slate-100 mb-2 group-hover:text-sky-300 transition">
-                노 리피트 픽 (No Repeat)
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
-                다전제 시리즈 내에서 자신이 이전 세트에 기용한 유닛은 다음 세트에 재기용할 수 없는 누적 락 룰입니다. 선수들의 넓은 유닛 풀 활용을 유도합니다.
-              </p>
-              <div className="space-y-1.5 text-xs text-slate-400 pt-2 border-t border-slate-800/80">
-                <div className="flex items-center gap-1.5">
-                  <span className="text-sky-400">•</span>
-                  <span>이전 세트 본인 픽 재사용 불가</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <span className="text-sky-400">•</span>
-                  <span>상대 선수는 해당 유닛 픽 가능</span>
-                </div>
+              <SectionHeading
+                eyebrow={`LATEST RELEASE · ${bpmPatches[0].version}`}
+                icon={FileText}
+                accent="cyan"
+                title={bpmPatches[0].title}
+                description={bpmPatches[0].summary}
+              />
+              <div className="flex flex-wrap gap-2 mt-5">
+                {bpmPatches[0].changes.slice(0, 4).map((change) => (
+                  <Badge key={change.tag} tone="neutral" size="sm">
+                    {change.tag}
+                  </Badge>
+                ))}
               </div>
             </div>
-            <div className="mt-6 pt-4 border-t border-slate-800">
-              <Link
-                href="/tournaments?tab=ruleset&preset=norepeat"
-                className="inline-flex items-center justify-between w-full p-2.5 rounded-lg bg-sky-500/10 hover:bg-sky-500/20 text-sky-300 text-xs font-bold transition border border-sky-500/20"
-              >
-                <span>노 리피트 픽 룰 체험</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
-          </div>
-
-          {/* Snake Ban */}
-          <div className="bpm-glass rounded-2xl p-6 sm:p-7 border-slate-800 hover:border-amber-500/40 transition flex flex-col justify-between group">
-            <div>
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20">
-                  교차 밴 룰 (Fair Ban)
-                </span>
-                <span className="text-[11px] font-mono text-slate-500">
-                  공정 밴 순서
-                </span>
-              </div>
-              <h3 className="text-xl font-black text-slate-100 mb-2 group-hover:text-amber-300 transition">
-                스네이크 밴 (Snake Ban)
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
-                선턴/후턴 간의 밴 유불리를 상쇄하기 위해 A ➔ B ➔ B ➔ A 지그재그(Snake) 순서로 밴을 교차 진행하여 보다 균형 잡힌 전략 대결을 보장합니다.
-              </p>
-              <div className="space-y-1.5 text-xs text-slate-400 pt-2 border-t border-slate-800/80">
-                <div className="flex items-center gap-1.5">
-                  <span className="text-amber-400">•</span>
-                  <span>A선수 ➔ B선수 ➔ B선수 ➔ A선수</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <span className="text-amber-400">•</span>
-                  <span>선턴 어드밴티지 균형 보정</span>
-                </div>
-              </div>
-            </div>
-            <div className="mt-6 pt-4 border-t border-slate-800">
-              <Link
-                href="/tournaments?tab=ruleset&preset=snake"
-                className="inline-flex items-center justify-between w-full p-2.5 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 text-xs font-bold transition border border-amber-500/20"
-              >
-                <span>스네이크 밴 룰 체험</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
-          </div>
+            <Link
+              href="/patches"
+              className="mt-6 inline-flex items-center justify-between w-full p-2.5 rounded-lg bg-slate-800/60 hover:bg-slate-800 text-slate-200 text-xs font-bold transition border border-slate-700"
+            >
+              <span>패치 노트 전체 보기 ({bpmPatches.length}개 릴리즈)</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </Card>
         </div>
       </section>
 
       {/* 4. Official Maps & Convenience HUD System Diffs */}
-      <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full border-t border-slate-800/80">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-          <div>
-            <h2 className="text-xs font-bold uppercase tracking-widest text-sky-400 mb-1 font-mono">
-              Features & Arenas
-            </h2>
-            <p className="text-2xl sm:text-3xl font-black text-slate-100">
-              지원 전장 및 선택형 편의성 HUD
-            </p>
-          </div>
+          <SectionHeading eyebrow="Features & Arenas" title="지원 전장 및 선택형 편의성 HUD" />
 
           <div className="flex gap-2 p-1 rounded-xl bg-slate-900 border border-slate-800">
             <button
@@ -465,17 +380,13 @@ export default function HomePage() {
       {/* 4. Detailed How to Play Section */}
       <section id="how-to-play" className="py-20 bg-slate-950/80 border-t border-slate-800/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="text-center max-w-3xl mx-auto mb-14">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-semibold mb-3 font-mono">
-              GAME ACCESS GUIDE
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-black text-slate-100">
-              게임 참가 및 실행 방법
-            </h2>
-            <p className="text-sm sm:text-base text-slate-400 mt-2">
-              배틀넷(Battle.net) 스타크래프트 II에서 별도 설치 없이 바로 검색하고 플레이할 수 있습니다.
-            </p>
-          </div>
+          <SectionHeading
+            align="center"
+            eyebrow="GAME ACCESS GUIDE"
+            title="게임 참가 및 실행 방법"
+            description="배틀넷(Battle.net) 스타크래프트 II에서 별도 설치 없이 바로 검색하고 플레이할 수 있습니다."
+            className="mb-14"
+          />
 
           {/* 4-Step Detailed Walkthrough */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">

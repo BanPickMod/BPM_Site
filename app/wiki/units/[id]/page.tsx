@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getUnitById } from "@/lib/bpmData";
+import { Badge, type BadgeTone } from "@/components/ui/Badge";
 import {
   Shield,
   Target,
@@ -22,15 +23,10 @@ export default async function UnitDetailPage({ params }: UnitDetailPageProps) {
     notFound();
   }
 
-  const raceColor =
-    unit.race === "terran"
-      ? "text-sky-400 border-sky-500/30 bg-sky-500/10"
-      : unit.race === "protoss"
-      ? "text-amber-400 border-amber-500/30 bg-amber-500/10"
-      : "text-purple-400 border-purple-500/30 bg-purple-500/10";
+  const raceTone: BadgeTone = `race-${unit.race}`;
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
       {/* Breadcrumbs */}
       <div className="mb-6">
         <Link
@@ -58,11 +54,9 @@ export default async function UnitDetailPage({ params }: UnitDetailPageProps) {
             </div>
             <div>
               <div className="flex items-center gap-2.5 mb-1.5">
-                <span
-                  className={`text-xs font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full border ${raceColor}`}
-                >
+                <Badge tone={raceTone} uppercase className="rounded-full">
                   {unit.race}
-                </span>
+                </Badge>
                 <span className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-[11px] text-slate-300">
                   {unit.building}
                 </span>

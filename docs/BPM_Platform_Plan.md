@@ -462,6 +462,18 @@ Match state가 서버에 있기 때문에 `/matches/[id]/live` 형태의 웹 실
 | **6. AI Integration** | 인간/AI 경기 데이터 통합, Draft/Strategy statistics | python-sc2 반복 학습 |
 | **7. Advanced** | Wiki exporter 자동화, 고급 battle analysis, player profile/leaderboard | 장기 확장 |
 
+### 12.0.1 실제 릴리스 버전 매핑 (2026-09-18 확정)
+
+위 Phase는 개념적 단계이며, 실제 모드 버전(밴픽 유닛 밸런스 패치 버전)과는 아래와 같이 매핑해 진행한다. **AI/Replay/Tournament는 v1.4.3에는 포함하지 않는다** — v1.4.3의 목표는 오직 웹사이트 오픈(위키/패치 내역 실데이터 연결)이다.
+
+| 모드 버전 | 대응 Phase | 범위 |
+| :--- | :--- | :--- |
+| **v1.4.2** (완료) | — | 버그 픽스 |
+| **v1.4.3** (진행 중) | Phase 0 + Phase 1 | 웹사이트 오픈. Wiki/Patch Notes를 실데이터(canonical JSON)로 연결. AI 소개 페이지는 목업 상태 유지 가능(연동은 다음 버전). 이번 버전에서 발견된 버그 수정 + Pick Group 유닛 밸런스 조정(게임 패치, 웹 배포 아님)을 함께 반영 |
+| **v1.4.3.1** | Phase 6의 선행 부분 | v1.4.3 밸런스로 학습한 Draft/Gameplay AI를 최초로 유저와 매칭. Replay 분석 기능 및 AI 소개 페이지 실연동 오픈 (`AI_System_Improvement_Plan.md` AI-0~AI-3, AI-6) |
+| **v1.4.4** | Phase 2, 5 | 2차 밸런스 조정 + 토너먼트 기능 오픈 |
+| **v1.5 PTR** | Phase 6 나머지 + Phase 7 일부 | 대규모 밸런스 조정 PTR. AI-vs-AI 밸런스 테스트베드(`AI_System_Improvement_Plan.md` AI-4, AI-5)로 검증 후 승격 |
+
 ### 12.1 권장 구현 순서
 1. Canonical Wiki schema와 기존 JSON migration을 먼저 확정한다.
 2. Website foundation과 Landing/Wiki를 구축해 새 배포 파이프라인을 안정화한다.

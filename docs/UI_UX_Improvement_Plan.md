@@ -5,7 +5,7 @@
 **대상 범위**: `app/`, `components/`, `app/globals.css` (Next.js Website v2 프론트엔드)
 **목적**: 정보 파악 속도와 화면 간 일관성을 높이기 위한 레이아웃/디자인 개선. 기능 자체(밴픽 로직, 데이터 모델)는 `BPM_Platform_Plan.md`를 따르며 본 문서는 변경하지 않는다.
 
-**진행 상태**: Phase 1·2·3 완료 (2026-09-18).
+**진행 상태**: Phase 1·2·3 완료 (2026-09-18), Phase 4(체크리스트 잔여 항목) 완료 (2026-09-21).
 
 Phase 1:
 - `components/ui/Badge.tsx`, `Card.tsx`, `SectionHeading.tsx` 추가 (색상/타이포 역할을 코드 한 곳에 고정)
@@ -26,6 +26,12 @@ Phase 3:
 - 비교 페이지 LEFT 컬럼 헤더의 amber 텍스트/보더도 중립 slate 톤으로 교체(우측 RIGHT는 "selected" 의미의 sky이므로 유지)
 - 홈페이지에서 배경이 동일한(`default`) 섹션 두 개가 연속으로 붙어 있던 지점(요약 배너 → 지원 전장/HUD 섹션)에 `border-t` 구분선을 추가해 스크롤 리듬 보정
 - 참고: `app/ai/page.tsx`는 이번 세션 밖에서 추가된 기능(인게임 Manifest 명령어 생성기, 아키텍처 분리 안내 카드)이 포함되어 있어 손대지 않고 그대로 두었음
+
+Phase 4 (체크리스트 잔여 항목, 데이터 연결 불필요한 문구/UI만):
+- 3절 체크리스트에서 남아 있던 `components/layout/Header.tsx`의 "Play BPM" 버튼 라벨 문제 수정 — 실제로는 `/#how-to-play` 앵커로 스크롤만 하므로 라벨을 "실행 방법 보기"로 변경해 라벨과 실제 동작을 일치시킴(데스크톱/모바일 메뉴 모두)
+- `app/tournaments/page.tsx`, `app/wiki/page.tsx`의 탭 카운트 배지에 쓰인 `py-0.2`가 Tailwind 표준 스케일에 없는 값이라 실제로는 세로 패딩이 적용되지 않던 버그를 `py-0.5`로 수정 (6곳)
+- `components/wiki/UnitCard.tsx`의 유닛명 `h3`에 `group-hover:text-sky-300`이 있었지만 카드 루트 요소에 `group` 클래스가 없어 호버해도 절대 발동하지 않던 죽은 스타일을 카드 루트에 `group` 클래스를 추가해 동작하도록 수정
+- Phase 2 재점검: 4개 항목 모두 이미 구현되어 있음을 코드로 재확인. 다만 체크리스트 원문("리플레이/관전 카드에 DEMO 라벨 부착")과 달리 `/tournaments` 관전 탭은 탭 헤더에만 `Badge tone="demo"`가 있고 개별 매치 카드 2개에는 없어서, 각 매치 카드 헤더에도 `Badge tone="demo" size="sm"`를 추가해 문서 문구와 실제 구현을 일치시킴
 
 공통: 매 Phase 후 `lint`, `tsc --noEmit`, `next build` 모두 통과 확인
 
@@ -95,7 +101,7 @@ Phase 3:
 | 페이지/컴포넌트 | 문제 | 조치 |
 | :--- | :--- | :--- |
 | `app/page.tsx` | 5개 대형 섹션 연속, 룰셋 카드가 `/tournaments`와 중복 | 룰셋 섹션 축소·링크화, 섹션 사이 배경 톤으로 구획 명확화 |
-| `components/layout/Header.tsx` | "Play BPM" 버튼이 실제로는 홈 앵커(`/#how-to-play`)로 스크롤만 함 | 버튼 라벨을 "실행 방법 보기" 등으로 바꾸거나, 실제 진입 동작과 일치시킴 |
+| `components/layout/Header.tsx` | ~~"Play BPM" 버튼이 실제로는 홈 앵커(`/#how-to-play`)로 스크롤만 함~~ | ~~버튼 라벨을 "실행 방법 보기" 등으로 바꾸거나, 실제 진입 동작과 일치시킴~~ → Phase 4에서 "실행 방법 보기"로 라벨 변경 완료 |
 | `app/wiki/page.tsx`, `LinearWikiView.tsx` | 탭 전환 시 폭 변경(3xl↔7xl), 목차 없음, "전체 위키" vs "확장 유닛" 구분 불명확 | 폭 통일, 종족/유닛 점프 목차 추가, 탭 설명 문구로 관계 명시 |
 | `components/wiki/UnitCard.tsx`, `UnitDetailTable.tsx` | 상세 페이지 배지·수치 카드가 색상 과다 사용 | 통합 Badge/StatRow 컴포넌트로 교체, 강조색은 페어링 비교 등 핵심 정보에만 사용 |
 | `app/wiki/compare/page.tsx` | 2열 비교는 구조가 명확해 유지 가능 | 좌/우 헤더 라벨(LEFT/RIGHT) 스타일을 공용 Badge로 교체만 진행 |

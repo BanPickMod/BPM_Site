@@ -74,7 +74,7 @@ export default function WikiPage() {
           >
             <Layers className="w-4 h-4" />
             <span>현재 공식 버전 전체 위키</span>
-            <span className="text-[10px] px-1.5 py-0.2 rounded bg-sky-500/20 text-sky-300 font-mono">
+            <span className="text-[10px] px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-300 font-mono">
               {allLiveUnits.length}
             </span>
           </button>
@@ -89,7 +89,7 @@ export default function WikiPage() {
           >
             <FlaskConical className="w-4 h-4 text-amber-400" />
             <span>PTR 예정 사항</span>
-            <span className="text-[10px] px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-300 font-mono">
+            <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 font-mono">
               {ptrDiffs.length}
             </span>
           </button>
@@ -104,7 +104,7 @@ export default function WikiPage() {
           >
             <Sparkles className="w-4 h-4 text-purple-400" />
             <span>확장 유닛만 카드로 보기</span>
-            <span className="text-[10px] px-1.5 py-0.2 rounded bg-purple-500/20 text-purple-300 font-mono">
+            <span className="text-[10px] px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-300 font-mono">
               {bpmUnits.length}
             </span>
           </button>

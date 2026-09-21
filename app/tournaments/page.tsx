@@ -77,7 +77,7 @@ export default function TournamentsPage() {
         >
           <Swords className="w-4 h-4 text-sky-400" />
           <span>1. 룰셋별 밴픽 체험</span>
-          <span className="text-[10px] px-1.5 py-0.2 rounded bg-sky-500/20 text-sky-300 font-mono">
+          <span className="text-[10px] px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-300 font-mono">
             3 프리셋
           </span>
         </button>
@@ -92,7 +92,7 @@ export default function TournamentsPage() {
         >
           <FileSearch className="w-4 h-4 text-emerald-400" />
           <span>2. 내 리플레이 분석기</span>
-          <span className="text-[10px] px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-300 font-mono">
+          <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-mono">
             .SC2Replay
           </span>
         </button>
@@ -107,7 +107,7 @@ export default function TournamentsPage() {
         >
           <Tv className="w-4 h-4 text-rose-400" />
           <span>3. 실시간 매치 관전</span>
-          <span className="text-[10px] px-1.5 py-0.2 rounded bg-rose-500/20 text-rose-300 font-mono">
+          <span className="text-[10px] px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-300 font-mono">
             LIVE ON-AIR
           </span>
         </button>
@@ -435,9 +435,12 @@ export default function TournamentsPage() {
               </div>
 
               <div>
-                <span className="text-[10px] font-mono text-rose-400 font-bold">
-                  OFFICIAL PREMIER LEAGUE · 8강 A조
-                </span>
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] font-mono text-rose-400 font-bold">
+                    OFFICIAL PREMIER LEAGUE · 8강 A조
+                  </span>
+                  <Badge tone="demo" size="sm">DEMO</Badge>
+                </div>
                 <h3 className="text-lg font-bold text-slate-100 mt-1 mb-3">
                   Solar (저그) vs Maru (테란)
                 </h3>
@@ -472,9 +475,12 @@ export default function TournamentsPage() {
             {/* Match 2 */}
             <div className="bpm-glass rounded-2xl p-6 border-slate-800 hover:border-slate-700 transition flex flex-col justify-between">
               <div>
-                <span className="text-[10px] font-mono text-slate-400 font-bold">
-                  COMMUNITY SCRIMMATCH · 세트 1
-                </span>
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] font-mono text-slate-400 font-bold">
+                    COMMUNITY SCRIMMATCH · 세트 1
+                  </span>
+                  <Badge tone="demo" size="sm">DEMO</Badge>
+                </div>
                 <h3 className="text-lg font-bold text-slate-100 mt-1 mb-3">
                   Classic (프로토스) vs Cure (테란)
                 </h3>

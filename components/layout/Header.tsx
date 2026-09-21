@@ -66,7 +66,7 @@ export function Header() {
             className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md text-xs font-semibold text-slate-950 bg-gradient-to-r from-sky-400 to-cyan-400 hover:from-sky-300 hover:to-cyan-300 shadow-md shadow-sky-500/20 hover:shadow-sky-400/40 transition transform active:scale-95"
           >
             <Play className="w-3.5 h-3.5 fill-current" />
-            Play BPM
+            실행 방법 보기
           </Link>
         </div>
 
@@ -112,7 +112,7 @@ export function Header() {
               className="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md text-sm font-semibold text-slate-950 bg-gradient-to-r from-sky-400 to-cyan-400 shadow-md"
             >
               <Play className="w-4 h-4 fill-current" />
-              Play BPM
+              실행 방법 보기
             </Link>
           </div>
         </div>

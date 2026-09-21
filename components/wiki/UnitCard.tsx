@@ -20,7 +20,7 @@ export function UnitCard({ unit }: UnitCardProps) {
 
   return (
     <div
-      className={`bpm-glass rounded-xl p-5 flex flex-col justify-between transition duration-200 border-slate-800/80 shadow-lg ${raceBorder}`}
+      className={`group bpm-glass rounded-xl p-5 flex flex-col justify-between transition duration-200 border-slate-800/80 shadow-lg ${raceBorder}`}
     >
       <div>
         {/* Top bar: Race & Cost */}

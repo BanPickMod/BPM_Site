@@ -18,7 +18,7 @@ param(
   [Parameter(Mandatory)] [string] $Version,
   [Parameter(Mandatory)] [string] $ServerUrl,
   [string] $UpdateUrl = "",
-  [string] $ReleaseNotes = ""
+  [string] $ReleaseNotes = ""   # text or the path of a markdown file
 )
 $ErrorActionPreference = "Stop"
 $root = Split-Path -Parent $PSScriptRoot
@@ -45,7 +45,15 @@ try {
   $args = @("pack", "-u", "BanPickModUploader", "-v", $Version, "-p", $publish, "-e", "BPMUploader.exe", "-r", "win-x64",
             "--packTitle", "BPM Uploader", "--packAuthors", "BanPickMod", "-o", $out,
             "--icon", (Join-Path $root "assets/bpm.ico"), "--shortcuts", "StartMenuRoot")
-  if ($ReleaseNotes) { $args += @("--releaseNotes", $ReleaseNotes) }
+  if ($ReleaseNotes) {
+    # vpk wants a markdown file; accept either a path or the text itself.
+    $notes = $ReleaseNotes
+    if (-not (Test-Path -LiteralPath $notes -PathType Leaf)) {
+      $notes = Join-Path ([IO.Path]::GetTempPath()) "bpm-uploader-release-notes-$Version.md"
+      Set-Content -LiteralPath $notes -Value $ReleaseNotes -Encoding utf8
+    }
+    $args += @("--releaseNotes", $notes)
+  }
   if ($env:BPM_AZURE_SIGN_FILE) { $args += @("--azureTrustedSignFile", $env:BPM_AZURE_SIGN_FILE) }
   elseif ($env:BPM_SIGN_PARAMS) { $args += @("--signParams", $env:BPM_SIGN_PARAMS) }
   else { Write-Warning "No signing configured: the installer is UNSIGNED (SmartScreen will warn)." }

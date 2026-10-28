@@ -25,6 +25,7 @@ export const POLICY_CHANGELOG: PolicyChange[] = [
   { version: "2026-10-28-draft", kind: "notice", affects: [], ko: "개인정보 처리방침 최초 초안", en: "First draft of the Privacy Policy" },
   { version: "2026-10-29", kind: "notice", affects: [], ko: "운영자 정보·문의처·처리 위탁 지역을 확정하고 초안 표시를 제거", en: "Operator, contact and processing region confirmed; draft label removed" },
   { version: "2026-10-29.2", kind: "notice", affects: [], ko: "운영자 접근에 2단계 인증을 적용", en: "Operator access now requires two-factor authentication" },
+  { version: "2026-10-29.3", kind: "notice", affects: [], ko: "2년간 이용하지 않은 계정을 삭제 예정으로 표시하고 30일 뒤 삭제", en: "Accounts unused for 2 years are marked and deleted 30 days later" },
 ];
 
 const KEYS: ConsentKey[] = ["c1", "c2", "c3"];

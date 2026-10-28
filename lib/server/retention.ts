@@ -8,6 +8,8 @@ import { flushLedgerOutbox, outboxPending } from "./ledger";
 import { deleteObject, listObjects } from "./storage";
 import { ledgerObjectTime } from "@/lib/ledger";
 import { envDays } from "@/lib/envDays";
+import { DUE_INACTIVE_SQL, MARK_INACTIVE_SQL } from "@/lib/inactiveSql";
+import { deleteAccount } from "./account";
 
 /**
  * Automatic deletion by age (docs/Privacy_Compliance_Additional_Plan.md, section 3.3; the values are in
@@ -30,6 +32,10 @@ export interface RetentionConfig {
   auditDays: number;
   /** Deletion-ledger files. Must be longer than the backups they have to cover. */
   ledgerDays: number;
+  /** An account with no sign-in, session or upload for this long is marked for deletion. */
+  inactiveDays: number;
+  /** Days between the mark and the deletion; any activity in between lifts the mark. */
+  inactiveGraceDays: number;
 }
 
 const days = (name: string, fallback: number) => envDays(process.env[name], fallback);
@@ -44,6 +50,8 @@ export function retentionConfig(over: Partial<RetentionConfig> = {}): RetentionC
     linkDays: days("LINK_RETENTION_DAYS", 30),
     auditDays: auditRetentionDays(),
     ledgerDays: days("LEDGER_RETENTION_DAYS", 90),
+    inactiveDays: days("INACTIVE_ACCOUNT_DAYS", 730),
+    inactiveGraceDays: days("INACTIVE_GRACE_DAYS", 30),
     ...over,
   };
 }
@@ -82,6 +90,28 @@ async function sweepSources(cfg: RetentionConfig, dryRun: boolean): Promise<Sour
   return { due: due.length, deleted, failed, gaveUp: stats?.gave_up ?? 0, oldestKeptDays: stats?.oldest == null ? null : Math.round(stats.oldest * 10) / 10 };
 }
 
+export interface InactiveSweep { marked: number; due: number; deleted: number; failed: number }
+
+async function sweepInactiveAccounts(cfg: RetentionConfig, dryRun: boolean): Promise<InactiveSweep> {
+  const db = await getDb();
+  const idle = String(cfg.inactiveDays), grace = String(cfg.inactiveGraceDays);
+  let marked: number;
+  if (dryRun) {
+    const [r] = await db.query<{ n: number }>("select count(*)::int as n from app_user where deleted_at is null and inactive_notice_at is null and last_active_at < now() - ($1 || ' days')::interval", [idle]);
+    marked = r?.n ?? 0;
+  } else {
+    marked = (await db.query(MARK_INACTIVE_SQL, [idle])).length;
+  }
+  const due = await db.query<{ id: number }>(DUE_INACTIVE_SQL, [idle, grace]);
+  let deleted = 0, failed = 0;
+  if (!dryRun) {
+    for (const u of due) {
+      try { await deleteAccount(u.id); deleted++; } catch { failed++; }              // retried next run
+    }
+  }
+  return { marked, due: due.length, deleted, failed };
+}
+
 export interface RetentionReport {
   dryRun: boolean;
   config: RetentionConfig;
@@ -92,6 +122,8 @@ export interface RetentionReport {
   auditRows: number;
   /** Files of deleted rows still waiting for the storage to confirm their deletion (lib/deleteSql.ts). */
   storageQueue: QueueSweep;
+  /** Accounts idle for years: newly marked, past their grace period, deleted (lib/inactiveSql.ts). */
+  inactiveAccounts: InactiveSweep;
   /** The deletion ledger (outside the database) and the acts still waiting to be copied to it. */
   ledger: { files: number; expired: number; deleted: number; outboxPending: number; outboxOldestMinutes: number | null };
 }
@@ -112,6 +144,7 @@ export async function runRetention(dryRun: boolean, over: Partial<RetentionConfi
     await db.query(`delete ${tokSql}`, [link]);
   }
   const auditRows = await purgeAudit(cfg.auditDays, dryRun);
+  const inactiveAccounts = await sweepInactiveAccounts(cfg, dryRun);   // before the storage queue: their files are deleted in this run
   const storageQueue = await processStorageDeletes(500, dryRun);       // last, so files this run just queued are tried in the same run
   if (!dryRun) await flushLedgerOutbox().catch(() => undefined);
   const ob = await outboxPending();
@@ -123,5 +156,5 @@ export async function runRetention(dryRun: boolean, over: Partial<RetentionConfi
   let ledgerDeleted = 0;
   if (!dryRun) for (const k of old) { try { await deleteObject(k); ledgerDeleted++; } catch { /* retried next run */ } }
   const ledger = { files: ledgerKeys.length, expired: old.length, deleted: ledgerDeleted, outboxPending: ob.pending, outboxOldestMinutes: ob.oldestMinutes };
-  return { dryRun, config: cfg, sources, feedback, deviceLinkRequests, revokedLauncherTokens, auditRows, storageQueue, ledger };
+  return { dryRun, config: cfg, sources, feedback, deviceLinkRequests, revokedLauncherTokens, auditRows, storageQueue, inactiveAccounts, ledger };
 }

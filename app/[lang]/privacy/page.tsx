@@ -54,8 +54,8 @@ export default async function PrivacyPage({ params }: PageProps<"/[lang]/privacy
               <tbody>
                 <tr>
                   <td>{t("계약의 체결·이행: 로그인, 계정 보안, 설정 저장", "Contract performance: login, account security and saved settings")}</td>
-                  <td>{t("Battle.net 계정 식별자와 표시 이름, 연령 확인 일시, 동의 변경 이력", "Battle.net account identifier and display name, age-confirmation time, consent history")}</td>
-                  <td>{t("회원 탈퇴 시까지", "Until account deletion")}</td>
+                  <td>{t("Battle.net 계정 식별자와 표시 이름, 연령 확인 일시, 마지막 활동 시각, 동의 변경 이력", "Battle.net account identifier and display name, age-confirmation time, last-activity time, consent history")}</td>
+                  <td>{t("회원 탈퇴 시까지. 2년 동안 로그인·사이트 이용·리플레이 업로드가 없으면 삭제 예정으로 표시하고, 30일 안에 다시 이용하지 않으면 계정과 리플레이를 삭제합니다. 연락처를 수집하지 않으므로 개별 통지는 하지 않으며, 이 처리방침으로 알립니다.", "Until account deletion. If there is no sign-in, site use or replay upload for 2 years, the account is marked for deletion and, unless it is used again within 30 days, the account and its replays are deleted. We hold no contact details, so there is no individual notice; this policy is the notice.")}</td>
                 </tr>
                 <tr>
                   <td>{t("C1 선택 동의: 리플레이 업로드·분석·재생", "Optional C1 consent: replay upload, analysis and playback")}</td>

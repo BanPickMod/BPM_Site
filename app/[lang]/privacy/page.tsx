@@ -128,7 +128,6 @@ export default async function PrivacyPage({ params }: PageProps<"/[lang]/privacy
               </tbody>
             </table>
           </div>
-          <p className="dim">{t("실제 운영 배포 전에 Railway 서비스 리전과 R2 버킷 관할·위치를 확인해 위 표를 확정합니다.", "Before production launch, the Railway service region and R2 bucket jurisdiction/location must be verified and this table finalised.")}</p>
         </section>
 
         <section>
@@ -185,7 +184,6 @@ export default async function PrivacyPage({ params }: PageProps<"/[lang]/privacy
         <section>
           <h2 className="h2">{t("11. 처리방침 변경", "11. Changes to this policy")}</h2>
           <p>{t("처리 항목, 목적, 위탁업체 등 중요한 내용이 바뀌면 시행 전에 사이트에서 알립니다. 동의가 필요한 목적 변경은 새 버전으로 다시 동의를 받습니다.", "Material changes to data, purposes or processors will be announced on the site before taking effect. A change that requires consent will be presented as a new consent version.")}</p>
-          <p className="dim">{t("이전 버전 보관 경로는 정식 정책 확정 시 함께 제공합니다.", "An archive of prior versions will be provided when the first final policy is adopted.")}</p>
         </section>
 
         <section>

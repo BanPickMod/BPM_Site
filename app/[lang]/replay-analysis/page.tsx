@@ -42,7 +42,6 @@ export default async function ReplayAnalysisPage({ params }: PageProps<"/[lang]/
   return (
     <div className="wrap">
       <header className="pg-h">
-        <span className="status">{t("준비 중", "Coming soon")}</span>
         <h1 className="h1">SC2 BPM Replay Analysis</h1>
         <p className="lede">
           {t(

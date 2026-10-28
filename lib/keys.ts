@@ -6,7 +6,7 @@ import { createHmac, hkdfSync, timingSafeEqual } from "node:crypto";
  * gets its own key (HKDF), and anything we must compare without storing (an IP address) is hashed with a key that changes
  * every hour: a stored value cannot be linked to the next hour's, nor to anyone, once its hour is over.
  */
-export type KeyPurpose = "session" | "reporter";
+export type KeyPurpose = "session" | "reporter" | "ledger";
 
 const SALT = Buffer.from("bpm-keys-v1");
 const cache = new Map<string, Buffer>();

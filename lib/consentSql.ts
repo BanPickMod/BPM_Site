@@ -22,7 +22,7 @@ export const APPLY_CONSENT_VERSION_SQL = `with c as (
      select c1, c2, c3 from c`;
 
 /** Set a consent. $1 user, $2..$4 c1..c3, $5 policy version, $6 consent version, $7 pending text, $8 source. A withdrawal clears the
- *  flag on every stored replay; a grant never opens one. */
+ *  flag on every stored replay; a grant never opens one. $9 = the consents switched off by this change ("c2,c3"), or an empty string. */
 export const SET_CONSENT_SQL = `with up as (
        insert into consent (user_id, c1, c2, c3, policy_version, consent_version, reconsent_pending) values ($1,$2::boolean,$3::boolean,$4::boolean,$5,$6,$7)
        on conflict (user_id) do update set c1=excluded.c1, c2=excluded.c2, c3=excluded.c3,
@@ -30,6 +30,10 @@ export const SET_CONSENT_SQL = `with up as (
        returning 1
      ), lg as (
        insert into consent_log (user_id, c1, c2, c3, policy_version, consent_version, source) values ($1,$2::boolean,$3::boolean,$4::boolean,$5,$6,$8) returning 1
+     ), act as (
+       -- a consent switched off that was on: recorded for a restore (lib/ledger.ts). $9 is the list, empty when nothing was withdrawn.
+       insert into ledger_outbox (kind, provider, subject, detail)
+       select 'consent-withdrawal', provider, subject, $9::text from app_user where id = $1 and $9::text <> '' returning 1
      ), withdrawn as (
        -- ONE update for both flags: two data-modifying CTEs that touch the same row in one statement apply only one of them
        update user_replay set c2_at_upload = c2_at_upload and $3::boolean, c3_at_upload = c3_at_upload and $4::boolean

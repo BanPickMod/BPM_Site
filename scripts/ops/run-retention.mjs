@@ -24,7 +24,7 @@ const text = await res.text();
 console.log(text);
 if (!res.ok) process.exit(1);
 const r = JSON.parse(text);
-if (r.sources.gaveUp > 0 || r.sources.failed > 0 || r.storageQueue.gaveUp > 0 || r.storageQueue.failed > 0) {
-  console.error(`attention: original files ${r.sources.failed} failed / ${r.sources.gaveUp} gave up; queued files ${r.storageQueue.failed} failed / ${r.storageQueue.gaveUp} gave up`);
+if (r.sources.gaveUp > 0 || r.sources.failed > 0 || r.storageQueue.gaveUp > 0 || r.storageQueue.failed > 0 || r.ledger.outboxPending > 0) {
+  console.error(`attention: original files ${r.sources.failed} failed / ${r.sources.gaveUp} gave up; queued files ${r.storageQueue.failed} failed / ${r.storageQueue.gaveUp} gave up; ledger copies waiting ${r.ledger.outboxPending}`);
   process.exit(1);
 }

@@ -73,3 +73,40 @@ export async function deleteObject(key: string): Promise<void> {
   }
   await fs.rm(path.join(root(), safeKey(key)), { force: true });
 }
+
+/** Names of the stored objects whose key starts with `prefix` (used by the deletion ledger and its expiry). */
+export async function listObjects(prefix: string): Promise<string[]> {
+  safeKey(prefix.replace(/\/$/, "") || "x");
+  const cfg = s3();
+  if (cfg) {
+    const c = await client(cfg);
+    const out: string[] = [];
+    let token = "";
+    for (let page = 0; page < 100; page++) {
+      const url = `${cfg.endpoint}/${cfg.bucket}?list-type=2&prefix=${encodeURIComponent(prefix)}${token ? `&continuation-token=${encodeURIComponent(token)}` : ""}`;
+      const res = await c.aws.fetch(url);
+      if (!res.ok) throw new Error(`storage list failed: ${res.status}`);
+      const xml = await res.text();
+      for (const m of xml.matchAll(/<Key>([^<]*)<\/Key>/g)) out.push(m[1].replace(/&amp;/g, "&"));
+      token = /<IsTruncated>true<\/IsTruncated>/.test(xml) ? (xml.match(/<NextContinuationToken>([^<]*)<\/NextContinuationToken>/)?.[1] ?? "") : "";
+      if (!token) break;
+    }
+    return out;
+  }
+  const dir = path.join(root(), prefix);
+  const out: string[] = [];
+  const walk = async (d: string, rel: string): Promise<void> => {
+    let entries;
+    try {
+      entries = await fs.readdir(d, { withFileTypes: true });
+    } catch {
+      return;
+    }
+    for (const e of entries) {
+      if (e.isDirectory()) await walk(path.join(d, e.name), `${rel}${e.name}/`);
+      else out.push(`${rel}${e.name}`);
+    }
+  };
+  await walk(dir, prefix);
+  return out;
+}

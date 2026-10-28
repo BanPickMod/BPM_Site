@@ -22,7 +22,9 @@ export const DELETE_ACCOUNT_SQL = `
   ), kept_reports as (
     update feedback set title = null, body = null, page = null, user_agent = null where user_id = $1::int and kind = 'replay' returning 1
   ), gone as (
-    delete from app_user where id = $1::int returning id
+    delete from app_user where id = $1::int returning id, provider, subject
+  ), act as (
+    insert into ledger_outbox (kind, provider, subject) select 'account', provider, subject from gone returning 1
   )
   select (select count(*) from gone)::int as deleted, (select count(*) from queued)::int as files_queued`;
 
@@ -34,7 +36,10 @@ export const DELETE_ALL_UPLOADS_SQL = `
   ), queued as (
     insert into storage_delete_queue (storage_key) select k from keys on conflict do nothing returning 1
   ), gone as (
-    delete from user_replay where user_id = $1::int returning id
+    delete from user_replay where user_id = $1::int returning id, sha256
+  ), act as (
+    insert into ledger_outbox (kind, provider, subject, sha256)
+    select 'replay', u.provider, u.subject, g.sha256 from gone g join app_user u on u.id = $1::int returning 1
   )
   select (select count(*) from gone)::int as deleted, (select count(*) from queued)::int as files_queued`;
 
@@ -46,7 +51,10 @@ export const DELETE_UPLOAD_SQL = `
   ), queued as (
     insert into storage_delete_queue (storage_key) select k from keys on conflict do nothing returning 1
   ), gone as (
-    delete from user_replay where id = $1::int and user_id = $2::int returning id
+    delete from user_replay where id = $1::int and user_id = $2::int returning id, sha256
+  ), act as (
+    insert into ledger_outbox (kind, provider, subject, sha256)
+    select 'replay', u.provider, u.subject, g.sha256 from gone g join app_user u on u.id = $2::int returning 1
   )
   select (select count(*) from gone)::int as deleted, (select count(*) from queued)::int as files_queued`;
 
@@ -58,7 +66,10 @@ export const REMOVE_REPLAY_SQL = `
   ), queued as (
     insert into storage_delete_queue (storage_key) select k from keys on conflict do nothing returning 1
   ), gone as (
-    delete from user_replay where id = $1::int returning id
+    delete from user_replay where id = $1::int returning id, user_id, sha256
+  ), act as (
+    insert into ledger_outbox (kind, provider, subject, sha256)
+    select 'replay', u.provider, u.subject, g.sha256 from gone g join app_user u on u.id = g.user_id returning 1
   )
   select (select count(*) from gone)::int as deleted, (select count(*) from queued)::int as files_queued`;
 

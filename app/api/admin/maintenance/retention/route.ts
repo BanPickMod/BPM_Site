@@ -3,7 +3,7 @@ import { HttpError } from "@/lib/server/http";
 import { runRetention, type RetentionConfig } from "@/lib/server/retention";
 import { auditAdmin } from "@/lib/server/audit";
 
-const KEYS: (keyof RetentionConfig)[] = ["readyDays", "failedDays", "unsupportedDays", "stuckDays", "feedbackDays", "linkDays", "auditDays"];
+const KEYS: (keyof RetentionConfig)[] = ["readyDays", "failedDays", "unsupportedDays", "stuckDays", "feedbackDays", "linkDays", "auditDays", "ledgerDays"];
 
 /**
  * Daily retention run (original replays, closed messages, expired device links). `{ "dryRun": false }` deletes; the default only

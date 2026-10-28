@@ -1,6 +1,7 @@
 import "server-only";
 import { getDb } from "./db";
 import { deleteObject } from "./storage";
+import { flushLedgerOutbox } from "./ledger";
 import { formatError } from "@/lib/logScrub";
 
 /**
@@ -48,6 +49,7 @@ export async function deleteRowsAndFiles(sql: string, params: unknown[]): Promis
   const db = await getDb();
   const [r] = await db.query<{ deleted: number; files_queued: number }>(sql, params);
   if (r?.files_queued) await processStorageDeletes().catch(() => undefined);
+  if (r?.deleted) await flushLedgerOutbox().catch(() => undefined);     // copy the act to the ledger outside the database
   return { deleted: r?.deleted ?? 0, filesQueued: r?.files_queued ?? 0 };
 }
 

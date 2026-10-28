@@ -341,6 +341,23 @@ create table if not exists draft_event (
       alter table feedback add column if not exists channel text not null default 'web';
     `,
   },
+  {
+    version: 11,
+    name: "ledger_outbox",
+    sql: `
+      -- A9: deletions and withdrawals wait here, written in the same statement as the deletion, until they have been copied to
+      -- the deletion ledger outside the database (lib/ledger.ts). Short-lived: a row goes as soon as the ledger file is stored.
+      create table if not exists ledger_outbox (
+        id serial primary key,
+        kind text not null,
+        provider text not null,
+        subject text not null,
+        sha256 text,
+        detail text,
+        created_at timestamptz not null default now()
+      );
+    `,
+  },
 ];
 
 const LOCK_KEY = 7314201;

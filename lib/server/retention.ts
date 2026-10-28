@@ -4,6 +4,9 @@ import { MAX_DELETE_ATTEMPTS, deleteSource, type SourceRow } from "./sources";
 import { feedbackRetentionDays, purgeClosedFeedback, type PurgeResult } from "./feedback";
 import { auditRetentionDays, purgeAudit } from "./audit";
 import { processStorageDeletes, type QueueSweep } from "./storageQueue";
+import { flushLedgerOutbox, outboxPending } from "./ledger";
+import { deleteObject, listObjects } from "./storage";
+import { ledgerObjectTime } from "@/lib/ledger";
 import { envDays } from "@/lib/envDays";
 
 /**
@@ -25,6 +28,8 @@ export interface RetentionConfig {
   linkDays: number;
   /** Operator audit rows. */
   auditDays: number;
+  /** Deletion-ledger files. Must be longer than the backups they have to cover. */
+  ledgerDays: number;
 }
 
 const days = (name: string, fallback: number) => envDays(process.env[name], fallback);
@@ -38,6 +43,7 @@ export function retentionConfig(over: Partial<RetentionConfig> = {}): RetentionC
     feedbackDays: feedbackRetentionDays(),
     linkDays: days("LINK_RETENTION_DAYS", 30),
     auditDays: auditRetentionDays(),
+    ledgerDays: days("LEDGER_RETENTION_DAYS", 90),
     ...over,
   };
 }
@@ -86,6 +92,8 @@ export interface RetentionReport {
   auditRows: number;
   /** Files of deleted rows still waiting for the storage to confirm their deletion (lib/deleteSql.ts). */
   storageQueue: QueueSweep;
+  /** The deletion ledger (outside the database) and the acts still waiting to be copied to it. */
+  ledger: { files: number; expired: number; deleted: number; outboxPending: number; outboxOldestMinutes: number | null };
 }
 
 export async function runRetention(dryRun: boolean, over: Partial<RetentionConfig> = {}): Promise<RetentionReport> {
@@ -105,5 +113,15 @@ export async function runRetention(dryRun: boolean, over: Partial<RetentionConfi
   }
   const auditRows = await purgeAudit(cfg.auditDays, dryRun);
   const storageQueue = await processStorageDeletes(500, dryRun);       // last, so files this run just queued are tried in the same run
-  return { dryRun, config: cfg, sources, feedback, deviceLinkRequests, revokedLauncherTokens, auditRows, storageQueue };
+  if (!dryRun) await flushLedgerOutbox().catch(() => undefined);
+  const ob = await outboxPending();
+  const ledgerKeys = await listObjects("ledger/").catch(() => [] as string[]);
+  const old = ledgerKeys.filter((k) => {
+    const t = ledgerObjectTime(k);
+    return t !== null && t.getTime() < Date.now() - cfg.ledgerDays * 86400_000;
+  });
+  let ledgerDeleted = 0;
+  if (!dryRun) for (const k of old) { try { await deleteObject(k); ledgerDeleted++; } catch { /* retried next run */ } }
+  const ledger = { files: ledgerKeys.length, expired: old.length, deleted: ledgerDeleted, outboxPending: ob.pending, outboxOldestMinutes: ob.oldestMinutes };
+  return { dryRun, config: cfg, sources, feedback, deviceLinkRequests, revokedLauncherTokens, auditRows, storageQueue, ledger };
 }

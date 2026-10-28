@@ -2,6 +2,7 @@ import "server-only";
 import { getDb } from "./db";
 import { POLICY_VERSION } from "./auth";
 import { APPLY_CONSENT_VERSION_SQL, SET_CONSENT_SQL } from "@/lib/consentSql";
+import { flushLedgerOutbox } from "./ledger";
 import { activeChangelog, consentsAffectedSince, consentVersion, formatPending, parsePending, policyVersion, type ConsentKey } from "@/lib/policyVersions";
 
 const KEYS: ConsentKey[] = ["c1", "c2", "c3"];
@@ -76,8 +77,9 @@ export async function setConsent(userId: number, next: { c1: boolean; c2: boolea
   // a replay the owner kept private; the owner opens older replays one by one, see setUploadSettings).
   await db.query(
     SET_CONSENT_SQL,
-    [userId, next.c1, next.c2, next.c3, POLICY_VERSION, cv, formatPending(pending), source],
+    [userId, next.c1, next.c2, next.c3, POLICY_VERSION, cv, formatPending(pending), source, KEYS.filter((k) => prev[k] && !next[k]).join(",")],
   );
+  void flushLedgerOutbox().catch(() => undefined);      // copy a withdrawal to the ledger outside the database (retried by the retention run)
   bumpStats();
   return { ...next, policyVersion: POLICY_VERSION, consentVersion: cv, reconsentPending: pending };
 }

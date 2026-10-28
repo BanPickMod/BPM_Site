@@ -28,6 +28,11 @@ export interface SessionUser {
 const sha256 = (s: string) => createHash("sha256").update(s).digest("hex");
 const b64u = (b: Buffer) => b.toString("base64url");
 
+/** The deployment secret, for keys that must stay the same across restarts and restores (the deletion ledger). */
+export function masterSecret(): string {
+  return secret();
+}
+
 function secret(): string {
   const s = process.env.SESSION_SECRET;
   if (s && s.length >= 32) return s;

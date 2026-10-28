@@ -102,16 +102,6 @@ export default async function ReplayAnalysisPage({ params }: PageProps<"/[lang]/
             </table>
           </div>
         </section>
-
-        <section>
-          <h2 className="h2">{t("다음 계획", "What comes next")}</h2>
-          <p>
-            {t(
-              "이 기능들은 이후 BPM 래더로 확장될 예정입니다. 런처 배포와 서비스 시작 일정은 정해지는 대로 알려드립니다.",
-              "These features are planned to grow into a BPM ladder. The launcher release and service start dates will be announced once set.",
-            )}
-          </p>
-        </section>
       </div>
     </div>
   );

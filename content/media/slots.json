@@ -1,0 +1,39 @@
+[
+  { "id": "home-draft", "area": "home", "hint": "밴픽 진행 화면 (밴 슬롯과 유닛 아이콘이 보이게). 16:9 권장", "caption": {"ko": "밴픽 진행 화면", "en": "The draft in progress"} },
+  { "id": "home-observer", "area": "home", "hint": "옵저버 요약 바가 보이는 인게임 화면. 16:9 권장", "caption": {"ko": "옵저버 화면", "en": "The observer view"} },
+  { "id": "home-hud", "area": "home", "hint": "편의성 모드 HUD(생산 현황, 연구, 공방업)가 보이는 경기 화면. 16:9 권장", "caption": {"ko": "편의성 모드 HUD", "en": "Convenience Mode HUD"} },
+
+  { "id": "guide-mod-search", "area": "guide", "hint": "[모드 만들기] 화면에서 BPM_Core를 검색한 장면", "caption": {"ko": "[모드 만들기]에서 BPM_Core를 검색합니다.", "en": "Search for BPM_Core under Create with Mod."} },
+  { "id": "guide-lobby-options", "area": "guide", "hint": "대기실 옵션(밴 개수, 스네이크 밴, 편의성 모드 등)이 모두 보이는 화면", "caption": {"ko": "대기실의 BPM 옵션", "en": "BPM options in the lobby"} },
+  { "id": "guide-observer-slot", "area": "guide", "hint": "관전자 슬롯이 보이는 대기실 또는 관전자로 입장한 직후 화면", "caption": {"ko": "관전자 슬롯으로 입장하면 옵저버 UI가 자동으로 켜집니다.", "en": "Join through an Observer slot and the observer UI turns on automatically."} },
+  { "id": "guide-observer-shortcuts", "area": "guide", "hint": "Shift+B 요약 바와 Shift+D 상세 밴픽 결과가 보이는 화면 (GIF 또는 영상 권장)", "caption": {"ko": "Shift + B 요약 바, Shift + D 상세 밴픽 결과", "en": "Shift + B summary bar, Shift + D detailed result"} },
+  { "id": "guide-convenience-hud", "area": "guide", "hint": "편의성 모드가 켜진 경기 화면 (생산 12슬롯, 연구 오버레이, 공방업 패널)", "caption": {"ko": "편의성 모드 HUD", "en": "Convenience Mode HUD"} },
+
+  { "id": "v2.0-observer-shortcuts", "area": "patch-v2.0", "hint": "옵저버 단축키(Shift+B, Shift+D)로 요약 바와 상세 결과를 켠 화면", "caption": {"ko": "옵저버 단축키", "en": "Observer hotkeys"} },
+  { "id": "v2.0-observer-full-review", "area": "patch-v2.0", "hint": "인게임 밴픽 전체 확인 창 (각 유닛이 무엇을 대신해 선택되었는지 보이는 화면)", "caption": {"ko": "인게임 밴픽 전체 확인 창", "en": "In-game full ban-pick review window"} },
+  { "id": "v2.0-ai-lobby", "area": "patch-v2.0", "hint": "AI 난이도(쉬움~챌린지)를 고르는 화면", "caption": {"ko": "AI 난이도 선택", "en": "Choosing the AI difficulty"} },
+  { "id": "v2.0-production-queen", "area": "patch-v2.0", "hint": "부화장에서 여왕을 생산하면 생산 패널에 아이콘이 표시되는 화면", "caption": {"ko": "부화장 여왕 생산 아이콘", "en": "Queen production icon from the Hatchery"} },
+  { "id": "v2.0-effects-upgrades", "area": "patch-v2.0", "hint": "모드에서 추가된 업그레이드 이펙트 (GIF 또는 영상)", "caption": {"ko": "추가 업그레이드 이펙트", "en": "Effects for the added upgrades"} },
+  { "id": "v2.0-effect-nuke", "area": "patch-v2.0", "hint": "전술핵 폭발: 땅 충격파, 저그 점막이 불타며 사라지는 장면, 카메라 흔들림 (GIF 또는 영상)", "caption": {"ko": "전술핵", "en": "Tactical Nuke"} },
+  { "id": "v2.0-effect-mothership", "area": "patch-v2.0", "hint": "아르타니스 모선 모델과 생성 연출 (GIF 또는 영상)", "caption": {"ko": "모선 생성 연출", "en": "Mothership spawn"} },
+  { "id": "v2.0-effect-archon", "area": "patch-v2.0", "hint": "아콘 공격과 전기 감전 이펙트 (GIF 또는 영상)", "caption": {"ko": "아콘", "en": "Archon"} },
+  { "id": "v2.0-effect-lurker", "area": "patch-v2.0", "hint": "사거리 업그레이드를 완료한 가시지옥의 붉은 가시와 먼지·파편 (GIF 또는 영상)", "caption": {"ko": "가시지옥", "en": "Lurker"} },
+  { "id": "v2.0-effect-cyclone", "area": "patch-v2.0", "hint": "자기장 가속기 완료 후 사이클론의 붉은 레일건 빔 (GIF 또는 영상)", "caption": {"ko": "사이클론", "en": "Cyclone"} },
+  { "id": "v2.0-effect-viper", "area": "patch-v2.0", "hint": "살모사 기본 공격의 발사체와 타격 이펙트 (GIF 또는 영상)", "caption": {"ko": "살모사", "en": "Viper"} },
+  { "id": "v2.0-effect-ghost", "area": "patch-v2.0", "hint": "유령 암살 타격 이펙트 (GIF 또는 영상)", "caption": {"ko": "유령", "en": "Ghost"} },
+  { "id": "v2.0-effect-storm", "area": "patch-v2.0", "hint": "사이오닉 폭풍이 터지는 지점의 번개 이펙트 (GIF 또는 영상)", "caption": {"ko": "사이오닉 폭풍", "en": "Psionic Storm"} },
+  { "id": "v2.0-effect-nova", "area": "patch-v2.0", "hint": "정화 폭발: 피해를 입고 살아남은 유닛의 광택 이펙트 (GIF 또는 영상)", "caption": {"ko": "정화 폭발", "en": "Purification Nova"} },
+  { "id": "v2.0-effect-oracle-voidray", "area": "patch-v2.0", "hint": "예언자 펄서 광선, 공허포격기에 죽는 생체 유닛이 불타며 쓰러지는 장면 (GIF 또는 영상)", "caption": {"ko": "예언자와 공허포격기", "en": "Oracle and Void Ray"} },
+  { "id": "v2.0-site-replay-analysis", "area": "patch-v2.0", "hint": "SC2 BPM Replay Analysis 분석 결과 화면", "caption": {"ko": "SC2 BPM Replay Analysis", "en": "SC2 BPM Replay Analysis"} },
+  { "id": "v2.0-site-ban-pick-rates", "area": "patch-v2.0", "hint": "실시간 AI 밴픽 비율 화면", "caption": {"ko": "실시간 AI 밴픽 비율", "en": "Live AI ban-pick rates"} },
+
+  { "id": "ai-difficulty", "area": "ai", "hint": "AI 난이도(쉬움~챌린지)를 고르는 대기실 화면. 16:9 권장", "caption": {"ko": "AI 난이도 선택", "en": "Choosing the AI difficulty"} },
+  { "id": "ai-match", "area": "ai", "hint": "AI와 대전 중인 경기 화면 (GIF 또는 영상)", "caption": {"ko": "AI와의 대전", "en": "A match against the AI"} },
+
+  { "id": "replay-analysis-preview", "area": "replay", "hint": "SC2 BPM Replay Analysis 분석 결과 화면 (서비스 시작 후)", "caption": {"ko": "리플레이 분석 화면", "en": "A replay analysis"} },
+
+
+  { "id": "v2.0-cover", "area": "patch-v2.0", "hint": "v2.0 패치 대표 이미지 (밴픽 화면이나 로고 등). 16:9 권장", "caption": {"ko": "v2.0", "en": "v2.0"} },
+  { "id": "v1.4.3-cover", "area": "patch-v1.4.3", "hint": "v1.4.3 패치 대표 이미지. 16:9 권장", "caption": {"ko": "v1.4.3", "en": "v1.4.3"} },
+  { "id": "v1.4.1-cover", "area": "patch-v1.4.1", "hint": "v1.4.1 패치 대표 이미지. 16:9 권장", "caption": {"ko": "v1.4.1", "en": "v1.4.1"} }
+]

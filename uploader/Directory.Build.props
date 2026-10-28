@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup>
+    <!-- One version for every project; releases override it: dotnet publish -p:Version=0.2.0 (scripts/Build-UploaderRelease.ps1). -->
+    <Version>0.1.0</Version>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <!-- v1.4.3 balance: facing correction used to run off this behavior's own
+         PeriodicEffect, which fired independently of the weapon's own
+         effect chain and had no real Target/TargetPoint of its own - the
+         cross-reference to BPM_FirebatSCBWWeapon@FacingOffset (a persistent
+         created purely at the caster's own location) resolved back to the
+         caster instead of the real target, spinning the Firebat 180 degrees
+         instead of facing the enemy. Facing is now driven directly from
+         BPM_FirebatSCBWWeapon@CP's own periodic chain (see
+         BPM_FirebatSCBWWeapon@Impact in EffectData.xml), which has the real
+         target naturally available, so this behavior only needs to
+         immobilize the caster while it channels. -->
+    <CBehaviorBuff id="BPM_FirebatSCBWWeapon@SuppressMovement">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran" />
+        <Duration value="0.6562" />
+        <Modification MoveSpeedMaximum="0.004" AccelerationMultiplier="0.01">
+            <ModifyFlags index="OrdersUninterruptible" value="1" />
+        </Modification>
+        <InfoFlags index="Hidden" value="1" />
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BPM_FirebatSCBWWeapon@Bunker">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
+        <DisableValidatorArray value="NotInsideTransport"/>
+        <Modification>
+            <WeaponEnableArray value="BPM_FirebatSCBWWeapon@Bunker"/>
+            <WeaponDisableArray value="BPM_FirebatSCBWWeapon"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BPM_FirebatSCBWStimpack">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-ability-terran-stimpack.dds"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Duration value="17.25"/>
+        <Modification MoveSpeedMultiplier="1.5" AttackSpeedMultiplier="2"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BPM_ScienceVesselLockdown">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\ClassicIcons\SC1_TerranGhostLockdown.dds"/>
+        <BehaviorCategories index="Restorable" value="1"/>
+        <BehaviorCategories index="Stun" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Duration value="20"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <Modification>
+            <ModifyFlags index="DisableAbils" value="1"/>
+            <ModifyFlags index="Detected" value="1"/>
+            <ModifyFlags index="SuppressMoving" value="1"/>
+            <ModifyFlags index="SuppressTurning" value="1"/>
+            <StateFlags index="Stun" value="1"/>
+            <StateFlags index="SuppressCloak" value="1"/>
+            <StateFlags index="SuppressDetection" value="1"/>
+            <StateFlags index="SuppressPassenger" value="1"/>
+            <StateFlags index="SuppressRadar" value="1"/>
+            <AbilClassEnableArray index="CAbilHarvest" value="1"/>
+            <AbilClassDisableArray index="CAbilAttack" value="1"/>
+            <AbilLinkEnableArray value="move"/>
+            <AbilLinkEnableArray value="stop"/>
+        </Modification>
+        <DisplayDuration index="Self" value="1"/>
+        <DisplayDuration index="Ally" value="1"/>
+        <DisplayDuration index="Neutral" value="1"/>
+        <DisplayDuration index="Enemy" value="1"/>
+    </CBehaviorBuff>
+    <!-- v1.4.3 balance: Defensive Matrix absorb 16 -> 24 -->
+    <CBehaviorBuff id="BPM_ScienceVesselDefensiveMatrix">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\ClassicIcons\SC1_TerranScienceVesselDefenseMatrix.dds"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Duration value="20"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <DamageResponse ModifyFraction="0" ModifyLimit="24" ModifyMinimumDamage="1">
+            <Chance value="1"/>
+        </DamageResponse>
+        <DisplayDuration index="Self" value="1"/>
+        <DisplayDuration index="Ally" value="1"/>
+    </CBehaviorBuff>
+    <!-- Energizer Time Shield Aura / Buffs -->
+    <CBehaviorBuff id="BPM_EnergizerTimeShield">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-chronoboost.dds"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Period value="0.25"/>
+        <PeriodicEffect value="BPM_EnergizerTimeShield@PeriodicSet"/>
+        <RemoveValidatorArray value="BPM_EnergizerHasEnergy"/>
+        <Modification>
+            <VitalRegenArray index="Energy" value="-5"/>
+            <ModifyFlags index="OrdersUninterruptible" value="0"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BPM_EnergizerTimeShield@Buff">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-chronoboost.dds"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="0.6"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <Modification MoveSpeedMultiplier="1.05" AttackSpeedMultiplier="1.05"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BPM_EnergizerTimeShield@Debuff">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-timewarp.dds"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="0.6"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <Modification MoveSpeedMultiplier="0.95" AttackSpeedMultiplier="0.95"/>
+    </CBehaviorBuff>
+
+    <!-- Warp-in Zero Shield Lock in Energizer Power Field -->
+    <CBehaviorBuff id="BPM_EnergizerWarpInZeroShieldBuff">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="0.5"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <InitialEffect value="BPM_EnergizerWarpInZeroShields"/>
+        <PeriodicEffect value="BPM_EnergizerWarpInZeroShields"/>
+        <Period value="0.0625"/>
+        <FinalEffect value="BPM_EnergizerWarpInZeroShields"/>
+        <Modification>
+            <VitalRegenArray index="Shields" value="-100"/>
+        </Modification>
+    </CBehaviorBuff>
+    <!-- Energizer Phasing Mode Shield Drain (0.5 Shields / sec) -->
+    <CBehaviorBuff id="BPM_EnergizerPhasingDrain">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Modification>
+            <VitalRegenArray index="Shields" value="-0.5"/>
+        </Modification>
+        <Period value="0.25"/>
+        <PeriodicEffect value="BPM_EnergizerPowerBandRefresh"/>
+        <RemoveValidatorArray value="BPM_EnergizerHasShields"/>
+        <FinalEffect value="BPM_EnergizerAutoTransportMode"/>
+    </CBehaviorBuff>
+    <!-- Sixteen proportional bands approximate a linear field radius.  The
+         top band begins at 46.875% shields, so phase entry at 50% always
+         starts at full radius.  Bands 01-06 use the requested 2.25 floor. -->
+    <CBehaviorPowerSource id="BPM_EnergizerPowerBand01">
+        <InfoFlags index="Hidden" value="1"/>
+        <Radius value="2.25"/>
+        <PowerLink value="PowerSource"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CBehaviorPowerSource>
+    <CBehaviorPowerSource id="BPM_EnergizerPowerBand02">
+        <InfoFlags index="Hidden" value="1"/>
+        <Radius value="2.25"/>
+        <PowerLink value="PowerSource"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CBehaviorPowerSource>
+    <CBehaviorPowerSource id="BPM_EnergizerPowerBand03">
+        <InfoFlags index="Hidden" value="1"/>
+        <Radius value="2.25"/>
+        <PowerLink value="PowerSource"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CBehaviorPowerSource>
+    <CBehaviorPowerSource id="BPM_EnergizerPowerBand04">
+        <InfoFlags index="Hidden" value="1"/>
+        <Radius value="2.25"/>
+        <PowerLink value="PowerSource"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CBehaviorPowerSource>
+    <CBehaviorPowerSource id="BPM_EnergizerPowerBand05">
+        <InfoFlags index="Hidden" value="1"/>
+        <Radius value="2.25"/>
+        <PowerLink value="PowerSource"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CBehaviorPowerSource>
+    <CBehaviorPowerSource id="BPM_EnergizerPowerBand06">
+        <InfoFlags index="Hidden" value="1"/>
+        <Radius value="2.25"/>
+        <PowerLink value="PowerSource"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CBehaviorPowerSource>
+    <CBehaviorPowerSource id="BPM_EnergizerPowerBand07">
+        <InfoFlags index="Hidden" value="1"/>
+        <Radius value="2.625"/>
+        <PowerLink value="PowerSource"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CBehaviorPowerSource>
+    <CBehaviorPowerSource id="BPM_EnergizerPowerBand08">
+        <InfoFlags index="Hidden" value="1"/>
+        <Radius value="3"/>
+        <PowerLink value="PowerSource"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CBehaviorPowerSource>
+    <CBehaviorPowerSource id="BPM_EnergizerPowerBand09">
+        <InfoFlags index="Hidden" value="1"/>
+        <Radius value="3.375"/>
+        <PowerLink value="PowerSource"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CBehaviorPowerSource>
+    <CBehaviorPowerSource id="BPM_EnergizerPowerBand10">
+        <InfoFlags index="Hidden" value="1"/>
+        <Radius value="3.75"/>
+        <PowerLink value="PowerSource"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CBehaviorPowerSource>
+    <CBehaviorPowerSource id="BPM_EnergizerPowerBand11">
+        <InfoFlags index="Hidden" value="1"/>
+        <Radius value="4.125"/>
+        <PowerLink value="PowerSource"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CBehaviorPowerSource>
+    <CBehaviorPowerSource id="BPM_EnergizerPowerBand12">
+        <InfoFlags index="Hidden" value="1"/>
+        <Radius value="4.5"/>
+        <PowerLink value="PowerSource"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CBehaviorPowerSource>
+    <CBehaviorPowerSource id="BPM_EnergizerPowerBand13">
+        <InfoFlags index="Hidden" value="1"/>
+        <Radius value="4.875"/>
+        <PowerLink value="PowerSource"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CBehaviorPowerSource>
+    <CBehaviorPowerSource id="BPM_EnergizerPowerBand14">
+        <InfoFlags index="Hidden" value="1"/>
+        <Radius value="5.25"/>
+        <PowerLink value="PowerSource"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CBehaviorPowerSource>
+    <CBehaviorPowerSource id="BPM_EnergizerPowerBand15">
+        <InfoFlags index="Hidden" value="1"/>
+        <Radius value="5.625"/>
+        <PowerLink value="PowerSource"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CBehaviorPowerSource>
+    <CBehaviorPowerSource id="BPM_EnergizerPowerBand16">
+        <InfoFlags index="Hidden" value="1"/>
+        <Radius value="6"/>
+        <PowerLink value="PowerSource"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CBehaviorPowerSource>
+    <!-- Fast Power Source bands for LotV fast warp-in -->
+    <CBehaviorPowerSource id="BPM_EnergizerPowerBandFast01">
+        <InfoFlags index="Hidden" value="1"/>
+        <Radius value="2.25"/>
+        <PowerLink value="FastPowerSource"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CBehaviorPowerSource>
+    <CBehaviorPowerSource id="BPM_EnergizerPowerBandFast02">
+        <InfoFlags index="Hidden" value="1"/>
+        <Radius value="2.25"/>
+        <PowerLink value="FastPowerSource"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CBehaviorPowerSource>
+    <CBehaviorPowerSource id="BPM_EnergizerPowerBandFast03">
+        <InfoFlags index="Hidden" value="1"/>
+        <Radius value="2.25"/>
+        <PowerLink value="FastPowerSource"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CBehaviorPowerSource>
+    <CBehaviorPowerSource id="BPM_EnergizerPowerBandFast04">
+        <InfoFlags index="Hidden" value="1"/>
+        <Radius value="2.25"/>
+        <PowerLink value="FastPowerSource"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CBehaviorPowerSource>
+    <CBehaviorPowerSource id="BPM_EnergizerPowerBandFast05">
+        <InfoFlags index="Hidden" value="1"/>
+        <Radius value="2.25"/>
+        <PowerLink value="FastPowerSource"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CBehaviorPowerSource>
+    <CBehaviorPowerSource id="BPM_EnergizerPowerBandFast06">
+        <InfoFlags index="Hidden" value="1"/>
+        <Radius value="2.25"/>
+        <PowerLink value="FastPowerSource"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CBehaviorPowerSource>
+    <CBehaviorPowerSource id="BPM_EnergizerPowerBandFast07">
+        <InfoFlags index="Hidden" value="1"/>
+        <Radius value="2.625"/>
+        <PowerLink value="FastPowerSource"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CBehaviorPowerSource>
+    <CBehaviorPowerSource id="BPM_EnergizerPowerBandFast08">
+        <InfoFlags index="Hidden" value="1"/>
+        <Radius value="3"/>
+        <PowerLink value="FastPowerSource"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CBehaviorPowerSource>
+    <CBehaviorPowerSource id="BPM_EnergizerPowerBandFast09">
+        <InfoFlags index="Hidden" value="1"/>
+        <Radius value="3.375"/>
+        <PowerLink value="FastPowerSource"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CBehaviorPowerSource>
+    <CBehaviorPowerSource id="BPM_EnergizerPowerBandFast10">
+        <InfoFlags index="Hidden" value="1"/>
+        <Radius value="3.75"/>
+        <PowerLink value="FastPowerSource"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CBehaviorPowerSource>
+    <CBehaviorPowerSource id="BPM_EnergizerPowerBandFast11">
+        <InfoFlags index="Hidden" value="1"/>
+        <Radius value="4.125"/>
+        <PowerLink value="FastPowerSource"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CBehaviorPowerSource>
+    <CBehaviorPowerSource id="BPM_EnergizerPowerBandFast12">
+        <InfoFlags index="Hidden" value="1"/>
+        <Radius value="4.5"/>
+        <PowerLink value="FastPowerSource"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CBehaviorPowerSource>
+    <CBehaviorPowerSource id="BPM_EnergizerPowerBandFast13">
+        <InfoFlags index="Hidden" value="1"/>
+        <Radius value="4.875"/>
+        <PowerLink value="FastPowerSource"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CBehaviorPowerSource>
+    <CBehaviorPowerSource id="BPM_EnergizerPowerBandFast14">
+        <InfoFlags index="Hidden" value="1"/>
+        <Radius value="5.25"/>
+        <PowerLink value="FastPowerSource"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CBehaviorPowerSource>
+    <CBehaviorPowerSource id="BPM_EnergizerPowerBandFast15">
+        <InfoFlags index="Hidden" value="1"/>
+        <Radius value="5.625"/>
+        <PowerLink value="FastPowerSource"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CBehaviorPowerSource>
+    <CBehaviorPowerSource id="BPM_EnergizerPowerBandFast16">
+        <InfoFlags index="Hidden" value="1"/>
+        <Radius value="6"/>
+        <PowerLink value="FastPowerSource"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CBehaviorPowerSource>
+    <CBehaviorBuff id="BPM_RepairDroneTimedLife" parent="TimedLife">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Duration value="90"/>
+        <DisplayDuration index="Self" value="1"/>
+        <DisplayDuration index="Ally" value="1"/>
+        <DisplayDuration index="Enemy" value="1"/>
+        <Modification>
+            <StateFlags index="Summoned" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+
+    <!-- v1.4.3 balance: QueenClassic Parasite - permanent vision reveal of
+         the target unit to the caster's player. No Duration means it lasts
+         until the target dies. -->
+    <CBehaviorBuff id="BPM_QueenParasite">
+        <InfoFlags index="Hidden" value="0"/>
+        <InfoIcon value="Assets\Textures\btn-ability-zerg-parasite.dds"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Alignment value="Negative"/>
+        <RevealUnit Value="Target"/>
+    </CBehaviorBuff>
+    <!-- Science Vessel Boost: doubles movement speed for 6 seconds. -->
+    <CBehaviorBuff id="BPM_ScienceVesselBoost">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Alignment value="Positive"/>
+        <Duration value="6"/>
+        <Modification MoveSpeedMultiplier="2"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BPM_RavenFireControlAnchorTimedLife">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
+        <Duration value="20"/>
+        <DurationRandomMax value="0"/>
+        <Modification>
+            <StateFlags index="Invulnerable" value="1"/>
+            <StateFlags index="Untargetable" value="1"/>
+            <StateFlags index="Unselectable" value="1"/>
+        </Modification>
+        <ExpireEffect value="Suicide"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BPM_RavenFireControlAnchorScan">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
+        <Period value="0.5"/>
+        <PeriodicEffect value="BPM_RavenFireControlNetwork@Tick"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BPM_RavenFireControlAnchorHasTarget">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
+    </CBehaviorBuff>
+    <!-- v1.4.3 balance: Raven Integrated Fire Control Network mark. -->
+    <CBehaviorBuff id="BPM_RavenFireControlMark">
+        <InfoIcon value="Assets\Textures\btn-ability-terran-firecontrolnetwork.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
+        <Alignment value="Negative"/>
+        <Duration value="1.25"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <DamageResponse ModifyFraction="1.2" ModifyMinimumDamage="0">
+            <Chance value="1"/>
+            <Kind index="Ranged" value="1"/>
+            <Kind index="Melee" value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <!-- Defiler Dark Swarm: DamageResponse is a singleton, not an indexed
+         array. Use one inherited behavior per damage kind so ranged and
+         melee attacks can have independent reduction fractions. -->
+    <CBehaviorBuff id="DefilerMPDarkSwarm">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Zerg"/>
+        <Duration value="0.35"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <DamageResponse ModifyFraction="0.5" ModifyMinimumDamage="0">
+            <Chance value="1"/>
+            <Kind index="Ranged" value="1"/>
+        </DamageResponse>
+        <!-- This protection is refreshed every 0.25s while inside the cloud.
+             Do not expose that implementation timer as an overhead bar. -->
+        <DisplayDuration index="Self" value="0"/>
+        <DisplayDuration index="Ally" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BPM_DefilerMPDarkSwarmMelee" parent="DefilerMPDarkSwarm">
+        <DamageResponse ModifyFraction="0.7" ModifyMinimumDamage="0">
+            <Chance value="1"/>
+            <Kind index="Ranged" value="0"/>
+            <Kind index="Melee" value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <!-- v1.4.3 balance: Crucio Suppressor - reduces Siege Tank's friendly fire damage by 75% -->
+    <CBehaviorBuff id="BPM_CrucioSuppressorBehavior">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
+        <Requirements value="BPM_Req_CrucioSuppressorResearched"/>
+        <!-- Alliance flags in the positive half are conjunctive.  Requiring
+             Player and Ally together never matches, so admit both by excluding
+             every non-friendly relationship instead. -->
+        <DamageResponse Location="Attacker" ModifyFraction="0.25" ModifyMinimumDamage="0" TargetFilters="-;Self,Neutral,Enemy,Missile,Stasis,Dead,Hidden,Invulnerable">
+            <Kind index="NoProc" value="0"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <!-- v1.5 / balance: Irradiate duration reduced from 30s game time (21.4s on Faster)
+         to 21s game time (15.0s on Faster). -->
+    <CBehaviorBuff id="Irradiate">
+        <Duration value="21"/>
+    </CBehaviorBuff>
+</Catalog>
+

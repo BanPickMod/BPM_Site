@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>뷰어 시안 E · 합성안 (A+B+C + 3D 지도)</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="viewer-shared.css">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+<style>
+/* E. Mix: B's live draft board (with C's per-player numbers and usage bars) | 3D map with C-style corner cards | A's tab panel. */
+body{height:100vh;display:grid;grid-template-rows:auto 1fr auto;overflow:hidden}
+.top{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;padding:8px 16px;border-bottom:1px solid var(--line);background:linear-gradient(90deg,#38bdf81c,transparent 32%,transparent 68%,#f59e0b1c)}
+.top .p{display:flex;align-items:center;gap:10px;font:900 1.35rem var(--f-display);text-transform:uppercase}.top .p.r{justify-content:flex-end}
+.top .p .res{font:800 .72rem var(--f-mono);padding:2px 9px;border:1px solid currentColor;border-radius:99px}
+.top .mid{text-align:center}.top h1{font:900 1.25rem var(--f-display);text-transform:uppercase;line-height:1.1}.top .meta{font:.72rem var(--f-mono);color:var(--mute)}
+.main{display:grid;grid-template-columns:292px minmax(0,1fr) 352px;min-height:0}
+.board{border-right:1px solid var(--line);overflow:auto;padding:10px;display:grid;gap:12px;align-content:start;background:var(--bg2)}
+.pl{display:grid;gap:8px;padding:10px;border:1px solid var(--line2);border-radius:var(--r);background:var(--panel)}
+.pl.l{border-top:3px solid var(--p1)}.pl.r{border-top:3px solid var(--p2)}
+.pl>header{display:flex;align-items:center;gap:8px}.pl h2{font:900 1.05rem var(--f-display);text-transform:uppercase}
+.big{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}.big div{padding:5px 6px;background:var(--panel2);border-radius:var(--r);text-align:center}
+.big b{display:block;font:800 1.15rem var(--f-display);line-height:1.05}.big span{font:.58rem var(--f-mono);color:var(--mute)}
+.pl.l .big b{color:var(--p1)}.pl.r .big b{color:var(--p2)}
+.pk{display:grid;grid-template-columns:36px 1fr;gap:8px;align-items:center;padding:5px 7px;border:1px solid var(--line2);border-left:4px solid var(--pick);border-radius:var(--r);background:var(--panel2)}
+.pk.unused{border-left-color:var(--line2);opacity:.75}.pk img{width:36px;height:36px;object-fit:contain}
+.pk b{display:block;font-size:.88rem}.pk small{display:block;color:var(--mute);font-size:.68rem}
+.pk .use{display:flex;gap:9px;font:.66rem var(--f-mono);margin-top:2px}.pk .use b{display:inline;color:var(--pick)}
+.badge{display:inline-block;padding:0 6px;border-radius:99px;border:1px solid var(--ban);font:700 .58rem var(--f-mono);color:var(--ban);margin-left:5px;vertical-align:1px}
+.bar{height:5px;background:var(--bg);border-radius:2px;overflow:hidden;margin-top:3px}.bar s{display:block;height:100%;background:var(--pick)}
+.bans{display:flex;flex-wrap:wrap;gap:5px}.bans .vw-unit{min-height:32px;font-size:.78rem}.bans .vw-unit img{width:22px;height:22px}
+.stage{position:relative;min-height:0;background:#07080f}
+.stage .tools{position:absolute;left:50%;top:10px;transform:translateX(-50%);display:flex;gap:6px;z-index:3}
+.stage .tools button{background:#07080fd9;border:1px solid var(--line2);padding:5px 11px;border-radius:var(--r);font:.7rem var(--f-mono);color:var(--mute)}
+.stage .tools button[aria-pressed=true]{color:#fff;border-color:var(--accent);background:var(--accent-fill)}
+.corner{position:absolute;top:10px;z-index:2;width:196px;padding:8px 10px;background:#07080fcc;border:1px solid var(--line2);backdrop-filter:blur(3px);border-radius:var(--r)}
+.corner.l{left:10px;border-left:3px solid var(--p1)}.corner.r{right:10px;border-right:3px solid var(--p2);text-align:right}
+.corner .n{font:800 .8rem var(--f-display);text-transform:uppercase}.corner .c{font:.66rem var(--f-mono);color:var(--mute);margin:2px 0 6px}
+.corner .ic{display:flex;gap:4px;flex-wrap:wrap}.corner.r .ic{justify-content:flex-end}
+.corner .ic span{position:relative;width:30px;height:30px;border:1px solid var(--pick);border-radius:var(--r);background:var(--panel2)}
+.corner .ic span.dead{border-color:var(--line2);opacity:.5}.corner .ic img{width:28px;height:28px;object-fit:contain}.corner .ic em{position:absolute;right:1px;bottom:0;font:700 .6rem var(--f-mono);font-style:normal;text-shadow:0 0 3px #000}
+.tip{position:absolute;z-index:6;pointer-events:none;padding:5px 9px;background:#07080ff2;border:1px solid var(--line2);border-radius:var(--r);font-size:.78rem;white-space:nowrap}
+.tip b{font-weight:700}.tip small{display:block;color:var(--mute);font:.64rem var(--f-mono)}
+.legend[hidden]{display:none}
+.legend{position:absolute;left:10px;bottom:10px;z-index:2;width:236px;max-height:46%;overflow:auto;padding:8px 10px;background:#07080fd9;border:1px solid var(--line2);border-radius:var(--r);font-size:.72rem}
+.legend h4{margin:0 0 4px;font:700 .62rem var(--f-mono);letter-spacing:.08em;color:var(--mute)}
+.legend .o{margin-bottom:7px}.legend .o.a{border-left:3px solid var(--p1);padding-left:7px}.legend .o.b{border-left:3px solid var(--p2);padding-left:7px}
+.legend .rows{display:grid;grid-template-columns:1fr 1fr;gap:2px 8px}.legend .rows span{display:flex;align-items:center;gap:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.legend img{width:18px;height:18px;object-fit:contain}.legend i{display:inline-block;width:18px;height:18px;border-radius:3px;background:var(--panel2);flex:none}
+.legend b{margin-left:auto;font-family:var(--f-mono);color:var(--text)}
+.legend button{font:.62rem var(--f-mono);color:var(--mute);margin-left:6px}
+.strip{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);z-index:2;display:grid;grid-template-columns:auto auto auto auto auto;gap:3px 14px;padding:7px 14px;background:#07080fd9;border:1px solid var(--line2);border-radius:var(--r);font:.72rem var(--f-mono);white-space:nowrap}
+.strip b{font-weight:700}.strip .a{color:var(--p1)}.strip .b{color:var(--p2)}.strip .k{color:var(--mute)}
+.hint{position:absolute;left:50%;top:46px;transform:translateX(-50%);z-index:2;font:.62rem var(--f-mono);color:var(--mute);background:#07080fb0;padding:2px 9px;border-radius:var(--r);white-space:nowrap;pointer-events:none}
+.side{border-left:1px solid var(--line);display:flex;flex-direction:column;min-height:0}
+.tabs{display:flex;border-bottom:1px solid var(--line)}.tabs button{flex:1;padding:10px 2px;font-size:.74rem;font-weight:700;color:var(--mute);border-bottom:2px solid transparent}
+.tabs button[aria-selected=true]{color:var(--text);border-color:var(--accent)}
+.pane{padding:12px;overflow:auto;display:none;gap:12px;align-content:start}.pane.on{display:grid}
+.sg{display:grid;grid-template-columns:1fr auto 1fr;gap:5px 10px;font-size:.84rem;align-items:center}.sg .l{color:var(--mute);text-align:center;font-size:.7rem}
+.sg b{font-family:var(--f-mono)}.sg b.a{color:var(--p1);text-align:right}.sg b.b{color:var(--p2)}
+.log{display:grid;grid-template-columns:44px 1fr;gap:2px 8px;font-size:.78rem}.log .t{font-family:var(--f-mono);color:var(--mute)}.log .p{color:var(--pick);font-weight:700}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.bt .it{display:grid;grid-template-columns:22px 1fr;gap:8px;padding:7px 9px;margin-bottom:7px;background:var(--panel);border:1px solid var(--line2);border-left:3px solid var(--ban);border-radius:var(--r);cursor:pointer;font-size:.8rem}
+.bt .it small{display:block;color:var(--mute)}.bt .it b{font-family:var(--f-mono)}
+.dock{border-top:1px solid var(--line);padding:8px 16px 12px;background:var(--bg2);display:grid;gap:6px}
+@media (max-width:1180px){body{height:auto;overflow:auto;display:block}.main{grid-template-columns:1fr}.stage{height:78vw;min-height:380px}.board{border:0;grid-template-columns:1fr 1fr}.side{border:0}.corner{display:none}.strip{display:none}.legend{display:none}}
+@media (max-width:640px){.board{grid-template-columns:1fr}.top{grid-template-columns:1fr}.top .p.r,.top .p{justify-content:center}}
+</style>
+</head>
+<body>
+<header class="top"><div class="p p1c" id="hp1"></div><div class="mid"><h1>Rorschach</h1><div class="meta">TvZ · 12:14 · 2026-10-08 · BPM 2.0</div></div><div class="p r p2c" id="hp2"></div></header>
+<section class="main">
+  <aside class="board" id="board" aria-label="밴픽 상태"></aside>
+  <div class="stage" id="stage">
+    <div class="tools"><button id="bReset">시점 초기화</button><button id="bTop">위에서 보기</button><button id="bFollow" aria-pressed="false">전투 따라가기</button><button id="bLegend" aria-pressed="false">범례</button><button title="드래그: 회전 · 휠: 확대 · 우클릭 드래그: 이동 · 라임 기둥 = 픽한 유닛 · 위치는 약 10초 간격 표본(근사)" aria-label="조작 안내">?</button></div>
+    <div class="corner l" id="cl"></div><div class="corner r" id="cr"></div>
+    <div class="strip" id="strip"></div>
+    <div class="legend" id="legend" hidden></div>
+    <div class="tip" id="tip" hidden></div>
+  </div>
+  <aside class="side">
+    <div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-p="sum">요약</button><button role="tab" aria-selected="false" data-p="units">유닛</button><button role="tab" aria-selected="false" data-p="eco">운영</button><button role="tab" aria-selected="false" data-p="build">빌드</button><button role="tab" aria-selected="false" data-p="bat">교전</button></div>
+    <div class="pane on" id="p-sum"></div>
+    <div class="pane" id="p-units"><div class="sg"><b class="a" data-stat="1.killed">0</b><span class="l">처치 가치</span><b class="b" data-stat="2.killed">0</b><b class="a" data-stat="1.lost">0</b><span class="l">손실 가치</span><b class="b" data-stat="2.lost">0</b></div>
+      <p class="vw-k">병력 구성 (라임 = 픽 유닛)</p><div style="height:60px"><canvas id="cp1"></canvas></div><div style="height:60px"><canvas id="cp2"></canvas></div></div>
+    <div class="pane" id="p-eco"><p class="vw-k">분당 광물 수입</p><div style="height:86px"><canvas id="chInc"></canvas></div><p class="vw-k">일꾼 수</p><div style="height:86px"><canvas id="chWk"></canvas></div><p class="vw-k">병력 가치</p><div style="height:86px"><canvas id="chArmy"></canvas></div><span class="vw-legend"><span><i style="background:var(--p1)"></i>P1</span><span><i style="background:var(--p2)"></i>P2</span></span></div>
+    <div class="pane" id="p-build"><div class="two" id="buildLog"></div></div>
+    <div class="pane" id="p-bat"><div class="bt" id="bt"></div></div>
+  </aside>
+</section>
+<footer class="dock"><div id="tr"></div><div id="tl"></div></footer>
+<script src="viewer-data.js"></script><script src="viewer-core.js"></script><script type="module" src="viewer-3d.js"></script>
+<script type="module">
+const V = window.Viewer, D = V.D, ko = (id) => (D.meta[id] || {}).ko || id, ic = (id) => ((D.meta[id] || {}).icon ? `../../public${D.meta[id].icon}` : "");
+const win = D.draft.findIndex((p) => p.result === "win");
+document.getElementById("hp1").innerHTML = `${V.raceImg(D.draft[0].race)} P1 <span class="res ${win === 0 ? "res-w" : "res-l"}">${win === 0 ? "승" : "패"}</span>`;
+document.getElementById("hp2").innerHTML = `<span class="res ${win === 1 ? "res-w" : "res-l"}">${win === 1 ? "승" : "패"}</span> P2 ${V.raceImg(D.draft[1].race)}`;
+
+// ---- left: live draft board (B) with per-player numbers (C) ----
+const board = document.getElementById("board");
+function renderBoard(t) {
+  board.innerHTML = D.draft.map((p, i) => {
+    const o = i + 1, s = V.statAt(o, t) || {}, use = V.pickUsage(i, t), tot = Math.max(1, ...V.pickUsage(i, D.duration).map((u) => u.total));
+    const picks = use.map((u) => `<div class="pk ${u.unused ? "unused" : ""}"><img src="${ic(u.unit)}" alt=""><div><b>${ko(u.unit)}${u.unused ? '<span class="badge">미사용</span>' : ""}</b><small>← ${ko(u.replaces)} 대신</small>
+      <div class="use"><span>생산 <b>${u.made}</b></span><span>생존 <b>${u.alive}</b></span><span>손실 <b>${u.lost}</b></span><span>첫 <b>${u.first == null ? "—" : V.fmt(u.first)}</b></span></div><div class="bar"><s style="width:${(u.made / tot) * 100}%"></s></div></div></div>`).join("");
+    const bans = p.bans.map((b) => V.chip(b, "ban")).join("") || `<span class="vw-dim">없음</span>`;
+    return `<section class="pl ${i ? "r" : "l"}"><header>${V.raceImg(p.race)}<h2 class="${i ? "p2c" : "p1c"}">P${o}</h2></header>
+      <div class="big"><div><b>${s.sup ?? 0}</b><span>보급</span></div><div><b>${s.wk ?? 0}</b><span>일꾼</span></div><div><b>${V.num(s.army ?? 0)}</b><span>병력</span></div><div><b>${V.num(s.inc ?? 0)}</b><span>수입</span></div></div>
+      <p class="vw-k">받은 밴</p><div class="bans">${bans}</div><p class="vw-k">고른 유닛 (${p.picks.length})</p>${picks}</section>`; }).join("");
+}
+V.Clock.on((t) => { const k = Math.floor(t * 2); if (k !== renderBoard.k) { renderBoard.k = k; renderBoard(t); } });
+
+// ---- map corner cards (C) and bottom strip ----
+const alive = (o, t) => { let u = 0, b = 0; for (const x of V.units) if (x.owner === o && x.t0 <= t && t < x.t1) { if (x.building) b++; else if (!x.worker) u++; } return { u, b }; };
+function corners(t) {
+  [1, 2].forEach((o, n) => { const a = alive(o, t), use = V.pickUsage(o - 1, t);
+    document.getElementById(n ? "cr" : "cl").innerHTML = `<div class="n ${n ? "p2c" : "p1c"}">P${o}</div><div class="c">유닛 ${a.u} · 건물 ${a.b}</div><div class="ic">${use.map((u) => `<span class="${u.alive ? "" : "dead"}" title="${ko(u.unit)}"><img src="${ic(u.unit)}" alt=""><em>${u.alive}</em></span>`).join("")}</div>`; });
+  const s1 = V.statAt(1, t) || {}, s2 = V.statAt(2, t) || {};
+  document.getElementById("strip").innerHTML = `<span class="a">P1</span><span><span class="k">보급</span> <b>${s1.sup}/${s1.cap}</b></span><span><span class="k">일꾼</span> <b>${s1.wk}</b></span><span><span class="k">병력</span> <b>${V.num(s1.army)}</b></span><span><span class="k">수입</span> <b>${V.num(s1.inc)}</b></span>
+    <span class="b">P2</span><span><span class="k">보급</span> <b>${s2.sup}/${s2.cap}</b></span><span><span class="k">일꾼</span> <b>${s2.wk}</b></span><span><span class="k">병력</span> <b>${V.num(s2.army)}</b></span><span><span class="k">수입</span> <b>${V.num(s2.inc)}</b></span>`;
+}
+V.Clock.on((t) => { const k = Math.floor(t * 2); if (k !== corners.k) { corners.k = k; corners(t); } });
+
+// ---- right: tabs (A) ----
+const u1 = V.pickUsage(0, D.duration), used = u1.filter((u) => !u.unused), unusedNames = u1.filter((u) => u.unused).map((u) => ko(u.unit)).join(", ");
+const wins = V.battles.filter((b) => b.winner === win + 1).length;
+document.getElementById("p-sum").innerHTML = `<div class="sg"><b class="a" data-stat="1.sup">0</b><span class="l">보급</span><b class="b" data-stat="2.sup">0</b><b class="a" data-stat="1.wk">0</b><span class="l">일꾼</span><b class="b" data-stat="2.wk">0</b><b class="a" data-stat="1.army">0</b><span class="l">병력 가치</span><b class="b" data-stat="2.army">0</b><b class="a" data-stat="1.inc">0</b><span class="l">분당 광물</span><b class="b" data-stat="2.inc">0</b></div>
+  <p class="vw-k">한 줄 결론</p><p>P${win + 1} 승, ${V.fmt(D.duration)}. 교전 ${V.battles.length}번 중 ${wins}번을 P${win + 1}이 가져갔습니다.</p>
+  <p class="vw-k">밴픽이 경기에 준 영향</p><p>P1은 픽 ${u1.length}개 중 <b style="color:var(--pick)">${used.length}개</b>를 실제로 썼습니다${unusedNames ? ` (미사용: ${unusedNames})` : ""}. 가장 먼저 나온 픽은 ${ko(used.sort((a, b) => a.first - b.first)[0].unit)}(${V.fmt(used[0].first)})입니다.</p>`;
+document.getElementById("buildLog").innerHTML = [1, 2].map((o) => `<div><p class="vw-k ${o === 1 ? "p1c" : "p2c"}">P${o}</p><div class="log">${V.buildLog(o, 34).map((e) => `<span class="t">${V.fmt(e.t)}</span><span class="${e.pick ? "p" : ""}">${ko(e.type)}${e.pick ? " ◆" : ""}</span>`).join("")}</div></div>`).join("");
+document.getElementById("bt").innerHTML = V.battles.map((b) => `<div class="it" data-t="${b.t0}"><b>${b.id}</b><span>${V.fmt(b.t0)}–${V.fmt(b.t1)} · 손실 ${b.lost[1]} 대 ${b.lost[2]}<small>${b.winner ? "P" + b.winner + " 우세" : "비김"} · 픽 유닛 손실 ${b.picksLost}</small></span></div>`).join("");
+document.querySelectorAll("#bt .it").forEach((e) => (e.onclick = () => V.Clock.set(+e.dataset.t - 2)));
+document.querySelectorAll(".tabs button").forEach((b) => (b.onclick = () => { document.querySelectorAll(".tabs button").forEach((x) => x.setAttribute("aria-selected", x === b)); document.querySelectorAll(".pane").forEach((p) => p.classList.toggle("on", p.id === "p-" + b.dataset.p)); }));
+
+// ---- legend (what is on the map right now) and hover name ----
+const SKIPT = /^(Larva|Egg|Broodling|Beacon|Creep|Auto|Interceptor|Locust)/, WORKER = /^(SCV|Drone|Probe|MULE)$/;
+function legend(t) {
+  const box = document.getElementById("legend");
+  box.innerHTML = [1, 2].map((o) => { const cu = {}, cb = {};
+    for (const x of V.units) if (x.owner === o && x.t0 <= t && t < x.t1 && !SKIPT.test(x.type) && !WORKER.test(x.type)) { const m = x.building ? cb : cu; m[x.type] = (m[x.type] || 0) + 1; }
+    const row = ([type, n]) => `<span title="${V.nameOf(type)}">${(D.meta[type] || {}).icon ? `<img src="../../public${D.meta[type].icon}" alt="">` : "<i></i>"}${V.nameOf(type)}<b>${n}</b></span>`;
+    const top = (m, k) => Object.entries(m).sort((a, b) => b[1] - a[1]).slice(0, k);
+    return `<div class="o ${o === 1 ? "a" : "b"}"><h4>P${o} 유닛</h4><div class="rows">${top(cu, 8).map(row).join("") || '<span class="vw-dim">없음</span>'}</div><h4 style="margin-top:5px">P${o} 건물</h4><div class="rows">${top(cb, 6).map(row).join("")}</div></div>`; }).join("")
+    + `<span class="vw-note">지도에는 위치가 추적된 유닛만 그려집니다</span>`;
+}
+V.Clock.on((t) => { const k = Math.floor(t); if (k !== legend.k) { legend.k = k; legend(t); } });
+const tip = document.getElementById("tip");
+function onHover(h) {
+  if (!h) { tip.hidden = true; return; }
+  const u = h.unit; tip.hidden = false; tip.style.left = Math.min(h.x + 14, tip.parentElement.clientWidth - 170) + "px"; tip.style.top = h.y + 14 + "px";
+  tip.innerHTML = `<b class="${u.owner === 1 ? "p1c" : "p2c"}">P${u.owner}</b> <b>${V.nameOf(u.type)}</b>${u.pick ? ' <span style="color:var(--pick)">◆ 픽</span>' : ""}<small>${u.building ? "건물" : "유닛"} · ${V.fmt(u.t0)} 등장${u.t1 < Infinity ? " · " + V.fmt(u.t1) + " 파괴" : ""}</small>`;
+}
+// ---- 3D map, transport, timeline ----
+const view = window.Viewer3D.mount(document.getElementById("stage"), { onHover });
+document.getElementById("bReset").onclick = () => view.resetView();
+const bl = document.getElementById("bLegend"); bl.onclick = () => { const on = bl.getAttribute("aria-pressed") !== "true"; bl.setAttribute("aria-pressed", String(on)); document.getElementById("legend").hidden = !on; };
+document.getElementById("bTop").onclick = () => view.topView();
+const bf = document.getElementById("bFollow"); bf.onclick = () => { const on = bf.getAttribute("aria-pressed") !== "true"; bf.setAttribute("aria-pressed", String(on)); view.setFollow(on); };
+V.mountTransport(document.getElementById("tr")); V.mountTimeline(document.getElementById("tl"), { pickLabel: "픽 첫 등장" }); V.bindStats();
+V.drawChart(document.getElementById("chInc"), "inc"); V.drawChart(document.getElementById("chWk"), "wk"); V.drawChart(document.getElementById("chArmy"), "army");
+V.drawComp(document.getElementById("cp1"), 1); V.drawComp(document.getElementById("cp2"), 2);
+window.__view = view;
+</script>
+</body>
+</html>

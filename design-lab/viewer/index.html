@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>리플레이 뷰어 레이아웃 시안 비교</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="viewer-shared.css">
+<style>
+.wrap{width:min(100% - 32px,1180px);margin:0 auto;padding:36px 0 80px;display:grid;gap:34px}
+h1{font:900 clamp(2.2rem,5vw,3.6rem) var(--f-display);text-transform:uppercase;line-height:1}
+h2{font:900 1.7rem var(--f-display);text-transform:uppercase}
+.lede{color:var(--mute);max-width:70ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(440px,1fr));gap:18px}
+.opt{display:grid;gap:12px;padding:14px;border:1px solid var(--line2);background:var(--panel);border-radius:var(--r)}
+.opt img{width:100%;border:1px solid var(--line);border-radius:var(--r);aspect-ratio:16/10;object-fit:cover;object-position:top}
+.opt h3{display:flex;align-items:baseline;gap:10px;font:900 1.4rem var(--f-display);text-transform:uppercase}
+.opt h3 b{color:var(--accent);font-size:2rem}
+.opt .go{justify-self:start;padding:8px 14px;background:var(--accent-fill);color:#fff;border-radius:var(--r);font-weight:700;font-size:.88rem}
+.pc{display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:.84rem}.pc b{display:block;font:700 .68rem var(--f-mono);letter-spacing:.08em;margin-bottom:4px}
+.pc .y b{color:var(--pick)}.pc .n b{color:var(--ban)}.pc li{padding-left:12px;position:relative;margin-bottom:3px}.pc li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:2px;background:currentColor;opacity:.6}
+table{width:100%;border-collapse:collapse;font-size:.88rem}th,td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{font:700 .72rem var(--f-mono);color:var(--mute);letter-spacing:.05em}
+td.c{text-align:center;font-family:var(--f-mono)}
+.g{color:var(--pick)}.m{color:var(--p2)}.b{color:var(--ban)}
+.box{padding:16px 18px;border:1px solid var(--pick);background:#d6f5420d;border-radius:var(--r);display:grid;gap:8px}
+.mob{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-start}.mob img{height:360px;border:1px solid var(--line2);border-radius:var(--r)}
+.tscroll{overflow:auto}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header style="display:grid;gap:10px">
+    <p class="vw-k">BPM 리플레이 뷰어 · 레이아웃 시안 5종</p>
+    <h1>어떤 화면이 이 경기를 가장 잘 보여줄까</h1>
+    <p class="lede">다섯 시안 모두 <b>실제 경기 한 판</b>(BPM_Rorschach, TvZ, 12분 14초)의 실제 데이터와 <b>엔진의 실제 지형 격자</b>로 움직입니다. 재생·배속·타임라인 클릭·키보드(스페이스, ←→)가 모두 동작합니다. 위치는 리플레이의 약 10초 간격 표본을 보간한 <b>근사</b>이고, 교전은 사망 밀도로 단순 감지한 것입니다(제품에서는 더 다듬을 부분). 시안 간 비교를 위한 것이라 문구와 색은 확정이 아닙니다.</p>
+    <p class="vw-note">로컬에서 보려면 BPM_Site 폴더에서 <code>python -m http.server 8099</code> 후 <code>http://localhost:8099/design-lab/viewer/index.html</code></p>
+  </header>
+
+    <section class="box" style="border-color:var(--accent);background:#4a80ff0d">
+    <h2>E 합성안 — 2 + 3 + 1, 그리고 게임 같은 3D 지도</h2>
+    <a href="viewer-5.html"><img src="thumbs/e.png" alt="시안 E" style="width:100%;border:1px solid var(--line2);border-radius:var(--r)"></a>
+    <ul class="vw-list"><li>• <b>왼쪽</b>: 2안의 살아 있는 밴픽 보드(픽별 생산·생존·손실·첫 등장, 미사용 표시)에 3안의 플레이어별 큰 숫자와 사용 막대를 합침</li>
+      <li>• <b>가운데</b>: 실제 높이 격자로 세운 <b>3D 지도</b>(절벽·경사로·그림자·기지 주변 빛·광물), 종족별 스킨, 모서리의 플레이어 카드와 아래 수치 줄. 드래그로 회전, 휠로 확대, "전투 따라가기" 카메라</li>
+      <li>• <b>오른쪽</b>: 1안의 탭 패널(요약·유닛·운영·빌드·교전)</li>
+      <li>• 픽한 유닛은 <b>위키 아이콘이 머리 위에 뜨고 라임 기둥</b>이 서서 지도에서도 BPM의 선택이 보임</li></ul>
+    <p class="vw-note">유닛·건물 스킨은 <b>직접 만든 종족별 절차적 스킨</b>(테란 패널 금속, 저그 유기체, 프로토스 금빛)이고 블리자드 원본 모델이 아닙니다. 지형 질감도 높이·건설 가능·경사로 데이터를 따라 직접 칠한 것입니다.</p>
+    <a class="go" href="viewer-5.html" style="justify-self:start;padding:8px 14px;background:var(--accent-fill);color:#fff;border-radius:var(--r);font-weight:700;font-size:.88rem">E 열기 →</a>
+  </section>
+
+  <section class="grid">
+    <article class="opt"><h3><b>A</b> 방송 중계형</h3><a href="viewer-1.html"><img src="thumbs/a.png" alt="시안 A"></a>
+      <p>왼쪽 큰 지도, 오른쪽 탭 패널, 아래 타임라인. 밴픽은 지도 위의 <b>가로 띠</b>로 항상 보입니다. 참고 사이트와 가장 비슷한 구성(기준선).</p>
+      <div class="pc"><div class="y"><b>좋은 점</b><ul><li>지도가 가장 크고 익숙한 구성</li><li>탭이 늘어나도 구조가 안 변함</li><li>구현이 가장 단순</li></ul></div><div class="n"><b>아쉬운 점</b><ul><li>참고 사이트와 비슷해 차별이 약함</li><li>픽 5개면 밴픽 띠가 3줄이 되어 지도를 눌러 버림</li><li>픽의 "사용 현황"은 탭을 눌러야 보임</li></ul></div></div>
+      <a class="go" href="viewer-1.html">열기 →</a></article>
+    <article class="opt"><h3><b>B</b> 밴픽 우선형</h3><a href="viewer-2.html"><img src="thumbs/b.png" alt="시안 B"></a>
+      <p>왼쪽 <b>밴픽 보드</b>가 경기 내내 살아 있습니다. 픽마다 <b>생산·생존·손실·첫 등장</b>이 재생 위치를 따라 바뀌고, 쓰지 않은 픽은 "미사용"으로 표시됩니다. 아래에 픽 유닛 비중 차트.</p>
+      <div class="pc"><div class="y"><b>좋은 점</b><ul><li>BPM만의 정보("이 픽을 썼나")가 첫눈에</li><li>밴·픽·사용 현황이 한곳</li><li>이 경기에서 <b>사이언스 베슬·레이스 미사용</b>이 바로 보임</li></ul></div><div class="n"><b>아쉬운 점</b><ul><li>3단 구성이라 폭이 필요(작은 화면은 세로로 쌓음)</li><li>지도가 A보다 작음</li><li>실시간 사용 현황 계산이 추가됨</li></ul></div></div>
+      <a class="go" href="viewer-2.html">열기 →</a></article>
+    <article class="opt"><h3><b>C</b> 대결 화면형</h3><a href="viewer-3.html"><img src="thumbs/c.png" alt="시안 C"></a>
+      <p>지도를 사이에 두고 <b>플레이어 카드</b>가 좌우에. 각자의 밴픽·실시간 수치·픽 사용 막대가 자기 쪽 열에 모입니다. 스코어보드 같은 방송 화면.</p>
+      <div class="pc"><div class="y"><b>좋은 점</b><ul><li>누구의 정보인지 헷갈리지 않음</li><li>숫자가 크고 읽기 쉬움, 중계 느낌</li><li>콜로세움(AI 대 AI) 경기에 어울림</li></ul></div><div class="n"><b>아쉬운 점</b><ul><li>카드가 길면 내부 스크롤</li><li>두 사람을 비교하려면 시선이 좌우로 움직임</li><li>탭/상세 분석을 넣을 자리가 애매</li></ul></div></div>
+      <a class="go" href="viewer-3.html">열기 →</a></article>
+    <article class="opt"><h3><b>D</b> 이야기형 스크롤</h3><a href="viewer-4.html"><img src="thumbs/d.png" alt="시안 D"></a>
+      <p>한 줄 읽기 화면. <b>고정된 미니맵</b>이 지금 보는 챕터(밴픽→초반→픽 등장→교전→결과)에 맞춰 움직이고, 스크롤하면 시계도 이동합니다. 챕터마다 "이 구간 재생".</p>
+      <div class="pc"><div class="y"><b>좋은 점</b><ul><li>모바일에서 가장 자연스러움</li><li>해설·설명을 글로 풀기 좋음(코치 문장)</li><li>시간 순서로 읽는 "이야기"</li></ul></div><div class="n"><b>아쉬운 점</b><ul><li>지도가 작음 — 재생 몰입이 약함</li><li>밴픽이 첫 챕터에만 크게 나옴</li><li>한눈에 전체를 보기 어려움</li></ul></div></div>
+      <a class="go" href="viewer-4.html">열기 →</a></article>
+  </section>
+
+  <section>
+    <h2>비교표</h2>
+    <div class="tscroll"><table>
+      <thead><tr><th>기준</th><th>A 방송</th><th>B 밴픽 우선</th><th>C 대결</th><th>D 이야기</th></tr></thead>
+      <tbody>
+        <tr><td>밴픽이 눈에 띄는가</td><td class="c m">○ 띠</td><td class="c g">◎ 보드(살아 있음)</td><td class="c g">◎ 카드</td><td class="c m">○ 첫 챕터</td></tr>
+        <tr><td>"픽을 썼는가"를 바로 아는가</td><td class="c b">△ 탭 안</td><td class="c g">◎ 항상</td><td class="c m">○ 막대</td><td class="c m">○ 챕터 3</td></tr>
+        <tr><td>재생 몰입(지도 크기)</td><td class="c g">◎</td><td class="c m">○</td><td class="c m">○</td><td class="c b">△</td></tr>
+        <tr><td>정보 밀도</td><td class="c m">○</td><td class="c g">◎</td><td class="c m">○</td><td class="c b">△</td></tr>
+        <tr><td>모바일</td><td class="c b">△ 쌓아야 함</td><td class="c b">△ 쌓아야 함</td><td class="c m">○</td><td class="c g">◎</td></tr>
+        <tr><td>코치 해설 넣기 좋은가</td><td class="c m">○ 코치 탭</td><td class="c m">○ 탭 추가</td><td class="c b">△</td><td class="c g">◎ 본문</td></tr>
+        <tr><td>참고 사이트와 차별</td><td class="c b">△ 비슷함</td><td class="c g">◎</td><td class="c g">◎</td><td class="c g">◎</td></tr>
+        <tr><td>구현 난이도</td><td class="c g">낮음</td><td class="c m">중간</td><td class="c m">중간</td><td class="c m">중간</td></tr>
+        <tr><td>콜로세움(AI 대 AI) 적합</td><td class="c m">○</td><td class="c m">○</td><td class="c g">◎</td><td class="c b">△</td></tr>
+      </tbody></table></div>
+    <p class="vw-note" style="margin-top:8px">표의 평가는 제 판단이며 정답이 아닙니다. ◎ 매우 좋음 · ○ 보통 · △ 약함</p>
+  </section>
+
+  <section class="box">
+    <h2>제 추천 (조합안)</h2>
+    <p><b>화면 크기에 따라 다른 시안을 쓰는 반응형 조합</b>입니다.</p>
+    <ul class="vw-list"><li>• <b>데스크톱 = B</b>의 밴픽 보드 + 가운데 지도 + <b>A의 탭 패널</b>(운영·빌드·교전·코치)을 오른쪽에 합친 형태. 밴픽 정보는 보드가, 숫자 분석은 탭이 맡습니다.</li>
+      <li>• <b>모바일 = D</b>의 고정 미니맵 + 챕터 스크롤. 같은 데이터를 쓰므로 화면 폭만 바뀝니다.</li>
+      <li>• <b>콜로세움(AI 대 AI) 경기 페이지 = C</b>. 두 AI의 페르소나 이름과 밴픽을 크게 보여주는 방송 화면.</li></ul>
+    <p class="vw-note">이유: 이 제품에서 새로 줄 수 있는 가치는 "픽을 썼는가, 밴이 무엇을 막았는가"인데, B가 그것을 가장 먼저 보여 주고 A의 탭 구조는 분석을 늘려도 흔들리지 않기 때문입니다.</p>
+  </section>
+
+  <section>
+    <h2>모바일 모습 (시안 D, E)</h2>
+    <div class="mob"><img src="thumbs/d-mobile.png" alt="D 모바일"><img src="thumbs/e-mobile.png" alt="E 모바일"><p class="lede" style="max-width:46ch">390px 폭. 상단에 미니맵·시계·재생 컨트롤이 고정되고 본문이 스크롤됩니다. 가로 넘침 없음. B와 C도 이 폭에서는 세로로 쌓이지만 지도 아래로 길어집니다.</p></div>
+  </section>
+
+  <section>
+    <h2>직접 눌러 볼 것</h2>
+    <ul class="vw-list"><li>• 스페이스로 재생, 타임라인의 <b>A/B 교전</b> 칩을 눌러 이동, ◆(픽 첫 등장)을 눌러 해당 유닛이 처음 나온 순간으로 이동</li>
+      <li>• 지도에서 <b>라임 테두리</b> 유닛 = 픽한 유닛. 붉은 원 = 진행 중인 교전, 흰 ✕ = 방금 죽은 유닛</li>
+      <li>• 시안마다 <b>같은 시각(7분 40초 전후)</b>에서 정보가 어디에 있는지 비교</li></ul>
+  </section>
+</main>
+</body>
+</html>

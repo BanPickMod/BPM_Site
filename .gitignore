@@ -39,3 +39,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local dev data (PGlite database, uploaded replays)
+/.data/
+
+# .NET build output
+uploader/**/bin/
+uploader/**/obj/
+
+# Velopack release build output
+uploader/publish/
+uploader/releases/

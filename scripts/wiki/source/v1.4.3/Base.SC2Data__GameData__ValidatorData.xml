@@ -1,0 +1,890 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <!-- v1.4.3 balance: Raven Integrated Fire Control Network - tells the
+         zone's periodic search which enemies still need to be acquired
+         vs. which already-marked enemies just need their mark refreshed. -->
+    <CValidatorUnitCompareBehaviorCount id="BPM_ValidatorHasRavenFireControlMark">
+        <Behavior value="BPM_RavenFireControlMark"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="BPM_ValidatorNotHasRavenFireControlMark">
+        <WhichUnit Value="Target"/>
+        <Behavior value="BPM_RavenFireControlMark"/>
+        <Compare value="Eq"/>
+        <Value value="0"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <!-- Anchor-based: Acquire a new target only when this specific anchor
+         has no currently tracked target. -->
+    <CValidatorUnitCompareBehaviorCount id="BPM_RavenFireControlAnchorHasNoTarget">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="BPM_RavenFireControlAnchorHasTarget"/>
+        <Compare value="Eq"/>
+        <Value value="0"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <!-- Leash check: target must remain within radius 3 of the anchor. -->
+    <CValidatorLocationCompareRange id="BPM_RavenFireControlTrackedTargetInRange3">
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="LE"/>
+        <Range value="3"/>
+        <Value Value="CasterUnit"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorCombine id="BPM_RavenFireControlTrackedTargetValid">
+        <Type value="And"/>
+        <CombineArray value="TargetNotDead"/>
+        <CombineArray value="BPM_RavenFireControlTrackedTargetInRange3"/>
+    </CValidatorCombine>
+    <CValidatorUnitFilters id="BPM_CrucioTargetIsEnemyOrNeutral">
+        <Filters value="-;Self,Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CValidatorUnitFilters>
+    <CValidatorUnitFilters id="BPM_CrucioTargetIsAlly">
+        <Filters value="-;Self,Neutral,Enemy,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CValidatorUnitFilters>
+    <!-- v1.4.3 balance: gates the Marauder Shatter Shells AOE slow -->
+    <CValidatorPlayerRequirement id="BPM_ValidatorHasShatterShells">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="BPM_HaveMarauderShatterShells"/>
+    </CValidatorPlayerRequirement>
+    <!-- v1.4.3 balance: Warhound Haywire Missile target validator (Ground Mechanical OR Armored) -->
+    <CValidatorUnitFilters id="BPM_TargetIsMechanical">
+        <Filters value="Ground,Mechanical;Air"/>
+    </CValidatorUnitFilters>
+    <CValidatorUnitFilters id="BPM_TargetIsArmored">
+        <Filters value="Ground,Armored;Air"/>
+    </CValidatorUnitFilters>
+    <CValidatorCombine id="BPM_ValidatorWarhoundTornadoTarget">
+        <Type value="Or"/>
+        <CombineArray value="BPM_TargetIsMechanical"/>
+        <CombineArray value="BPM_TargetIsArmored"/>
+    </CValidatorCombine>
+    <CValidatorUnitFilters id="BPM_FirebatSCBWWeapon@CPValidator">
+        <WhichUnit Value="Caster" />
+        <Filters value="-;Dead" />
+    </CValidatorUnitFilters>
+    <CValidatorCombine id="BPM_FirebatSCBWWeapon@Splash">
+        <Type value="And"/>
+        <CombineArray value="noMarkers"/>
+        <CombineArray value="BPM_FirebatSCBWWeapon@Damage"/>
+        <CombineArray value="NotBurrowed"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="BPM_FirebatSCBWStimpack@TestBuff">
+        <Behavior value="BPM_FirebatSCBWStimpack"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="BPM_FirebatSCBWWeapon@Damage">
+        <Type value="And"/>
+        <CombineArray value="TargetNotAcrossCliff"/>
+        <CombineArray value="BPM_FirebatSCBW@DamageFilters"/>
+    </CValidatorCombine>
+    <CValidatorUnitFilters id="BPM_FirebatSCBW@DamageFilters">
+        <Filters value="-;Player,Ally"/>
+    </CValidatorUnitFilters>
+    <!-- Logical NOT of TargetNotAcrossCliff: true when target IS across a cliff.
+         Used by the bunker weapon switch to stop firing over cliff edges. -->
+    <CValidatorCombine id="BPM_TargetAcrossCliff">
+        <CombineArray value="TargetNotAcrossCliff"/>
+        <Negate value="1"/>
+    </CValidatorCombine>
+    <CValidatorUnitState id="NotInsideTransport">
+        <State value="InsideUnitTransport"/>
+    </CValidatorUnitState>
+    <CValidatorUnitType id="BPM_NotOverlord">
+        <Value value="Overlord"/>
+        <Find value="0"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="BPM_NotQueenBase">
+        <Value value="Queen"/>
+        <Find value="0"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="BPM_NotBPMQueen">
+        <Value value="BPM_Queen"/>
+        <Find value="0"/>
+    </CValidatorUnitType>
+    <CValidatorCombine id="BPM_NotQueen">
+        <Type value="And"/>
+        <CombineArray value="BPM_NotQueenBase"/>
+        <CombineArray value="BPM_NotBPMQueen"/>
+    </CValidatorCombine>
+    <CValidatorUnitType id="BPM_NotEnergizer">
+        <Value value="Energizer"/>
+        <Find value="0"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="BPM_NotEnergizerPhasingMode">
+        <Value value="EnergizerPhasingMode"/>
+        <Find value="0"/>
+    </CValidatorUnitType>
+    <CValidatorCombine id="BPM_NotAnyEnergizer">
+        <Type value="And"/>
+        <CombineArray value="BPM_NotEnergizer"/>
+        <CombineArray value="BPM_NotEnergizerPhasingMode"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareVital id="BPM_EnergizerHasEnergy">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GE"/>
+        <Value value="1"/>
+        <Vital value="Energy"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerHasShields">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GT"/>
+        <Value value="0"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerNoShields">
+        <WhichUnit Value="Caster"/>
+        <Compare value="LE"/>
+        <Value value="0"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <!-- Fractional shield thresholds keep the same field curve when Matrix
+         Overload raises maximum shields from 40 to 80. -->
+    <CValidatorUnitCompareVital id="BPM_EnergizerShieldFractionLT01">
+        <WhichUnit Value="Caster"/>
+        <Compare value="LT"/>
+        <Type value="Fraction"/>
+        <Value value="0.03125"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerShieldFractionGE01">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GE"/>
+        <Type value="Fraction"/>
+        <Value value="0.03125"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerShieldFractionLT02">
+        <WhichUnit Value="Caster"/>
+        <Compare value="LT"/>
+        <Type value="Fraction"/>
+        <Value value="0.0625"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerShieldFractionGE02">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GE"/>
+        <Type value="Fraction"/>
+        <Value value="0.0625"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerShieldFractionLT03">
+        <WhichUnit Value="Caster"/>
+        <Compare value="LT"/>
+        <Type value="Fraction"/>
+        <Value value="0.09375"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerShieldFractionGE03">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GE"/>
+        <Type value="Fraction"/>
+        <Value value="0.09375"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerShieldFractionLT04">
+        <WhichUnit Value="Caster"/>
+        <Compare value="LT"/>
+        <Type value="Fraction"/>
+        <Value value="0.125"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerShieldFractionGE04">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GE"/>
+        <Type value="Fraction"/>
+        <Value value="0.125"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerShieldFractionLT05">
+        <WhichUnit Value="Caster"/>
+        <Compare value="LT"/>
+        <Type value="Fraction"/>
+        <Value value="0.15625"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerShieldFractionGE05">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GE"/>
+        <Type value="Fraction"/>
+        <Value value="0.15625"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerShieldFractionLT06">
+        <WhichUnit Value="Caster"/>
+        <Compare value="LT"/>
+        <Type value="Fraction"/>
+        <Value value="0.1875"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerShieldFractionGE06">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GE"/>
+        <Type value="Fraction"/>
+        <Value value="0.1875"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerShieldFractionLT07">
+        <WhichUnit Value="Caster"/>
+        <Compare value="LT"/>
+        <Type value="Fraction"/>
+        <Value value="0.21875"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerShieldFractionGE07">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GE"/>
+        <Type value="Fraction"/>
+        <Value value="0.21875"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerShieldFractionLT08">
+        <WhichUnit Value="Caster"/>
+        <Compare value="LT"/>
+        <Type value="Fraction"/>
+        <Value value="0.25"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerShieldFractionGE08">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GE"/>
+        <Type value="Fraction"/>
+        <Value value="0.25"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerShieldFractionLT09">
+        <WhichUnit Value="Caster"/>
+        <Compare value="LT"/>
+        <Type value="Fraction"/>
+        <Value value="0.28125"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerShieldFractionGE09">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GE"/>
+        <Type value="Fraction"/>
+        <Value value="0.28125"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerShieldFractionLT10">
+        <WhichUnit Value="Caster"/>
+        <Compare value="LT"/>
+        <Type value="Fraction"/>
+        <Value value="0.3125"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerShieldFractionGE10">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GE"/>
+        <Type value="Fraction"/>
+        <Value value="0.3125"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerShieldFractionLT11">
+        <WhichUnit Value="Caster"/>
+        <Compare value="LT"/>
+        <Type value="Fraction"/>
+        <Value value="0.34375"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerShieldFractionGE11">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GE"/>
+        <Type value="Fraction"/>
+        <Value value="0.34375"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerShieldFractionLT12">
+        <WhichUnit Value="Caster"/>
+        <Compare value="LT"/>
+        <Type value="Fraction"/>
+        <Value value="0.375"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerShieldFractionGE12">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GE"/>
+        <Type value="Fraction"/>
+        <Value value="0.375"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerShieldFractionLT13">
+        <WhichUnit Value="Caster"/>
+        <Compare value="LT"/>
+        <Type value="Fraction"/>
+        <Value value="0.40625"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerShieldFractionGE13">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GE"/>
+        <Type value="Fraction"/>
+        <Value value="0.40625"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerShieldFractionLT14">
+        <WhichUnit Value="Caster"/>
+        <Compare value="LT"/>
+        <Type value="Fraction"/>
+        <Value value="0.4375"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerShieldFractionGE14">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GE"/>
+        <Type value="Fraction"/>
+        <Value value="0.4375"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerShieldFractionLT15">
+        <WhichUnit Value="Caster"/>
+        <Compare value="LT"/>
+        <Type value="Fraction"/>
+        <Value value="0.46875"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerShieldFractionGE15">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GE"/>
+        <Type value="Fraction"/>
+        <Value value="0.46875"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorCombine id="BPM_EnergizerShieldBand01">
+        <Type value="And"/>
+        <CombineArray value="BPM_EnergizerHasShields"/>
+        <CombineArray value="BPM_EnergizerShieldFractionLT01"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerShieldNotBand01">
+        <Type value="Or"/>
+        <CombineArray value="BPM_EnergizerNoShields"/>
+        <CombineArray value="BPM_EnergizerShieldFractionGE01"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerShieldBand02">
+        <Type value="And"/>
+        <CombineArray value="BPM_EnergizerShieldFractionGE01"/>
+        <CombineArray value="BPM_EnergizerShieldFractionLT02"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerShieldNotBand02">
+        <Type value="Or"/>
+        <CombineArray value="BPM_EnergizerShieldFractionLT01"/>
+        <CombineArray value="BPM_EnergizerShieldFractionGE02"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerShieldBand03">
+        <Type value="And"/>
+        <CombineArray value="BPM_EnergizerShieldFractionGE02"/>
+        <CombineArray value="BPM_EnergizerShieldFractionLT03"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerShieldNotBand03">
+        <Type value="Or"/>
+        <CombineArray value="BPM_EnergizerShieldFractionLT02"/>
+        <CombineArray value="BPM_EnergizerShieldFractionGE03"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerShieldBand04">
+        <Type value="And"/>
+        <CombineArray value="BPM_EnergizerShieldFractionGE03"/>
+        <CombineArray value="BPM_EnergizerShieldFractionLT04"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerShieldNotBand04">
+        <Type value="Or"/>
+        <CombineArray value="BPM_EnergizerShieldFractionLT03"/>
+        <CombineArray value="BPM_EnergizerShieldFractionGE04"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerShieldBand05">
+        <Type value="And"/>
+        <CombineArray value="BPM_EnergizerShieldFractionGE04"/>
+        <CombineArray value="BPM_EnergizerShieldFractionLT05"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerShieldNotBand05">
+        <Type value="Or"/>
+        <CombineArray value="BPM_EnergizerShieldFractionLT04"/>
+        <CombineArray value="BPM_EnergizerShieldFractionGE05"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerShieldBand06">
+        <Type value="And"/>
+        <CombineArray value="BPM_EnergizerShieldFractionGE05"/>
+        <CombineArray value="BPM_EnergizerShieldFractionLT06"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerShieldNotBand06">
+        <Type value="Or"/>
+        <CombineArray value="BPM_EnergizerShieldFractionLT05"/>
+        <CombineArray value="BPM_EnergizerShieldFractionGE06"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerShieldBand07">
+        <Type value="And"/>
+        <CombineArray value="BPM_EnergizerShieldFractionGE06"/>
+        <CombineArray value="BPM_EnergizerShieldFractionLT07"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerShieldNotBand07">
+        <Type value="Or"/>
+        <CombineArray value="BPM_EnergizerShieldFractionLT06"/>
+        <CombineArray value="BPM_EnergizerShieldFractionGE07"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerShieldBand08">
+        <Type value="And"/>
+        <CombineArray value="BPM_EnergizerShieldFractionGE07"/>
+        <CombineArray value="BPM_EnergizerShieldFractionLT08"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerShieldNotBand08">
+        <Type value="Or"/>
+        <CombineArray value="BPM_EnergizerShieldFractionLT07"/>
+        <CombineArray value="BPM_EnergizerShieldFractionGE08"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerShieldBand09">
+        <Type value="And"/>
+        <CombineArray value="BPM_EnergizerShieldFractionGE08"/>
+        <CombineArray value="BPM_EnergizerShieldFractionLT09"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerShieldNotBand09">
+        <Type value="Or"/>
+        <CombineArray value="BPM_EnergizerShieldFractionLT08"/>
+        <CombineArray value="BPM_EnergizerShieldFractionGE09"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerShieldBand10">
+        <Type value="And"/>
+        <CombineArray value="BPM_EnergizerShieldFractionGE09"/>
+        <CombineArray value="BPM_EnergizerShieldFractionLT10"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerShieldNotBand10">
+        <Type value="Or"/>
+        <CombineArray value="BPM_EnergizerShieldFractionLT09"/>
+        <CombineArray value="BPM_EnergizerShieldFractionGE10"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerShieldBand11">
+        <Type value="And"/>
+        <CombineArray value="BPM_EnergizerShieldFractionGE10"/>
+        <CombineArray value="BPM_EnergizerShieldFractionLT11"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerShieldNotBand11">
+        <Type value="Or"/>
+        <CombineArray value="BPM_EnergizerShieldFractionLT10"/>
+        <CombineArray value="BPM_EnergizerShieldFractionGE11"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerShieldBand12">
+        <Type value="And"/>
+        <CombineArray value="BPM_EnergizerShieldFractionGE11"/>
+        <CombineArray value="BPM_EnergizerShieldFractionLT12"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerShieldNotBand12">
+        <Type value="Or"/>
+        <CombineArray value="BPM_EnergizerShieldFractionLT11"/>
+        <CombineArray value="BPM_EnergizerShieldFractionGE12"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerShieldBand13">
+        <Type value="And"/>
+        <CombineArray value="BPM_EnergizerShieldFractionGE12"/>
+        <CombineArray value="BPM_EnergizerShieldFractionLT13"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerShieldNotBand13">
+        <Type value="Or"/>
+        <CombineArray value="BPM_EnergizerShieldFractionLT12"/>
+        <CombineArray value="BPM_EnergizerShieldFractionGE13"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerShieldBand14">
+        <Type value="And"/>
+        <CombineArray value="BPM_EnergizerShieldFractionGE13"/>
+        <CombineArray value="BPM_EnergizerShieldFractionLT14"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerShieldNotBand14">
+        <Type value="Or"/>
+        <CombineArray value="BPM_EnergizerShieldFractionLT13"/>
+        <CombineArray value="BPM_EnergizerShieldFractionGE14"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerShieldBand15">
+        <Type value="And"/>
+        <CombineArray value="BPM_EnergizerShieldFractionGE14"/>
+        <CombineArray value="BPM_EnergizerShieldFractionLT15"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerShieldNotBand15">
+        <Type value="Or"/>
+        <CombineArray value="BPM_EnergizerShieldFractionLT14"/>
+        <CombineArray value="BPM_EnergizerShieldFractionGE15"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerShieldBand16">
+        <Type value="And"/>
+        <CombineArray value="BPM_EnergizerShieldFractionGE15"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerShieldNotBand16">
+        <Type value="Or"/>
+        <CombineArray value="BPM_EnergizerShieldFractionLT15"/>
+    </CValidatorCombine>
+    <!-- Effect-context copies are used only by the drain behavior periodic
+         effects.  An intrinsic behavior exposes its owner as Source.  Actor
+         validators above intentionally remain Caster-based. -->
+    <CValidatorUnitCompareVital id="BPM_EnergizerTargetHasShields">
+        <WhichUnit Value="Target"/>
+        <Compare value="GT"/>
+        <Value value="0"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerTargetNoShields">
+        <WhichUnit Value="Target"/>
+        <Compare value="LE"/>
+        <Value value="0"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerTargetShieldFractionLT01">
+        <WhichUnit Value="Target"/>
+        <Compare value="LT"/>
+        <Type value="Fraction"/>
+        <Value value="0.03125"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerTargetShieldFractionGE01">
+        <WhichUnit Value="Target"/>
+        <Compare value="GE"/>
+        <Type value="Fraction"/>
+        <Value value="0.03125"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerTargetShieldFractionLT02">
+        <WhichUnit Value="Target"/>
+        <Compare value="LT"/>
+        <Type value="Fraction"/>
+        <Value value="0.0625"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerTargetShieldFractionGE02">
+        <WhichUnit Value="Target"/>
+        <Compare value="GE"/>
+        <Type value="Fraction"/>
+        <Value value="0.0625"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerTargetShieldFractionLT03">
+        <WhichUnit Value="Target"/>
+        <Compare value="LT"/>
+        <Type value="Fraction"/>
+        <Value value="0.09375"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerTargetShieldFractionGE03">
+        <WhichUnit Value="Target"/>
+        <Compare value="GE"/>
+        <Type value="Fraction"/>
+        <Value value="0.09375"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerTargetShieldFractionLT04">
+        <WhichUnit Value="Target"/>
+        <Compare value="LT"/>
+        <Type value="Fraction"/>
+        <Value value="0.125"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerTargetShieldFractionGE04">
+        <WhichUnit Value="Target"/>
+        <Compare value="GE"/>
+        <Type value="Fraction"/>
+        <Value value="0.125"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerTargetShieldFractionLT05">
+        <WhichUnit Value="Target"/>
+        <Compare value="LT"/>
+        <Type value="Fraction"/>
+        <Value value="0.15625"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerTargetShieldFractionGE05">
+        <WhichUnit Value="Target"/>
+        <Compare value="GE"/>
+        <Type value="Fraction"/>
+        <Value value="0.15625"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerTargetShieldFractionLT06">
+        <WhichUnit Value="Target"/>
+        <Compare value="LT"/>
+        <Type value="Fraction"/>
+        <Value value="0.1875"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerTargetShieldFractionGE06">
+        <WhichUnit Value="Target"/>
+        <Compare value="GE"/>
+        <Type value="Fraction"/>
+        <Value value="0.1875"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerTargetShieldFractionLT07">
+        <WhichUnit Value="Target"/>
+        <Compare value="LT"/>
+        <Type value="Fraction"/>
+        <Value value="0.21875"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerTargetShieldFractionGE07">
+        <WhichUnit Value="Target"/>
+        <Compare value="GE"/>
+        <Type value="Fraction"/>
+        <Value value="0.21875"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerTargetShieldFractionLT08">
+        <WhichUnit Value="Target"/>
+        <Compare value="LT"/>
+        <Type value="Fraction"/>
+        <Value value="0.25"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerTargetShieldFractionGE08">
+        <WhichUnit Value="Target"/>
+        <Compare value="GE"/>
+        <Type value="Fraction"/>
+        <Value value="0.25"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerTargetShieldFractionLT09">
+        <WhichUnit Value="Target"/>
+        <Compare value="LT"/>
+        <Type value="Fraction"/>
+        <Value value="0.28125"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerTargetShieldFractionGE09">
+        <WhichUnit Value="Target"/>
+        <Compare value="GE"/>
+        <Type value="Fraction"/>
+        <Value value="0.28125"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerTargetShieldFractionLT10">
+        <WhichUnit Value="Target"/>
+        <Compare value="LT"/>
+        <Type value="Fraction"/>
+        <Value value="0.3125"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerTargetShieldFractionGE10">
+        <WhichUnit Value="Target"/>
+        <Compare value="GE"/>
+        <Type value="Fraction"/>
+        <Value value="0.3125"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerTargetShieldFractionLT11">
+        <WhichUnit Value="Target"/>
+        <Compare value="LT"/>
+        <Type value="Fraction"/>
+        <Value value="0.34375"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerTargetShieldFractionGE11">
+        <WhichUnit Value="Target"/>
+        <Compare value="GE"/>
+        <Type value="Fraction"/>
+        <Value value="0.34375"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerTargetShieldFractionLT12">
+        <WhichUnit Value="Target"/>
+        <Compare value="LT"/>
+        <Type value="Fraction"/>
+        <Value value="0.375"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerTargetShieldFractionGE12">
+        <WhichUnit Value="Target"/>
+        <Compare value="GE"/>
+        <Type value="Fraction"/>
+        <Value value="0.375"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerTargetShieldFractionLT13">
+        <WhichUnit Value="Target"/>
+        <Compare value="LT"/>
+        <Type value="Fraction"/>
+        <Value value="0.40625"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerTargetShieldFractionGE13">
+        <WhichUnit Value="Target"/>
+        <Compare value="GE"/>
+        <Type value="Fraction"/>
+        <Value value="0.40625"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerTargetShieldFractionLT14">
+        <WhichUnit Value="Target"/>
+        <Compare value="LT"/>
+        <Type value="Fraction"/>
+        <Value value="0.4375"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerTargetShieldFractionGE14">
+        <WhichUnit Value="Target"/>
+        <Compare value="GE"/>
+        <Type value="Fraction"/>
+        <Value value="0.4375"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerTargetShieldFractionLT15">
+        <WhichUnit Value="Target"/>
+        <Compare value="LT"/>
+        <Type value="Fraction"/>
+        <Value value="0.46875"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="BPM_EnergizerTargetShieldFractionGE15">
+        <WhichUnit Value="Target"/>
+        <Compare value="GE"/>
+        <Type value="Fraction"/>
+        <Value value="0.46875"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorCombine id="BPM_EnergizerTargetShieldBand01">
+        <Type value="And"/>
+        <CombineArray value="BPM_EnergizerTargetHasShields"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionLT01"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerTargetShieldNotBand01">
+        <Type value="Or"/>
+        <CombineArray value="BPM_EnergizerTargetNoShields"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionGE01"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerTargetShieldBand02">
+        <Type value="And"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionGE01"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionLT02"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerTargetShieldNotBand02">
+        <Type value="Or"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionLT01"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionGE02"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerTargetShieldBand03">
+        <Type value="And"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionGE02"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionLT03"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerTargetShieldNotBand03">
+        <Type value="Or"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionLT02"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionGE03"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerTargetShieldBand04">
+        <Type value="And"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionGE03"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionLT04"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerTargetShieldNotBand04">
+        <Type value="Or"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionLT03"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionGE04"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerTargetShieldBand05">
+        <Type value="And"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionGE04"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionLT05"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerTargetShieldNotBand05">
+        <Type value="Or"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionLT04"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionGE05"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerTargetShieldBand06">
+        <Type value="And"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionGE05"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionLT06"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerTargetShieldNotBand06">
+        <Type value="Or"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionLT05"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionGE06"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerTargetShieldBand07">
+        <Type value="And"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionGE06"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionLT07"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerTargetShieldNotBand07">
+        <Type value="Or"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionLT06"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionGE07"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerTargetShieldBand08">
+        <Type value="And"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionGE07"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionLT08"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerTargetShieldNotBand08">
+        <Type value="Or"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionLT07"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionGE08"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerTargetShieldBand09">
+        <Type value="And"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionGE08"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionLT09"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerTargetShieldNotBand09">
+        <Type value="Or"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionLT08"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionGE09"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerTargetShieldBand10">
+        <Type value="And"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionGE09"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionLT10"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerTargetShieldNotBand10">
+        <Type value="Or"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionLT09"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionGE10"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerTargetShieldBand11">
+        <Type value="And"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionGE10"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionLT11"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerTargetShieldNotBand11">
+        <Type value="Or"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionLT10"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionGE11"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerTargetShieldBand12">
+        <Type value="And"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionGE11"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionLT12"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerTargetShieldNotBand12">
+        <Type value="Or"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionLT11"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionGE12"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerTargetShieldBand13">
+        <Type value="And"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionGE12"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionLT13"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerTargetShieldNotBand13">
+        <Type value="Or"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionLT12"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionGE13"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerTargetShieldBand14">
+        <Type value="And"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionGE13"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionLT14"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerTargetShieldNotBand14">
+        <Type value="Or"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionLT13"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionGE14"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerTargetShieldBand15">
+        <Type value="And"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionGE14"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionLT15"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerTargetShieldNotBand15">
+        <Type value="Or"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionLT14"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionGE15"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerTargetShieldBand16">
+        <Type value="And"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionGE15"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="BPM_EnergizerTargetShieldNotBand16">
+        <Type value="Or"/>
+        <CombineArray value="BPM_EnergizerTargetShieldFractionLT15"/>
+    </CValidatorCombine>
+</Catalog>

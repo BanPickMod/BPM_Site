@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <!-- Unit actors and Warpable placement actors resolve their base model
+         from the unit token, not only from CActorUnit.Model.  Provide model
+         links matching the BPM unit ids while reusing the stock assets. -->
+    <CModel id="Energizer" parent="SentryPurifier"/>
+    <CModel id="EnergizerPhasingMode" parent="SentryPhasing"/>
+
+    <!-- The stock pylon feedback model is authored for a 6.5 power radius.
+         The actor starts at radius 6 and follows the proportional shield curve. -->
+    <CModel id="BPM_EnergizerPowerAnimated" parent="UI">
+        <Model value="Assets/UI/Feedback/PylonRadius_X1/PylonRadius_X1.m3"/>
+        <Lighting value="PowerVisual"/>
+        <ScaleMax value="1.230769,1.230769,1.230769"/>
+        <ScaleMin value="1.230769,1.230769,1.230769"/>
+    </CModel>
+</Catalog>

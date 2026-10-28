@@ -1,0 +1,45 @@
+{
+ "engine_commit": null,
+ "files": {
+  "state.py": {
+   "from": "src/bpm_ai/data/state.py",
+   "sha256": "ed674d27d13665303041b541f43c5f092c7f88d17e251b832f989a2da712235e"
+  },
+  "replay_data.py": {
+   "from": "src/bpm_ai/data/replay_data.py",
+   "sha256": "43c1aeb008ccb9c3778d600bcb37e148eb358376a63b9d6beccfd6e7af147329"
+  },
+  "featurize.py": {
+   "from": "src/bpm_ai/data/featurize.py",
+   "sha256": "3ff30882d6451626cbaba1bb074982a9cd0cae721994b410ed63fad18e39944d"
+  },
+  "infer_np.py": {
+   "from": "src/bpm_ai/cognition/infer_np.py",
+   "sha256": "5e8e6c4082c20e1a4f4afe50661f4528280af7f2894de132522742f57f8392e5"
+  },
+  "role_map.json": {
+   "from": "src/bpm_ai/data/role_map.json",
+   "sha256": "761ad794bd772a928bb819ade9f91fb30ab25dd54f211669e194e72303bb7136"
+  },
+  "research_times.json": {
+   "from": "src/bpm_ai/data/research_times.json",
+   "sha256": "0c838423d2dd3f2e638c2bb3a6cdb06742a6c880cdca0366419d8d9c76ce3b93"
+  },
+  "models/M1_v_priv_v0_r16/manifest.json": {
+   "from": "runs/models/bundles_staging/M1_v_priv_v0_r16/manifest.json",
+   "sha256": "198783eadcf7bd280c2ff53b6cc1066c5c370c8c7322893dfcdf1d9453f64a20"
+  },
+  "models/M1_v_priv_v0_r16/meta.json": {
+   "from": "runs/models/bundles_staging/M1_v_priv_v0_r16/meta.json",
+   "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f"
+  },
+  "models/M1_v_priv_v0_r16/trees.json": {
+   "from": "runs/models/bundles_staging/M1_v_priv_v0_r16/trees.json",
+   "sha256": "d2a23afc1643ee00b9b623f4264d4e0f8b4f3625497ee638455da555d0bef9e8"
+  },
+  "models/M1_v_priv_v0_r16/weights.npz": {
+   "from": "runs/models/bundles_staging/M1_v_priv_v0_r16/weights.npz",
+   "sha256": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85"
+  }
+ }
+}

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>뷰어 시안 D · 이야기형 스크롤</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="viewer-shared.css">
+<style>
+/* D. Story: one reading column. A sticky mini-map follows whichever chapter is on screen; scrolling moves the clock. Works the same on a phone. */
+body{min-height:100vh}
+.sticky{position:sticky;top:0;z-index:5;display:grid;grid-template-columns:minmax(0,300px) 1fr;gap:14px;padding:10px 16px;background:#07080ff0;backdrop-filter:blur(6px);border-bottom:1px solid var(--line2)}
+.sticky .mini{height:190px;border:1px solid var(--line2);border-radius:var(--r);overflow:hidden;position:relative}
+.sticky .side{display:grid;gap:8px;align-content:center}
+.sticky .now{font:800 1.3rem var(--f-display);text-transform:uppercase}.sticky .now small{font:.72rem var(--f-mono);color:var(--mute);margin-left:8px}
+.sg{display:grid;grid-template-columns:1fr auto 1fr;gap:4px 10px;font-size:.82rem;max-width:300px}.sg .l{color:var(--mute);text-align:center;font-size:.7rem}.sg b{font-family:var(--f-mono)}.sg b.a{color:var(--p1);text-align:right}.sg b.b{color:var(--p2)}
+.story{width:min(100% - 32px,860px);margin:0 auto;padding:26px 0 90px;display:grid;gap:26px}
+.ch{display:grid;gap:14px;padding:20px 0;border-top:1px solid var(--line);scroll-margin-top:230px}
+.ch .no{font:800 .75rem var(--f-mono);color:var(--accent);letter-spacing:.1em}
+.ch h2{font:900 clamp(1.8rem,4vw,2.8rem) var(--f-display);text-transform:uppercase;line-height:1}
+.ch p.lead{color:var(--mute);max-width:64ch}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.col{padding:14px;border:1px solid var(--line2);border-radius:var(--r);background:var(--panel);display:grid;gap:10px;align-content:start}
+.col h3{display:flex;gap:8px;align-items:center;font:800 1.2rem var(--f-display);text-transform:uppercase}
+.log{display:grid;grid-template-columns:50px 1fr;gap:2px 10px;font-size:.82rem}.log .t{font-family:var(--f-mono);color:var(--mute)}.log .p{color:var(--pick);font-weight:700}
+.go{justify-self:start;padding:8px 14px;background:var(--accent-fill);color:#fff;border-radius:var(--r);font-weight:700;font-size:.85rem}
+.fact{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.fact div{padding:12px;background:var(--panel);border:1px solid var(--line2);border-radius:var(--r)}.fact b{display:block;font:800 1.6rem var(--f-display)}.fact span{font-size:.75rem;color:var(--mute)}
+.vw-transport{margin-top:2px}
+@media (max-width:700px){.sticky{grid-template-columns:130px 1fr}.sticky .mini{height:110px}.sticky .now{font-size:1rem}}
+</style>
+</head>
+<body>
+<div class="sticky">
+  <div class="mini"><canvas id="map"></canvas></div>
+  <div class="side"><div class="now"><span id="chap">밴픽</span><small id="clk">0:00</small></div><div class="sg"><b class="a" data-stat="1.army">0</b><span class="l">병력 가치</span><b class="b" data-stat="2.army">0</b><b class="a" data-stat="1.wk">0</b><span class="l">일꾼</span><b class="b" data-stat="2.wk">0</b></div><div id="tr"></div></div>
+</div>
+<main class="story" id="story"></main>
+<script src="viewer-data.js"></script><script src="viewer-core.js"></script>
+<script>
+const V = Viewer, D = V.D;
+const pk = V.pickUsage(0, D.duration);
+const logHTML = (o, upto) => V.buildLog(o).filter((e) => e.t <= upto).map((e) => `<span class="t">${V.fmt(e.t)}</span><span class="${e.pick ? "p" : ""}">${(D.meta[e.type] || {}).ko || e.type}${e.pick ? " ◆픽" : ""}</span>`).join("");
+const chapters = [
+  { id: "draft", t: 0, title: "밴픽", no: "00:00", html: () => `<p class="lead">두 사람이 고른 유닛과 서로에게 건 밴. 이 선택이 경기의 모든 장면의 배경입니다.</p><div class="two">${D.draft.map((p, i) => { const h = V.draftHTML(i); return `<div class="col"><h3 class="${i ? "p2c" : "p1c"}">${V.raceImg(p.race)} P${i + 1}<span class="${p.result === "win" ? "res-w" : "res-l"}" style="margin-left:auto;font:700 .8rem var(--f-mono)">${p.result === "win" ? "승" : "패"}</span></h3><p class="vw-k">고른 유닛</p><ul class="vw-list">${h.picks}</ul><p class="vw-k">받은 밴</p><ul class="vw-list row">${h.bans}</ul></div>`; }).join("")}</div>` },
+  { id: "open", t: 240, title: "초반 운영", no: "0:00 – 4:00", html: () => `<p class="lead">첫 4분 동안 각자 무엇을 지었는지. 라임 ◆는 픽한 유닛이 처음 등장한 순간입니다.</p><div class="two"><div class="col"><h3 class="p1c">P1</h3><div class="log">${logHTML(1, 240)}</div></div><div class="col"><h3 class="p2c">P2</h3><div class="log">${logHTML(2, 240)}</div></div></div><button class="go" data-r="0,240,8">▶ 이 구간 재생 (8x)</button>` },
+  { id: "mid", t: 420, title: "픽 유닛이 등장하다", no: "4:00 – 7:00", html: () => `<p class="lead">${pk.filter((u) => !u.unused).sort((x, y) => x.first - y.first).map((u) => `${(D.meta[u.unit] || {}).ko} ${V.fmt(u.first)}`).join(", ")}에 처음 나왔습니다. 픽한 ${pk.length}개 중 ${pk.filter((u) => !u.unused).length}개만 실제로 쓰였습니다.</p><div class="fact">${pk.map((u) => `<div><b class="${u.unused ? "dim" : ""}" style="${u.unused ? "" : "color:var(--pick)"}">${u.total}</b><span>${(D.meta[u.unit] || {}).ko || u.unit} 생산${u.unused ? " · 미사용" : " · 첫 " + V.fmt(u.first)}</span></div>`).join("")}</div><button class="go" data-r="210,420,8">▶ 이 구간 재생 (8x)</button>` },
+  ...V.battles.map((b) => ({ id: "b" + b.id, t: b.t0 + 6, title: `교전 ${b.id}`, no: `${V.fmt(b.t0)} – ${V.fmt(b.t1)}`, html: () => `<p class="lead">${b.winner ? "P" + b.winner + " 우세" : "비김"} · 사망 ${b.size} (P1 ${b.lost[1]} / P2 ${b.lost[2]}) · 그중 픽 유닛 ${b.picksLost}.</p><div class="fact"><div><b class="p1c">${b.lost[1]}</b><span>P1 손실</span></div><div><b class="p2c">${b.lost[2]}</b><span>P2 손실</span></div><div><b>${b.picksLost}</b><span>픽 유닛 손실</span></div></div><button class="go" data-r="${b.t0 - 6},${b.t1 + 4},2">▶ 이 교전 보기 (2x)</button>` })),
+  { id: "end", t: D.duration - 1, title: "결과", no: V.fmt(D.duration), html: () => `<p class="lead">P1 승. 마지막 병력 가치 ${V.num(V.statAt(1, D.duration).army)} 대 ${V.num(V.statAt(2, D.duration).army)}.</p><div class="fact"><div><b class="p1c">${V.num(V.statAt(1, D.duration).killed)}</b><span>P1 처치 가치</span></div><div><b class="p2c">${V.num(V.statAt(2, D.duration).killed)}</b><span>P2 처치 가치</span></div></div>` },
+];
+document.getElementById("story").innerHTML = chapters.map((c, i) => `<section class="ch" id="ch-${c.id}" data-t="${c.t}" data-title="${c.title}"><span class="no">${String(i + 1).padStart(2, "0")} · ${c.no}</span><h2>${c.title}</h2>${c.html()}</section>`).join("");
+document.querySelectorAll(".go").forEach((b) => (b.onclick = () => { const [a, z, s] = b.dataset.r.split(",").map(Number); V.Clock.range(a, z, s); }));
+// scrolling moves the clock to the chapter in view (only while paused, so playback is never fought)
+const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { document.getElementById("chap").textContent = e.target.dataset.title; if (!V.Clock.playing) V.Clock.set(+e.target.dataset.t); } }), { rootMargin: "-45% 0px -50% 0px" });
+document.querySelectorAll(".ch").forEach((c) => io.observe(c));
+V.Clock.on((t) => (document.getElementById("clk").textContent = V.fmt(t)));
+V.mountMap(document.getElementById("map")); V.mountTransport(document.getElementById("tr"), { scrub: false }); V.bindStats();
+</script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CWeaponLegacy id="RavasaurWeapon">
+        <EditorCategories value="Race:Zerg"/>
+        <Icon value="Assets\Textures\btn-upgrade-zerg-missileattacks-level0.dds"/>
+        <Name value="Weapon/Name/RavasaurWeapon"/>
+        <DisplayName value="Weapon/Name/RavasaurWeapon"/>
+        <Range value="7"/>
+        <MinScanRange value="7.5"/>
+        <!-- Match ordinary attack weapons: allied units remain valid for an
+             explicit attack command, while automatic acquisition still uses
+             the normal hostile-alliance rules. -->
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <DisplayEffect value="BPM_RavasaurDamage"/>
+        <Effect value="BPM_RavasaurLaunchMissile"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BPM_GoliathA">
+        <Range value="6"/>
+        <MinScanRange value="5"/>
+        <TargetFilters value="Air,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Arc value="29.9926"/>
+        <DisplayAttackCount value="2"/>
+        <DisplayEffect value="GoliathAU"/>
+        <Icon value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel0.dds"/>
+        <Name value="Weapon/Name/GoliathA"/>
+        <Period value="1.5"/>
+        <DisplayName value="Weapon/Name/GoliathA"/>
+        <Effect value="GoliathA"/>
+        
+    </CWeaponLegacy>
+    <CWeaponLegacy id="GoliathAUpgraded">
+        <Range value="6"/>
+        <MinScanRange value="6.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BPM_FirebatSCBWWeapon">
+        <Name value="Weapon/Name/BPM_FirebatSCBWWeapon"/>
+        <DisplayName value="Weapon/Name/BPM_FirebatSCBWWeapon"/>
+        <EditorCategories value="Race:Terran"/>
+        <Icon value="Assets\Textures\btn-upgrade-terran-infantryweaponslevel0.dds"/>
+        <Options index="CanInitiateAttack" value="1"/>
+        <DisplayEffect value="BPM_FirebatSCBWWeapon@DamageConc"/>
+        <DisplayAttackCount value="3"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AcquireCliffLevelRange value="-0.5,0.5"/>
+        <MinScanRange value="3"/>
+        <Range value="1.5"/>
+        <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker>
+        <Period value="1.3125"/>
+        <DamagePoint value="0.01"/>
+        <Effect value="BPM_FirebatSCBWWeapon@CliffCheck"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BPM_FirebatSCBWWeapon@Melee" parent="BPM_FirebatSCBWWeapon">
+        <Name value="Weapon/Name/BPM_FirebatSCBWWeapon@Melee"/>
+        <Options index="Hidden" value="1"/>
+        <Options index="Melee" value="1"/>
+        <Effect value="BPM_FirebatSCBWWeapon@CP"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BPM_FirebatSCBWWeapon@Bunker" parent="BPM_FirebatSCBWWeapon">
+        <Options index="Disabled" value="1"/>
+        <Options index="Hidden" value="1"/>
+        <MinScanRange value="5"/>
+        <Range value="3"/>
+        <Effect value="BPM_FirebatSCBWWeapon@BunkerCliffCheck"/>
+        <LegacyOptions index="Uninterruptible" value="1"/>
+        <UninterruptibleDuration value="0.6562"/>
+        <Name value="Weapon/Name/BPM_FirebatSCBWWeapon@Bunker"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Adept">
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <!-- Caster basic attack weapons (Range 10, Air/Ground, Damage 1) -->
+    <CWeaponLegacy id="BPM_RavenWeapon">
+        <Name value="Weapon/Name/BPM_RavenWeapon"/>
+        <EditorCategories value="Race:Terran"/>
+        <Icon value="Assets\Textures\btn-upgrade-terran-shipweaponslevel0.dds"/>
+        <Options index="CanInitiateAttack" value="1"/>
+        <Range value="10"/>
+        <MinScanRange value="10.5"/>
+        <Period value="1.5"/>
+        <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Effect value="BPM_TerranCasterAttackLaunch"/>
+        <DisplayEffect value="BPM_TerranCasterAttackDamage"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BPM_ScienceVesselWeapon">
+        <Name value="Weapon/Name/BPM_ScienceVesselWeapon"/>
+        <EditorCategories value="Race:Terran"/>
+        <Icon value="Assets\Textures\btn-upgrade-terran-shipweaponslevel0.dds"/>
+        <Options index="CanInitiateAttack" value="1"/>
+        <Range value="10"/>
+        <MinScanRange value="10.5"/>
+        <Period value="1.5"/>
+        <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Effect value="BPM_TerranCasterAttackLaunch"/>
+        <DisplayEffect value="BPM_TerranCasterAttackDamage"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BPM_ViperWeapon">
+        <Name value="Weapon/Name/BPM_ViperWeapon"/>
+        <EditorCategories value="Race:Zerg"/>
+        <Icon value="Assets\Textures\btn-upgrade-zerg-missileattacks-level0.dds"/>
+        <Options index="CanInitiateAttack" value="1"/>
+        <Range value="10"/>
+        <MinScanRange value="10.5"/>
+        <Period value="1.5"/>
+        <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Effect value="BPM_ViperAttackLaunch"/>
+        <DisplayEffect value="BPM_ViperAttackDamage"/>
+    </CWeaponLegacy>
+    <!-- Energizer Weapon (Range 7, Damage 6, Air/Ground) -->
+    <CWeaponLegacy id="BPM_EnergizerWeapon">
+        <EditorCategories value="Race:Protoss"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel0.dds"/>
+        <Name value="Weapon/Name/BPM_EnergizerWeapon"/>
+        <DisplayName value="Weapon/Name/BPM_EnergizerWeapon"/>
+        <Range value="7"/>
+        <MinScanRange value="7.5"/>
+        <Period value="1.0"/>
+        <!-- Keep normal SC2 force-fire behavior for allied units, but never
+             allow this direct-damage weapon to resolve its caster as target. -->
+        <TargetFilters value="Visible;Self,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Effect value="BPM_EnergizerDamage"/>
+        <DisplayEffect value="BPM_EnergizerDamage"/>
+    </CWeaponLegacy>
+</Catalog>

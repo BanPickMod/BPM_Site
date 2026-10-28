@@ -1,0 +1,3594 @@
+{
+ "units": {
+  "SCV": {
+   "type_id": 45,
+   "proto": {
+    "name": "SCV",
+    "race": 1,
+    "minerals": 50,
+    "gas": 0,
+    "supply": 1.0,
+    "build_time": 0.0,
+    "armor": 0.0,
+    "speed": 2.8125,
+    "cargo": 1,
+    "attributes": [
+     1,
+     3,
+     4
+    ],
+    "weapons": [
+     {
+      "type": 1,
+      "damage": 5.0,
+      "attacks": 1,
+      "range": 0.199951171875,
+      "cooldown": 1.5,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 0,
+    "ability_id": 3484
+   },
+   "live": {
+    "health_max": 45.0,
+    "shield_max": 0.0,
+    "energy_max": 0.0,
+    "radius": 0.375,
+    "sight": 8.0,
+    "armor": 0.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 3.3333333333333335,
+    "air_dps": 0.0,
+    "ground_range": 0.199951171875,
+    "air_range": 0.0,
+    "speed": 2.8125,
+    "cargo_max": 1.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "Marine": {
+   "type_id": 48,
+   "proto": {
+    "name": "Marine",
+    "race": 1,
+    "minerals": 50,
+    "gas": 0,
+    "supply": 1.0,
+    "build_time": 0.0,
+    "armor": 0.0,
+    "speed": 2.25,
+    "cargo": 1,
+    "attributes": [
+     1,
+     3
+    ],
+    "weapons": [
+     {
+      "type": 3,
+      "damage": 6.0,
+      "attacks": 1,
+      "range": 5.0,
+      "cooldown": 0.86083984375,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 0,
+    "ability_id": 8573
+   },
+   "live": {
+    "health_max": 65.0,
+    "shield_max": 0.0,
+    "energy_max": 0.0,
+    "radius": 0.375,
+    "sight": 9.0,
+    "armor": 0.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 6.969937606352808,
+    "air_dps": 6.969937606352808,
+    "ground_range": 5.0,
+    "air_range": 5.0,
+    "speed": 2.25,
+    "cargo_max": 1.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "Marauder": {
+   "type_id": 51,
+   "proto": {
+    "name": "Marauder",
+    "race": 1,
+    "minerals": 100,
+    "gas": 25,
+    "supply": 2.0,
+    "build_time": 480.0,
+    "armor": 1.0,
+    "speed": 2.25,
+    "cargo": 2,
+    "attributes": [
+     1,
+     3
+    ],
+    "weapons": [
+     {
+      "type": 1,
+      "damage": 10.0,
+      "attacks": 1,
+      "range": 6.0,
+      "cooldown": 1.5,
+      "bonus": [
+       {
+        "attribute": 2,
+        "bonus": 10.0
+       }
+      ]
+     }
+    ],
+    "tech_requirement": 5,
+    "ability_id": 563
+   },
+   "live": {
+    "health_max": 100.0,
+    "shield_max": 0.0,
+    "energy_max": 0.0,
+    "radius": 0.5625,
+    "sight": 10.0,
+    "armor": 1.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 6.666666666666667,
+    "air_dps": 0.0,
+    "ground_range": 6.0,
+    "air_range": 0.0,
+    "speed": 2.25,
+    "cargo_max": 2.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "Reaper": {
+   "type_id": 49,
+   "proto": {
+    "name": "Reaper",
+    "race": 1,
+    "minerals": 50,
+    "gas": 50,
+    "supply": 1.0,
+    "build_time": 716.80078125,
+    "armor": 0.0,
+    "speed": 3.75,
+    "cargo": 1,
+    "attributes": [
+     1,
+     3
+    ],
+    "weapons": [
+     {
+      "type": 1,
+      "damage": 4.0,
+      "attacks": 2,
+      "range": 5.0,
+      "cooldown": 1.10009765625,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 0,
+    "ability_id": 561
+   },
+   "live": {
+    "health_max": 60.0,
+    "shield_max": 0.0,
+    "energy_max": 0.0,
+    "radius": 0.375,
+    "sight": 9.0,
+    "armor": 0.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 7.27208166888593,
+    "air_dps": 0.0,
+    "ground_range": 5.0,
+    "air_range": 0.0,
+    "speed": 3.75,
+    "cargo_max": 1.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "Ghost": {
+   "type_id": 50,
+   "proto": {
+    "name": "Ghost",
+    "race": 1,
+    "minerals": 150,
+    "gas": 125,
+    "supply": 2.0,
+    "build_time": 0.0,
+    "armor": 0.0,
+    "speed": 2.75,
+    "cargo": 2,
+    "attributes": [
+     1,
+     3,
+     6
+    ],
+    "weapons": [
+     {
+      "type": 3,
+      "damage": 10.0,
+      "attacks": 1,
+      "range": 6.0,
+      "cooldown": 1.5,
+      "bonus": [
+       {
+        "attribute": 1,
+        "bonus": 10.0
+       }
+      ]
+     }
+    ],
+    "tech_requirement": 0,
+    "ability_id": 8574
+   },
+   "live": {
+    "health_max": 125.0,
+    "shield_max": 0.0,
+    "energy_max": 200.0,
+    "radius": 0.375,
+    "sight": 11.0,
+    "armor": 0.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 6.666666666666667,
+    "air_dps": 6.666666666666667,
+    "ground_range": 6.0,
+    "air_range": 6.0,
+    "speed": 2.75,
+    "cargo_max": 2.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "Hellion": {
+   "type_id": 53,
+   "proto": {
+    "name": "Hellion",
+    "race": 1,
+    "minerals": 100,
+    "gas": 0,
+    "supply": 2.0,
+    "build_time": 480.0,
+    "armor": 0.0,
+    "speed": 4.25,
+    "cargo": 2,
+    "attributes": [
+     1,
+     4
+    ],
+    "weapons": [
+     {
+      "type": 1,
+      "damage": 8.0,
+      "attacks": 1,
+      "range": 5.0,
+      "cooldown": 2.5,
+      "bonus": [
+       {
+        "attribute": 1,
+        "bonus": 6.0
+       }
+      ]
+     }
+    ],
+    "tech_requirement": 0,
+    "ability_id": 609
+   },
+   "live": {
+    "health_max": 90.0,
+    "shield_max": 0.0,
+    "energy_max": 0.0,
+    "radius": 0.625,
+    "sight": 10.0,
+    "armor": 0.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 3.2,
+    "air_dps": 0.0,
+    "ground_range": 5.0,
+    "air_range": 0.0,
+    "speed": 4.25,
+    "cargo_max": 2.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "HellionTank": {
+   "type_id": 484,
+   "proto": {
+    "name": "HellionTank",
+    "race": 1,
+    "minerals": 100,
+    "gas": 0,
+    "supply": 2.0,
+    "build_time": 480.0,
+    "armor": 0.0,
+    "speed": 2.25,
+    "cargo": 4,
+    "attributes": [
+     1,
+     3,
+     4
+    ],
+    "weapons": [
+     {
+      "type": 1,
+      "damage": 18.0,
+      "attacks": 1,
+      "range": 2.0,
+      "cooldown": 2.0,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 29,
+    "ability_id": 596
+   },
+   "live": {
+    "health_max": 135.0,
+    "shield_max": 0.0,
+    "energy_max": 0.0,
+    "radius": 0.625,
+    "sight": 10.0,
+    "armor": 0.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 9.0,
+    "air_dps": 0.0,
+    "ground_range": 2.0,
+    "air_range": 0.0,
+    "speed": 2.25,
+    "cargo_max": 4.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "WidowMine": {
+   "type_id": 498,
+   "proto": {
+    "name": "WidowMine",
+    "race": 1,
+    "minerals": 75,
+    "gas": 25,
+    "supply": 2.0,
+    "build_time": 480.0,
+    "armor": 0.0,
+    "speed": 2.8125,
+    "cargo": 2,
+    "attributes": [
+     1,
+     4
+    ],
+    "weapons": [],
+    "tech_requirement": 0,
+    "ability_id": 614
+   },
+   "live": {
+    "health_max": 90.0,
+    "shield_max": 0.0,
+    "energy_max": 0.0,
+    "radius": 0.5,
+    "sight": 7.0,
+    "armor": 0.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 0.0,
+    "air_dps": 0.0,
+    "ground_range": 0.0,
+    "air_range": 0.0,
+    "speed": 2.8125,
+    "cargo_max": 2.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "Cyclone": {
+   "type_id": 692,
+   "proto": {
+    "name": "Cyclone",
+    "race": 1,
+    "minerals": 150,
+    "gas": 100,
+    "supply": 3.0,
+    "build_time": 720.0,
+    "armor": 1.0,
+    "speed": 3.375,
+    "cargo": 4,
+    "attributes": [
+     2,
+     4
+    ],
+    "weapons": [
+     {
+      "type": 3,
+      "damage": 18.0,
+      "attacks": 1,
+      "range": 5.0,
+      "cooldown": 1.0,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 5,
+    "ability_id": 597
+   },
+   "live": {
+    "health_max": 120.0,
+    "shield_max": 0.0,
+    "energy_max": 0.0,
+    "radius": 0.75,
+    "sight": 11.0,
+    "armor": 1.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 18.0,
+    "air_dps": 18.0,
+    "ground_range": 5.0,
+    "air_range": 5.0,
+    "speed": 3.375,
+    "cargo_max": 4.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "SiegeTank": {
+   "type_id": 33,
+   "proto": {
+    "name": "SiegeTank",
+    "race": 1,
+    "minerals": 150,
+    "gas": 125,
+    "supply": 3.0,
+    "build_time": 0.0,
+    "armor": 1.0,
+    "speed": 2.25,
+    "cargo": 4,
+    "attributes": [
+     2,
+     4
+    ],
+    "weapons": [
+     {
+      "type": 1,
+      "damage": 15.0,
+      "attacks": 1,
+      "range": 7.0,
+      "cooldown": 1.0400390625,
+      "bonus": [
+       {
+        "attribute": 2,
+        "bonus": 10.0
+       }
+      ]
+     }
+    ],
+    "tech_requirement": 5,
+    "ability_id": 8575
+   },
+   "live": {
+    "health_max": 175.0,
+    "shield_max": 0.0,
+    "energy_max": 0.0,
+    "radius": 0.875,
+    "sight": 11.0,
+    "armor": 1.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 14.422535211267606,
+    "air_dps": 0.0,
+    "ground_range": 7.0,
+    "air_range": 0.0,
+    "speed": 2.25,
+    "cargo_max": 4.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "SiegeTankSieged": {
+   "type_id": 32,
+   "proto": {
+    "name": "SiegeTankSieged",
+    "race": 1,
+    "minerals": 150,
+    "gas": 125,
+    "supply": 3.0,
+    "build_time": 68.66796875,
+    "armor": 1.0,
+    "speed": 0.0,
+    "cargo": 0,
+    "attributes": [
+     2,
+     4
+    ],
+    "weapons": [
+     {
+      "type": 1,
+      "damage": 40.0,
+      "attacks": 1,
+      "range": 13.0,
+      "cooldown": 3.0,
+      "bonus": [
+       {
+        "attribute": 2,
+        "bonus": 30.0
+       }
+      ]
+     }
+    ],
+    "tech_requirement": 0,
+    "ability_id": 388
+   },
+   "live": {
+    "health_max": 175.0,
+    "shield_max": 0.0,
+    "energy_max": 0.0,
+    "radius": 0.875,
+    "sight": 11.0,
+    "armor": 1.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 13.333333333333334,
+    "air_dps": 0.0,
+    "ground_range": 13.0,
+    "air_range": 0.0,
+    "speed": 0.0,
+    "cargo_max": 0.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "Thor": {
+   "type_id": 52,
+   "proto": {
+    "name": "Thor",
+    "race": 1,
+    "minerals": 300,
+    "gas": 200,
+    "supply": 6.0,
+    "build_time": 128.0,
+    "armor": 1.0,
+    "speed": 1.875,
+    "cargo": 8,
+    "attributes": [
+     2,
+     4,
+     7
+    ],
+    "weapons": [
+     {
+      "type": 2,
+      "damage": 6.0,
+      "attacks": 4,
+      "range": 10.0,
+      "cooldown": 3.0,
+      "bonus": [
+       {
+        "attribute": 1,
+        "bonus": 6.0
+       }
+      ]
+     },
+     {
+      "type": 1,
+      "damage": 30.0,
+      "attacks": 2,
+      "range": 7.0,
+      "cooldown": 1.280029296875,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 0,
+    "ability_id": 8320
+   },
+   "live": {
+    "health_max": 400.0,
+    "shield_max": 0.0,
+    "energy_max": 0.0,
+    "radius": 1.0,
+    "sight": 11.0,
+    "armor": 1.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 46.87392714094984,
+    "air_dps": 8.0,
+    "ground_range": 7.0,
+    "air_range": 10.0,
+    "speed": 1.875,
+    "cargo_max": 8.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "ThorAP": {
+   "type_id": 691,
+   "proto": {
+    "name": "ThorAP",
+    "race": 1,
+    "minerals": 300,
+    "gas": 200,
+    "supply": 6.0,
+    "build_time": 42.0,
+    "armor": 1.0,
+    "speed": 1.875,
+    "cargo": 8,
+    "attributes": [
+     2,
+     4,
+     7
+    ],
+    "weapons": [
+     {
+      "type": 2,
+      "damage": 25.0,
+      "attacks": 1,
+      "range": 11.0,
+      "cooldown": 1.280029296875,
+      "bonus": [
+       {
+        "attribute": 7,
+        "bonus": 10.0
+       }
+      ]
+     },
+     {
+      "type": 1,
+      "damage": 30.0,
+      "attacks": 2,
+      "range": 7.0,
+      "cooldown": 1.280029296875,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 0,
+    "ability_id": 2362
+   },
+   "live": {
+    "health_max": 400.0,
+    "shield_max": 0.0,
+    "energy_max": 0.0,
+    "radius": 1.0,
+    "sight": 11.0,
+    "armor": 1.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 46.87392714094984,
+    "air_dps": 19.530802975395765,
+    "ground_range": 7.0,
+    "air_range": 11.0,
+    "speed": 1.875,
+    "cargo_max": 8.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "VikingFighter": {
+   "type_id": 35,
+   "proto": {
+    "name": "VikingFighter",
+    "race": 1,
+    "minerals": 125,
+    "gas": 75,
+    "supply": 2.0,
+    "build_time": 672.0,
+    "armor": 0.0,
+    "speed": 2.75,
+    "cargo": 0,
+    "attributes": [
+     2,
+     4
+    ],
+    "weapons": [
+     {
+      "type": 2,
+      "damage": 10.0,
+      "attacks": 2,
+      "range": 9.0,
+      "cooldown": 2.0,
+      "bonus": [
+       {
+        "attribute": 2,
+        "bonus": 4.0
+       }
+      ]
+     }
+    ],
+    "tech_requirement": 0,
+    "ability_id": 624
+   },
+   "live": {
+    "health_max": 135.0,
+    "shield_max": 0.0,
+    "energy_max": 0.0,
+    "radius": 0.75,
+    "sight": 10.0,
+    "armor": 0.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 0.0,
+    "air_dps": 10.0,
+    "ground_range": 0.0,
+    "air_range": 9.0,
+    "speed": 2.75,
+    "cargo_max": 0.0,
+    "is_flying": true,
+    "is_structure": false
+   }
+  },
+  "VikingAssault": {
+   "type_id": 34,
+   "proto": {
+    "name": "VikingAssault",
+    "race": 1,
+    "minerals": 125,
+    "gas": 75,
+    "supply": 2.0,
+    "build_time": 41.44140625,
+    "armor": 0.0,
+    "speed": 2.25,
+    "cargo": 2,
+    "attributes": [
+     2,
+     4
+    ],
+    "weapons": [
+     {
+      "type": 1,
+      "damage": 12.0,
+      "attacks": 1,
+      "range": 6.0,
+      "cooldown": 1.0,
+      "bonus": [
+       {
+        "attribute": 4,
+        "bonus": 8.0
+       }
+      ]
+     }
+    ],
+    "tech_requirement": 0,
+    "ability_id": 403
+   },
+   "live": {
+    "health_max": 135.0,
+    "shield_max": 0.0,
+    "energy_max": 0.0,
+    "radius": 0.75,
+    "sight": 10.0,
+    "armor": 0.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 12.0,
+    "air_dps": 0.0,
+    "ground_range": 6.0,
+    "air_range": 0.0,
+    "speed": 2.25,
+    "cargo_max": 2.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "Medivac": {
+   "type_id": 54,
+   "proto": {
+    "name": "Medivac",
+    "race": 1,
+    "minerals": 100,
+    "gas": 100,
+    "supply": 2.0,
+    "build_time": 96.0,
+    "armor": 1.0,
+    "speed": 2.5,
+    "cargo": 0,
+    "attributes": [
+     2,
+     4
+    ],
+    "weapons": [],
+    "tech_requirement": 0,
+    "ability_id": 8323
+   },
+   "live": {
+    "health_max": 150.0,
+    "shield_max": 0.0,
+    "energy_max": 200.0,
+    "radius": 0.75,
+    "sight": 11.0,
+    "armor": 1.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 0.0,
+    "air_dps": 0.0,
+    "ground_range": 0.0,
+    "air_range": 0.0,
+    "speed": 2.5,
+    "cargo_max": 0.0,
+    "is_flying": true,
+    "is_structure": false
+   }
+  },
+  "Liberator": {
+   "type_id": 689,
+   "proto": {
+    "name": "Liberator",
+    "race": 1,
+    "minerals": 150,
+    "gas": 125,
+    "supply": 3.0,
+    "build_time": 96.0,
+    "armor": 0.0,
+    "speed": 3.375,
+    "cargo": 0,
+    "attributes": [
+     2,
+     4
+    ],
+    "weapons": [
+     {
+      "type": 2,
+      "damage": 5.0,
+      "attacks": 2,
+      "range": 5.0,
+      "cooldown": 1.800048828125,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 0,
+    "ability_id": 8322
+   },
+   "live": {
+    "health_max": 180.0,
+    "shield_max": 0.0,
+    "energy_max": 0.0,
+    "radius": 0.75,
+    "sight": 10.0,
+    "armor": 0.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 0.0,
+    "air_dps": 5.555404855554048,
+    "ground_range": 0.0,
+    "air_range": 5.0,
+    "speed": 3.375,
+    "cargo_max": 0.0,
+    "is_flying": true,
+    "is_structure": false
+   }
+  },
+  "LiberatorAG": {
+   "type_id": 734,
+   "proto": {
+    "name": "LiberatorAG",
+    "race": 1,
+    "minerals": 150,
+    "gas": 125,
+    "supply": 3.0,
+    "build_time": 64.66796875,
+    "armor": 0.0,
+    "speed": 0.0,
+    "cargo": 0,
+    "attributes": [
+     2,
+     4
+    ],
+    "weapons": [
+     {
+      "type": 1,
+      "damage": 75.0,
+      "attacks": 1,
+      "range": 10.0,
+      "cooldown": 1.60009765625,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 0,
+    "ability_id": 2554
+   },
+   "live": {
+    "health_max": 180.0,
+    "shield_max": 0.0,
+    "energy_max": 0.0,
+    "radius": 0.75,
+    "sight": 10.0,
+    "armor": 0.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 46.872139151663106,
+    "air_dps": 0.0,
+    "ground_range": 10.0,
+    "air_range": 0.0,
+    "speed": 0.0,
+    "cargo_max": 0.0,
+    "is_flying": true,
+    "is_structure": false
+   }
+  },
+  "Banshee": {
+   "type_id": 55,
+   "proto": {
+    "name": "Banshee",
+    "race": 1,
+    "minerals": 150,
+    "gas": 100,
+    "supply": 3.0,
+    "build_time": 0.0,
+    "armor": 0.0,
+    "speed": 2.75,
+    "cargo": 0,
+    "attributes": [
+     1,
+     4
+    ],
+    "weapons": [
+     {
+      "type": 1,
+      "damage": 12.0,
+      "attacks": 2,
+      "range": 6.0,
+      "cooldown": 1.25,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 5,
+    "ability_id": 8576
+   },
+   "live": {
+    "health_max": 140.0,
+    "shield_max": 0.0,
+    "energy_max": 200.0,
+    "radius": 0.75,
+    "sight": 10.0,
+    "armor": 0.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 19.2,
+    "air_dps": 0.0,
+    "ground_range": 6.0,
+    "air_range": 0.0,
+    "speed": 2.75,
+    "cargo_max": 0.0,
+    "is_flying": true,
+    "is_structure": false
+   }
+  },
+  "Raven": {
+   "type_id": 56,
+   "proto": {
+    "name": "Raven",
+    "race": 1,
+    "minerals": 100,
+    "gas": 200,
+    "supply": 2.0,
+    "build_time": 96.0,
+    "armor": 1.0,
+    "speed": 2.94921875,
+    "cargo": 0,
+    "attributes": [
+     1,
+     4
+    ],
+    "weapons": [
+     {
+      "type": 3,
+      "damage": 1.0,
+      "attacks": 1,
+      "range": 10.0,
+      "cooldown": 1.5,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 5,
+    "ability_id": 8324
+   },
+   "live": {
+    "health_max": 140.0,
+    "shield_max": 0.0,
+    "energy_max": 200.0,
+    "radius": 0.625,
+    "sight": 11.0,
+    "armor": 1.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 0.6666666666666666,
+    "air_dps": 0.6666666666666666,
+    "ground_range": 10.0,
+    "air_range": 10.0,
+    "speed": 2.94921875,
+    "cargo_max": 0.0,
+    "is_flying": true,
+    "is_structure": false
+   }
+  },
+  "Battlecruiser": {
+   "type_id": 57,
+   "proto": {
+    "name": "Battlecruiser",
+    "race": 1,
+    "minerals": 400,
+    "gas": 300,
+    "supply": 6.0,
+    "build_time": 128.0,
+    "armor": 3.0,
+    "speed": 1.875,
+    "cargo": 0,
+    "attributes": [
+     2,
+     4,
+     7
+    ],
+    "weapons": [],
+    "tech_requirement": 0,
+    "ability_id": 8321
+   },
+   "live": {
+    "health_max": 550.0,
+    "shield_max": 0.0,
+    "energy_max": 0.0,
+    "radius": 1.25,
+    "sight": 12.0,
+    "armor": 3.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 0.0,
+    "air_dps": 0.0,
+    "ground_range": 6.0,
+    "air_range": 6.0,
+    "speed": 1.875,
+    "cargo_max": 0.0,
+    "is_flying": true,
+    "is_structure": false
+   }
+  },
+  "Probe": {
+   "type_id": 84,
+   "proto": {
+    "name": "Probe",
+    "race": 3,
+    "minerals": 50,
+    "gas": 0,
+    "supply": 1.0,
+    "build_time": 272.0,
+    "armor": 0.0,
+    "speed": 2.8125,
+    "cargo": 1,
+    "attributes": [
+     1,
+     4
+    ],
+    "weapons": [
+     {
+      "type": 1,
+      "damage": 5.0,
+      "attacks": 1,
+      "range": 0.199951171875,
+      "cooldown": 1.5,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 0,
+    "ability_id": 1006
+   },
+   "live": {
+    "health_max": 20.0,
+    "shield_max": 20.0,
+    "energy_max": 0.0,
+    "radius": 0.375,
+    "sight": 8.0,
+    "armor": 0.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 3.3333333333333335,
+    "air_dps": 0.0,
+    "ground_range": 0.199951171875,
+    "air_range": 0.0,
+    "speed": 2.8125,
+    "cargo_max": 1.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "Zealot": {
+   "type_id": 73,
+   "proto": {
+    "name": "Zealot",
+    "race": 3,
+    "minerals": 100,
+    "gas": 0,
+    "supply": 2.0,
+    "build_time": 0.0,
+    "armor": 1.0,
+    "speed": 2.75,
+    "cargo": 2,
+    "attributes": [
+     1,
+     3
+    ],
+    "weapons": [
+     {
+      "type": 1,
+      "damage": 8.0,
+      "attacks": 2,
+      "range": 0.10009765625,
+      "cooldown": 1.199951171875,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 0,
+    "ability_id": 8564
+   },
+   "live": {
+    "health_max": 100.0,
+    "shield_max": 50.0,
+    "energy_max": 0.0,
+    "radius": 0.5,
+    "sight": 9.0,
+    "armor": 1.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 13.333875890132248,
+    "air_dps": 0.0,
+    "ground_range": 0.10009765625,
+    "air_range": 0.0,
+    "speed": 2.75,
+    "cargo_max": 2.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "Stalker": {
+   "type_id": 74,
+   "proto": {
+    "name": "Stalker",
+    "race": 3,
+    "minerals": 125,
+    "gas": 50,
+    "supply": 2.0,
+    "build_time": 0.0,
+    "armor": 1.0,
+    "speed": 2.94921875,
+    "cargo": 2,
+    "attributes": [
+     2,
+     4
+    ],
+    "weapons": [
+     {
+      "type": 3,
+      "damage": 13.0,
+      "attacks": 1,
+      "range": 6.0,
+      "cooldown": 1.8701171875,
+      "bonus": [
+       {
+        "attribute": 2,
+        "bonus": 5.0
+       }
+      ]
+     }
+    ],
+    "tech_requirement": 0,
+    "ability_id": 8565
+   },
+   "live": {
+    "health_max": 80.0,
+    "shield_max": 80.0,
+    "energy_max": 0.0,
+    "radius": 0.625,
+    "sight": 10.0,
+    "armor": 1.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 6.951436031331593,
+    "air_dps": 6.951436031331593,
+    "ground_range": 6.0,
+    "air_range": 6.0,
+    "speed": 2.94921875,
+    "cargo_max": 2.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "Sentry": {
+   "type_id": 77,
+   "proto": {
+    "name": "Sentry",
+    "race": 3,
+    "minerals": 50,
+    "gas": 100,
+    "supply": 2.0,
+    "build_time": 512.0,
+    "armor": 1.0,
+    "speed": 2.5,
+    "cargo": 2,
+    "attributes": [
+     4,
+     6
+    ],
+    "weapons": [],
+    "tech_requirement": 0,
+    "ability_id": 921
+   },
+   "live": {
+    "health_max": 40.0,
+    "shield_max": 40.0,
+    "energy_max": 200.0,
+    "radius": 0.5,
+    "sight": 10.0,
+    "armor": 1.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 0.0,
+    "air_dps": 0.0,
+    "ground_range": 0.0,
+    "air_range": 0.0,
+    "speed": 2.5,
+    "cargo_max": 2.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "Adept": {
+   "type_id": 311,
+   "proto": {
+    "name": "Adept",
+    "race": 3,
+    "minerals": 100,
+    "gas": 25,
+    "supply": 2.0,
+    "build_time": 672.0,
+    "armor": 1.0,
+    "speed": 2.5,
+    "cargo": 2,
+    "attributes": [
+     1,
+     3
+    ],
+    "weapons": [
+     {
+      "type": 1,
+      "damage": 10.0,
+      "attacks": 1,
+      "range": 4.0,
+      "cooldown": 2.25,
+      "bonus": [
+       {
+        "attribute": 1,
+        "bonus": 12.0
+       }
+      ]
+     }
+    ],
+    "tech_requirement": 0,
+    "ability_id": 7355
+   },
+   "live": {
+    "health_max": 70.0,
+    "shield_max": 70.0,
+    "energy_max": 0.0,
+    "radius": 0.5,
+    "sight": 9.0,
+    "armor": 1.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 4.444444444444445,
+    "air_dps": 0.0,
+    "ground_range": 4.0,
+    "air_range": 0.0,
+    "speed": 2.5,
+    "cargo_max": 2.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "HighTemplar": {
+   "type_id": 75,
+   "proto": {
+    "name": "HighTemplar",
+    "race": 3,
+    "minerals": 50,
+    "gas": 150,
+    "supply": 2.0,
+    "build_time": 896.0,
+    "armor": 0.0,
+    "speed": 2.015625,
+    "cargo": 2,
+    "attributes": [
+     1,
+     3,
+     6
+    ],
+    "weapons": [
+     {
+      "type": 1,
+      "damage": 4.0,
+      "attacks": 1,
+      "range": 6.0,
+      "cooldown": 1.75390625,
+      "bonus": []
+     },
+     {
+      "type": 1,
+      "damage": 4.0,
+      "attacks": 1,
+      "range": 6.0,
+      "cooldown": 1.75390625,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 68,
+    "ability_id": 919
+   },
+   "live": {
+    "health_max": 40.0,
+    "shield_max": 40.0,
+    "energy_max": 200.0,
+    "radius": 0.375,
+    "sight": 10.0,
+    "armor": 0.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 2.2806236080178173,
+    "air_dps": 0.0,
+    "ground_range": 6.0,
+    "air_range": 0.0,
+    "speed": 2.015625,
+    "cargo_max": 2.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "DarkTemplar": {
+   "type_id": 76,
+   "proto": {
+    "name": "DarkTemplar",
+    "race": 3,
+    "minerals": 125,
+    "gas": 125,
+    "supply": 2.0,
+    "build_time": 896.0,
+    "armor": 1.0,
+    "speed": 2.8125,
+    "cargo": 2,
+    "attributes": [
+     1,
+     3,
+     6
+    ],
+    "weapons": [
+     {
+      "type": 1,
+      "damage": 45.0,
+      "attacks": 1,
+      "range": 0.10009765625,
+      "cooldown": 1.694091796875,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 69,
+    "ability_id": 920
+   },
+   "live": {
+    "health_max": 40.0,
+    "shield_max": 80.0,
+    "energy_max": 0.0,
+    "radius": 0.375,
+    "sight": 8.0,
+    "armor": 1.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 26.562905317769133,
+    "air_dps": 0.0,
+    "ground_range": 0.10009765625,
+    "air_range": 0.0,
+    "speed": 2.8125,
+    "cargo_max": 2.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "Archon": {
+   "type_id": 141,
+   "proto": {
+    "name": "Archon",
+    "race": 3,
+    "minerals": 175,
+    "gas": 275,
+    "supply": 4.0,
+    "build_time": 128.0,
+    "armor": 0.0,
+    "speed": 2.8125,
+    "cargo": 4,
+    "attributes": [
+     6,
+     7
+    ],
+    "weapons": [
+     {
+      "type": 3,
+      "damage": 25.0,
+      "attacks": 1,
+      "range": 3.0,
+      "cooldown": 1.75390625,
+      "bonus": [
+       {
+        "attribute": 3,
+        "bonus": 10.0
+       }
+      ]
+     }
+    ],
+    "tech_requirement": 0,
+    "ability_id": 8313
+   },
+   "live": {
+    "health_max": 10.0,
+    "shield_max": 350.0,
+    "energy_max": 0.0,
+    "radius": 1.0,
+    "sight": 9.0,
+    "armor": 0.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 14.25389755011136,
+    "air_dps": 14.25389755011136,
+    "ground_range": 3.0,
+    "air_range": 3.0,
+    "speed": 2.8125,
+    "cargo_max": 4.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "Immortal": {
+   "type_id": 83,
+   "proto": {
+    "name": "Immortal",
+    "race": 3,
+    "minerals": 250,
+    "gas": 100,
+    "supply": 4.0,
+    "build_time": 0.0,
+    "armor": 1.0,
+    "speed": 2.25,
+    "cargo": 4,
+    "attributes": [
+     2,
+     4
+    ],
+    "weapons": [
+     {
+      "type": 1,
+      "damage": 20.0,
+      "attacks": 1,
+      "range": 6.0,
+      "cooldown": 1.60009765625,
+      "bonus": [
+       {
+        "attribute": 2,
+        "bonus": 30.0
+       }
+      ]
+     }
+    ],
+    "tech_requirement": 0,
+    "ability_id": 8567
+   },
+   "live": {
+    "health_max": 200.0,
+    "shield_max": 100.0,
+    "energy_max": 0.0,
+    "radius": 0.75,
+    "sight": 9.0,
+    "armor": 1.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 12.499237107110162,
+    "air_dps": 0.0,
+    "ground_range": 6.0,
+    "air_range": 0.0,
+    "speed": 2.25,
+    "cargo_max": 4.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "Colossus": {
+   "type_id": 4,
+   "proto": {
+    "name": "Colossus",
+    "race": 3,
+    "minerals": 300,
+    "gas": 200,
+    "supply": 6.0,
+    "build_time": 0.0,
+    "armor": 1.0,
+    "speed": 2.25,
+    "cargo": 8,
+    "attributes": [
+     2,
+     4,
+     7
+    ],
+    "weapons": [
+     {
+      "type": 1,
+      "damage": 10.0,
+      "attacks": 2,
+      "range": 7.0,
+      "cooldown": 1.5,
+      "bonus": [
+       {
+        "attribute": 1,
+        "bonus": 5.0
+       }
+      ]
+     }
+    ],
+    "tech_requirement": 70,
+    "ability_id": 8566
+   },
+   "live": {
+    "health_max": 250.0,
+    "shield_max": 100.0,
+    "energy_max": 0.0,
+    "radius": 1.0,
+    "sight": 10.0,
+    "armor": 1.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 13.333333333333334,
+    "air_dps": 0.0,
+    "ground_range": 7.0,
+    "air_range": 0.0,
+    "speed": 2.25,
+    "cargo_max": 8.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "Disruptor": {
+   "type_id": 694,
+   "proto": {
+    "name": "Disruptor",
+    "race": 3,
+    "minerals": 150,
+    "gas": 150,
+    "supply": 3.0,
+    "build_time": 800.0,
+    "armor": 1.0,
+    "speed": 2.25,
+    "cargo": 4,
+    "attributes": [
+     2,
+     4
+    ],
+    "weapons": [
+     {
+      "type": 1,
+      "damage": 5.0,
+      "attacks": 1,
+      "range": 10.0,
+      "cooldown": 1.5,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 70,
+    "ability_id": 994
+   },
+   "live": {
+    "health_max": 100.0,
+    "shield_max": 100.0,
+    "energy_max": 0.0,
+    "radius": 0.625,
+    "sight": 9.0,
+    "armor": 1.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 3.3333333333333335,
+    "air_dps": 0.0,
+    "ground_range": 10.0,
+    "air_range": 0.0,
+    "speed": 2.25,
+    "cargo_max": 4.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "Observer": {
+   "type_id": 82,
+   "proto": {
+    "name": "Observer",
+    "race": 3,
+    "minerals": 25,
+    "gas": 75,
+    "supply": 1.0,
+    "build_time": 400.0,
+    "armor": 0.0,
+    "speed": 2.015625,
+    "cargo": 0,
+    "attributes": [
+     1,
+     4
+    ],
+    "weapons": [],
+    "tech_requirement": 0,
+    "ability_id": 977
+   },
+   "live": {
+    "health_max": 40.0,
+    "shield_max": 30.0,
+    "energy_max": 0.0,
+    "radius": 0.5,
+    "sight": 11.0,
+    "armor": 0.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 0.0,
+    "air_dps": 0.0,
+    "ground_range": 0.0,
+    "air_range": 0.0,
+    "speed": 2.015625,
+    "cargo_max": 0.0,
+    "is_flying": true,
+    "is_structure": false
+   }
+  },
+  "WarpPrism": {
+   "type_id": 81,
+   "proto": {
+    "name": "WarpPrism",
+    "race": 3,
+    "minerals": 250,
+    "gas": 0,
+    "supply": 2.0,
+    "build_time": 800.0,
+    "armor": 0.0,
+    "speed": 2.953125,
+    "cargo": 0,
+    "attributes": [
+     2,
+     4,
+     6
+    ],
+    "weapons": [],
+    "tech_requirement": 0,
+    "ability_id": 976
+   },
+   "live": {
+    "health_max": 80.0,
+    "shield_max": 100.0,
+    "energy_max": 0.0,
+    "radius": 0.875,
+    "sight": 10.0,
+    "armor": 0.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 0.0,
+    "air_dps": 0.0,
+    "ground_range": 0.0,
+    "air_range": 0.0,
+    "speed": 2.953125,
+    "cargo_max": 0.0,
+    "is_flying": true,
+    "is_structure": false
+   }
+  },
+  "Phoenix": {
+   "type_id": 78,
+   "proto": {
+    "name": "Phoenix",
+    "race": 3,
+    "minerals": 150,
+    "gas": 100,
+    "supply": 2.0,
+    "build_time": 64.0,
+    "armor": 0.0,
+    "speed": 4.25,
+    "cargo": 0,
+    "attributes": [
+     1,
+     4
+    ],
+    "weapons": [
+     {
+      "type": 2,
+      "damage": 5.0,
+      "attacks": 2,
+      "range": 5.0,
+      "cooldown": 1.10009765625,
+      "bonus": [
+       {
+        "attribute": 1,
+        "bonus": 5.0
+       }
+      ]
+     }
+    ],
+    "tech_requirement": 0,
+    "ability_id": 8314
+   },
+   "live": {
+    "health_max": 120.0,
+    "shield_max": 60.0,
+    "energy_max": 0.0,
+    "radius": 0.75,
+    "sight": 10.0,
+    "armor": 0.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 0.0,
+    "air_dps": 9.090102086107413,
+    "ground_range": 0.0,
+    "air_range": 5.0,
+    "speed": 4.25,
+    "cargo_max": 0.0,
+    "is_flying": true,
+    "is_structure": false
+   }
+  },
+  "VoidRay": {
+   "type_id": 80,
+   "proto": {
+    "name": "VoidRay",
+    "race": 3,
+    "minerals": 250,
+    "gas": 150,
+    "supply": 4.0,
+    "build_time": 963.19921875,
+    "armor": 0.0,
+    "speed": 2.75,
+    "cargo": 0,
+    "attributes": [
+     2,
+     4
+    ],
+    "weapons": [
+     {
+      "type": 3,
+      "damage": 6.0,
+      "attacks": 1,
+      "range": 6.0,
+      "cooldown": 0.5,
+      "bonus": [
+       {
+        "attribute": 2,
+        "bonus": 4.0
+       }
+      ]
+     }
+    ],
+    "tech_requirement": 0,
+    "ability_id": 950
+   },
+   "live": {
+    "health_max": 150.0,
+    "shield_max": 100.0,
+    "energy_max": 0.0,
+    "radius": 1.0,
+    "sight": 10.0,
+    "armor": 0.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 12.0,
+    "air_dps": 12.0,
+    "ground_range": 6.0,
+    "air_range": 6.0,
+    "speed": 2.75,
+    "cargo_max": 0.0,
+    "is_flying": true,
+    "is_structure": false
+   }
+  },
+  "Oracle": {
+   "type_id": 495,
+   "proto": {
+    "name": "Oracle",
+    "race": 3,
+    "minerals": 150,
+    "gas": 150,
+    "supply": 3.0,
+    "build_time": 96.0,
+    "armor": 0.0,
+    "speed": 4.0,
+    "cargo": 0,
+    "attributes": [
+     2,
+     4,
+     6
+    ],
+    "weapons": [],
+    "tech_requirement": 0,
+    "ability_id": 8315
+   },
+   "live": {
+    "health_max": 100.0,
+    "shield_max": 60.0,
+    "energy_max": 200.0,
+    "radius": 0.75,
+    "sight": 10.0,
+    "armor": 0.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 0.0,
+    "air_dps": 0.0,
+    "ground_range": 4.0,
+    "air_range": 0.0,
+    "speed": 4.0,
+    "cargo_max": 0.0,
+    "is_flying": true,
+    "is_structure": false
+   }
+  },
+  "Tempest": {
+   "type_id": 496,
+   "proto": {
+    "name": "Tempest",
+    "race": 3,
+    "minerals": 250,
+    "gas": 175,
+    "supply": 6.0,
+    "build_time": 688.0,
+    "armor": 2.0,
+    "speed": 2.25,
+    "cargo": 0,
+    "attributes": [
+     2,
+     4,
+     7
+    ],
+    "weapons": [
+     {
+      "type": 1,
+      "damage": 40.0,
+      "attacks": 1,
+      "range": 10.0,
+      "cooldown": 2.800048828125,
+      "bonus": []
+     },
+     {
+      "type": 2,
+      "damage": 60.0,
+      "attacks": 1,
+      "range": 13.0,
+      "cooldown": 2.800048828125,
+      "bonus": [
+       {
+        "attribute": 7,
+        "bonus": 22.0
+       }
+      ]
+     },
+     {
+      "type": 1,
+      "damage": 40.0,
+      "attacks": 1,
+      "range": 10.0,
+      "cooldown": 2.800048828125,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 64,
+    "ability_id": 955
+   },
+   "live": {
+    "health_max": 200.0,
+    "shield_max": 100.0,
+    "energy_max": 0.0,
+    "radius": 1.125,
+    "sight": 12.0,
+    "armor": 2.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 14.285465166971838,
+    "air_dps": 21.428197750457755,
+    "ground_range": 10.0,
+    "air_range": 13.0,
+    "speed": 2.25,
+    "cargo_max": 0.0,
+    "is_flying": true,
+    "is_structure": false
+   }
+  },
+  "Carrier": {
+   "type_id": 79,
+   "proto": {
+    "name": "Carrier",
+    "race": 3,
+    "minerals": 350,
+    "gas": 250,
+    "supply": 6.0,
+    "build_time": 0.0,
+    "armor": 2.0,
+    "speed": 1.875,
+    "cargo": 0,
+    "attributes": [
+     2,
+     4,
+     7
+    ],
+    "weapons": [],
+    "tech_requirement": 64,
+    "ability_id": 8568
+   },
+   "live": {
+    "health_max": 300.0,
+    "shield_max": 150.0,
+    "energy_max": 0.0,
+    "radius": 1.25,
+    "sight": 12.0,
+    "armor": 2.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 0.0,
+    "air_dps": 0.0,
+    "ground_range": 0.0,
+    "air_range": 0.0,
+    "speed": 1.875,
+    "cargo_max": 0.0,
+    "is_flying": true,
+    "is_structure": false
+   }
+  },
+  "Mothership": {
+   "type_id": 10,
+   "proto": {
+    "name": "Mothership",
+    "race": 3,
+    "minerals": 400,
+    "gas": 400,
+    "supply": 8.0,
+    "build_time": 2000.0,
+    "armor": 2.0,
+    "speed": 1.60546875,
+    "cargo": 0,
+    "attributes": [
+     2,
+     4,
+     7,
+     10
+    ],
+    "weapons": [
+     {
+      "type": 3,
+      "damage": 6.0,
+      "attacks": 4,
+      "range": 7.0,
+      "cooldown": 2.2099609375,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 0,
+    "ability_id": 110
+   },
+   "live": {
+    "health_max": 350.0,
+    "shield_max": 350.0,
+    "energy_max": 0.0,
+    "radius": 1.375,
+    "sight": 14.0,
+    "armor": 2.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 10.859920459566947,
+    "air_dps": 10.859920459566947,
+    "ground_range": 7.0,
+    "air_range": 7.0,
+    "speed": 1.60546875,
+    "cargo_max": 0.0,
+    "is_flying": true,
+    "is_structure": false
+   }
+  },
+  "Drone": {
+   "type_id": 104,
+   "proto": {
+    "name": "Drone",
+    "race": 2,
+    "minerals": 50,
+    "gas": 0,
+    "supply": 1.0,
+    "build_time": 272.0,
+    "armor": 0.0,
+    "speed": 2.8125,
+    "cargo": 1,
+    "attributes": [
+     1,
+     3
+    ],
+    "weapons": [
+     {
+      "type": 1,
+      "damage": 5.0,
+      "attacks": 1,
+      "range": 0.199951171875,
+      "cooldown": 1.5,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 0,
+    "ability_id": 1342
+   },
+   "live": {
+    "health_max": 40.0,
+    "shield_max": 0.0,
+    "energy_max": 0.0,
+    "radius": 0.375,
+    "sight": 8.0,
+    "armor": 0.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 3.3333333333333335,
+    "air_dps": 0.0,
+    "ground_range": 0.199951171875,
+    "air_range": 0.0,
+    "speed": 2.8125,
+    "cargo_max": 1.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "Zergling": {
+   "type_id": 105,
+   "proto": {
+    "name": "Zergling",
+    "race": 2,
+    "minerals": 25,
+    "gas": 0,
+    "supply": 0.5,
+    "build_time": 0.0,
+    "armor": 0.0,
+    "speed": 2.953125,
+    "cargo": 1,
+    "attributes": [
+     1,
+     3
+    ],
+    "weapons": [
+     {
+      "type": 1,
+      "damage": 5.0,
+      "attacks": 1,
+      "range": 0.10009765625,
+      "cooldown": 0.696044921875,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 89,
+    "ability_id": 8569
+   },
+   "live": {
+    "health_max": 35.0,
+    "shield_max": 0.0,
+    "energy_max": 0.0,
+    "radius": 0.375,
+    "sight": 8.0,
+    "armor": 0.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 7.183444405471764,
+    "air_dps": 0.0,
+    "ground_range": 0.10009765625,
+    "air_range": 0.0,
+    "speed": 2.953125,
+    "cargo_max": 1.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "Baneling": {
+   "type_id": 9,
+   "proto": {
+    "name": "Baneling",
+    "race": 2,
+    "minerals": 50,
+    "gas": 15,
+    "supply": 0.5,
+    "build_time": 160.0,
+    "armor": 0.0,
+    "speed": 2.953125,
+    "cargo": 2,
+    "attributes": [
+     3
+    ],
+    "weapons": [],
+    "tech_requirement": 96,
+    "ability_id": 4802
+   },
+   "live": {
+    "health_max": 35.0,
+    "shield_max": 0.0,
+    "energy_max": 0.0,
+    "radius": 0.375,
+    "sight": 8.0,
+    "armor": 0.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 0.0,
+    "air_dps": 0.0,
+    "ground_range": 0.0,
+    "air_range": 0.0,
+    "speed": 2.953125,
+    "cargo_max": 2.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "Roach": {
+   "type_id": 110,
+   "proto": {
+    "name": "Roach",
+    "race": 2,
+    "minerals": 75,
+    "gas": 25,
+    "supply": 2.0,
+    "build_time": 64.0,
+    "armor": 1.0,
+    "speed": 2.25,
+    "cargo": 2,
+    "attributes": [
+     2,
+     3
+    ],
+    "weapons": [
+     {
+      "type": 1,
+      "damage": 16.0,
+      "attacks": 1,
+      "range": 4.0,
+      "cooldown": 2.0,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 0,
+    "ability_id": 8316
+   },
+   "live": {
+    "health_max": 145.0,
+    "shield_max": 0.0,
+    "energy_max": 0.0,
+    "radius": 0.5,
+    "sight": 9.0,
+    "armor": 1.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 8.0,
+    "air_dps": 0.0,
+    "ground_range": 4.0,
+    "air_range": 0.0,
+    "speed": 2.25,
+    "cargo_max": 2.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "Ravager": {
+   "type_id": 688,
+   "proto": {
+    "name": "Ravager",
+    "race": 2,
+    "minerals": 50,
+    "gas": 50,
+    "supply": 2.0,
+    "build_time": 617.56640625,
+    "armor": 1.0,
+    "speed": 2.75,
+    "cargo": 4,
+    "attributes": [
+     3
+    ],
+    "weapons": [
+     {
+      "type": 1,
+      "damage": 16.0,
+      "attacks": 1,
+      "range": 6.0,
+      "cooldown": 1.60009765625,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 0,
+    "ability_id": 9343
+   },
+   "live": {
+    "health_max": 150.0,
+    "shield_max": 0.0,
+    "energy_max": 0.0,
+    "radius": 0.75,
+    "sight": 9.0,
+    "armor": 1.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 9.99938968568813,
+    "air_dps": 0.0,
+    "ground_range": 6.0,
+    "air_range": 0.0,
+    "speed": 2.75,
+    "cargo_max": 4.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "Hydralisk": {
+   "type_id": 107,
+   "proto": {
+    "name": "Hydralisk",
+    "race": 2,
+    "minerals": 100,
+    "gas": 50,
+    "supply": 2.0,
+    "build_time": 0.0,
+    "armor": 0.0,
+    "speed": 2.25,
+    "cargo": 2,
+    "attributes": [
+     1,
+     3
+    ],
+    "weapons": [
+     {
+      "type": 3,
+      "damage": 12.0,
+      "attacks": 1,
+      "range": 5.0,
+      "cooldown": 0.824951171875,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 91,
+    "ability_id": 8570
+   },
+   "live": {
+    "health_max": 90.0,
+    "shield_max": 0.0,
+    "energy_max": 0.0,
+    "radius": 0.625,
+    "sight": 9.0,
+    "armor": 0.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 14.546315477952056,
+    "air_dps": 14.546315477952056,
+    "ground_range": 5.0,
+    "air_range": 5.0,
+    "speed": 2.25,
+    "cargo_max": 2.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "LurkerMP": {
+   "type_id": 502,
+   "proto": {
+    "name": "LurkerMP",
+    "race": 2,
+    "minerals": 150,
+    "gas": 150,
+    "supply": 3.0,
+    "build_time": 528.0,
+    "armor": 1.0,
+    "speed": 2.953125,
+    "cargo": 4,
+    "attributes": [
+     2,
+     3
+    ],
+    "weapons": [],
+    "tech_requirement": 504,
+    "ability_id": 2332
+   },
+   "live": {
+    "health_max": 190.0,
+    "shield_max": 0.0,
+    "energy_max": 0.0,
+    "radius": 0.9375,
+    "sight": 11.0,
+    "armor": 1.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 0.0,
+    "air_dps": 0.0,
+    "ground_range": 0.0,
+    "air_range": 0.0,
+    "speed": 2.953125,
+    "cargo_max": 4.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "Infestor": {
+   "type_id": 111,
+   "proto": {
+    "name": "Infestor",
+    "race": 2,
+    "minerals": 100,
+    "gas": 150,
+    "supply": 2.0,
+    "build_time": 800.0,
+    "armor": 0.0,
+    "speed": 2.5,
+    "cargo": 2,
+    "attributes": [
+     2,
+     3,
+     6
+    ],
+    "weapons": [],
+    "tech_requirement": 0,
+    "ability_id": 1352
+   },
+   "live": {
+    "health_max": 90.0,
+    "shield_max": 0.0,
+    "energy_max": 200.0,
+    "radius": 0.625,
+    "sight": 10.0,
+    "armor": 0.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 0.0,
+    "air_dps": 0.0,
+    "ground_range": 0.0,
+    "air_range": 0.0,
+    "speed": 2.5,
+    "cargo_max": 2.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "SwarmHostMP": {
+   "type_id": 494,
+   "proto": {
+    "name": "SwarmHostMP",
+    "race": 2,
+    "minerals": 100,
+    "gas": 75,
+    "supply": 3.0,
+    "build_time": 640.0,
+    "armor": 1.0,
+    "speed": 2.25,
+    "cargo": 4,
+    "attributes": [
+     2,
+     3
+    ],
+    "weapons": [],
+    "tech_requirement": 94,
+    "ability_id": 1356
+   },
+   "live": {
+    "health_max": 160.0,
+    "shield_max": 0.0,
+    "energy_max": 0.0,
+    "radius": 0.8125,
+    "sight": 10.0,
+    "armor": 1.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 0.0,
+    "air_dps": 0.0,
+    "ground_range": 0.0,
+    "air_range": 0.0,
+    "speed": 2.25,
+    "cargo_max": 4.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "Ultralisk": {
+   "type_id": 109,
+   "proto": {
+    "name": "Ultralisk",
+    "race": 2,
+    "minerals": 300,
+    "gas": 200,
+    "supply": 6.0,
+    "build_time": 0.0,
+    "armor": 2.0,
+    "speed": 2.953125,
+    "cargo": 8,
+    "attributes": [
+     2,
+     3,
+     7
+    ],
+    "weapons": [
+     {
+      "type": 1,
+      "damage": 25.0,
+      "attacks": 1,
+      "range": 1.0,
+      "cooldown": 0.860107421875,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 0,
+    "ability_id": 8572
+   },
+   "live": {
+    "health_max": 500.0,
+    "shield_max": 0.0,
+    "energy_max": 0.0,
+    "radius": 1.0,
+    "sight": 9.0,
+    "armor": 2.0,
+    "armor_upgrade": 2.0,
+    "ground_dps": 29.066136815214307,
+    "air_dps": 0.0,
+    "ground_range": 1.0,
+    "air_range": 0.0,
+    "speed": 2.953125,
+    "cargo_max": 8.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "Queen": {
+   "type_id": 126,
+   "proto": {
+    "name": "Queen",
+    "race": 2,
+    "minerals": 175,
+    "gas": 50,
+    "supply": 2.0,
+    "build_time": 20.0,
+    "armor": 1.0,
+    "speed": 2.25,
+    "cargo": 2,
+    "attributes": [
+     2,
+     3,
+     6
+    ],
+    "weapons": [
+     {
+      "type": 2,
+      "damage": 9.0,
+      "attacks": 1,
+      "range": 7.0,
+      "cooldown": 1.0,
+      "bonus": []
+     },
+     {
+      "type": 1,
+      "damage": 4.0,
+      "attacks": 2,
+      "range": 5.0,
+      "cooldown": 1.0,
+      "bonus": [
+       {
+        "attribute": 2,
+        "bonus": 2.0
+       }
+      ]
+     }
+    ],
+    "tech_requirement": 0,
+    "ability_id": 1936
+   },
+   "live": {
+    "health_max": 150.0,
+    "shield_max": 0.0,
+    "energy_max": 200.0,
+    "radius": 0.875,
+    "sight": 9.0,
+    "armor": 1.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 8.0,
+    "air_dps": 9.0,
+    "ground_range": 5.0,
+    "air_range": 7.0,
+    "speed": 2.25,
+    "cargo_max": 2.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "Overlord": {
+   "type_id": 106,
+   "proto": {
+    "name": "Overlord",
+    "race": 2,
+    "minerals": 100,
+    "gas": 0,
+    "supply": 0.0,
+    "build_time": 400.0,
+    "armor": 0.0,
+    "speed": 0.60546875,
+    "cargo": 0,
+    "attributes": [
+     2,
+     3
+    ],
+    "weapons": [],
+    "tech_requirement": 0,
+    "ability_id": 1344
+   },
+   "live": {
+    "health_max": 200.0,
+    "shield_max": 0.0,
+    "energy_max": 0.0,
+    "radius": 1.0,
+    "sight": 11.0,
+    "armor": 0.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 0.0,
+    "air_dps": 0.0,
+    "ground_range": 0.0,
+    "air_range": 0.0,
+    "speed": 0.60546875,
+    "cargo_max": 0.0,
+    "is_flying": true,
+    "is_structure": false
+   }
+  },
+  "Overseer": {
+   "type_id": 129,
+   "proto": {
+    "name": "Overseer",
+    "race": 2,
+    "minerals": 150,
+    "gas": 50,
+    "supply": 0.0,
+    "build_time": 96.0,
+    "armor": 1.0,
+    "speed": 1.875,
+    "cargo": 0,
+    "attributes": [
+     2,
+     3
+    ],
+    "weapons": [],
+    "tech_requirement": 100,
+    "ability_id": 8312
+   },
+   "live": {
+    "health_max": 200.0,
+    "shield_max": 0.0,
+    "energy_max": 200.0,
+    "radius": 1.0,
+    "sight": 11.0,
+    "armor": 1.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 0.0,
+    "air_dps": 0.0,
+    "ground_range": 0.0,
+    "air_range": 0.0,
+    "speed": 1.875,
+    "cargo_max": 0.0,
+    "is_flying": true,
+    "is_structure": false
+   }
+  },
+  "Mutalisk": {
+   "type_id": 108,
+   "proto": {
+    "name": "Mutalisk",
+    "race": 2,
+    "minerals": 100,
+    "gas": 100,
+    "supply": 2.0,
+    "build_time": 0.0,
+    "armor": 0.0,
+    "speed": 4.0,
+    "cargo": 0,
+    "attributes": [
+     1,
+     3
+    ],
+    "weapons": [
+     {
+      "type": 3,
+      "damage": 9.0,
+      "attacks": 1,
+      "range": 3.0,
+      "cooldown": 1.524658203125,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 92,
+    "ability_id": 8571
+   },
+   "live": {
+    "health_max": 120.0,
+    "shield_max": 0.0,
+    "energy_max": 0.0,
+    "radius": 0.5,
+    "sight": 11.0,
+    "armor": 0.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 5.902962369895917,
+    "air_dps": 5.902962369895917,
+    "ground_range": 3.0,
+    "air_range": 3.0,
+    "speed": 4.0,
+    "cargo_max": 0.0,
+    "is_flying": true,
+    "is_structure": false
+   }
+  },
+  "Corruptor": {
+   "type_id": 112,
+   "proto": {
+    "name": "Corruptor",
+    "race": 2,
+    "minerals": 150,
+    "gas": 100,
+    "supply": 2.0,
+    "build_time": 640.0,
+    "armor": 2.0,
+    "speed": 3.375,
+    "cargo": 0,
+    "attributes": [
+     2,
+     3
+    ],
+    "weapons": [
+     {
+      "type": 2,
+      "damage": 14.0,
+      "attacks": 1,
+      "range": 6.0,
+      "cooldown": 1.89990234375,
+      "bonus": [
+       {
+        "attribute": 7,
+        "bonus": 6.0
+       }
+      ]
+     }
+    ],
+    "tech_requirement": 92,
+    "ability_id": 1353
+   },
+   "live": {
+    "health_max": 200.0,
+    "shield_max": 0.0,
+    "energy_max": 0.0,
+    "radius": 0.625,
+    "sight": 10.0,
+    "armor": 2.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 0.0,
+    "air_dps": 7.368799794397328,
+    "ground_range": 0.0,
+    "air_range": 6.0,
+    "speed": 3.375,
+    "cargo_max": 0.0,
+    "is_flying": true,
+    "is_structure": false
+   }
+  },
+  "BroodLord": {
+   "type_id": 114,
+   "proto": {
+    "name": "BroodLord",
+    "race": 2,
+    "minerals": 300,
+    "gas": 250,
+    "supply": 4.0,
+    "build_time": 544.0,
+    "armor": 1.0,
+    "speed": 1.6015625,
+    "cargo": 0,
+    "attributes": [
+     2,
+     3,
+     7
+    ],
+    "weapons": [
+     {
+      "type": 1,
+      "damage": 20.0,
+      "attacks": 1,
+      "range": 10.0,
+      "cooldown": 2.5,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 102,
+    "ability_id": 9433
+   },
+   "live": {
+    "health_max": 225.0,
+    "shield_max": 0.0,
+    "energy_max": 0.0,
+    "radius": 1.0,
+    "sight": 12.0,
+    "armor": 1.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 8.0,
+    "air_dps": 0.0,
+    "ground_range": 10.0,
+    "air_range": 0.0,
+    "speed": 1.6015625,
+    "cargo_max": 0.0,
+    "is_flying": true,
+    "is_structure": false
+   }
+  },
+  "Viper": {
+   "type_id": 499,
+   "proto": {
+    "name": "Viper",
+    "race": 2,
+    "minerals": 100,
+    "gas": 200,
+    "supply": 3.0,
+    "build_time": 96.0,
+    "armor": 1.0,
+    "speed": 2.953125,
+    "cargo": 0,
+    "attributes": [
+     2,
+     3,
+     6
+    ],
+    "weapons": [
+     {
+      "type": 2,
+      "damage": 10.0,
+      "attacks": 1,
+      "range": 6.0,
+      "cooldown": 1.5,
+      "bonus": [
+       {
+        "attribute": 2,
+        "bonus": 5.0
+       }
+      ]
+     },
+     {
+      "type": 1,
+      "damage": 1.0,
+      "attacks": 1,
+      "range": 10.0,
+      "cooldown": 1.5,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 102,
+    "ability_id": 8319
+   },
+   "live": {
+    "health_max": 150.0,
+    "shield_max": 0.0,
+    "energy_max": 200.0,
+    "radius": 1.0,
+    "sight": 11.0,
+    "armor": 1.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 0.6666666666666666,
+    "air_dps": 6.666666666666667,
+    "ground_range": 10.0,
+    "air_range": 6.0,
+    "speed": 2.953125,
+    "cargo_max": 0.0,
+    "is_flying": true,
+    "is_structure": false
+   }
+  },
+  "Firebat": {
+   "type_id": 1139,
+   "proto": {
+    "name": "Firebat",
+    "race": 1,
+    "minerals": 50,
+    "gas": 25,
+    "supply": 1.0,
+    "build_time": 480.0,
+    "armor": 2.0,
+    "speed": 2.25,
+    "cargo": 2,
+    "attributes": [
+     1,
+     3
+    ],
+    "weapons": [
+     {
+      "type": 1,
+      "damage": 8.0,
+      "attacks": 1,
+      "range": 1.5,
+      "cooldown": 1.3125,
+      "bonus": [
+       {
+        "attribute": 1,
+        "bonus": 4.0
+       }
+      ]
+     }
+    ],
+    "tech_requirement": 5,
+    "ability_id": 9093
+   },
+   "live": {
+    "health_max": 75.0,
+    "shield_max": 0.0,
+    "energy_max": 0.0,
+    "radius": 0.5,
+    "sight": 8.0,
+    "armor": 2.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 6.095238095238095,
+    "air_dps": 0.0,
+    "ground_range": 1.5,
+    "air_range": 0.0,
+    "speed": 2.25,
+    "cargo_max": 2.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "Goliath": {
+   "type_id": 904,
+   "proto": {
+    "name": "Goliath",
+    "race": 1,
+    "minerals": 100,
+    "gas": 50,
+    "supply": 2.0,
+    "build_time": 720.0,
+    "armor": 1.0,
+    "speed": 2.6875,
+    "cargo": 2,
+    "attributes": [
+     2,
+     4
+    ],
+    "weapons": [
+     {
+      "type": 1,
+      "damage": 21.0,
+      "attacks": 1,
+      "range": 6.0,
+      "cooldown": 1.5,
+      "bonus": []
+     },
+     {
+      "type": 2,
+      "damage": 8.0,
+      "attacks": 2,
+      "range": 6.0,
+      "cooldown": 1.5,
+      "bonus": [
+       {
+        "attribute": 2,
+        "bonus": 8.0
+       }
+      ]
+     }
+    ],
+    "tech_requirement": 29,
+    "ability_id": 9123
+   },
+   "live": {
+    "health_max": 150.0,
+    "shield_max": 0.0,
+    "energy_max": 0.0,
+    "radius": 0.6875,
+    "sight": 9.0,
+    "armor": 1.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 14.0,
+    "air_dps": 10.666666666666666,
+    "ground_range": 6.0,
+    "air_range": 6.0,
+    "speed": 2.6875,
+    "cargo_max": 2.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "WarHound": {
+   "type_id": 497,
+   "proto": {
+    "name": "WarHound",
+    "race": 1,
+    "minerals": 150,
+    "gas": 100,
+    "supply": 3.0,
+    "build_time": 800.0,
+    "armor": 1.0,
+    "speed": 2.8125,
+    "cargo": 4,
+    "attributes": [
+     2,
+     4
+    ],
+    "weapons": [
+     {
+      "type": 1,
+      "damage": 23.0,
+      "attacks": 1,
+      "range": 7.0,
+      "cooldown": 1.300048828125,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 5,
+    "ability_id": 9153
+   },
+   "live": {
+    "health_max": 220.0,
+    "shield_max": 0.0,
+    "energy_max": 0.0,
+    "radius": 0.8125,
+    "sight": 11.0,
+    "armor": 1.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 17.691643192488264,
+    "air_dps": 0.0,
+    "ground_range": 7.0,
+    "air_range": 0.0,
+    "speed": 2.8125,
+    "cargo_max": 4.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "Wraith": {
+   "type_id": 1137,
+   "proto": {
+    "name": "Wraith",
+    "race": 1,
+    "minerals": 150,
+    "gas": 100,
+    "supply": 2.0,
+    "build_time": 848.0,
+    "armor": 0.0,
+    "speed": 3.75,
+    "cargo": 0,
+    "attributes": [
+     2,
+     4
+    ],
+    "weapons": [
+     {
+      "type": 2,
+      "damage": 5.0,
+      "attacks": 2,
+      "range": 5.0,
+      "cooldown": 1.25,
+      "bonus": [
+       {
+        "attribute": 2,
+        "bonus": 5.0
+       }
+      ]
+     },
+     {
+      "type": 1,
+      "damage": 8.0,
+      "attacks": 1,
+      "range": 5.0,
+      "cooldown": 1.694091796875,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 5,
+    "ability_id": 646
+   },
+   "live": {
+    "health_max": 140.0,
+    "shield_max": 0.0,
+    "energy_max": 200.0,
+    "radius": 0.625,
+    "sight": 8.0,
+    "armor": 0.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 4.722294278714513,
+    "air_dps": 8.0,
+    "ground_range": 5.0,
+    "air_range": 5.0,
+    "speed": 3.75,
+    "cargo_max": 0.0,
+    "is_flying": true,
+    "is_structure": false
+   }
+  },
+  "ScienceVessel": {
+   "type_id": 1214,
+   "proto": {
+    "name": "ScienceVessel",
+    "race": 1,
+    "minerals": 150,
+    "gas": 200,
+    "supply": 3.0,
+    "build_time": 960.0,
+    "armor": 1.0,
+    "speed": 2.0,
+    "cargo": 0,
+    "attributes": [
+     1,
+     2,
+     4
+    ],
+    "weapons": [
+     {
+      "type": 3,
+      "damage": 1.0,
+      "attacks": 1,
+      "range": 10.0,
+      "cooldown": 1.5,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 5,
+    "ability_id": 647
+   },
+   "live": {
+    "health_max": 200.0,
+    "shield_max": 0.0,
+    "energy_max": 200.0,
+    "radius": 0.625,
+    "sight": 11.0,
+    "armor": 1.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 0.6666666666666666,
+    "air_dps": 0.6666666666666666,
+    "ground_range": 10.0,
+    "air_range": 10.0,
+    "speed": 2.0,
+    "cargo_max": 0.0,
+    "is_flying": true,
+    "is_structure": false
+   }
+  },
+  "Dragoon": {
+   "type_id": 2696,
+   "proto": {
+    "name": "Dragoon",
+    "race": 3,
+    "minerals": 125,
+    "gas": 50,
+    "supply": 2.0,
+    "build_time": 672.0,
+    "armor": 1.0,
+    "speed": 1.7578125,
+    "cargo": 2,
+    "attributes": [
+     2,
+     4
+    ],
+    "weapons": [
+     {
+      "type": 3,
+      "damage": 20.0,
+      "attacks": 1,
+      "range": 5.0,
+      "cooldown": 1.75,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 0,
+    "ability_id": 7354
+   },
+   "live": {
+    "health_max": 110.0,
+    "shield_max": 70.0,
+    "energy_max": 0.0,
+    "radius": 0.625,
+    "sight": 10.0,
+    "armor": 1.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 11.428571428571429,
+    "air_dps": 11.428571428571429,
+    "ground_range": 5.0,
+    "air_range": 5.0,
+    "speed": 1.7578125,
+    "cargo_max": 2.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "Energizer": {
+   "type_id": 3224,
+   "proto": {
+    "name": "Energizer",
+    "race": 3,
+    "minerals": 50,
+    "gas": 100,
+    "supply": 2.0,
+    "build_time": 528.0,
+    "armor": 1.0,
+    "speed": 2.5,
+    "cargo": 2,
+    "attributes": [
+     4,
+     6
+    ],
+    "weapons": [
+     {
+      "type": 3,
+      "damage": 6.0,
+      "attacks": 1,
+      "range": 7.0,
+      "cooldown": 1.0,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 0,
+    "ability_id": 9193
+   },
+   "live": {
+    "health_max": 40.0,
+    "shield_max": 40.0,
+    "energy_max": 200.0,
+    "radius": 0.5,
+    "sight": 10.0,
+    "armor": 1.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 6.0,
+    "air_dps": 6.0,
+    "ground_range": 7.0,
+    "air_range": 7.0,
+    "speed": 2.5,
+    "cargo_max": 2.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "CorsairMP": {
+   "type_id": 855,
+   "proto": {
+    "name": "CorsairMP",
+    "race": 3,
+    "minerals": 150,
+    "gas": 100,
+    "supply": 2.0,
+    "build_time": 560.0,
+    "armor": 1.0,
+    "speed": 4.0,
+    "cargo": 0,
+    "attributes": [
+     1,
+     4
+    ],
+    "weapons": [
+     {
+      "type": 2,
+      "damage": 5.0,
+      "attacks": 1,
+      "range": 5.0,
+      "cooldown": 0.550048828125,
+      "bonus": [
+       {
+        "attribute": 1,
+        "bonus": 5.0
+       }
+      ]
+     }
+    ],
+    "tech_requirement": 0,
+    "ability_id": 7399
+   },
+   "live": {
+    "health_max": 120.0,
+    "shield_max": 60.0,
+    "energy_max": 0.0,
+    "radius": 0.75,
+    "sight": 9.0,
+    "armor": 1.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 0.0,
+    "air_dps": 9.090102086107413,
+    "ground_range": 0.0,
+    "air_range": 5.0,
+    "speed": 4.0,
+    "cargo_max": 0.0,
+    "is_flying": true,
+    "is_structure": false
+   }
+  },
+  "ScoutMP": {
+   "type_id": 856,
+   "proto": {
+    "name": "ScoutMP",
+    "race": 3,
+    "minerals": 150,
+    "gas": 100,
+    "supply": 3.0,
+    "build_time": 896.0,
+    "armor": 0.0,
+    "speed": 3.0,
+    "cargo": 0,
+    "attributes": [
+     2,
+     4
+    ],
+    "weapons": [
+     {
+      "type": 1,
+      "damage": 8.0,
+      "attacks": 1,
+      "range": 4.0,
+      "cooldown": 1.694091796875,
+      "bonus": []
+     },
+     {
+      "type": 2,
+      "damage": 7.0,
+      "attacks": 2,
+      "range": 4.0,
+      "cooldown": 1.25,
+      "bonus": [
+       {
+        "attribute": 2,
+        "bonus": 7.0
+       }
+      ]
+     }
+    ],
+    "tech_requirement": 0,
+    "ability_id": 959
+   },
+   "live": {
+    "health_max": 150.0,
+    "shield_max": 100.0,
+    "energy_max": 0.0,
+    "radius": 0.75,
+    "sight": 10.0,
+    "armor": 0.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 4.722294278714513,
+    "air_dps": 11.2,
+    "ground_range": 4.0,
+    "air_range": 4.0,
+    "speed": 3.0,
+    "cargo_max": 0.0,
+    "is_flying": true,
+    "is_structure": false
+   }
+  },
+  "Reaver": {
+   "type_id": 2662,
+   "proto": {
+    "name": "Reaver",
+    "race": 3,
+    "minerals": 200,
+    "gas": 100,
+    "supply": 4.0,
+    "build_time": 1200.0,
+    "armor": 1.0,
+    "speed": 1.25,
+    "cargo": 4,
+    "attributes": [
+     2,
+     4,
+     7
+    ],
+    "weapons": [
+     {
+      "type": 1,
+      "damage": 100.0,
+      "attacks": 1,
+      "range": 9.0,
+      "cooldown": 2.0,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 70,
+    "ability_id": 7451
+   },
+   "live": {
+    "health_max": 200.0,
+    "shield_max": 150.0,
+    "energy_max": 0.0,
+    "radius": 1.0,
+    "sight": 10.0,
+    "armor": 1.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 50.0,
+    "air_dps": 0.0,
+    "ground_range": 9.0,
+    "air_range": 0.0,
+    "speed": 1.25,
+    "cargo_max": 4.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "ArbiterMP": {
+   "type_id": 857,
+   "proto": {
+    "name": "ArbiterMP",
+    "race": 3,
+    "minerals": 100,
+    "gas": 350,
+    "supply": 4.0,
+    "build_time": 960.0,
+    "armor": 0.0,
+    "speed": 2.25,
+    "cargo": 0,
+    "attributes": [
+     2,
+     4
+    ],
+    "weapons": [
+     {
+      "type": 3,
+      "damage": 10.0,
+      "attacks": 1,
+      "range": 6.0,
+      "cooldown": 1.5,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 64,
+    "ability_id": 7402
+   },
+   "live": {
+    "health_max": 150.0,
+    "shield_max": 250.0,
+    "energy_max": 200.0,
+    "radius": 1.0,
+    "sight": 9.0,
+    "armor": 0.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 6.666666666666667,
+    "air_dps": 6.666666666666667,
+    "ground_range": 6.0,
+    "air_range": 6.0,
+    "speed": 2.25,
+    "cargo_max": 0.0,
+    "is_flying": true,
+    "is_structure": false
+   }
+  },
+  "InfestedAbomination": {
+   "type_id": 945,
+   "proto": {
+    "name": "InfestedAbomination",
+    "race": 2,
+    "minerals": 150,
+    "gas": 50,
+    "supply": 2.0,
+    "build_time": 608.0,
+    "armor": 2.0,
+    "speed": 2.5,
+    "cargo": 4,
+    "attributes": [
+     2,
+     3,
+     7
+    ],
+    "weapons": [
+     {
+      "type": 1,
+      "damage": 15.0,
+      "attacks": 1,
+      "range": 1.75,
+      "cooldown": 1.199951171875,
+      "bonus": [
+       {
+        "attribute": 2,
+        "bonus": 15.0
+       }
+      ]
+     }
+    ],
+    "tech_requirement": 0,
+    "ability_id": 9313
+   },
+   "live": {
+    "health_max": 200.0,
+    "shield_max": 0.0,
+    "energy_max": 0.0,
+    "radius": 0.875,
+    "sight": 8.0,
+    "armor": 2.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 12.500508646998982,
+    "air_dps": 0.0,
+    "ground_range": 1.75,
+    "air_range": 0.0,
+    "speed": 2.5,
+    "cargo_max": 4.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "Ravasaur": {
+   "type_id": 2064,
+   "proto": {
+    "name": "Ravasaur",
+    "race": 2,
+    "minerals": 150,
+    "gas": 150,
+    "supply": 3.0,
+    "build_time": 608.0,
+    "armor": 1.0,
+    "speed": 2.5,
+    "cargo": 4,
+    "attributes": [
+     1,
+     3
+    ],
+    "weapons": [
+     {
+      "type": 1,
+      "damage": 10.0,
+      "attacks": 1,
+      "range": 7.0,
+      "cooldown": 0.833251953125,
+      "bonus": [
+       {
+        "attribute": 2,
+        "bonus": 10.0
+       }
+      ]
+     }
+    ],
+    "tech_requirement": 0,
+    "ability_id": 9283
+   },
+   "live": {
+    "health_max": 200.0,
+    "shield_max": 0.0,
+    "energy_max": 0.0,
+    "radius": 1.0,
+    "sight": 9.0,
+    "armor": 1.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 12.001171989452095,
+    "air_dps": 0.0,
+    "ground_range": 7.0,
+    "air_range": 0.0,
+    "speed": 2.5,
+    "cargo_max": 4.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "DefilerMP": {
+   "type_id": 731,
+   "proto": {
+    "name": "DefilerMP",
+    "race": 2,
+    "minerals": 50,
+    "gas": 200,
+    "supply": 2.0,
+    "build_time": 761.6015625,
+    "armor": 1.0,
+    "speed": 2.25,
+    "cargo": 2,
+    "attributes": [
+     3,
+     6
+    ],
+    "weapons": [
+     {
+      "type": 1,
+      "damage": 5.0,
+      "attacks": 1,
+      "range": 10.0,
+      "cooldown": 1.5,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 0,
+    "ability_id": 9463
+   },
+   "live": {
+    "health_max": 80.0,
+    "shield_max": 0.0,
+    "energy_max": 200.0,
+    "radius": 0.75,
+    "sight": 10.0,
+    "armor": 1.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 3.3333333333333335,
+    "air_dps": 0.0,
+    "ground_range": 10.0,
+    "air_range": 0.0,
+    "speed": 2.25,
+    "cargo_max": 2.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "QueenClassic": {
+   "type_id": 2576,
+   "proto": {
+    "name": "QueenClassic",
+    "race": 2,
+    "minerals": 150,
+    "gas": 100,
+    "supply": 2.0,
+    "build_time": 656.0,
+    "armor": 0.0,
+    "speed": 2.5,
+    "cargo": 0,
+    "attributes": [
+     3
+    ],
+    "weapons": [
+     {
+      "type": 1,
+      "damage": 5.0,
+      "attacks": 1,
+      "range": 10.0,
+      "cooldown": 1.5,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 0,
+    "ability_id": 9253
+   },
+   "live": {
+    "health_max": 120.0,
+    "shield_max": 0.0,
+    "energy_max": 200.0,
+    "radius": 0.75,
+    "sight": 9.0,
+    "armor": 0.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 3.3333333333333335,
+    "air_dps": 0.0,
+    "ground_range": 10.0,
+    "air_range": 0.0,
+    "speed": 2.5,
+    "cargo_max": 0.0,
+    "is_flying": true,
+    "is_structure": false
+   }
+  },
+  "Terrorzor": {
+   "type_id": 2534,
+   "proto": {
+    "name": "Terrorzor",
+    "race": 2,
+    "minerals": 300,
+    "gas": 200,
+    "supply": 6.0,
+    "build_time": 1040.0,
+    "armor": 2.0,
+    "speed": 2.7109375,
+    "cargo": 8,
+    "attributes": [
+     2,
+     3,
+     7
+    ],
+    "weapons": [
+     {
+      "type": 1,
+      "damage": 35.0,
+      "attacks": 1,
+      "range": 1.0,
+      "cooldown": 0.860107421875,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 0,
+    "ability_id": 9493
+   },
+   "live": {
+    "health_max": 550.0,
+    "shield_max": 0.0,
+    "energy_max": 0.0,
+    "radius": 1.25,
+    "sight": 9.0,
+    "armor": 2.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 40.692591541300025,
+    "air_dps": 0.0,
+    "ground_range": 1.0,
+    "air_range": 0.0,
+    "speed": 2.7109375,
+    "cargo_max": 8.0,
+    "is_flying": false,
+    "is_structure": false
+   }
+  },
+  "GuardianMP": {
+   "type_id": 727,
+   "proto": {
+    "name": "GuardianMP",
+    "race": 2,
+    "minerals": 250,
+    "gas": 300,
+    "supply": 4.0,
+    "build_time": 640.0,
+    "armor": 2.0,
+    "speed": 1.5703125,
+    "cargo": 0,
+    "attributes": [
+     2,
+     3,
+     7
+    ],
+    "weapons": [
+     {
+      "type": 1,
+      "damage": 20.0,
+      "attacks": 1,
+      "range": 9.0,
+      "cooldown": 1.300048828125,
+      "bonus": []
+     }
+    ],
+    "tech_requirement": 102,
+    "ability_id": 9373
+   },
+   "live": {
+    "health_max": 200.0,
+    "shield_max": 0.0,
+    "energy_max": 0.0,
+    "radius": 1.0,
+    "sight": 10.0,
+    "armor": 2.0,
+    "armor_upgrade": 0.0,
+    "ground_dps": 15.384037558685446,
+    "air_dps": 0.0,
+    "ground_range": 9.0,
+    "air_range": 0.0,
+    "speed": 1.5703125,
+    "cargo_max": 0.0,
+    "is_flying": true,
+    "is_structure": false
+   }
+  }
+ },
+ "unresolved": []
+}

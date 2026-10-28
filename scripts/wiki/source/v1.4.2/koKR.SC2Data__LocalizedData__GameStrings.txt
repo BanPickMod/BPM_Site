@@ -1,0 +1,274 @@
+DocInfo/DescShort=아무
+DocInfo/Name=BPM_Core
+
+Button/Name/BPM_Firebat=파이어뱃 훈련
+Button/Tooltip/BPM_Firebat=근거리에서 범위 피해를 주는 중장갑 보병입니다. 경장갑 지상 유닛에 효과적입니다.<n/><n/><c val="ffff80">지상 유닛 공격 가능</c>
+Button/Name/BPM_Wraith=레이스 생산
+Button/Tooltip/BPM_Wraith=기동력이 뛰어난 공중 전투기입니다. 정밀 타격에 능하며 은폐를 사용할 수 있습니다.<n/><n/><c val="ffff80">지상 및 공중 유닛 공격 가능</c>
+Button/Name/BPM_ScienceVessel=사이언스 베슬 생산
+Button/Tooltip/BPM_ScienceVessel=<IMG path="Assets\Textures\icon-mineral-terran.dds" height="20" width="20"/> <d ref="Unit,ScienceVessel,CostResource[Minerals]"/>   <IMG path="Assets\Textures\icon-gas-terran.dds" height="20" width="20"/> <d ref="Unit,ScienceVessel,CostResource[Vespene]"/>   <IMG path="Assets\Textures\icon-supply-terran.dds" height="20" width="20"/> <d ref="-1 * Unit,ScienceVessel,Food"/><n/><n/>탐지 능력과 다양한 지원 능력을 사용하는 공중 기계 유닛입니다.<n/><n/><c val="ffff80">공중 지원 유닛</c>
+Button/Hotkey/BPM_ScienceVessel=S
+Button/Name/BPM_ScienceVesselIrradiate=방사능 오염
+Button/Hotkey/BPM_ScienceVesselIrradiate=I
+Button/Name/BPM_Dragoon=드라군 소환
+Button/Tooltip/BPM_Dragoon=<IMG path="Assets\Textures\icon-mineral-protoss.dds" height="20" width="20"/> <d ref="Unit,Dragoon,CostResource[Minerals]"/>   <IMG path="Assets\Textures\icon-gas-protoss.dds" height="20" width="20"/> <d ref="Unit,Dragoon,CostResource[Vespene]"/>   <IMG path="Assets\Textures\icon-supply-protoss.dds" height="20" width="20"/> <d ref="-1 * Unit,Dragoon,Food"/><n/><n/>아이어 프로토스의 원거리 돌격 유닛입니다. 중장갑 대상에게 안정적인 화력을 제공합니다.<n/><n/><c val="ffff80">지상 유닛 공격 가능</c>
+Button/Tooltip/BPM_WarpInAdept=경장갑 유닛에 강력한 원거리 전사입니다.<n/><n/><c val="ffff80">지상 유닛 공격 가능</c>
+Button/Name/BPM_Scout=스카웃 소환
+Button/Tooltip/BPM_Scout=<IMG path="Assets\Textures\icon-mineral-protoss.dds" height="20" width="20"/> <d ref="Unit,ScoutMP,CostResource[Minerals]"/>   <IMG path="Assets\Textures\icon-gas-protoss.dds" height="20" width="20"/> <d ref="Unit,ScoutMP,CostResource[Vespene]"/>   <IMG path="Assets\Textures\icon-supply-protoss.dds" height="20" width="20"/> <d ref="-1 * Unit,ScoutMP,Food"/><n/><n/>지상 및 공중 유닛을 공격할 수 있는 제공권 전투기입니다.<n/><n/><c val="ffff80">지상 및 공중 유닛 공격 가능</c>
+Button/Name/BPM_Arbiter=중재자 소환
+Button/Tooltip/BPM_Arbiter=<IMG path="Assets\Textures\icon-mineral-protoss.dds" height="20" width="20"/> <d ref="Unit,ArbiterMP,CostResource[Minerals]"/>   <IMG path="Assets\Textures\icon-gas-protoss.dds" height="20" width="20"/> <d ref="Unit,ArbiterMP,CostResource[Vespene]"/>   <IMG path="Assets\Textures\icon-supply-protoss.dds" height="20" width="20"/> <d ref="-1 * Unit,ArbiterMP,Food"/><n/><n/>아군을 지원하고 전장을 통제하는 강력한 공중 사이오닉 유닛입니다.<n/><n/><c val="ffff80">지상 유닛 공격 가능</c>
+Button/Name/BPM_Reaver=리버 소환
+Button/Tooltip/BPM_Reaver=<IMG path="Assets\Textures\icon-mineral-protoss.dds" height="20" width="20"/> <d ref="Unit,Reaver,CostResource[Minerals]"/>   <IMG path="Assets\Textures\icon-gas-protoss.dds" height="20" width="20"/> <d ref="Unit,Reaver,CostResource[Vespene]"/>   <IMG path="Assets\Textures\icon-supply-protoss.dds" height="20" width="20"/> <d ref="-1 * Unit,Reaver,Food"/><n/><n/>갑충탄을 생산하여 원거리의 지상 유닛에 강력한 범위 피해를 주는 공성 유닛입니다.<n/><n/><c val="ffff80">지상 유닛 공격 가능</c>
+Button/Name/BPM_QueenClassic=퀸 변태
+Button/Tooltip/BPM_QueenClassic=<IMG path="Assets\Textures\icon-mineral-zerg.dds" height="20" width="20"/> <d ref="Unit,QueenClassic,CostResource[Minerals]"/>   <IMG path="Assets\Textures\icon-gas-zerg.dds" height="20" width="20"/> <d ref="Unit,QueenClassic,CostResource[Vespene]"/>   <IMG path="Assets\Textures\icon-supply-zerg.dds" height="20" width="20"/> <d ref="-1 * Unit,QueenClassic,Food"/><n/><n/>적을 약화하고 제어하는 능력을 사용하는 공중 지원 유닛입니다.<n/><n/><c val="ffff80">공중 지원 유닛</c>
+Button/Name/BPM_Ravasaur=라바사우르스 변태
+Button/Tooltip/BPM_Ravasaur=<IMG path="Assets\Textures\icon-mineral-zerg.dds" height="20" width="20"/> <d ref="Unit,Ravasaur,CostResource[Minerals]"/>   <IMG path="Assets\Textures\icon-gas-zerg.dds" height="20" width="20"/> <d ref="Unit,Ravasaur,CostResource[Vespene]"/>   <IMG path="Assets\Textures\icon-supply-zerg.dds" height="20" width="20"/> <d ref="-1 * Unit,Ravasaur,Food"/><n/><n/>산성 투사체로 지상 목표를 공격하는 원거리 유닛입니다. 점막 위에서 더 빠르게 이동합니다.<n/><n/><c val="ffff80">지상 유닛 공격 가능</c>
+Button/Name/BPM_Ravager=궤멸충 변태
+Button/Tooltip/BPM_Ravager=<IMG path="Assets\Textures\icon-mineral-zerg.dds" height="20" width="20"/> <d ref="Unit,Ravager,CostResource[Minerals]"/>   <IMG path="Assets\Textures\icon-gas-zerg.dds" height="20" width="20"/> <d ref="Unit,Ravager,CostResource[Vespene]"/>   <IMG path="Assets\Textures\icon-supply-zerg.dds" height="20" width="20"/> <d ref="-1 * Unit,Ravager,Food"/><n/><n/>담즙을 발사하여 원거리의 지상 및 공중 목표물에 범위 피해를 줄 수 있는 중장갑 유닛입니다.<n/><n/><c val="ffff80">지상 및 공중(부식성 담즙) 공격 가능</c>
+Button/Hotkey/BPM_Ravager=V
+Button/Name/BPM_GuardianMP=가디언으로 변태
+Button/Tooltip/BPM_GuardianMP=<IMG path="Assets\Textures\icon-mineral-zerg.dds" height="20" width="20"/> <d ref="Unit,GuardianMP,CostResource[Minerals]"/>   <IMG path="Assets\Textures\icon-gas-zerg.dds" height="20" width="20"/> <d ref="Unit,GuardianMP,CostResource[Vespene]"/>   <IMG path="Assets\Textures\icon-supply-zerg.dds" height="20" width="20"/> <d ref="-1 * Unit,GuardianMP,Food"/><n/><n/>장거리에서 지상 유닛을 공격하는 중장갑 공중 유닛입니다.<n/><n/><c val="ffff80">지상 유닛 공격 가능</c>
+Button/Tooltip/Zergling=<IMG path="Assets\Textures\icon-mineral-zerg.dds" height="20" width="20"/> <d ref="Unit,Zergling,CostResource[Minerals]"/>   <IMG path="Assets\Textures\icon-supply-zerg.dds" height="20" width="20"/> <d ref="-1 * Unit,Zergling,Food"/><n/><n/>빠른 근접 유닛입니다. 맹독충으로 변태할 수 있습니다.<n/><n/><c val="ffff80">지상 유닛 공격 가능</c>
+Button/Tooltip/Roach=<IMG path="Assets\Textures\icon-mineral-zerg.dds" height="20" width="20"/> <d ref="Unit,Roach,CostResource[Minerals]"/>   <IMG path="Assets\Textures\icon-gas-zerg.dds" height="20" width="20"/> <d ref="Unit,Roach,CostResource[Vespene]"/>   <IMG path="Assets\Textures\icon-supply-zerg.dds" height="20" width="20"/> <d ref="-1 * Unit,Roach,Food"/><n/><n/>체력 회복 속도가 빠른 원거리 돌격 유닛입니다. 궤멸충으로 변태할 수 있습니다.<n/><n/><c val="ffff80">지상 유닛 공격 가능</c>
+Button/Tooltip/Hydralisk=<IMG path="Assets\Textures\icon-mineral-zerg.dds" height="20" width="20"/> <d ref="Unit,Hydralisk,CostResource[Minerals]"/>   <IMG path="Assets\Textures\icon-gas-zerg.dds" height="20" width="20"/> <d ref="Unit,Hydralisk,CostResource[Vespene]"/>   <IMG path="Assets\Textures\icon-supply-zerg.dds" height="20" width="20"/> <d ref="-1 * Unit,Hydralisk,Food"/><n/><n/>다재다능한 원거리 공격수입니다. 가시지옥으로 변태할 수 있습니다.<n/><n/><c val="ffff80">지상 및 공중 유닛 공격 가능</c>
+Button/Tooltip/Mutalisk=<IMG path="Assets\Textures\icon-mineral-zerg.dds" height="20" width="20"/> <d ref="Unit,Mutalisk,CostResource[Minerals]"/>   <IMG path="Assets\Textures\icon-gas-zerg.dds" height="20" width="20"/> <d ref="Unit,Mutalisk,CostResource[Vespene]"/>   <IMG path="Assets\Textures\icon-supply-zerg.dds" height="20" width="20"/> <d ref="-1 * Unit,Mutalisk,Food"/><n/><n/>기동성이 뛰어난 공중 게릴라 유닛입니다.<n/><n/><c val="ffff80">지상 및 공중 유닛 공격 가능</c>
+Button/Tooltip/Corruptor=<IMG path="Assets\Textures\icon-mineral-zerg.dds" height="20" width="20"/> <d ref="Unit,Corruptor,CostResource[Minerals]"/>   <IMG path="Assets\Textures\icon-gas-zerg.dds" height="20" width="20"/> <d ref="Unit,Corruptor,CostResource[Vespene]"/>   <IMG path="Assets\Textures\icon-supply-zerg.dds" height="20" width="20"/> <d ref="-1 * Unit,Corruptor,Food"/><n/><n/>중장갑 공중 제공 전투 유닛입니다. 무리 군주로 변태할 수 있습니다.<n/><n/><c val="ffff80">공중 유닛 공격 가능</c>
+Button/Tooltip/Infestor=<IMG path="Assets\Textures\icon-mineral-zerg.dds" height="20" width="20"/> <d ref="Unit,Infestor,CostResource[Minerals]"/>   <IMG path="Assets\Textures\icon-gas-zerg.dds" height="20" width="20"/> <d ref="Unit,Infestor,CostResource[Vespene]"/>   <IMG path="Assets\Textures\icon-supply-zerg.dds" height="20" width="20"/> <d ref="-1 * Unit,Infestor,Food"/><n/><n/>다양한 방해 능력을 사용하는 사이오닉 지원 유닛입니다.<n/><n/><c val="ffff80">지상 지원 유닛</c>
+Button/Tooltip/Ultralisk=<IMG path="Assets\Textures\icon-mineral-zerg.dds" height="20" width="20"/> <d ref="Unit,Ultralisk,CostResource[Minerals]"/>   <IMG path="Assets\Textures\icon-gas-zerg.dds" height="20" width="20"/> <d ref="Unit,Ultralisk,CostResource[Vespene]"/>   <IMG path="Assets\Textures\icon-supply-zerg.dds" height="20" width="20"/> <d ref="-1 * Unit,Ultralisk,Food"/><n/><n/>강력한 범위 공격을 가하는 거대 돌격 유닛입니다.<n/><n/><c val="ffff80">지상 유닛 공격 가능</c>
+Button/Tooltip/Viper=<IMG path="Assets\Textures\icon-mineral-zerg.dds" height="20" width="20"/> <d ref="Unit,Viper,CostResource[Minerals]"/>   <IMG path="Assets\Textures\icon-gas-zerg.dds" height="20" width="20"/> <d ref="Unit,Viper,CostResource[Vespene]"/>   <IMG path="Assets\Textures\icon-supply-zerg.dds" height="20" width="20"/> <d ref="-1 * Unit,Viper,Food"/><n/><n/>전장을 통제하고 적을 무력화하는 비행 마법 유닛입니다.<n/><n/><c val="ffff80">공중 지원 유닛</c>
+Button/Tooltip/SwarmHostMP=<IMG path="Assets\Textures\icon-mineral-zerg.dds" height="20" width="20"/> <d ref="Unit,SwarmHostMP,CostResource[Minerals]"/>   <IMG path="Assets\Textures\icon-gas-zerg.dds" height="20" width="20"/> <d ref="Unit,SwarmHostMP,CostResource[Vespene]"/>   <IMG path="Assets\Textures\icon-supply-zerg.dds" height="20" width="20"/> <d ref="-1 * Unit,SwarmHostMP,Food"/><n/><n/>식충을 지속적으로 생성하여 공격하는 공성 유닛입니다.<n/><n/><c val="ffff80">지상 공성 유닛</c>
+
+Unit/Name/Firebat=파이어뱃
+Unit/Name/Wraith=레이스
+Unit/Name/ScienceVessel=사이언스 베슬
+Unit/Name/Dragoon=드라군
+Unit/Name/ScoutMP=스카웃
+Unit/Name/Reaver=리버
+Unit/Name/QueenClassic=퀸
+Unit/Name/Ravasaur=라바사우르스
+Unit/Name/GuardianMP=가디언
+Button/Name/BPM_EvolveRavasaurVolatileSpines=돌기 수축 진화
+Button/Tooltip/BPM_EvolveRavasaurVolatileSpines=<IMG path="Assets\Textures\icon-mineral-zerg.dds" height="20" width="20"/> 100   <IMG path="Assets\Textures\icon-gas-zerg.dds" height="20" width="20"/> 100   <IMG path="Assets\Textures\icon-time-zerg.dds" height="20" width="20"/> 79<n/><n/>휘발성 돌기의 사거리가 1만큼 증가합니다.
+Upgrade/Name/BPM_RavasaurVolatileSpines=돌기 수축 진화
+Upgrade/Name/BPM_Pick_Firebat=파이어뱃 선택
+Upgrade/Name/BPM_Pick_Wraith=레이스 선택
+Upgrade/Name/BPM_Pick_ScienceVessel=사이언스 베슬 선택
+Upgrade/Name/BPM_Pick_Dragoon=드라군 선택
+Upgrade/Name/BPM_Pick_Scout=스카웃 선택
+Upgrade/Name/BPM_Pick_Reaver=리버 선택
+Upgrade/Name/BPM_Pick_QueenClassic=퀸 선택
+Upgrade/Name/BPM_Pick_Ravasaur=라바사우르스 선택
+Upgrade/Name/BPM_Pick_GuardianMP=가디언 선택
+Button/Name/BPM_FirebatSCBWStimpack=전투 자극제
+Button/Tooltip/BPM_FirebatSCBWStimpack=사용하면 체력을 10 소비하여 화염방사병의 이동 속도와 공격 속도가 증가합니다.
+Button/Hotkey/BPM_FirebatSCBWStimpack=T
+Button/Name/BPM_GoliathRange=카론 증폭기
+Button/Tooltip/BPM_GoliathRange=<IMG path="Assets\Textures\icon-mineral-terran.dds" height="20" width="20"/> 100   <IMG path="Assets\Textures\icon-gas-terran.dds" height="20" width="20"/> 100   <IMG path="Assets\Textures\icon-time-terran.dds" height="20" width="20"/> 79<n/><n/>골리앗의 대공 미사일 사거리를 3만큼 증가시킵니다.
+Button/Hotkey/BPM_GoliathRange=G
+Upgrade/Name/BPM_GoliathRange=카론 증폭기
+Button/Name/BPM_WarHoundTornadoMissile=폭주 미사일 연구
+Button/Tooltip/BPM_WarHoundTornadoMissile=<IMG path="Assets\Textures\icon-mineral-terran.dds" height="20" width="20"/> 100   <IMG path="Assets\Textures\icon-gas-terran.dds" height="20" width="20"/> 100   <IMG path="Assets\Textures\icon-time-terran.dds" height="20" width="20"/> 79<n/><n/>투견이 기계 유닛에 추가 피해를 주는 폭주 미사일 능력을 사용할 수 있게 합니다.
+Upgrade/Name/BPM_WarHoundTornadoMissile=폭주 미사일
+Button/Name/BPM_ArbiterStasisField=스테이시스 필드 연구
+Button/Tooltip/BPM_ArbiterStasisField=<IMG path="Assets\Textures\icon-mineral-protoss.dds" height="20" width="20"/> 150   <IMG path="Assets\Textures\icon-gas-protoss.dds" height="20" width="20"/> 150   <IMG path="Assets\Textures\icon-time-protoss.dds" height="20" width="20"/> 79<n/><n/>중재자가 대상을 정지 상태로 만들어 행동을 불능으로 만드는 스테이시스 필드 능력을 사용할 수 있게 합니다.
+Button/Hotkey/BPM_ArbiterStasisField=D
+Upgrade/Name/BPM_ArbiterStasisField=스테이시스 필드
+Button/Name/BPM_ArbiterRecall=리콜 연구
+Button/Tooltip/BPM_ArbiterRecall=<IMG path="Assets\Textures\icon-mineral-protoss.dds" height="20" width="20"/> 150   <IMG path="Assets\Textures\icon-gas-protoss.dds" height="20" width="20"/> 150   <IMG path="Assets\Textures\icon-time-protoss.dds" height="20" width="20"/> 79<n/><n/>중재자가 지정한 위치의 아군 유닛들을 자신에게로 순간이동시키는 리콜 능력을 사용할 수 있게 합니다.
+Button/Hotkey/BPM_ArbiterRecall=C
+Upgrade/Name/BPM_ArbiterRecall=리콜
+Button/Name/BPM_DragoonRange=특이점 장전 연구
+Button/Tooltip/BPM_DragoonRange=<IMG path="Assets\Textures\icon-mineral-protoss.dds" height="20" width="20"/> 150   <IMG path="Assets\Textures\icon-gas-protoss.dds" height="20" width="20"/> 150   <IMG path="Assets\Textures\icon-time-protoss.dds" height="20" width="20"/> 100<n/><n/>드라군의 사거리를 1만큼 증가시킵니다.
+Button/Hotkey/BPM_DragoonRange=S
+Upgrade/Name/BPM_DragoonRange=특이점 장전
+Button/Name/BPM_ReaverDamage=갑충탄 공격력 업그레이드
+Button/Tooltip/BPM_ReaverDamage=<IMG path="Assets\Textures\icon-mineral-protoss.dds" height="20" width="20"/> 200   <IMG path="Assets\Textures\icon-gas-protoss.dds" height="20" width="20"/> 200   <IMG path="Assets\Textures\icon-time-protoss.dds" height="20" width="20"/> 100<n/><n/>리버의 갑충탄 공격력을 25만큼 증가시킵니다.
+Button/Hotkey/BPM_ReaverDamage=S
+Upgrade/Name/BPM_ReaverDamage=갑충탄 공격력
+Button/Name/BPM_ReaverHangar=갑충탄 격납고 확장
+Button/Tooltip/BPM_ReaverHangar=<IMG path="Assets\Textures\icon-mineral-protoss.dds" height="20" width="20"/> 200   <IMG path="Assets\Textures\icon-gas-protoss.dds" height="20" width="20"/> 200   <IMG path="Assets\Textures\icon-time-protoss.dds" height="20" width="20"/> 80<n/><n/>리버가 장전할 수 있는 최대 갑충탄 수를 5만큼 증가시킵니다.
+Button/Hotkey/BPM_ReaverHangar=C
+Upgrade/Name/BPM_ReaverHangar=갑충탄 격납고 확장
+Button/Name/BPM_ScoutSight=에이피얼 탐지기 연구
+Button/Tooltip/BPM_ScoutSight=<IMG path="Assets\Textures\icon-mineral-protoss.dds" height="20" width="20"/> 100   <IMG path="Assets\Textures\icon-gas-protoss.dds" height="20" width="20"/> 100   <IMG path="Assets\Textures\icon-time-protoss.dds" height="20" width="20"/> 80<n/><n/>스카웃의 시야를 2만큼 증가시킵니다.
+Button/Hotkey/BPM_ScoutSight=S
+Upgrade/Name/BPM_ScoutSight=원거리 센서
+Button/Name/BPM_ScoutSpeed=중력 추진기 연구
+Button/Tooltip/BPM_ScoutSpeed=<IMG path="Assets\Textures\icon-mineral-protoss.dds" height="20" width="20"/> 200   <IMG path="Assets\Textures\icon-gas-protoss.dds" height="20" width="20"/> 200   <IMG path="Assets\Textures\icon-time-protoss.dds" height="20" width="20"/> 100<n/><n/>스카웃의 이동 속도를 33% 증가시킵니다.
+Button/Hotkey/BPM_ScoutSpeed=G
+Upgrade/Name/BPM_ScoutSpeed=중력 추진기
+Button/Name/BPM_WraithEnergy=아폴로 반응로 연구
+Button/Tooltip/BPM_WraithEnergy=<IMG path="Assets\Textures\icon-mineral-terran.dds" height="20" width="20"/> 150   <IMG path="Assets\Textures\icon-gas-terran.dds" height="20" width="20"/> 150   <IMG path="Assets\Textures\icon-time-terran.dds" height="20" width="20"/> 79<n/><n/>레이스의 최대 에너지를 50만큼 증가시키고, 초기 에너지를 50만큼 증가시킵니다.
+Button/Hotkey/BPM_WraithEnergy=A
+Upgrade/Name/BPM_WraithEnergy=아폴로 반응로
+Button/Name/BPM_WraithCloak=은폐장 연구
+Button/Tooltip/BPM_WraithCloak=<IMG path="Assets\Textures\icon-mineral-terran.dds" height="20" width="20"/> 150   <IMG path="Assets\Textures\icon-gas-terran.dds" height="20" width="20"/> 150   <IMG path="Assets\Textures\icon-time-terran.dds" height="20" width="20"/> 79<n/><n/>레이스가 은폐 능력을 사용할 수 있게 합니다.
+Button/Hotkey/BPM_WraithCloak=C
+Upgrade/Name/BPM_WraithCloak=은폐장
+Button/Name/BPM_QueenEnergy=배우체 분열 연구
+Button/Tooltip/BPM_QueenEnergy=<IMG path="Assets\Textures\icon-mineral-zerg.dds" height="20" width="20"/> 150   <IMG path="Assets\Textures\icon-gas-zerg.dds" height="20" width="20"/> 150   <IMG path="Assets\Textures\icon-time-zerg.dds" height="20" width="20"/> 79<n/><n/>클래식 퀸의 최대 에너지를 50만큼 증가시키고, 초기 에너지를 50만큼 증가시킵니다.
+Button/Hotkey/BPM_QueenEnergy=G
+Upgrade/Name/BPM_QueenEnergy=배우체 분열
+
+Button/Name/TerranVehicleWeaponsLevel1=차량 무기 1단계
+Button/Name/TerranVehicleWeaponsLevel2=차량 무기 2단계
+Button/Name/TerranVehicleWeaponsLevel3=차량 무기 3단계
+Button/Tooltip/TerranVehicleWeaponsLevel1=<IMG path="Assets\Textures\icon-mineral-terran.dds" height="20" width="20"/> 100   <IMG path="Assets\Textures\icon-gas-terran.dds" height="20" width="20"/> 100<n/><n/>테란 지상 차량의 무기 공격력을 1단계로 업그레이드합니다.
+Button/Tooltip/TerranVehicleWeaponsLevel2=<IMG path="Assets\Textures\icon-mineral-terran.dds" height="20" width="20"/> 175   <IMG path="Assets\Textures\icon-gas-terran.dds" height="20" width="20"/> 175<n/><n/>테란 지상 차량의 무기 공격력을 2단계로 업그레이드합니다.
+Button/Tooltip/TerranVehicleWeaponsLevel3=<IMG path="Assets\Textures\icon-mineral-terran.dds" height="20" width="20"/> 250   <IMG path="Assets\Textures\icon-gas-terran.dds" height="20" width="20"/> 250<n/><n/>테란 지상 차량의 무기 공격력을 3단계로 업그레이드합니다.
+Button/Name/TerranShipWeaponsLevel1=우주선 무기 1단계
+Button/Name/TerranShipWeaponsLevel2=우주선 무기 2단계
+Button/Name/TerranShipWeaponsLevel3=우주선 무기 3단계
+Button/Tooltip/TerranShipWeaponsLevel1=<IMG path="Assets\Textures\icon-mineral-terran.dds" height="20" width="20"/> 100   <IMG path="Assets\Textures\icon-gas-terran.dds" height="20" width="20"/> 100<n/><n/>테란 공중 유닛의 무기 공격력을 1단계로 업그레이드합니다.
+Button/Tooltip/TerranShipWeaponsLevel2=<IMG path="Assets\Textures\icon-mineral-terran.dds" height="20" width="20"/> 175   <IMG path="Assets\Textures\icon-gas-terran.dds" height="20" width="20"/> 175<n/><n/>테란 공중 유닛의 무기 공격력을 2단계로 업그레이드합니다.
+Button/Tooltip/TerranShipWeaponsLevel3=<IMG path="Assets\Textures\icon-mineral-terran.dds" height="20" width="20"/> 250   <IMG path="Assets\Textures\icon-gas-terran.dds" height="20" width="20"/> 250<n/><n/>테란 공중 유닛의 무기 공격력을 3단계로 업그레이드합니다.
+Button/Name/TerranVehicleAndShipArmorsLevel1=차량 및 우주선 장갑 1단계
+Button/Name/TerranVehicleAndShipArmorsLevel2=차량 및 우주선 장갑 2단계
+Button/Name/TerranVehicleAndShipArmorsLevel3=차량 및 우주선 장갑 3단계
+Button/Tooltip/TerranVehicleAndShipArmorsLevel1=<IMG path="Assets\Textures\icon-mineral-terran.dds" height="20" width="20"/> 100   <IMG path="Assets\Textures\icon-gas-terran.dds" height="20" width="20"/> 100<n/><n/>테란 차량과 우주선의 방어력을 1단계로 업그레이드합니다.
+Button/Tooltip/TerranVehicleAndShipArmorsLevel2=<IMG path="Assets\Textures\icon-mineral-terran.dds" height="20" width="20"/> 175   <IMG path="Assets\Textures\icon-gas-terran.dds" height="20" width="20"/> 175<n/><n/>테란 차량과 우주선의 방어력을 2단계로 업그레이드합니다.
+Button/Tooltip/TerranVehicleAndShipArmorsLevel3=<IMG path="Assets\Textures\icon-mineral-terran.dds" height="20" width="20"/> 250   <IMG path="Assets\Textures\icon-gas-terran.dds" height="20" width="20"/> 250<n/><n/>테란 차량과 우주선의 방어력을 3단계로 업그레이드합니다.
+
+Abil/Name/BPM_ScienceVesselLockdown=락다운 미사일
+Abil/Name/BPM_ScienceVesselDefensiveMatrix=디펜시브 매트릭스
+Button/Name/BPM_ScienceVesselLockdown=락다운 미사일
+Button/Tooltip/BPM_ScienceVesselLockdown=기계 유닛에 미사일을 발사하여 20초 동안 이동과 공격, 능력 사용을 봉쇄합니다. 명중 시 주 대상 주변 반경 2의 적 유닛에게 20의 스플래시 피해를 줍니다.<n/><n/><c val="ffff80">기계 유닛만 대상으로 지정 가능</c>
+Button/Hotkey/BPM_ScienceVesselLockdown=L
+Button/Name/BPM_ScienceVesselDefensiveMatrix=디펜시브 매트릭스
+Button/Tooltip/BPM_ScienceVesselDefensiveMatrix=대상 지점 반경 3 내의 아군 유닛들에게 20초 동안 유지되며, 각각 최대 16의 피해를 흡수하는 방어막을 씌웁니다.
+Button/Hotkey/BPM_ScienceVesselDefensiveMatrix=D
+Button/Name/BPM_ResearchScienceVesselLockdown=락다운 미사일 연구
+Button/Tooltip/BPM_ResearchScienceVesselLockdown=<IMG path="Assets\Textures\icon-mineral-terran.dds" height="20" width="20"/> 150   <IMG path="Assets\Textures\icon-gas-terran.dds" height="20" width="20"/> 150   <IMG path="Assets\Textures\icon-time-terran.dds" height="20" width="20"/> 79<n/><n/>사이언스 베슬이 락다운 미사일을 사용할 수 있게 합니다.<n/><n/><c val="ffff80">융합로 필요</c>
+Button/Hotkey/BPM_ResearchScienceVesselLockdown=L
+Button/Name/BPM_ResearchScienceVesselDefensiveMatrix=디펜시브 매트릭스 연구
+Button/Tooltip/BPM_ResearchScienceVesselDefensiveMatrix=<IMG path="Assets\Textures\icon-mineral-terran.dds" height="20" width="20"/> 150   <IMG path="Assets\Textures\icon-gas-terran.dds" height="20" width="20"/> 150   <IMG path="Assets\Textures\icon-time-terran.dds" height="20" width="20"/> 79<n/><n/>사이언스 베슬이 디펜시브 매트릭스를 사용할 수 있게 합니다.<n/><n/><c val="ffff80">융합로 필요</c>
+Button/Hotkey/BPM_ResearchScienceVesselDefensiveMatrix=D
+Behavior/Name/BPM_ScienceVesselLockdown=락다운
+Behavior/Tooltip/BPM_ScienceVesselLockdown=이 기계 유닛은 락다운되어 이동, 공격, 능력 사용이 봉쇄됩니다.
+Behavior/Name/BPM_ScienceVesselDefensiveMatrix=디펜시브 매트릭스
+Behavior/Tooltip/BPM_ScienceVesselDefensiveMatrix=최대 16의 피해를 흡수합니다.
+Upgrade/Name/BPM_ScienceVesselLockdownResearch=락다운 미사일
+Upgrade/Name/BPM_ScienceVesselDefensiveMatrixResearch=디펜시브 매트릭스
+
+Button/Name/BPM_Energizer=동력기 소환
+Button/Tooltip/BPM_Energizer=<IMG path="Assets\Textures\icon-mineral-protoss.dds" height="20" width="20"/> <d ref="Unit,Energizer,CostResource[Minerals]"/>   <IMG path="Assets\Textures\icon-gas-protoss.dds" height="20" width="20"/> <d ref="Unit,Energizer,CostResource[Vespene]"/>   <IMG path="Assets\Textures\icon-supply-protoss.dds" height="20" width="20"/> <d ref="-1 * Unit,Energizer,Food"/><n/><n/>아군을 강화하고 동력망을 투영할 수 있는 지원 유닛입니다.<n/><n/><c val="ffff80">지상 및 공중 유닛 공격 가능</c>
+Button/Hotkey/BPM_Energizer=E
+Button/Name/BPM_WarpInEnergizer=동력기 차원 소환
+Button/Tooltip/BPM_WarpInEnergizer=<IMG path="Assets\Textures\icon-mineral-protoss.dds" height="20" width="20"/> <d ref="Unit,Energizer,CostResource[Minerals]"/>   <IMG path="Assets\Textures\icon-gas-protoss.dds" height="20" width="20"/> <d ref="Unit,Energizer,CostResource[Vespene]"/>   <IMG path="Assets\Textures\icon-supply-protoss.dds" height="20" width="20"/> <d ref="-1 * Unit,Energizer,Food"/><n/><n/>동력기를 차원 소환합니다.<n/><n/><c val="ffff80">지상 및 공중 유닛 공격 가능</c>
+Button/Hotkey/BPM_WarpInEnergizer=E
+Button/Name/BPM_EnergizerTimeShield=시간 방패
+Button/Tooltip/BPM_EnergizerTimeShield=마나 50을 소모하여 활성화합니다. 범위 3.5 내 아군 유닛의 이동 및 공격 속도를 5% 증가시키고, 적 유닛의 이동 및 공격 속도를 5% 감소시키는 시간 오라를 생성합니다. (초당 마나 5 소모, 마나 0 도달 시 자동 비활성화)
+Button/Hotkey/BPM_EnergizerTimeShield=T
+Button/Name/BPM_EnergizerTimeShieldOff=시간 방패 비활성화
+Button/Tooltip/BPM_EnergizerTimeShieldOff=시간 방패를 비활성화합니다.
+Button/Hotkey/BPM_EnergizerTimeShieldOff=T
+Button/Name/BPM_EnergizerPhasingMode=위상 모드
+Button/Tooltip/BPM_EnergizerPhasingMode=동력기를 위상 모드로 전환하여 주변에 동력장을 방출하고 차원 소환을 지원합니다. 활성화 시 최대 보호막의 50%를 소모하며, 초당 0.5의 보호막을 지속 소모합니다. 남은 보호막 비율에 따라 동력장 범위가 감소합니다. (위상 모드 활성화 연구 필요)
+Button/Hotkey/BPM_EnergizerPhasingMode=P
+Button/Name/BPM_EnergizerPhasingModeTransport=기동 모드
+Button/Tooltip/BPM_EnergizerPhasingModeTransport=동력기를 기동 모드로 전환하여 자유롭게 이동하고 보호막을 빠르게 재생성합니다.
+Button/Hotkey/BPM_EnergizerPhasingModeTransport=P
+
+Button/Name/BPM_ResearchEnergizerPhasingMode=위상 모드 활성화 연구
+Button/Tooltip/BPM_ResearchEnergizerPhasingMode=<IMG path="Assets\Textures\icon-mineral-protoss.dds" height="20" width="20"/> 100   <IMG path="Assets\Textures\icon-gas-protoss.dds" height="20" width="20"/> 100   <IMG path="Assets\Textures\icon-time-protoss.dds" height="20" width="20"/> 50<n/><n/>동력기가 위상 모드를 활성화할 수 있게 합니다.
+Button/Hotkey/BPM_ResearchEnergizerPhasingMode=P
+Upgrade/Name/BPM_EnergizerPhasingMode=위상 모드 활성화
+Behavior/Name/BPM_EnergizerTimeShield=시간 방패
+Behavior/Tooltip/BPM_EnergizerTimeShield=시간 방패를 활성화하여 주변 유닛들의 속도를 조절합니다.
+Behavior/Name/BPM_EnergizerTimeShield@Buff=시간 방패 (가속)
+Behavior/Tooltip/BPM_EnergizerTimeShield@Buff=동력기의 시간 방패 범위 안에 있어 이동 속도 및 공격 속도가 5% 증가합니다.
+Behavior/Name/BPM_EnergizerTimeShield@Debuff=시간 방패 (둔화)
+Behavior/Tooltip/BPM_EnergizerTimeShield@Debuff=적 동력기의 시간 방패 범위 안에 있어 이동 속도 및 공격 속도가 5% 감소합니다.
+Unit/Name/Energizer=동력기
+Unit/Name/EnergizerPhasingMode=동력기 (위상 모드)
+Unit/Tooltip/Energizer=아군을 강화하고 동력망을 투영할 수 있는 지원 유닛입니다.
+Button/Name/ResearchCharge=돌진 연구
+Button/Tooltip/ResearchCharge=<IMG path="Assets\Textures\icon-mineral-protoss.dds" height="20" width="20"/> 100   <IMG path="Assets\Textures\icon-gas-protoss.dds" height="20" width="20"/> 100   <IMG path="Assets\Textures\icon-time-protoss.dds" height="20" width="20"/> 100<n/><n/>광전사가 적 지상 유닛을 향해 빠르게 돌진할 수 있게 합니다.
+Button/Name/ResearchBlink=점멸 연구
+Button/Tooltip/ResearchBlink=<IMG path="Assets\Textures\icon-mineral-protoss.dds" height="20" width="20"/> 150   <IMG path="Assets\Textures\icon-gas-protoss.dds" height="20" width="20"/> 150   <IMG path="Assets\Textures\icon-time-protoss.dds" height="20" width="20"/> 121<n/><n/>추적자가 목표 지점으로 순간이동할 수 있게 합니다.
+Button/Name/ResearchAdeptResonatingGlaives=공명 파열포 연구
+Button/Tooltip/ResearchAdeptResonatingGlaives=<IMG path="Assets\Textures\icon-mineral-protoss.dds" height="20" width="20"/> 100   <IMG path="Assets\Textures\icon-gas-protoss.dds" height="20" width="20"/> 100   <IMG path="Assets\Textures\icon-time-protoss.dds" height="20" width="20"/> 100<n/><n/>사도의 공격 속도를 45% 증가시킵니다.
+Unit/Name/BPM_RepairDrone=수리 비행정
+Button/Name/BPM_RavenRepairDrone=수리 비행정 배치
+Button/Tooltip/BPM_RavenRepairDrone=손상된 아군 기계 유닛과 구조물을 수리하는 수리 비행정을 배치합니다.<n/><n/>수리 비행정은 초당 13.6의 체력을 수리하며, 1의 에너지를 소모하여 1의 체력을 수리합니다.
+Button/Hotkey/BPM_RavenRepairDrone=R
+Button/Name/BPM_RepairDroneHeal=수리
+Button/Tooltip/BPM_RepairDroneHeal=손상된 아군 기계 유닛 및 건물의 체력을 수리합니다.
+Button/Hotkey/BPM_RepairDroneHeal=E
+Button/Name/RavenScramblerMissile=방해 매트릭스
+Button/Tooltip/RavenScramblerMissile=대상 기계 또는 사이오닉 유닛의 무기와 능력을 11초 동안 비활성화합니다.
+Button/Hotkey/RavenScramblerMissile=C
+Weapon/Name/BPM_RavenWeapon=해방선 포격
+Weapon/Name/BPM_ScienceVesselWeapon=해방선 포격
+Weapon/Name/BPM_ViperWeapon=감염성 투사체
+Weapon/Name/RavasaurWeapon=휘발성 돌기
+Weapon/Name/BPM_EnergizerWeapon=분해 광선
+Weapon/Name/BPM_FirebatSCBWWeapon=화염방사기
+Weapon/Name/BPM_FirebatSCBWWeapon@Melee=화염방사기
+Weapon/Name/BPM_FirebatSCBWWeapon@Bunker=화염방사기
+Button/Name/BPM_FirebatSCBWStimpack=전투 자극제
+Button/Tooltip/BPM_FirebatSCBWStimpack=생명력을 10 소모하여 이동 속도와 공격 속도를 17초 동안 크게 증가시킵니다.
+Button/Hotkey/BPM_FirebatSCBWStimpack=T
+Button/Name/Yoink=납치
+Button/Tooltip/Yoink=대상 유닛을 살모사 쪽으로 끌어옵니다.
+Button/Hotkey/Yoink=D
+Button/Name/ViperConsumeStructure=흡수
+Button/Tooltip/ViperConsumeStructure=대상 아군 저그 구조물의 생명력을 흡수하여 살모사의 에너지를 회복합니다.
+Button/Hotkey/ViperConsumeStructure=C
+Button/Name/BPM_Corsair=해적선 생산
+Button/Tooltip/BPM_Corsair=<IMG path="Assets\Textures\icon-mineral-protoss.dds" height="20" width="20"/> 150   <IMG path="Assets\Textures\icon-gas-protoss.dds" height="20" width="20"/> 100   <IMG path="Assets\Textures\icon-time-protoss.dds" height="20" width="20"/> 21   <IMG path="Assets\Textures\icon-supply-protoss.dds" height="20" width="20"/> 2<n/><n/>중장갑 공중 전투기입니다. 디스크럽션 웹을 시전하여 지상 공격을 무력화할 수 있습니다.
+Button/Hotkey/BPM_Corsair=O
+Button/Name/BPM_Aberration=변형체 변태
+Button/Tooltip/BPM_Aberration=<IMG path="Assets\Textures\icon-mineral-zerg.dds" height="20" width="20"/> 150   <IMG path="Assets\Textures\icon-gas-zerg.dds" height="20" width="20"/> 50   <IMG path="Assets\Textures\icon-time-zerg.dds" height="20" width="20"/> 38   <IMG path="Assets\Textures\icon-supply-zerg.dds" height="20" width="20"/> 2<n/><n/>강력한 중장갑 돌격 유닛입니다. 유닛을 뛰어넘어 이동할 수 있으며 중장갑 유닛에 큰 피해를 줍니다.
+Button/Hotkey/BPM_Aberration=R
+Button/Name/BPM_Defiler=파멸충 변태
+Button/Tooltip/BPM_Defiler=<IMG path="Assets\Textures\icon-mineral-zerg.dds" height="20" width="20"/> 50   <IMG path="Assets\Textures\icon-gas-zerg.dds" height="20" width="20"/> 150   <IMG path="Assets\Textures\icon-time-zerg.dds" height="20" width="20"/> 50   <IMG path="Assets\Textures\icon-supply-zerg.dds" height="20" width="20"/> 2<n/><n/>마법 지원 유닛입니다. 다크 스웜과 플레이그를 사용하여 전장을 장악합니다.
+Button/Hotkey/BPM_Defiler=I
+Button/Name/BPM_Tyrannozor=티라노조르 변태
+Button/Tooltip/BPM_Tyrannozor=<IMG path="Assets\Textures\icon-mineral-zerg.dds" height="20" width="20"/> 300   <IMG path="Assets\Textures\icon-gas-zerg.dds" height="20" width="20"/> 200   <IMG path="Assets\Textures\icon-time-zerg.dds" height="20" width="20"/> 65   <IMG path="Assets\Textures\icon-supply-zerg.dds" height="20" width="20"/> 6<n/><n/>원시 저그의 거대 지상 괴수입니다. 지상과 공중의 적을 공격하며 강력한 체력과 공격력을 지닙니다.
+Button/Hotkey/BPM_Tyrannozor=U
+Upgrade/Name/BPM_CorsairDisruptionWeb=디스크럽션 웹
+Button/Name/BPM_CorsairDisruptionWeb=디스크럽션 웹
+Button/Tooltip/BPM_CorsairDisruptionWeb=대상 지역에 디스크럽션 웹을 생성합니다. 영역 안의 적 지상 유닛과 구조물은 공격할 수 없습니다.
+Button/Hotkey/BPM_CorsairDisruptionWeb=D
+Button/Name/BPM_ResearchCorsairDisruptionWeb=디스크럽션 웹 연구
+Button/Tooltip/BPM_ResearchCorsairDisruptionWeb=<IMG path="Assets\Textures\icon-mineral-protoss.dds" height="20" width="20"/> 200   <IMG path="Assets\Textures\icon-gas-protoss.dds" height="20" width="20"/> 200   <IMG path="Assets\Textures\icon-time-protoss.dds" height="20" width="20"/> 80<n/><n/>해적선이 디스크럽션 웹을 시전할 수 있게 합니다. 디스크럽션 웹 영역 안의 적 지상 유닛과 구조물은 공격할 수 없게 됩니다.
+Button/Hotkey/BPM_ResearchCorsairDisruptionWeb=W
+Button/Name/DefilerMPDarkSwarm=다크 스웜
+Button/Tooltip/DefilerMPDarkSwarm=대상 지역에 다크 스웜 구름을 생성합니다.<n/><n/>다크 스웜 범위 내에 있는 <c val="ffff80">아군 유닛</c>은 원거리 공격으로부터 받는 피해가 <c val="00ff00">50% 감소</c>합니다.
+Button/Hotkey/DefilerMPDarkSwarm=W
+Upgrade/Name/BPM_DefilerConsume=흡수 연구
+Button/Name/BPM_ResearchDefilerConsume=흡수 연구
+Button/Tooltip/BPM_ResearchDefilerConsume=<IMG path="Assets\Textures\icon-mineral-zerg.dds" height="20" width="20"/> 100   <IMG path="Assets\Textures\icon-gas-zerg.dds" height="20" width="20"/> 100   <IMG path="Assets\Textures\icon-time-zerg.dds" height="20" width="20"/> 80<n/><n/>파멸충이 아군 저그 유닛을 흡수하여 에너지를 50 회복할 수 있게 합니다.
+Button/Hotkey/BPM_ResearchDefilerConsume=C
+Upgrade/Name/BPM_DefilerPlague=역병 연구
+Button/Name/BPM_ResearchDefilerPlague=역병 연구
+Button/Tooltip/BPM_ResearchDefilerPlague=<IMG path="Assets\Textures\icon-mineral-zerg.dds" height="20" width="20"/> 150   <IMG path="Assets\Textures\icon-gas-zerg.dds" height="20" width="20"/> 150   <IMG path="Assets\Textures\icon-time-zerg.dds" height="20" width="20"/> 100<n/><n/>파멸충이 역병을 시전할 수 있게 합니다. 대상 지역의 적 유닛과 구조물에 지속 피해를 입힙니다.
+Button/Hotkey/BPM_ResearchDefilerPlague=G
+Upgrade/Name/BPM_DefilerEnergy=메타시냅스 결절 연구
+Button/Name/BPM_ResearchDefilerEnergy=메타시냅스 결절 연구
+Button/Tooltip/BPM_ResearchDefilerEnergy=<IMG path="Assets\Textures\icon-mineral-zerg.dds" height="20" width="20"/> 150   <IMG path="Assets\Textures\icon-gas-zerg.dds" height="20" width="20"/> 150   <IMG path="Assets\Textures\icon-time-zerg.dds" height="20" width="20"/> 80<n/><n/>파멸충의 초기 에너지가 25 증가하고 최대 에너지가 50 증가합니다.
+Button/Hotkey/BPM_ResearchDefilerEnergy=E
+Upgrade/Name/BPM_Pick_Corsair=해적선 선택
+Upgrade/Name/BPM_Pick_Aberration=변형체 선택
+Upgrade/Name/BPM_Pick_Defiler=파멸충 선택
+Upgrade/Name/BPM_Pick_Tyrannozor=티라노조르 선택
+Unit/Name/BPM_DefilerMound=디파일러 언덕
+Button/Name/BPM_DefilerMound=디파일러 언덕 변태
+Button/Tooltip/BPM_DefilerMound=<IMG path="Assets\Textures\icon-mineral-zerg.dds" height="20" width="20"/> 150   <IMG path="Assets\Textures\icon-gas-zerg.dds" height="20" width="20"/> 100   <IMG path="Assets\Textures\icon-time-zerg.dds" height="20" width="20"/> 53<n/><n/>파멸충의 능력을 연구할 수 있는 건물입니다.<n/><n/>사용 가능:<n/>- 파멸충 변태 (애벌레)
+Button/Hotkey/BPM_DefilerMound=D
+Button/Name/BPM_DefilerConsume=흡수
+Button/Tooltip/BPM_DefilerConsume=대상 아군 생체 유닛을 처치하고 파멸충의 에너지를 50 회복합니다.
+Button/Hotkey/BPM_DefilerConsume=C
+Upgrade/Name/BPM_AberrationSpeed=다리 근육 보강 진화
+Button/Name/BPM_ResearchAberrationSpeed=다리 근육 보강 진화
+Button/Tooltip/BPM_ResearchAberrationSpeed=<IMG path="Assets\Textures\icon-mineral-zerg.dds" height="20" width="20"/> 150   <IMG path="Assets\Textures\icon-gas-zerg.dds" height="20" width="20"/> 150   <IMG path="Assets\Textures\icon-time-zerg.dds" height="20" width="20"/> 80<n/><n/>변형체의 이동 속도를 증가시킵니다. (3.5 → 4.13)
+Button/Hotkey/BPM_ResearchAberrationSpeed=S
+Upgrade/Name/BPM_EnergizerShields=보호막 과충전
+Button/Name/BPM_ResearchEnergizerShields=보호막 과충전 연구
+Button/Tooltip/BPM_ResearchEnergizerShields=<IMG path="Assets\Textures\icon-mineral-protoss.dds" height="20" width="20"/> 150   <IMG path="Assets\Textures\icon-gas-protoss.dds" height="20" width="20"/> 150   <IMG path="Assets\Textures\icon-time-protoss.dds" height="20" width="20"/> 79<n/><n/>동력기의 최대 보호막을 40 증가시킵니다. (40 → 80)
+Button/Hotkey/BPM_ResearchEnergizerShields=S
+Button/Name/GasUIBtn=일꾼 채워넣기
+Button/Name/GasUIBtn2=일꾼 채워넣기
+Button/Tooltip/GasUIBtn=가스 채취를 위해 일꾼을 지정된 채취 건물로 이동시킵니다.
+Button/Tooltip/GasUIBtn2=가스 채취를 위해 일꾼을 지정된 채취 건물로 이동시킵니다.

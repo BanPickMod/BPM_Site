@@ -1,0 +1,1526 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanMarineCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_Marine" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanMarineCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanMarineCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_Marine">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanMarineCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanMarineCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanMarauderCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_Marauder" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanMarauderCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanMarauderCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_Marauder">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanMarauderCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanMarauderCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradePickFirebatCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Pick_Firebat" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirement id="BPM_Req_Picked_Firebat">
+        <NodeArray index="Show" Link="BPM_CountUpgradePickFirebatCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_CountUpgradePickFirebatCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradePickWraithCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Pick_Wraith" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirement id="BPM_Req_Picked_Wraith">
+        <NodeArray index="Show" Link="BPM_CountUpgradePickWraithCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_CountUpgradePickWraithCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradePickScienceVesselCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Pick_ScienceVessel" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirement id="BPM_Req_Picked_ScienceVessel">
+        <NodeArray index="Show" Link="BPM_CountUpgradePickScienceVesselCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_CountUpgradePickScienceVesselCompleteOnly"/>
+    </CRequirement>
+    <CRequirementNot id="BPM_NotCountUpgradePickScienceVesselCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradePickScienceVesselCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_NotPicked_ScienceVessel">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradePickScienceVesselCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradePickScienceVesselCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradePickDragoonCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Pick_Dragoon" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUnit id="BPM_CountUnitCyberneticsCoreCompleteOnly">
+        <Count Link="CyberneticsCore" State="CompleteOnly"/>
+    </CRequirementCountUnit>
+    <CRequirementAnd id="BPM_Req_Picked_Dragoon_Use">
+        <OperandArray index="0" value="BPM_CountUpgradePickDragoonCompleteOnly"/>
+        <OperandArray index="1" value="BPM_CountUnitCyberneticsCoreCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirement id="BPM_Req_Picked_Dragoon">
+        <NodeArray index="Show" Link="BPM_CountUpgradePickDragoonCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_Req_Picked_Dragoon_Use"/>
+    </CRequirement>
+    <CRequirementNot id="BPM_NotCountUpgradePickDragoonCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradePickDragoonCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirementAnd id="BPM_Req_NotPicked_Dragoon_Use">
+        <OperandArray index="0" value="BPM_NotCountUpgradePickDragoonCompleteOnly"/>
+        <OperandArray index="1" value="BPM_CountUnitCyberneticsCoreCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirement id="BPM_Req_NotPicked_Dragoon">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradePickDragoonCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_Req_NotPicked_Dragoon_Use"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradePickScoutCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Pick_Scout" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirement id="BPM_Req_Picked_Scout">
+        <NodeArray index="Show" Link="BPM_CountUpgradePickScoutCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_CountUpgradePickScoutCompleteOnly"/>
+    </CRequirement>
+    <CRequirementNot id="BPM_NotCountUpgradePickScoutCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradePickScoutCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_NotPicked_Scout">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradePickScoutCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradePickScoutCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUnit id="BPM_CountUnitFleetBeaconCompleteOnly">
+        <Count Link="FleetBeacon" State="CompleteOnly"/>
+    </CRequirementCountUnit>
+    <CRequirement id="BPM_Req_HaveFleetBeacon">
+        <NodeArray index="Use" Link="BPM_CountUnitFleetBeaconCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradePickReaverCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Pick_Reaver" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUnit id="BPM_CountUnitRoboticsBayCompleteOnly">
+        <Count Link="RoboticsBay" State="CompleteOnly"/>
+    </CRequirementCountUnit>
+    <CRequirementAnd id="BPM_Req_Picked_Reaver_Use">
+        <OperandArray index="0" value="BPM_CountUpgradePickReaverCompleteOnly"/>
+        <OperandArray index="1" value="BPM_CountUnitRoboticsBayCompleteOnly"/>
+    </CRequirementAnd>
+
+    <CRequirement id="BPM_Req_Picked_Reaver">
+        <NodeArray index="Show" Link="BPM_CountUpgradePickReaverCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_Req_Picked_Reaver_Use"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradePickQueenClassicCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Pick_QueenClassic" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUnit id="BPM_CountUnitInfestationPitCompleteOnly">
+        <Count Link="InfestationPit" State="CompleteOnly"/>
+    </CRequirementCountUnit>
+    <CRequirementAnd id="BPM_Req_Picked_QueenClassic_Use">
+        <OperandArray index="0" value="BPM_CountUpgradePickQueenClassicCompleteOnly"/>
+        <OperandArray index="1" value="BPM_CountUnitInfestationPitCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirement id="BPM_Req_Picked_QueenClassic">
+        <NodeArray index="Show" Link="BPM_CountUpgradePickQueenClassicCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_Req_Picked_QueenClassic_Use"/>
+    </CRequirement>
+    <CRequirementNot id="BPM_NotCountUpgradePickQueenClassicCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradePickQueenClassicCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirementAnd id="BPM_Req_NotPicked_QueenClassic_Use">
+        <OperandArray index="0" value="BPM_NotCountUpgradePickQueenClassicCompleteOnly"/>
+        <OperandArray index="1" value="BPM_CountUnitInfestationPitCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirement id="BPM_Req_NotPicked_QueenClassic">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradePickQueenClassicCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_Req_NotPicked_QueenClassic_Use"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradePickGuardianMPCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Pick_GuardianMP" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUnit id="BPM_CountUnitGreaterSpireCompleteOnly">
+        <Count Link="GreaterSpire" State="CompleteOnly"/>
+    </CRequirementCountUnit>
+    <CRequirementAnd id="BPM_Req_Picked_GuardianMP_Use">
+        <OperandArray index="0" value="BPM_CountUpgradePickGuardianMPCompleteOnly"/>
+        <OperandArray index="1" value="BPM_CountUnitGreaterSpireCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirement id="BPM_Req_Picked_GuardianMP">
+        <NodeArray index="Show" Link="BPM_CountUpgradePickGuardianMPCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_Req_Picked_GuardianMP_Use"/>
+    </CRequirement>
+
+    <CRequirementCountUnit id="BPM_CountUnitLairCompleteOnly">
+        <Count Link="Lair" State="CompleteOnly"/>
+    </CRequirementCountUnit>
+    <CRequirementCountUnit id="BPM_CountUnitHiveCompleteOnly">
+        <Count Link="Hive" State="CompleteOnly"/>
+    </CRequirementCountUnit>
+    <CRequirementOr id="BPM_CountUnitLairOrHiveCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUnitLairCompleteOnly"/>
+        <OperandArray index="1" value="BPM_CountUnitHiveCompleteOnly"/>
+    </CRequirementOr>
+    <CRequirementCountUnit id="BPM_CountUnitSpawningPoolCompleteOnly">
+        <Count Link="SpawningPool" State="CompleteOnly"/>
+    </CRequirementCountUnit>
+    <CRequirement id="BPM_Req_LairOrHive">
+        <NodeArray index="Use" Link="BPM_CountUnitLairOrHiveCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradePickRavasaurCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Pick_Ravasaur" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUnit id="BPM_CountUnitRoachWarrenCompleteOnly">
+        <Count Link="RoachWarren" State="CompleteOnly"/>
+    </CRequirementCountUnit>
+    <CRequirement id="BPM_Req_HaveRoachWarren">
+        <NodeArray index="Use" Link="BPM_CountUnitRoachWarrenCompleteOnly"/>
+    </CRequirement>
+    <CRequirementAnd id="BPM_Req_Picked_Ravasaur_Use">
+        <OperandArray index="0" value="BPM_CountUpgradePickRavasaurCompleteOnly"/>
+        <OperandArray index="1" value="BPM_CountUnitRoachWarrenCompleteOnly"/>
+        <OperandArray index="2" value="BPM_CountUnitLairOrHiveCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirement id="BPM_Req_Picked_Ravasaur">
+        <NodeArray index="Show" Link="BPM_CountUpgradePickRavasaurCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_Req_Picked_Ravasaur_Use"/>
+    </CRequirement>
+    <CRequirementCountUpgrade id="BPM_CountUpgradeRavasaurVolatileSpinesCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_RavasaurVolatileSpines" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeRavasaurVolatileSpinesCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeRavasaurVolatileSpinesCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_RavasaurVolatileSpines">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeRavasaurVolatileSpinesCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_CountUnitLairOrHiveCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeNeverCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Never" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirement id="BPM_Req_Never">
+        <NodeArray index="Show" Link="BPM_CountUpgradeNeverCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_CountUpgradeNeverCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanReaperCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_Reaper" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanReaperCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanReaperCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_Reaper">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanReaperCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanReaperCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanGhostCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_Ghost" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanGhostCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanGhostCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_Ghost">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanGhostCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanGhostCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanHellionCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_Hellion" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanHellionCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanHellionCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_Hellion">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanHellionCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanHellionCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanSiegeTankCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_SiegeTank" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanSiegeTankCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanSiegeTankCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_SiegeTank">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanSiegeTankCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanSiegeTankCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanCycloneCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_Cyclone" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanCycloneCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanCycloneCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_Cyclone">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanCycloneCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanCycloneCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanThorCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_Thor" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanThorCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanThorCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_Thor">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanThorCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanThorCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanVikingFighterCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_VikingFighter" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanVikingFighterCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanVikingFighterCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_VikingFighter">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanVikingFighterCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanVikingFighterCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanMedivacCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_Medivac" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanMedivacCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanMedivacCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_Medivac">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanMedivacCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanMedivacCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanLiberatorCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_Liberator" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanLiberatorCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanLiberatorCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_Liberator">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanLiberatorCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanLiberatorCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanBattlecruiserCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_Battlecruiser" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanBattlecruiserCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanBattlecruiserCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_Battlecruiser">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanBattlecruiserCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanBattlecruiserCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanZealotCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_Zealot" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanZealotCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanZealotCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_Zealot">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanZealotCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanZealotCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanStalkerCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_Stalker" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanStalkerCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanStalkerCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_Stalker">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanStalkerCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanStalkerCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanSentryCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_Sentry" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanSentryCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanSentryCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_Sentry">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanSentryCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanSentryCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanAdeptCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_Adept" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanAdeptCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanAdeptCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirementAnd id="BPM_Req_BanClear_Adept_Use">
+        <OperandArray index="0" value="BPM_NotCountUpgradeBanAdeptCompleteOnly"/>
+        <OperandArray index="1" value="BPM_CountUnitCyberneticsCoreCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirement id="BPM_Req_BanClear_Adept">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanAdeptCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_Req_BanClear_Adept_Use"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanHighTemplarCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_HighTemplar" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanHighTemplarCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanHighTemplarCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_HighTemplar">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanHighTemplarCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanHighTemplarCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanDarkTemplarCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_DarkTemplar" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanDarkTemplarCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanDarkTemplarCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_DarkTemplar">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanDarkTemplarCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanDarkTemplarCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanImmortalCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_Immortal" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanImmortalCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanImmortalCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_Immortal">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanImmortalCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanImmortalCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanColossusCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_Colossus" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanColossusCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanColossusCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_Colossus">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanColossusCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanColossusCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanDisruptorCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_Disruptor" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanDisruptorCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanDisruptorCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_Disruptor">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanDisruptorCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanDisruptorCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanArchonCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_Archon" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanArchonCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanArchonCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_Archon">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanArchonCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanArchonCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanZerglingCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_Zergling" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanZerglingCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanZerglingCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_Zergling">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanZerglingCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanZerglingCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanRoachCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_Roach" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanRoachCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanRoachCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_Roach">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanRoachCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanRoachCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanHydraliskCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_Hydralisk" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanHydraliskCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanHydraliskCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_Hydralisk">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanHydraliskCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanHydraliskCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanBanelingCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_Baneling" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanBanelingCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanBanelingCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_Baneling">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanBanelingCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanBanelingCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanMutaliskCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_Mutalisk" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanMutaliskCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanMutaliskCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_Mutalisk">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanMutaliskCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanMutaliskCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanCorruptorCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_Corruptor" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanCorruptorCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanCorruptorCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_Corruptor">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanCorruptorCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanCorruptorCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanUltraliskCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_Ultralisk" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanUltraliskCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanUltraliskCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_Ultralisk">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanUltraliskCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanUltraliskCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanWidowMineCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_WidowMine" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanWidowMineCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanWidowMineCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_WidowMine">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanWidowMineCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanWidowMineCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanBansheeCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_Banshee" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanBansheeCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanBansheeCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_Banshee">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanBansheeCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanBansheeCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanRavenCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_Raven" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanRavenCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanRavenCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_Raven">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanRavenCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanRavenCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanObserverCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_Observer" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanObserverCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanObserverCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_Observer">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanObserverCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanObserverCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanWarpPrismCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_WarpPrism" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanWarpPrismCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanWarpPrismCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_WarpPrism">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanWarpPrismCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanWarpPrismCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanPhoenixCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_Phoenix" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanPhoenixCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanPhoenixCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_Phoenix">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanPhoenixCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanPhoenixCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanVoidRayCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_VoidRay" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanVoidRayCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanVoidRayCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_VoidRay">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanVoidRayCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanVoidRayCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanOracleCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_Oracle" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanOracleCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanOracleCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_Oracle">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanOracleCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanOracleCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanCarrierCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_Carrier" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanCarrierCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanCarrierCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_Carrier">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanCarrierCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanCarrierCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanTempestCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_Tempest" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanTempestCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanTempestCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_Tempest">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanTempestCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanTempestCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanMothershipCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_Mothership" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanMothershipCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanMothershipCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_Mothership">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanMothershipCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanMothershipCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanInfestorCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_Infestor" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanInfestorCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanInfestorCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_Infestor">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanInfestorCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanInfestorCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanSwarmHostMPCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_SwarmHostMP" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanSwarmHostMPCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanSwarmHostMPCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_SwarmHostMP">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanSwarmHostMPCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanSwarmHostMPCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanViperCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_Viper" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanViperCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanViperCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_Viper">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanViperCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanViperCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanRavagerCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_Ravager" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanRavagerCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanRavagerCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_Ravager">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanRavagerCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanRavagerCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanLurkerMPCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_LurkerMP" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanLurkerMPCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanLurkerMPCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_LurkerMP">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanLurkerMPCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanLurkerMPCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeBanBroodLordCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Ban_BroodLord" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeBanBroodLordCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeBanBroodLordCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_BanClear_BroodLord">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeBanBroodLordCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeBanBroodLordCompleteOnly"/>
+    </CRequirement>
+    <CRequirementCountUpgrade id="BPM_CountUpgradeGoliathRangeCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_GoliathRange" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeGoliathRangeCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeGoliathRangeCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_GoliathRange">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeGoliathRangeCompleteOnly"/>
+    </CRequirement>
+
+    <!-- WarHound Haywire Missile research and use gate. -->
+    <CRequirementCountUpgrade id="BPM_CountUpgradeWarHoundTornadoMissileQueued">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_WarHoundTornadoMissile" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeWarHoundTornadoMissileQueued">
+        <OperandArray index="0" value="BPM_CountUpgradeWarHoundTornadoMissileQueued"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_WarHoundTornadoMissile">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeWarHoundTornadoMissileQueued"/>
+    </CRequirement>
+    <CRequirementCountUpgrade id="BPM_CountUpgradeWarHoundTornadoMissileCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_WarHoundTornadoMissile" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirement id="BPM_Req_UseWarHoundTornadoMissile">
+        <NodeArray index="Use" Link="BPM_CountUpgradeWarHoundTornadoMissileCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeDragoonRangeCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_DragoonRange" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeDragoonRangeCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeDragoonRangeCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_DragoonRange">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeDragoonRangeCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeReaverDamageCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_ReaverDamage" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeReaverDamageCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeReaverDamageCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_ReaverDamage">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeReaverDamageCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeReaverHangarCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_ReaverHangar" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeReaverHangarCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeReaverHangarCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_ReaverHangar">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeReaverHangarCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirement id="ArmScarab"/>
+    <CRequirement id="Transfusion"/>
+    <CRequirement id="UseTransfusion"/>
+    <CRequirement id="QueenTransfusion"/>
+
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeScoutSightCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_ScoutSight" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeScoutSightCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeScoutSightCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_ScoutSight">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeScoutSightCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeScoutSpeedCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_ScoutSpeed" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeScoutSpeedCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeScoutSpeedCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_ScoutSpeed">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeScoutSpeedCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeWraithEnergyCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_WraithEnergy" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeWraithEnergyCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeWraithEnergyCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_WraithEnergy">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeWraithEnergyCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeWraithCloakQueued">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_WraithCloak" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeWraithCloakQueued">
+        <OperandArray index="0" value="BPM_CountUpgradeWraithCloakQueued"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_WraithCloak">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeWraithCloakQueued"/>
+    </CRequirement>
+    <CRequirementCountUpgrade id="BPM_CountUpgradeWraithCloakCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_WraithCloak" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirement id="UseWraithCloak">
+        <NodeArray index="Use" Link="BPM_CountUpgradeWraithCloakCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeQueenEnergyCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_QueenEnergy" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeQueenEnergyCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradeQueenEnergyCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_QueenEnergy">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeQueenEnergyCompleteOnly"/>
+    </CRequirement>
+
+    <!-- Arbiter Stasis Field Requirements -->
+    <CRequirementCountUpgrade id="BPM_CountUpgradeArbiterStasisFieldQueued">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_ArbiterStasisField" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeArbiterStasisFieldQueued">
+        <OperandArray index="0" value="BPM_CountUpgradeArbiterStasisFieldQueued"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_ArbiterStasisField">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeArbiterStasisFieldQueued"/>
+    </CRequirement>
+    <CRequirementCountUpgrade id="BPM_CountUpgradeArbiterStasisFieldCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_ArbiterStasisField" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirement id="BPM_Req_UseArbiterStasisField">
+        <NodeArray index="Use" Link="BPM_CountUpgradeArbiterStasisFieldCompleteOnly"/>
+    </CRequirement>
+
+    <!-- Arbiter Recall Requirements -->
+    <CRequirementCountUpgrade id="BPM_CountUpgradeArbiterRecallQueued">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_ArbiterRecall" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeArbiterRecallQueued">
+        <OperandArray index="0" value="BPM_CountUpgradeArbiterRecallQueued"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_ArbiterRecall">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeArbiterRecallQueued"/>
+    </CRequirement>
+    <CRequirementCountUpgrade id="BPM_CountUpgradeArbiterRecallCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_ArbiterRecall" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirement id="BPM_Req_UseArbiterRecall">
+        <NodeArray index="Use" Link="BPM_CountUpgradeArbiterRecallCompleteOnly"/>
+    </CRequirement>
+    <!-- Armory Level Upgrades Requirements (Fix for Level 2/3 not showing) -->
+    
+    <!-- Vehicle Weapons -->
+    <CRequirementCountUpgrade id="CountUpgradeTerranVehicleWeaponsLevel1CompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="TerranVehicleWeaponsLevel1" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeTerranVehicleWeaponsLevel2CompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="TerranVehicleWeaponsLevel2" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    
+    <CRequirementCountUpgrade id="CountUpgradeTerranVehicleWeaponsLevel1QueuedOrBetter">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="TerranVehicleWeaponsLevel1" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeTerranVehicleWeaponsLevel2QueuedOrBetter">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="TerranVehicleWeaponsLevel2" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeTerranVehicleWeaponsLevel3QueuedOrBetter">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="TerranVehicleWeaponsLevel3" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+
+    <CRequirementNot id="NotCountUpgradeTerranVehicleWeaponsLevel1QueuedOrBetter">
+        <OperandArray index="0" value="CountUpgradeTerranVehicleWeaponsLevel1QueuedOrBetter"/>
+    </CRequirementNot>
+    <CRequirementNot id="NotCountUpgradeTerranVehicleWeaponsLevel2QueuedOrBetter">
+        <OperandArray index="0" value="CountUpgradeTerranVehicleWeaponsLevel2QueuedOrBetter"/>
+    </CRequirementNot>
+    <CRequirementNot id="NotCountUpgradeTerranVehicleWeaponsLevel3QueuedOrBetter">
+        <OperandArray index="0" value="CountUpgradeTerranVehicleWeaponsLevel3QueuedOrBetter"/>
+    </CRequirementNot>
+
+    <CRequirementAnd id="BPM_ShowTerranVehicleWeapon2">
+        <OperandArray index="0" value="CountUpgradeTerranVehicleWeaponsLevel1QueuedOrBetter"/>
+        <OperandArray index="1" value="NotCountUpgradeTerranVehicleWeaponsLevel2QueuedOrBetter"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="BPM_UseTerranVehicleWeapon2">
+        <OperandArray index="0" value="CountUpgradeTerranVehicleWeaponsLevel1CompleteOnly"/>
+        <OperandArray index="1" value="NotCountUpgradeTerranVehicleWeaponsLevel2QueuedOrBetter"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="BPM_ShowTerranVehicleWeapon3">
+        <OperandArray index="0" value="CountUpgradeTerranVehicleWeaponsLevel2QueuedOrBetter"/>
+        <OperandArray index="1" value="NotCountUpgradeTerranVehicleWeaponsLevel3QueuedOrBetter"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="BPM_UseTerranVehicleWeapon3">
+        <OperandArray index="0" value="CountUpgradeTerranVehicleWeaponsLevel2CompleteOnly"/>
+        <OperandArray index="1" value="NotCountUpgradeTerranVehicleWeaponsLevel3QueuedOrBetter"/>
+    </CRequirementAnd>
+
+    <CRequirement id="LearnTerranVehicleWeapon1">
+        <NodeArray index="Use" Link="NotCountUpgradeTerranVehicleWeaponsLevel1QueuedOrBetter"/>
+        <NodeArray index="Show" Link="NotCountUpgradeTerranVehicleWeaponsLevel1QueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="LearnTerranVehicleWeapon2">
+        <NodeArray index="Use" Link="BPM_UseTerranVehicleWeapon2"/>
+        <NodeArray index="Show" Link="BPM_ShowTerranVehicleWeapon2"/>
+    </CRequirement>
+    <CRequirement id="LearnTerranVehicleWeapon3">
+        <NodeArray index="Use" Link="BPM_UseTerranVehicleWeapon3"/>
+        <NodeArray index="Show" Link="BPM_ShowTerranVehicleWeapon3"/>
+    </CRequirement>
+
+    <!-- Ship Weapons -->
+    <CRequirementCountUpgrade id="CountUpgradeTerranShipWeaponsLevel1CompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="TerranShipWeaponsLevel1" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeTerranShipWeaponsLevel2CompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="TerranShipWeaponsLevel2" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    
+    <CRequirementCountUpgrade id="CountUpgradeTerranShipWeaponsLevel1QueuedOrBetter">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="TerranShipWeaponsLevel1" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeTerranShipWeaponsLevel2QueuedOrBetter">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="TerranShipWeaponsLevel2" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeTerranShipWeaponsLevel3QueuedOrBetter">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="TerranShipWeaponsLevel3" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+
+    <CRequirementNot id="NotCountUpgradeTerranShipWeaponsLevel1QueuedOrBetter">
+        <OperandArray index="0" value="CountUpgradeTerranShipWeaponsLevel1QueuedOrBetter"/>
+    </CRequirementNot>
+    <CRequirementNot id="NotCountUpgradeTerranShipWeaponsLevel2QueuedOrBetter">
+        <OperandArray index="0" value="CountUpgradeTerranShipWeaponsLevel2QueuedOrBetter"/>
+    </CRequirementNot>
+    <CRequirementNot id="NotCountUpgradeTerranShipWeaponsLevel3QueuedOrBetter">
+        <OperandArray index="0" value="CountUpgradeTerranShipWeaponsLevel3QueuedOrBetter"/>
+    </CRequirementNot>
+
+    <CRequirementAnd id="BPM_ShowTerranShipWeapon2">
+        <OperandArray index="0" value="CountUpgradeTerranShipWeaponsLevel1QueuedOrBetter"/>
+        <OperandArray index="1" value="NotCountUpgradeTerranShipWeaponsLevel2QueuedOrBetter"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="BPM_UseTerranShipWeapon2">
+        <OperandArray index="0" value="CountUpgradeTerranShipWeaponsLevel1CompleteOnly"/>
+        <OperandArray index="1" value="NotCountUpgradeTerranShipWeaponsLevel2QueuedOrBetter"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="BPM_ShowTerranShipWeapon3">
+        <OperandArray index="0" value="CountUpgradeTerranShipWeaponsLevel2QueuedOrBetter"/>
+        <OperandArray index="1" value="NotCountUpgradeTerranShipWeaponsLevel3QueuedOrBetter"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="BPM_UseTerranShipWeapon3">
+        <OperandArray index="0" value="CountUpgradeTerranShipWeaponsLevel2CompleteOnly"/>
+        <OperandArray index="1" value="NotCountUpgradeTerranShipWeaponsLevel3QueuedOrBetter"/>
+    </CRequirementAnd>
+
+    <CRequirement id="LearnTerranShipWeapon1">
+        <NodeArray index="Use" Link="NotCountUpgradeTerranShipWeaponsLevel1QueuedOrBetter"/>
+        <NodeArray index="Show" Link="NotCountUpgradeTerranShipWeaponsLevel1QueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="LearnTerranShipWeapon2">
+        <NodeArray index="Use" Link="BPM_UseTerranShipWeapon2"/>
+        <NodeArray index="Show" Link="BPM_ShowTerranShipWeapon2"/>
+    </CRequirement>
+    <CRequirement id="LearnTerranShipWeapon3">
+        <NodeArray index="Use" Link="BPM_UseTerranShipWeapon3"/>
+        <NodeArray index="Show" Link="BPM_ShowTerranShipWeapon3"/>
+    </CRequirement>
+
+    <!-- Terran Vehicle and Ship Armor -->
+    <CRequirementCountUpgrade id="CountUpgradeTerranVehicleAndShipArmorsLevel1CompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="TerranVehicleAndShipArmorsLevel1" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeTerranVehicleAndShipArmorsLevel2CompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="TerranVehicleAndShipArmorsLevel2" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    
+    <CRequirementCountUpgrade id="CountUpgradeTerranVehicleAndShipArmorsLevel1QueuedOrBetter">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="TerranVehicleAndShipArmorsLevel1" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeTerranVehicleAndShipArmorsLevel2QueuedOrBetter">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="TerranVehicleAndShipArmorsLevel2" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeTerranVehicleAndShipArmorsLevel3QueuedOrBetter">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="TerranVehicleAndShipArmorsLevel3" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+
+    <CRequirementNot id="NotCountUpgradeTerranVehicleAndShipArmorsLevel1QueuedOrBetter">
+        <OperandArray index="0" value="CountUpgradeTerranVehicleAndShipArmorsLevel1QueuedOrBetter"/>
+    </CRequirementNot>
+    <CRequirementNot id="NotCountUpgradeTerranVehicleAndShipArmorsLevel2QueuedOrBetter">
+        <OperandArray index="0" value="CountUpgradeTerranVehicleAndShipArmorsLevel2QueuedOrBetter"/>
+    </CRequirementNot>
+    <CRequirementNot id="NotCountUpgradeTerranVehicleAndShipArmorsLevel3QueuedOrBetter">
+        <OperandArray index="0" value="CountUpgradeTerranVehicleAndShipArmorsLevel3QueuedOrBetter"/>
+    </CRequirementNot>
+
+    <CRequirementAnd id="BPM_ShowTerranVehicleAndShipArmor2">
+        <OperandArray index="0" value="CountUpgradeTerranVehicleAndShipArmorsLevel1QueuedOrBetter"/>
+        <OperandArray index="1" value="NotCountUpgradeTerranVehicleAndShipArmorsLevel2QueuedOrBetter"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="BPM_UseTerranVehicleAndShipArmor2">
+        <OperandArray index="0" value="CountUpgradeTerranVehicleAndShipArmorsLevel1CompleteOnly"/>
+        <OperandArray index="1" value="NotCountUpgradeTerranVehicleAndShipArmorsLevel2QueuedOrBetter"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="BPM_ShowTerranVehicleAndShipArmor3">
+        <OperandArray index="0" value="CountUpgradeTerranVehicleAndShipArmorsLevel2QueuedOrBetter"/>
+        <OperandArray index="1" value="NotCountUpgradeTerranVehicleAndShipArmorsLevel3QueuedOrBetter"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="BPM_UseTerranVehicleAndShipArmor3">
+        <OperandArray index="0" value="CountUpgradeTerranVehicleAndShipArmorsLevel2CompleteOnly"/>
+        <OperandArray index="1" value="NotCountUpgradeTerranVehicleAndShipArmorsLevel3QueuedOrBetter"/>
+    </CRequirementAnd>
+
+    <CRequirement id="LearnTerranVehicleAndShipArmor1">
+        <NodeArray index="Use" Link="NotCountUpgradeTerranVehicleAndShipArmorsLevel1QueuedOrBetter"/>
+        <NodeArray index="Show" Link="NotCountUpgradeTerranVehicleAndShipArmorsLevel1QueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="LearnTerranVehicleAndShipArmor2">
+        <NodeArray index="Use" Link="BPM_UseTerranVehicleAndShipArmor2"/>
+        <NodeArray index="Show" Link="BPM_ShowTerranVehicleAndShipArmor2"/>
+    </CRequirement>
+    <CRequirement id="LearnTerranVehicleAndShipArmor3">
+        <NodeArray index="Use" Link="BPM_UseTerranVehicleAndShipArmor3"/>
+        <NodeArray index="Show" Link="BPM_ShowTerranVehicleAndShipArmor3"/>
+    </CRequirement>
+    <CRequirementCountUnit id="BPM_CountUnitFusionCoreCompleteOnly">
+        <Count Link="FusionCore" State="CompleteOnly"/>
+    </CRequirementCountUnit>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeScienceVesselLockdownQueuedOrBetter">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_ScienceVesselLockdownResearch" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeScienceVesselLockdownQueuedOrBetter">
+        <OperandArray index="0" value="BPM_CountUpgradeScienceVesselLockdownQueuedOrBetter"/>
+    </CRequirementNot>
+    <CRequirementAnd id="BPM_ShowResearchScienceVesselLockdown">
+        <OperandArray index="0" value="BPM_CountUpgradePickScienceVesselCompleteOnly"/>
+        <OperandArray index="1" value="BPM_NotCountUpgradeScienceVesselLockdownQueuedOrBetter"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="BPM_UseResearchScienceVesselLockdown">
+        <OperandArray index="0" value="BPM_ShowResearchScienceVesselLockdown"/>
+        <OperandArray index="1" value="BPM_CountUnitFusionCoreCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirement id="BPM_Req_ResearchScienceVesselLockdown">
+        <NodeArray index="Show" Link="BPM_ShowResearchScienceVesselLockdown"/>
+        <NodeArray index="Use" Link="BPM_UseResearchScienceVesselLockdown"/>
+    </CRequirement>
+    <CRequirementCountUpgrade id="BPM_CountUpgradeScienceVesselLockdownCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_ScienceVesselLockdownResearch" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirement id="BPM_Req_UseScienceVesselLockdown">
+        <NodeArray index="Use" Link="BPM_CountUpgradeScienceVesselLockdownCompleteOnly"/>
+    </CRequirement>
+
+    <CRequirementCountUpgrade id="BPM_CountUpgradeScienceVesselDefensiveMatrixQueuedOrBetter">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_ScienceVesselDefensiveMatrixResearch" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeScienceVesselDefensiveMatrixQueuedOrBetter">
+        <OperandArray index="0" value="BPM_CountUpgradeScienceVesselDefensiveMatrixQueuedOrBetter"/>
+    </CRequirementNot>
+    <CRequirementAnd id="BPM_ShowResearchScienceVesselDefensiveMatrix">
+        <OperandArray index="0" value="BPM_CountUpgradePickScienceVesselCompleteOnly"/>
+        <OperandArray index="1" value="BPM_NotCountUpgradeScienceVesselDefensiveMatrixQueuedOrBetter"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="BPM_UseResearchScienceVesselDefensiveMatrix">
+        <OperandArray index="0" value="BPM_ShowResearchScienceVesselDefensiveMatrix"/>
+        <OperandArray index="1" value="BPM_CountUnitFusionCoreCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirement id="BPM_Req_ResearchScienceVesselDefensiveMatrix">
+        <NodeArray index="Show" Link="BPM_ShowResearchScienceVesselDefensiveMatrix"/>
+        <NodeArray index="Use" Link="BPM_UseResearchScienceVesselDefensiveMatrix"/>
+    </CRequirement>
+    <CRequirementCountUpgrade id="BPM_CountUpgradeScienceVesselDefensiveMatrixCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_ScienceVesselDefensiveMatrixResearch" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirement id="BPM_Req_UseScienceVesselDefensiveMatrix">
+        <NodeArray index="Use" Link="BPM_CountUpgradeScienceVesselDefensiveMatrixCompleteOnly"/>
+    </CRequirement>
+
+    <!-- Energizer Requirements -->
+    <CRequirementCountUpgrade id="BPM_CountUpgradePickEnergizerCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Pick_Energizer" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradePickEnergizerCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradePickEnergizerCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirementAnd id="BPM_UsePickedEnergizer">
+        <OperandArray index="0" value="BPM_CountUpgradePickEnergizerCompleteOnly"/>
+        <OperandArray index="1" value="BPM_CountUnitCyberneticsCoreCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirement id="BPM_Req_Picked_Energizer">
+        <NodeArray index="Show" Link="BPM_CountUpgradePickEnergizerCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_UsePickedEnergizer"/>
+    </CRequirement>
+    <CRequirementAnd id="BPM_UseNotPickedEnergizer">
+        <OperandArray index="0" value="BPM_NotCountUpgradePickEnergizerCompleteOnly"/>
+        <OperandArray index="1" value="BPM_CountUnitCyberneticsCoreCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirement id="BPM_Req_NotPicked_Energizer">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradePickEnergizerCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_UseNotPickedEnergizer"/>
+    </CRequirement>
+
+
+
+
+    <!-- Phasing Mode Research -->
+    <CRequirementCountUpgrade id="BPM_CountUpgradeEnergizerPhasingModeQueued">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_EnergizerPhasingMode" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeEnergizerPhasingModeQueued">
+        <OperandArray index="0" value="BPM_CountUpgradeEnergizerPhasingModeQueued"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_EnergizerPhasingMode">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeEnergizerPhasingModeQueued"/>
+    </CRequirement>
+    <CRequirementCountUpgrade id="BPM_CountUpgradeEnergizerPhasingModeCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_EnergizerPhasingMode" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirement id="BPM_Req_UseEnergizerPhasingMode">
+        <NodeArray index="Use" Link="BPM_CountUpgradeEnergizerPhasingModeCompleteOnly"/>
+    </CRequirement>
+    <!-- Local replacement for the missing campaign LearnAdeptResonatingGlaives
+         requirement.  Hide the command only after it has been queued. -->
+    <CRequirementCountUpgrade id="BPM_CountUpgradeAdeptResonatingGlaivesQueuedOrBetter">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="AdeptPiercingAttack" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeAdeptResonatingGlaivesQueuedOrBetter">
+        <OperandArray index="0" value="BPM_CountUpgradeAdeptResonatingGlaivesQueuedOrBetter"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_AdeptResonatingGlaives">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradeAdeptResonatingGlaivesQueuedOrBetter"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeAdeptResonatingGlaivesQueuedOrBetter"/>
+    </CRequirement>
+
+    <!-- Raven Interference Matrix Research Requirement -->
+    <CRequirementCountUpgrade id="BPM_CountUpgradeRavenInterferenceMatrixCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="RavenInterferenceMatrix" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirement id="BPM_Req_UseRavenInterferenceMatrix">
+        <NodeArray index="Use" Link="BPM_CountUpgradeRavenInterferenceMatrixCompleteOnly"/>
+    </CRequirement>
+
+    <!-- Corsair / Phoenix Group -->
+    <CRequirementCountUpgrade id="BPM_CountUpgradePickCorsairCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Pick_Corsair" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirement id="BPM_Req_Picked_Corsair">
+        <NodeArray index="Show" Link="BPM_CountUpgradePickCorsairCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_CountUpgradePickCorsairCompleteOnly"/>
+    </CRequirement>
+    <CRequirementNot id="BPM_NotCountUpgradePickCorsairCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradePickCorsairCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirement id="BPM_Req_NotPicked_Corsair">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradePickCorsairCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradePickCorsairCompleteOnly"/>
+    </CRequirement>
+
+    <!-- Aberration / Roach Group -->
+    <CRequirementCountUpgrade id="BPM_CountUpgradePickAberrationCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Pick_Aberration" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementAnd id="BPM_Req_Picked_Aberration_Use">
+        <OperandArray index="0" value="BPM_CountUnitSpawningPoolCompleteOnly"/>
+        <OperandArray index="1" value="BPM_CountUnitLairOrHiveCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirement id="BPM_Req_Picked_Aberration">
+        <NodeArray index="Show" Link="BPM_CountUpgradePickAberrationCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_Req_Picked_Aberration_Use"/>
+    </CRequirement>
+    <CRequirementNot id="BPM_NotCountUpgradePickAberrationCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradePickAberrationCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirementAnd id="BPM_Req_NotPicked_Aberration_Use">
+        <OperandArray index="0" value="BPM_CountUnitRoachWarrenCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirement id="BPM_Req_NotPicked_Aberration">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradePickAberrationCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_Req_NotPicked_Aberration_Use"/>
+    </CRequirement>
+
+    <!-- Defiler / Infestor Group -->
+    <CRequirementCountUnit id="BPM_CountUnitHiveCompleteOnly">
+        <Count Link="Hive" State="CompleteOnly"/>
+    </CRequirementCountUnit>
+    <CRequirementCountUnit id="BPM_CountUnitDefilerMoundCompleteOnly">
+        <Count Link="BPM_DefilerMound" State="CompleteOnly"/>
+    </CRequirementCountUnit>
+    <CRequirementCountUpgrade id="BPM_CountUpgradePickDefilerCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Pick_Defiler" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementAnd id="BPM_Req_Picked_Defiler_Use">
+        <OperandArray index="0" value="BPM_CountUnitDefilerMoundCompleteOnly"/>
+        <OperandArray index="1" value="BPM_CountUnitHiveCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirement id="BPM_Req_Picked_Defiler">
+        <NodeArray index="Show" Link="BPM_CountUpgradePickDefilerCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_Req_Picked_Defiler_Use"/>
+    </CRequirement>
+    <CRequirementNot id="BPM_NotCountUpgradePickDefilerCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradePickDefilerCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirementAnd id="BPM_Req_NotPicked_Defiler_Use">
+        <OperandArray index="0" value="BPM_CountUnitInfestationPitCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirement id="BPM_Req_NotPicked_Defiler">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradePickDefilerCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_Req_NotPicked_Defiler_Use"/>
+    </CRequirement>
+
+    <!-- Defiler Mound Build Requirement -->
+    <CRequirement id="BPM_Req_DefilerMound">
+        <NodeArray index="Use" Link="BPM_CountUnitHiveCompleteOnly"/>
+    </CRequirement>
+
+    <!-- Tyrannozor / Ultralisk Group -->
+    <CRequirementCountUnit id="BPM_CountUnitUltraliskCavernCompleteOnly">
+        <Count Link="UltraliskCavern" State="CompleteOnly"/>
+    </CRequirementCountUnit>
+    <CRequirementCountUpgrade id="BPM_CountUpgradePickTyrannozorCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_Pick_Tyrannozor" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementAnd id="BPM_Req_Picked_Tyrannozor_Use">
+        <OperandArray index="0" value="BPM_CountUnitUltraliskCavernCompleteOnly"/>
+        <OperandArray index="1" value="BPM_CountUnitHiveCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirement id="BPM_Req_Picked_Tyrannozor">
+        <NodeArray index="Show" Link="BPM_CountUpgradePickTyrannozorCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_Req_Picked_Tyrannozor_Use"/>
+    </CRequirement>
+    <CRequirementNot id="BPM_NotCountUpgradePickTyrannozorCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradePickTyrannozorCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirementAnd id="BPM_Req_NotPicked_Tyrannozor_Use">
+        <OperandArray index="0" value="BPM_CountUnitUltraliskCavernCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirement id="BPM_Req_NotPicked_Tyrannozor">
+        <NodeArray index="Show" Link="BPM_NotCountUpgradePickTyrannozorCompleteOnly"/>
+        <NodeArray index="Use" Link="BPM_Req_NotPicked_Tyrannozor_Use"/>
+    </CRequirement>
+
+    <!-- Corsair Disruption Web research and use requirements. -->
+    <CRequirementCountUpgrade id="BPM_CountUpgradeCorsairDisruptionWebQueuedOrBetter">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_CorsairDisruptionWeb" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeCorsairDisruptionWebQueuedOrBetter">
+        <OperandArray index="0" value="BPM_CountUpgradeCorsairDisruptionWebQueuedOrBetter"/>
+    </CRequirementNot>
+    <CRequirementAnd id="BPM_ShowResearchCorsairDisruptionWeb">
+        <OperandArray index="0" value="BPM_CountUpgradePickCorsairCompleteOnly"/>
+        <OperandArray index="1" value="BPM_NotCountUpgradeCorsairDisruptionWebQueuedOrBetter"/>
+    </CRequirementAnd>
+    <CRequirement id="BPM_Req_CorsairDisruptionWeb">
+        <NodeArray index="Show" Link="BPM_ShowResearchCorsairDisruptionWeb"/>
+        <NodeArray index="Use" Link="BPM_ShowResearchCorsairDisruptionWeb"/>
+    </CRequirement>
+    <CRequirementCountUpgrade id="BPM_CountUpgradeCorsairDisruptionWebCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_CorsairDisruptionWeb" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirement id="BPM_Req_UseCorsairDisruptionWeb">
+        <NodeArray index="Use" Link="BPM_CountUpgradeCorsairDisruptionWebCompleteOnly"/>
+    </CRequirement>
+
+    <!-- Defiler Consume Research and Use -->
+    <CRequirementCountUpgrade id="BPM_CountUpgradeDefilerConsumeQueuedOrBetter">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_DefilerConsume" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeDefilerConsumeQueuedOrBetter">
+        <OperandArray index="0" value="BPM_CountUpgradeDefilerConsumeQueuedOrBetter"/>
+    </CRequirementNot>
+    <CRequirementAnd id="BPM_ShowResearchDefilerConsume">
+        <OperandArray index="0" value="BPM_CountUpgradePickDefilerCompleteOnly"/>
+        <OperandArray index="1" value="BPM_NotCountUpgradeDefilerConsumeQueuedOrBetter"/>
+    </CRequirementAnd>
+    <CRequirement id="BPM_Req_DefilerConsume">
+        <NodeArray index="Show" Link="BPM_ShowResearchDefilerConsume"/>
+        <NodeArray index="Use" Link="BPM_ShowResearchDefilerConsume"/>
+    </CRequirement>
+    <CRequirementCountUpgrade id="BPM_CountUpgradeDefilerConsumeCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_DefilerConsume" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirement id="BPM_Req_UseDefilerConsume">
+        <NodeArray index="Use" Link="BPM_CountUpgradeDefilerConsumeCompleteOnly"/>
+    </CRequirement>
+
+    <!-- Defiler Plague Research -->
+    <CRequirementCountUpgrade id="BPM_CountUpgradeDefilerPlagueQueuedOrBetter">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_DefilerPlague" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeDefilerPlagueQueuedOrBetter">
+        <OperandArray index="0" value="BPM_CountUpgradeDefilerPlagueQueuedOrBetter"/>
+    </CRequirementNot>
+    <CRequirementAnd id="BPM_ShowResearchDefilerPlague">
+        <OperandArray index="0" value="BPM_CountUpgradePickDefilerCompleteOnly"/>
+        <OperandArray index="1" value="BPM_NotCountUpgradeDefilerPlagueQueuedOrBetter"/>
+    </CRequirementAnd>
+    <CRequirement id="BPM_Req_DefilerPlague">
+        <NodeArray index="Show" Link="BPM_ShowResearchDefilerPlague"/>
+        <NodeArray index="Use" Link="BPM_ShowResearchDefilerPlague"/>
+    </CRequirement>
+    <CRequirementCountUpgrade id="BPM_CountUpgradeDefilerPlagueCompleteOnly">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_DefilerPlague" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirement id="BPM_Req_UseDefilerPlague">
+        <NodeArray index="Use" Link="BPM_CountUpgradeDefilerPlagueCompleteOnly"/>
+    </CRequirement>
+
+    <!-- Defiler Energy Research -->
+    <CRequirementCountUpgrade id="BPM_CountUpgradeDefilerEnergyQueuedOrBetter">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_DefilerEnergy" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeDefilerEnergyQueuedOrBetter">
+        <OperandArray index="0" value="BPM_CountUpgradeDefilerEnergyQueuedOrBetter"/>
+    </CRequirementNot>
+    <CRequirementAnd id="BPM_ShowResearchDefilerEnergy">
+        <OperandArray index="0" value="BPM_CountUpgradePickDefilerCompleteOnly"/>
+        <OperandArray index="1" value="BPM_NotCountUpgradeDefilerEnergyQueuedOrBetter"/>
+    </CRequirementAnd>
+    <CRequirement id="BPM_Req_DefilerEnergy">
+        <NodeArray index="Show" Link="BPM_ShowResearchDefilerEnergy"/>
+        <NodeArray index="Use" Link="BPM_ShowResearchDefilerEnergy"/>
+    </CRequirement>
+
+    <!-- Aberration Leg Muscle Upgrade (Spawning Pool, requires Lair) -->
+    <CRequirementCountUpgrade id="BPM_CountUpgradeAberrationSpeedQueuedOrBetter">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_AberrationSpeed" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeAberrationSpeedQueuedOrBetter">
+        <OperandArray index="0" value="BPM_CountUpgradeAberrationSpeedQueuedOrBetter"/>
+    </CRequirementNot>
+    <CRequirementAnd id="BPM_ShowResearchAberrationSpeed">
+        <OperandArray index="0" value="BPM_CountUpgradePickAberrationCompleteOnly"/>
+        <OperandArray index="1" value="BPM_NotCountUpgradeAberrationSpeedQueuedOrBetter"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="BPM_UseResearchAberrationSpeed">
+        <OperandArray index="0" value="BPM_CountUnitLairOrHiveCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirement id="BPM_Req_AberrationSpeed">
+        <NodeArray index="Show" Link="BPM_ShowResearchAberrationSpeed"/>
+        <NodeArray index="Use" Link="BPM_UseResearchAberrationSpeed"/>
+    </CRequirement>
+    <!-- Direct Ravager Larva Morph (Aberration picked, Ravasaur not picked, Ravager not banned, Roach Warren complete) -->
+    <CRequirementNot id="BPM_NotCountUpgradePickRavasaurCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradePickRavasaurCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirementAnd id="BPM_ShowLarvaTrainRavagerDirect">
+        <OperandArray index="0" value="BPM_CountUpgradePickAberrationCompleteOnly"/>
+        <OperandArray index="1" value="BPM_NotCountUpgradePickRavasaurCompleteOnly"/>
+        <OperandArray index="2" value="BPM_NotCountUpgradeBanRavagerCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="BPM_UseLarvaTrainRavagerDirect">
+        <OperandArray index="0" value="BPM_CountUnitSpawningPoolCompleteOnly"/>
+        <OperandArray index="1" value="BPM_CountUnitRoachWarrenCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirement id="BPM_Req_LarvaTrainRavagerDirect">
+        <NodeArray index="Show" Link="BPM_ShowLarvaTrainRavagerDirect"/>
+        <NodeArray index="Use" Link="BPM_UseLarvaTrainRavagerDirect"/>
+    </CRequirement>
+
+    <!-- Energizer Shields Research Requirement -->
+    <CRequirementCountUpgrade id="BPM_CountUpgradeEnergizerShieldsQueuedOrBetter">
+        <Flags index="TechTreeCheat" value="1"/>
+        <Count Link="BPM_EnergizerShields" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementNot id="BPM_NotCountUpgradeEnergizerShieldsQueuedOrBetter">
+        <OperandArray index="0" value="BPM_CountUpgradeEnergizerShieldsQueuedOrBetter"/>
+    </CRequirementNot>
+    <CRequirementAnd id="BPM_ShowResearchEnergizerShields">
+        <OperandArray index="0" value="BPM_CountUpgradePickEnergizerCompleteOnly"/>
+        <OperandArray index="1" value="BPM_NotCountUpgradeEnergizerShieldsQueuedOrBetter"/>
+    </CRequirementAnd>
+    <CRequirement id="BPM_Req_ResearchEnergizerShields">
+        <NodeArray index="Show" Link="BPM_ShowResearchEnergizerShields"/>
+        <NodeArray index="Use" Link="BPM_NotCountUpgradeEnergizerShieldsQueuedOrBetter"/>
+    </CRequirement>
+
+    <!-- Direct Guardian Larva Morph (Mutalisk banned, Guardian picked, Greater Spire complete) -->
+    <CRequirementAnd id="BPM_ShowLarvaTrainGuardianDirect">
+        <OperandArray index="0" value="BPM_CountUpgradeBanMutaliskCompleteOnly"/>
+        <OperandArray index="1" value="BPM_CountUpgradePickGuardianMPCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirement id="BPM_Req_LarvaTrainGuardianDirect">
+        <NodeArray index="Show" Link="BPM_ShowLarvaTrainGuardianDirect"/>
+        <NodeArray index="Use" Link="BPM_CountUnitGreaterSpireCompleteOnly"/>
+    </CRequirement>
+
+    <!-- Direct Lurker Larva Morph (Hydralisk banned, Lurker not banned, Lurker Den complete) -->
+    <CRequirementCountUnit id="BPM_CountUnitLurkerDenMPCompleteOnly">
+        <Count Link="LurkerDenMP" State="CompleteOnly"/>
+    </CRequirementCountUnit>
+    <CRequirementAnd id="BPM_ShowLarvaTrainLurkerDirect">
+        <OperandArray index="0" value="BPM_CountUpgradeBanHydraliskCompleteOnly"/>
+        <OperandArray index="1" value="BPM_NotCountUpgradeBanLurkerMPCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirement id="BPM_Req_LarvaTrainLurkerDirect">
+        <NodeArray index="Show" Link="BPM_ShowLarvaTrainLurkerDirect"/>
+        <NodeArray index="Use" Link="BPM_CountUnitLurkerDenMPCompleteOnly"/>
+    </CRequirement>
+
+    <!-- Direct Brood Lord Larva Morph (Corruptor banned, Brood Lord not banned, Guardian not picked, Greater Spire complete) -->
+    <CRequirementNot id="BPM_NotCountUpgradePickGuardianMPCompleteOnly">
+        <OperandArray index="0" value="BPM_CountUpgradePickGuardianMPCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirementAnd id="BPM_ShowLarvaTrainBroodLordDirect">
+        <OperandArray index="0" value="BPM_CountUpgradeBanCorruptorCompleteOnly"/>
+        <OperandArray index="1" value="BPM_NotCountUpgradeBanBroodLordCompleteOnly"/>
+        <OperandArray index="2" value="BPM_NotCountUpgradePickGuardianMPCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirement id="BPM_Req_LarvaTrainBroodLordDirect">
+        <NodeArray index="Show" Link="BPM_ShowLarvaTrainBroodLordDirect"/>
+        <NodeArray index="Use" Link="BPM_CountUnitGreaterSpireCompleteOnly"/>
+    </CRequirement>
+</Catalog>

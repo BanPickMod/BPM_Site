@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CWeaponLegacy id="RavasaurWeapon">
+        <EditorCategories value="Race:Zerg"/>
+        <Icon value="Assets\Textures\btn-upgrade-zerg-missileattacks-level0.dds"/>
+        <Name value="Weapon/Name/RavasaurWeapon"/>
+        <DisplayName value="Weapon/Name/RavasaurWeapon"/>
+        <Range value="7"/>
+        <MinScanRange value="7.5"/>
+        <!-- Match ordinary attack weapons: allied units remain valid for an
+             explicit attack command, while automatic acquisition still uses
+             the normal hostile-alliance rules. -->
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <DisplayEffect value="BPM_RavasaurDamage"/>
+        <Effect value="BPM_RavasaurLaunchMissile"/>
+    </CWeaponLegacy>
+    <!-- v1.4.3 balance: Terrorzor-only copy of the shared KaiserBlades
+         weapon so its lifesteal (BPM_TerrorzorAttackSet in EffectData.xml)
+         does not leak onto the separately pickable stock Ultralisk, which
+         also links the plain KaiserBlades weapon. -->
+    <CWeaponLegacy id="BPM_TerrorzorWeapon" parent="KaiserBlades">
+        <EditorCategories value="Race:Zerg"/>
+        <DisplayEffect value="TerrorzorDamage"/>
+        <Effect value="BPM_TerrorzorAttackSet"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BPM_GoliathA">
+        <Range value="6"/>
+        <MinScanRange value="5"/>
+        <TargetFilters value="Air,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Arc value="29.9926"/>
+        <DisplayAttackCount value="2"/>
+        <DisplayEffect value="GoliathAU"/>
+        <Icon value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel0.dds"/>
+        <Name value="Weapon/Name/GoliathA"/>
+        <Period value="1.5"/>
+        <DisplayName value="Weapon/Name/GoliathA"/>
+        <Effect value="GoliathA"/>
+        
+    </CWeaponLegacy>
+    <CWeaponLegacy id="GoliathAUpgraded">
+        <Range value="6"/>
+        <MinScanRange value="6.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BPM_FirebatSCBWWeapon">
+        <Name value="Weapon/Name/BPM_FirebatSCBWWeapon"/>
+        <DisplayName value="Weapon/Name/BPM_FirebatSCBWWeapon"/>
+        <EditorCategories value="Race:Terran"/>
+        <Icon value="Assets\Textures\btn-upgrade-terran-infantryweaponslevel0.dds"/>
+        <DisplayEffect value="BPM_FirebatSCBWWeapon@DamageConc"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AcquireCliffLevelRange value="-1,1"/>
+        <MinScanRange value="3"/>
+        <Range value="1.5"/>
+        <!-- <Marker>
+            <MatchFlags index="Id" value="1"/>
+        </Marker> -->
+        <Period value="1.3125"/>
+        <DamagePoint value="0.1"/>
+        <Effect value="FirebatSet"/>
+        <!-- <Effect value="BPM_FirebatSCBWWeapon@CliffCheck"/> -->
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BPM_FirebatSCBWWeapon@Melee" parent="BPM_FirebatSCBWWeapon">
+        <Name value="Weapon/Name/BPM_FirebatSCBWWeapon@Melee"/>
+        <Options index="Hidden" value="1"/>
+        <Options index="Melee" value="1"/>
+        <Effect value="FirebatSet"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BPM_FirebatSCBWWeapon@Bunker" parent="BPM_FirebatSCBWWeapon">
+        <Options index="Disabled" value="1"/>
+        <Options index="Hidden" value="1"/>
+        <MinScanRange value="5"/>
+        <Range value="3"/>
+        <Effect value="FirebatSet"/>
+        <LegacyOptions index="Uninterruptible" value="1"/>
+        <UninterruptibleDuration value="0.6562"/>
+        <Name value="Weapon/Name/BPM_FirebatSCBWWeapon@Bunker"/>
+    </CWeaponLegacy>
+    <!-- Adept Weapon (Glaive Cannon: Range 4, Period 2.25, Damage 10 (+12 vs Light), Ground) -->
+    <CWeaponLegacy id="Adept">
+        <EditorCategories value="Race:Protoss"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel0.dds"/>
+        <Name value="Weapon/Name/Adept"/>
+        <DisplayName value="Weapon/Name/Adept"/>
+        <DisplayEffect value="AdeptDamage"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="4"/>
+        <Period value="2.25"/>
+    </CWeaponLegacy>
+    <!-- Caster basic attack weapons (Range 10, Air/Ground, Damage 1) -->
+    <CWeaponLegacy id="BPM_RavenWeapon">
+        <Name value="Weapon/Name/BPM_RavenWeapon"/>
+        <EditorCategories value="Race:Terran"/>
+        <Icon value="Assets\Textures\btn-upgrade-terran-shipweaponslevel0.dds"/>
+        <Range value="10"/>
+        <MinScanRange value="10.5"/>
+        <Period value="1.5"/>
+        <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Effect value="BPM_TerranCasterAttackLaunch"/>
+        <DisplayEffect value="BPM_TerranCasterAttackDamage"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BPM_ScienceVesselWeapon">
+        <Name value="Weapon/Name/BPM_ScienceVesselWeapon"/>
+        <EditorCategories value="Race:Terran"/>
+        <Icon value="Assets\Textures\btn-upgrade-terran-shipweaponslevel0.dds"/>
+        <Range value="10"/>
+        <MinScanRange value="10.5"/>
+        <Period value="1.5"/>
+        <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Effect value="BPM_TerranCasterAttackLaunch"/>
+        <DisplayEffect value="BPM_TerranCasterAttackDamage"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BPM_ViperWeapon">
+        <Name value="Weapon/Name/BPM_ViperWeapon"/>
+        <EditorCategories value="Race:Zerg"/>
+        <Icon value="Assets\Textures\btn-upgrade-zerg-missileattacks-level0.dds"/>
+        <Range value="10"/>
+        <MinScanRange value="10.5"/>
+        <Period value="1.5"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Effect value="BPM_ViperAttackLaunch"/>
+        <DisplayEffect value="BPM_ViperAttackDamage"/>
+    </CWeaponLegacy>
+    <!-- Caster basic attack weapons (Range 10, Ground only, Damage 5) -->
+    <CWeaponLegacy id="BPM_DisruptorWeapon">
+        <Name value="Weapon/Name/BPM_DisruptorWeapon"/>
+        <DisplayName value="Weapon/Name/BPM_DisruptorWeapon"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel0.dds"/>
+        <Range value="10"/>
+        <MinScanRange value="10.5"/>
+        <Period value="1.5"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Effect value="BPM_DisruptorAttackLaunch"/>
+        <DisplayEffect value="BPM_DisruptorAttackDamage"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BPM_DefilerWeapon">
+        <Name value="Weapon/Name/BPM_DefilerWeapon"/>
+        <DisplayName value="Weapon/Name/BPM_DefilerWeapon"/>
+        <EditorCategories value="Race:Zerg"/>
+        <Icon value="Assets\Textures\btn-upgrade-zerg-missileattacks-level0.dds"/>
+        <Range value="10"/>
+        <MinScanRange value="10.5"/>
+        <Period value="1.5"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Effect value="BPM_DefilerAttackLaunch"/>
+        <DisplayEffect value="BPM_DefilerAttackDamage"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BPM_QueenClassicWeapon">
+        <Name value="Weapon/Name/BPM_QueenClassicWeapon"/>
+        <DisplayName value="Weapon/Name/BPM_QueenClassicWeapon"/>
+        <EditorCategories value="Race:Zerg"/>
+        <Icon value="Assets\Textures\btn-upgrade-zerg-missileattacks-level0.dds"/>
+        <Range value="10"/>
+        <MinScanRange value="10.5"/>
+        <Period value="1.5"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Effect value="BPM_QueenClassicAttackLaunch"/>
+        <DisplayEffect value="BPM_QueenClassicAttackDamage"/>
+    </CWeaponLegacy>
+    <!-- Energizer Weapon (Range 7, Damage 6, Air/Ground) -->
+    <CWeaponLegacy id="BPM_EnergizerWeapon">
+        <EditorCategories value="Race:Protoss"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel0.dds"/>
+        <Name value="Weapon/Name/BPM_EnergizerWeapon"/>
+        <DisplayName value="Weapon/Name/BPM_EnergizerWeapon"/>
+        <Range value="7"/>
+        <MinScanRange value="7.5"/>
+        <Period value="1.0"/>
+        <!-- Keep normal SC2 force-fire behavior for allied units, but never
+             allow this direct-damage weapon to resolve its caster as target. -->
+        <TargetFilters value="Visible;Self,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Effect value="BPM_EnergizerDamage"/>
+        <DisplayEffect value="BPM_EnergizerDamage"/>
+    </CWeaponLegacy>
+
+    <!-- Dragoon Weapon (Phase Disruptor: Range 5, Period 1.75, Damage 20, Air/Ground) -->
+    <CWeaponLegacy id="Dragoon">
+        <EditorCategories value="Race:Protoss"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel0.dds"/>
+        <Name value="Weapon/Name/Dragoon"/>
+        <DisplayName value="Weapon/Name/Dragoon"/>
+        <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="5"/>
+        <Period value="1.75"/>
+        <Effect value="DragoonLM"/>
+        <DisplayEffect value="DragoonDamage"/>
+        <DamagePoint value="0.25"/>
+        <MinScanRange value="5"/>
+    </CWeaponLegacy>
+
+    <!-- v1.4.3 balance: Aberration weapon (농포 분쇄기) range 1.25 -> 1.75, normalize weapon icon to standard Zerg melee attacks -->
+    <CWeaponLegacy id="InfestedAbomination">
+        <Icon value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level0.dds"/>
+        <Range value="1.75"/>
+    </CWeaponLegacy>
+
+</Catalog>

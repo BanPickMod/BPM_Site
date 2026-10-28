@@ -1,5 +1,7 @@
 # BPM Website 레이아웃 · 디자인 개선 계획
 
+> **폐기됨 (2026-10-27)**: 이 문서가 다루는 `app/wiki`, `app/tournaments`, `components/ui/*` 등은 2026-10 사이트 재구축으로 없어졌다. 현재 디자인 기준은 `app/site.css`와 `PRODUCT.md`, 결정 기록은 `Redesign_Proposals.md` 상단이다. 기록으로만 남긴다.
+
 **문서 버전**: v1.0
 **작성 기준**: 2026-09-18
 **대상 범위**: `app/`, `components/`, `app/globals.css` (Next.js Website v2 프론트엔드)

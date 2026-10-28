@@ -1,0 +1,740 @@
+{
+  "_comment": "Authored ko/en notes for the 17 BPM added units. Numbers live in the mod XML and are shown by the generated tables, so these notes deliberately carry no numeric values. 'reviewed' true means the owner checked the text before the v2.0 launch (2026-10-27).",
+  "firebat": {
+    "reviewed": true,
+    "role": {
+      "ko": "경장갑 광역 근접 화염",
+      "en": "Short-range splash flames, strong against Light"
+    },
+    "producer": {
+      "ko": "병영 (기술실)",
+      "en": "Barracks (Tech Lab)"
+    },
+    "requires": {
+      "ko": "병영 기술실",
+      "en": "Barracks Tech Lab"
+    },
+    "diff": [
+      {
+        "item": {
+          "ko": "전투 포지션",
+          "en": "Combat role"
+        },
+        "pair": {
+          "ko": "원거리 단일 대상 타격, 중장갑에 강함",
+          "en": "Ranged single-target, strong against Armored"
+        },
+        "unit": {
+          "ko": "초근접 광역 화염, 경장갑에 강함",
+          "en": "Very short range splash flames, strong against Light"
+        }
+      },
+      {
+        "item": {
+          "ko": "특수 기능",
+          "en": "Special"
+        },
+        "pair": {
+          "ko": "충격탄 감속 연구",
+          "en": "Concussive Shells research"
+        },
+        "unit": {
+          "ko": "전투 자극제 사용 가능",
+          "en": "Can use Stimpack"
+        }
+      }
+    ]
+  },
+  "goliath": {
+    "reviewed": true,
+    "role": {
+      "ko": "대공/지상 올라운더",
+      "en": "All-round anti-air and ground"
+    },
+    "producer": {
+      "ko": "군수공장",
+      "en": "Factory"
+    },
+    "requires": {
+      "ko": "무기고",
+      "en": "Armory"
+    },
+    "diff": [
+      {
+        "item": {
+          "ko": "운용 기동성",
+          "en": "Mobility"
+        },
+        "pair": {
+          "ko": "둔중한 대형 병기",
+          "en": "Slow heavy unit"
+        },
+        "unit": {
+          "ko": "기동성이 좋은 올라운더",
+          "en": "Mobile all-rounder"
+        }
+      },
+      {
+        "item": {
+          "ko": "대공 타격",
+          "en": "Anti-air"
+        },
+        "pair": {
+          "ko": "모드 전환이 필요합니다.",
+          "en": "Needs a mode switch."
+        },
+        "unit": {
+          "ko": "즉시 반응하는 쌍발 대공 미사일",
+          "en": "Twin anti-air missiles that react at once"
+        }
+      }
+    ]
+  },
+  "warhound": {
+    "reviewed": true,
+    "role": {
+      "ko": "기계 특화 전열 탱커",
+      "en": "Front-line tank that counters Mechanical"
+    },
+    "producer": {
+      "ko": "군수공장 (기술실)",
+      "en": "Factory (Tech Lab)"
+    },
+    "requires": {
+      "ko": "군수공장 기술실",
+      "en": "Factory Tech Lab"
+    },
+    "diff": [
+      {
+        "item": {
+          "ko": "전투 포지션",
+          "en": "Combat role"
+        },
+        "pair": {
+          "ko": "시즈 모드로 거치하는 장거리 포격",
+          "en": "Sieged long-range bombardment"
+        },
+        "unit": {
+          "ko": "이동하며 돌파하는 전열 탱커",
+          "en": "Mobile front-line tank that pushes through"
+        }
+      },
+      {
+        "item": {
+          "ko": "기계 특화",
+          "en": "Anti-Mechanical"
+        },
+        "pair": {
+          "ko": "중장갑 대상 광역 피해",
+          "en": "Splash damage against Armored"
+        },
+        "unit": {
+          "ko": "기계 대상 단일 고피해와 스킬",
+          "en": "High single-target damage to Mechanical, plus an ability"
+        }
+      }
+    ]
+  },
+  "wraith": {
+    "reviewed": true,
+    "role": {
+      "ko": "고속 은폐 요격기",
+      "en": "Fast cloaking interceptor"
+    },
+    "producer": {
+      "ko": "우주공항",
+      "en": "Starport"
+    },
+    "requires": {
+      "ko": "우주공항",
+      "en": "Starport"
+    },
+    "diff": [
+      {
+        "item": {
+          "ko": "형태와 은폐",
+          "en": "Form and cloak"
+        },
+        "pair": {
+          "ko": "착륙해 지상 공격하는 돌격 모드",
+          "en": "Lands in assault mode to hit the ground"
+        },
+        "unit": {
+          "ko": "항상 비행하며 은폐할 수 있음",
+          "en": "Always flying, can cloak"
+        }
+      },
+      {
+        "item": {
+          "ko": "대공 교전",
+          "en": "Anti-air"
+        },
+        "pair": {
+          "ko": "긴 사거리의 중장갑 단발 공격",
+          "en": "Long-range single shot, strong against Armored"
+        },
+        "unit": {
+          "ko": "짧은 사거리의 고속 쌍발 레이저",
+          "en": "Short-range fast twin lasers"
+        }
+      }
+    ]
+  },
+  "science_vessel": {
+    "reviewed": true,
+    "role": {
+      "ko": "마법 지원",
+      "en": "Spellcaster support"
+    },
+    "producer": {
+      "ko": "우주공항 (기술실)",
+      "en": "Starport (Tech Lab)"
+    },
+    "requires": {
+      "ko": "우주공항 기술실",
+      "en": "Starport Tech Lab"
+    },
+    "diff": [
+      {
+        "item": {
+          "ko": "스킬 구성",
+          "en": "Abilities"
+        },
+        "pair": {
+          "ko": "자동 포탑, 대장갑 미사일, 방해 매트릭스",
+          "en": "Auto-Turret, Anti-Armor Missile, Interference Matrix"
+        },
+        "unit": {
+          "ko": "디펜시브 매트릭스, EMP, 락다운, 이레디에이트",
+          "en": "Defensive Matrix, EMP, Lockdown, Irradiate"
+        }
+      }
+    ]
+  },
+  "dragoon": {
+    "reviewed": true,
+    "role": {
+      "ko": "중장갑 포격",
+      "en": "Armored-focused ranged fire"
+    },
+    "producer": {
+      "ko": "관문 / 차원관문",
+      "en": "Gateway / Warp Gate"
+    },
+    "requires": {
+      "ko": "인공제어소",
+      "en": "Cybernetics Core"
+    },
+    "diff": [
+      {
+        "item": {
+          "ko": "내구도와 포격",
+          "en": "Durability and fire"
+        },
+        "pair": {
+          "ko": "점멸로 기동하는 추적자",
+          "en": "Mobile Stalker with Blink"
+        },
+        "unit": {
+          "ko": "묵직한 중장갑 원거리 포격",
+          "en": "Heavier ranged fire against Armored"
+        }
+      },
+      {
+        "item": {
+          "ko": "사거리",
+          "en": "Range"
+        },
+        "pair": {
+          "ko": "고정 사거리",
+          "en": "Fixed range"
+        },
+        "unit": {
+          "ko": "연구로 사거리가 늘어납니다.",
+          "en": "Range grows with research."
+        }
+      }
+    ]
+  },
+  "energizer": {
+    "reviewed": true,
+    "role": {
+      "ko": "시간 제어와 동력장 지원",
+      "en": "Time control and power-field support"
+    },
+    "producer": {
+      "ko": "관문 / 차원관문",
+      "en": "Gateway / Warp Gate"
+    },
+    "requires": {
+      "ko": "인공제어소",
+      "en": "Cybernetics Core"
+    },
+    "diff": [
+      {
+        "item": {
+          "ko": "지원 스킬",
+          "en": "Support abilities"
+        },
+        "pair": {
+          "ko": "역장, 수호방패, 환상",
+          "en": "Force Field, Guardian Shield, Hallucination"
+        },
+        "unit": {
+          "ko": "시간 방패, 위상 모드",
+          "en": "Time Shield, Phasing Mode"
+        }
+      },
+      {
+        "item": {
+          "ko": "이동식 파일런",
+          "en": "Mobile pylon"
+        },
+        "pair": {
+          "ko": "동력을 공급할 수 없습니다.",
+          "en": "Cannot provide power."
+        },
+        "unit": {
+          "ko": "위상 모드로 동력장을 펼칩니다.",
+          "en": "Deploys a power field in Phasing Mode."
+        }
+      }
+    ]
+  },
+  "corsair": {
+    "reviewed": true,
+    "role": {
+      "ko": "대공 광역 스플래시",
+      "en": "Anti-air splash"
+    },
+    "producer": {
+      "ko": "우주관문",
+      "en": "Stargate"
+    },
+    "requires": {
+      "ko": "우주관문",
+      "en": "Stargate"
+    },
+    "diff": [
+      {
+        "item": {
+          "ko": "대공 교전",
+          "en": "Anti-air"
+        },
+        "pair": {
+          "ko": "이동 사격하는 단일 대상, 경장갑에 강함",
+          "en": "Single target, fires on the move, strong against Light"
+        },
+        "unit": {
+          "ko": "공중 광역 스플래시, 뮤탈리스크와 타락귀에 강함",
+          "en": "Air splash, strong against Mutalisks and Corruptors"
+        }
+      },
+      {
+        "item": {
+          "ko": "지상 견제",
+          "en": "Ground denial"
+        },
+        "pair": {
+          "ko": "중력자 광선",
+          "en": "Graviton Beam"
+        },
+        "unit": {
+          "ko": "디스크럽션 웹으로 지상 공격을 막습니다.",
+          "en": "Disruption Web shuts down ground attacks."
+        }
+      }
+    ]
+  },
+  "scout": {
+    "reviewed": true,
+    "role": {
+      "ko": "고화력 중장갑 요격",
+      "en": "High-damage Armored interceptor"
+    },
+    "producer": {
+      "ko": "우주관문",
+      "en": "Stargate"
+    },
+    "requires": {
+      "ko": "우주관문",
+      "en": "Stargate"
+    },
+    "diff": [
+      {
+        "item": {
+          "ko": "타격 방식",
+          "en": "Attack style"
+        },
+        "pair": {
+          "ko": "충전하는 지속 빔",
+          "en": "Charged sustained beam"
+        },
+        "unit": {
+          "ko": "즉시 피해를 주는 쌍발 요격 미사일",
+          "en": "Twin interceptor missiles with instant damage"
+        }
+      },
+      {
+        "item": {
+          "ko": "업그레이드",
+          "en": "Upgrades"
+        },
+        "pair": {
+          "ko": "이동 속도 증폭",
+          "en": "Speed boost"
+        },
+        "unit": {
+          "ko": "원거리 센서와 중력 추진기",
+          "en": "Apial Sensors and Gravitic Thrusters"
+        }
+      }
+    ]
+  },
+  "reaver": {
+    "reviewed": true,
+    "role": {
+      "ko": "자동 추적 광역 폭격",
+      "en": "Auto-tracking splash bombardment"
+    },
+    "producer": {
+      "ko": "로봇공학시설",
+      "en": "Robotics Facility"
+    },
+    "requires": {
+      "ko": "로봇공학지원소",
+      "en": "Robotics Bay"
+    },
+    "diff": [
+      {
+        "item": {
+          "ko": "조작 방식",
+          "en": "Control"
+        },
+        "pair": {
+          "ko": "구체를 쏜 뒤 궤적을 직접 조종합니다.",
+          "en": "Fire an orb and steer its path by hand."
+        },
+        "unit": {
+          "ko": "갑충탄을 장전해 목표를 자동으로 추적합니다.",
+          "en": "Loads Scarabs that track the target automatically."
+        }
+      },
+      {
+        "item": {
+          "ko": "기동성과 수송",
+          "en": "Mobility and transport"
+        },
+        "pair": {
+          "ko": "준족의 기동",
+          "en": "Fast mover"
+        },
+        "unit": {
+          "ko": "매우 느려서 차원 분광기 수송이 필수입니다.",
+          "en": "Very slow; relies on Warp Prism transport."
+        }
+      }
+    ]
+  },
+  "arbiter": {
+    "reviewed": true,
+    "role": {
+      "ko": "은폐와 시공간 전술",
+      "en": "Cloaking and space-time tactics"
+    },
+    "producer": {
+      "ko": "우주관문",
+      "en": "Stargate"
+    },
+    "requires": {
+      "ko": "함대 신호소",
+      "en": "Fleet Beacon"
+    },
+    "diff": [
+      {
+        "item": {
+          "ko": "편제 수량",
+          "en": "Count limit"
+        },
+        "pair": {
+          "ko": "경기당 한 기만 보유할 수 있습니다.",
+          "en": "Only one per game."
+        },
+        "unit": {
+          "ko": "자원이 허용하는 만큼 여러 기를 둘 수 있습니다.",
+          "en": "As many as resources allow."
+        }
+      },
+      {
+        "item": {
+          "ko": "스킬 구성",
+          "en": "Abilities"
+        },
+        "pair": {
+          "ko": "시간 왜곡, 소환, 은폐장",
+          "en": "Time Warp, Summon, Cloaking Field"
+        },
+        "unit": {
+          "ko": "스테이시스 필드, 리콜, 주변 은폐장",
+          "en": "Stasis Field, Recall, nearby cloak"
+        }
+      }
+    ]
+  },
+  "aberration": {
+    "reviewed": true,
+    "role": {
+      "ko": "대형 근접 브루저",
+      "en": "Large melee bruiser"
+    },
+    "producer": {
+      "ko": "애벌레 (바퀴 소굴 + 군락)",
+      "en": "Larva (Roach Warren + Lair)"
+    },
+    "requires": {
+      "ko": "군락",
+      "en": "Lair"
+    },
+    "diff": [
+      {
+        "item": {
+          "ko": "공격 형태",
+          "en": "Attack style"
+        },
+        "pair": {
+          "ko": "원거리 산성액 사격",
+          "en": "Ranged acid fire"
+        },
+        "unit": {
+          "ko": "근접 대형 타격, 중장갑에 강함",
+          "en": "Heavy melee hits, strong against Armored"
+        }
+      },
+      {
+        "item": {
+          "ko": "내구도와 이동",
+          "en": "Durability and movement"
+        },
+        "pair": {
+          "ko": "잠복하며 빠르게 재생합니다.",
+          "en": "Burrows and regenerates fast."
+        },
+        "unit": {
+          "ko": "아군 소형 유닛 위를 걸어서 지나갑니다.",
+          "en": "Walks over friendly small units."
+        }
+      }
+    ]
+  },
+  "ravasaur": {
+    "reviewed": true,
+    "role": {
+      "ko": "장거리 중장갑 저격",
+      "en": "Long-range Armored sniper"
+    },
+    "producer": {
+      "ko": "애벌레 (바퀴 소굴 + 군락)",
+      "en": "Larva (Roach Warren + Lair)"
+    },
+    "requires": {
+      "ko": "군락",
+      "en": "Lair"
+    },
+    "diff": [
+      {
+        "item": {
+          "ko": "타격 메커니즘",
+          "en": "Attack mechanic"
+        },
+        "pair": {
+          "ko": "부식성 담즙을 스킬로 조준해 발사합니다.",
+          "en": "Aims Corrosive Bile as an ability."
+        },
+        "unit": {
+          "ko": "평타로 안정적으로 중장갑을 저격합니다.",
+          "en": "Snipes Armored targets with a steady basic attack."
+        }
+      },
+      {
+        "item": {
+          "ko": "생산 방식",
+          "en": "Production"
+        },
+        "pair": {
+          "ko": "바퀴를 만든 뒤 변태합니다.",
+          "en": "Morphs from a Roach."
+        },
+        "unit": {
+          "ko": "애벌레에서 바로 생산합니다.",
+          "en": "Produced straight from Larva."
+        }
+      }
+    ]
+  },
+  "defiler": {
+    "reviewed": true,
+    "role": {
+      "ko": "전술 마법",
+      "en": "Tactical caster"
+    },
+    "producer": {
+      "ko": "애벌레 (파멸충 언덕 + 군락)",
+      "en": "Larva (Defiler Mound + Lair)"
+    },
+    "requires": {
+      "ko": "파멸충 언덕",
+      "en": "Defiler Mound"
+    },
+    "diff": [
+      {
+        "item": {
+          "ko": "전술 마법",
+          "en": "Spells"
+        },
+        "pair": {
+          "ko": "진균 번식, 신경 기생충, 미생물 기포",
+          "en": "Fungal Growth, Neural Parasite, Microbial Shroud"
+        },
+        "unit": {
+          "ko": "다크 스웜, 플레이그",
+          "en": "Dark Swarm, Plague"
+        }
+      },
+      {
+        "item": {
+          "ko": "에너지 수급",
+          "en": "Energy"
+        },
+        "pair": {
+          "ko": "시간이 지나며 회복합니다.",
+          "en": "Regenerates over time."
+        },
+        "unit": {
+          "ko": "컨슘으로 아군 유닛을 흡수해 충전합니다.",
+          "en": "Consume absorbs friendly units to recharge."
+        }
+      }
+    ]
+  },
+  "queen": {
+    "reviewed": true,
+    "role": {
+      "ko": "공중 비행 마법사",
+      "en": "Flying caster"
+    },
+    "producer": {
+      "ko": "애벌레 (감염 구덩이)",
+      "en": "Larva (Infestation Pit)"
+    },
+    "requires": {
+      "ko": "감염 구덩이",
+      "en": "Infestation Pit"
+    },
+    "diff": [
+      {
+        "item": {
+          "ko": "기동성",
+          "en": "Mobility"
+        },
+        "pair": {
+          "ko": "비행하며 이동합니다.",
+          "en": "Flies."
+        },
+        "unit": {
+          "ko": "더 빠르게 비행해 전장을 순회합니다.",
+          "en": "Flies faster and roams the battlefield."
+        }
+      },
+      {
+        "item": {
+          "ko": "스킬 구성",
+          "en": "Abilities"
+        },
+        "pair": {
+          "ko": "납치, 흑구름, 기생 폭탄, 흡수",
+          "en": "Abduct, Blinding Cloud, Parasitic Bomb, Consumption"
+        },
+        "unit": {
+          "ko": "인스네어, 브루들링",
+          "en": "Ensnare, Broodling"
+        }
+      }
+    ]
+  },
+  "tyrannozor": {
+    "reviewed": true,
+    "role": {
+      "ko": "최종 전선 파쇄 괴수",
+      "en": "Late-game front-line breaker"
+    },
+    "producer": {
+      "ko": "애벌레 (울트라리스크 동굴)",
+      "en": "Larva (Ultralisk Cavern)"
+    },
+    "requires": {
+      "ko": "울트라리스크 동굴",
+      "en": "Ultralisk Cavern"
+    },
+    "diff": [
+      {
+        "item": {
+          "ko": "공격",
+          "en": "Attack"
+        },
+        "pair": {
+          "ko": "단일 대상 근접 공격",
+          "en": "Single-target melee"
+        },
+        "unit": {
+          "ko": "광역 피해",
+          "en": "Splash damage"
+        }
+      }
+    ]
+  },
+  "guardian": {
+    "reviewed": true,
+    "role": {
+      "ko": "장거리 공성 폭격",
+      "en": "Long-range siege bombardment"
+    },
+    "producer": {
+      "ko": "뮤탈리스크 변태 (둥지탑)",
+      "en": "Mutalisk morph (Spire)"
+    },
+    "requires": {
+      "ko": "둥지탑",
+      "en": "Spire"
+    },
+    "diff": [
+      {
+        "item": {
+          "ko": "공격 방식",
+          "en": "Attack style"
+        },
+        "pair": {
+          "ko": "공생충을 투하해 착탄이 늦고 어그로가 분산됩니다.",
+          "en": "Drops Broodlings with delayed impact and spread aggro."
+        },
+        "unit": {
+          "ko": "지연 없이 산성탄을 연속으로 쏩니다.",
+          "en": "Fires acid shots in quick succession with no delay."
+        }
+      },
+      {
+        "item": {
+          "ko": "변태 테크",
+          "en": "Morph tech"
+        },
+        "pair": {
+          "ko": "거대 둥지탑이 필요합니다.",
+          "en": "Needs a Greater Spire."
+        },
+        "unit": {
+          "ko": "일반 둥지탑에서 바로 변태합니다.",
+          "en": "Morphs from a regular Spire."
+        }
+      }
+    ]
+  }
+}

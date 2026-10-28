@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>뷰어 시안 B · 밴픽 우선형</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="viewer-shared.css">
+<style>
+/* B. Draft-first: a tall draft board is the left column and stays live: each pick shows how it is being used at the playhead. */
+body{height:100vh;display:grid;grid-template-rows:auto 1fr auto;overflow:hidden}
+.top{display:flex;align-items:baseline;gap:16px;padding:10px 16px;border-bottom:1px solid var(--line)}
+.top h1{font:900 1.5rem var(--f-display);text-transform:uppercase}.top .meta{font:.78rem var(--f-mono);color:var(--mute)}
+.top .insight{margin-left:auto;font-size:.85rem;color:var(--mute)}.top .insight b{color:var(--pick)}
+.main{display:grid;grid-template-columns:340px minmax(0,1fr) 280px;min-height:0}
+.board{border-right:1px solid var(--line);overflow:auto;padding:12px;display:grid;gap:14px;align-content:start;background:var(--bg2)}
+.side{border-left:1px solid var(--line);overflow:auto;padding:12px;display:grid;gap:12px;align-content:start}
+.pl{display:grid;gap:10px;padding:12px;border:1px solid var(--line2);border-radius:var(--r);background:var(--panel)}
+.pl>header{display:flex;align-items:center;gap:8px}.pl h2{font:900 1.15rem var(--f-display);text-transform:uppercase}
+.pl .res{margin-left:auto;font:800 .8rem var(--f-mono)}
+.pk{display:grid;grid-template-columns:40px 1fr;gap:10px;align-items:center;padding:6px 8px;border:1px solid var(--line2);border-left:4px solid var(--pick);border-radius:var(--r);background:var(--panel2)}
+.pk.unused{border-left-color:var(--line2);opacity:.78}
+.pk img{width:40px;height:40px;object-fit:contain}
+.pk b{display:block;font-size:.95rem}
+.pk small{display:block;color:var(--mute);font-size:.74rem}
+.pk .use{display:flex;gap:10px;margin-top:3px;font:.72rem var(--f-mono)}
+.pk .use span b{display:inline;color:var(--pick)}
+.badge{display:inline-block;padding:1px 7px;border-radius:99px;border:1px solid var(--line2);font:700 .62rem var(--f-mono);color:var(--mute);margin-left:6px;vertical-align:1px}
+.badge.warn{border-color:var(--ban);color:var(--ban)}
+.bans{display:flex;flex-wrap:wrap;gap:6px}
+.stage{position:relative;min-height:0}
+.stage .hud{position:absolute;left:12px;top:12px;font:.72rem var(--f-mono);background:#07080fcc;border:1px solid var(--line2);padding:4px 10px;border-radius:var(--r)}
+.dock{border-top:1px solid var(--line);padding:10px 16px 12px;background:var(--bg2);display:grid;gap:8px}
+.share{display:grid;grid-template-columns:64px 1fr;align-items:center;gap:0;margin-top:2px}.share em{font-style:normal;font-size:.7rem;color:var(--mute)}.share div{height:34px}
+.sg{display:grid;grid-template-columns:1fr auto 1fr;gap:6px 10px;align-items:center;font-size:.85rem}.sg .l{color:var(--mute);text-align:center;font-size:.72rem}
+.sg b{font-family:var(--f-mono)}.sg b.a{color:var(--p1);text-align:right}.sg b.b{color:var(--p2)}
+.bt .it{display:grid;grid-template-columns:24px 1fr;gap:8px;padding:8px 10px;margin-bottom:8px;background:var(--panel);border:1px solid var(--line2);border-left:3px solid var(--ban);border-radius:var(--r);cursor:pointer;font-size:.82rem}
+.bt .it small{display:block;color:var(--mute)}.bt .it b{font-family:var(--f-mono)}
+@media (max-width:1100px){body{height:auto;overflow:auto;display:block}.main{grid-template-columns:1fr}.stage{height:70vw}.board{border:0}.side{border:0}}
+</style>
+</head>
+<body>
+<header class="top"><h1>Rorschach</h1><span class="meta">TvZ · 12:14 · 2026-10-08</span><span class="insight" id="insight"></span></header>
+<section class="main">
+  <aside class="board" id="board" aria-label="밴픽 보드"></aside>
+  <div class="stage"><canvas id="map"></canvas><div class="hud">픽 유닛 = 라임 테두리 · 근사 위치</div></div>
+  <aside class="side">
+    <p class="vw-k">지금</p>
+    <div class="sg"><b class="a" data-stat="1.sup">0</b><span class="l">보급</span><b class="b" data-stat="2.sup">0</b><b class="a" data-stat="1.army">0</b><span class="l">병력 가치</span><b class="b" data-stat="2.army">0</b><b class="a" data-stat="1.wk">0</b><span class="l">일꾼</span><b class="b" data-stat="2.wk">0</b></div>
+    <p class="vw-k">교전</p><div class="bt" id="bt"></div>
+  </aside>
+</section>
+<footer class="dock">
+  <div id="tr"></div>
+  <div id="tl"></div>
+  <div class="share"><em>P1 구성</em><div><canvas id="c1"></canvas></div><em>P2 구성</em><div><canvas id="c2"></canvas></div></div>
+  <span class="vw-legend"><span><i style="background:#d6f542"></i>픽 유닛 수</span><span><i style="background:var(--p1)"></i>P1 그 외 병력</span><span><i style="background:var(--p2)"></i>P2 그 외 병력</span></span>
+</footer>
+<script src="viewer-data.js"></script><script src="viewer-core.js"></script>
+<script>
+const V = Viewer, D = V.D;
+const board = document.getElementById("board");
+function renderBoard(t) {
+  board.innerHTML = D.draft.map((p, i) => {
+    const use = V.pickUsage(i, t);
+    const picks = use.map((u) => { const m = D.meta[u.unit] || {};
+      const state = u.unused ? `<span class="badge warn">경기 내내 미사용</span>` : "";
+      return `<div class="pk ${u.unused ? "unused" : ""}"><img src="../../public${m.icon || ""}" alt=""><div><b>${m.ko || u.unit}${state}</b><small>← ${(D.meta[u.replaces] || {}).ko || u.replaces} 대신 선택</small>
+        <div class="use"><span>생산 <b>${u.made}</b></span><span>생존 <b>${u.alive}</b></span><span>손실 <b>${u.lost}</b></span><span>첫 등장 <b>${u.first == null ? "—" : V.fmt(u.first)}</b></span></div></div></div>`; }).join("");
+    const bans = p.bans.map((b) => V.chip(b, "ban")).join("") || `<span class="vw-dim">없음</span>`;
+    return `<section class="pl"><header>${V.raceImg(p.race)}<h2 class="${i ? "p2c" : "p1c"}">P${i + 1}</h2><span class="res ${p.result === "win" ? "res-w" : "res-l"}">${p.result === "win" ? "승" : "패"}</span></header>
+      <p class="vw-k">받은 밴</p><div class="bans">${bans}</div><p class="vw-k">고른 유닛 (${p.picks.length})</p>${picks}</section>`; }).join("");
+}
+V.Clock.on((t) => { if (Math.floor(t * 2) !== renderBoard.last) { renderBoard.last = Math.floor(t * 2); renderBoard(t); } });
+const u1 = V.pickUsage(0, D.duration), un = u1.filter((u) => u.unused).map((u) => (D.meta[u.unit] || {}).ko).join(", ");
+document.getElementById("insight").innerHTML = `P1 픽 ${u1.length}개 중 <b>${u1.length - u1.filter((u) => u.unused).length}개 사용</b>${un ? `, 미사용: ${un}` : ""}`;
+document.getElementById("bt").innerHTML = V.battles.map((b) => { const pk = b.picksLost; return `<div class="it" data-t="${b.t0}"><b>${b.id}</b><span>${V.fmt(b.t0)}–${V.fmt(b.t1)} · 손실 ${b.lost[1]} 대 ${b.lost[2]}<small>${b.winner ? "P" + b.winner + " 우세" : "비김"} · 픽 유닛 손실 ${pk}</small></span></div>`; }).join("");
+document.querySelectorAll("#bt .it").forEach((e) => (e.onclick = () => V.Clock.set(+e.dataset.t - 2)));
+V.mountMap(document.getElementById("map")); V.mountTransport(document.getElementById("tr")); V.mountTimeline(document.getElementById("tl"), { chart: false, pickLabel: "픽 첫 등장" }); V.bindStats();
+V.drawComp(document.getElementById("c1"), 1); V.drawComp(document.getElementById("c2"), 2);
+</script>
+</body>
+</html>

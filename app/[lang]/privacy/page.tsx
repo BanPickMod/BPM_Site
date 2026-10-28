@@ -159,9 +159,9 @@ export default async function PrivacyPage({ params }: PageProps<"/[lang]/privacy
             <li>{t("런처 토큰·신고자 IP를 원문 대신 SHA-256/HMAC 값으로 저장", "Launcher tokens and reporter IPs stored as SHA-256/HMAC values rather than raw values")}</li>
             <li>{t("원본 리플레이와 첨부 이미지는 비공개 객체로 저장하고 소유자·워커·운영자 API에서만 접근", "Original replays and attachments stored as private objects accessible only through owner, worker or operator APIs")}</li>
             <li>{t("공개 응답은 허용 필드만 새로 구성하고 프로필 핸들을 제거", "Public responses are rebuilt from an allow-list and profile handles are removed")}</li>
+            <li>{t("운영자 접근은 이름이 붙은 토큰과 인증 앱의 일회용 코드(2단계 인증)로 제한하고 접근 기록을 남김", "Operator access requires a named token plus an authenticator one-time code (two-factor) and is logged")}</li>
             <li>{t("로그인 쓰기 요청의 동일 출처 검사, API별 인증·횟수 제한과 분석 파서 격리", "Same-origin checks on signed-in writes, per-API authentication/rate limits and isolated replay parsing")}</li>
           </ul>
-          <p className="note">{t("관리자 2단계 인증은 아직 구현되지 않았으며 공개 전 보안 보완 항목입니다.", "Administrator two-factor authentication is not yet implemented and remains a pre-launch security task.")}</p>
         </section>
 
         <section>

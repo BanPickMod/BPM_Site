@@ -13,7 +13,7 @@ interface Item {
 
 const KEY = "bpm-operator-token";
 
-// The token lives in this tab's sessionStorage only. A tiny store keeps React in sync with it without an effect.
+// The session (or, outside production, the token) lives in this tab's sessionStorage only. A tiny store keeps React in sync with it without an effect.
 const listeners = new Set<() => void>();
 const readToken = () => { try { return sessionStorage.getItem(KEY) ?? ""; } catch { return ""; } };
 const writeToken = (v: string) => { try { if (v) sessionStorage.setItem(KEY, v); else sessionStorage.removeItem(KEY); } catch { /* private mode: not remembered */ } listeners.forEach((f) => f()); };
@@ -23,8 +23,10 @@ export function AdminInbox({ lang }: { lang: Lang }) {
   const t = (ko: string, en: string) => (lang === "ko" ? ko : en);
   const token = useSyncExternalStore(subscribeToken, readToken, () => "");
   const [entered, setEntered] = useState("");
+  const [otp, setOtp] = useState("");
+  const [loginError, setLoginError] = useState<string | null>(null);
   const [status, setStatus] = useState("OPEN");
-  const msg = { wrong: t("토큰이 맞지 않습니다.", "Wrong token."), load: t("불러오지 못했습니다.", "Could not load.") };
+  const msg = { wrong: t("세션이 끝났거나 맞지 않습니다. 다시 로그인하세요.", "The session ended or is not valid. Sign in again."), load: t("불러오지 못했습니다.", "Could not load.") };
   const [kind, setKind] = useState("");
   const [items, setItems] = useState<Item[] | null>(null);
   const [open, setOpen] = useState<Record<string, number>>({});
@@ -38,7 +40,7 @@ export function AdminInbox({ lang }: { lang: Lang }) {
     const q = new URLSearchParams({ status, ...(kind ? { kind } : {}) });
     fetch(`/api/admin/feedback?${q}`, { headers: { authorization: `Bearer ${token}` }, signal: ctl.signal })
       .then(async (res) => {
-        if (!res.ok) { setItems(null); return setError(res.status === 401 ? msg.wrong : msg.load); }
+        if (!res.ok) { setItems(null); if (res.status === 401) { writeToken(""); return setError(msg.wrong); } return setError(msg.load); }
         setError(null);
         const j = (await res.json()) as { items: Item[]; open: Record<string, number> };
         setItems(j.items);
@@ -54,13 +56,35 @@ export function AdminInbox({ lang }: { lang: Lang }) {
     setTick((n) => n + 1);
   }
 
+  async function signIn(e: React.FormEvent) {
+    e.preventDefault();
+    setLoginError(null);
+    const res = await fetch("/api/admin/login", { method: "POST", headers: { authorization: `Bearer ${entered}`, "content-type": "application/json" }, body: JSON.stringify({ otp }) }).catch(() => null);
+    const body = (await res?.json().catch(() => ({}))) as { session?: string; code?: string } | undefined;
+    setOtp("");
+    if (res?.ok && body?.session) { setEntered(""); setError(null); return writeToken(body.session); }
+    if (body?.code === "NO_TOTP") { writeToken(entered); setEntered(""); return; }     // outside production: no code is set up for this operator
+    const reasons: Record<string, string> = {
+      BAD_CODE: t("코드가 맞지 않거나 이미 사용한 코드입니다. 다음 코드가 나오면 다시 입력하세요.", "The code is wrong or was already used. Enter the next code."),
+      LOCKED: t("틀린 횟수가 많아 15분간 잠겼습니다.", "Too many wrong codes. Locked for 15 minutes."),
+      TWO_FACTOR_NOT_SET_UP: t("이 운영자에게 인증 앱이 설정되어 있지 않습니다.", "No authenticator is set up for this operator."),
+    };
+    setLoginError(res && body?.code && reasons[body.code] ? reasons[body.code] : t("토큰이 맞지 않습니다.", "Wrong token."));
+  }
+
   if (!token) {
     return (
-      <form className="fb-form" onSubmit={(e) => { e.preventDefault(); writeToken(entered); }}>
+      <form className="fb-form" onSubmit={signIn}>
         <label>
           {t("운영자 토큰", "Operator token")}
           <input type="password" autoComplete="off" value={entered} onChange={(e) => setEntered(e.target.value)} />
         </label>
+        <label>
+          {t("인증 앱의 6자리 코드", "6-digit code from the authenticator app")}
+          <input inputMode="numeric" autoComplete="one-time-code" maxLength={7} value={otp} onChange={(e) => setOtp(e.target.value)} />
+        </label>
+        {loginError && <p role="alert" className="fb-err">{loginError}</p>}
+        {error && <p role="alert" className="fb-err">{error}</p>}
         <button className="btn btn-pri" type="submit">{t("열기", "Open")}</button>
       </form>
     );

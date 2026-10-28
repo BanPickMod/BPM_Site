@@ -6,10 +6,12 @@
  *
  * For every <name>.SC2Replay in <dir> (recursive) a sibling <name>.json manifest must exist
  * (format: docs/Colosseum_Ingest.md). Re-running is safe: the server is idempotent per game.
- * URL and token may also come from BPM_URL / ADMIN_TOKEN.
+ * URL and token may also come from BPM_URL / ADMIN_TOKEN. With operator two-factor on, also set ADMIN_TOTP_SECRET (the operator's
+ * authenticator secret); the script signs in once with the current code.
  */
 import fs from "node:fs";
 import path from "node:path";
+import { adminBearer } from "../ops/admin-session.mjs";
 
 const args = process.argv.slice(2);
 const flag = (n) => {
@@ -32,6 +34,7 @@ const walk = (d) =>
     return e.isDirectory() ? walk(p) : [p];
   });
 
+const bearer = dry ? token : await adminBearer(url, token);
 const replays = walk(dir).filter((f) => f.toLowerCase().endsWith(".sc2replay")).sort();
 let ok = 0;
 let failed = 0;
@@ -52,7 +55,7 @@ for (const file of replays) {
   form.set("replay", new Blob([fs.readFileSync(file)]), path.basename(file));
   form.set("manifest", fs.readFileSync(manifestPath, "utf8"));
   try {
-    const res = await fetch(`${url}/api/admin/games`, { method: "POST", headers: { authorization: `Bearer ${token}` }, body: form });
+    const res = await fetch(`${url}/api/admin/games`, { method: "POST", headers: { authorization: `Bearer ${bearer}` }, body: form });
     const body = await res.json().catch(() => ({}));
     if (res.ok) {
       console.log(`${res.status === 201 ? "NEW  " : "UPD  "} ${file} -> game ${body.id}`);

@@ -6,7 +6,7 @@ import { createHmac, hkdfSync, timingSafeEqual } from "node:crypto";
  * gets its own key (HKDF), and anything we must compare without storing (an IP address) is hashed with a key that changes
  * every hour: a stored value cannot be linked to the next hour's, nor to anyone, once its hour is over.
  */
-export type KeyPurpose = "session" | "reporter" | "ledger";
+export type KeyPurpose = "session" | "reporter" | "ledger" | "admin";
 
 const SALT = Buffer.from("bpm-keys-v1");
 const cache = new Map<string, Buffer>();
@@ -59,4 +59,22 @@ export function readSessionValue(master: string, value: string | undefined | nul
   if (got.length !== want.length || !timingSafeEqual(got, want)) return null;
   const [id, exp, version] = Buffer.from(body, "base64url").toString().split(".").map(Number);
   return Number.isInteger(id) && Number.isInteger(version) && exp > nowMs ? { id, version } : null;
+}
+
+/** Operator session after token + one-time code: base64url("name.expiryMs").hmac. The operator's role is read from the config on every use. */
+export function signAdminSession(master: string, name: string, expMs: number): string {
+  const body = b64u(Buffer.from(`${name}.${expMs}`));
+  return `adm.${body}.${b64u(createHmac("sha256", deriveKey(master, "admin")).update(body).digest())}`;
+}
+
+export function readAdminSession(master: string, value: string, nowMs: number): { name: string } | null {
+  const [tag, body, sig, ...extra] = value.split(".");
+  if (tag !== "adm" || !body || !sig || extra.length) return null;
+  const want = createHmac("sha256", deriveKey(master, "admin")).update(body).digest();
+  const got = Buffer.from(sig, "base64url");
+  if (got.length !== want.length || !timingSafeEqual(got, want)) return null;
+  const text = Buffer.from(body, "base64url").toString();
+  const cut = text.lastIndexOf(".");
+  const name = text.slice(0, cut), exp = Number(text.slice(cut + 1));
+  return name && Number.isFinite(exp) && exp > nowMs ? { name } : null;
 }

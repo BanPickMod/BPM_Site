@@ -37,7 +37,7 @@ const days = (name: string, fallback: number) => envDays(process.env[name], fall
 export function retentionConfig(over: Partial<RetentionConfig> = {}): RetentionConfig {
   return {
     readyDays: days("SOURCE_READY_MAX_DAYS", 7),
-    failedDays: days("SOURCE_FAILED_MAX_DAYS", 7),
+    failedDays: days("SOURCE_FAILED_MAX_DAYS", 30),
     unsupportedDays: days("SOURCE_UNSUPPORTED_MAX_DAYS", 30),
     stuckDays: days("SOURCE_STUCK_MAX_DAYS", 14),
     feedbackDays: feedbackRetentionDays(),

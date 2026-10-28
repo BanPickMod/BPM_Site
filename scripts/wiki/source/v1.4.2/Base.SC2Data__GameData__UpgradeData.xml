@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CUpgrade id="BPM_Ban_Marine"/>
+    <CUpgrade id="BPM_Ban_Marauder"/>
+    <CUpgrade id="BPM_Ban_Reaper"/>
+    <CUpgrade id="BPM_Ban_Ghost"/>
+    <CUpgrade id="BPM_Ban_Hellion"/>
+    <CUpgrade id="BPM_Ban_SiegeTank"/>
+    <CUpgrade id="BPM_Ban_Cyclone"/>
+    <CUpgrade id="BPM_Ban_Thor"/>
+    <CUpgrade id="BPM_Ban_WidowMine"/>
+    <CUpgrade id="BPM_Ban_VikingFighter"/>
+    <CUpgrade id="BPM_Ban_Banshee"/>
+    <CUpgrade id="BPM_Ban_Medivac"/>
+    <CUpgrade id="BPM_Ban_Raven"/>
+    <CUpgrade id="BPM_Ban_Liberator"/>
+    <CUpgrade id="BPM_Ban_Battlecruiser"/>
+    <CUpgrade id="BPM_Ban_Zealot"/>
+    <CUpgrade id="BPM_Ban_Stalker"/>
+    <CUpgrade id="BPM_Ban_Sentry"/>
+    <CUpgrade id="BPM_Ban_Adept"/>
+    <CUpgrade id="BPM_Ban_Observer"/>
+    <CUpgrade id="BPM_Ban_WarpPrism"/>
+    <CUpgrade id="BPM_Ban_HighTemplar"/>
+    <CUpgrade id="BPM_Ban_DarkTemplar"/>
+    <CUpgrade id="BPM_Ban_Immortal"/>
+    <CUpgrade id="BPM_Ban_Phoenix"/>
+    <CUpgrade id="BPM_Ban_VoidRay"/>
+    <CUpgrade id="BPM_Ban_Oracle"/>
+    <CUpgrade id="BPM_Ban_Colossus"/>
+    <CUpgrade id="BPM_Ban_Disruptor"/>
+    <CUpgrade id="BPM_Ban_Carrier"/>
+    <CUpgrade id="BPM_Ban_Tempest"/>
+    <CUpgrade id="BPM_Ban_Mothership"/>
+    <CUpgrade id="BPM_Ban_Archon"/>
+    <CUpgrade id="BPM_Ban_Zergling"/>
+    <CUpgrade id="BPM_Ban_Roach"/>
+    <CUpgrade id="BPM_Ban_Ravager"/>
+    <CUpgrade id="BPM_Ban_Hydralisk"/>
+    <CUpgrade id="BPM_Ban_Baneling"/>
+    <CUpgrade id="BPM_Ban_Infestor"/>
+    <CUpgrade id="BPM_Ban_SwarmHostMP"/>
+    <CUpgrade id="BPM_Ban_LurkerMP"/>
+    <CUpgrade id="BPM_Ban_Mutalisk"/>
+    <CUpgrade id="BPM_Ban_Viper"/>
+    <CUpgrade id="BPM_Ban_Corruptor"/>
+    <CUpgrade id="BPM_Ban_BroodLord"/>
+    <CUpgrade id="BPM_Ban_Ultralisk"/>
+    <CUpgrade id="BPM_Pick_Firebat">
+        <Name value="Upgrade/Name/BPM_Pick_Firebat"/>
+    </CUpgrade>
+    <CUpgrade id="BPM_Pick_Wraith">
+        <Name value="Upgrade/Name/BPM_Pick_Wraith"/>
+    </CUpgrade>
+    <CUpgrade id="BPM_Pick_ScienceVessel">
+        <Name value="Upgrade/Name/BPM_Pick_ScienceVessel"/>
+    </CUpgrade>
+    <CUpgrade id="BPM_Pick_Dragoon">
+        <Name value="Upgrade/Name/BPM_Pick_Dragoon"/>
+    </CUpgrade>
+    <CUpgrade id="BPM_Pick_Scout">
+        <Name value="Upgrade/Name/BPM_Pick_Scout"/>
+    </CUpgrade>
+    <CUpgrade id="BPM_Pick_Reaver">
+        <Name value="Upgrade/Name/BPM_Pick_Reaver"/>
+    </CUpgrade>
+    <CUpgrade id="BPM_Pick_QueenClassic">
+        <Name value="Upgrade/Name/BPM_Pick_QueenClassic"/>
+    </CUpgrade>
+    <CUpgrade id="BPM_Pick_Ravasaur">
+        <Name value="Upgrade/Name/BPM_Pick_Ravasaur"/>
+    </CUpgrade>
+    <CUpgrade id="BPM_Pick_GuardianMP">
+        <Name value="Upgrade/Name/BPM_Pick_GuardianMP"/>
+    </CUpgrade>
+    <CUpgrade id="BPM_Pick_Energizer">
+        <Name value="Upgrade/Name/BPM_Pick_Energizer"/>
+    </CUpgrade>
+    <CUpgrade id="BPM_Pick_Corsair">
+        <Name value="Upgrade/Name/BPM_Pick_Corsair"/>
+    </CUpgrade>
+    <CUpgrade id="BPM_Pick_Aberration">
+        <Name value="Upgrade/Name/BPM_Pick_Aberration"/>
+    </CUpgrade>
+    <CUpgrade id="BPM_Pick_Defiler">
+        <Name value="Upgrade/Name/BPM_Pick_Defiler"/>
+    </CUpgrade>
+    <CUpgrade id="BPM_Pick_Tyrannozor">
+        <Name value="Upgrade/Name/BPM_Pick_Tyrannozor"/>
+    </CUpgrade>
+    <CUpgrade id="BPM_AberrationSpeed">
+        <Name value="Upgrade/Name/BPM_AberrationSpeed"/>
+        <Icon value="Assets\Textures\btn-upgrade-zerg-anabolicsynthesis.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-zerg-anabolicsynthesis.dds"/>
+        <EditorCategories value="Race:Zerg,UpgradeType:MovementSpeed"/>
+        <EffectArray Operation="Add" Reference="Unit,InfestedAbomination,Speed" Value="0.45"/>
+    </CUpgrade>
+    <CUpgrade id="BPM_CorsairDisruptionWeb">
+        <Name value="Upgrade/Name/BPM_CorsairDisruptionWeb"/>
+        <Icon value="Assets\Textures\btn-ability-protoss-disruptionweb.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-disruptionweb.dds"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:SpellResearch"/>
+    </CUpgrade>
+    <CUpgrade id="BPM_DefilerConsume">
+        <Name value="Upgrade/Name/BPM_DefilerConsume"/>
+        <Icon value="Assets\Textures\btn-ability-zerg-defilerconsume@scbw.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-zerg-defilerconsume@scbw.dds"/>
+        <EditorCategories value="Race:Zerg,UpgradeType:SpellResearch"/>
+    </CUpgrade>
+    <CUpgrade id="BPM_DefilerPlague">
+        <Name value="Upgrade/Name/BPM_DefilerPlague"/>
+        <Icon value="Assets\Textures\btn-ability-zerg-plague@scbw.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-zerg-plague@scbw.dds"/>
+        <EditorCategories value="Race:Zerg,UpgradeType:SpellResearch"/>
+    </CUpgrade>
+    <CUpgrade id="BPM_DefilerEnergy">
+        <Name value="Upgrade/Name/BPM_DefilerEnergy"/>
+        <Icon value="Assets\Textures\btn-upgrade-zerg-metasynapticnode@scbw.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-zerg-metasynapticnode@scbw.dds"/>
+        <EditorCategories value="Race:Zerg,UpgradeType:EnergyBonus"/>
+        <EffectArray Reference="Unit,DefilerMP,EnergyMax" Value="50"/>
+        <EffectArray Reference="Unit,DefilerMP,EnergyStart" Value="12.5"/>
+    </CUpgrade>
+    <CUpgrade id="BPM_RavasaurVolatileSpines">
+        <Name value="Upgrade/Name/BPM_RavasaurVolatileSpines"/>
+        <EffectArray index="0" Reference="Weapon,RavasaurWeapon,Range" Value="1"/>
+        <EffectArray index="1" Reference="Weapon,RavasaurWeapon,MinScanRange" Value="1"/>
+    </CUpgrade>
+    <CUpgrade id="BPM_Never"/>
+    <CUpgrade id="BPM_GoliathRange">
+        <Icon value="Assets\Textures\btn-upgrade-terran-charonboosters@scbw.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-terran-charonboosters@scbw.dds"/>
+        <EditorCategories value="Race:Terran,UpgradeType:WeaponSpeed"/>
+        <EffectArray Operation="Add" Reference="Weapon,GoliathA,Range" Value="3"/>
+        <EffectArray Operation="Add" Reference="Weapon,GoliathA,MinScanRange" Value="3"/>
+        <EffectArray Operation="Add" Reference="Weapon,GoliathAUpgraded,Range" Value="3"/>
+        <EffectArray Operation="Add" Reference="Weapon,GoliathAUpgraded,MinScanRange" Value="3"/>
+        <EffectArray Operation="Add" Reference="Weapon,BPM_GoliathA,Range" Value="3"/>
+        <EffectArray Operation="Add" Reference="Weapon,BPM_GoliathA,MinScanRange" Value="3"/>
+    </CUpgrade>
+    <CUpgrade id="BPM_WarHoundTornadoMissile">
+        <Name value="Upgrade/Name/BPM_WarHoundTornadoMissile"/>
+        <Icon value="Assets\Textures\btn-ability-terran-haywiremissile.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-terran-haywiremissile.dds"/>
+        <EditorCategories value="Race:Terran,UpgradeType:SpellResearch"/>
+    </CUpgrade>
+    <CUpgrade id="BPM_DragoonRange">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-singularitycharge@scbw.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-protoss-singularitycharge@scbw.dds"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:WeaponSpeed"/>
+        <EffectArray Operation="Add" Reference="Weapon,Dragoon,Range" Value="1"/>
+        <EffectArray Operation="Add" Reference="Weapon,Dragoon,MinScanRange" Value="1"/>
+    </CUpgrade>
+    <CUpgrade id="BPM_ReaverDamage">
+        <Icon value="Assets\Textures\ClassicIcons\SC1_ProtossScarabDamage.dds"/>
+        <AlertIcon value="Assets\Textures\ClassicIcons\SC1_ProtossScarabDamage.dds"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:WeaponSpeed"/>
+        <EffectArray Operation="Add" Reference="Effect,ScarabExplodeTargetDamage,Amount" Value="25"/>
+        <EffectArray Operation="Add" Reference="Effect,ScarabExplodeAreaDamage,Amount" Value="25"/>
+    </CUpgrade>
+    <CUpgrade id="BPM_ReaverHangar">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-increasedscarabcapacity@scbw.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-protoss-increasedscarabcapacity@scbw.dds"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:WeaponSpeed"/>
+        <EffectArray Operation="Add" Reference="Abil,ReaverHangar,MaxCount" Value="5"/>
+        <EffectArray Operation="Add" Reference="Abil,ReaverHangar,InfoArray[Ammo1].CountMax" Value="5"/>
+        <EffectArray Operation="Add" Reference="Abil,ReaverHangar,InfoArray[Ammo1].Charge.CountMax" Value="5"/>
+    </CUpgrade>
+    <CUpgrade id="BPM_ScoutSight">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-apialsensors@scbw.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-protoss-apialsensors@scbw.dds"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Vision"/>
+        <EffectArray Operation="Add" Reference="Unit,ScoutMP,Sight" Value="2"/>
+        <EffectArray Operation="Add" Reference="Unit,BPM_Scout,Sight" Value="2"/>
+    </CUpgrade>
+    <CUpgrade id="BPM_ScoutSpeed">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-graviticthrusters@scbw.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-protoss-graviticthrusters@scbw.dds"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:MovementSpeed"/>
+        <EffectArray Operation="Multiply" Reference="Unit,ScoutMP,Speed" Value="1.33"/>
+        <EffectArray Operation="Multiply" Reference="Unit,BPM_Scout,Speed" Value="1.33"/>
+    </CUpgrade>
+    <CUpgrade id="BPM_WraithEnergy">
+        <Icon value="Assets\Textures\btn-upgrade-terran-apolloreactor@scbw.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-terran-apolloreactor@scbw.dds"/>
+        <EditorCategories value="Race:Terran,UpgradeType:Spellcaster"/>
+        <EffectArray Operation="Add" Reference="Unit,Wraith,EnergyMax" Value="50"/>
+        <EffectArray Operation="Add" Reference="Unit,Wraith,EnergyStart" Value="50"/>
+        <EffectArray Operation="Add" Reference="Unit,BPM_Wraith,EnergyMax" Value="50"/>
+        <EffectArray Operation="Add" Reference="Unit,BPM_Wraith,EnergyStart" Value="50"/>
+    </CUpgrade>
+    <CUpgrade id="BPM_WraithCloak">
+        <Icon value="Assets\Textures\btn-upgrade-terran-cloakingfield@scbw.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-terran-cloakingfield@scbw.dds"/>
+        <EditorCategories value="Race:Terran,UpgradeType:Spellcaster"/>
+    </CUpgrade>
+    <CUpgrade id="BPM_ScienceVesselLockdownResearch">
+        <Icon value="Assets\Textures\ClassicIcons\SC1_TerranGhostLockdown.dds"/>
+        <AlertIcon value="Assets\Textures\ClassicIcons\SC1_TerranGhostLockdown.dds"/>
+        <EditorCategories value="Race:Terran,UpgradeType:SpellResearch"/>
+    </CUpgrade>
+    <CUpgrade id="BPM_ScienceVesselDefensiveMatrixResearch">
+        <Icon value="Assets\Textures\ClassicIcons\SC1_TerranScienceVesselDefenseMatrix.dds"/>
+        <AlertIcon value="Assets\Textures\ClassicIcons\SC1_TerranScienceVesselDefenseMatrix.dds"/>
+        <EditorCategories value="Race:Terran,UpgradeType:SpellResearch"/>
+    </CUpgrade>
+    <CUpgrade id="BPM_QueenEnergy">
+        <Icon value="Assets\Textures\btn-upgrade-zerg-gametemeiosis@scbw.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-zerg-gametemeiosis@scbw.dds"/>
+        <EditorCategories value="Race:Zerg,UpgradeType:Spellcaster"/>
+        <!-- EnergyStart controls the energy of newly produced Queens. The
+             generic Energy field is not a valid unit-catalog upgrade target. -->
+        <EffectArray Operation="Add" Reference="Unit,BPM_QueenClassic,EnergyMax" Value="50"/>
+        <EffectArray Operation="Add" Reference="Unit,BPM_QueenClassic,EnergyStart" Value="50"/>
+        <EffectArray Operation="Add" Reference="Unit,QueenClassic,EnergyMax" Value="50"/>
+        <EffectArray Operation="Add" Reference="Unit,QueenClassic,EnergyStart" Value="50"/>
+    </CUpgrade>
+    <CUpgrade id="BPM_ArbiterStasisField">
+        <Icon value="Assets\Textures\ClassicIcons\SC1_ProtossArbiterStasisField.dds"/>
+        <AlertIcon value="Assets\Textures\ClassicIcons\SC1_ProtossArbiterStasisField.dds"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Spellcaster"/>
+    </CUpgrade>
+    <CUpgrade id="BPM_ArbiterRecall">
+        <Icon value="Assets\Textures\ClassicIcons\SC1_ProtossArbiterRecall.dds"/>
+        <AlertIcon value="Assets\Textures\ClassicIcons\SC1_ProtossArbiterRecall.dds"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:Spellcaster"/>
+    </CUpgrade>
+
+    <!-- Weapon Upgrade mappings for custom BPM units -->
+    <CUpgrade id="TerranInfantryWeaponsLevel1">
+        <EffectArray Operation="Add" Reference="Effect,BPM_FirebatSCBWWeapon@DamageAccum,Amount" Value="1"/>
+        <EffectArray Operation="Add" Reference="Effect,BPM_FirebatSCBWWeapon@DamageConc,Amount" Value="1"/>
+    </CUpgrade>
+    <CUpgrade id="TerranInfantryWeaponsLevel2">
+        <EffectArray Operation="Add" Reference="Effect,BPM_FirebatSCBWWeapon@DamageAccum,Amount" Value="1"/>
+        <EffectArray Operation="Add" Reference="Effect,BPM_FirebatSCBWWeapon@DamageConc,Amount" Value="1"/>
+    </CUpgrade>
+    <CUpgrade id="TerranInfantryWeaponsLevel3">
+        <EffectArray Operation="Add" Reference="Effect,BPM_FirebatSCBWWeapon@DamageAccum,Amount" Value="1"/>
+        <EffectArray Operation="Add" Reference="Effect,BPM_FirebatSCBWWeapon@DamageConc,Amount" Value="1"/>
+    </CUpgrade>
+    <CUpgrade id="ZergMissileWeaponsLevel1">
+        <EffectArray Operation="Add" Reference="Effect,BPM_RavasaurDamage,Amount" Value="3"/>
+        <EffectArray Operation="Add" Reference="Weapon,RavasaurWeapon,Level" Value="1"/>
+    </CUpgrade>
+    <CUpgrade id="ZergMissileWeaponsLevel2">
+        <EffectArray Operation="Add" Reference="Effect,BPM_RavasaurDamage,Amount" Value="3"/>
+        <EffectArray Operation="Add" Reference="Weapon,RavasaurWeapon,Level" Value="1"/>
+    </CUpgrade>
+    <CUpgrade id="ZergMissileWeaponsLevel3">
+        <EffectArray Operation="Add" Reference="Effect,BPM_RavasaurDamage,Amount" Value="3"/>
+        <EffectArray Operation="Add" Reference="Weapon,RavasaurWeapon,Level" Value="1"/>
+    </CUpgrade>
+    <CUpgrade id="ZergGroundArmorsLevel1">
+        <EffectArray Operation="Add" Reference="Unit,Ravasaur,LifeArmor" Value="1"/>
+        <EffectArray Operation="Add" Reference="Unit,Ravasaur,LifeArmorLevel" Value="1"/>
+        <EffectArray Operation="Add" Reference="Unit,Terrorzor,LifeArmor" Value="1"/>
+        <EffectArray Operation="Add" Reference="Unit,Terrorzor,LifeArmorLevel" Value="1"/>
+    </CUpgrade>
+    <CUpgrade id="ZergGroundArmorsLevel2">
+        <EffectArray Operation="Add" Reference="Unit,Ravasaur,LifeArmor" Value="1"/>
+        <EffectArray Operation="Add" Reference="Unit,Ravasaur,LifeArmorLevel" Value="1"/>
+        <EffectArray Operation="Add" Reference="Unit,Terrorzor,LifeArmor" Value="1"/>
+        <EffectArray Operation="Add" Reference="Unit,Terrorzor,LifeArmorLevel" Value="1"/>
+    </CUpgrade>
+    <CUpgrade id="ZergGroundArmorsLevel3">
+        <EffectArray Operation="Add" Reference="Unit,Ravasaur,LifeArmor" Value="1"/>
+        <EffectArray Operation="Add" Reference="Unit,Ravasaur,LifeArmorLevel" Value="1"/>
+        <EffectArray Operation="Add" Reference="Unit,Terrorzor,LifeArmor" Value="1"/>
+        <EffectArray Operation="Add" Reference="Unit,Terrorzor,LifeArmorLevel" Value="1"/>
+    </CUpgrade>
+    <CUpgrade id="ZergMeleeWeaponsLevel1">
+        <EffectArray Operation="Add" Reference="Effect,KaiserBladesDamage,Amount" Value="3"/>
+        <EffectArray Operation="Add" Reference="Effect,TerrorzorDamage,Amount" Value="3"/>
+    </CUpgrade>
+    <CUpgrade id="ZergMeleeWeaponsLevel2">
+        <EffectArray Operation="Add" Reference="Effect,KaiserBladesDamage,Amount" Value="3"/>
+        <EffectArray Operation="Add" Reference="Effect,TerrorzorDamage,Amount" Value="3"/>
+    </CUpgrade>
+    <CUpgrade id="ZergMeleeWeaponsLevel3">
+        <EffectArray Operation="Add" Reference="Effect,KaiserBladesDamage,Amount" Value="3"/>
+        <EffectArray Operation="Add" Reference="Effect,TerrorzorDamage,Amount" Value="3"/>
+    </CUpgrade>
+    <CUpgrade id="ZergFlyerWeaponsLevel1">
+        <EffectArray Operation="Add" Reference="Effect,GuardianMPDamage,Amount" Value="2"/>
+        <EffectArray Operation="Add" Reference="Effect,GuardianMPWeaponDamage,Amount" Value="2"/>
+        <EffectArray Operation="Add" Reference="Effect,GuardianDamage,Amount" Value="2"/>
+        <EffectArray Operation="Add" Reference="Weapon,GuardianMPWeapon,Level" Value="1"/>
+    </CUpgrade>
+    <CUpgrade id="ZergFlyerWeaponsLevel2">
+        <EffectArray Operation="Add" Reference="Effect,GuardianMPDamage,Amount" Value="2"/>
+        <EffectArray Operation="Add" Reference="Effect,GuardianMPWeaponDamage,Amount" Value="2"/>
+        <EffectArray Operation="Add" Reference="Effect,GuardianDamage,Amount" Value="2"/>
+        <EffectArray Operation="Add" Reference="Weapon,GuardianMPWeapon,Level" Value="1"/>
+    </CUpgrade>
+    <CUpgrade id="ZergFlyerWeaponsLevel3">
+        <EffectArray Operation="Add" Reference="Effect,GuardianMPDamage,Amount" Value="2"/>
+        <EffectArray Operation="Add" Reference="Effect,GuardianMPWeaponDamage,Amount" Value="2"/>
+        <EffectArray Operation="Add" Reference="Effect,GuardianDamage,Amount" Value="2"/>
+        <EffectArray Operation="Add" Reference="Weapon,GuardianMPWeapon,Level" Value="1"/>
+    </CUpgrade>
+    <CUpgrade id="ZergFlyerArmorsLevel1">
+        <EffectArray Operation="Add" Reference="Unit,GuardianMP,LifeArmor" Value="1"/>
+        <EffectArray Operation="Add" Reference="Unit,GuardianMP,LifeArmorLevel" Value="1"/>
+        <EffectArray Operation="Add" Reference="Unit,QueenClassic,LifeArmor" Value="1"/>
+        <EffectArray Operation="Add" Reference="Unit,QueenClassic,LifeArmorLevel" Value="1"/>
+        <EffectArray Operation="Add" Reference="Unit,BPM_QueenClassic,LifeArmor" Value="1"/>
+        <EffectArray Operation="Add" Reference="Unit,BPM_QueenClassic,LifeArmorLevel" Value="1"/>
+        <EffectArray Operation="Set" Reference="Actor,QueenClassic,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-flyercarapace-level1.dds"/>
+    </CUpgrade>
+    <CUpgrade id="ZergFlyerArmorsLevel2">
+        <EffectArray Operation="Add" Reference="Unit,GuardianMP,LifeArmor" Value="1"/>
+        <EffectArray Operation="Add" Reference="Unit,GuardianMP,LifeArmorLevel" Value="1"/>
+        <EffectArray Operation="Add" Reference="Unit,QueenClassic,LifeArmor" Value="1"/>
+        <EffectArray Operation="Add" Reference="Unit,QueenClassic,LifeArmorLevel" Value="1"/>
+        <EffectArray Operation="Add" Reference="Unit,BPM_QueenClassic,LifeArmor" Value="1"/>
+        <EffectArray Operation="Add" Reference="Unit,BPM_QueenClassic,LifeArmorLevel" Value="1"/>
+        <EffectArray Operation="Set" Reference="Actor,QueenClassic,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-flyercarapace-level2.dds"/>
+    </CUpgrade>
+    <CUpgrade id="ZergFlyerArmorsLevel3">
+        <EffectArray Operation="Add" Reference="Unit,GuardianMP,LifeArmor" Value="1"/>
+        <EffectArray Operation="Add" Reference="Unit,GuardianMP,LifeArmorLevel" Value="1"/>
+        <EffectArray Operation="Add" Reference="Unit,QueenClassic,LifeArmor" Value="1"/>
+        <EffectArray Operation="Add" Reference="Unit,QueenClassic,LifeArmorLevel" Value="1"/>
+        <EffectArray Operation="Add" Reference="Unit,BPM_QueenClassic,LifeArmor" Value="1"/>
+        <EffectArray Operation="Add" Reference="Unit,BPM_QueenClassic,LifeArmorLevel" Value="1"/>
+        <EffectArray Operation="Set" Reference="Actor,QueenClassic,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-flyercarapace-level3.dds"/>
+    </CUpgrade>
+
+    <CUpgrade id="BPM_EnergizerShields">
+        <Name value="Upgrade/Name/BPM_EnergizerShields"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-shieldslevel0.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-protoss-shieldslevel0.dds"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:SpellResearch"/>
+        <EffectArray Operation="Add" Reference="Unit,Energizer,ShieldsMax" Value="40"/>
+        <EffectArray Operation="Add" Reference="Unit,EnergizerPhasingMode,ShieldsMax" Value="40"/>
+    </CUpgrade>
+    <CUpgrade id="BPM_EnergizerPhasingMode">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-graviticthrusters@scbw.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-protoss-graviticthrusters@scbw.dds"/>
+        <EditorCategories value="Race:Protoss,UpgradeType:SpellResearch"/>
+    </CUpgrade>
+    <CUpgrade id="ProtossGroundWeaponsLevel1">
+        <EffectArray Operation="Add" Reference="Effect,BPM_EnergizerDamage,Amount" Value="1"/>
+    </CUpgrade>
+    <CUpgrade id="ProtossGroundWeaponsLevel2">
+        <EffectArray Operation="Add" Reference="Effect,BPM_EnergizerDamage,Amount" Value="1"/>
+    </CUpgrade>
+    <CUpgrade id="ProtossGroundWeaponsLevel3">
+        <EffectArray Operation="Add" Reference="Effect,BPM_EnergizerDamage,Amount" Value="1"/>
+    </CUpgrade>
+</Catalog>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CMoverMissile id="BPM_RavasaurMissileMover">
+        <PathMode value="Flying"/>
+        <MotionPhases>
+            <Driver value="Throw"/>
+            <Acceleration value="15"/>
+            <Speed value="10"/>
+            <MaxSpeed value="20"/>
+            <BlendType value="Linear"/>
+            <Outro value="0.1,0.35"/>
+            <ThrowVector value="0,0,1"/>
+        </MotionPhases>
+        <MotionPhases>
+            <Driver value="Guidance"/>
+            <Acceleration value="60"/>
+            <Speed value="18"/>
+            <MaxSpeed value="22"/>
+            <BlendType value="Linear"/>
+            <YawPitchRoll value="MAX"/>
+        </MotionPhases>
+    </CMoverMissile>
+    <CMoverMissile id="BPM_ScienceVesselLockdownMover">
+        <PathMode value="Flying"/>
+        <MotionPhases>
+            <Driver value="Throw"/>
+            <Speed value="2"/>
+            <MaxSpeed value="2"/>
+            <Outro value="0.2,0.55"/>
+            <Timeout value="10"/>
+            <ThrowRotationType value="LookAtTarget"/>
+            <ThrowVector value="0,-1,1"/>
+            <YawPitchRoll value="506.25"/>
+        </MotionPhases>
+        <MotionPhases>
+            <Driver value="Guidance"/>
+            <Acceleration value="7.25"/>
+            <Speed value="2"/>
+            <MaxSpeed value="18"/>
+            <Outro value="0.56,1.5"/>
+            <Timeout value="10"/>
+            <YawPitchRoll value="MAX"/>
+        </MotionPhases>
+        <MotionPhases>
+            <Driver value="Guidance"/>
+            <Acceleration value="7.25"/>
+            <Speed value="2"/>
+            <MaxSpeed value="25"/>
+            <Timeout value="10"/>
+            <YawPitchRoll value="MAX"/>
+        </MotionPhases>
+    </CMoverMissile>
+</Catalog>

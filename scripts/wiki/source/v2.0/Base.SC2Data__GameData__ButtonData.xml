@@ -1,0 +1,2087 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CButton id="Firebat">
+        <Icon value="Assets\Textures\btn-unit-terran-firebat.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-terran-firebat.dds"/>
+        <Name value="Button/Name/BPM_Firebat"/>
+        <Tooltip value="Button/Tooltip/BPM_Firebat"/>
+        <Hotkey value="Button/Hotkey/BPM_Firebat"/>
+        <HotkeyAlias value=""/>
+        <EditorCategories value="Race:Terran"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="BPM_BarracksTrainFirebat,Train1"/>
+    </CButton>
+    <CButton id="BPM_FirebatSCBWStimpack">
+        <Icon value="Assets\Textures\btn-ability-terran-stimpack.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-terran-stimpack.dds"/>
+        <Name value="Button/Name/BPM_FirebatSCBWStimpack"/>
+        <Tooltip value="Button/Tooltip/BPM_FirebatSCBWStimpack"/>
+        <Hotkey value="Button/Hotkey/BPM_FirebatSCBWStimpack"/>
+        <EditorCategories value="Race:Terran"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowUsage" value="1"/>
+        <TooltipFlags index="ShowRequirements" value="1"/>
+    </CButton>
+    <CButton id="Wraith">
+        <Icon value="Assets\Textures\btn-unit-terran-wraith.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-terran-wraith.dds"/>
+        <Name value="Button/Name/BPM_Wraith"/>
+        <Tooltip value="Button/Tooltip/BPM_Wraith"/>
+        <Hotkey value="Button/Hotkey/BPM_Wraith"/>
+        <HotkeyAlias value=""/>
+        <EditorCategories value="Race:Terran"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="StarportTrain,Train27"/>
+    </CButton>
+    <CButton id="BPM_ScienceVessel">
+        <Icon value="Assets\Textures\btn-unit-terran-sciencevessel.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-terran-sciencevessel.dds"/>
+        <Name value="Button/Name/BPM_ScienceVessel"/>
+        <Tooltip value="Button/Tooltip/BPM_ScienceVessel"/>
+        <Hotkey value="Button/Hotkey/BPM_ScienceVessel"/>
+        <HotkeyAlias value=""/>
+        <EditorCategories value="Race:Terran"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="StarportTrain,Train28"/>
+    </CButton>
+    <CButton id="Raven">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="StarportTrain,Train3"/>
+    </CButton>
+    <CButton id="BPM_ScienceVesselLockdown">
+        <Icon value="Assets\Textures\ClassicIcons\SC1_TerranGhostLockdown.dds"/>
+        <AlertIcon value="Assets\Textures\ClassicIcons\SC1_TerranGhostLockdown.dds"/>
+        <Name value="Button/Name/BPM_ScienceVesselLockdown"/>
+        <Tooltip value="Button/Tooltip/BPM_ScienceVesselLockdown"/>
+        <Hotkey value="Button/Hotkey/BPM_ScienceVesselLockdown"/>
+        <EditorCategories value="Race:Terran"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowUsage" value="1"/>
+        <TooltipFlags index="ShowRequirements" value="1"/>
+    </CButton>
+    <CButton id="BPM_ScienceVesselIrradiate" parent="Irradiate">
+        <Icon value="Assets\Textures\ClassicIcons\SC1_TerranScienceVesselIrradiate.dds"/>
+        <AlertIcon value="Assets\Textures\ClassicIcons\SC1_TerranScienceVesselIrradiate.dds"/>
+        <Hotkey value="Button/Hotkey/BPM_ScienceVesselIrradiate"/>
+        <HotkeyAlias value=""/>
+    </CButton>
+    <CButton id="BPM_ScienceVesselDefensiveMatrix">
+        <Icon value="Assets\Textures\ClassicIcons\SC1_TerranScienceVesselDefenseMatrix.dds"/>
+        <AlertIcon value="Assets\Textures\ClassicIcons\SC1_TerranScienceVesselDefenseMatrix.dds"/>
+        <Name value="Button/Name/BPM_ScienceVesselDefensiveMatrix"/>
+        <Tooltip value="Button/Tooltip/BPM_ScienceVesselDefensiveMatrix"/>
+        <Hotkey value="Button/Hotkey/BPM_ScienceVesselDefensiveMatrix"/>
+        <EditorCategories value="Race:Terran"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowUsage" value="1"/>
+        <TooltipFlags index="ShowRequirements" value="1"/>
+    </CButton>
+    <CButton id="BPM_ResearchScienceVesselLockdown">
+        <Icon value="Assets\Textures\ClassicIcons\SC1_TerranGhostLockdown.dds"/>
+        <AlertIcon value="Assets\Textures\ClassicIcons\SC1_TerranGhostLockdown.dds"/>
+        <Name value="Button/Name/BPM_ResearchScienceVesselLockdown"/>
+        <Tooltip value="Button/Tooltip/BPM_ResearchScienceVesselLockdown"/>
+        <Hotkey value="Button/Hotkey/BPM_ResearchScienceVesselLockdown"/>
+        <EditorCategories value="Race:Terran"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="StarportTechLabResearch,Research22"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="BPM_ResearchScienceVesselDefensiveMatrix">
+        <Icon value="Assets\Textures\ClassicIcons\SC1_TerranScienceVesselDefenseMatrix.dds"/>
+        <AlertIcon value="Assets\Textures\ClassicIcons\SC1_TerranScienceVesselDefenseMatrix.dds"/>
+        <Name value="Button/Name/BPM_ResearchScienceVesselDefensiveMatrix"/>
+        <Tooltip value="Button/Tooltip/BPM_ResearchScienceVesselDefensiveMatrix"/>
+        <Hotkey value="Button/Hotkey/BPM_ResearchScienceVesselDefensiveMatrix"/>
+        <EditorCategories value="Race:Terran"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="StarportTechLabResearch,Research23"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="BPM_Goliath" parent="Goliath">
+        <Hotkey value="Button/Hotkey/BPM_Goliath"/>
+        <HotkeyAlias value=""/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="BPM_FactoryTrainGoliath,Train1"/>
+    </CButton>
+    <CButton id="BPM_WarHound" parent="WarHound">
+        <Hotkey value="Button/Hotkey/BPM_WarHound"/>
+        <HotkeyAlias value=""/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="BPM_FactoryTrainWarHound,Train1"/>
+    </CButton>
+    <CButton id="BPM_WarHoundTornadoMissile">
+        <Icon value="Assets\Textures\btn-ability-terran-haywiremissile.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-terran-haywiremissile.dds"/>
+        <Name value="Button/Name/BPM_WarHoundTornadoMissile"/>
+        <Tooltip value="Button/Tooltip/BPM_WarHoundTornadoMissile"/>
+        <Hotkey value="Button/Hotkey/BPM_WarHoundTornadoMissile"/>
+        <EditorCategories value="Race:Terran"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="FactoryTechLabResearch,Research21"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <!-- Campaign dependencies strip the production-cost presentation from
+         these multiplayer Factory faces. Bind each face back to its final
+         FactoryTrain command so resources, supply, and train time render. -->
+    <CButton id="Hellion">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="FactoryTrain,Train6"/>
+    </CButton>
+    <CButton id="HellionTank">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="FactoryTrain,Train7"/>
+    </CButton>
+    <CButton id="BuildCyclone">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="FactoryTrain,Train8"/>
+    </CButton>
+    <CButton id="SiegeTank">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="FactoryTrain,Train2"/>
+    </CButton>
+    <CButton id="Thor">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="FactoryTrain,Train5"/>
+    </CButton>
+    <CButton id="WidowMine">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="FactoryTrain,Train9"/>
+    </CButton>
+    <!-- Self-contained SC Evo Dragoon production face.  Do not inherit a
+         campaign button: missing parent records turn this into a blank slot. -->
+    <CButton id="BPM_Dragoon">
+        <Icon value="Assets\Textures\btn-unit-protoss-dragoon@scbw.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-protoss-dragoon@scbw.dds"/>
+        <Name value="Button/Name/BPM_Dragoon"/>
+        <Tooltip value="Button/Tooltip/BPM_Dragoon"/>
+        <Hotkey value="Button/Hotkey/BPM_Dragoon"/>
+        <HotkeyAlias value=""/>
+        <EditorCategories value="Race:Protoss"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowCooldown" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="GatewayTrain,Train20"/>
+    </CButton>
+    <CButton id="BPM_Scout" parent="WarpInScout">
+        <Name value="Button/Name/BPM_Scout"/>
+        <Tooltip value="Button/Tooltip/BPM_Scout"/>
+        <Hotkey value="Button/Hotkey/BPM_Scout"/>
+        <HotkeyAlias value=""/>
+        <EditorCategories value="Race:Protoss"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowCooldown" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="StargateTrain,Train14"/>
+    </CButton>
+    <CButton id="BPM_Arbiter" parent="Arbiter">
+        <Name value="Button/Name/BPM_Arbiter"/>
+        <Tooltip value="Button/Tooltip/BPM_Arbiter"/>
+        <Hotkey value="Button/Hotkey/BPM_Arbiter"/>
+        <HotkeyAlias value=""/>
+        <EditorCategories value="Race:Protoss"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowCooldown" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="StargateTrain,Train13"/>
+    </CButton>
+    <CButton id="WarpInAdept">
+        <Hotkey value="Button/Hotkey/WarpInAdept"/>
+        <HotkeyAlias value=""/>
+        <Tooltip value="Button/Tooltip/WarpInAdept"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowCooldown" value="1"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="GatewayTrain,Train7"/>
+    </CButton>
+    <CButton id="HighTemplar">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="GatewayTrain,Train4"/>
+    </CButton>
+    <CButton id="DarkTemplar">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="GatewayTrain,Train5"/>
+    </CButton>
+    <!-- Pin the multiplayer Stalker presentation; campaign dependencies may
+         otherwise leave this button using an alternate faction icon. -->
+    <CButton id="Stalker">
+        <Icon value="Assets\Textures\btn-unit-protoss-stalker.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-protoss-stalker.dds"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="GatewayTrain,Train2"/>
+    </CButton>
+    <CButton id="Sentry">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="GatewayTrain,Train6"/>
+    </CButton>
+    <CButton id="StalkerAiur">
+        <Hotkey value="Button/Hotkey/BPM_StalkerAiur"/>
+        <HotkeyAlias value=""/>
+    </CButton>
+    <!-- The research upgrade IDs use "Armors", but their button catalog IDs
+         use singular "Armor". Pin the three stock icons on those buttons. -->
+    <CButton id="ProtossAirArmorLevel1">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-airarmorlevel1.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-protoss-airarmorlevel1.dds"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="CyberneticsCoreResearch,Research4"/>
+    </CButton>
+    <CButton id="ProtossAirArmorLevel2">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-airarmorlevel2.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-protoss-airarmorlevel2.dds"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="CyberneticsCoreResearch,Research5"/>
+    </CButton>
+    <CButton id="ProtossAirArmorLevel3">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-airarmorlevel3.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-protoss-airarmorlevel3.dds"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="CyberneticsCoreResearch,Research6"/>
+    </CButton>
+    <CButton id="ProtossAirWeaponsLevel1">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-airweaponslevel1.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-protoss-airweaponslevel1.dds"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="CyberneticsCoreResearch,Research1"/>
+    </CButton>
+    <CButton id="ProtossAirWeaponsLevel2">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-airweaponslevel2.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-protoss-airweaponslevel2.dds"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="CyberneticsCoreResearch,Research2"/>
+    </CButton>
+    <CButton id="ProtossAirWeaponsLevel3">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-airweaponslevel3.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-protoss-airweaponslevel3.dds"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="CyberneticsCoreResearch,Research3"/>
+    </CButton>
+    <CButton id="BPM_WarpPrism" parent="WarpPrism">
+        <Hotkey value="Button/Hotkey/BPM_WarpPrism"/>
+        <HotkeyAlias value=""/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="RoboticsFacilityTrain,Train1"/>
+    </CButton>
+    <CButton id="Reaver">
+        <Icon value="Assets\Textures\btn-unit-protoss-reaver.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-protoss-reaver.dds"/>
+        <Name value="Button/Name/BPM_Reaver"/>
+        <Tooltip value="Button/Tooltip/BPM_Reaver"/>
+        <Hotkey value="Button/Hotkey/BPM_Reaver"/>
+        <HotkeyAlias value=""/>
+        <EditorCategories value="Race:Protoss"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowCooldown" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="RoboticsFacilityTrain,Train30"/>
+    </CButton>
+    <CButton id="Colossus">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="RoboticsFacilityTrain,Train3"/>
+    </CButton>
+    <CButton id="Disruptor">
+        <Icon value="Assets\Textures\btn-unit-protoss-disruptor.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-protoss-disruptor.dds"/>
+        <Name value="Button/Name/Disruptor"/>
+        <Tooltip value="Button/Tooltip/Disruptor"/>
+        <Hotkey value="Button/Hotkey/Disruptor"/>
+        <HotkeyAlias value=""/>
+        <EditorCategories value="Race:Protoss"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="RoboticsFacilityTrain,Train19"/>
+    </CButton>
+    <!-- Explicit stock presentation for the Fleet Beacon research.  The
+         dependency merge otherwise leaves the command with an empty face. -->
+    <CButton id="TempestGroundAttackUpgrade">
+        <Icon value="Assets\Textures\btn-ability-protoss-disruptionblast.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-disruptionblast.dds"/>
+        <Name value="Button/Name/TempestGroundAttackUpgrade"/>
+        <Tooltip value="Button/Tooltip/TempestGroundAttackUpgrade"/>
+        <Hotkey value="Button/Hotkey/TempestGroundAttackUpgrade"/>
+        <HotkeyAlias value=""/>
+        <EditorCategories value="Race:Protoss"/>
+        <Universal value="1"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="FleetBeaconResearch,Research6"/>
+    </CButton>
+    <CButton id="Carrier">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="StargateTrain,Train3"/>
+    </CButton>
+    <CButton id="Tempest">
+        <Hotkey value="Button/Hotkey/BPM_Tempest"/>
+        <HotkeyAlias value=""/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="StargateTrain,Train10"/>
+    </CButton>
+    <CButton id="Phoenix">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="StargateTrain,Train1"/>
+    </CButton>
+    <CButton id="VoidRay">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="StargateTrain,Train5"/>
+    </CButton>
+
+    <!-- Campaign dependencies can replace the multiplayer LarvaTrain slots
+         without preserving the command tooltip presentation. Rebind every
+         standard larva-produced unit to its restored BPM LarvaTrain slot. -->
+    <CButton id="Drone">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="LarvaTrain,Train1"/>
+        <Hotkey value="Button/Hotkey/BPM_LarvaDrone"/>
+        <HotkeyAlias value=""/>
+    </CButton>
+    <CButton id="Zergling">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="LarvaTrain,Train2"/>
+    </CButton>
+    <CButton id="Overlord">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="LarvaTrain,Train3"/>
+        <Hotkey value="Button/Hotkey/BPM_LarvaOverlord"/>
+        <HotkeyAlias value=""/>
+    </CButton>
+    <CButton id="Hydralisk">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="LarvaTrain,Train4"/>
+        <Hotkey value="Button/Hotkey/BPM_LarvaHydralisk"/>
+        <HotkeyAlias value=""/>
+    </CButton>
+    <CButton id="Mutalisk">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="LarvaTrain,Train5"/>
+        <Hotkey value="Button/Hotkey/BPM_LarvaMutalisk"/>
+        <HotkeyAlias value=""/>
+    </CButton>
+    <CButton id="Ultralisk">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="LarvaTrain,Train7"/>
+        <Hotkey value="Button/Hotkey/BPM_LarvaUltralisk"/>
+        <HotkeyAlias value=""/>
+    </CButton>
+    <CButton id="Roach">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="LarvaTrain,Train10"/>
+        <Hotkey value="Button/Hotkey/BPM_LarvaRoach"/>
+        <HotkeyAlias value=""/>
+    </CButton>
+    <CButton id="Infestor">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="LarvaTrain,Train11"/>
+        <Hotkey value="Button/Hotkey/BPM_LarvaInfestor"/>
+        <HotkeyAlias value=""/>
+    </CButton>
+    <CButton id="Corruptor">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="LarvaTrain,Train12"/>
+        <Hotkey value="Button/Hotkey/BPM_LarvaCorruptor"/>
+        <HotkeyAlias value=""/>
+    </CButton>
+    <CButton id="Viper">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="LarvaTrain,Train13"/>
+        <Hotkey value="Button/Hotkey/BPM_LarvaViper"/>
+        <HotkeyAlias value=""/>
+    </CButton>
+    <CButton id="SwarmHostMP">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="LarvaTrain,Train15"/>
+        <Hotkey value="Button/Hotkey/BPM_LarvaSwarmHost"/>
+        <HotkeyAlias value=""/>
+    </CButton>
+
+    <CButton id="BPM_Corsair" parent="Corsair">
+        <Icon value="Assets\Textures\btn-unit-protoss-corsair@scbw.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-protoss-corsair@scbw.dds"/>
+        <Name value="Button/Name/BPM_Corsair"/>
+        <Tooltip value="Button/Tooltip/BPM_Corsair"/>
+        <Hotkey value="Button/Hotkey/BPM_Corsair"/>
+        <HotkeyAlias value=""/>
+        <EditorCategories value="Race:Protoss"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowCooldown" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="StargateTrain,Train15"/>
+    </CButton>
+    <CButton id="BPM_QueenClassic">
+        <Icon value="Assets\Textures\btn-unit-zerg-classicqueen.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-zerg-classicqueen.dds"/>
+        <Name value="Button/Name/BPM_QueenClassic"/>
+        <Tooltip value="Button/Tooltip/BPM_QueenClassic"/>
+        <Hotkey value="Button/Hotkey/BPM_QueenClassic"/>
+        <HotkeyAlias value=""/>
+        <EditorCategories value="Race:Zerg"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="BPM_LarvaTrainQueenClassic,Train1"/>
+    </CButton>
+    <CButton id="BPM_Ravasaur">
+        <Icon value="Assets\Textures\btn-unit-collection-primal-Ravasaur.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-collection-primal-Ravasaur.dds"/>
+        <Name value="Button/Name/BPM_Ravasaur"/>
+        <Tooltip value="Button/Tooltip/BPM_Ravasaur"/>
+        <Hotkey value="Button/Hotkey/BPM_Ravasaur"/>
+        <HotkeyAlias value=""/>
+        <EditorCategories value="Race:Zerg"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="BPM_LarvaTrainRavasaur,Train1"/>
+    </CButton>
+    <CButton id="BPM_Aberration">
+        <Icon value="Assets\Textures\btn-unit-zerg-aberration.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-zerg-aberration.dds"/>
+        <Name value="Button/Name/BPM_Aberration"/>
+        <Tooltip value="Button/Tooltip/BPM_Aberration"/>
+        <Hotkey value="Button/Hotkey/BPM_Aberration"/>
+        <HotkeyAlias value=""/>
+        <EditorCategories value="Race:Zerg"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="BPM_LarvaTrainAberration,Train1"/>
+    </CButton>
+    <CButton id="BPM_Ravager">
+        <Icon value="Assets\Textures\btn-unit-zerg-ravager.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-zerg-ravager.dds"/>
+        <Name value="Button/Name/BPM_Ravager"/>
+        <Tooltip value="Button/Tooltip/BPM_Ravager"/>
+        <Hotkey value="Button/Hotkey/BPM_Ravager"/>
+        <HotkeyAlias value=""/>
+        <EditorCategories value="Race:Zerg"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="BPM_LarvaTrainRavager,Train1"/>
+    </CButton>
+    <CButton id="MorphToRavager" parent="BPM_Ravager"/>
+    <CButton id="BPM_Defiler">
+        <Icon value="Assets\Textures\btn-unit-zerg-defiler@scbw.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-zerg-defiler@scbw.dds"/>
+        <Name value="Button/Name/BPM_Defiler"/>
+        <Tooltip value="Button/Tooltip/BPM_Defiler"/>
+        <Hotkey value="Button/Hotkey/BPM_Defiler"/>
+        <HotkeyAlias value=""/>
+        <EditorCategories value="Race:Zerg"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="BPM_LarvaTrainDefiler,Train1"/>
+    </CButton>
+    <CButton id="BPM_Tyrannozor">
+        <Icon value="Assets\Textures\btn-unit-collection-primal-Tyrannozor.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-collection-primal-Tyrannozor.dds"/>
+        <Name value="Button/Name/BPM_Tyrannozor"/>
+        <Tooltip value="Button/Tooltip/BPM_Tyrannozor"/>
+        <Hotkey value="Button/Hotkey/BPM_Tyrannozor"/>
+        <HotkeyAlias value=""/>
+        <EditorCategories value="Race:Zerg"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="BPM_LarvaTrainTyrannozor,Train1"/>
+    </CButton>
+    <CButton id="GuardianMP">
+        <Icon value="Assets\Textures\btn-unit-zerg-primalguardian.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-zerg-primalguardian.dds"/>
+        <Name value="Button/Name/BPM_GuardianMP"/>
+        <Tooltip value="Button/Tooltip/BPM_GuardianMP"/>
+        <Hotkey value="Button/Hotkey/BPM_GuardianMP"/>
+        <HotkeyAlias value=""/>
+        <EditorCategories value="Race:Zerg"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="MorphToGuardianMP,Execute"/>
+    </CButton>
+    <CButton id="BPM_EvolveRavasaurVolatileSpines">
+        <Icon value="Assets\Textures\btn-upgrade-zerg-hotsgroovedspines.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-zerg-hotsgroovedspines.dds"/>
+        <Name value="Button/Name/BPM_EvolveRavasaurVolatileSpines"/>
+        <Tooltip value="Button/Tooltip/BPM_EvolveRavasaurVolatileSpines"/>
+        <Hotkey value="Button/Hotkey/BPM_EvolveRavasaurVolatileSpines"/>
+        <HotkeyAlias value=""/>
+        <EditorCategories value="Race:Zerg"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="RoachWarrenResearch,Research20"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="BPM_GoliathRange">
+        <Icon value="Assets\Textures\btn-upgrade-terran-charonboosters@scbw.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-terran-charonboosters@scbw.dds"/>
+        <Name value="Button/Name/BPM_GoliathRange"/>
+        <Tooltip value="Button/Tooltip/BPM_GoliathRange"/>
+        <EditorCategories value="Race:Terran"/>
+        <Universal value="1"/>
+        <Hotkey value="Button/Hotkey/BPM_GoliathRange"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="FactoryTechLabResearch,Research20"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="BPM_DragoonRange">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-singularitycharge@scbw.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-protoss-singularitycharge@scbw.dds"/>
+        <Name value="Button/Name/BPM_DragoonRange"/>
+        <Tooltip value="Button/Tooltip/BPM_DragoonRange"/>
+        <Hotkey value="Button/Hotkey/BPM_DragoonRange"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="CyberneticsCoreResearch,Research20"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="BPM_ReaverDamage">
+        <Icon value="Assets\Textures\ClassicIcons\SC1_ProtossScarabDamage.dds"/>
+        <AlertIcon value="Assets\Textures\ClassicIcons\SC1_ProtossScarabDamage.dds"/>
+        <Name value="Button/Name/BPM_ReaverDamage"/>
+        <Tooltip value="Button/Tooltip/BPM_ReaverDamage"/>
+        <Hotkey value="Button/Hotkey/BPM_ReaverDamage"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="RoboticsBayResearch,Research20"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="BPM_ReaverHangar">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-increasedscarabcapacity@scbw.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-protoss-increasedscarabcapacity@scbw.dds"/>
+        <Name value="Button/Name/BPM_ReaverHangar"/>
+        <Tooltip value="Button/Tooltip/BPM_ReaverHangar"/>
+        <Hotkey value="Button/Hotkey/BPM_ReaverHangar"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="RoboticsBayResearch,Research21"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="BPM_ScoutSight">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-apialsensors@scbw.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-protoss-apialsensors@scbw.dds"/>
+        <Name value="Button/Name/BPM_ScoutSight"/>
+        <Tooltip value="Button/Tooltip/BPM_ScoutSight"/>
+        <Hotkey value="Button/Hotkey/BPM_ScoutSight"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="FleetBeaconResearch,Research20"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="BPM_ScoutSpeed">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-graviticthrusters@scbw.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-protoss-graviticthrusters@scbw.dds"/>
+        <Name value="Button/Name/BPM_ScoutSpeed"/>
+        <Tooltip value="Button/Tooltip/BPM_ScoutSpeed"/>
+        <Hotkey value="Button/Hotkey/BPM_ScoutSpeed"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="FleetBeaconResearch,Research21"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="BPM_WraithEnergy">
+        <Icon value="Assets\Textures\btn-upgrade-terran-apolloreactor@scbw.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-terran-apolloreactor@scbw.dds"/>
+        <Name value="Button/Name/BPM_WraithEnergy"/>
+        <Tooltip value="Button/Tooltip/BPM_WraithEnergy"/>
+        <Hotkey value="Button/Hotkey/BPM_WraithEnergy"/>
+        <EditorCategories value="Race:Terran"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="StarportTechLabResearch,Research20"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="BPM_WraithCloak">
+        <Icon value="Assets\Textures\btn-upgrade-terran-cloakingfield@scbw.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-terran-cloakingfield@scbw.dds"/>
+        <Name value="Button/Name/BPM_WraithCloak"/>
+        <Tooltip value="Button/Tooltip/BPM_WraithCloak"/>
+        <Hotkey value="Button/Hotkey/BPM_WraithCloak"/>
+        <EditorCategories value="Race:Terran"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="StarportTechLabResearch,Research21"/>
+    </CButton>
+    <CButton id="BPM_QueenEnergy">
+        <Icon value="Assets\Textures\btn-upgrade-zerg-gametemeiosis@scbw.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-zerg-gametemeiosis@scbw.dds"/>
+        <Name value="Button/Name/BPM_QueenEnergy"/>
+        <Tooltip value="Button/Tooltip/BPM_QueenEnergy"/>
+        <Hotkey value="Button/Hotkey/BPM_QueenEnergy"/>
+        <EditorCategories value="Race:Zerg"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="InfestationPitResearch,Research20"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <!-- ArmoryResearch is a patch over a pre-existing stock ability id.
+         Confirmed in-game: engine auto cost/time display resolves to a
+         wrong/stale value here (unlike the BPM_-only Research20+ slots
+         elsewhere in this file), so keep ShowResources/ShowTime off and
+         rely on the manual hardcoded text in GameStrings.txt instead. -->
+    <CButton id="TerranVehicleWeaponsLevel1">
+        <Icon value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel1.dds"/>
+        <Name value="Button/Name/TerranVehicleWeaponsLevel1"/>
+        <Tooltip value="Button/Tooltip/TerranVehicleWeaponsLevel1"/>
+        <Hotkey value="Button/Hotkey/TerranVehicleWeaponsLevel1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="ArmoryResearch,Research6"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="TerranVehicleWeaponsLevel2">
+        <Icon value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel2.dds"/>
+        <Name value="Button/Name/TerranVehicleWeaponsLevel2"/>
+        <Tooltip value="Button/Tooltip/TerranVehicleWeaponsLevel2"/>
+        <Hotkey value="Button/Hotkey/TerranVehicleWeaponsLevel2"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="ArmoryResearch,Research7"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="TerranVehicleWeaponsLevel3">
+        <Icon value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel3.dds"/>
+        <Name value="Button/Name/TerranVehicleWeaponsLevel3"/>
+        <Tooltip value="Button/Tooltip/TerranVehicleWeaponsLevel3"/>
+        <Hotkey value="Button/Hotkey/TerranVehicleWeaponsLevel3"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="ArmoryResearch,Research8"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="TerranShipWeaponsLevel1">
+        <Icon value="Assets\Textures\btn-upgrade-terran-shipweaponslevel1.dds"/>
+        <Name value="Button/Name/TerranShipWeaponsLevel1"/>
+        <Tooltip value="Button/Tooltip/TerranShipWeaponsLevel1"/>
+        <Hotkey value="Button/Hotkey/TerranShipWeaponsLevel1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="ArmoryResearch,Research12"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="TerranShipWeaponsLevel2">
+        <Icon value="Assets\Textures\btn-upgrade-terran-shipweaponslevel2.dds"/>
+        <Name value="Button/Name/TerranShipWeaponsLevel2"/>
+        <Tooltip value="Button/Tooltip/TerranShipWeaponsLevel2"/>
+        <Hotkey value="Button/Hotkey/TerranShipWeaponsLevel2"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="ArmoryResearch,Research13"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="TerranShipWeaponsLevel3">
+        <Icon value="Assets\Textures\btn-upgrade-terran-shipweaponslevel3.dds"/>
+        <Name value="Button/Name/TerranShipWeaponsLevel3"/>
+        <Tooltip value="Button/Tooltip/TerranShipWeaponsLevel3"/>
+        <Hotkey value="Button/Hotkey/TerranShipWeaponsLevel3"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="ArmoryResearch,Research14"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="TerranVehicleAndShipArmorsLevel1">
+        <Icon value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel1.dds"/>
+        <Name value="Button/Name/TerranVehicleAndShipArmorsLevel1"/>
+        <Tooltip value="Button/Tooltip/TerranVehicleAndShipArmorsLevel1"/>
+        <Hotkey value="Button/Hotkey/TerranVehicleAndShipArmorsLevel1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="ArmoryResearch,Research15"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="TerranVehicleAndShipArmorsLevel2">
+        <Icon value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel2.dds"/>
+        <Name value="Button/Name/TerranVehicleAndShipArmorsLevel2"/>
+        <Tooltip value="Button/Tooltip/TerranVehicleAndShipArmorsLevel2"/>
+        <Hotkey value="Button/Hotkey/TerranVehicleAndShipArmorsLevel2"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="ArmoryResearch,Research16"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="TerranVehicleAndShipArmorsLevel3">
+        <Icon value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel3.dds"/>
+        <Name value="Button/Name/TerranVehicleAndShipArmorsLevel3"/>
+        <Tooltip value="Button/Tooltip/TerranVehicleAndShipArmorsLevel3"/>
+        <Hotkey value="Button/Hotkey/TerranVehicleAndShipArmorsLevel3"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="ArmoryResearch,Research17"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="BPM_ArbiterStasisField">
+        <Icon value="Assets\Textures\ClassicIcons\SC1_ProtossArbiterStasisField.dds"/>
+        <AlertIcon value="Assets\Textures\ClassicIcons\SC1_ProtossArbiterStasisField.dds"/>
+        <Name value="Button/Name/BPM_ArbiterStasisField"/>
+        <Tooltip value="Button/Tooltip/BPM_ArbiterStasisField"/>
+        <Hotkey value="Button/Hotkey/BPM_ArbiterStasisField"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="FleetBeaconResearch,Research22"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="BPM_ArbiterRecall">
+        <Icon value="Assets\Textures\ClassicIcons\SC1_ProtossArbiterRecall.dds"/>
+        <AlertIcon value="Assets\Textures\ClassicIcons\SC1_ProtossArbiterRecall.dds"/>
+        <Name value="Button/Name/BPM_ArbiterRecall"/>
+        <Tooltip value="Button/Tooltip/BPM_ArbiterRecall"/>
+        <Hotkey value="Button/Hotkey/BPM_ArbiterRecall"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="FleetBeaconResearch,Research23"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="Transfusion">
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="BPM_Energizer">
+        <Icon value="Assets\Textures\btn-unit-protoss-sentry-purifier.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-protoss-sentry-purifier.dds"/>
+        <Name value="Button/Name/BPM_Energizer"/>
+        <Tooltip value="Button/Tooltip/BPM_Energizer"/>
+        <Hotkey value="Button/Hotkey/BPM_Energizer"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="BPM_GatewayTrainEnergizer,Train1"/>
+    </CButton>
+    <CButton id="BPM_WarpInEnergizer">
+        <Icon value="Assets\Textures\btn-unit-protoss-sentry-purifier.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-protoss-sentry-purifier.dds"/>
+        <Name value="Button/Name/BPM_WarpInEnergizer"/>
+        <Tooltip value="Button/Tooltip/BPM_WarpInEnergizer"/>
+        <Hotkey value="Button/Hotkey/BPM_WarpInEnergizer"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="WarpGateTrain,Train15"/>
+    </CButton>
+    <CButton id="BPM_EnergizerTimeShield">
+        <Icon value="Assets\Textures\btn-ability-protoss-chronoboost.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-chronoboost.dds"/>
+        <Name value="Button/Name/BPM_EnergizerTimeShield"/>
+        <Tooltip value="Button/Tooltip/BPM_EnergizerTimeShield"/>
+        <Hotkey value="Button/Hotkey/BPM_EnergizerTimeShield"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Universal value="1"/>
+    </CButton>
+    <CButton id="BPM_EnergizerTimeShieldOff">
+        <Icon value="Assets\Textures\btn-ability-protoss-chronoboost.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-chronoboost.dds"/>
+        <Name value="Button/Name/BPM_EnergizerTimeShieldOff"/>
+        <Tooltip value="Button/Tooltip/BPM_EnergizerTimeShieldOff"/>
+        <Hotkey value="Button/Hotkey/BPM_EnergizerTimeShieldOff"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Universal value="1"/>
+    </CButton>
+    <CButton id="BPM_EnergizerPhasingMode">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-graviticthrusters@scbw.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-protoss-graviticthrusters@scbw.dds"/>
+        <Name value="Button/Name/BPM_EnergizerPhasingMode"/>
+        <Tooltip value="Button/Tooltip/BPM_EnergizerPhasingMode"/>
+        <Hotkey value="Button/Hotkey/BPM_EnergizerPhasingMode"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Universal value="1"/>
+    </CButton>
+    <CButton id="BPM_EnergizerPhasingModeTransport">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-apialsensors@scbw.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-protoss-apialsensors@scbw.dds"/>
+        <Name value="Button/Name/BPM_EnergizerPhasingModeTransport"/>
+        <Tooltip value="Button/Tooltip/BPM_EnergizerPhasingModeTransport"/>
+        <Hotkey value="Button/Hotkey/BPM_EnergizerPhasingModeTransport"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Universal value="1"/>
+    </CButton>
+
+
+
+    <CButton id="BPM_ResearchEnergizerPhasingMode">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-graviticthrusters@scbw.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-protoss-graviticthrusters@scbw.dds"/>
+        <Name value="Button/Name/BPM_ResearchEnergizerPhasingMode"/>
+        <Tooltip value="Button/Tooltip/BPM_ResearchEnergizerPhasingMode"/>
+        <Hotkey value="Button/Hotkey/BPM_ResearchEnergizerPhasingMode"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="TwilightCouncilResearch,Research20"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <!-- TwilightCouncilResearch,Research1-3 are re-declared stock indices
+         (see BPM_ResearchEnergizerPhasingMode's Research20 in the same
+         ability for the safe/new-index counterpart). Same risk class as
+         ArmoryResearch above: force auto display off and keep the manual
+         hardcoded cost text in GameStrings.txt. -->
+    <CButton id="ResearchCharge">
+        <Icon value="Assets\Textures\btn-ability-protoss-charge-color.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-charge-color.dds"/>
+        <Name value="Button/Name/ResearchCharge"/>
+        <Tooltip value="Button/Tooltip/ResearchCharge"/>
+        <Hotkey value="Button/Hotkey/ResearchCharge"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="TwilightCouncilResearch,Research1"/>
+    </CButton>
+    <CButton id="ResearchBlink">
+        <Icon value="Assets\Textures\btn-ability-protoss-blink-color.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-blink-color.dds"/>
+        <Name value="Button/Name/ResearchBlink"/>
+        <Tooltip value="Button/Tooltip/ResearchBlink"/>
+        <Hotkey value="Button/Hotkey/ResearchBlink"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="TwilightCouncilResearch,Research2"/>
+    </CButton>
+    <CButton id="ResearchAdeptResonatingGlaives">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-resonatingglaives-orange.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-protoss-resonatingglaives-orange.dds"/>
+        <Name value="Button/Name/ResearchAdeptResonatingGlaives"/>
+        <Tooltip value="Button/Tooltip/ResearchAdeptResonatingGlaives"/>
+        <Hotkey value="Button/Hotkey/ResearchAdeptResonatingGlaives"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="TwilightCouncilResearch,Research3"/>
+    </CButton>
+    <CButton id="BPM_RavenRepairDrone">
+        <Icon value="Assets\Textures\btn-unit-terran-targetingdrone.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-terran-targetingdrone.dds"/>
+        <Name value="Button/Name/BPM_RavenRepairDrone"/>
+        <Tooltip value="Button/Tooltip/BPM_RavenRepairDrone"/>
+        <Hotkey value="Button/Hotkey/BPM_RavenRepairDrone"/>
+        <HotkeyAlias value="BPM_RavenRepairDrone"/>
+        <EditorCategories value="Race:Terran"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowUsage" value="1"/>
+    </CButton>
+    <CButton id="BPM_RepairDroneHeal">
+        <Icon value="Assets\Textures\btn-ability-terran-heal-color.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-terran-heal-color.dds"/>
+        <Name value="Button/Name/BPM_RepairDroneHeal"/>
+        <Tooltip value="Button/Tooltip/BPM_RepairDroneHeal"/>
+        <Hotkey value="Button/Hotkey/BPM_RepairDroneHeal"/>
+        <HotkeyAlias value="BPM_RepairDroneHeal"/>
+        <EditorCategories value="Race:Terran"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowUsage" value="1"/>
+    </CButton>
+    <CButton id="RavenScramblerMissile">
+        <Icon value="Assets\Textures\btn-upgrade-terran-interferencematrix.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-terran-interferencematrix.dds"/>
+        <Name value="Button/Name/RavenScramblerMissile"/>
+        <Tooltip value="Button/Tooltip/RavenScramblerMissile"/>
+        <Hotkey value="Button/Hotkey/RavenScramblerMissile"/>
+        <EditorCategories value="Race:Terran"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowUsage" value="1"/>
+    </CButton>
+    <!-- VoidMulti leaves these stock Viper button icons unresolved when the
+         command card is rebuilt by an extension mod. -->
+    <CButton id="Yoink">
+        <Icon value="Assets\Textures\btn-ability-zerg-abduct.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-zerg-abduct.dds"/>
+        <Name value="Button/Name/Yoink"/>
+        <Tooltip value="Button/Tooltip/Yoink"/>
+        <Hotkey value="Button/Hotkey/Yoink"/>
+        <EditorCategories value="Race:Zerg"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowUsage" value="1"/>
+    </CButton>
+    <CButton id="ViperConsumeStructure">
+        <Icon value="Assets\Textures\btn-ability-zerg-consume.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-zerg-consume.dds"/>
+        <Name value="Button/Name/ViperConsumeStructure"/>
+        <Tooltip value="Button/Tooltip/ViperConsumeStructure"/>
+        <Hotkey value="Button/Hotkey/ViperConsumeStructure"/>
+        <EditorCategories value="Race:Zerg"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowUsage" value="1"/>
+    </CButton>
+    <CButton id="BPM_CorsairDisruptionWeb">
+        <Icon value="Assets\Textures\btn-ability-protoss-disruptionweb.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-disruptionweb.dds"/>
+        <Name value="Button/Name/BPM_CorsairDisruptionWeb"/>
+        <Tooltip value="Button/Tooltip/BPM_CorsairDisruptionWeb"/>
+        <Hotkey value="Button/Hotkey/BPM_CorsairDisruptionWeb"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowUsage" value="1"/>
+        <TooltipFlags index="ShowRequirements" value="1"/>
+    </CButton>
+    <CButton id="BPM_ResearchCorsairDisruptionWeb">
+        <Icon value="Assets\Textures\btn-ability-protoss-disruptionweb.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-disruptionweb.dds"/>
+        <Name value="Button/Name/BPM_ResearchCorsairDisruptionWeb"/>
+        <Tooltip value="Button/Tooltip/BPM_ResearchCorsairDisruptionWeb"/>
+        <Hotkey value="Button/Hotkey/BPM_ResearchCorsairDisruptionWeb"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="CyberneticsCoreResearch,Research21"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <!-- Defiler spell buttons are declared locally so their classic icons and
+         hotkeys do not depend on the campaign button records. -->
+    <CButton id="DefilerMPDarkSwarm">
+        <Icon value="Assets\Textures\btn-ability-zerg-darkswarmattack.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-zerg-darkswarmattack.dds"/>
+        <Name value="Button/Name/DefilerMPDarkSwarm"/>
+        <Tooltip value="Button/Tooltip/DefilerMPDarkSwarm"/>
+        <Hotkey value="Button/Hotkey/DefilerMPDarkSwarm"/>
+        <HotkeyAlias value="DefilerMPDarkSwarm"/>
+        <EditorCategories value="Race:Zerg"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowUsage" value="1"/>
+    </CButton>
+    <CButton id="DefilerMPPlague">
+        <Icon value="Assets\Textures\btn-ability-zerg-plague@scbw.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-zerg-plague@scbw.dds"/>
+        <Name value="Button/Name/DefilerMPPlague"/>
+        <Tooltip value="Button/Tooltip/DefilerMPPlague"/>
+        <Hotkey value="Button/Hotkey/DefilerMPPlague"/>
+        <HotkeyAlias value="DefilerMPPlague"/>
+        <EditorCategories value="Race:Zerg"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowUsage" value="1"/>
+    </CButton>
+    <CButton id="BPM_ResearchDefilerConsume">
+        <Icon value="Assets\Textures\btn-ability-zerg-defilerconsume@scbw.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-zerg-defilerconsume@scbw.dds"/>
+        <Name value="Button/Name/BPM_ResearchDefilerConsume"/>
+        <Tooltip value="Button/Tooltip/BPM_ResearchDefilerConsume"/>
+        <Hotkey value="Button/Hotkey/BPM_ResearchDefilerConsume"/>
+        <EditorCategories value="Race:Zerg"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="BPM_DefilerMoundResearch,Research2"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="BPM_ResearchDefilerPlague">
+        <Icon value="Assets\Textures\btn-ability-zerg-plague@scbw.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-zerg-plague@scbw.dds"/>
+        <Name value="Button/Name/BPM_ResearchDefilerPlague"/>
+        <Tooltip value="Button/Tooltip/BPM_ResearchDefilerPlague"/>
+        <Hotkey value="Button/Hotkey/BPM_ResearchDefilerPlague"/>
+        <EditorCategories value="Race:Zerg"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="BPM_DefilerMoundResearch,Research1"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="BPM_ResearchDefilerEnergy">
+        <Icon value="Assets\Textures\btn-upgrade-zerg-metasynapticnode@scbw.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-zerg-metasynapticnode@scbw.dds"/>
+        <Name value="Button/Name/BPM_ResearchDefilerEnergy"/>
+        <Tooltip value="Button/Tooltip/BPM_ResearchDefilerEnergy"/>
+        <Hotkey value="Button/Hotkey/BPM_ResearchDefilerEnergy"/>
+        <EditorCategories value="Race:Zerg"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="BPM_DefilerMoundResearch,Research3"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="BPM_DefilerMound">
+        <Icon value="Assets\Textures\btn-building-zerg-defilermound@scbw.dds"/>
+        <AlertIcon value="Assets\Textures\btn-building-zerg-defilermound@scbw.dds"/>
+        <DefaultButtonLayout Row="1" Column="3"/>
+        <Name value="Button/Name/BPM_DefilerMound"/>
+        <Tooltip value="Button/Tooltip/BPM_DefilerMound"/>
+        <Hotkey value="Button/Hotkey/BPM_DefilerMound"/>
+        <EditorCategories value="Race:Zerg"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="ZergBuild,Build22"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="BPM_DefilerConsume">
+        <Icon value="Assets\Textures\btn-ability-zerg-defilerconsume@scbw.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-zerg-defilerconsume@scbw.dds"/>
+        <Name value="Button/Name/BPM_DefilerConsume"/>
+        <Tooltip value="Button/Tooltip/BPM_DefilerConsume"/>
+        <Hotkey value="Button/Hotkey/BPM_DefilerConsume"/>
+        <EditorCategories value="Race:Zerg"/>
+        <Universal value="1"/>
+    </CButton>
+    <!-- v1.4.3 balance: fix QueenClassic's Ensnare/Spawn Broodlings command
+         card labels, which were inheriting the wrong stock icons (Fungal
+         Growth's and Swarm Host's respectively) with no name/tooltip of
+         their own. Icon paths match SC Evo Complete's choices for these
+         same abilities: a custom SC1-style classic icon for Ensnare
+         (copied locally to Assets\Textures\ClassicIcons), and the stock
+         Locust unit icon for Spawn Broodlings (already available via the
+         Swarm/Void dependencies, no local copy needed). -->
+    <CButton id="QueenMPEnsnare">
+        <Icon value="Assets\Textures\ClassicIcons\SC1_ZergEnsnare.dds"/>
+        <AlertIcon value="Assets\Textures\ClassicIcons\SC1_ZergEnsnare.dds"/>
+        <Name value="Button/Name/QueenMPEnsnare"/>
+        <Tooltip value="Button/Tooltip/QueenMPEnsnare"/>
+        <Hotkey value="Button/Hotkey/QueenMPEnsnare"/>
+        <HotkeyAlias value="QueenMPEnsnare"/>
+    </CButton>
+    <CButton id="QueenMPSpawnBroodlings">
+        <Icon value="Assets\Textures\btn-unit-zerg-locust.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-zerg-locust.dds"/>
+        <Name value="Button/Name/QueenMPSpawnBroodlings"/>
+        <Tooltip value="Button/Tooltip/QueenMPSpawnBroodlings"/>
+        <Hotkey value="Button/Hotkey/QueenMPSpawnBroodlings"/>
+        <HotkeyAlias value="QueenMPSpawnBroodlings"/>
+    </CButton>
+    <!-- v1.4.3 balance: Raven Integrated Fire Control Network -->
+    <CButton id="BPM_RavenFireControlNetwork">
+        <Icon value="Assets\Textures\btn-ability-terran-firecontrolnetwork.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-terran-firecontrolnetwork.dds"/>
+        <Name value="Button/Name/BPM_RavenFireControlNetwork"/>
+        <Tooltip value="Button/Tooltip/BPM_RavenFireControlNetwork"/>
+        <Hotkey value="Button/Hotkey/BPM_RavenFireControlNetwork"/>
+        <HotkeyAlias value="BPM_RavenFireControlNetwork"/>
+        <EditorCategories value="Race:Terran"/>
+        <Universal value="1"/>
+    </CButton>
+    <CButton id="BPM_ResearchRavenFireControlNetwork">
+        <Icon value="Assets\Textures\btn-ability-terran-firecontrolnetwork.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-terran-firecontrolnetwork.dds"/>
+        <Name value="Button/Name/BPM_ResearchRavenFireControlNetwork"/>
+        <Tooltip value="Button/Tooltip/BPM_ResearchRavenFireControlNetwork"/>
+        <Hotkey value="Button/Hotkey/BPM_ResearchRavenFireControlNetwork"/>
+        <HotkeyAlias value="BPM_ResearchRavenFireControlNetwork"/>
+        <EditorCategories value="Race:Terran"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="StarportTechLabResearch,Research24"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <!-- v1.4.3 balance: Science Vessel Boost -->
+    <CButton id="BPM_ScienceVesselBoost">
+        <Icon value="Assets\Textures\btn-ability-terran-sciencevesselboost.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-terran-sciencevesselboost.dds"/>
+        <Name value="Button/Name/BPM_ScienceVesselBoost"/>
+        <Tooltip value="Button/Tooltip/BPM_ScienceVesselBoost"/>
+        <Hotkey value="Button/Hotkey/BPM_ScienceVesselBoost"/>
+        <HotkeyAlias value="BPM_ScienceVesselBoost"/>
+        <EditorCategories value="Race:Terran"/>
+        <Universal value="1"/>
+    </CButton>
+    <CButton id="BPM_ResearchScienceVesselBoost">
+        <Icon value="Assets\Textures\btn-ability-terran-sciencevesselboost.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-terran-sciencevesselboost.dds"/>
+        <Name value="Button/Name/BPM_ResearchScienceVesselBoost"/>
+        <Tooltip value="Button/Tooltip/BPM_ResearchScienceVesselBoost"/>
+        <Hotkey value="Button/Hotkey/BPM_ResearchScienceVesselBoost"/>
+        <HotkeyAlias value="BPM_ResearchScienceVesselBoost"/>
+        <EditorCategories value="Race:Terran"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="StarportTechLabResearch,Research25"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <!-- v1.4.3 balance: QueenClassic Parasite -->
+    <CButton id="BPM_QueenParasite">
+        <Icon value="Assets\Textures\btn-ability-zerg-parasite.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-zerg-parasite.dds"/>
+        <Name value="Button/Name/BPM_QueenParasite"/>
+        <Tooltip value="Button/Tooltip/BPM_QueenParasite"/>
+        <Hotkey value="Button/Hotkey/BPM_QueenParasite"/>
+        <HotkeyAlias value="BPM_QueenParasite"/>
+        <EditorCategories value="Race:Zerg"/>
+        <Universal value="1"/>
+    </CButton>
+    <!-- v1.4.3 balance: Barracks Tech Lab research buttons -->
+    <CButton id="BPM_MarauderShatterShells">
+        <Icon value="Assets\Textures\btn-upgrade-terran-shattershells.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-terran-shattershells.dds"/>
+        <Name value="Button/Name/BPM_MarauderShatterShells"/>
+        <Tooltip value="Button/Tooltip/BPM_MarauderShatterShells"/>
+        <Hotkey value="Button/Hotkey/BPM_MarauderShatterShells"/>
+        <HotkeyAlias value="BPM_MarauderShatterShells"/>
+        <EditorCategories value="Race:Terran"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="BarracksTechLabResearch,Research20"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="BPM_FirebatNapalmAmmo">
+        <Icon value="Assets\Textures\btn-upgrade-terran-napalmammo.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-terran-napalmammo.dds"/>
+        <Name value="Button/Name/BPM_FirebatNapalmAmmo"/>
+        <Tooltip value="Button/Tooltip/BPM_FirebatNapalmAmmo"/>
+        <Hotkey value="Button/Hotkey/BPM_FirebatNapalmAmmo"/>
+        <HotkeyAlias value="BPM_FirebatNapalmAmmo"/>
+        <EditorCategories value="Race:Terran"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="BarracksTechLabResearch,Research21"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="BPM_TerranInfantryHeavyArmor">
+        <Icon value="Assets\Textures\btn-upgrade-terran-infantryheavyarmor.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-terran-infantryheavyarmor.dds"/>
+        <Name value="Button/Name/BPM_TerranInfantryHeavyArmor"/>
+        <Tooltip value="Button/Tooltip/BPM_TerranInfantryHeavyArmor"/>
+        <Hotkey value="Button/Hotkey/BPM_TerranInfantryHeavyArmor"/>
+        <HotkeyAlias value="BPM_TerranInfantryHeavyArmor"/>
+        <EditorCategories value="Race:Terran"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="BarracksTechLabResearch,Research22"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <!-- v1.4.3 balance: Crucio Suppressor -->
+    <CButton id="BPM_CrucioSuppressor">
+        <Icon value="Assets\Textures\btn-upgrade-terran-cruciosuppressor.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-terran-cruciosuppressor.dds"/>
+        <Name value="Button/Name/BPM_CrucioSuppressor"/>
+        <Tooltip value="Button/Tooltip/BPM_CrucioSuppressor"/>
+        <Hotkey value="Button/Hotkey/BPM_CrucioSuppressor"/>
+        <HotkeyAlias value="BPM_CrucioSuppressor"/>
+        <EditorCategories value="Race:Terran"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="FactoryTechLabResearch,Research22"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <!-- v1.4.3 balance: Tyrannozor-only Primal Carapace evolution button -->
+    <CButton id="BPM_TerrorzorCarapace">
+        <Icon value="Assets\Textures\btn-upgrade-zerg-primalmolt.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-zerg-primalmolt.dds"/>
+        <Name value="Button/Name/BPM_TerrorzorCarapace"/>
+        <Tooltip value="Button/Tooltip/BPM_TerrorzorCarapace"/>
+        <Hotkey value="Button/Hotkey/BPM_TerrorzorCarapace"/>
+        <HotkeyAlias value="BPM_TerrorzorCarapace"/>
+        <EditorCategories value="Race:Zerg"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="BPM_UltraliskCavernResearchTyrannozor,Research1"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="BPM_ResearchAberrationSpeed">
+        <Icon value="Assets\Textures\btn-upgrade-zerg-anabolicsynthesis.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-zerg-anabolicsynthesis.dds"/>
+        <Name value="Button/Name/BPM_ResearchAberrationSpeed"/>
+        <Tooltip value="Button/Tooltip/BPM_ResearchAberrationSpeed"/>
+        <Hotkey value="Button/Hotkey/BPM_ResearchAberrationSpeed"/>
+        <HotkeyAlias value="BPM_ResearchAberrationSpeed"/>
+        <EditorCategories value="Race:Zerg"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="SpawningPoolResearch,Research20"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="BPM_ResearchEnergizerShields">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-shieldslevel1.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-protoss-shieldslevel1.dds"/>
+        <Name value="Button/Name/BPM_ResearchEnergizerShields"/>
+        <Tooltip value="Button/Tooltip/BPM_ResearchEnergizerShields"/>
+        <Hotkey value="Button/Hotkey/BPM_ResearchEnergizerShields"/>
+        <HotkeyAlias value="BPM_ResearchEnergizerShields"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Universal value="1"/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="BPM_TemplarArchiveResearch,Research1"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+    </CButton>
+    <CButton id="GasUIBtn">
+        <Icon value="Assets\Textures\btn-ability-terran-salvage.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-terran-salvage.dds"/>
+        <EditorCategories value="Race:Neutral"/>
+        <Universal value="1"/>
+    </CButton>
+    <CButton id="GasUIBtn2">
+        <Icon value="Assets\Textures\btn-ability-terran-salvage.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-terran-salvage.dds"/>
+        <EditorCategories value="Race:Neutral"/>
+        <Universal value="1"/>
+    </CButton>
+    <!-- Larva is a variable BanPick card: direct-production replacements can
+         appear in place of their normal prerequisites.  Give every possible
+         production face an explicit, globally unique hotkey. -->
+    <CButton id="LurkerMP">
+        <Hotkey value="Button/Hotkey/BPM_LarvaLurker"/>
+        <HotkeyAlias value=""/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="BPM_LarvaTrainLurker,Train1"/>
+    </CButton>
+    <CButton id="BroodLord">
+        <Hotkey value="Button/Hotkey/BPM_LarvaBroodLord"/>
+        <HotkeyAlias value=""/>
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="BPM_LarvaTrainBroodLord,Train1"/>
+    </CButton>
+    <CButton id="Marine">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="BarracksTrain,Train1"/>
+    </CButton>
+    <CButton id="Reaper">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="BarracksTrain,Train2"/>
+    </CButton>
+    <CButton id="Ghost">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="BarracksTrain,Train3"/>
+    </CButton>
+    <CButton id="Marauder">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="BarracksTrain,Train4"/>
+    </CButton>
+    <CButton id="VikingFighter">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="StarportTrain,Train5"/>
+    </CButton>
+    <CButton id="Medivac">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="StarportTrain,Train1"/>
+    </CButton>
+    <CButton id="Liberator">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="StarportTrain,Train7"/>
+    </CButton>
+    <CButton id="Banshee">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="StarportTrain,Train2"/>
+    </CButton>
+    <CButton id="Battlecruiser">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="StarportTrain,Train4"/>
+    </CButton>
+    <CButton id="Zealot">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="GatewayTrain,Train1"/>
+    </CButton>
+    <CButton id="ShieldBattery">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="ProtossBuild,Build16"/>
+    </CButton>
+    <CButton id="TwilightCouncil">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="ProtossBuild,Build7"/>
+    </CButton>
+    <CButton id="Stargate">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="ProtossBuild,Build10"/>
+    </CButton>
+    <CButton id="RoboticsFacility">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="ProtossBuild,Build14"/>
+    </CButton>
+    <CButton id="TemplarArchive">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="ProtossBuild,Build11"/>
+    </CButton>
+    <CButton id="FleetBeacon">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="ProtossBuild,Build6"/>
+    </CButton>
+    <CButton id="RoboticsBay">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="ProtossBuild,Build13"/>
+    </CButton>
+    <CButton id="DarkShrine">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="ProtossBuild,Build12"/>
+    </CButton>
+    <CButton id="Oracle">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="StargateTrain,Train9"/>
+    </CButton>
+    <CButton id="Queen">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="TrainQueen,Train1"/>
+    </CButton>
+    <CButton id="overlordspeed">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="LairResearch,Research2"/>
+    </CButton>
+    <CButton id="ResearchBurrow">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="LairResearch,Research4"/>
+    </CButton>
+    <CButton id="BuildCreepTumor">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="QueenBuild,Build1"/>
+    </CButton>
+    <CButton id="WarpPrism">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="RoboticsFacilityTrain,Train1"/>
+    </CButton>
+    <CButton id="Observer">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="RoboticsFacilityTrain,Train2"/>
+    </CButton>
+    <CButton id="Immortal">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="RoboticsFacilityTrain,Train4"/>
+    </CButton>
+    <CButton id="ResearchWarpGate">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="CyberneticsCoreResearch,Research7"/>
+    </CButton>
+    <CButton id="ResearchGraviticDrive">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+        <TooltipTimeOverrideAbilCmd AbilCmd="RoboticsBayResearch,Research3"/>
+    </CButton>
+    <CButton id="SCV">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="Probe">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="Mothership">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="CommandCenter">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="SupplyDepot">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="Refinery">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="Barracks">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="EngineeringBay">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="MissileTurret">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="Bunker">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="SensorTower">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="GhostAcademy">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="Factory">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="Starport">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="Armory">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="FusionCore">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="BuildTechLabBarracks">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="BuildReactorBarracks">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="BuildTechLabFactory">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="BuildReactorFactory">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="BuildTechLabStarport">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="BuildReactorStarport">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="Nexus">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="Pylon">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="Assimilator">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="Gateway">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="Forge">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="CyberneticsCore">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="PhotonCannon">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="Hatchery">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="Extractor">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="SpawningPool">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="EvolutionChamber">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="RoachWarren">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="BanelingNest">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="SpineCrawler">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="SporeCrawler">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="HydraliskDen">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="LurkerDenMP">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="InfestationPit">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="Spire">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="NydusNetwork">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+    <CButton id="UltraliskCavern">
+        <TooltipFlags index="ShowResources" value="0"/>
+        <TooltipFlags index="ShowSupply" value="0"/>
+        <TooltipFlags index="ShowUsage" value="0"/>
+        <TooltipFlags index="ShowTime" value="0"/>
+        <TooltipFlags index="ShowRequirements" value="0"/>
+    </CButton>
+</Catalog>

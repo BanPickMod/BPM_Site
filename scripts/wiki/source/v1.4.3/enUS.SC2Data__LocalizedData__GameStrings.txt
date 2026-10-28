@@ -1,0 +1,316 @@
+﻿Abil/Name/BPM_ScienceVesselDefensiveMatrix=디펜시브 매트릭스
+Abil/Name/BPM_ScienceVesselLockdown=락다운 미사일
+Attribute001/Name=BPM Unit Pool
+Attribute001/Value001/Name=Void Standard
+Attribute001/Value002/Name=Campaign + Star1
+Attribute002/Name=BPM Ban Count
+Attribute002/Value001/Name=0 bans
+Attribute002/Value002/Name=1 ban
+Attribute002/Value003/Name=3 bans
+Attribute002/Value004/Name=5 bans
+Attribute003/Name=BPM Shadow Ban
+Attribute003/Value001/Name=Off
+Attribute003/Value002/Name=On
+Attribute004/Name=BPM Observer Reveal
+Attribute004/Value001/Name=Player View
+Attribute004/Value002/Name=Tournament Reveal
+Attribute005/Name=BPM Referee Slot
+Attribute005/Value001/Name=No Referee
+Attribute005/Value002/Name=Player 3 Referee
+Attribute006/Name=BPM Ban Units
+Attribute006/Value001/Name=Off
+Attribute006/Value002/Name=On
+Attribute007/Name=BPM Convenience
+Attribute007/Value001/Name=Off
+Attribute007/Value002/Name=On
+Attribute008/Name=BAN Option
+Attribute008/Value001/Name=Standard
+Attribute008/Value002/Name=Snake
+Behavior/Name/BPM_EnergizerTimeShield=시간 방패
+Behavior/Name/BPM_EnergizerTimeShield@Buff=시간 방패 (가속)
+Behavior/Name/BPM_EnergizerTimeShield@Debuff=시간 방패 (둔화)
+Behavior/Name/BPM_QueenParasite=파라사이트
+Behavior/Name/BPM_RavenFireControlMark=Fire Control Network Target
+Behavior/Name/BPM_ScienceVesselDefensiveMatrix=디펜시브 매트릭스
+Behavior/Name/BPM_ScienceVesselLockdown=락다운
+Behavior/Tooltip/BPM_EnergizerTimeShield=시간 방패를 활성화하여 주변 유닛들의 속도를 조절합니다.
+Behavior/Tooltip/BPM_EnergizerTimeShield@Buff=동력기의 시간 방패 범위 안에 있어 이동 속도 및 공격 속도가 5% 증가합니다.
+Behavior/Tooltip/BPM_EnergizerTimeShield@Debuff=적 동력기의 시간 방패 범위 안에 있어 이동 속도 및 공격 속도가 5% 감소합니다.
+Behavior/Tooltip/BPM_QueenParasite=이 유닛은 파라사이트에 감염되었습니다. 상대 유닛의 시야를 지속적으로 드러냅니다.
+Behavior/Tooltip/BPM_RavenFireControlMark=Targeted by the Fire Control Network. Takes 20% increased damage.
+Behavior/Tooltip/BPM_ScienceVesselDefensiveMatrix=최대 16의 피해를 흡수합니다.
+Behavior/Tooltip/BPM_ScienceVesselLockdown=이 기계 유닛은 락다운되어 이동, 공격, 능력 사용이 봉쇄됩니다.
+Button/Name/BPM_Aberration=변형체 변태
+Button/Name/BPM_Arbiter=중재자 소환
+Button/Name/BPM_ArbiterRecall=리콜 연구
+Button/Name/BPM_ArbiterStasisField=스테이시스 필드 연구
+Button/Name/BPM_Corsair=해적선 생산
+Button/Name/BPM_CorsairDisruptionWeb=디스크럽션 웹
+Button/Name/BPM_CrucioSuppressor=크루시오 완충기
+Button/Name/BPM_Defiler=파멸충 변태
+Button/Name/BPM_DefilerConsume=흡수
+Button/Name/BPM_DefilerMound=디파일러 언덕 변태
+Button/Name/BPM_Dragoon=드라군 소환
+Button/Name/BPM_DragoonRange=특이점 장전 연구
+Button/Name/BPM_Energizer=동력기 소환
+Button/Name/BPM_EnergizerPhasingMode=위상 모드
+Button/Name/BPM_EnergizerPhasingModeTransport=기동 모드
+Button/Name/BPM_EnergizerTimeShield=시간 방패
+Button/Name/BPM_EnergizerTimeShieldOff=시간 방패 비활성화
+Button/Name/BPM_EvolveRavasaurVolatileSpines=돌기 수축 진화
+Button/Name/BPM_Firebat=파이어뱃 훈련
+Button/Name/BPM_FirebatNapalmAmmo=네이팜 탄창
+Button/Name/BPM_FirebatSCBWStimpack=전투 자극제
+Button/Name/BPM_GoliathRange=카론 증폭기
+Button/Name/BPM_GuardianMP=가디언으로 변태
+Button/Name/BPM_MarauderShatterShells=분쇄탄
+Button/Name/BPM_QueenClassic=퀸 변태
+Button/Name/BPM_QueenEnergy=배우체 분열 연구
+Button/Name/BPM_QueenParasite=파라사이트
+Button/Name/BPM_Ravager=궤멸충 변태
+Button/Name/BPM_Ravasaur=라바사우르스 변태
+Button/Name/BPM_RavenFireControlNetwork=통합 화력 관제망
+Button/Name/BPM_RavenRepairDrone=수리 비행정 배치
+Button/Name/BPM_Reaver=리버 소환
+Button/Name/BPM_ReaverDamage=갑충탄 공격력 업그레이드
+Button/Name/BPM_ReaverHangar=갑충탄 격납고 확장
+Button/Name/BPM_RepairDroneHeal=수리
+Button/Name/BPM_ResearchAberrationSpeed=다리 근육 보강 진화
+Button/Name/BPM_ResearchCorsairDisruptionWeb=디스크럽션 웹 연구
+Button/Name/BPM_ResearchDefilerConsume=흡수 연구
+Button/Name/BPM_ResearchDefilerEnergy=메타시냅스 결절 연구
+Button/Name/BPM_ResearchDefilerPlague=역병 연구
+Button/Name/BPM_ResearchEnergizerPhasingMode=위상 모드 활성화 연구
+Button/Name/BPM_ResearchEnergizerShields=보호막 과충전 연구
+Button/Name/BPM_ResearchRavenFireControlNetwork=통합 화력 관제망
+Button/Name/BPM_ResearchScienceVesselBoost=과학선 부스트
+Button/Name/BPM_ResearchScienceVesselDefensiveMatrix=디펜시브 매트릭스 연구
+Button/Name/BPM_ResearchScienceVesselLockdown=락다운 미사일 연구
+Button/Name/BPM_ScienceVessel=사이언스 베슬 생산
+Button/Name/BPM_ScienceVesselBoost=과학선 부스트
+Button/Name/BPM_ScienceVesselDefensiveMatrix=디펜시브 매트릭스
+Button/Name/BPM_ScienceVesselIrradiate=방사능 오염
+Button/Name/BPM_ScienceVesselLockdown=락다운 미사일
+Button/Name/BPM_Scout=스카웃 소환
+Button/Name/BPM_ScoutSight=에이피얼 탐지기 연구
+Button/Name/BPM_ScoutSpeed=중력 추진기 연구
+Button/Name/BPM_TerranInfantryHeavyArmor=보병 중장갑
+Button/Name/BPM_TerrorzorCarapace=원시 허물 진화
+Button/Name/BPM_Tyrannozor=티라노조르 변태
+Button/Name/BPM_WarHoundTornadoMissile=폭주 미사일 연구
+Button/Name/BPM_WarpInEnergizer=동력기 차원 소환
+Button/Name/BPM_Wraith=레이스 생산
+Button/Name/BPM_WraithCloak=은폐장 연구
+Button/Name/BPM_WraithEnergy=아폴로 반응로 연구
+Button/Name/DefilerMPDarkSwarm=다크 스웜
+Button/Name/DefilerMPPlague=역병
+Button/Name/Disruptor=분열기 생산
+Button/Name/GasUIBtn=일꾼 채워넣기
+Button/Name/GasUIBtn2=일꾼 채워넣기
+Button/Name/QueenMPEnsnare=인스네어
+Button/Name/QueenMPSpawnBroodlings=브루들링
+Button/Name/RavenScramblerMissile=방해 매트릭스
+Button/Name/ResearchAdeptResonatingGlaives=공명 파열포 연구
+Button/Name/ResearchBlink=점멸 연구
+Button/Name/ResearchCharge=돌진 연구
+Button/Name/TerranShipWeaponsLevel1=우주선 무기 1단계
+Button/Name/TerranShipWeaponsLevel2=우주선 무기 2단계
+Button/Name/TerranShipWeaponsLevel3=우주선 무기 3단계
+Button/Name/TerranVehicleAndShipArmorsLevel1=차량 및 우주선 장갑 1단계
+Button/Name/TerranVehicleAndShipArmorsLevel2=차량 및 우주선 장갑 2단계
+Button/Name/TerranVehicleAndShipArmorsLevel3=차량 및 우주선 장갑 3단계
+Button/Name/TerranVehicleWeaponsLevel1=차량 무기 1단계
+Button/Name/TerranVehicleWeaponsLevel2=차량 무기 2단계
+Button/Name/TerranVehicleWeaponsLevel3=차량 무기 3단계
+Button/Name/ViperConsumeStructure=흡수
+Button/Name/Yoink=납치
+Button/Tooltip/BPM_Aberration=강력한 중장갑 돌격 유닛입니다. 유닛을 뛰어넘어 이동할 수 있으며 중장갑 유닛에 큰 피해를 줍니다.
+Button/Tooltip/BPM_Arbiter=아군을 지원하고 전장을 통제하는 강력한 공중 사이오닉 유닛입니다.<n/><n/><c val="ffff80">지상 유닛 공격 가능</c>
+Button/Tooltip/BPM_ArbiterRecall=중재자가 지정한 위치의 아군 유닛들을 자신에게로 순간이동시키는 리콜 능력을 사용할 수 있게 합니다.
+Button/Tooltip/BPM_ArbiterStasisField=중재자가 대상을 정지 상태로 만들어 행동을 불능으로 만드는 스테이시스 필드 능력을 사용할 수 있게 합니다.
+Button/Tooltip/BPM_Corsair=중장갑 공중 전투기입니다. 디스크럽션 웹을 시전하여 지상 공격을 무력화할 수 있습니다.
+Button/Tooltip/BPM_CorsairDisruptionWeb=대상 지역에 디스크럽션 웹을 생성합니다. 영역 안의 적 지상 유닛과 구조물은 공격할 수 없습니다.
+Button/Tooltip/BPM_CrucioSuppressor=공성 모드에서 아군 유닛에 주는 직격 및 방사 피해 대미지가 75% 감소합니다.<n/><n/><c val="ffff80">무기고 필요</c>
+Button/Tooltip/BPM_Defiler=마법 지원 유닛입니다. 다크 스웜과 플레이그를 사용하여 전장을 장악합니다.
+Button/Tooltip/BPM_DefilerConsume=대상 아군 생체 유닛을 처치하고 파멸충의 에너지를 50 회복합니다.
+Button/Tooltip/BPM_DefilerMound=파멸충의 능력을 연구할 수 있는 건물입니다.<n/><n/>사용 가능:<n/>- 파멸충 변태 (애벌레)
+Button/Tooltip/BPM_Dragoon=아이어 프로토스의 원거리 돌격 유닛입니다. 중장갑 대상에게 안정적인 화력을 제공합니다.<n/><n/><c val="ffff80">지상 유닛 공격 가능</c>
+Button/Tooltip/BPM_DragoonRange=드라군의 사거리를 1만큼 증가시킵니다.
+Button/Tooltip/BPM_Energizer=아군을 강화하고 동력망을 투영할 수 있는 지원 유닛입니다.<n/><n/><c val="ffff80">지상 및 공중 유닛 공격 가능</c>
+Button/Tooltip/BPM_EnergizerPhasingMode=동력기를 위상 모드로 전환하여 주변에 동력장을 방출하고 차원 소환을 지원합니다. 활성화 시 최대 보호막의 50%를 소모하며, 초당 0.5의 보호막을 지속 소모합니다. 남은 보호막 비율에 따라 동력장 범위가 감소합니다. (위상 모드 활성화 연구 필요)
+Button/Tooltip/BPM_EnergizerPhasingModeTransport=동력기를 기동 모드로 전환하여 자유롭게 이동하고 보호막을 빠르게 재생성합니다.
+Button/Tooltip/BPM_EnergizerTimeShield=마나 50을 소모하여 활성화합니다. 범위 3.5 내 아군 유닛의 이동 및 공격 속도를 5% 증가시키고, 적 유닛의 이동 및 공격 속도를 5% 감소시키는 시간 오라를 생성합니다. (초당 마나 5 소모, 마나 0 도달 시 자동 비활성화)
+Button/Tooltip/BPM_EnergizerTimeShieldOff=시간 방패를 비활성화합니다.
+Button/Tooltip/BPM_EvolveRavasaurVolatileSpines=휘발성 돌기의 사거리가 1만큼 증가합니다.
+Button/Tooltip/BPM_Firebat=근거리에서 범위 피해를 주는 중장갑 보병입니다. 경장갑 지상 유닛에 효과적입니다.<n/><n/><c val="ffff80">지상 유닛 공격 가능</c>
+Button/Tooltip/BPM_FirebatNapalmAmmo=경장갑 대상 대미지가 5 증가하고, 파이어뱃의 공격 범위가 2 증가하며, 공격 딜레이가 감소합니다.
+Button/Tooltip/BPM_FirebatSCBWStimpack=생명력을 10 소모하여 이동 속도와 공격 속도를 17초 동안 크게 증가시킵니다.
+Button/Tooltip/BPM_GoliathRange=골리앗의 대공 미사일 사거리를 3만큼 증가시킵니다.
+Button/Tooltip/BPM_GuardianMP=장거리에서 지상 유닛을 공격하는 중장갑 공중 유닛입니다.<n/><n/><c val="ffff80">지상 유닛 공격 가능</c>
+Button/Tooltip/BPM_MarauderShatterShells=불곰의 충격탄이 1.5 범위 내의 적 유닛들을 둔화시킵니다.<n/><n/><c val="ffff80">충격탄 연구, 유령 사관학교 필요</c>
+Button/Tooltip/BPM_QueenClassic=적을 약화하고 제어하는 능력을 사용하는 공중 지원 유닛입니다.<n/><n/><c val="ffff80">공중 지원 유닛</c>
+Button/Tooltip/BPM_QueenEnergy=클래식 퀸의 최대 에너지를 50만큼 증가시키고, 초기 에너지를 50만큼 증가시킵니다.
+Button/Tooltip/BPM_QueenParasite=대상 유닛 하나에 기생충을 붙여 상대 유닛의 시야를 드러나게 합니다. 기생충 상태의 유닛은 부대에서 초록색으로 표기됩니다.<n/><n/><c val="ffff80">에너지 소모: 75</c>
+Button/Tooltip/BPM_Ravager=담즙을 발사하여 원거리의 지상 및 공중 목표물에 범위 피해를 줄 수 있는 중장갑 유닛입니다.<n/><n/><c val="ffff80">지상 및 공중(부식성 담즙) 공격 가능</c>
+Button/Tooltip/BPM_Ravasaur=산성 투사체로 지상 목표를 공격하는 원거리 유닛입니다. 점막 위에서 더 빠르게 이동합니다.<n/><n/><c val="ffff80">지상 유닛 공격 가능</c>
+Button/Tooltip/BPM_RavenFireControlNetwork=밤까마귀가 지정한 영역에 관제망을 펼칩니다. 관제망에 들어온 적 유닛 하나를 자동으로 타겟팅하고, 타겟팅 당한 유닛은 받는 피해가 20% 증가합니다. 이 능력은 장갑에 방해를 받지 않습니다. 범위로부터 사거리 2를 벗어나면 타겟팅이 해제됩니다.<n/><n/><c val="ffff80">에너지 소모: 50</c>
+Button/Tooltip/BPM_RavenRepairDrone=손상된 아군 기계 유닛과 구조물을 수리하는 수리 비행정을 배치합니다.<n/><n/>수리 비행정은 초당 13.6의 체력을 수리하며, 1의 에너지를 소모하여 1의 체력을 수리합니다.
+Button/Tooltip/BPM_Reaver=갑충탄을 생산하여 원거리의 지상 유닛에 강력한 범위 피해를 주는 공성 유닛입니다.<n/><n/><c val="ffff80">지상 유닛 공격 가능</c>
+Button/Tooltip/BPM_ReaverDamage=리버의 갑충탄 공격력을 25만큼 증가시킵니다.
+Button/Tooltip/BPM_ReaverHangar=리버가 장전할 수 있는 최대 갑충탄 수를 5만큼 증가시킵니다.
+Button/Tooltip/BPM_RepairDroneHeal=손상된 아군 기계 유닛 및 건물의 체력을 수리합니다.
+Button/Tooltip/BPM_ResearchAberrationSpeed=변형체의 이동 속도를 증가시킵니다. (3.5 → 4.13)
+Button/Tooltip/BPM_ResearchCorsairDisruptionWeb=해적선이 디스크럽션 웹을 시전할 수 있게 합니다. 디스크럽션 웹 영역 안의 적 지상 유닛과 구조물은 공격할 수 없게 됩니다.
+Button/Tooltip/BPM_ResearchDefilerConsume=파멸충이 아군 저그 유닛을 흡수하여 에너지를 50 회복할 수 있게 합니다.
+Button/Tooltip/BPM_ResearchDefilerEnergy=파멸충의 초기 에너지가 25 증가하고 최대 에너지가 50 증가합니다.
+Button/Tooltip/BPM_ResearchDefilerPlague=파멸충이 역병을 시전할 수 있게 합니다. 대상 지역의 적 유닛과 구조물에 지속 피해를 입힙니다.
+Button/Tooltip/BPM_ResearchEnergizerPhasingMode=동력기가 위상 모드를 활성화할 수 있게 합니다.
+Button/Tooltip/BPM_ResearchEnergizerShields=동력기의 최대 보호막을 40 증가시킵니다. (40 → 80)
+Button/Tooltip/BPM_ResearchRavenFireControlNetwork=밤까마귀가 통합 화력 관제망을 사용할 수 있게 합니다.
+Button/Tooltip/BPM_ResearchScienceVesselBoost=사이언스 베슬이 과학선 부스트를 사용할 수 있게 합니다.
+Button/Tooltip/BPM_ResearchScienceVesselDefensiveMatrix=사이언스 베슬이 디펜시브 매트릭스를 사용할 수 있게 합니다.<n/><n/><c val="ffff80">융합로 필요</c>
+Button/Tooltip/BPM_ResearchScienceVesselLockdown=사이언스 베슬이 락다운 미사일을 사용할 수 있게 합니다.<n/><n/><c val="ffff80">융합로 필요</c>
+Button/Tooltip/BPM_ScienceVessel=탐지 능력과 다양한 지원 능력을 사용하는 공중 기계 유닛입니다.<n/><n/><c val="ffff80">공중 지원 유닛</c>
+Button/Tooltip/BPM_ScienceVesselBoost=6초간 사이언스 베슬의 이동속도를 2.45 증가시킵니다.<n/><n/><c val="ffff80">재사용 대기시간: 14초</c>
+Button/Tooltip/BPM_ScienceVesselDefensiveMatrix=대상 지점 반경 3 내의 아군 유닛들에게 20초 동안 유지되며, 각각 최대 16의 피해를 흡수하는 방어막을 씌웁니다.
+Button/Tooltip/BPM_ScienceVesselLockdown=기계 유닛에 미사일을 발사하여 20초 동안 이동과 공격, 능력 사용을 봉쇄합니다. 명중 시 주 대상 주변 반경 2의 적 유닛에게 20의 스플래시 피해를 줍니다.<n/><n/><c val="ffff80">기계 유닛만 대상으로 지정 가능</c>
+Button/Tooltip/BPM_Scout=지상 및 공중 유닛을 공격할 수 있는 제공권 전투기입니다.<n/><n/><c val="ffff80">지상 및 공중 유닛 공격 가능</c>
+Button/Tooltip/BPM_ScoutSight=스카웃의 시야를 2만큼 증가시킵니다.
+Button/Tooltip/BPM_ScoutSpeed=스카웃의 이동 속도를 33% 증가시킵니다.
+Button/Tooltip/BPM_TerranInfantryHeavyArmor=파이어뱃과 불곰의 체력을 25 향상시키고 중장갑으로 변경시킵니다.
+Button/Tooltip/BPM_TerrorzorCarapace=티라노조르의 장갑을 1 증가시킵니다.<n/><n/><c val="ffff80">울트라리스크 동굴 필요</c>
+Button/Tooltip/BPM_Tyrannozor=원시 저그의 거대 지상 괴수입니다. 지상과 공중의 적을 공격하며 강력한 체력과 공격력을 지닙니다.
+Button/Tooltip/BPM_WarHoundTornadoMissile=투견이 중장갑 유닛에 추가 피해를 주는 폭주 미사일 능력을 사용할 수 있게 합니다.
+Button/Tooltip/BPM_WarpInAdept=경장갑 유닛에 강력한 원거리 전사입니다.<n/><n/><c val="ffff80">지상 유닛 공격 가능</c>
+Button/Tooltip/BPM_WarpInEnergizer=동력기를 차원 소환합니다.<n/><n/><c val="ffff80">지상 및 공중 유닛 공격 가능</c>
+Button/Tooltip/BPM_Wraith=기동력이 뛰어난 공중 전투기입니다. 정밀 타격에 능하며 은폐를 사용할 수 있습니다.<n/><n/><c val="ffff80">지상 및 공중 유닛 공격 가능</c>
+Button/Tooltip/BPM_WraithCloak=레이스가 은폐 능력을 사용할 수 있게 합니다.
+Button/Tooltip/BPM_WraithEnergy=레이스의 최대 에너지를 50만큼 증가시키고, 초기 에너지를 50만큼 증가시킵니다.
+Button/Tooltip/BroodLord=부하 유충을 발사하여 공격하는 거대 공중 유닛입니다.<n/><n/><c val="ffff80">지상 유닛 공격 가능</c>
+Button/Tooltip/BuildCyclone=락온 미사일로 지속적인 피해를 주는 기계화 차량입니다.<n/><n/><c val="ffff80">지상 및 공중 유닛 공격 가능</c>
+Button/Tooltip/Colossus=높은 지형을 넘나드는 다리를 가진 거대 지상 유닛입니다. 열선포로 범위 피해를 줍니다.<n/><n/><c val="ffff80">지상 유닛 공격 가능</c>
+Button/Tooltip/Corruptor=중장갑 공중 제공 전투 유닛입니다. 무리 군주로 변태할 수 있습니다.<n/><n/><c val="ffff80">공중 유닛 공격 가능</c>
+Button/Tooltip/DarkTemplar=은신 상태로 활동하는 강력한 근접 암살 유닛입니다.<n/><n/><c val="ffff80">지상 유닛 공격 가능</c>
+Button/Tooltip/DefilerMPDarkSwarm=대상 지역에 다크 스웜 구름을 생성합니다.<n/><n/>다크 스웜 범위 내에 있는 <c val="ffff80">아군 유닛</c>은 원거리 공격으로부터 받는 피해가 <c val="00ff00">50% 감소</c>합니다.
+Button/Tooltip/DefilerMPPlague=대상 지역의 적 유닛에게 지속 피해를 주는 역병을 퍼뜨립니다.
+Button/Tooltip/Disruptor=정화 폭발을 발사하여 적에게 큰 범위 피해를 주는 로봇 유닛입니다.<n/><n/><c val="ffff80">지상 유닛 공격 가능</c>
+Button/Tooltip/GasUIBtn=가스 채취를 위해 일꾼을 지정된 채취 건물로 이동시킵니다.
+Button/Tooltip/GasUIBtn2=가스 채취를 위해 일꾼을 지정된 채취 건물로 이동시킵니다.
+Button/Tooltip/Goliath=지상 및 공중 목표물을 동시에 공격할 수 있는 중장갑 차량입니다.<n/><n/><c val="ffff80">지상 및 공중 유닛 공격 가능</c>
+Button/Tooltip/Hellion=빠른 이동 속도를 가진 경장갑 차량입니다. 화염 공격으로 일렬로 늘어선 적에게 피해를 줍니다.<n/><n/><c val="ffff80">지상 유닛 공격 가능</c>
+Button/Tooltip/HellionTank=헬바트 모드로 전환된 차량입니다. 근접 화염 공격으로 경장갑 유닛에 강력한 피해를 줍니다.<n/><n/><c val="ffff80">지상 유닛 공격 가능</c>
+Button/Tooltip/HighTemplar=사이오닉 폭풍과 환영 능력을 사용하는 강력한 지원 유닛입니다.<n/><n/><c val="ffff80">지상 지원 유닛</c>
+Button/Tooltip/Hydralisk=다재다능한 원거리 공격수입니다. 가시지옥으로 변태할 수 있습니다.<n/><n/><c val="ffff80">지상 및 공중 유닛 공격 가능</c>
+Button/Tooltip/Infestor=다양한 방해 능력을 사용하는 사이오닉 지원 유닛입니다.<n/><n/><c val="ffff80">지상 지원 유닛</c>
+Button/Tooltip/LurkerMP=은신하여 매복하는 원거리 공성 유닛입니다. 땅속에서 강력한 관통 공격을 가합니다.<n/><n/><c val="ffff80">지상 유닛 공격 가능</c>
+Button/Tooltip/Mutalisk=기동성이 뛰어난 공중 게릴라 유닛입니다.<n/><n/><c val="ffff80">지상 및 공중 유닛 공격 가능</c>
+Button/Tooltip/Phoenix=중력 파동으로 적을 공중에 띄울 수 있는 경량 공중 전투기입니다.<n/><n/><c val="ffff80">공중 유닛 공격 가능</c>
+Button/Tooltip/QueenMPEnsnare=대상 지역의 적 유닛과 구조물의 이동 속도와 공격 속도를 감소시킵니다.
+Button/Tooltip/QueenMPSpawnBroodlings=대상 적 유닛을 처치하고 그 자리에 아군 브루들링 두 마리를 소환합니다.
+Button/Tooltip/Raven=감지 능력과 수리 비행정, 방해 매트릭스 등 다양한 지원 능력을 사용하는 공중 기계 유닛입니다.<n/><n/><c val="ffff80">공중 지원 유닛</c>
+Button/Tooltip/RavenScramblerMissile=대상 기계 또는 사이오닉 유닛의 무기와 능력을 11초 동안 비활성화합니다.
+Button/Tooltip/ResearchAdeptResonatingGlaives=사도의 공격 속도를 45% 증가시킵니다.
+Button/Tooltip/ResearchBlink=추적자가 목표 지점으로 순간이동할 수 있게 합니다.
+Button/Tooltip/ResearchCharge=광전사가 적 지상 유닛을 향해 빠르게 돌진할 수 있게 합니다.
+Button/Tooltip/Roach=체력 회복 속도가 빠른 원거리 돌격 유닛입니다. 궤멸충으로 변태할 수 있습니다.<n/><n/><c val="ffff80">지상 유닛 공격 가능</c>
+Button/Tooltip/Sentry=가드 실드와 저지 시야, 환영 등 다양한 지원 능력을 사용하는 유닛입니다.<n/><n/><c val="ffff80">지상 및 공중 유닛 공격 가능</c>
+Button/Tooltip/SiegeTank=강력한 대 지상 차량입니다. 공성 모드로 전환하여 장거리 범위 피해를 줄 수 있습니다.<n/><n/><c val="ffff80">지상 유닛 공격 가능</c>
+Button/Tooltip/Stalker=점멸 능력을 사용할 수 있는 원거리 차원 유닛입니다.<n/><n/><c val="ffff80">지상 및 공중 유닛 공격 가능</c>
+Button/Tooltip/SwarmHostMP=식충을 지속적으로 생성하여 공격하는 공성 유닛입니다.<n/><n/><c val="ffff80">지상 공성 유닛</c>
+Button/Tooltip/Tempest=매우 긴 사거리를 가진 공중 공성 유닛입니다. 거대 유닛과 구조물에 추가 피해를 줍니다.<n/><n/><c val="ffff80">지상 및 공중 유닛 공격 가능</c>
+Button/Tooltip/TerranShipWeaponsLevel1=테란 공중 유닛의 무기 공격력을 1단계로 업그레이드합니다.
+Button/Tooltip/TerranShipWeaponsLevel2=테란 공중 유닛의 무기 공격력을 2단계로 업그레이드합니다.
+Button/Tooltip/TerranShipWeaponsLevel3=테란 공중 유닛의 무기 공격력을 3단계로 업그레이드합니다.
+Button/Tooltip/TerranVehicleAndShipArmorsLevel1=테란 차량과 우주선의 방어력을 1단계로 업그레이드합니다.
+Button/Tooltip/TerranVehicleAndShipArmorsLevel2=테란 차량과 우주선의 방어력을 2단계로 업그레이드합니다.
+Button/Tooltip/TerranVehicleAndShipArmorsLevel3=테란 차량과 우주선의 방어력을 3단계로 업그레이드합니다.
+Button/Tooltip/TerranVehicleWeaponsLevel1=테란 지상 차량의 무기 공격력을 1단계로 업그레이드합니다.
+Button/Tooltip/TerranVehicleWeaponsLevel2=테란 지상 차량의 무기 공격력을 2단계로 업그레이드합니다.
+Button/Tooltip/TerranVehicleWeaponsLevel3=테란 지상 차량의 무기 공격력을 3단계로 업그레이드합니다.
+Button/Tooltip/Thor=강력한 대공 및 대지 공격이 가능한 거대 기계 유닛입니다.<n/><n/><c val="ffff80">지상 및 공중 유닛 공격 가능</c>
+Button/Tooltip/Ultralisk=강력한 범위 공격을 가하는 거대 돌격 유닛입니다.<n/><n/><c val="ffff80">지상 유닛 공격 가능</c>
+Button/Tooltip/Viper=전장을 통제하고 적을 무력화하는 비행 마법 유닛입니다.<n/><n/><c val="ffff80">공중 지원 유닛</c>
+Button/Tooltip/ViperConsumeStructure=대상 아군 저그 구조물의 생명력을 흡수하여 살모사의 에너지를 회복합니다.
+Button/Tooltip/VoidRay=누적 피해를 주는 광선 무기를 사용하는 공중 유닛입니다. 중장갑 대상에 특히 강합니다.<n/><n/><c val="ffff80">지상 및 공중 유닛 공격 가능</c>
+Button/Tooltip/WarHound=쌍둥이 오토캐논으로 무장한 중장갑 전투 로봇입니다.<n/><n/><c val="ffff80">지상 유닛 공격 가능</c>
+Button/Tooltip/WarpInAdept=경장갑 유닛에 강력한 원거리 전사입니다.<n/><n/><c val="ffff80">지상 유닛 공격 가능</c>
+Button/Tooltip/WidowMine=은신하여 매설되는 차량입니다. 근처에 적이 감지되면 유도 미사일을 발사하여 강력한 피해를 줍니다.<n/><n/><c val="ffff80">지상 유닛 공격 가능</c>
+Button/Tooltip/Yoink=대상 유닛을 살모사 쪽으로 끌어옵니다.
+Button/Tooltip/Zergling=빠른 근접 유닛입니다. 맹독충으로 변태할 수 있습니다.<n/><n/><c val="ffff80">지상 유닛 공격 가능</c>
+DocInfo/DescShort=아무
+DocInfo/Name=BPM_Core
+Unit/Description/BPM_Queen=기지 방어 유닛입니다. 애벌레 생성, 점막 종양 생성, 수혈을 사용할 수 있습니다. 점막 위에서 더 빠르게 이동합니다.
+Unit/Name/BPM_DefilerMound=디파일러 언덕
+Unit/Name/BPM_Queen=여왕
+Unit/Name/BPM_RepairDrone=수리 비행정
+Unit/Name/Dragoon=드라군
+Unit/Name/Energizer=동력기
+Unit/Name/EnergizerPhasingMode=동력기 (위상 모드)
+Unit/Name/Firebat=파이어뱃
+Unit/Name/GuardianMP=가디언
+Unit/Name/QueenClassic=퀸
+Unit/Name/Ravasaur=라바사우르스
+Unit/Name/Reaver=리버
+Unit/Name/ScienceVessel=사이언스 베슬
+Unit/Name/ScoutMP=스카웃
+Unit/Name/Wraith=레이스
+Unit/Subtitle/BPM_Queen=기지 방어
+Unit/Tooltip/Energizer=아군을 강화하고 동력망을 투영할 수 있는 지원 유닛입니다.
+Upgrade/Name/BPM_AberrationSpeed=다리 근육 보강 진화
+Upgrade/Name/BPM_ArbiterRecall=리콜
+Upgrade/Name/BPM_ArbiterStasisField=스테이시스 필드
+Upgrade/Name/BPM_CorsairDisruptionWeb=디스크럽션 웹
+Upgrade/Name/BPM_CrucioSuppressor=크루시오 완충기
+Upgrade/Name/BPM_DefilerConsume=흡수 연구
+Upgrade/Name/BPM_DefilerEnergy=메타시냅스 결절 연구
+Upgrade/Name/BPM_DefilerPlague=역병 연구
+Upgrade/Name/BPM_DragoonRange=특이점 장전
+Upgrade/Name/BPM_EnergizerPhasingMode=위상 모드 활성화
+Upgrade/Name/BPM_EnergizerShields=보호막 과충전
+Upgrade/Name/BPM_FirebatNapalmAmmo=네이팜 탄창
+Upgrade/Name/BPM_GoliathRange=카론 증폭기
+Upgrade/Name/BPM_MarauderShatterShells=분쇄탄
+Upgrade/Name/BPM_Pick_Aberration=변형체 선택
+Upgrade/Name/BPM_Pick_Arbiter=중재자 선택
+Upgrade/Name/BPM_Pick_Corsair=해적선 선택
+Upgrade/Name/BPM_Pick_Defiler=파멸충 선택
+Upgrade/Name/BPM_Pick_Dragoon=드라군 선택
+Upgrade/Name/BPM_Pick_Firebat=파이어뱃 선택
+Upgrade/Name/BPM_Pick_Goliath=골리앗 선택
+Upgrade/Name/BPM_Pick_GuardianMP=가디언 선택
+Upgrade/Name/BPM_Pick_QueenClassic=퀸 선택
+Upgrade/Name/BPM_Pick_Ravasaur=라바사우르스 선택
+Upgrade/Name/BPM_Pick_Reaver=리버 선택
+Upgrade/Name/BPM_Pick_ScienceVessel=사이언스 베슬 선택
+Upgrade/Name/BPM_Pick_Scout=스카웃 선택
+Upgrade/Name/BPM_Pick_Tyrannozor=티라노조르 선택
+Upgrade/Name/BPM_Pick_WarHound=투견 선택
+Upgrade/Name/BPM_Pick_Wraith=레이스 선택
+Upgrade/Name/BPM_QueenEnergy=배우체 분열
+Upgrade/Name/BPM_RavasaurVolatileSpines=돌기 수축 진화
+Upgrade/Name/BPM_RavenFireControlNetworkResearch=통합 화력 관제망
+Upgrade/Name/BPM_ReaverDamage=갑충탄 공격력
+Upgrade/Name/BPM_ReaverHangar=갑충탄 격납고 확장
+Upgrade/Name/BPM_ScienceVesselBoostResearch=과학선 부스트
+Upgrade/Name/BPM_ScienceVesselDefensiveMatrixResearch=디펜시브 매트릭스
+Upgrade/Name/BPM_ScienceVesselLockdownResearch=락다운 미사일
+Upgrade/Name/BPM_ScoutSight=원거리 센서
+Upgrade/Name/BPM_ScoutSpeed=중력 추진기
+Upgrade/Name/BPM_TerranInfantryHeavyArmor=보병 중장갑
+Upgrade/Name/BPM_TerrorzorCarapace=원시 허물 진화
+Upgrade/Name/BPM_WarHoundTornadoMissile=폭주 미사일
+Upgrade/Name/BPM_WraithCloak=은폐장
+Upgrade/Name/BPM_WraithEnergy=아폴로 반응로
+Weapon/Name/Adept=쐐기포
+Weapon/Name/BPM_DefilerWeapon=맹독 투사체
+Weapon/Name/BPM_DisruptorWeapon=태양석 탄환
+Weapon/Name/BPM_EnergizerWeapon=분해 광선
+Weapon/Name/BPM_FirebatSCBWWeapon=화염방사기
+Weapon/Name/BPM_FirebatSCBWWeapon@Bunker=화염방사기
+Weapon/Name/BPM_FirebatSCBWWeapon@Melee=화염방사기
+Weapon/Name/BPM_QueenClassicWeapon=기생 가시
+Weapon/Name/BPM_RavenWeapon=해방선 포격
+Weapon/Name/BPM_ScienceVesselWeapon=해방선 포격
+Weapon/Name/BPM_ViperWeapon=감염성 투사체
+Weapon/Name/Dragoon=위상 분열기
+Weapon/Name/RavasaurWeapon=휘발성 돌기

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CTurret id="Dragoon" parent="FreeRotate">
+        <Idle value="FollowMovement"/>
+        <YawRate value="1080"/>
+        <YawIdleRate value="360"/>
+    </CTurret>
+
+    <!-- Mothership birth: outer shell/ring spawns at 180 degrees (turret bone only; core facing unchanged). -->
+    <CTurret id="MothershipRotate">
+        <YawStart value="180"/>
+    </CTurret>
+</Catalog>

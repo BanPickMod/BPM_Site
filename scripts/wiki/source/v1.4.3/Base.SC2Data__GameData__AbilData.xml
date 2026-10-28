@@ -1,0 +1,1363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+  <CAbilEffectTarget id="Transfusion">
+    <EditorCategories value="Race:Zerg,AbilityorEffectType:Units" />
+    <Effect index="0" value="BPM_TransfusionHeal" />
+    <Flags index="AllowMovement" value="1" />
+    <Flags index="NoDeceleration" value="1" />
+    <TargetFilters value="Biological,Visible;Enemy,Missile,UnderConstruction,Dead,Hidden,Invulnerable" />
+    <Range value="7" />
+    <Cost>
+      <Vital index="Energy" value="50" />
+      <Cooldown Link="Transfusion" TimeUse="1" />
+    </Cost>
+    <CmdButtonArray index="Execute" DefaultButtonFace="Transfusion" Requirements="" />
+    <FinishTime value="0.8" />
+    <UninterruptibleArray index="Finish" value="1" />
+    <CastIntroTime value="0.2" />
+  </CAbilEffectTarget>
+  <!-- Completely disable campaign Science Vessel NanoRepair -->
+  <CAbilEffectTarget id="NanoRepair">
+    <Flags index="AutoCast" value="0"/>
+    <Flags index="AutoCastOn" value="0"/>
+    <CmdButtonArray index="Execute" Requirements="BPM_Never"/>
+  </CAbilEffectTarget>
+  <CAbilArmMagazine id="ReaverHangar">
+    <MaxCount value="5" />
+    <InfoArray index="Ammo1" Time="4.5" CountStart="0">
+      <Button DefaultButtonFace="Scarab" Requirements="" />
+      <Flags index="AutoBuild" value="1" />
+      <Flags index="AutoBuildOn" value="1" />
+    </InfoArray>
+  </CAbilArmMagazine>
+  <CAbilBuild id="TerranBuild">
+    <InfoArray index="Build13">
+      <Button />
+    </InfoArray>
+  </CAbilBuild>
+  <!-- Campaign dependencies can replace multiplayer train payloads while
+       leaving the command-card face intact. Pin every Terran production
+       command used by BPM to its intended multiplayer unit. -->
+  <CAbilTrain id="BarracksTrain">
+    <InfoArray index="Train1"><Unit index="0" value="Marine" /><Unit index="1" removed="1" /></InfoArray>
+    <InfoArray index="Train2"><Unit index="0" value="Reaper" /><Unit index="1" removed="1" /></InfoArray>
+    <InfoArray index="Train3"><Unit index="0" value="Ghost" /><Unit index="1" removed="1" /></InfoArray>
+    <InfoArray index="Train4"><Unit index="0" value="Marauder" /><Unit index="1" removed="1" /></InfoArray>
+  </CAbilTrain>
+  <CAbilTrain id="FactoryTrain">
+    <InfoArray index="Train2" Time="32">
+      <Unit index="0" value="SiegeTank" />
+      <Unit index="1" removed="1" />
+    </InfoArray>
+    <InfoArray index="Train5"><Unit index="0" value="Thor" /><Unit index="1" removed="1" /></InfoArray>
+    <InfoArray index="Train6"><Unit index="0" value="Hellion" /><Unit index="1" removed="1" /></InfoArray>
+    <InfoArray index="Train7"><Unit index="0" value="HellionTank" /><Unit index="1" removed="1" /></InfoArray>
+    <InfoArray index="Train8"><Unit index="0" value="Cyclone" /><Unit index="1" removed="1" /></InfoArray>
+    <!-- Explicitly preserve the multiplayer Widow Mine train time.  The
+         campaign dependency merge keeps the unit payload but drops Time. -->
+    <InfoArray index="Train9" Time="30"><Unit index="0" value="WidowMine" /><Unit index="1" removed="1" /></InfoArray>
+  </CAbilTrain>
+  <CAbilTrain id="BPM_BarracksTrainFirebat">
+    <Flags index="IgnoreUnitCost" value="1" />
+    <InfoArray index="Train1" Time="30">
+      <Button DefaultButtonFace="Firebat" State="Restricted" Requirements="HaveAttachedTechLab" />
+      <Unit index="0" value="Firebat" />
+      <Resource index="Minerals" value="50" />
+      <Resource index="Vespene" value="25" />
+    </InfoArray>
+    <Activity value="UI/Building" />
+  </CAbilTrain>
+  <CAbilTrain id="BPM_FactoryTrainGoliath">
+    <Flags index="IgnoreUnitCost" value="1" />
+    <InfoArray index="Train1" Time="45">
+      <Button DefaultButtonFace="BPM_Goliath" State="Restricted" Requirements="HaveArmory" />
+      <Unit index="0" value="Goliath" />
+      <Resource index="Minerals" value="100" />
+      <Resource index="Vespene" value="50" />
+    </InfoArray>
+    <Activity value="UI/Building" />
+  </CAbilTrain>
+  <!-- FactoryTrain,Train13 loses both Unit and DefaultButtonFace after the
+       campaign + Void multiplayer dependency merge. Keep WarHound on a BPM-
+       owned train command so the command card never depends on that empty
+       inherited slot. -->
+  <CAbilTrain id="BPM_FactoryTrainWarHound">
+    <Flags index="IgnoreUnitCost" value="1" />
+    <InfoArray index="Train1" Time="50">
+      <Button DefaultButtonFace="BPM_WarHound" State="Restricted" Requirements="HaveAttachedTechLab" />
+      <Unit index="0" value="WarHound" />
+      <Resource index="Minerals" value="150" />
+      <Resource index="Vespene" value="100" />
+    </InfoArray>
+    <Activity value="UI/Building" />
+  </CAbilTrain>
+  <!-- Haywire Missile is inherited as TornadoMissile. Gate both manual and
+       autocast execution behind the Factory Tech Lab research. Excludes Air targets
+       (Banshee, Raven, etc.) and filters for Ground Mechanical / Armored. -->
+  <CAbilAugment id="TornadoMissile">
+    <AutoCastFilters value="Ground,Visible;Self,Ally,Neutral,Structure,Missile,Stasis,Dead,Hidden,Invulnerable,Air" />
+    <AutoCastValidatorArray value="BPM_ValidatorWarhoundTornadoTarget" />
+    <CmdButtonArray index="Execute" Requirements="BPM_Req_UseWarHoundTornadoMissile" />
+  </CAbilAugment>
+
+  <CAbilTrain id="StarportTrain">
+    <InfoArray index="Train1"><Unit index="0" value="Medivac" /><Unit index="1" removed="1" /></InfoArray>
+    <InfoArray index="Train2"><Unit index="0" value="Banshee" /><Unit index="1" removed="1" /></InfoArray>
+    <InfoArray index="Train3"><Unit index="0" value="Raven" /><Unit index="1" removed="1" /></InfoArray>
+    <InfoArray index="Train4"><Unit index="0" value="Battlecruiser" /><Unit index="1" removed="1" /></InfoArray>
+    <InfoArray index="Train5"><Unit index="0" value="VikingFighter" /><Unit index="1" removed="1" /></InfoArray>
+    <InfoArray index="Train7"><Unit index="0" value="Liberator" /><Unit index="1" removed="1" /></InfoArray>
+    <InfoArray index="Train27" Time="53">
+      <Button DefaultButtonFace="Wraith" State="Restricted" />
+      <Unit index="0" value="Wraith" />
+    </InfoArray>
+    <InfoArray index="Train28" Time="60">
+      <Button DefaultButtonFace="BPM_ScienceVessel" State="Restricted" Requirements="HaveAttachedTechLab" />
+      <Unit index="0" value="ScienceVessel" />
+    </InfoArray>
+  </CAbilTrain>
+  <CAbilEffectTarget id="BPM_ScienceVesselLockdown">
+    <Alignment value="Negative" />
+    <EditorCategories value="Race:Terran,AbilityorEffectType:Units" />
+    <Effect index="0" value="BPM_ScienceVesselLockdown@LaunchMissile" />
+    <Flags index="AllowMovement" value="1" />
+    <Flags index="WaitToSpend" value="1" />
+    <Cost>
+      <Vital index="Energy" value="75" />
+    </Cost>
+    <TargetFilters value="Mechanical,Visible;Self,Ally,Neutral,Structure,Heroic,Missile,UnderConstruction,Dead,Hidden,Invulnerable" />
+    <Range value="8" />
+    <Arc value="360" />
+    <CastIntroTime value="0.25" />
+    <UninterruptibleArray index="Cast" value="1" />
+    <CmdButtonArray index="Execute" DefaultButtonFace="BPM_ScienceVesselLockdown" Requirements="BPM_Req_UseScienceVesselLockdown">
+      <Flags index="ToSelection" value="1" />
+    </CmdButtonArray>
+    <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel" />
+  </CAbilEffectTarget>
+  <!-- v1.4.3 balance: Defensive Matrix energy 100 -> 50 (see radius 1.5 ->
+       1.75 in EffectData.xml and absorb 16 -> 24 in BehaviorData.xml). -->
+  <CAbilEffectTarget id="BPM_ScienceVesselDefensiveMatrix">
+    <Alignment value="Positive" />
+    <EditorCategories value="Race:Terran,AbilityorEffectType:Units" />
+    <Effect index="0" value="BPM_ScienceVesselDefensiveMatrix@Search" />
+    <Flags index="AllowMovement" value="1" />
+    <Flags index="WaitToSpend" value="1" />
+    <Cost>
+      <Vital index="Energy" value="50" />
+    </Cost>
+    <Range value="10" />
+    <Arc value="360" />
+    <CursorEffect value="BPM_ScienceVesselDefensiveMatrix@Search" />
+    <CmdButtonArray index="Execute" DefaultButtonFace="BPM_ScienceVesselDefensiveMatrix" Requirements="BPM_Req_UseScienceVesselDefensiveMatrix">
+      <Flags index="ToSelection" value="1" />
+    </CmdButtonArray>
+    <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel" />
+  </CAbilEffectTarget>
+  <!-- v1.4.3 balance: QueenClassic Parasite -->
+  <CAbilEffectTarget id="BPM_QueenParasite">
+    <Alignment value="Negative" />
+    <EditorCategories value="Race:Zerg,AbilityorEffectType:Units" />
+    <Effect index="0" value="BPM_QueenParasite@Apply" />
+    <Flags index="AllowMovement" value="1" />
+    <Flags index="WaitToSpend" value="1" />
+    <Cost>
+      <Vital index="Energy" value="75" />
+    </Cost>
+    <TargetFilters value="Visible;Self,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable" />
+    <Range value="9" />
+    <Arc value="360" />
+    <CmdButtonArray index="Execute" DefaultButtonFace="BPM_QueenParasite">
+      <Flags index="ToSelection" value="1" />
+    </CmdButtonArray>
+    <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel" />
+  </CAbilEffectTarget>
+  <CAbilEffectInstant id="MedivacSpeedBoost">
+    <AbilSetId value="MedivacSpeedBoost" />
+  </CAbilEffectInstant>
+  <!-- v1.4.3 balance: Science Vessel Boost - self-cast, no energy cost,
+       14s cooldown, 6s 2x move speed (see BPM_ScienceVesselBoost
+       behavior in BehaviorData.xml). Gated behind Starport Tech Lab
+       research (see StarportTechLabResearch below). -->
+  <CAbilEffectInstant id="BPM_ScienceVesselBoost">
+    <AbilSetId value="MedivacSpeedBoost" />
+    <EditorCategories value="Race:Terran,AbilityorEffectType:Units" />
+    <Effect index="0" value="BPM_ScienceVesselBoost@Apply" />
+    <Flags index="Transient" value="1" />
+    <Cost>
+      <Cooldown TimeUse="14" />
+    </Cost>
+    <CmdButtonArray index="Execute" DefaultButtonFace="BPM_ScienceVesselBoost" Requirements="BPM_Req_UseScienceVesselBoost">
+      <Flags index="ToSelection" value="1" />
+    </CmdButtonArray>
+  </CAbilEffectInstant>
+  <!-- v1.4.3 balance: Raven Integrated Fire Control Network. Gated behind
+       Starport Tech Lab research (see StarportTechLabResearch below). -->
+  <CAbilEffectTarget id="BPM_RavenFireControlNetwork">
+    <Alignment value="Negative" />
+    <EditorCategories value="Race:Terran,AbilityorEffectType:Units" />
+    <Effect index="0" value="BPM_RavenFireControlNetwork@Spawn" />
+    <Flags index="AllowMovement" value="1" />
+    <Flags index="WaitToSpend" value="1" />
+    <Cost>
+      <Vital index="Energy" value="50" />
+    </Cost>
+    <!-- Cast only on a visible enemy non-structure unit. This mirrors the
+         acquisition search, which already excludes friendly/neutral units. -->
+    <TargetFilters value="Visible;Self,Player,Ally,Neutral,Structure,Missile,Stasis,Dead,Hidden,Invulnerable" />
+    <Range value="9" />
+    <Arc value="360" />
+    <!-- Use the acquisition search as the cursor footprint so targeting shows
+         the actual radius-3 area that can receive a new fire-control mark. -->
+    <CursorEffect value="BPM_RavenFireControlNetwork@Acquire" />
+    <CmdButtonArray index="Execute" DefaultButtonFace="BPM_RavenFireControlNetwork" Requirements="BPM_Req_UseRavenFireControlNetwork">
+      <Flags index="ToSelection" value="1" />
+    </CmdButtonArray>
+    <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel" />
+  </CAbilEffectTarget>
+  <!-- v1.4.3 balance: Irradiate energy 25 -> 75, cast range 9 -> 8. Splash
+       radius (IrradiateSearchArea, 1.5 -> 0.5) is overridden separately in
+       EffectData.xml. -->
+  <CAbilEffectTarget id="Irradiate">
+    <Cost index="0">
+      <Vital index="Energy" value="75" />
+    </Cost>
+    <Range index="0" value="8" />
+  </CAbilEffectTarget>
+  <CAbilTrain id="GatewayTrain">
+    <!-- Reuse the dependency-owned train commands. Their command metadata is
+         what supplies the stock resource, food and time tooltip rows. -->
+    <InfoArray index="Train1">
+      <Unit index="0" value="Zealot" />
+      <Unit index="1" removed="1" />
+    </InfoArray>
+    <InfoArray index="Train2">
+      <Button DefaultButtonFace="Stalker" State="Restricted" Requirements="BPM_Req_NotPicked_Dragoon" />
+      <Unit index="0" value="Stalker" />
+      <Unit index="1" removed="1" />
+    </InfoArray>
+    <InfoArray index="Train4">
+      <Unit index="0" value="HighTemplar" />
+      <Unit index="1" removed="1" />
+    </InfoArray>
+    <InfoArray index="Train5">
+      <Unit index="0" value="DarkTemplar" />
+      <Unit index="1" removed="1" />
+    </InfoArray>
+    <!-- Campaign dependencies can replace the multiplayer Sentry payload in
+         Train6. Keep the stock cost metadata, but pin the produced unit. -->
+    <InfoArray index="Train6" Time="32">
+      <Button DefaultButtonFace="Sentry" State="Restricted" Requirements="BPM_Req_NotPicked_Energizer" />
+      <Unit index="0" value="Sentry" />
+      <Unit index="1" removed="1" />
+    </InfoArray>
+    <InfoArray index="Train7">
+      <Button DefaultButtonFace="WarpInAdept" State="Restricted" Requirements="BPM_Req_BanClear_Adept" />
+      <Unit index="0" value="Adept" />
+      <Unit index="1" removed="1" />
+    </InfoArray>
+    <InfoArray index="Train20" Time="42">
+      <Button DefaultButtonFace="BPM_Dragoon" State="Restricted" Requirements="BPM_Req_Picked_Dragoon" />
+      <Unit index="0" value="Dragoon" />
+    </InfoArray>
+  </CAbilTrain>
+  <!-- Keep the Energizer on a BPM-owned train ability.  GatewayTrain is
+       merged from several campaign/melee dependencies, and its late Train21
+       slot can lose Unit[0] at runtime even though the command-card button
+       survives. -->
+  <CAbilTrain id="BPM_GatewayTrainEnergizer">
+    <Flags index="IgnoreUnitCost" value="1" />
+    <InfoArray index="Train1" Time="33">
+      <Button DefaultButtonFace="BPM_Energizer" State="Restricted" Requirements="BPM_Req_Picked_Energizer" />
+      <Unit index="0" value="Energizer" />
+      <Resource index="Minerals" value="50" />
+      <Resource index="Vespene" value="100" />
+    </InfoArray>
+    <Activity value="UI/Building" />
+  </CAbilTrain>
+  <CAbilWarpTrain id="WarpGateTrain">
+    <InfoArray index="Train1" Time="5" Unit="Zealot">
+      <Cooldown Link="WarpGateTrain" TimeUse="20" />
+      <Button DefaultButtonFace="Zealot" State="Restricted" Requirements="" />
+    </InfoArray>
+    <InfoArray index="Train2" Time="5" Unit="Stalker">
+      <Cooldown Link="WarpGateTrain" TimeUse="23" />
+      <Button DefaultButtonFace="Stalker" State="Restricted" Requirements="BPM_Req_NotPicked_Dragoon" />
+    </InfoArray>
+    <InfoArray index="Train4" Time="5" Unit="HighTemplar">
+      <Cooldown Link="WarpGateTrain" TimeUse="32" />
+      <Button DefaultButtonFace="HighTemplar" State="Restricted" Requirements="HaveTemplarArchives" />
+    </InfoArray>
+    <InfoArray index="Train5" Time="5" Unit="DarkTemplar">
+      <Cooldown Link="WarpGateTrain" TimeUse="32" />
+      <Button DefaultButtonFace="DarkTemplar" State="Restricted" Requirements="HaveDarkShrine" />
+    </InfoArray>
+    <InfoArray index="Train6" Time="5" Unit="Sentry">
+      <Cooldown Link="WarpGateTrain" TimeUse="23" />
+      <Button DefaultButtonFace="Sentry" State="Restricted" Requirements="BPM_Req_NotPicked_Energizer" />
+    </InfoArray>
+    <InfoArray index="Train7" Time="5" Unit="Adept">
+      <Cooldown Link="WarpGateTrain" TimeUse="20" />
+      <Button DefaultButtonFace="WarpInAdept" State="Restricted" Requirements="BPM_Req_BanClear_Adept" />
+    </InfoArray>
+    <InfoArray index="Train8" Time="5" Unit="Dragoon">
+      <Cooldown Link="WarpGateTrain" TimeUse="23" />
+      <Button DefaultButtonFace="BPM_Dragoon" State="Restricted" Requirements="BPM_Req_Picked_Dragoon" />
+    </InfoArray>
+    <InfoArray index="Train9" Time="0" Unit="">
+      <Button State="Suppressed" />
+    </InfoArray>
+    <InfoArray index="Train3" Time="0" Unit="">
+      <Button State="Suppressed" />
+    </InfoArray>
+    <InfoArray index="Train10" Time="0" Unit="">
+      <Button State="Suppressed" />
+    </InfoArray>
+    <InfoArray index="Train11" Time="0" Unit="">
+      <Button State="Suppressed" />
+    </InfoArray>
+    <InfoArray index="Train12" Time="0" Unit="">
+      <Button State="Suppressed" />
+    </InfoArray>
+    <InfoArray index="Train13" Time="0" Unit="">
+      <Button State="Suppressed" />
+    </InfoArray>
+    <InfoArray index="Train14" Time="0" Unit="">
+      <Button State="Suppressed" />
+    </InfoArray>
+    <InfoArray index="Train15" Time="5" Unit="Energizer">
+      <Cooldown Link="WarpGateTrain" TimeUse="23" />
+      <Button DefaultButtonFace="BPM_WarpInEnergizer" State="Restricted" Requirements="BPM_Req_Picked_Energizer" />
+    </InfoArray>
+  </CAbilWarpTrain>
+  <CAbilTrain id="StargateTrain">
+    <!-- Replace the standard Void Ray with Scout when that hidden group is
+         picked. Scout and Arbiter use their complete dependency-owned slots;
+         BPM owns only the presentation buttons. -->
+    <InfoArray index="Train1">
+      <Button DefaultButtonFace="Phoenix" State="Restricted" Requirements="BPM_Req_NotPicked_Corsair" />
+      <Unit index="0" value="Phoenix" />
+    </InfoArray>
+    <InfoArray index="Train3">
+      <Unit index="0" value="Carrier" />
+      <Unit index="1" removed="1" />
+    </InfoArray>
+    <InfoArray index="Train5">
+      <Button DefaultButtonFace="VoidRay" State="Restricted" Requirements="BPM_Req_NotPicked_Scout" />
+      <Unit index="0" value="VoidRay" />
+      <Unit index="1" removed="1" />
+    </InfoArray>
+    <InfoArray index="Train10" Time="43">
+      <Button DefaultButtonFace="Tempest" State="Restricted" Requirements="HaveFleetBeacon" />
+      <Unit index="0" value="Tempest" />
+      <Unit index="1" removed="1" />
+    </InfoArray>
+    <InfoArray index="Train9">
+      <Unit index="0" value="Oracle" />
+      <Unit index="1" removed="1" />
+    </InfoArray>
+    <InfoArray index="Train13" Time="76">
+      <Button DefaultButtonFace="BPM_Arbiter" State="Restricted" Requirements="BPM_Req_HaveFleetBeacon" />
+      <Unit index="0" value="ArbiterMP" />
+    </InfoArray>
+    <InfoArray index="Train14" Time="56">
+      <Button DefaultButtonFace="BPM_Scout" State="Restricted" Requirements="BPM_Req_Picked_Scout" />
+      <Unit index="0" value="ScoutMP" />
+      <Unit index="1" removed="1" />
+    </InfoArray>
+    <InfoArray index="Train15" Time="21">
+      <Button DefaultButtonFace="BPM_Corsair" State="Restricted" Requirements="BPM_Req_Picked_Corsair" />
+      <Unit index="0" value="CorsairMP" />
+    </InfoArray>
+    <InfoArray index="Train17">
+      <Button />
+    </InfoArray>
+    <InfoArray index="Train20">
+      <Button />
+    </InfoArray>
+  </CAbilTrain>
+
+  <CAbilTrain id="RoboticsFacilityTrain">
+    <InfoArray index="Train1"><Unit index="0" value="WarpPrism" /><Unit index="1" removed="1" /></InfoArray>
+    <InfoArray index="Train2"><Unit index="0" value="Observer" /><Unit index="1" removed="1" /></InfoArray>
+    <InfoArray index="Train3"><Unit index="0" value="Colossus" /><Unit index="1" removed="1" /></InfoArray>
+    <InfoArray index="Train4">
+      <Button DefaultButtonFace="Immortal" State="Restricted" Requirements="" />
+      <Unit index="0" value="Immortal" />
+      <Unit index="1" removed="1" />
+    </InfoArray>
+    <!-- Campaign dependencies leave Train19's unit payload intact but can
+         discard its multiplayer button metadata.  Pin the complete command
+         here so the production face resolves its name, tooltip, and icon. -->
+    <InfoArray index="Train19">
+      <Button DefaultButtonFace="Disruptor" State="Restricted" Requirements="HaveRoboticsBay" />
+      <Unit index="0" value="Disruptor" />
+      <Unit index="1" removed="1" />
+    </InfoArray>
+    <InfoArray index="Train30" Time="46">
+      <Button DefaultButtonFace="Reaver" State="Restricted" Requirements="BPM_Req_Picked_Reaver" />
+      <Unit index="0" value="Reaver" />
+    </InfoArray>
+  </CAbilTrain>
+  <CAbilResearch id="LairResearch">
+    <InfoArray index="Research3">
+      <!-- Void campaign exposes Evolve Ventral Sacs on the Hatchery.
+           Suppress the research command itself so every inherited card
+           reference is removed from the command UI. -->
+      <Button State="Suppressed" />
+    </InfoArray>
+  </CAbilResearch>
+  <!-- Restore the normal Protoss tech-tree gates after the campaign
+       dependency relaxes several advanced structure commands. -->
+  <CAbilBuild id="ProtossBuild">
+    <InfoArray index="Build6">
+      <Button DefaultButtonFace="FleetBeacon" State="Suppressed" Requirements="HaveStargate" />
+    </InfoArray>
+    <InfoArray index="Build7">
+      <Button DefaultButtonFace="TwilightCouncil" State="Suppressed" Requirements="HaveCyberneticsCore" />
+    </InfoArray>
+    <InfoArray index="Build10">
+      <Button DefaultButtonFace="Stargate" State="Suppressed" Requirements="HaveCyberneticsCore" />
+    </InfoArray>
+    <InfoArray index="Build11">
+      <Button DefaultButtonFace="TemplarArchive" State="Suppressed" Requirements="HaveTwilightCouncil" />
+    </InfoArray>
+    <InfoArray index="Build12">
+      <Button DefaultButtonFace="DarkShrine" State="Suppressed" Requirements="HaveTwilightCouncil" />
+    </InfoArray>
+    <InfoArray index="Build13">
+      <Button DefaultButtonFace="RoboticsBay" State="Suppressed" Requirements="HaveRoboticsFa" />
+    </InfoArray>
+    <InfoArray index="Build14">
+      <Button DefaultButtonFace="RoboticsFacility" State="Suppressed" Requirements="HaveCyberneticsCore" />
+    </InfoArray>
+  </CAbilBuild>
+  <!-- Queen Creep Tumors are gated only by their energy cost (25) without extra cast delay. Clear any
+       campaign-inherited cooldown while preserving the normal energy cost. -->
+  <CAbilBuild id="QueenBuild">
+    <InfoArray index="Build1" Unit="CreepTumorQueen" Time="15">
+      <Vital index="Energy" value="25" />
+      <Button DefaultButtonFace="CreepTumor">
+        <Flags index="ShowInGlossary" value="1" />
+      </Button>
+      <Cooldown Link="" Location="Unit" TimeStart="0" TimeUse="0" />
+    </InfoArray>
+  </CAbilBuild>
+  <!-- Burrowed Creep Tumors have exactly one charge with zero replenishment
+       and a 19-second spawn cooldown in standard LotV melee. Time is set
+       explicitly (matching the QueenBuild pattern above) because this
+       InfoArray otherwise inherits whatever Swarm.SC2Campaign's build time
+       is for this slot, ahead of the melee mods in this document's
+       dependency chain. -->
+  <CAbilBuild id="CreepTumorBuild">
+    <InfoArray index="Build1" Unit="CreepTumor" Time="15">
+      <Charge CountMax="1" CountStart="1" CountUse="1" TimeUse="0" />
+      <Cooldown TimeUse="19" />
+    </InfoArray>
+  </CAbilBuild>
+  <!-- Replace the stock Queen throughout its production and burrow lifecycle. -->
+  <CAbilTrain id="TrainQueen">
+    <InfoArray index="Train1" Time="50">
+      <!-- Unit is an array. Replace the inherited Queen at slot 0 instead of
+           appending BPM_Queen as a second product (which sums both costs). -->
+      <Unit index="0" value="BPM_Queen" />
+    </InfoArray>
+  </CAbilTrain>
+  <!-- Restore the multiplayer Hatchery rally filters after the campaign
+          dependency has loaded. Queens and Overlords stay at the structure exit while
+          other larva-produced units use the unit rally. -->
+  <CAbilRally id="RallyHatchery">
+    <InfoArray index="0" UseFilters="-;Worker">
+      <SetValidators value="NotResourcesOrEnemyTargetType" />
+      <UseValidators value="BPM_NotQueen" />
+      <UseValidators value="BPM_NotOverlord" />
+    </InfoArray>
+    <InfoArray index="1" SetOnGround="0" UseFilters="Worker;-">
+      <UseValidators value="BPM_NotQueen" />
+      <UseValidators value="BPM_NotOverlord" />
+    </InfoArray>
+    <InfoArray index="2" SetOnGround="0">
+      <SetValidators value="Failure" />
+    </InfoArray>
+  </CAbilRally>
+  <!-- Campaign morph variants can replace the multiplayer command
+          requirements. Every normal Zerg burrow command must remain locked
+          behind the Burrow upgrade. Lurker and Swarm Host morphs are not
+          included because their native rules are intentionally independent. -->
+  <CAbilMorph id="BurrowDroneDown">
+    <CmdButtonArray index="Execute" Requirements="UseBurrow" />
+  </CAbilMorph>
+  <CAbilMorph id="BurrowZerglingDown">
+    <CmdButtonArray index="Execute" Requirements="UseBurrow" />
+  </CAbilMorph>
+  <CAbilMorph id="BurrowBanelingDown">
+    <CmdButtonArray index="Execute" Requirements="UseBurrow" />
+  </CAbilMorph>
+  <CAbilMorph id="BurrowRoachDown">
+    <CmdButtonArray index="Execute" Requirements="UseBurrow" />
+  </CAbilMorph>
+  <CAbilMorph id="BurrowHydraliskDown">
+    <CmdButtonArray index="Execute" Requirements="UseBurrow" />
+  </CAbilMorph>
+  <CAbilMorph id="BurrowRavagerDown">
+    <CmdButtonArray index="Execute" Requirements="UseBurrow" />
+  </CAbilMorph>
+  <!-- v1.4.3 balance: 12.14 -> 8.57 sec morph time. This mod's raw ability
+       timers run at 1.4x real-time (confirmed: stock raw Time=17 / 1.4 =
+       12.14s, matching the pre-patch value), so the 8.57s real-time target
+       is written here as raw 12 (8.57 * 1.4 = 12). -->
+  <CAbilMorph id="MorphToRavager">
+    <InfoArray index="0">
+      <SectionArray index="Abils">
+        <DurationArray index="Delay" value="12" />
+      </SectionArray>
+      <SectionArray index="Actor">
+        <DurationArray index="Duration" value="12" />
+      </SectionArray>
+      <SectionArray index="Stats">
+        <DurationArray index="Delay" value="12" />
+      </SectionArray>
+    </InfoArray>
+    <CmdButtonArray index="Execute" DefaultButtonFace="BPM_Ravager" Requirements="BPM_Req_BanClear_Ravager" />
+  </CAbilMorph>
+  <!-- v1.4.3 balance: Corrosive Bile cooldown 7.14 -> 6.5 sec real-time.
+       Same raw/1.4 convention as MorphToRavager above (stock raw
+       Cooldown=10 / 1.4 = 7.14s pre-patch; 6.5 * 1.4 = 9.1 raw).
+       NOTE: assumes RavagerCorrosiveBile is stock class CAbilEffectTarget,
+       matching every other point-target spell ability in this mod
+       (Lockdown, Defensive Matrix, etc.) - verify in the SC2 Editor after
+       import; a class mismatch will surface immediately as a load error. -->
+  <CAbilEffectTarget id="RavagerCorrosiveBile">
+    <Cost>
+      <Cooldown TimeUse="9.1" />
+    </Cost>
+  </CAbilEffectTarget>
+  <CAbilMorph id="BurrowQueenDown">
+    <CmdButtonArray index="Execute" Requirements="UseBurrow" />
+    <InfoArray Unit="BPM_QueenBurrowed" />
+  </CAbilMorph>
+  <CAbilMorph id="BurrowQueenUp">
+    <InfoArray Unit="BPM_Queen" />
+  </CAbilMorph>
+  <CAbilMorph id="BurrowInfestorDown">
+    <CmdButtonArray index="Execute" Requirements="UseBurrow" />
+  </CAbilMorph>
+  <CAbilMorph id="BurrowInfestorTerranDown">
+    <CmdButtonArray index="Execute" Requirements="UseBurrow" />
+  </CAbilMorph>
+  <CAbilMorph id="BurrowUltraliskDown">
+    <CmdButtonArray index="Execute" Requirements="UseBurrow" />
+  </CAbilMorph>
+  <CAbilMorph id="BurrowRavasaurDown">
+    <CmdButtonArray index="Execute" Requirements="UseBurrow" />
+  </CAbilMorph>
+  <CAbilResearch id="RoachWarrenResearch">
+    <InfoArray index="Research20" Time="110">
+      <Resource index="Minerals" value="100" />
+      <Resource index="Vespene" value="100" />
+      <Button DefaultButtonFace="BPM_EvolveRavasaurVolatileSpines" State="Restricted" Requirements="BPM_Req_RavasaurVolatileSpines" />
+      <Upgrade value="BPM_RavasaurVolatileSpines" />
+    </InfoArray>
+  </CAbilResearch>
+  <!-- Restore the LotV multiplayer larva results after campaign data has
+          loaded. Requirements are inherited from the standard train slots. -->
+  <CAbilTrain id="LarvaTrain">
+    <InfoArray index="Train1">
+      <Button DefaultButtonFace="Drone" />
+      <Unit index="0" value="Drone" />
+    </InfoArray>
+    <InfoArray index="Train2">
+      <Button DefaultButtonFace="Zergling" Requirements="HaveSpawningPool" />
+      <Unit index="0" value="Zergling" />
+      <!-- <Unit index="1" value="Zergling" /> -->
+    </InfoArray>
+    <InfoArray index="Train3">
+      <Button DefaultButtonFace="Overlord" />
+      <Unit index="0" value="Overlord" />
+    </InfoArray>
+    <InfoArray index="Train4">
+      <Button DefaultButtonFace="Hydralisk" State="Available" Requirements="HaveHydraliskDen" />
+      <Unit index="0" value="Hydralisk" />
+    </InfoArray>
+    <InfoArray index="Train5">
+      <Button DefaultButtonFace="Mutalisk" State="Available" Requirements="HaveSpire" />
+      <Unit index="0" value="Mutalisk" />
+    </InfoArray>
+    <InfoArray index="Train7">
+      <Button DefaultButtonFace="Ultralisk" State="Available" Requirements="BPM_Req_NotPicked_Tyrannozor" />
+      <Unit index="0" value="Ultralisk" />
+    </InfoArray>
+    <InfoArray index="Train10">
+      <Button DefaultButtonFace="Roach" State="Available" Requirements="BPM_Req_NotPicked_Aberration" />
+      <Unit index="0" value="Roach" />
+    </InfoArray>
+    <InfoArray index="Train11">
+      <Button DefaultButtonFace="Infestor" State="Available" Requirements="BPM_Req_NotPicked_Defiler" />
+      <Unit index="0" value="Infestor" />
+    </InfoArray>
+    <InfoArray index="Train12">
+      <Button DefaultButtonFace="Corruptor" State="Available" Requirements="HaveSpire" />
+      <Unit index="0" value="Corruptor" />
+    </InfoArray>
+    <InfoArray index="Train13">
+      <Button DefaultButtonFace="Viper" State="Available" Requirements="BPM_Req_NotPicked_QueenClassic" />
+      <Unit index="0" value="Viper" />
+    </InfoArray>
+    <InfoArray index="Train15">
+      <Button DefaultButtonFace="SwarmHostMP" State="Available" Requirements="HaveInfestationPit" />
+      <Unit index="0" value="SwarmHostMP" />
+    </InfoArray>
+  </CAbilTrain>
+  <!-- Shared config for the 9 larva-morph abilities below (not used
+       directly as an ability itself). Each one now only needs parent=
+       this id plus its own InfoArray (button/requirement/unit/cost).
+       v1 had this block copy-pasted per unit; consolidated here in v2. -->
+  <CAbilTrain id="BPM_LarvaTrainBase">
+    <EditorCategories value="Race:Zerg,AbilityorEffectType:MorphsandBurrows" />
+    <MorphUnit value="Egg" />
+    <Flags index="DisableCollision" value="1" />
+    <!-- Every child supplies its full mineral/vespene price in InfoArray.
+         Do not also charge/refund the produced unit's CostResource values. -->
+    <Flags index="IgnoreUnitCost" value="1" />
+    <Flags index="KillOnCancel" value="1" />
+    <Flags index="KillOnFinish" value="1" />
+    <Flags index="Select" value="1" />
+    <Flags index="WaitForFood" value="0" />
+    <Range value="4" />
+    <Activity value="UI/Morphing" />
+  </CAbilTrain>
+  <CAbilTrain id="BPM_LarvaTrainQueenClassic" parent="BPM_LarvaTrainBase">
+    <InfoArray index="Train1" Time="41">
+      <Button DefaultButtonFace="BPM_QueenClassic" State="Available" Requirements="BPM_Req_Picked_QueenClassic" />
+      <Unit index="0" value="QueenClassic" />
+      <Resource index="Minerals" value="150" />
+      <Resource index="Vespene" value="100" />
+    </InfoArray>
+  </CAbilTrain>
+  <CAbilTrain id="BPM_LarvaTrainRavasaur" parent="BPM_LarvaTrainBase">
+    <InfoArray index="Train1" Time="38">
+      <Button DefaultButtonFace="BPM_Ravasaur" State="Available" Requirements="BPM_Req_Picked_Ravasaur" />
+      <Unit index="0" value="Ravasaur" />
+      <Resource index="Minerals" value="150" />
+      <Resource index="Vespene" value="150" />
+    </InfoArray>
+  </CAbilTrain>
+  <CAbilTrain id="BPM_LarvaTrainAberration" parent="BPM_LarvaTrainBase">
+    <InfoArray index="Train1" Time="38">
+      <Button DefaultButtonFace="BPM_Aberration" State="Available" Requirements="BPM_Req_Picked_Aberration" />
+      <Unit index="0" value="InfestedAbomination" />
+      <Resource index="Minerals" value="150" />
+      <Resource index="Vespene" value="50" />
+    </InfoArray>
+  </CAbilTrain>
+  <CAbilTrain id="BPM_LarvaTrainRavager" parent="BPM_LarvaTrainBase">
+    <!-- Direct production combines the displayed Faster-speed Roach train
+         time (19s) with the adjusted Ravager morph time (8.57s).
+         27.57 Faster seconds * 1.4 = 38.598 catalog seconds. -->
+    <InfoArray index="Train1" Time="38.598">
+      <Button DefaultButtonFace="BPM_Ravager" State="Available" Requirements="BPM_Req_LarvaTrainRavagerDirect" />
+      <Unit index="0" value="Ravager" />
+      <Resource index="Minerals" value="125" />
+      <Resource index="Vespene" value="75" />
+    </InfoArray>
+  </CAbilTrain>
+  <CAbilTrain id="BPM_LarvaTrainGuardian" parent="BPM_LarvaTrainBase">
+    <InfoArray index="Train1" Time="40">
+      <Button DefaultButtonFace="GuardianMP" State="Available" Requirements="BPM_Req_LarvaTrainGuardianDirect" />
+      <Unit index="0" value="GuardianMP" />
+      <Resource index="Minerals" value="250" />
+      <Resource index="Vespene" value="300" />
+    </InfoArray>
+  </CAbilTrain>
+  <CAbilTrain id="BPM_LarvaTrainLurker" parent="BPM_LarvaTrainBase">
+    <InfoArray index="Train1" Time="33">
+      <Button DefaultButtonFace="LurkerMP" State="Available" Requirements="BPM_Req_LarvaTrainLurkerDirect" />
+      <Unit index="0" value="LurkerMP" />
+      <Resource index="Minerals" value="150" />
+      <Resource index="Vespene" value="150" />
+    </InfoArray>
+  </CAbilTrain>
+  <CAbilTrain id="BPM_LarvaTrainBroodLord" parent="BPM_LarvaTrainBase">
+    <InfoArray index="Train1" Time="34">
+      <Button DefaultButtonFace="BroodLord" State="Available" Requirements="BPM_Req_LarvaTrainBroodLordDirect" />
+      <Unit index="0" value="BroodLord" />
+      <Resource index="Minerals" value="300" />
+      <Resource index="Vespene" value="250" />
+    </InfoArray>
+  </CAbilTrain>
+  <CAbilTrain id="BPM_LarvaTrainDefiler" parent="BPM_LarvaTrainBase">
+    <!-- v1.4.3 balance: 150 -> 200 vespene, 40 -> 34 sec morph time -->
+    <InfoArray index="Train1" Time="47.6">
+      <Button DefaultButtonFace="BPM_Defiler" State="Available" Requirements="BPM_Req_Picked_Defiler" />
+      <Unit index="0" value="DefilerMP" />
+      <Resource index="Minerals" value="50" />
+      <Resource index="Vespene" value="200" />
+    </InfoArray>
+  </CAbilTrain>
+  <CAbilTrain id="BPM_LarvaTrainTyrannozor" parent="BPM_LarvaTrainBase">
+    <InfoArray index="Train1" Time="65">
+      <Button DefaultButtonFace="BPM_Tyrannozor" State="Available" Requirements="BPM_Req_Picked_Tyrannozor" />
+      <Unit index="0" value="Terrorzor" />
+      <Resource index="Minerals" value="300" />
+      <Resource index="Vespene" value="200" />
+    </InfoArray>
+  </CAbilTrain>
+  <CAbilMorph id="MorphToGuardianMP">
+    <!-- The dependency ability is normally owned by GuardianCocoonMP.
+             Because BPM exposes it on Mutalisk, define the complete two-stage
+             morph explicitly so the Mutalisk first changes into the cocoon
+             and is then replaced by GuardianMP instead of leaving its actor
+             underneath the completed Guardian. -->
+    <EditorCategories value="Race:Zerg,AbilityorEffectType:MorphsandBurrows" />
+    <Alert value="MorphComplete_Zerg" />
+    <CmdButtonArray index="Execute" DefaultButtonFace="GuardianMP" />
+    <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel" />
+    <Flags index="BestUnit" value="1" />
+    <Flags index="Birth" value="1" />
+    <Flags index="DisableAbils" value="1" />
+    <Flags index="FastBuild" value="1" />
+    <Flags index="Interruptible" value="1" />
+    <Flags index="Produce" value="1" />
+    <Flags index="ShowProgress" value="1" />
+    <Flags index="SuppressMovement" value="1" />
+    <AbilClassEnableArray index="CAbilMove" value="1" />
+    <AbilClassEnableArray index="CAbilStop" value="1" />
+    <InfoArray index="0" Unit="GuardianCocoonMP" RandomDelayMin="0.001" RandomDelayMax="0.001" />
+    <InfoArray index="1" Score="1" Unit="GuardianMP">
+      <SectionArray index="Abils">
+        <DurationArray index="Delay" value="56.001" />
+      </SectionArray>
+      <SectionArray index="Actor">
+        <DurationArray index="Delay" value="56.001" />
+      </SectionArray>
+      <SectionArray index="Stats">
+        <DurationArray index="Delay" value="56.001" />
+        <EffectArray index="Finish" value="PostMorphHeal" />
+      </SectionArray>
+    </InfoArray>
+    <!-- Required by the stock Zerg air-morph actor events to replace the
+             source flyer model instead of leaving it under the new unit. -->
+    <ActorKey value="GuardianAspect" />
+  </CAbilMorph>
+  <CAbilMorph id="UpgradeToHive">
+    <CmdButtonArray index="Execute" DefaultButtonFace="Hive" Requirements="HaveInfestationPit" />
+  </CAbilMorph>
+  <CAbilMorph id="UpgradeToGreaterSpire">
+    <CmdButtonArray index="Execute" DefaultButtonFace="GreaterSpire" Requirements="HaveHive" />
+  </CAbilMorph>
+  <CAbilEffectInstant id="BPM_FirebatSCBWStimpack">
+    <AbilSetId value="Stimpack" />
+    <EditorCategories value="Race:Terran,AbilityorEffectType:Units" />
+    <Effect index="0" value="BPM_FirebatSCBWStimpack@AB" />
+    <Flags index="Transient" value="1" />
+    <Cost>
+      <Vital index="Life" value="10" />
+    </Cost>
+    <CmdButtonArray index="Execute" DefaultButtonFace="BPM_FirebatSCBWStimpack" Requirements="UseStimpack">
+      <Flags index="ToSelection" value="1" />
+    </CmdButtonArray>
+  </CAbilEffectInstant>
+  <!-- v1.4.3 balance: new Barracks Tech Lab research slots for Marauder
+       Shatter Shells, Firebat Napalm Ammo, and the shared Firebat/Marauder
+       Infantry Heavy Armor upgrade. -->
+  <CAbilResearch id="BarracksTechLabResearch">
+    <InfoArray index="Research20" Time="79">
+      <Resource index="Minerals" value="100" />
+      <Resource index="Vespene" value="100" />
+      <Button DefaultButtonFace="BPM_MarauderShatterShells" State="Restricted" Requirements="BPM_Req_MarauderShatterShells" />
+      <Upgrade value="BPM_MarauderShatterShells" />
+    </InfoArray>
+    <InfoArray index="Research21" Time="79">
+      <Resource index="Minerals" value="100" />
+      <Resource index="Vespene" value="100" />
+      <Button DefaultButtonFace="BPM_FirebatNapalmAmmo" State="Restricted" Requirements="BPM_Req_FirebatNapalmAmmo" />
+      <Upgrade value="BPM_FirebatNapalmAmmo" />
+    </InfoArray>
+    <InfoArray index="Research22" Time="79">
+      <Resource index="Minerals" value="150" />
+      <Resource index="Vespene" value="150" />
+      <Button DefaultButtonFace="BPM_TerranInfantryHeavyArmor" State="Restricted" Requirements="BPM_Req_TerranInfantryHeavyArmor" />
+      <Upgrade value="BPM_TerranInfantryHeavyArmor" />
+    </InfoArray>
+  </CAbilResearch>
+  <!-- v1.4.3 balance: Infantry Heavy Armor morph targets (see
+       BPM_FirebatHeavyArmor/BPM_MarauderHeavyArmor in UnitData.xml and
+       BPM_InitInfantryHeavyArmorTrigger in BPM_Core_Init.galaxy). Free,
+       instant (0.1s), and never placed on any CardLayouts - only ever
+       issued directly via UnitIssueOrder from that trigger, modeled on
+       EnergizerPhasingModeMorph below. -->
+  <CAbilMorph id="BPM_MorphFirebatHeavyArmor">
+    <Flags index="DisableAbils" value="1" />
+    <Flags index="IgnoreFacing" value="1" />
+    <Flags index="SuppressMovement" value="1" />
+    <Cost>
+      <Charge TimeUse="0" />
+      <Cooldown TimeUse="0" />
+    </Cost>
+    <CmdButtonArray index="Execute" DefaultButtonFace="Firebat" />
+    <InfoArray Unit="BPM_FirebatHeavyArmor" RandomDelayMax="0">
+      <SectionArray index="Actor">
+        <DurationArray index="Duration" value="0.1" />
+      </SectionArray>
+      <SectionArray index="Stats">
+        <DurationArray index="Duration" value="0.1" />
+      </SectionArray>
+    </InfoArray>
+  </CAbilMorph>
+  <CAbilMorph id="BPM_MorphMarauderHeavyArmor">
+    <Flags index="DisableAbils" value="1" />
+    <Flags index="IgnoreFacing" value="1" />
+    <Flags index="SuppressMovement" value="1" />
+    <Cost>
+      <Charge TimeUse="0" />
+      <Cooldown TimeUse="0" />
+    </Cost>
+    <CmdButtonArray index="Execute" DefaultButtonFace="Marauder" />
+    <InfoArray Unit="BPM_MarauderHeavyArmor" RandomDelayMax="0">
+      <SectionArray index="Actor">
+        <DurationArray index="Duration" value="0.1" />
+      </SectionArray>
+      <SectionArray index="Stats">
+        <DurationArray index="Duration" value="0.1" />
+      </SectionArray>
+    </InfoArray>
+  </CAbilMorph>
+  <CAbilResearch id="FactoryTechLabResearch">
+    <InfoArray index="Research20" Time="110">
+      <Resource index="Minerals" value="100" />
+      <Resource index="Vespene" value="100" />
+      <Button DefaultButtonFace="BPM_GoliathRange" State="Restricted" Requirements="BPM_Req_GoliathRange" />
+      <Upgrade value="BPM_GoliathRange" />
+    </InfoArray>
+    <!-- v1.4.3 balance: 100/100/110 -> 150/150/79 -->
+    <InfoArray index="Research21" Time="79">
+      <Resource index="Minerals" value="150" />
+      <Resource index="Vespene" value="150" />
+      <Button DefaultButtonFace="BPM_WarHoundTornadoMissile" State="Restricted" Requirements="BPM_Req_WarHoundTornadoMissile" />
+      <Upgrade value="BPM_WarHoundTornadoMissile" />
+    </InfoArray>
+    <!-- v1.4.3 balance: Crucio Suppressor - reduces Siege Tank sieged-mode
+         friendly splash damage by 75%. Requires Armory. -->
+    <InfoArray index="Research22" Time="79">
+      <Resource index="Minerals" value="100" />
+      <Resource index="Vespene" value="100" />
+      <Button DefaultButtonFace="BPM_CrucioSuppressor" State="Restricted" Requirements="BPM_Req_CrucioSuppressor" />
+      <Upgrade value="BPM_CrucioSuppressor" />
+    </InfoArray>
+  </CAbilResearch>
+  <CAbilResearch id="CyberneticsCoreResearch">
+    <InfoArray index="Research1" Time="180">
+      <Resource index="Minerals" value="100" />
+      <Resource index="Vespene" value="100" />
+      <Button DefaultButtonFace="ProtossAirWeaponsLevel1" State="Restricted" Requirements="LearnProtossAirWeapon1" />
+      <Upgrade value="ProtossAirWeaponsLevel1" />
+    </InfoArray>
+    <InfoArray index="Research2" Time="215">
+      <Resource index="Minerals" value="175" />
+      <Resource index="Vespene" value="175" />
+      <Button DefaultButtonFace="ProtossAirWeaponsLevel2" State="Restricted" Requirements="LearnProtossAirWeapon2" />
+      <Upgrade value="ProtossAirWeaponsLevel2" />
+    </InfoArray>
+    <InfoArray index="Research3" Time="250">
+      <Resource index="Minerals" value="250" />
+      <Resource index="Vespene" value="250" />
+      <Button DefaultButtonFace="ProtossAirWeaponsLevel3" State="Restricted" Requirements="LearnProtossAirWeapon3" />
+      <Upgrade value="ProtossAirWeaponsLevel3" />
+    </InfoArray>
+    <InfoArray index="Research4" Time="180">
+      <Resource index="Minerals" value="100" />
+      <Resource index="Vespene" value="100" />
+      <Button DefaultButtonFace="ProtossAirArmorLevel1" State="Restricted" Requirements="LearnProtossAirArmor1" />
+      <Upgrade value="ProtossAirArmorsLevel1" />
+    </InfoArray>
+    <InfoArray index="Research5" Time="215">
+      <Resource index="Minerals" value="175" />
+      <Resource index="Vespene" value="175" />
+      <Button DefaultButtonFace="ProtossAirArmorLevel2" State="Restricted" Requirements="LearnProtossAirArmor2" />
+      <Upgrade value="ProtossAirArmorsLevel2" />
+    </InfoArray>
+    <InfoArray index="Research6" Time="250">
+      <Resource index="Minerals" value="250" />
+      <Resource index="Vespene" value="250" />
+      <Button DefaultButtonFace="ProtossAirArmorLevel3" State="Restricted" Requirements="LearnProtossAirArmor3" />
+      <Upgrade value="ProtossAirArmorsLevel3" />
+    </InfoArray>
+    <InfoArray index="Research7" Time="140">
+      <Resource index="Minerals" value="50" />
+      <Resource index="Vespene" value="50" />
+      <Button DefaultButtonFace="ResearchWarpGate" State="Restricted" Requirements="BPM_Req_ResearchWarpGate" />
+      <Upgrade value="WarpGateResearch" />
+    </InfoArray>
+    <InfoArray index="Research20" Time="140">
+      <Resource index="Minerals" value="150" />
+      <Resource index="Vespene" value="150" />
+      <Button DefaultButtonFace="BPM_DragoonRange" State="Restricted" Requirements="BPM_Req_DragoonRange" />
+      <Upgrade value="BPM_DragoonRange" />
+    </InfoArray>
+    <InfoArray index="Research21" Time="80">
+      <Resource index="Minerals" value="200" />
+      <Resource index="Vespene" value="200" />
+      <Button DefaultButtonFace="BPM_ResearchCorsairDisruptionWeb" State="Restricted" Requirements="BPM_Req_CorsairDisruptionWeb" />
+      <Upgrade value="BPM_CorsairDisruptionWeb" />
+    </InfoArray>
+  </CAbilResearch>
+  <CAbilResearch id="RoboticsBayResearch">
+    <InfoArray index="Research20" Time="140">
+      <Resource index="Minerals" value="200" />
+      <Resource index="Vespene" value="200" />
+      <Button DefaultButtonFace="BPM_ReaverDamage" State="Restricted" Requirements="BPM_Req_ReaverDamage" />
+      <Upgrade value="BPM_ReaverDamage" />
+    </InfoArray>
+    <InfoArray index="Research21" Time="112">
+      <Resource index="Minerals" value="150" />
+      <Resource index="Vespene" value="150" />
+      <Button DefaultButtonFace="BPM_ReaverHangar" State="Restricted" Requirements="BPM_Req_ReaverHangar" />
+      <Upgrade value="BPM_ReaverHangar" />
+    </InfoArray>
+  </CAbilResearch>
+  <CAbilResearch id="FleetBeaconResearch">
+    <!-- Restore the stock Tectonic Destabilizers research that is lost when
+         the campaign Fleet Beacon data is merged ahead of VoidMulti. -->
+    <InfoArray index="Research6" Time="140">
+      <Resource index="Minerals" value="150" />
+      <Resource index="Vespene" value="150" />
+      <Button DefaultButtonFace="TempestGroundAttackUpgrade" State="Restricted" Requirements="BPM_Req_TempestGroundAttackUpgrade" />
+      <Upgrade value="TempestGroundAttackUpgrade" />
+    </InfoArray>
+    <InfoArray index="Research20" Time="112">
+      <Resource index="Minerals" value="100" />
+      <Resource index="Vespene" value="100" />
+      <Button DefaultButtonFace="BPM_ScoutSight" State="Restricted" Requirements="BPM_Req_ScoutSight" />
+      <Upgrade value="BPM_ScoutSight" />
+    </InfoArray>
+    <InfoArray index="Research21" Time="140">
+      <Resource index="Minerals" value="150" />
+      <Resource index="Vespene" value="150" />
+      <Button DefaultButtonFace="BPM_ScoutSpeed" State="Restricted" Requirements="BPM_Req_ScoutSpeed" />
+      <Upgrade value="BPM_ScoutSpeed" />
+    </InfoArray>
+    <InfoArray index="Research22" Time="110">
+      <Resource index="Minerals" value="150" />
+      <Resource index="Vespene" value="150" />
+      <Button DefaultButtonFace="BPM_ArbiterStasisField" State="Restricted" Requirements="BPM_Req_ArbiterStasisField" />
+      <Upgrade value="BPM_ArbiterStasisField" />
+    </InfoArray>
+    <InfoArray index="Research23" Time="110">
+      <Resource index="Minerals" value="150" />
+      <Resource index="Vespene" value="150" />
+      <Button DefaultButtonFace="BPM_ArbiterRecall" State="Restricted" Requirements="BPM_Req_ArbiterRecall" />
+      <Upgrade value="BPM_ArbiterRecall" />
+    </InfoArray>
+  </CAbilResearch>
+  <CAbilEffectTarget id="CorsairMPDisruptionWeb">
+    <CmdButtonArray index="Execute" DefaultButtonFace="BPM_CorsairDisruptionWeb" Requirements="BPM_Req_UseCorsairDisruptionWeb" />
+  </CAbilEffectTarget>
+  <CAbilResearch id="StarportTechLabResearch">
+    <InfoArray index="Research20" Time="110">
+      <Resource index="Minerals" value="150" />
+      <Resource index="Vespene" value="150" />
+      <Button DefaultButtonFace="BPM_WraithEnergy" State="Restricted" Requirements="BPM_Req_WraithEnergy" />
+      <Upgrade value="BPM_WraithEnergy" />
+    </InfoArray>
+    <InfoArray index="Research21" Time="110">
+      <Resource index="Minerals" value="150" />
+      <Resource index="Vespene" value="150" />
+      <Button DefaultButtonFace="BPM_WraithCloak" State="Restricted" Requirements="BPM_Req_WraithCloak" />
+      <Upgrade value="BPM_WraithCloak" />
+    </InfoArray>
+    <InfoArray index="Research22" Time="110">
+      <Resource index="Minerals" value="150" />
+      <Resource index="Vespene" value="150" />
+      <Button DefaultButtonFace="BPM_ResearchScienceVesselLockdown" State="Restricted" Requirements="BPM_Req_ResearchScienceVesselLockdown" />
+      <Upgrade value="BPM_ScienceVesselLockdownResearch" />
+    </InfoArray>
+    <InfoArray index="Research23" Time="110">
+      <Resource index="Minerals" value="150" />
+      <Resource index="Vespene" value="150" />
+      <Button DefaultButtonFace="BPM_ResearchScienceVesselDefensiveMatrix" State="Restricted" Requirements="BPM_Req_ResearchScienceVesselDefensiveMatrix" />
+      <Upgrade value="BPM_ScienceVesselDefensiveMatrixResearch" />
+    </InfoArray>
+    <!-- v1.4.3 balance: Raven Integrated Fire Control Network -->
+    <InfoArray index="Research24" Time="79">
+      <Resource index="Minerals" value="150" />
+      <Resource index="Vespene" value="150" />
+      <Button DefaultButtonFace="BPM_ResearchRavenFireControlNetwork" State="Restricted" Requirements="BPM_Req_ResearchRavenFireControlNetwork" />
+      <Upgrade value="BPM_RavenFireControlNetworkResearch" />
+    </InfoArray>
+    <!-- v1.4.3 balance: Science Vessel Boost -->
+    <InfoArray index="Research25" Time="100">
+      <Resource index="Minerals" value="100" />
+      <Resource index="Vespene" value="100" />
+      <Button DefaultButtonFace="BPM_ResearchScienceVesselBoost" State="Restricted" Requirements="BPM_Req_ResearchScienceVesselBoost" />
+      <Upgrade value="BPM_ScienceVesselBoostResearch" />
+    </InfoArray>
+  </CAbilResearch>
+  <CAbilResearch id="InfestationPitResearch">
+    <InfoArray index="Research20" Time="110">
+      <Resource index="Minerals" value="150" />
+      <Resource index="Vespene" value="150" />
+      <Button DefaultButtonFace="BPM_QueenEnergy" State="Restricted" Requirements="BPM_Req_QueenEnergy" />
+      <Upgrade value="BPM_QueenEnergy" />
+    </InfoArray>
+  </CAbilResearch>
+  <CAbilResearch id="BPM_DefilerMoundResearch">
+    <EditorCategories value="Race:Zerg,AbilityorEffectType:Structures" />
+    <InfoArray index="Research1" Time="100">
+      <Resource index="Minerals" value="150" />
+      <Resource index="Vespene" value="150" />
+      <Button DefaultButtonFace="BPM_ResearchDefilerPlague" State="Restricted" Requirements="BPM_Req_DefilerPlague" />
+      <Upgrade value="BPM_DefilerPlague" />
+    </InfoArray>
+    <InfoArray index="Research2" Time="80">
+      <Resource index="Minerals" value="100" />
+      <Resource index="Vespene" value="100" />
+      <Button DefaultButtonFace="BPM_ResearchDefilerConsume" State="Restricted" Requirements="BPM_Req_DefilerConsume" />
+      <Upgrade value="BPM_DefilerConsume" />
+    </InfoArray>
+    <InfoArray index="Research3" Time="80">
+      <Resource index="Minerals" value="150" />
+      <Resource index="Vespene" value="150" />
+      <Button DefaultButtonFace="BPM_ResearchDefilerEnergy" State="Restricted" Requirements="BPM_Req_DefilerEnergy" />
+      <Upgrade value="BPM_DefilerEnergy" />
+    </InfoArray>
+  </CAbilResearch>
+  <CAbilResearch id="SpawningPoolResearch">
+    <InfoArray index="Research20" Time="80">
+      <Resource index="Minerals" value="150" />
+      <Resource index="Vespene" value="150" />
+      <Button DefaultButtonFace="BPM_ResearchAberrationSpeed" State="Restricted" Requirements="BPM_Req_AberrationSpeed" />
+      <Upgrade value="BPM_AberrationSpeed" />
+    </InfoArray>
+  </CAbilResearch>
+  <!-- Tyrannozor-only "Primal Carapace" evolution. Keep this on a dedicated
+       ability and attach it explicitly to the Ultralisk Cavern. This avoids
+       relying on a dependency merge into the stock research ability. -->
+  <CAbilResearch id="BPM_UltraliskCavernResearchTyrannozor">
+    <!-- Catalog time is Normal-speed time. 126 / 1.4 = 90 seconds on Faster. -->
+    <InfoArray index="Research1" Time="126">
+      <Resource index="Minerals" value="150" />
+      <Resource index="Vespene" value="150" />
+      <Button DefaultButtonFace="BPM_TerrorzorCarapace" State="Restricted" Requirements="BPM_Req_TerrorzorCarapace" />
+      <Upgrade value="BPM_TerrorzorCarapace" />
+    </InfoArray>
+  </CAbilResearch>
+  <!-- The Defiler Mound price lives on BPM_DefilerMound.CostResource.
+       Do not duplicate it here: the build order would charge both catalog
+       sources, while the custom tooltip already falls back to unit cost. -->
+  <CAbilBuild id="ZergBuild">
+    <InfoArray index="Build22" Unit="BPM_DefilerMound" Time="53">
+      <Button DefaultButtonFace="BPM_DefilerMound" Requirements="BPM_Req_DefilerMound" />
+    </InfoArray>
+  </CAbilBuild>
+  <CAbilEffectTarget id="BPM_DefilerConsume">
+    <EditorCategories value="Race:Zerg,AbilityorEffectType:Units" />
+    <Effect index="0" value="BPM_DefilerConsumeSet" />
+    <TargetFilters value="Biological;Self,Ally,Neutral,Enemy,Structure,Missile,Stasis,UnderConstruction,Dead,Hidden,Invulnerable" />
+    <Range value="0.5" />
+    <RangeSlop value="2" />
+    <ArcSlop value="90" />
+    <CastIntroTime value="0.1875" />
+    <UninterruptibleArray index="Cast" value="1" />
+    <CmdButtonArray index="Execute" DefaultButtonFace="BPM_DefilerConsume" Requirements="BPM_Req_UseDefilerConsume" />
+  </CAbilEffectTarget>
+  <CAbilEffectTarget id="DefilerMPPlague">
+    <CmdButtonArray index="Execute" DefaultButtonFace="DefilerMPPlague" Requirements="BPM_Req_UseDefilerPlague" />
+  </CAbilEffectTarget>
+  <CAbilResearch id="ArmoryResearch">
+    <InfoArray index="Research6" Time="160" Upgrade="TerranVehicleWeaponsLevel1">
+      <Resource index="Minerals" value="100" />
+      <Resource index="Vespene" value="100" />
+      <Button DefaultButtonFace="TerranVehicleWeaponsLevel1" State="Restricted" Requirements="LearnTerranVehicleWeapon1" />
+    </InfoArray>
+    <InfoArray index="Research7" Time="190" Upgrade="TerranVehicleWeaponsLevel2">
+      <Resource index="Minerals" value="175" />
+      <Resource index="Vespene" value="175" />
+      <Button DefaultButtonFace="TerranVehicleWeaponsLevel2" State="Restricted" Requirements="LearnTerranVehicleWeapon2" />
+    </InfoArray>
+    <InfoArray index="Research8" Time="220" Upgrade="TerranVehicleWeaponsLevel3">
+      <Resource index="Minerals" value="250" />
+      <Resource index="Vespene" value="250" />
+      <Button DefaultButtonFace="TerranVehicleWeaponsLevel3" State="Restricted" Requirements="LearnTerranVehicleWeapon3" />
+    </InfoArray>
+    <InfoArray index="Research12" Time="160" Upgrade="TerranShipWeaponsLevel1">
+      <Resource index="Minerals" value="100" />
+      <Resource index="Vespene" value="100" />
+      <Button DefaultButtonFace="TerranShipWeaponsLevel1" State="Restricted" Requirements="LearnTerranShipWeapon1" />
+    </InfoArray>
+    <InfoArray index="Research13" Time="190" Upgrade="TerranShipWeaponsLevel2">
+      <Resource index="Minerals" value="175" />
+      <Resource index="Vespene" value="175" />
+      <Button DefaultButtonFace="TerranShipWeaponsLevel2" State="Restricted" Requirements="LearnTerranShipWeapon2" />
+    </InfoArray>
+    <InfoArray index="Research14" Time="220" Upgrade="TerranShipWeaponsLevel3">
+      <Resource index="Minerals" value="250" />
+      <Resource index="Vespene" value="250" />
+      <Button DefaultButtonFace="TerranShipWeaponsLevel3" State="Restricted" Requirements="LearnTerranShipWeapon3" />
+    </InfoArray>
+    <InfoArray index="Research15" Time="160" Upgrade="TerranVehicleAndShipArmorsLevel1">
+      <Resource index="Minerals" value="100" />
+      <Resource index="Vespene" value="100" />
+      <Button DefaultButtonFace="TerranVehicleAndShipArmorsLevel1" State="Restricted" Requirements="LearnTerranVehicleAndShipArmor1" />
+    </InfoArray>
+    <InfoArray index="Research16" Time="190" Upgrade="TerranVehicleAndShipArmorsLevel2">
+      <Resource index="Minerals" value="175" />
+      <Resource index="Vespene" value="175" />
+      <Button DefaultButtonFace="TerranVehicleAndShipArmorsLevel2" State="Restricted" Requirements="LearnTerranVehicleAndShipArmor2" />
+    </InfoArray>
+    <InfoArray index="Research17" Time="220" Upgrade="TerranVehicleAndShipArmorsLevel3">
+      <Resource index="Minerals" value="250" />
+      <Resource index="Vespene" value="250" />
+      <Button DefaultButtonFace="TerranVehicleAndShipArmorsLevel3" State="Restricted" Requirements="LearnTerranVehicleAndShipArmor3" />
+    </InfoArray>
+  </CAbilResearch>
+  <CAbilEffectTarget id="ArbiterMPStasisField">
+    <CmdButtonArray index="Execute" Requirements="BPM_Req_UseArbiterStasisField" />
+  </CAbilEffectTarget>
+  <CAbilEffectTarget id="ArbiterMPRecall">
+    <CmdButtonArray index="Execute" Requirements="BPM_Req_UseArbiterRecall" />
+  </CAbilEffectTarget>
+  <CAbilBehavior id="BPM_EnergizerTimeShield">
+    <Flags index="Toggle" value="1" />
+    <BehaviorArray value="BPM_EnergizerTimeShield" />
+    <Cost index="0">
+      <Vital index="Energy" value="50" />
+    </Cost>
+    <CmdButtonArray index="On" DefaultButtonFace="BPM_EnergizerTimeShield" />
+    <CmdButtonArray index="Off" DefaultButtonFace="BPM_EnergizerTimeShieldOff" />
+  </CAbilBehavior>
+  <CAbilResearch id="TwilightCouncilResearch">
+    <!-- Re-declare the base researches: campaign catalog merges can otherwise
+         drop their inherited InfoArray entries when BPM adds Research20. -->
+    <InfoArray index="Research1" Time="100">
+      <Resource index="Minerals" value="100" />
+      <Resource index="Vespene" value="100" />
+      <Button DefaultButtonFace="ResearchCharge" State="Restricted" Requirements="LearnCharge" />
+      <Upgrade value="Charge" />
+    </InfoArray>
+    <InfoArray index="Research2" Time="121">
+      <Resource index="Minerals" value="150" />
+      <Resource index="Vespene" value="150" />
+      <Button DefaultButtonFace="ResearchBlink" State="Restricted" Requirements="LearnBlink" />
+      <Upgrade value="BlinkTech" />
+    </InfoArray>
+    <InfoArray index="Research3" Time="100">
+      <Resource index="Minerals" value="150" />
+      <Resource index="Vespene" value="150" />
+      <Button DefaultButtonFace="ResearchAdeptResonatingGlaives" State="Restricted" Requirements="BPM_Req_AdeptResonatingGlaives" />
+      <Upgrade value="AdeptPiercingAttack" />
+    </InfoArray>
+    <InfoArray index="Research20" Time="50">
+      <Resource index="Minerals" value="100" />
+      <Resource index="Vespene" value="100" />
+      <Button DefaultButtonFace="BPM_ResearchEnergizerPhasingMode" State="Restricted" Requirements="BPM_Req_EnergizerPhasingMode" />
+      <Upgrade value="BPM_EnergizerPhasingMode" />
+    </InfoArray>
+  </CAbilResearch>
+  <CAbilResearch id="BPM_TemplarArchiveResearch">
+    <InfoArray index="Research1" Time="79">
+      <Resource index="Minerals" value="150" />
+      <Resource index="Vespene" value="150" />
+      <Button DefaultButtonFace="BPM_ResearchEnergizerShields" State="Restricted" Requirements="BPM_Req_ResearchEnergizerShields" />
+      <Upgrade value="BPM_EnergizerShields" />
+    </InfoArray>
+  </CAbilResearch>
+
+
+  <CAbilMorph id="EnergizerPhasingModeMorph">
+    <Flags index="DisableAbils" value="1" />
+    <Flags index="IgnoreFacing" value="1" />
+    <Flags index="SuppressMovement" value="1" />
+    <Cost>
+      <Vital index="Shields" value="20" />
+      <Charge TimeUse="0" />
+      <Cooldown TimeUse="0" />
+    </Cost>
+    <CmdButtonArray index="Execute" DefaultButtonFace="BPM_EnergizerPhasingMode" Requirements="BPM_Req_UseEnergizerPhasingMode" />
+    <InfoArray Unit="EnergizerPhasingMode" RandomDelayMax="0">
+      <SectionArray index="Actor">
+        <DurationArray index="Duration" value="0.5" />
+      </SectionArray>
+      <SectionArray index="Stats">
+        <DurationArray index="Duration" value="0.5" />
+      </SectionArray>
+    </InfoArray>
+  </CAbilMorph>
+  <CAbilMorph id="EnergizerPhasingModeTransportMorph">
+    <Flags index="DisableAbils" value="1" />
+    <Flags index="IgnoreFacing" value="1" />
+    <Flags index="SuppressMovement" value="1" />
+    <Cost>
+      <Charge TimeUse="0" />
+      <Cooldown TimeUse="0" />
+    </Cost>
+    <CmdButtonArray index="Execute" DefaultButtonFace="BPM_EnergizerPhasingModeTransport" />
+    <InfoArray Unit="Energizer" RandomDelayMax="0">
+      <SectionArray index="Actor">
+        <DurationArray index="Duration" value="0.5" />
+      </SectionArray>
+      <SectionArray index="Stats">
+        <DurationArray index="Duration" value="0.5" />
+      </SectionArray>
+    </InfoArray>
+  </CAbilMorph>
+  <CAbilEffectTarget id="VoidSentryChronoBeam">
+    <Flags index="AutoCast" value="0" />
+    <Flags index="AutoCastOn" value="0" />
+    <AutoCastFilters value="-;-"/>
+  </CAbilEffectTarget>
+  <CAbilEffectTarget id="SentryPurifierChronoBeam">
+    <Flags index="AutoCast" value="0" />
+    <Flags index="AutoCastOn" value="0" />
+    <AutoCastFilters value="-;-"/>
+  </CAbilEffectTarget>
+  <CAbilEffectTarget id="RavenShredderMissile">
+    <CmdButtonArray index="Execute" Requirements="BPM_Never" />
+  </CAbilEffectTarget>
+  <CAbilEffectTarget id="AntiArmorMissile">
+    <CmdButtonArray index="Execute" Requirements="BPM_Never" />
+  </CAbilEffectTarget>
+  <CAbilEffectTarget id="RavenAntiArmorMissile">
+    <CmdButtonArray index="Execute" Requirements="BPM_Never" />
+  </CAbilEffectTarget>
+  <CAbilEffectTarget id="HunterSeeker">
+    <CmdButtonArray index="Execute" Requirements="BPM_Never" />
+  </CAbilEffectTarget>
+  <CAbilEffectTarget id="HunterSeekerMissile">
+    <CmdButtonArray index="Execute" Requirements="BPM_Never" />
+  </CAbilEffectTarget>
+  <CAbilEffectTarget id="RavenScramblerMissile">
+    <CmdButtonArray index="Execute" DefaultButtonFace="RavenScramblerMissile" Requirements="BPM_Req_UseRavenInterferenceMatrix" />
+  </CAbilEffectTarget>
+  <CAbilEffectTarget id="BPM_RavenRepairDrone">
+    <EditorCategories value="Race:Terran,AbilityorEffectType:Units" />
+    <Effect index="0" value="BPM_RavenRepairDroneCU" />
+    <Flags index="AllowMovement" value="1" />
+    <Flags index="NoDeceleration" value="1" />
+    <Range value="7" />
+    <Cost>
+      <Vital index="Energy" value="50" />
+      <Cooldown TimeUse="1" />
+    </Cost>
+    <TargetFilters value="Ground,Visible;Player,Ally,Neutral,Enemy,Structure,Missile,UnderConstruction,Dead,Hidden,Invulnerable" />
+    <CmdButtonArray index="Execute" DefaultButtonFace="BPM_RavenRepairDrone" />
+    <CursorEffect value="BPM_RavenRepairDroneCU" />
+    <CastIntroTime value="0.2" />
+    <FinishTime value="0.8" />
+  </CAbilEffectTarget>
+  <CAbilEffectTarget id="BPM_RepairDroneHeal">
+    <Alignment value="Positive" />
+    <EditorCategories value="Race:Terran,AbilityorEffectType:Units" />
+    <Effect index="0" value="BPM_RepairDroneHeal@Healer" />
+    <Flags index="AutoCast" value="1" />
+    <Flags index="AutoCastOn" value="1" />
+    <Flags index="NoDeceleration" value="1" />
+    <Flags index="ReExecutable" value="1" />
+    <Flags index="Smart" value="1" />
+    <Range value="6" />
+    <AutoCastRange value="6" />
+    <TargetFilters value="Mechanical,Visible;Self,Enemy,Dead,Hidden,Invulnerable" />
+    <AutoCastFilters value="Mechanical,Visible;Self,Enemy,Dead,Hidden,Invulnerable" />
+    <SmartValidatorArray value="NotMaxHP" />
+    <AutoCastValidatorArray value="NotMaxHP" />
+    <TargetSorts RequestCount="1">
+      <SortArray value="TSAlliancePassive" />
+      <SortArray value="TSDistance" />
+      <SortArray value="TSLifeFraction" />
+    </TargetSorts>
+    <CmdButtonArray index="Execute" DefaultButtonFace="BPM_RepairDroneHeal" />
+  </CAbilEffectTarget>
+  <CAbilEffectInstant id="GasUIAbil">
+    <Effect index="0" value="GasUIDummyEffect" />
+    <Flags index="Transient" value="1" />
+    <CmdButtonArray index="Execute" DefaultButtonFace="GasUIBtn" Requirements="BPM_Req_ConvenienceMode" />
+  </CAbilEffectInstant>
+  <CAbilEffectInstant id="GasUIAbil2">
+    <Effect index="0" value="GasUIDummyEffect" />
+    <Flags index="Transient" value="1" />
+    <CmdButtonArray index="Execute" DefaultButtonFace="GasUIBtn2" Requirements="BPM_Req_ConvenienceMode" />
+  </CAbilEffectInstant>
+  <CAbilMorph id="UpgradeToWarpGate">
+    <CmdButtonArray index="Execute" DefaultButtonFace="UpgradeToWarpGate" Requirements="UseWarpGate">
+      <Flags index="ToSelection" value="0" />
+    </CmdButtonArray>
+    <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel" />
+    <Flags index="AutoCast" value="0" />
+    <Flags index="AutoCastOn" value="0" />
+    <Flags index="Interruptible" value="0" />
+    <Cost>
+      <Resource index="Minerals" value="0" />
+      <Resource index="Vespene" value="0" />
+    </Cost>
+    <InfoArray index="0" Unit="WarpGate">
+      <SectionArray index="Abils">
+        <DurationArray index="Delay" value="10" />
+        <EffectArray index="Finish" value="" />
+      </SectionArray>
+      <SectionArray index="Actor">
+        <DurationArray index="Duration" value="10" />
+      </SectionArray>
+      <SectionArray index="Stats">
+        <DurationArray index="Delay" value="10" />
+      </SectionArray>
+    </InfoArray>
+  </CAbilMorph>
+  <CAbilEffectTarget id="Blink">
+    <CmdButtonArray index="Execute" Requirements="UseBlink" />
+  </CAbilEffectTarget>
+  <!-- Charge is an attack-augment autocast ability. Keep its multiplayer
+       upgrade gate on the matching catalog type; declaring it as an
+       EffectTarget does not patch the inherited Charge command. -->
+  <CAbilAugment id="Charge">
+    <CmdButtonArray index="Execute" Requirements="UseCharge" />
+  </CAbilAugment>
+  <CAbilEffectTarget id="DarkTemplarBlink">
+    <CmdButtonArray index="Execute" DefaultButtonFace="DarkTemplarBlink" Requirements="BPM_Req_UseDarkTemplarBlink" />
+  </CAbilEffectTarget>
+  <!-- Keep the stock cast/button/visual events, but execute a persistent area
+       refresher so units entering and leaving Dark Swarm are handled. -->
+  <CAbilEffectTarget id="DefilerMPDarkSwarm">
+    <Effect index="0" value="BPM_DefilerMPDarkSwarmPersistent" />
+  </CAbilEffectTarget>
+  <!-- The campaign dependency restores the obsolete Hallucination research
+       gate.  LotV Sentries must be able to cast every Hallucination variant
+       without researching the Hallucination upgrade. -->
+  <CAbilEffectInstant id="HallucinationAdept">
+    <CmdButtonArray index="Execute" Requirements="" />
+  </CAbilEffectInstant>
+  <CAbilEffectInstant id="HallucinationArchon">
+    <CmdButtonArray index="Execute" Requirements="" />
+  </CAbilEffectInstant>
+  <CAbilEffectInstant id="HallucinationColossus">
+    <CmdButtonArray index="Execute" Requirements="" />
+  </CAbilEffectInstant>
+  <CAbilEffectInstant id="HallucinationDisruptor">
+    <CmdButtonArray index="Execute" Requirements="" />
+  </CAbilEffectInstant>
+  <CAbilEffectInstant id="HallucinationHighTemplar">
+    <CmdButtonArray index="Execute" Requirements="" />
+  </CAbilEffectInstant>
+  <CAbilEffectInstant id="HallucinationImmortal">
+    <CmdButtonArray index="Execute" Requirements="" />
+  </CAbilEffectInstant>
+  <CAbilEffectInstant id="HallucinationOracle">
+    <CmdButtonArray index="Execute" Requirements="" />
+  </CAbilEffectInstant>
+  <CAbilEffectInstant id="HallucinationPhoenix">
+    <CmdButtonArray index="Execute" Requirements="" />
+  </CAbilEffectInstant>
+  <CAbilEffectInstant id="HallucinationProbe">
+    <CmdButtonArray index="Execute" Requirements="" />
+  </CAbilEffectInstant>
+  <CAbilEffectInstant id="HallucinationStalker">
+    <CmdButtonArray index="Execute" Requirements="" />
+  </CAbilEffectInstant>
+  <CAbilEffectInstant id="HallucinationVoidRay">
+    <CmdButtonArray index="Execute" Requirements="" />
+  </CAbilEffectInstant>
+  <CAbilEffectInstant id="HallucinationWarpPrism">
+    <CmdButtonArray index="Execute" Requirements="" />
+  </CAbilEffectInstant>
+  <CAbilEffectInstant id="HallucinationZealot">
+    <CmdButtonArray index="Execute" Requirements="" />
+  </CAbilEffectInstant>
+</Catalog>

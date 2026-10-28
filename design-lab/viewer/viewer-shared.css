@@ -1,0 +1,63 @@
+/* Replay-viewer mockups: site Arena tokens + small shared widgets. Layout-specific CSS lives in each viewer-N.html. */
+:root{
+  --f-display:"Big Shoulders Display","Pretendard Variable",Pretendard,system-ui,sans-serif;
+  --f-body:"Pretendard Variable",Pretendard,system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,monospace;
+  --r:3px;
+  --bg:#07080f;--bg2:#0c0e1a;--panel:#12152a;--panel2:#1a1e38;--line:#242a4a;--line2:#39406b;
+  --text:#f1f3ff;--mute:#a0a7cc;--accent:#4a80ff;--accent-fill:#3a68e6;--accent-ink:#fff;
+  --ban:#ff4458;--ban-fill:#d92d45;--pick:#d6f542;--pick-ink:#0b0f02;--up:#d6f542;--down:#ff5a6c;
+  --p1:#38bdf8;--p2:#f59e0b;
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:var(--f-body);font-size:15px;line-height:1.5;word-break:keep-all}
+h1,h2,h3,h4,p,ul{margin:0;padding:0}ul{list-style:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+a{color:inherit;text-decoration:none}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.dim{color:var(--mute)}
+canvas{display:block;width:100%;height:100%}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* unit chips: lime = picked, red = banned (same rule as the site) */
+.vw-unit{display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:4px 10px 4px 6px;border:1px solid var(--line2);border-left-width:4px;border-radius:var(--r);background:var(--panel2);font-weight:600;font-size:.9rem}
+.vw-unit.pick{border-color:var(--pick)}.vw-unit.ban{border-color:var(--ban)}
+.vw-unit img{width:28px;height:28px;object-fit:contain}
+.vw-repl{display:inline-flex;align-items:center;gap:6px;color:var(--mute);font-size:.8rem}
+.vw-repl .vw-unit{opacity:.75;min-height:30px;font-size:.8rem}.vw-repl .vw-unit img{width:20px;height:20px}
+.vw-race{width:22px;height:22px;vertical-align:middle}
+.vw-dim{color:var(--mute);font-size:.85rem}
+.p1c{color:var(--p1)}.p2c{color:var(--p2)}
+.res-w{color:var(--up)}.res-l{color:var(--down)}
+
+/* transport */
+.vw-transport{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.vw-play{width:40px;height:34px;background:var(--accent-fill);color:#fff;border-radius:var(--r);font-weight:800}
+.vw-speeds{display:inline-flex;border:1px solid var(--line2);border-radius:var(--r);overflow:hidden}
+.vw-speeds button{height:34px;padding:0 10px;font-size:.8rem;color:var(--mute);border-right:1px solid var(--line)}
+.vw-speeds button:last-child{border-right:0}.vw-speeds button[aria-pressed=true]{background:var(--accent-fill);color:#fff}
+.vw-time{font-family:var(--f-mono);font-size:.9rem;color:var(--mute);white-space:nowrap}.vw-time b{color:var(--text)}
+.vw-scrub{flex:1;min-width:120px;accent-color:var(--accent)}
+
+/* timeline */
+.vw-tl{position:relative;user-select:none;touch-action:none;padding-left:64px}
+.vw-ruler{position:relative;height:20px;border-bottom:1px solid var(--line);overflow:hidden}
+.vw-ruler i{position:absolute;top:0;bottom:0;border-left:1px solid var(--line2)}.vw-ruler i span{position:absolute;left:4px;top:2px;font:.62rem var(--f-mono);color:var(--mute)}
+.vw-track{position:relative;height:28px;border-bottom:1px solid var(--line)}
+.vw-track>em{position:absolute;left:-64px;top:0;width:60px;height:100%;display:flex;align-items:center;font-style:normal;font-size:.7rem;color:var(--mute)}
+.vw-chart{height:64px}
+.vw-b{position:absolute;top:4px;height:20px;min-width:16px;background:var(--panel2);border:1px solid var(--line2);border-top:2px solid var(--ban);font:700 .65rem var(--f-mono);border-radius:2px}
+.vw-b:hover{background:var(--line2)}
+.vw-pk{position:absolute;top:4px;transform:translateX(-50%);font-size:.85rem;line-height:20px;color:var(--pick)}
+.vw-pk.p2{color:var(--pick);text-shadow:0 0 0 var(--p2)}
+.vw-head{position:absolute;top:0;bottom:0;width:2px;margin-left:-1px;background:#fff;pointer-events:none;box-shadow:0 0 8px #fff8}
+.vw-head::before{content:"";position:absolute;top:0;left:-4px;border:5px solid transparent;border-top-color:#fff}
+
+/* generic panel */
+.vw-panel{background:var(--panel);border:1px solid var(--line2);border-radius:var(--r)}
+.vw-h{font:800 1.05rem var(--f-display);text-transform:uppercase;letter-spacing:.03em}
+.vw-k{font:700 .68rem var(--f-mono);letter-spacing:.08em;color:var(--mute);text-transform:uppercase}
+.vw-list{display:grid;gap:8px}.vw-list.row{display:flex;flex-wrap:wrap}
+.vw-note{font:.72rem var(--f-mono);color:var(--mute)}
+.vw-legend{display:inline-flex;gap:14px;font-size:.78rem;color:var(--mute)}
+.vw-legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:-1px}

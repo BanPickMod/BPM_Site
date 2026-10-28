@@ -12,7 +12,14 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Design references and local tooling, not site code.
+    "design-lab/**",
+    // Node build tooling (CommonJS), run directly with node.
+    "scripts/**",
+    ".claude/**",
   ]),
+  // The server log is written in one place (lib/server/log.ts), which scrubs what it writes.
+  { files: ["**/*.{ts,tsx}"], rules: { "no-console": "error" } },
 ]);
 
 export default eslintConfig;

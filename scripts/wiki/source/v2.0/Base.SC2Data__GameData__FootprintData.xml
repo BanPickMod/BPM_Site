@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CFootprint id="BPM_NukeNoCreepFP1">
+        <Layers index="Check" Area="-1,-1,2,2">
+            <Rows value="..."/>
+            <Rows value="..."/>
+            <Rows value="..."/>
+        </Layers>
+        <Layers index="Place" Area="-1,-1,2,2">
+            <Sets index="0">
+                <Positive index="GroundNoSpawn" value="0"/>
+                <Positive index="NoBuild" value="0"/>
+                <Positive index="NoCreep" value="1"/>
+            </Sets>
+            <Rows value=".x."/>
+            <Rows value="xxx"/>
+            <Rows value=".x."/>
+        </Layers>
+        <EditorCategories value="FootprintGroup:SpecificDoodads"/>
+    </CFootprint>
+    <CFootprint id="BPM_NukeNoCreepFP2">
+        <Layers index="Check" Area="-2,-2,3,3">
+            <Rows value="....."/>
+            <Rows value="....."/>
+            <Rows value="....."/>
+            <Rows value="....."/>
+            <Rows value="....."/>
+        </Layers>
+        <Layers index="Place" Area="-2,-2,3,3">
+            <Sets index="0">
+                <Positive index="GroundNoSpawn" value="0"/>
+                <Positive index="NoBuild" value="0"/>
+                <Positive index="NoCreep" value="1"/>
+            </Sets>
+            <Rows value="..x.."/>
+            <Rows value=".xxx."/>
+            <Rows value="xxxxx"/>
+            <Rows value=".xxx."/>
+            <Rows value="..x.."/>
+        </Layers>
+        <EditorCategories value="FootprintGroup:SpecificDoodads"/>
+    </CFootprint>
+    <CFootprint id="BPM_NukeNoCreepFP3">
+        <Layers index="Check" Area="-3,-3,4,4">
+            <Rows value="......."/>
+            <Rows value="......."/>
+            <Rows value="......."/>
+            <Rows value="......."/>
+            <Rows value="......."/>
+            <Rows value="......."/>
+            <Rows value="......."/>
+        </Layers>
+        <Layers index="Place" Area="-3,-3,4,4">
+            <Sets index="0">
+                <Positive index="GroundNoSpawn" value="0"/>
+                <Positive index="NoBuild" value="0"/>
+                <Positive index="NoCreep" value="1"/>
+            </Sets>
+            <Rows value="...x..."/>
+            <Rows value=".xxxxx."/>
+            <Rows value=".xxxxx."/>
+            <Rows value="xxxxxxx"/>
+            <Rows value=".xxxxx."/>
+            <Rows value=".xxxxx."/>
+            <Rows value="...x..."/>
+        </Layers>
+        <EditorCategories value="FootprintGroup:SpecificDoodads"/>
+    </CFootprint>
+    <CFootprint id="BPM_NukeNoCreepFP4">
+        <Layers index="Check" Area="-4,-4,5,5">
+            <Rows value="........."/>
+            <Rows value="........."/>
+            <Rows value="........."/>
+            <Rows value="........."/>
+            <Rows value="........."/>
+            <Rows value="........."/>
+            <Rows value="........."/>
+            <Rows value="........."/>
+            <Rows value="........."/>
+        </Layers>
+        <Layers index="Place" Area="-4,-4,5,5">
+            <Sets index="0">
+                <Positive index="GroundNoSpawn" value="0"/>
+                <Positive index="NoBuild" value="0"/>
+                <Positive index="NoCreep" value="1"/>
+            </Sets>
+            <Rows value="....x...."/>
+            <Rows value="..xxxxx.."/>
+            <Rows value=".xxxxxxx."/>
+            <Rows value=".xxxxxxx."/>
+            <Rows value="xxxxxxxxx"/>
+            <Rows value=".xxxxxxx."/>
+            <Rows value=".xxxxxxx."/>
+            <Rows value="..xxxxx.."/>
+            <Rows value="....x...."/>
+        </Layers>
+        <EditorCategories value="FootprintGroup:SpecificDoodads"/>
+    </CFootprint>
+    <CFootprint id="BPM_NukeNoCreepFP5">
+        <Layers index="Check" Area="-5,-5,6,6">
+            <Rows value="..........."/>
+            <Rows value="..........."/>
+            <Rows value="..........."/>
+            <Rows value="..........."/>
+            <Rows value="..........."/>
+            <Rows value="..........."/>
+            <Rows value="..........."/>
+            <Rows value="..........."/>
+            <Rows value="..........."/>
+            <Rows value="..........."/>
+            <Rows value="..........."/>
+        </Layers>
+        <Layers index="Place" Area="-5,-5,6,6">
+            <Sets index="0">
+                <Positive index="GroundNoSpawn" value="0"/>
+                <Positive index="NoBuild" value="0"/>
+                <Positive index="NoCreep" value="1"/>
+            </Sets>
+            <Rows value=".....x....."/>
+            <Rows value="..xxxxxxx.."/>
+            <Rows value=".xxxxxxxxx."/>
+            <Rows value=".xxxxxxxxx."/>
+            <Rows value=".xxxxxxxxx."/>
+            <Rows value="xxxxxxxxxxx"/>
+            <Rows value=".xxxxxxxxx."/>
+            <Rows value=".xxxxxxxxx."/>
+            <Rows value=".xxxxxxxxx."/>
+            <Rows value="..xxxxxxx.."/>
+            <Rows value=".....x....."/>
+        </Layers>
+        <EditorCategories value="FootprintGroup:SpecificDoodads"/>
+    </CFootprint>
+    <CFootprint id="BPM_NukeNoCreepFP6">
+        <Layers index="Check" Area="-6,-6,7,7">
+            <Rows value="............."/>
+            <Rows value="............."/>
+            <Rows value="............."/>
+            <Rows value="............."/>
+            <Rows value="............."/>
+            <Rows value="............."/>
+            <Rows value="............."/>
+            <Rows value="............."/>
+            <Rows value="............."/>
+            <Rows value="............."/>
+            <Rows value="............."/>
+            <Rows value="............."/>
+            <Rows value="............."/>
+        </Layers>
+        <Layers index="Place" Area="-6,-6,7,7">
+            <Sets index="0">
+                <Positive index="GroundNoSpawn" value="0"/>
+                <Positive index="NoBuild" value="0"/>
+                <Positive index="NoCreep" value="1"/>
+            </Sets>
+            <Rows value="......x......"/>
+            <Rows value="...xxxxxxx..."/>
+            <Rows value="..xxxxxxxxx.."/>
+            <Rows value=".xxxxxxxxxxx."/>
+            <Rows value=".xxxxxxxxxxx."/>
+            <Rows value=".xxxxxxxxxxx."/>
+            <Rows value="xxxxxxxxxxxxx"/>
+            <Rows value=".xxxxxxxxxxx."/>
+            <Rows value=".xxxxxxxxxxx."/>
+            <Rows value=".xxxxxxxxxxx."/>
+            <Rows value="..xxxxxxxxx.."/>
+            <Rows value="...xxxxxxx..."/>
+            <Rows value="......x......"/>
+        </Layers>
+        <EditorCategories value="FootprintGroup:SpecificDoodads"/>
+    </CFootprint>
+    <CFootprint id="BPM_NukeNoCreepFP7">
+        <Layers index="Check" Area="-7,-7,8,8">
+            <Rows value="..............."/>
+            <Rows value="..............."/>
+            <Rows value="..............."/>
+            <Rows value="..............."/>
+            <Rows value="..............."/>
+            <Rows value="..............."/>
+            <Rows value="..............."/>
+            <Rows value="..............."/>
+            <Rows value="..............."/>
+            <Rows value="..............."/>
+            <Rows value="..............."/>
+            <Rows value="..............."/>
+            <Rows value="..............."/>
+            <Rows value="..............."/>
+            <Rows value="..............."/>
+        </Layers>
+        <Layers index="Place" Area="-7,-7,8,8">
+            <Sets index="0">
+                <Positive index="GroundNoSpawn" value="0"/>
+                <Positive index="NoBuild" value="0"/>
+                <Positive index="NoCreep" value="1"/>
+            </Sets>
+            <Rows value=".......x......."/>
+            <Rows value="....xxxxxxx...."/>
+            <Rows value="...xxxxxxxxx..."/>
+            <Rows value="..xxxxxxxxxxx.."/>
+            <Rows value=".xxxxxxxxxxxxx."/>
+            <Rows value=".xxxxxxxxxxxxx."/>
+            <Rows value=".xxxxxxxxxxxxx."/>
+            <Rows value="xxxxxxxxxxxxxxx"/>
+            <Rows value=".xxxxxxxxxxxxx."/>
+            <Rows value=".xxxxxxxxxxxxx."/>
+            <Rows value=".xxxxxxxxxxxxx."/>
+            <Rows value="..xxxxxxxxxxx.."/>
+            <Rows value="...xxxxxxxxx..."/>
+            <Rows value="....xxxxxxx...."/>
+            <Rows value=".......x......."/>
+        </Layers>
+        <EditorCategories value="FootprintGroup:SpecificDoodads"/>
+    </CFootprint>
+    <CFootprint id="BPM_NukeNoCreepFP8">
+        <Layers index="Check" Area="-8,-8,9,9">
+            <Rows value="................."/>
+            <Rows value="................."/>
+            <Rows value="................."/>
+            <Rows value="................."/>
+            <Rows value="................."/>
+            <Rows value="................."/>
+            <Rows value="................."/>
+            <Rows value="................."/>
+            <Rows value="................."/>
+            <Rows value="................."/>
+            <Rows value="................."/>
+            <Rows value="................."/>
+            <Rows value="................."/>
+            <Rows value="................."/>
+            <Rows value="................."/>
+            <Rows value="................."/>
+            <Rows value="................."/>
+        </Layers>
+        <Layers index="Place" Area="-8,-8,9,9">
+            <Sets index="0">
+                <Positive index="GroundNoSpawn" value="0"/>
+                <Positive index="NoBuild" value="0"/>
+                <Positive index="NoCreep" value="1"/>
+            </Sets>
+            <Rows value="........x........"/>
+            <Rows value=".....xxxxxxx....."/>
+            <Rows value="...xxxxxxxxxxx..."/>
+            <Rows value="..xxxxxxxxxxxxx.."/>
+            <Rows value="..xxxxxxxxxxxxx.."/>
+            <Rows value=".xxxxxxxxxxxxxxx."/>
+            <Rows value=".xxxxxxxxxxxxxxx."/>
+            <Rows value=".xxxxxxxxxxxxxxx."/>
+            <Rows value="xxxxxxxxxxxxxxxxx"/>
+            <Rows value=".xxxxxxxxxxxxxxx."/>
+            <Rows value=".xxxxxxxxxxxxxxx."/>
+            <Rows value=".xxxxxxxxxxxxxxx."/>
+            <Rows value="..xxxxxxxxxxxxx.."/>
+            <Rows value="..xxxxxxxxxxxxx.."/>
+            <Rows value="...xxxxxxxxxxx..."/>
+            <Rows value=".....xxxxxxx....."/>
+            <Rows value="........x........"/>
+        </Layers>
+        <EditorCategories value="FootprintGroup:SpecificDoodads"/>
+    </CFootprint>
+</Catalog>

@@ -1,0 +1,317 @@
+Abil/Name/BPM_ScienceVesselDefensiveMatrix=Defensive Matrix
+Abil/Name/BPM_ScienceVesselLockdown=Lockdown Missile
+Behavior/Name/BPM_EnergizerTimeShield=Time Shield
+Behavior/Name/BPM_EnergizerTimeShield@Buff=Time Shield (Haste)
+Behavior/Name/BPM_EnergizerTimeShield@Debuff=Time Shield (Slow)
+Behavior/Name/BPM_QueenParasite=Parasite
+Behavior/Name/BPM_RavenFireControlMark=Integrated Fire Control Target
+Behavior/Name/BPM_ScienceVesselDefensiveMatrix=Defensive Matrix
+Behavior/Name/BPM_ScienceVesselLockdown=Lockdown
+Behavior/Tooltip/BPM_EnergizerTimeShield=Activates a Time Shield that adjusts the speed of nearby units.
+Behavior/Tooltip/BPM_EnergizerTimeShield@Buff=Inside an Energizer's Time Shield: movement speed and attack speed increased by 5%.
+Behavior/Tooltip/BPM_EnergizerTimeShield@Debuff=Inside an enemy Energizer's Time Shield: movement speed and attack speed reduced by 5%.
+Behavior/Tooltip/BPM_QueenParasite=This unit is infected with a Parasite. The enemy keeps seeing what it sees.
+Behavior/Tooltip/BPM_RavenFireControlMark=Caught in the Integrated Fire Control Network. Damage taken increased by 20%.
+Behavior/Tooltip/BPM_ScienceVesselDefensiveMatrix=Absorbs up to 16 damage.
+Behavior/Tooltip/BPM_ScienceVesselLockdown=This mechanical unit is locked down and cannot move, attack or use abilities.
+Button/Name/BPM_Aberration=Morph to Aberration
+Button/Name/BPM_Arbiter=Summon Arbiter
+Button/Name/BPM_ArbiterRecall=Research Recall
+Button/Name/BPM_ArbiterStasisField=Research Stasis Field
+Button/Name/BPM_Corsair=Build Corsair
+Button/Name/BPM_CorsairDisruptionWeb=Disruption Web
+Button/Name/BPM_CrucioSuppressor=Crucio Suppressor
+Button/Name/BPM_Defiler=Morph to Defiler
+Button/Name/BPM_DefilerConsume=Consume
+Button/Name/BPM_DefilerMound=Morph to Defiler Mound
+Button/Name/BPM_Dragoon=Summon Dragoon
+Button/Name/BPM_DragoonRange=Research Singularity Charge
+Button/Name/BPM_Energizer=Summon Energizer
+Button/Name/BPM_EnergizerPhasingMode=Phasing Mode
+Button/Name/BPM_EnergizerPhasingModeTransport=Mobile Mode
+Button/Name/BPM_EnergizerTimeShield=Time Shield
+Button/Name/BPM_EnergizerTimeShieldOff=Deactivate Time Shield
+Button/Name/BPM_EvolveRavasaurVolatileSpines=Volatile Spines
+Button/Name/BPM_Firebat=Train Firebat
+Button/Name/BPM_FirebatNapalmAmmo=Napalm Ammo
+Button/Name/BPM_FirebatSCBWStimpack=Stimpack
+Button/Name/BPM_GoliathRange=Charon Boosters
+Button/Name/BPM_GuardianMP=Morph to Guardian
+Button/Name/BPM_MarauderShatterShells=Shatter Shells
+Button/Name/BPM_QueenClassic=Morph to Queen
+Button/Name/BPM_QueenEnergy=Research Gamete Meiosis
+Button/Name/BPM_QueenParasite=Parasite
+Button/Name/BPM_Ravager=Morph to Ravager
+Button/Name/BPM_Ravasaur=Morph to Ravasaur
+Button/Name/BPM_RavenFireControlNetwork=Integrated Fire Control Network
+Button/Name/BPM_RavenRepairDrone=Build Repair Drone
+Button/Name/BPM_Reaver=Summon Reaver
+Button/Name/BPM_ReaverDamage=Scarab Damage Upgrade
+Button/Name/BPM_ReaverHangar=Scarab Capacity Upgrade
+Button/Name/BPM_RepairDroneHeal=Repair
+Button/Name/BPM_ResearchAberrationSpeed=Leg Muscle Enhancement
+Button/Name/BPM_ResearchCorsairDisruptionWeb=Research Disruption Web
+Button/Name/BPM_ResearchDefilerConsume=Research Consume
+Button/Name/BPM_ResearchDefilerEnergy=Research Metasynaptic Node
+Button/Name/BPM_ResearchDefilerPlague=Research Plague
+Button/Name/BPM_ResearchEnergizerPhasingMode=Research Phasing Mode
+Button/Name/BPM_ResearchEnergizerShields=Research Shield Overcharge
+Button/Name/BPM_ResearchRavenFireControlNetwork=Integrated Fire Control Network
+Button/Name/BPM_ResearchScienceVesselBoost=Science Vessel Boost
+Button/Name/BPM_ResearchScienceVesselDefensiveMatrix=Research Defensive Matrix
+Button/Name/BPM_ResearchScienceVesselLockdown=Research Lockdown Missile
+Button/Name/BPM_ScienceVessel=Build Science Vessel
+Button/Name/BPM_ScienceVesselBoost=Science Vessel Boost
+Button/Name/BPM_ScienceVesselDefensiveMatrix=Defensive Matrix
+Button/Name/BPM_ScienceVesselIrradiate=Irradiate
+Button/Name/BPM_ScienceVesselLockdown=Lockdown Missile
+Button/Name/BPM_Scout=Summon Scout
+Button/Name/BPM_ScoutSight=Research Apial Sensors
+Button/Name/BPM_ScoutSpeed=Research Gravitic Thrusters
+Button/Name/BPM_TerranInfantryHeavyArmor=Infantry Heavy Armor
+Button/Name/BPM_TerrorzorCarapace=Primal Molt
+Button/Name/BPM_Tyrannozor=Morph to Tyrannozor
+Button/Name/BPM_WarHoundTornadoMissile=Research Haywire Missile
+Button/Name/BPM_WarpInEnergizer=Warp In Energizer
+Button/Name/BPM_Wraith=Build Wraith
+Button/Name/BPM_WraithCloak=Research Cloaking Field
+Button/Name/BPM_WraithEnergy=Research Apollo Reactor
+Button/Name/DefilerMPDarkSwarm=Dark Swarm
+Button/Name/DefilerMPPlague=Plague
+Button/Name/Disruptor=Build Disruptor
+Button/Name/GasUIBtn=Fill Gas Workers
+Button/Name/GasUIBtn2=Fill Gas Workers
+Button/Name/QueenMPEnsnare=Ensnare
+Button/Name/QueenMPSpawnBroodlings=Spawn Broodlings
+Button/Name/RavenScramblerMissile=Interference Matrix
+Button/Name/ResearchAdeptResonatingGlaives=Research Resonating Glaives
+Button/Name/ResearchBlink=Research Blink
+Button/Name/ResearchCharge=Research Charge
+Button/Name/TerranShipWeaponsLevel1=Ship Weapons Level 1
+Button/Name/TerranShipWeaponsLevel2=Ship Weapons Level 2
+Button/Name/TerranShipWeaponsLevel3=Ship Weapons Level 3
+Button/Name/TerranVehicleAndShipArmorsLevel1=Vehicle and Ship Armor Level 1
+Button/Name/TerranVehicleAndShipArmorsLevel2=Vehicle and Ship Armor Level 2
+Button/Name/TerranVehicleAndShipArmorsLevel3=Vehicle and Ship Armor Level 3
+Button/Name/TerranVehicleWeaponsLevel1=Vehicle Weapons Level 1
+Button/Name/TerranVehicleWeaponsLevel2=Vehicle Weapons Level 2
+Button/Name/TerranVehicleWeaponsLevel3=Vehicle Weapons Level 3
+Button/Name/ViperConsumeStructure=Consume
+Button/Name/Yoink=Abduct
+Button/Tooltip/BPM_Aberration=A powerful Armored assault unit. It can walk over other units and deals heavy damage to Armored units.
+Button/Tooltip/BPM_Arbiter=A powerful flying psionic unit that supports allies and controls the battlefield.<n/><n/><c val="ffff80">Attacks ground units</c>
+Button/Tooltip/BPM_ArbiterRecall=Allows the Arbiter to use Recall, teleporting friendly units at a chosen location to itself.
+Button/Tooltip/BPM_ArbiterStasisField=Allows the Arbiter to use Stasis Field, freezing targets in place so they cannot act.
+Button/Tooltip/BPM_Corsair=An Armored air fighter. It can cast Disruption Web to shut down ground attacks.
+Button/Tooltip/BPM_CorsairDisruptionWeb=Creates a Disruption Web over the target area. Enemy ground units and structures inside it cannot attack.
+Button/Tooltip/BPM_CrucioSuppressor=In Sieged Mode, reduces direct and splash damage dealt to friendly units by 75%.<n/><n/><c val="ffff80">Requires Armory</c>
+Button/Tooltip/BPM_Defiler=A spellcaster unit. It uses Dark Swarm and Plague to take control of the battlefield.
+Button/Tooltip/BPM_DefilerConsume=Kills a targeted friendly biological unit and restores 50 of the Defiler's energy.
+Button/Tooltip/BPM_DefilerMound=A building that researches Defiler abilities.<n/><n/>Allows:<n/>- Morph Defiler (Larva)
+Button/Tooltip/BPM_Dragoon=An Aiur Protoss ranged assault unit. It provides reliable firepower against Armored targets.<n/><n/><c val="ffff80">Attacks ground units</c>
+Button/Tooltip/BPM_DragoonRange=Increases the Dragoon's range by 1.
+Button/Tooltip/BPM_Energizer=A support unit that strengthens allies and projects a power grid.<n/><n/><c val="ffff80">Attacks ground and air units</c>
+Button/Tooltip/BPM_EnergizerPhasingMode=Switches the Energizer to Phasing Mode, projecting a power field around it and supporting warp-ins. Activating costs 50% of maximum shields and then drains 0.5 shields per second. The power field shrinks as remaining shields drop. (Requires Phasing Mode research)
+Button/Tooltip/BPM_EnergizerPhasingModeTransport=Switches the Energizer to Mobile Mode so it can move freely and regenerate shields quickly.
+Button/Tooltip/BPM_EnergizerTimeShield=Costs 50 energy to activate. Creates a time aura of range 3.5 that increases friendly units' movement and attack speed by 5% and reduces enemy units' by 5%. (Drains 5 energy per second; deactivates automatically at 0 energy)
+Button/Tooltip/BPM_EnergizerTimeShieldOff=Deactivates the Time Shield.
+Button/Tooltip/BPM_EvolveRavasaurVolatileSpines=Increases Volatile Spines' range by 1.
+Button/Tooltip/BPM_Firebat=An Armored infantry unit that deals splash damage at close range. Effective against Light ground units.<n/><n/><c val="ffff80">Attacks ground units</c>
+Button/Tooltip/BPM_FirebatNapalmAmmo=Increases damage against Light by 5 and the Firebat's attack range by 2, and reduces the attack delay.
+Button/Tooltip/BPM_FirebatSCBWStimpack=Spends 10 health to greatly increase movement speed and attack speed for 17 seconds.
+Button/Tooltip/BPM_GoliathRange=Increases the Goliath's anti-air missile range by 3.
+Button/Tooltip/BPM_GuardianMP=An Armored flying unit that attacks ground units from long range.<n/><n/><c val="ffff80">Attacks ground units</c>
+Button/Tooltip/BPM_MarauderShatterShells=Marauder Concussive Shells slow enemy units within 1.5 range.<n/><n/><c val="ffff80">Requires Concussive Shells and Ghost Academy</c>
+Button/Tooltip/BPM_QueenClassic=A flying support unit that weakens and controls enemies.<n/><n/><c val="ffff80">Air support unit</c>
+Button/Tooltip/BPM_QueenEnergy=Increases the Classic Queen's maximum energy by 50 and starting energy by 50.
+Button/Tooltip/BPM_QueenParasite=Attaches a parasite to a target unit so you can see what it sees. Parasited units are marked green in the control group.<n/><n/><c val="ffff80">Energy cost: 75</c>
+Button/Tooltip/BPM_Ravager=An Armored unit that fires bile to deal splash damage to distant ground and air targets.<n/><n/><c val="ffff80">Attacks ground and air (Corrosive Bile)</c>
+Button/Tooltip/BPM_Ravasaur=A ranged unit that attacks ground targets with acid projectiles. Moves faster on creep.<n/><n/><c val="ffff80">Attacks ground units</c>
+Button/Tooltip/BPM_RavenFireControlNetwork=Deploys a control network over a target area. It automatically targets one enemy unit that enters it, and the targeted unit takes 20% more damage. This ability is not blocked by armor. Targeting is lost when the unit moves more than 2 range outside the area.<n/><n/><c val="ffff80">Energy cost: 50</c>
+Button/Tooltip/BPM_RavenRepairDrone=Deploys a Repair Drone that repairs damaged friendly mechanical units and structures.<n/><n/>The Repair Drone repairs 13.6 health per second, spending 1 energy per 1 health repaired.
+Button/Tooltip/BPM_Reaver=A siege unit that builds Scarabs to deal powerful splash damage to distant ground units.<n/><n/><c val="ffff80">Attacks ground units</c>
+Button/Tooltip/BPM_ReaverDamage=Increases Reaver Scarab damage by 25.
+Button/Tooltip/BPM_ReaverHangar=Increases the Reaver's maximum loaded Scarabs by 5.
+Button/Tooltip/BPM_RepairDroneHeal=Repairs the health of damaged friendly mechanical units and buildings.
+Button/Tooltip/BPM_ResearchAberrationSpeed=Increases the Aberration's movement speed. (3.5 → 4.13)
+Button/Tooltip/BPM_ResearchCorsairDisruptionWeb=Allows the Corsair to cast Disruption Web. Enemy ground units and structures inside the web cannot attack.
+Button/Tooltip/BPM_ResearchDefilerConsume=Allows the Defiler to absorb a friendly Zerg unit and restore 50 energy.
+Button/Tooltip/BPM_ResearchDefilerEnergy=Increases the Defiler's starting energy by 25 and maximum energy by 50.
+Button/Tooltip/BPM_ResearchDefilerPlague=Allows the Defiler to cast Plague, dealing damage over time to enemy units and structures in the target area.
+Button/Tooltip/BPM_ResearchEnergizerPhasingMode=Allows the Energizer to activate Phasing Mode.
+Button/Tooltip/BPM_ResearchEnergizerShields=Increases the Energizer's maximum shields by 40. (40 → 80)
+Button/Tooltip/BPM_ResearchRavenFireControlNetwork=Allows the Raven to use Integrated Fire Control Network.
+Button/Tooltip/BPM_ResearchScienceVesselBoost=Allows the Science Vessel to use Science Vessel Boost.
+Button/Tooltip/BPM_ResearchScienceVesselDefensiveMatrix=Allows the Science Vessel to use Defensive Matrix.<n/><n/><c val="ffff80">Requires Fusion Core</c>
+Button/Tooltip/BPM_ResearchScienceVesselLockdown=Allows the Science Vessel to use Lockdown Missile.<n/><n/><c val="ffff80">Requires Fusion Core</c>
+Button/Tooltip/BPM_ScienceVessel=A flying mechanical unit with detection and a variety of support abilities.<n/><n/><c val="ffff80">Air support unit</c>
+Button/Tooltip/BPM_ScienceVesselBoost=Increases the Science Vessel's movement speed by 2.45 for 6 seconds.<n/><n/><c val="ffff80">Cooldown: 14 seconds</c>
+Button/Tooltip/BPM_ScienceVesselDefensiveMatrix=Shields friendly units within range 3 of the target point for 20 seconds, each absorbing up to 16 damage.
+Button/Tooltip/BPM_ScienceVesselLockdown=Fires a missile at a mechanical unit, disabling its movement, attacks and abilities for 20 seconds. On hit, deals 20 splash damage to enemy units within range 2 of the main target.<n/><n/><c val="ffff80">Can only target mechanical units</c>
+Button/Tooltip/BPM_Scout=An air-superiority fighter that can attack ground and air units.<n/><n/><c val="ffff80">Attacks ground and air units</c>
+Button/Tooltip/BPM_ScoutSight=Increases the Scout's sight by 2.
+Button/Tooltip/BPM_ScoutSpeed=Increases the Scout's movement speed by 33%.
+Button/Tooltip/BPM_TerranInfantryHeavyArmor=Increases Firebat and Marauder health by 25 and changes them to Armored.
+Button/Tooltip/BPM_TerrorzorCarapace=Increases the Tyrannozor's armor by 1.<n/><n/><c val="ffff80">Requires Ultralisk Cavern</c>
+Button/Tooltip/BPM_Tyrannozor=A huge primal Zerg ground beast. It attacks ground and air enemies and has great health and attack power.
+Button/Tooltip/BPM_WarHoundTornadoMissile=Allows the WarHound to use Haywire Missile, which deals extra damage to Armored units.
+Button/Tooltip/BPM_WarpInAdept=A powerful ranged warrior against Light units.<n/><n/><c val="ffff80">Attacks ground units</c>
+Button/Tooltip/BPM_WarpInEnergizer=Warps in an Energizer.<n/><n/><c val="ffff80">Attacks ground and air units</c>
+Button/Tooltip/BPM_Wraith=A highly maneuverable air fighter. Good at precision strikes and can cloak.<n/><n/><c val="ffff80">Attacks ground and air units</c>
+Button/Tooltip/BPM_WraithCloak=Allows the Wraith to cloak.
+Button/Tooltip/BPM_WraithEnergy=Increases the Wraith's maximum energy by 50 and starting energy by 50.
+Button/Tooltip/BroodLord=A huge flying unit that attacks by launching Broodlings.<n/><n/><c val="ffff80">Attacks ground units</c>
+Button/Tooltip/BuildCyclone=A mechanized vehicle that deals sustained damage with lock-on missiles.<n/><n/><c val="ffff80">Attacks ground and air units</c>
+Button/Tooltip/Colossus=A huge ground unit whose legs let it cross high terrain. Its thermal lances deal splash damage.<n/><n/><c val="ffff80">Attacks ground units</c>
+Button/Tooltip/Corruptor=An Armored air-superiority unit. It can morph into a Brood Lord.<n/><n/><c val="ffff80">Attacks air units</c>
+Button/Tooltip/DarkTemplar=A powerful cloaked melee assassin.<n/><n/><c val="ffff80">Attacks ground units</c>
+Button/Tooltip/DefilerMPDarkSwarm=Creates a Dark Swarm cloud over the target area.<n/><n/><c val="ffff80">Friendly units</c> inside the Dark Swarm take <c val="00ff00">50% less damage</c> from ranged attacks.
+Button/Tooltip/DefilerMPPlague=Spreads Plague over the target area, dealing damage over time to enemy units.
+Button/Tooltip/Disruptor=A robotic unit that fires a Purification Nova to deal heavy splash damage to enemies.<n/><n/><c val="ffff80">Attacks ground units</c>
+Button/Tooltip/GasUIBtn=Sends workers to the designated extractor to gather gas.
+Button/Tooltip/GasUIBtn2=Sends workers to the designated extractor to gather gas.
+Button/Tooltip/Goliath=An Armored vehicle that can attack ground and air targets at the same time.<n/><n/><c val="ffff80">Attacks ground and air units</c>
+Button/Tooltip/Hellion=A fast Light vehicle. Its flames damage enemies caught in a line.<n/><n/><c val="ffff80">Attacks ground units</c>
+Button/Tooltip/HellionTank=A vehicle in Hellbat mode. Its close-range flames deal heavy damage to Light units.<n/><n/><c val="ffff80">Attacks ground units</c>
+Button/Tooltip/HighTemplar=A powerful support unit that uses Psionic Storm and Feedback.<n/><n/><c val="ffff80">Ground support unit</c>
+Button/Tooltip/Hydralisk=A versatile ranged attacker. It can morph into a Lurker.<n/><n/><c val="ffff80">Attacks ground and air units</c>
+Button/Tooltip/Infestor=A psionic support unit with a variety of disruption abilities.<n/><n/><c val="ffff80">Ground support unit</c>
+Button/Tooltip/LurkerMP=A burrowed ranged siege unit. It strikes from underground with a powerful piercing attack.<n/><n/><c val="ffff80">Attacks ground units</c>
+Button/Tooltip/Mutalisk=A highly mobile flying harassment unit.<n/><n/><c val="ffff80">Attacks ground and air units</c>
+Button/Tooltip/Phoenix=A light air fighter that can lift enemies into the air with Graviton Beam.<n/><n/><c val="ffff80">Attacks air units</c>
+Button/Tooltip/QueenMPEnsnare=Reduces the movement speed and attack speed of enemy units and structures in the target area.
+Button/Tooltip/QueenMPSpawnBroodlings=Kills a target enemy unit and spawns two friendly Broodlings in its place.
+Button/Tooltip/Raven=A flying mechanical unit with detection and a variety of support abilities, including Repair Drone and Interference Matrix.<n/><n/><c val="ffff80">Air support unit</c>
+Button/Tooltip/RavenScramblerMissile=Disables the weapons and abilities of a target mechanical or psionic unit for 11 seconds.
+Button/Tooltip/ResearchAdeptResonatingGlaives=Increases the Adept's attack speed by 45%.
+Button/Tooltip/ResearchBlink=Allows Stalkers to teleport to a target point.
+Button/Tooltip/ResearchCharge=Allows Zealots to rush quickly toward enemy ground units.
+Button/Tooltip/Roach=A ranged assault unit that regenerates health quickly. It can morph into a Ravager.<n/><n/><c val="ffff80">Attacks ground units</c>
+Button/Tooltip/Sentry=A unit with a variety of support abilities, including Guardian Shield, Hallucination and Force Field.<n/><n/><c val="ffff80">Attacks ground and air units</c>
+Button/Tooltip/SiegeTank=A powerful anti-ground vehicle. It can switch to Sieged Mode to deal long-range splash damage.<n/><n/><c val="ffff80">Attacks ground units</c>
+Button/Tooltip/Stalker=A ranged dimensional unit that can use Blink.<n/><n/><c val="ffff80">Attacks ground and air units</c>
+Button/Tooltip/SwarmHostMP=A siege unit that continuously spawns Locusts to attack.<n/><n/><c val="ffff80">Ground siege unit</c>
+Button/Tooltip/Tempest=A flying siege unit with extremely long range. Deals bonus damage to Massive units and structures.<n/><n/><c val="ffff80">Attacks ground and air units</c>
+Button/Tooltip/TerranShipWeaponsLevel1=Upgrades Terran air unit weapon damage to level 1.
+Button/Tooltip/TerranShipWeaponsLevel2=Upgrades Terran air unit weapon damage to level 2.
+Button/Tooltip/TerranShipWeaponsLevel3=Upgrades Terran air unit weapon damage to level 3.
+Button/Tooltip/TerranVehicleAndShipArmorsLevel1=Upgrades Terran vehicle and ship armor to level 1.
+Button/Tooltip/TerranVehicleAndShipArmorsLevel2=Upgrades Terran vehicle and ship armor to level 2.
+Button/Tooltip/TerranVehicleAndShipArmorsLevel3=Upgrades Terran vehicle and ship armor to level 3.
+Button/Tooltip/TerranVehicleWeaponsLevel1=Upgrades Terran ground vehicle weapon damage to level 1.
+Button/Tooltip/TerranVehicleWeaponsLevel2=Upgrades Terran ground vehicle weapon damage to level 2.
+Button/Tooltip/TerranVehicleWeaponsLevel3=Upgrades Terran ground vehicle weapon damage to level 3.
+Button/Tooltip/Thor=A huge mechanical unit capable of powerful anti-air and anti-ground attacks.<n/><n/><c val="ffff80">Attacks ground and air units</c>
+Button/Tooltip/Ultralisk=A huge assault unit with powerful splash attacks.<n/><n/><c val="ffff80">Attacks ground units</c>
+Button/Tooltip/Viper=A flying spellcaster that controls the battlefield and disables enemies.<n/><n/><c val="ffff80">Air support unit</c>
+Button/Tooltip/ViperConsumeStructure=Drains the health of a target friendly Zerg structure to restore the Viper's energy.
+Button/Tooltip/VoidRay=A flying unit with a beam weapon that deals increasing damage. Especially strong against Armored targets.<n/><n/><c val="ffff80">Attacks ground and air units</c>
+Button/Tooltip/WarHound=An Armored battle robot armed with twin autocannons.<n/><n/><c val="ffff80">Attacks ground units</c>
+Button/Tooltip/WarpInAdept=A powerful ranged warrior against Light units.<n/><n/><c val="ffff80">Attacks ground units</c>
+Button/Tooltip/WidowMine=A burrowed mechanical mine. When an enemy is detected nearby it fires a homing missile that deals heavy damage.<n/><n/><c val="ffff80">Attacks ground units</c>
+Button/Tooltip/Yoink=Pulls the target unit toward the Viper.
+Button/Tooltip/Zergling=A fast melee unit. It can morph into a Baneling.<n/><n/><c val="ffff80">Attacks ground units</c>
+DocInfo/DescShort=Public Ban Pick Mode extension
+DocInfo/Name=BPM_Core
+Unit/Description/BPM_Queen=A base-defense unit. It can spawn Larvae, plant Creep Tumors and use Transfuse. Moves faster on creep.
+Unit/Name/BPM_DefilerMound=Defiler Mound
+Unit/Name/BPM_Queen=Queen
+Unit/Name/BPM_RepairDrone=Repair Drone
+Unit/Name/Dragoon=Dragoon
+Unit/Name/Energizer=Energizer
+Unit/Name/EnergizerPhasingMode=Energizer (Phasing Mode)
+Unit/Name/Firebat=Firebat
+Unit/Name/GuardianMP=Guardian
+Unit/Name/QueenClassic=Queen (Classic)
+Unit/Name/Ravasaur=Ravasaur
+Unit/Name/Reaver=Reaver
+Unit/Name/ScienceVessel=Science Vessel
+Unit/Name/ScoutMP=Scout
+Unit/Name/Wraith=Wraith
+Unit/Subtitle/BPM_Queen=Base Defense
+Unit/Tooltip/Energizer=A support unit that strengthens allies and projects a power grid.
+Upgrade/Name/BPM_AberrationSpeed=Leg Muscle Enhancement
+Upgrade/Name/BPM_ArbiterRecall=Recall
+Upgrade/Name/BPM_ArbiterStasisField=Stasis Field
+Upgrade/Name/BPM_CorsairDisruptionWeb=Disruption Web
+Upgrade/Name/BPM_CrucioSuppressor=Crucio Suppressor
+Upgrade/Name/BPM_DefilerConsume=Consume
+Upgrade/Name/BPM_DefilerEnergy=Metasynaptic Node
+Upgrade/Name/BPM_DefilerPlague=Plague
+Upgrade/Name/BPM_DragoonRange=Singularity Charge
+Upgrade/Name/BPM_EnergizerPhasingMode=Phasing Mode
+Upgrade/Name/BPM_EnergizerShields=Shield Overcharge
+Upgrade/Name/BPM_FirebatNapalmAmmo=Napalm Ammo
+Upgrade/Name/BPM_GoliathRange=Charon Boosters
+Upgrade/Name/BPM_MarauderShatterShells=Shatter Shells
+Upgrade/Name/BPM_Pick_Aberration=Pick Aberration
+Upgrade/Name/BPM_Pick_Arbiter=Pick Arbiter
+Upgrade/Name/BPM_Pick_Corsair=Pick Corsair
+Upgrade/Name/BPM_Pick_Defiler=Pick Defiler
+Upgrade/Name/BPM_Pick_Dragoon=Pick Dragoon
+Upgrade/Name/BPM_Pick_Firebat=Pick Firebat
+Upgrade/Name/BPM_Pick_Goliath=Pick Goliath
+Upgrade/Name/BPM_Pick_GuardianMP=Pick Guardian
+Upgrade/Name/BPM_Pick_QueenClassic=Pick Queen (Classic)
+Upgrade/Name/BPM_Pick_Ravasaur=Pick Ravasaur
+Upgrade/Name/BPM_Pick_Reaver=Pick Reaver
+Upgrade/Name/BPM_Pick_ScienceVessel=Pick Science Vessel
+Upgrade/Name/BPM_Pick_Scout=Pick Scout
+Upgrade/Name/BPM_Pick_Tyrannozor=Pick Tyrannozor
+Upgrade/Name/BPM_Pick_WarHound=Pick WarHound
+Upgrade/Name/BPM_Pick_Wraith=Pick Wraith
+Upgrade/Name/BPM_QueenEnergy=Gamete Meiosis
+Upgrade/Name/BPM_RavasaurVolatileSpines=Volatile Spines
+Upgrade/Name/BPM_RavenFireControlNetworkResearch=Integrated Fire Control Network
+Upgrade/Name/BPM_ReaverDamage=Scarab Damage
+Upgrade/Name/BPM_ReaverHangar=Scarab Capacity
+Upgrade/Name/BPM_ScienceVesselBoostResearch=Science Vessel Boost
+Upgrade/Name/BPM_ScienceVesselDefensiveMatrixResearch=Defensive Matrix
+Upgrade/Name/BPM_ScienceVesselLockdownResearch=Lockdown Missile
+Upgrade/Name/BPM_ScoutSight=Apial Sensors
+Upgrade/Name/BPM_ScoutSpeed=Gravitic Thrusters
+Upgrade/Name/BPM_TerranInfantryHeavyArmor=Infantry Heavy Armor
+Upgrade/Name/BPM_TerrorzorCarapace=Primal Molt
+Upgrade/Name/BPM_WarHoundTornadoMissile=Haywire Missile
+Upgrade/Name/BPM_WraithCloak=Cloaking Field
+Upgrade/Name/BPM_WraithEnergy=Apollo Reactor
+Weapon/Name/Adept=Resonating Glaives
+Weapon/Name/BPM_DefilerWeapon=Venom Projectile
+Weapon/Name/BPM_DisruptorWeapon=Solarite Round
+Weapon/Name/BPM_EnergizerWeapon=Disintegration Beam
+Weapon/Name/BPM_FirebatSCBWWeapon=Flamethrower
+Weapon/Name/BPM_FirebatSCBWWeapon@Bunker=Flamethrower
+Weapon/Name/BPM_FirebatSCBWWeapon@Melee=Flamethrower
+Weapon/Name/BPM_QueenClassicWeapon=Parasite Spike
+Weapon/Name/BPM_RavenWeapon=Liberator Barrage
+Weapon/Name/BPM_ScienceVesselWeapon=Liberator Barrage
+Weapon/Name/BPM_ViperWeapon=Infectious Projectile
+Weapon/Name/Dragoon=Phase Disruptor
+Weapon/Name/RavasaurWeapon=Volatile Spine
+UI/BPM_LangCode=en
+Attribute001/Name=BPM Unit Pool
+Attribute001/Value001/Name=Void Standard
+Attribute001/Value002/Name=Campaign + Star1
+Attribute002/Name=BPM Ban Count
+Attribute002/Value001/Name=0 bans
+Attribute002/Value002/Name=1 ban
+Attribute002/Value003/Name=3 bans
+Attribute002/Value004/Name=5 bans
+Attribute003/Name=BPM Shadow Ban
+Attribute003/Value001/Name=Off
+Attribute003/Value002/Name=On
+Attribute004/Name=BPM Observer Reveal
+Attribute004/Value001/Name=Player View
+Attribute004/Value002/Name=Tournament Reveal
+Attribute005/Name=BPM Referee Slot
+Attribute005/Value001/Name=No Referee
+Attribute005/Value002/Name=Player 3 Referee
+Attribute006/Name=BPM Ban Units
+Attribute006/Value001/Name=Off
+Attribute006/Value002/Name=On
+Attribute007/Name=BPM Convenience
+Attribute007/Value001/Name=Off
+Attribute007/Value002/Name=On
+Attribute008/Name=BAN Option
+Attribute008/Value001/Name=Standard
+Attribute008/Value002/Name=Snake

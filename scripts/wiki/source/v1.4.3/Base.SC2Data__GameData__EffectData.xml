@@ -1,0 +1,942 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CEffectModifyUnit id="BPM_DefilerConsumeModifyEnergy">
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactUnit Value="Caster"/>
+        <VitalArray index="Energy">
+            <Change value="50"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectDamage id="BPM_DefilerConsumeKill">
+        <EditorCategories value="Race:Zerg"/>
+        <Flags index="Kill" value="1"/>
+        <Flags index="NoKillCredit" value="1"/>
+        <Death value="Disintegrate"/>
+    </CEffectDamage>
+    <CEffectSet id="BPM_DefilerConsumeSet">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="BPM_DefilerConsumeKill"/>
+        <EffectArray value="BPM_DefilerConsumeModifyEnergy"/>
+    </CEffectSet>
+    <!-- v1.4.3 balance: flat 30 -> 10 base + 10 vs Armored (was unconditional).
+         ZergMissileWeaponsLevel1-3 still add +3/level to Amount unchanged. -->
+    <CEffectDamage id="BPM_RavasaurDamage" parent="DU_WEAP">
+        <EditorCategories value="Race:Zerg"/>
+        <Kind value="Ranged"/>
+        <Amount value="10"/>
+        <AttributeBonus index="Armored" value="10"/>
+    </CEffectDamage>
+    <!-- Melee Adept glaive cannon: 10 base damage, +12 vs Light.
+         The inherited weapon upgrade accumulators retain +2 base and +2 vs Light per level. -->
+    <CEffectDamage id="AdeptDamage">
+        <Amount value="10"/>
+        <AttributeBonus index="Light" value="12"/>
+    </CEffectDamage>
+    <!-- CrucioShockCannonDirected already permits friendly primary targets,
+         but the stock Blast search excludes Player and Ally.  Keep the stock
+         damage/area values and only admit nearby friendly units to the splash
+         search; BPM_CrucioSuppressorBehavior handles the researched reduction. -->
+    <CEffectDamage id="CrucioShockCannonBlast">
+        <SearchFilters value="Ground;Self,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectDamage>
+    <!-- v1.4.3 balance: Marauder Shatter Shells - once researched, Concussive
+         Grenade impacts also slow every enemy in a 1.5 radius (previously
+         single-target only). Appended to the stock PunisherGrenadesSet
+         so the original LaunchMissile (PunisherGrenadesLM), attack animations,
+         and missile models play properly. Gated by BPM_ValidatorHasShatterShells
+         so it only applies once Shatter Shells is researched. -->
+    <CEffectEnumArea id="BPM_MarauderShatterSearch">
+        <EditorCategories value="Race:Terran"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <ValidatorArray value="BPM_ValidatorHasShatterShells"/>
+        <SearchFilters value="Ground,Visible;Self,Player,Ally,Neutral,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="1.5" Effect="PunisherGrenadesSlow"/>
+        <ExcludeArray Value="Target"/>
+    </CEffectEnumArea>
+    <CEffectSet id="PunisherGrenadesSet">
+        <EffectArray index="0" value="PunisherGrenadesU"/>
+        <EffectArray index="1" value="PunisherGrenadesSlow"/>
+        <EffectArray value="BPM_MarauderShatterSearch"/>
+    </CEffectSet>
+    <!-- v1.4.3 balance: QueenClassic Parasite -->
+    <CEffectApplyBehavior id="BPM_QueenParasite@Apply">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichUnit Value="Target"/>
+        <Behavior value="BPM_QueenParasite"/>
+    </CEffectApplyBehavior>
+    <!-- v1.4.3 balance: Science Vessel Boost -->
+    <CEffectApplyBehavior id="BPM_ScienceVesselBoost@Apply">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="BPM_ScienceVesselBoost"/>
+    </CEffectApplyBehavior>
+    <!-- v1.4.3 balance: Raven Integrated Fire Control Network. Ground-
+         targeted zone (radius 3, assumed - no exact figure given in the
+         design doc) that lasts 60s (assumed) and, every second, acquires
+         one not-yet-marked enemy within the zone and refreshes the mark on
+         any already-marked enemy that stays within radius 3. -->
+    <CEffectCreateUnit id="BPM_RavenFireControlNetwork@Spawn">
+        <EditorCategories value="Race:Terran"/>
+        <WhichLocation Value="TargetPoint"/>
+        <CreateFlags index="Placement" value="0"/>
+        <CreateFlags index="DropOff" value="0"/>
+        <SpawnUnit value="BPM_RavenFireControlAnchor"/>
+        <SpawnCount value="1"/>
+        <SpawnOwner Value="Caster"/>
+    </CEffectCreateUnit>
+    <CEffectApplyBehavior id="BPM_RavenFireControlNetwork@Mark">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Target"/>
+        <Behavior value="BPM_RavenFireControlMark"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="BPM_RavenFireControlNetwork@SetAnchorHasTarget">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="BPM_RavenFireControlAnchorHasTarget"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="BPM_RavenFireControlNetwork@TrackInitialSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="BPM_RavenFireControlNetwork@SetAnchorHasTarget"/>
+        <EffectArray value="BPM_RavenFireControlNetwork@Mark"/>
+    </CEffectSet>
+    <CEffectRemoveBehavior id="BPM_RavenFireControlNetwork@ClearAnchorHasTarget">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="BPM_RavenFireControlAnchorHasTarget"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectCreatePersistent id="BPM_RavenFireControlNetwork@TrackTarget">
+        <EditorCategories value="Race:Terran"/>
+        <WhichLocation Value="TargetUnit"/>
+        <ValidatorArray value="BPM_ValidatorNotHasRavenFireControlMark"/>
+        <InitialEffect value="BPM_RavenFireControlNetwork@TrackInitialSet"/>
+        <PeriodCount value="40"/>
+        <PeriodicEffectArray value="BPM_RavenFireControlNetwork@Mark"/>
+        <PeriodicPeriodArray value="0.5"/>
+        <PeriodicValidator value="BPM_RavenFireControlTrackedTargetValid"/>
+        <FinalEffect value="BPM_RavenFireControlNetwork@ClearAnchorHasTarget"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="BPM_RavenFireControlNetwork@Acquire">
+        <EditorCategories value="Race:Terran"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <SearchFilters value="Visible;Self,Player,Ally,Neutral,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <MaxCount value="1"/>
+        <AreaArray MaxCount="1" Radius="3" Effect="BPM_RavenFireControlNetwork@TrackTarget"/>
+    </CEffectEnumArea>
+    <CEffectSet id="BPM_RavenFireControlNetwork@Tick">
+        <EditorCategories value="Race:Terran"/>
+        <ValidatorArray value="BPM_RavenFireControlAnchorHasNoTarget"/>
+        <EffectArray value="BPM_RavenFireControlNetwork@Acquire"/>
+    </CEffectSet>
+    <!-- v1.4.3 balance: Irradiate splash radius 1.5 -> 0.5 (energy cost and
+         cast range overridden on the Irradiate ability in AbilData.xml) -->
+    <CEffectEnumArea id="IrradiateSearchArea">
+        <AreaArray Radius="0.5"/>
+    </CEffectEnumArea>
+    <!-- v1.4.3 balance: Tornado Missile targets Ground Mechanical or Ground Armored
+         units for 30 total damage (10 base + 20 bonus). -->
+        <CEffectCreatePersistent id="TornadoMissileCP">
+        <ValidatorArray index="1" value="BPM_ValidatorWarhoundTornadoTarget"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="TornadoMissileDamage">
+        <Amount value="10"/>
+        <AttributeBonus index="Mechanical" value="0"/>
+        <AttributeBonus index="Armored" value="0"/>
+        <AttributeBonus index="Structure" value="0"/>
+        <ValidatorArray value="BPM_ValidatorWarhoundTornadoTarget"/>
+    </CEffectDamage>
+    <!-- v1.4.3 balance: Goliath ground attack (GoliathG) 18 -> 21 (+3) -->
+    <CEffectDamage id="GoliathG">
+        <Amount value="21"/>
+    </CEffectDamage>
+    <!-- Tyrannozor-only Kaiser Blades damage. Defining the two forward arcs
+         locally keeps the campaign dependency from replacing the multiplayer
+         cleave data: enemies in the attack path take 33% splash damage. -->
+    <CEffectDamage id="TerrorzorDamage" parent="DU_WEAP_SPLASH">
+        <EditorCategories value="Race:Zerg"/>
+        <Kind value="Melee"/>
+        <KindSplash value="Splash"/>
+        <Amount value="35"/>
+        <AreaArray Arc="45" Radius="2" Fraction="0.33"/>
+        <AreaArray Arc="180" Radius="2" Fraction="0.33"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="Ground;Self,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <SearchFlags index="OffsetByUnitRadius" value="0"/>
+    </CEffectDamage>
+    <!-- Tyrannozor (Terrorzor) lifesteal - heals for a flat approximation of
+         20% of the 35 base damage on each hit. -->
+    <CEffectModifyUnit id="BPM_TerrorzorLifesteal">
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactUnit Value="Caster"/>
+        <VitalArray index="Life">
+            <Change value="7"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectSet id="BPM_TerrorzorAttackSet">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="TerrorzorDamage"/>
+        <EffectArray value="BPM_TerrorzorLifesteal"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="BPM_RavasaurLaunchMissile">
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactEffect value="BPM_RavasaurDamage"/>
+        <AmmoUnit value="AcidSpinesWeapon"/>
+        <!-- Dedicated parabolic arced trajectory for Ravasaur acid spines -->
+        <Movers Link="BPM_RavasaurMissileMover"/>
+    </CEffectLaunchMissile>
+    <CEffectApplyBehavior id="BPM_FirebatSCBWStimpack@AB">
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="BPM_FirebatSCBWStimpack"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="BPM_FirebatSCBWWeapon@CliffCheck">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="BPM_FirebatSCBWWeapon@CP"/>
+    </CEffectSet>
+    <!-- ApplyBehavior effect that the FacingOffset persistent references as InitialEffect.
+         This actually applies the movement-suppression buff to the caster. -->
+    <CEffectApplyBehavior id="BPM_FirebatSCBWWeapon@SuppressMovement">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="BPM_FirebatSCBWWeapon@SuppressMovement"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="BPM_FirebatSCBWWeapon@FacingOffset">
+        <EditorCategories value="Race:Terran"/>
+        <WhichLocation Value="CasterUnit"/>
+        <InitialEffect value="BPM_FirebatSCBWWeapon@SuppressMovement"/>
+    </CEffectCreatePersistent>
+    <CEffectIssueOrder id="BPM_FirebatSCBWWeapon@BunkerStop">
+        <WhichUnit Value="Source"/>
+        <Abil value="stop"/>
+        <EditorCategories value="Race:Terran"/>
+    </CEffectIssueOrder>
+    <CEffectCreatePersistent id="BPM_FirebatSCBWWeapon@CPBunker">
+        <EditorCategories value="Race:Terran" />
+        <WhichLocation Value="SourceUnit" />
+        <PeriodCount value="3" />
+        <PeriodicEffectArray value="BPM_FirebatSCBWWeapon@Impact" />
+        <PeriodicOffsetArray value="0,-1.75,0" />
+        <PeriodicOffsetArray value="0,-2.625,0" />
+        <PeriodicOffsetArray value="0,-3.5,0" />
+        <PeriodicPeriodArray value="0.0625" />
+        <PeriodicPeriodArray value="0.0625" />
+        <PeriodicPeriodArray value="0.0625" />
+        <TimeScaleSource Value="Caster" />
+    </CEffectCreatePersistent>
+    <CEffectSwitch id="BPM_FirebatSCBWWeapon@BunkerCliffCheck">
+        <EditorCategories value="Race:Terran"/>
+        <CaseDefault value="BPM_FirebatSCBWWeapon@CPBunker"/>
+    </CEffectSwitch>
+    <CEffectSet id="BPM_FirebatSCBWWeapon@Impact">
+        <TargetLocationType value="UnitOrPoint" />
+        <EditorCategories value="Race:Terran" />
+        <EffectArray value="BPM_FirebatSCBWWeapon@DamageAccum" />
+    </CEffectSet>
+    <CEffectCreatePersistent id="BPM_FirebatSCBWWeapon@CP">
+        <EditorCategories value="Race:Terran" />
+        <WhichLocation Value="SourceUnit" />
+        <TimeScaleSource Value="Caster" />
+        <InitialEffect value="BPM_FirebatSCBWWeapon@FacingOffset" />
+        <InitialOffset value="0,-1.625,0" />
+        <ExpireDelay value="0.4687" />
+        <PeriodCount value="3" />
+        <PeriodicEffectArray value="BPM_FirebatSCBWWeapon@Impact" />
+        <PeriodicOffsetArray value="0,-0.75,0" />
+        <PeriodicOffsetArray value="0,-1.625,0" />
+        <PeriodicOffsetArray value="0,-2.5,0" />
+        <PeriodicPeriodArray value="0.0625" />
+        <PeriodicPeriodArray value="0.0625" />
+        <PeriodicPeriodArray value="0.0625" />
+        <ValidatorArray value="BPM_FirebatSCBWWeapon@CPValidator" />
+        <PeriodicValidator value="BPM_FirebatSCBWWeapon@CPValidator" />
+    </CEffectCreatePersistent>
+    <!-- Firebat unified attack: deals 8 (+4 vs Light) to primary target AND 1.25 radius splash around it -->
+    <CEffectDamage id="BPM_FirebatSCBWWeapon@DamageAccum" parent="DU_WEAP_SPLASH">
+        <EditorCategories value="Race:Terran"/>
+        <KindSplash value="Splash"/>
+        <Kind value="Ranged"/>
+        <Death value="Fire"/>
+        <Amount value="8"/>
+        <AttributeBonus index="Light" value="4"/>
+        <SearchFilters value="Ground;Self,Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <AreaArray Radius="1.25" Fraction="1"/>
+    </CEffectDamage>
+    <!-- FirebatSet override: ensures FirebatSet delivers both primary damage and splash via DamageAccum -->
+    <CEffectSet id="FirebatSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray index="0" removed="1"/>
+        <EffectArray index="1" value="BPM_FirebatSCBWWeapon@DamageAccum"/>
+    </CEffectSet>
+    <CEffectDamage id="BPM_FirebatSCBWWeapon@DamageAccum2" parent="BPM_FirebatSCBWWeapon@DamageAccum">
+        <ImpactUnitValidator value="noMarkers"/>
+        <AreaArray index="0" Radius="0.5625" Fraction="1" Validator="BPM_FirebatSCBWWeapon@Splash"/>
+        <Kind value="Splash"/>
+        <KindSplash value="Splash"/>
+    </CEffectDamage>
+    <CEffectDamage id="BPM_FirebatSCBWWeapon@DamageAccum3" parent="BPM_FirebatSCBWWeapon@DamageAccum">
+        <ImpactUnitValidator value="noMarkers"/>
+        <AreaArray index="0" Radius="0.7031" Fraction="1" Validator="BPM_FirebatSCBWWeapon@Splash"/>
+        <Kind value="Splash"/>
+        <KindSplash value="Splash"/>
+    </CEffectDamage>
+    <!-- Firebat weapon unify: this is the DisplayEffect referenced by the
+         weapon's own <DisplayEffect> tag - it's what the unit info panel
+         actually reads for the "공격력" stat line (separate from the real
+         damage-dealing DamageAccum/2/3 chain above), so it needs the same
+         base 8 (+4 vs Light) to show correctly. -->
+    <CEffectDamage id="BPM_FirebatSCBWWeapon@DamageConc" parent="DU_WEAP_SPLASH">
+        <ImpactLocation Value="TargetPoint"/>
+        <KindSplash value="Splash"/>
+        <Amount value="8"/>
+        <AttributeBonus index="Light" value="4"/>
+        <Death value="Fire"/>
+        <AreaArray Radius="0.4687" Fraction="1" Validator="BPM_FirebatSCBWWeapon@Damage"/>
+        <AreaArray Radius="0.625" Fraction="0.5" Validator="BPM_FirebatSCBWWeapon@Damage"/>
+        <AreaArray Radius="0.7812" Fraction="0.25" Validator="BPM_FirebatSCBWWeapon@Damage"/>
+        <ExcludeArray Value="Outer"/>
+        <SearchFilters value="Ground;Self,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <DisplayFlags index="DisplayRounded" value="0"/>
+    </CEffectDamage>
+    <CEffectDamage id="ScarabExplodeTargetDamage" parent="DU_WEAP_SPLASH">
+        <EditorCategories value="Race:Protoss"/>
+        <Kind value="Splash"/>
+        <KindSplash value="Splash"/>
+        <Amount value="100"/>
+        <Death value="Blast"/>
+        <AreaArray Radius="0.5" Fraction="1"/>
+        <AreaArray Radius="1.0" Fraction="0.5"/>
+        <AreaArray Radius="1.5" Fraction="0.25"/>
+        <!-- The impact target already receives Amount directly. Excluding it
+             from the area pass prevents 100+100 (and 125+125 after research). -->
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="Ground;Self,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <SearchFlags index="SameCliff" value="0"/>
+    </CEffectDamage>
+    <CEffectDamage id="ScarabExplodeAreaDamage" parent="DU_WEAP_SPLASH">
+        <EditorCategories value="Race:Protoss"/>
+        <Kind value="Splash"/>
+        <KindSplash value="Splash"/>
+        <Amount value="100"/>
+        <Death value="Blast"/>
+        <AreaArray Radius="0.5" Fraction="1"/>
+        <AreaArray Radius="1.0" Fraction="0.5"/>
+        <AreaArray Radius="1.5" Fraction="0.25"/>
+        <SearchFilters value="Ground;Self,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <SearchFlags index="SameCliff" value="0"/>
+    </CEffectDamage>
+    <CEffectDamage id="ScarabDamage" parent="DU_WEAP_SPLASH">
+        <EditorCategories value="Race:Protoss"/>
+        <Kind value="Splash"/>
+        <KindSplash value="Splash"/>
+        <Amount value="100"/>
+        <Death value="Blast"/>
+        <AreaArray Radius="0.5" Fraction="1"/>
+        <AreaArray Radius="1.0" Fraction="0.5"/>
+        <AreaArray Radius="1.5" Fraction="0.25"/>
+        <SearchFilters value="Ground;Self,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <SearchFlags index="SameCliff" value="0"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="BPM_ScienceVesselLockdown@Apply">
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="BPM_ScienceVesselLockdown"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="BPM_ScienceVesselLockdown@SplashDamage">
+        <EditorCategories value="Race:Terran"/>
+        <Kind value="Spell"/>
+        <KindSplash value="Spell"/>
+        <Amount value="20"/>
+        <Death value="Blast"/>
+        <AreaArray Radius="2" Fraction="1"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="Visible;Self,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectDamage>
+    <CEffectSet id="BPM_ScienceVesselLockdown@ImpactSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="BPM_ScienceVesselLockdown@Apply"/>
+        <EffectArray value="BPM_ScienceVesselLockdown@SplashDamage"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="BPM_ScienceVesselLockdown@LaunchMissile">
+        <EditorCategories value="Race:Terran"/>
+        <ImpactEffect value="BPM_ScienceVesselLockdown@ImpactSet"/>
+        <AmmoUnit value="BPM_ScienceVesselLockdownMissile"/>
+        <ImpactOffset value="0,0,0.5"/>
+    </CEffectLaunchMissile>
+    <CEffectApplyBehavior id="BPM_ScienceVesselDefensiveMatrix@Apply">
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="BPM_ScienceVesselDefensiveMatrix"/>
+    </CEffectApplyBehavior>
+    <!-- v1.4.3 balance: Defensive Matrix radius 1.5 -> 1.75 -->
+    <CEffectEnumArea id="BPM_ScienceVesselDefensiveMatrix@Search">
+        <EditorCategories value="Race:Terran"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <SearchFilters value="Visible;Neutral,Enemy,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="1.75" Effect="BPM_ScienceVesselDefensiveMatrix@Apply"/>
+    </CEffectEnumArea>
+    <!-- Separate effects let the Terran and Zerg attacks use different actors. -->
+    <CEffectDamage id="BPM_TerranCasterAttackDamage" parent="DU_WEAP">
+        <EditorCategories value="Race:Terran"/>
+        <Kind value="Ranged"/>
+        <Amount value="1"/>
+        <Death value="Blast"/>
+    </CEffectDamage>
+    <CEffectDamage id="BPM_ViperAttackDamage" parent="DU_WEAP">
+        <EditorCategories value="Race:Zerg"/>
+        <Kind value="Ranged"/>
+        <Amount value="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="BPM_DisruptorAttackDamage" parent="DU_WEAP">
+        <EditorCategories value="Race:Protoss"/>
+        <Kind value="Ranged"/>
+        <Amount value="5"/>
+        <Death value="Blast"/>
+    </CEffectDamage>
+    <CEffectDamage id="BPM_DefilerAttackDamage" parent="DU_WEAP">
+        <EditorCategories value="Race:Zerg"/>
+        <Kind value="Ranged"/>
+        <Amount value="5"/>
+    </CEffectDamage>
+    <CEffectDamage id="BPM_QueenClassicAttackDamage" parent="DU_WEAP">
+        <EditorCategories value="Race:Zerg"/>
+        <Kind value="Ranged"/>
+        <Amount value="5"/>
+    </CEffectDamage>
+    <!-- A real launch-missile stage is required for attack action actors to
+         receive both launch and impact events. Direct damage alone only
+         applied gameplay damage and never created the requested visuals. -->
+    <CEffectLaunchMissile id="BPM_TerranCasterAttackLaunch">
+        <EditorCategories value="Race:Terran"/>
+        <ImpactEffect value="BPM_TerranCasterAttackDamage"/>
+        <AmmoUnit value="LiberatorAGMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="BPM_ViperAttackLaunch">
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactEffect value="BPM_ViperAttackDamage"/>
+        <AmmoUnit value="BPM_ViperAttackMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="BPM_DisruptorAttackLaunch">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactEffect value="BPM_DisruptorAttackDamage"/>
+        <AmmoUnit value="BPM_DisruptorAttackMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="BPM_DefilerAttackLaunch">
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactEffect value="BPM_DefilerAttackDamage"/>
+        <AmmoUnit value="BPM_DefilerAttackMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="BPM_QueenClassicAttackLaunch">
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactEffect value="BPM_QueenClassicAttackDamage"/>
+        <AmmoUnit value="BPM_QueenClassicAttackMissile"/>
+    </CEffectLaunchMissile>
+    <!-- Energizer Weapon Damage (6 damage, +1 per ground weapons level) -->
+    <CEffectDamage id="BPM_EnergizerDamage" parent="DU_WEAP">
+        <EditorCategories value="Race:Protoss"/>
+        <Kind value="Ranged"/>
+        <Amount value="6"/>
+        <Death value="Blast"/>
+    </CEffectDamage>
+    <!-- Time Shield Buff / Debuff Effects -->
+    <CEffectApplyBehavior id="BPM_EnergizerTimeShield@ApplyBuff">
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="BPM_EnergizerTimeShield@Buff"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="BPM_EnergizerTimeShield@ApplyDebuff">
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="BPM_EnergizerTimeShield@Debuff"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="BPM_EnergizerTimeShield@SearchAlly">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <SearchFilters value="-;Enemy,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="3.5" Effect="BPM_EnergizerTimeShield@ApplyBuff"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="BPM_EnergizerTimeShield@SearchEnemy">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="3.5" Effect="BPM_EnergizerTimeShield@ApplyDebuff"/>
+    </CEffectEnumArea>
+    <CEffectSet id="BPM_EnergizerTimeShield@PeriodicSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="BPM_EnergizerTimeShield@SearchAlly"/>
+        <EffectArray value="BPM_EnergizerTimeShield@SearchEnemy"/>
+    </CEffectSet>
+
+    <CEffectIssueOrder id="BPM_EnergizerAutoTransportMode">
+        <WhichUnit Value="Caster"/>
+        <Abil value="EnergizerPhasingModeTransportMorph"/>
+        <CmdFlags index="Preempt" value="1"/>
+    </CEffectIssueOrder>
+    <!-- Drop-down power bands: bands 01-16 start on the unit. As shields drop
+         below each threshold, the outer band is permanently removed. -->
+    <CEffectRemoveBehavior id="BPM_EnergizerPowerBand16Remove">
+        <WhichUnit Value="Caster"/>
+        <ValidatorArray value="BPM_EnergizerShieldFractionLT15"/>
+        <BehaviorLink value="BPM_EnergizerPowerBand16"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="BPM_EnergizerPowerBand15Remove">
+        <WhichUnit Value="Caster"/>
+        <ValidatorArray value="BPM_EnergizerShieldFractionLT14"/>
+        <BehaviorLink value="BPM_EnergizerPowerBand15"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="BPM_EnergizerPowerBand14Remove">
+        <WhichUnit Value="Caster"/>
+        <ValidatorArray value="BPM_EnergizerShieldFractionLT13"/>
+        <BehaviorLink value="BPM_EnergizerPowerBand14"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="BPM_EnergizerPowerBand13Remove">
+        <WhichUnit Value="Caster"/>
+        <ValidatorArray value="BPM_EnergizerShieldFractionLT12"/>
+        <BehaviorLink value="BPM_EnergizerPowerBand13"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="BPM_EnergizerPowerBand12Remove">
+        <WhichUnit Value="Caster"/>
+        <ValidatorArray value="BPM_EnergizerShieldFractionLT11"/>
+        <BehaviorLink value="BPM_EnergizerPowerBand12"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="BPM_EnergizerPowerBand11Remove">
+        <WhichUnit Value="Caster"/>
+        <ValidatorArray value="BPM_EnergizerShieldFractionLT10"/>
+        <BehaviorLink value="BPM_EnergizerPowerBand11"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="BPM_EnergizerPowerBand10Remove">
+        <WhichUnit Value="Caster"/>
+        <ValidatorArray value="BPM_EnergizerShieldFractionLT09"/>
+        <BehaviorLink value="BPM_EnergizerPowerBand10"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="BPM_EnergizerPowerBand09Remove">
+        <WhichUnit Value="Caster"/>
+        <ValidatorArray value="BPM_EnergizerShieldFractionLT08"/>
+        <BehaviorLink value="BPM_EnergizerPowerBand09"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="BPM_EnergizerPowerBand08Remove">
+        <WhichUnit Value="Caster"/>
+        <ValidatorArray value="BPM_EnergizerShieldFractionLT07"/>
+        <BehaviorLink value="BPM_EnergizerPowerBand08"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="BPM_EnergizerPowerBand07Remove">
+        <WhichUnit Value="Caster"/>
+        <ValidatorArray value="BPM_EnergizerShieldFractionLT06"/>
+        <BehaviorLink value="BPM_EnergizerPowerBand07"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="BPM_EnergizerPowerBand06Remove">
+        <WhichUnit Value="Caster"/>
+        <ValidatorArray value="BPM_EnergizerShieldFractionLT05"/>
+        <BehaviorLink value="BPM_EnergizerPowerBand06"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="BPM_EnergizerPowerBand05Remove">
+        <WhichUnit Value="Caster"/>
+        <ValidatorArray value="BPM_EnergizerShieldFractionLT04"/>
+        <BehaviorLink value="BPM_EnergizerPowerBand05"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="BPM_EnergizerPowerBand04Remove">
+        <WhichUnit Value="Caster"/>
+        <ValidatorArray value="BPM_EnergizerShieldFractionLT03"/>
+        <BehaviorLink value="BPM_EnergizerPowerBand04"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="BPM_EnergizerPowerBand03Remove">
+        <WhichUnit Value="Caster"/>
+        <ValidatorArray value="BPM_EnergizerShieldFractionLT02"/>
+        <BehaviorLink value="BPM_EnergizerPowerBand03"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="BPM_EnergizerPowerBand02Remove">
+        <WhichUnit Value="Caster"/>
+        <ValidatorArray value="BPM_EnergizerShieldFractionLT01"/>
+        <BehaviorLink value="BPM_EnergizerPowerBand02"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <!-- Fast Power Band Removes -->
+    <CEffectRemoveBehavior id="BPM_EnergizerPowerBandFast16Remove">
+        <WhichUnit Value="Caster"/>
+        <ValidatorArray value="BPM_EnergizerShieldFractionLT15"/>
+        <BehaviorLink value="BPM_EnergizerPowerBandFast16"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="BPM_EnergizerPowerBandFast15Remove">
+        <WhichUnit Value="Caster"/>
+        <ValidatorArray value="BPM_EnergizerShieldFractionLT14"/>
+        <BehaviorLink value="BPM_EnergizerPowerBandFast15"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="BPM_EnergizerPowerBandFast14Remove">
+        <WhichUnit Value="Caster"/>
+        <ValidatorArray value="BPM_EnergizerShieldFractionLT13"/>
+        <BehaviorLink value="BPM_EnergizerPowerBandFast14"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="BPM_EnergizerPowerBandFast13Remove">
+        <WhichUnit Value="Caster"/>
+        <ValidatorArray value="BPM_EnergizerShieldFractionLT12"/>
+        <BehaviorLink value="BPM_EnergizerPowerBandFast13"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="BPM_EnergizerPowerBandFast12Remove">
+        <WhichUnit Value="Caster"/>
+        <ValidatorArray value="BPM_EnergizerShieldFractionLT11"/>
+        <BehaviorLink value="BPM_EnergizerPowerBandFast12"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="BPM_EnergizerPowerBandFast11Remove">
+        <WhichUnit Value="Caster"/>
+        <ValidatorArray value="BPM_EnergizerShieldFractionLT10"/>
+        <BehaviorLink value="BPM_EnergizerPowerBandFast11"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="BPM_EnergizerPowerBandFast10Remove">
+        <WhichUnit Value="Caster"/>
+        <ValidatorArray value="BPM_EnergizerShieldFractionLT09"/>
+        <BehaviorLink value="BPM_EnergizerPowerBandFast10"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="BPM_EnergizerPowerBandFast09Remove">
+        <WhichUnit Value="Caster"/>
+        <ValidatorArray value="BPM_EnergizerShieldFractionLT08"/>
+        <BehaviorLink value="BPM_EnergizerPowerBandFast09"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="BPM_EnergizerPowerBandFast08Remove">
+        <WhichUnit Value="Caster"/>
+        <ValidatorArray value="BPM_EnergizerShieldFractionLT07"/>
+        <BehaviorLink value="BPM_EnergizerPowerBandFast08"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="BPM_EnergizerPowerBandFast07Remove">
+        <WhichUnit Value="Caster"/>
+        <ValidatorArray value="BPM_EnergizerShieldFractionLT06"/>
+        <BehaviorLink value="BPM_EnergizerPowerBandFast07"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="BPM_EnergizerPowerBandFast06Remove">
+        <WhichUnit Value="Caster"/>
+        <ValidatorArray value="BPM_EnergizerShieldFractionLT05"/>
+        <BehaviorLink value="BPM_EnergizerPowerBandFast06"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="BPM_EnergizerPowerBandFast05Remove">
+        <WhichUnit Value="Caster"/>
+        <ValidatorArray value="BPM_EnergizerShieldFractionLT04"/>
+        <BehaviorLink value="BPM_EnergizerPowerBandFast05"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="BPM_EnergizerPowerBandFast04Remove">
+        <WhichUnit Value="Caster"/>
+        <ValidatorArray value="BPM_EnergizerShieldFractionLT03"/>
+        <BehaviorLink value="BPM_EnergizerPowerBandFast04"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="BPM_EnergizerPowerBandFast03Remove">
+        <WhichUnit Value="Caster"/>
+        <ValidatorArray value="BPM_EnergizerShieldFractionLT02"/>
+        <BehaviorLink value="BPM_EnergizerPowerBandFast03"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="BPM_EnergizerPowerBandFast02Remove">
+        <WhichUnit Value="Caster"/>
+        <ValidatorArray value="BPM_EnergizerShieldFractionLT01"/>
+        <BehaviorLink value="BPM_EnergizerPowerBandFast02"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <!-- CEffectSet.EffectArray only supports up to 8 entries (index 0-7); this
+         sub-effect list originally had 46 flattened into one set, so only the
+         first 8 ever actually ran (silently dropped past index 7 - see the v2
+         migration plan doc, L3 warning triage). Split into 8-or-fewer batches
+         grouped exactly as the original comments did, referenced by the top
+         CEffectSet below in the same order so overall execution order is
+         unchanged; the only behavior change is that all 46 now actually run. -->
+    <CEffectSet id="BPM_EnergizerPowerBandRefresh_PowerBandA">
+        <EffectArray value="BPM_EnergizerPowerBand16Remove"/>
+        <EffectArray value="BPM_EnergizerPowerBand15Remove"/>
+        <EffectArray value="BPM_EnergizerPowerBand14Remove"/>
+        <EffectArray value="BPM_EnergizerPowerBand13Remove"/>
+        <EffectArray value="BPM_EnergizerPowerBand12Remove"/>
+        <EffectArray value="BPM_EnergizerPowerBand11Remove"/>
+        <EffectArray value="BPM_EnergizerPowerBand10Remove"/>
+        <EffectArray value="BPM_EnergizerPowerBand09Remove"/>
+    </CEffectSet>
+    <CEffectSet id="BPM_EnergizerPowerBandRefresh_PowerBandB">
+        <EffectArray value="BPM_EnergizerPowerBand08Remove"/>
+        <EffectArray value="BPM_EnergizerPowerBand07Remove"/>
+        <EffectArray value="BPM_EnergizerPowerBand06Remove"/>
+        <EffectArray value="BPM_EnergizerPowerBand05Remove"/>
+        <EffectArray value="BPM_EnergizerPowerBand04Remove"/>
+        <EffectArray value="BPM_EnergizerPowerBand03Remove"/>
+        <EffectArray value="BPM_EnergizerPowerBand02Remove"/>
+    </CEffectSet>
+    <CEffectSet id="BPM_EnergizerPowerBandRefresh_FastPowerBandA">
+        <EffectArray value="BPM_EnergizerPowerBandFast16Remove"/>
+        <EffectArray value="BPM_EnergizerPowerBandFast15Remove"/>
+        <EffectArray value="BPM_EnergizerPowerBandFast14Remove"/>
+        <EffectArray value="BPM_EnergizerPowerBandFast13Remove"/>
+        <EffectArray value="BPM_EnergizerPowerBandFast12Remove"/>
+        <EffectArray value="BPM_EnergizerPowerBandFast11Remove"/>
+        <EffectArray value="BPM_EnergizerPowerBandFast10Remove"/>
+        <EffectArray value="BPM_EnergizerPowerBandFast09Remove"/>
+    </CEffectSet>
+    <CEffectSet id="BPM_EnergizerPowerBandRefresh_FastPowerBandB">
+        <EffectArray value="BPM_EnergizerPowerBandFast08Remove"/>
+        <EffectArray value="BPM_EnergizerPowerBandFast07Remove"/>
+        <EffectArray value="BPM_EnergizerPowerBandFast06Remove"/>
+        <EffectArray value="BPM_EnergizerPowerBandFast05Remove"/>
+        <EffectArray value="BPM_EnergizerPowerBandFast04Remove"/>
+        <EffectArray value="BPM_EnergizerPowerBandFast03Remove"/>
+        <EffectArray value="BPM_EnergizerPowerBandFast02Remove"/>
+    </CEffectSet>
+    <CEffectSet id="BPM_EnergizerPowerBandRefresh_WarpInSearchA">
+        <EffectArray value="BPM_EnergizerWarpInSearch16"/>
+        <EffectArray value="BPM_EnergizerWarpInSearch15"/>
+        <EffectArray value="BPM_EnergizerWarpInSearch14"/>
+        <EffectArray value="BPM_EnergizerWarpInSearch13"/>
+        <EffectArray value="BPM_EnergizerWarpInSearch12"/>
+        <EffectArray value="BPM_EnergizerWarpInSearch11"/>
+        <EffectArray value="BPM_EnergizerWarpInSearch10"/>
+        <EffectArray value="BPM_EnergizerWarpInSearch09"/>
+    </CEffectSet>
+    <CEffectSet id="BPM_EnergizerPowerBandRefresh_WarpInSearchB">
+        <EffectArray value="BPM_EnergizerWarpInSearch08"/>
+        <EffectArray value="BPM_EnergizerWarpInSearch07"/>
+        <EffectArray value="BPM_EnergizerWarpInSearch06"/>
+        <EffectArray value="BPM_EnergizerWarpInSearch05"/>
+        <EffectArray value="BPM_EnergizerWarpInSearch04"/>
+        <EffectArray value="BPM_EnergizerWarpInSearch03"/>
+        <EffectArray value="BPM_EnergizerWarpInSearch02"/>
+        <EffectArray value="BPM_EnergizerWarpInSearch01"/>
+    </CEffectSet>
+    <CEffectSet id="BPM_EnergizerPowerBandRefresh">
+        <!-- PowerSource band removes (outer to inner) -->
+        <EffectArray value="BPM_EnergizerPowerBandRefresh_PowerBandA"/>
+        <EffectArray value="BPM_EnergizerPowerBandRefresh_PowerBandB"/>
+        <!-- FastPowerSource band removes (outer to inner) -->
+        <EffectArray value="BPM_EnergizerPowerBandRefresh_FastPowerBandA"/>
+        <EffectArray value="BPM_EnergizerPowerBandRefresh_FastPowerBandB"/>
+        <!-- Warp-in Zero Shield Searches for active power band -->
+        <EffectArray value="BPM_EnergizerPowerBandRefresh_WarpInSearchA"/>
+        <EffectArray value="BPM_EnergizerPowerBandRefresh_WarpInSearchB"/>
+    </CEffectSet>
+    <!-- Warp-in Zero Shield Effects & Band Searches -->
+    <CEffectModifyUnit id="BPM_EnergizerWarpInZeroShields">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactUnit Value="Target"/>
+        <VitalArray index="Shields">
+            <ChangeFraction value="-1"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectApplyBehavior id="BPM_EnergizerWarpInApplyZeroShieldBuff">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Target"/>
+        <ValidatorArray value="BPM_NotAnyEnergizer"/>
+        <Behavior value="BPM_EnergizerWarpInZeroShieldBuff"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="BPM_EnergizerWarpInSearch16">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <ValidatorArray value="BPM_EnergizerShieldBand16"/>
+        <SearchFilters value="UnderConstruction;Self,Enemy,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="6" Effect="BPM_EnergizerWarpInApplyZeroShieldBuff"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="BPM_EnergizerWarpInSearch15">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <ValidatorArray value="BPM_EnergizerShieldBand15"/>
+        <SearchFilters value="UnderConstruction;Self,Enemy,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="5.625" Effect="BPM_EnergizerWarpInApplyZeroShieldBuff"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="BPM_EnergizerWarpInSearch14">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <ValidatorArray value="BPM_EnergizerShieldBand14"/>
+        <SearchFilters value="UnderConstruction;Self,Enemy,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="5.25" Effect="BPM_EnergizerWarpInApplyZeroShieldBuff"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="BPM_EnergizerWarpInSearch13">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <ValidatorArray value="BPM_EnergizerShieldBand13"/>
+        <SearchFilters value="UnderConstruction;Self,Enemy,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="4.875" Effect="BPM_EnergizerWarpInApplyZeroShieldBuff"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="BPM_EnergizerWarpInSearch12">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <ValidatorArray value="BPM_EnergizerShieldBand12"/>
+        <SearchFilters value="UnderConstruction;Self,Enemy,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="4.5" Effect="BPM_EnergizerWarpInApplyZeroShieldBuff"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="BPM_EnergizerWarpInSearch11">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <ValidatorArray value="BPM_EnergizerShieldBand11"/>
+        <SearchFilters value="UnderConstruction;Self,Enemy,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="4.125" Effect="BPM_EnergizerWarpInApplyZeroShieldBuff"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="BPM_EnergizerWarpInSearch10">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <ValidatorArray value="BPM_EnergizerShieldBand10"/>
+        <SearchFilters value="UnderConstruction;Self,Enemy,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="3.75" Effect="BPM_EnergizerWarpInApplyZeroShieldBuff"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="BPM_EnergizerWarpInSearch09">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <ValidatorArray value="BPM_EnergizerShieldBand09"/>
+        <SearchFilters value="UnderConstruction;Self,Enemy,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="3.375" Effect="BPM_EnergizerWarpInApplyZeroShieldBuff"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="BPM_EnergizerWarpInSearch08">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <ValidatorArray value="BPM_EnergizerShieldBand08"/>
+        <SearchFilters value="UnderConstruction;Self,Enemy,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="3" Effect="BPM_EnergizerWarpInApplyZeroShieldBuff"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="BPM_EnergizerWarpInSearch07">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <ValidatorArray value="BPM_EnergizerShieldBand07"/>
+        <SearchFilters value="UnderConstruction;Self,Enemy,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="2.625" Effect="BPM_EnergizerWarpInApplyZeroShieldBuff"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="BPM_EnergizerWarpInSearch06">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <ValidatorArray value="BPM_EnergizerShieldBand06"/>
+        <SearchFilters value="UnderConstruction;Self,Enemy,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="2.25" Effect="BPM_EnergizerWarpInApplyZeroShieldBuff"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="BPM_EnergizerWarpInSearch05">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <ValidatorArray value="BPM_EnergizerShieldBand05"/>
+        <SearchFilters value="UnderConstruction;Self,Enemy,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="2.25" Effect="BPM_EnergizerWarpInApplyZeroShieldBuff"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="BPM_EnergizerWarpInSearch04">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <ValidatorArray value="BPM_EnergizerShieldBand04"/>
+        <SearchFilters value="UnderConstruction;Self,Enemy,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="2.25" Effect="BPM_EnergizerWarpInApplyZeroShieldBuff"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="BPM_EnergizerWarpInSearch03">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <ValidatorArray value="BPM_EnergizerShieldBand03"/>
+        <SearchFilters value="UnderConstruction;Self,Enemy,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="2.25" Effect="BPM_EnergizerWarpInApplyZeroShieldBuff"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="BPM_EnergizerWarpInSearch02">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <ValidatorArray value="BPM_EnergizerShieldBand02"/>
+        <SearchFilters value="UnderConstruction;Self,Enemy,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="2.25" Effect="BPM_EnergizerWarpInApplyZeroShieldBuff"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="BPM_EnergizerWarpInSearch01">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <ValidatorArray value="BPM_EnergizerShieldBand01"/>
+        <SearchFilters value="UnderConstruction;Self,Enemy,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="2.25" Effect="BPM_EnergizerWarpInApplyZeroShieldBuff"/>
+    </CEffectEnumArea>
+
+    <CEffectCreateUnit id="BPM_RavenRepairDroneCU">
+        <EditorCategories value="Race:Terran"/>
+        <WhichLocation Value="TargetPoint"/>
+        <CreateFlags index="Placement" value="1"/>
+        <SpawnUnit value="BPM_RepairDrone"/>
+        <SpawnCount value="1"/>
+        <SpawnOwner Value="Caster"/>
+    </CEffectCreateUnit>
+    <CEffectCreateHealer id="BPM_RepairDroneHeal@Healer">
+        <EditorCategories value="Race:Terran"/>
+        <ValidatorArray value="NotMaxHP"/>
+        <DrainVital value="Energy"/>
+        <DrainVitalCostFactor value="1"/>
+        <RechargeVitalRate value="13.6"/>
+    </CEffectCreateHealer>
+
+    <!-- Defiler Dark Swarm: refresh short-lived ranged/melee protection while
+         units remain in the cloud.  Relationship flags on the exclusion side
+         are used so Self, Player and Ally are all accepted without requiring
+         mutually-exclusive relationship flags at the same time. -->
+    <CEffectEnumArea id="DefilerMPDarkSwarmSearch">
+        <EditorCategories value="Race:Zerg"/>
+        <SearchFilters value="-;Neutral,Enemy,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="3.5" Effect="BPM_DefilerMPDarkSwarmBuffSet"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="BPM_DefilerMPDarkSwarmRefreshSearch">
+        <EditorCategories value="Race:Zerg"/>
+        <SearchFilters value="-;Neutral,Enemy,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="3.5" Effect="BPM_DefilerMPDarkSwarmBuffSet"/>
+    </CEffectEnumArea>
+    <CEffectCreatePersistent id="BPM_DefilerMPDarkSwarmPersistent">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Value="TargetPoint"/>
+        <PeriodCount value="120"/>
+        <PeriodicEffectArray value="BPM_DefilerMPDarkSwarmRefreshSearch"/>
+        <PeriodicPeriodArray value="0.25"/>
+        <InitialEffect value="DefilerMPDarkSwarmSearch"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="DefilerMPDarkSwarmAB">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichUnit Value="Target"/>
+        <Behavior value="DefilerMPDarkSwarm"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="BPM_DefilerMPDarkSwarmMeleeAB">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichUnit Value="Target"/>
+        <Behavior value="BPM_DefilerMPDarkSwarmMelee"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="BPM_DefilerMPDarkSwarmBuffSet">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="DefilerMPDarkSwarmAB"/>
+        <EffectArray value="BPM_DefilerMPDarkSwarmMeleeAB"/>
+    </CEffectSet>
+    <CEffectModifyUnit id="BPM_TransfusionHeal">
+        <EditorCategories value="Race:Zerg"/>
+        <VitalArray index="Life">
+            <Change value="125"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+
+    <!-- Dragoon Weapon Effects -->
+    <CEffectLaunchMissile id="DragoonLM">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactEffect value="DragoonDamage"/>
+        <AmmoUnit value="DragoonWeapon@Missile"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="DragoonDamage" parent="DU_WEAP">
+        <EditorCategories value="Race:Protoss"/>
+        <Kind value="Ranged"/>
+        <Amount value="20"/>
+        <Death value="Blast"/>
+    </CEffectDamage>
+    <!-- Convenience Gas UI Dummy Effect -->
+    <CEffectModifyUnit id="GasUIDummyEffect">
+        <ImpactUnit Value="Caster"/>
+    </CEffectModifyUnit>
+
+    <!-- Aberration damage 20(+20 vs Armored) -> 15(+15 vs Armored).
+         ZergMeleeWeaponsLevel1-3 increase total damage by exactly +2 against
+         both normal and Armored targets (see UpgradeData.xml). -->
+    <CEffectDamage id="InfestedAbomination">
+        <Amount value="15"/>
+        <AttributeBonus index="Armored" value="15"/>
+    </CEffectDamage>
+
+</Catalog>

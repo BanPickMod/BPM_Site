@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <!-- Reuse the fully configured stock actors for the BPM catalog units.
+         Deriving a new actor changes the unit token used by inherited model
+         and portrait data, which produces placeholder assets in game. -->
+    <CActorUnit id="CommandCenter">
+        <StatusHarvesterData Text="UI/HarvesterCountMinerals" SearchFilters="HarvestableResource;Player,Ally,Enemy" SearchRadius="8"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Terran-CommandCenter.dds"/>
+        </GroupIcon>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-buildingarmor.dds"/>
+    </CActorUnit>
+    <CActorUnit id="OrbitalCommand">
+        <StatusHarvesterData Text="UI/HarvesterCountMinerals" SearchFilters="HarvestableResource;Player,Ally,Enemy" SearchRadius="8"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Terran-OrbitalCommand.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Terran-OrbitalCommand.dds"/>
+        </Wireframe>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-buildingarmor.dds"/>
+    </CActorUnit>
+    <CActorUnit id="PlanetaryFortress">
+        <StatusHarvesterData Text="UI/HarvesterCountMinerals" SearchFilters="HarvestableResource;Player,Ally,Enemy" SearchRadius="8"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Terran-PlanetaryFortress.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Terran-PlanetaryFortress.dds"/>
+        </Wireframe>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-buildingarmor.dds"/>
+    </CActorUnit>
+    <CActorUnit id="Nexus">
+        <StatusHarvesterData Text="UI/HarvesterCountMinerals" SearchFilters="HarvestableResource;Player,Ally,Enemy" SearchRadius="8"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Protoss-Nexus.dds"/>
+        </GroupIcon>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-shieldslevel0.dds"/>
+    </CActorUnit>
+    <CActorUnit id="Hatchery">
+        <StatusHarvesterData Text="UI/HarvesterCountMinerals" SearchFilters="HarvestableResource;Player,Ally,Enemy" SearchRadius="8"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Zerg-Hatchery.dds"/>
+        </GroupIcon>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level0.dds"/>
+    </CActorUnit>
+    <CActorUnit id="Lair">
+        <StatusHarvesterData Text="UI/HarvesterCountMinerals" SearchFilters="HarvestableResource;Player,Ally,Enemy" SearchRadius="8"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Zerg-Lair.dds"/>
+        </GroupIcon>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level0.dds"/>
+    </CActorUnit>
+    <CActorUnit id="Hive">
+        <StatusHarvesterData Text="UI/HarvesterCountMinerals" SearchFilters="HarvestableResource;Player,Ally,Enemy" SearchRadius="8"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Zerg-Hive.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Zerg-Hive.dds"/>
+        </Wireframe>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level0.dds"/>
+    </CActorUnit>
+    <CActorUnit id="Queen">
+        <On Terms="UnitBirth.BPM_Queen" Send="Create"/>
+    </CActorUnit>
+    <CActorUnit id="QueenBurrowed">
+        <On Terms="UnitBirth.BPM_QueenBurrowed" Send="Create"/>
+    </CActorUnit>
+    <CActorUnit id="QueenClassic">
+        <PortraitModel value="QueenPortrait"/>
+        <UnitIcon value="Assets\Textures\btn-unit-zerg-classicqueen.dds"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-zerg-queenclassic.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-zerg-queenclassic.dds"/>
+        </Wireframe>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-zerg-flyercarapace-level0.dds"/>
+    </CActorUnit>
+    <CActorUnit id="Mutalisk">
+        <!-- GuardianMP comes from a campaign dependency whose morph actor
+             handling does not reliably retire a Mutalisk source actor.  The
+             gameplay unit has already become GuardianMP at Finish, so destroy
+             only this obsolete Mutalisk visual actor. -->
+        <On Terms="AbilMorph.MorphToGuardianMP.Finish" Send="Destroy"/>
+    </CActorUnit>
+    <!-- Keep the campaign Science Vessel gameplay actor and command icon,
+         while replacing its visible model/wireframe with SC EVO assets. -->
+    <CActorUnit id="ScienceVessel">
+        <On Terms="Abil.BPM_ScienceVesselLockdown.SourceCastStart" Send="$Spell"/>
+        <On Terms="Abil.BPM_ScienceVesselDefensiveMatrix.SourceCastStart" Send="$Spell"/>
+        <Model value="BPM_ScienceVesselSCBW"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-terran-sciencevessel@scbw.dds"/>
+        </GroupIcon>
+        <UnitIcon value="Assets\Textures\btn-unit-terran-sciencevessel.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-terran-sciencevessel@scbw.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <!-- Purifier Sentry / Energizer Actor & Assets -->
+    <CActorUnit id="SentryPurifier">
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-protoss-sentry-purifier.dds"/>
+        </GroupIcon>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-sentry-purifier.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-protoss-sentry-purifier.dds"/>
+        </Wireframe>
+    </CActorUnit>
+
+    <!-- Concrete campaign unit actors carry hidden unit-scope dependencies.
+         Build the BPM actors from the generic unit actor and pin every visual
+         identity field instead of inheriting those incompatible scopes. -->
+    <CActorUnit id="BPM_EnergizerActor" parent="GenericUnitStandard" unitName="Energizer">
+        <Aliases value="_Unit"/>
+        <Aliases value="_Selectable"/>
+        <Model value="Energizer"/>
+        <PortraitModel value="SentryPurifierPortrait"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-protoss-sentry-purifier.dds"/>
+        </GroupIcon>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-sentry-purifier.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-protoss-sentry-purifier.dds"/>
+        </Wireframe>
+        <!-- Keep the source model throughout the 0.5 s morph section, then
+             exchange both unit actors on the same Finish message. -->
+        <On Terms="AbilMorph.EnergizerPhasingModeMorph.Finish" Send="Destroy"/>
+        <On Terms="AbilMorph.EnergizerPhasingModeTransportMorph.Finish" Send="Create"/>
+    </CActorUnit>
+    <CActorUnit id="BPM_EnergizerPhasingActor" parent="GenericUnitStandard" unitName="EnergizerPhasingMode">
+        <Aliases value="_Unit"/>
+        <Aliases value="_Selectable"/>
+        <Model value="EnergizerPhasingMode"/>
+        <PortraitModel value="SentryPurifierPortrait"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-protoss-sentry-purifier.dds"/>
+        </GroupIcon>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-sentry-purifier.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-protoss-sentry-purifier.dds"/>
+        </Wireframe>
+        <On Terms="AbilMorph.EnergizerPhasingModeMorph.Finish" Send="Create"/>
+        <On Terms="AbilMorph.EnergizerPhasingModeTransportMorph.Finish" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="AnimPlay Work Work 0 0.000000"/>
+    </CActorUnit>
+    <!-- The drain behavior reliably owns one visual.  A local repeating
+         actor timer reads the current shield band directly, so visual updates
+         do not depend on cross-actor behavior/effect messages. -->
+    <CActorSplat id="BPM_EnergizerPowerAnimated">
+        <On Terms="Behavior.BPM_EnergizerPhasingDrain.Create" Send="Create"/>
+        <On Terms="Behavior.BPM_EnergizerPhasingDrain.Destroy" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.125000 PowerRefresh"/>
+        <On Terms="TimerExpired; TimerName PowerRefresh; ValidateUnit BPM_EnergizerShieldBand01" Send="SetScale 0.281250 0.200000"/>
+        <On Terms="TimerExpired; TimerName PowerRefresh; ValidateUnit BPM_EnergizerShieldBand02" Send="SetScale 0.281250 0.200000"/>
+        <On Terms="TimerExpired; TimerName PowerRefresh; ValidateUnit BPM_EnergizerShieldBand03" Send="SetScale 0.281250 0.200000"/>
+        <On Terms="TimerExpired; TimerName PowerRefresh; ValidateUnit BPM_EnergizerShieldBand04" Send="SetScale 0.281250 0.200000"/>
+        <On Terms="TimerExpired; TimerName PowerRefresh; ValidateUnit BPM_EnergizerShieldBand05" Send="SetScale 0.281250 0.200000"/>
+        <On Terms="TimerExpired; TimerName PowerRefresh; ValidateUnit BPM_EnergizerShieldBand06" Send="SetScale 0.281250 0.200000"/>
+        <On Terms="TimerExpired; TimerName PowerRefresh; ValidateUnit BPM_EnergizerShieldBand07" Send="SetScale 0.328125 0.200000"/>
+        <On Terms="TimerExpired; TimerName PowerRefresh; ValidateUnit BPM_EnergizerShieldBand08" Send="SetScale 0.375000 0.200000"/>
+        <On Terms="TimerExpired; TimerName PowerRefresh; ValidateUnit BPM_EnergizerShieldBand09" Send="SetScale 0.421875 0.200000"/>
+        <On Terms="TimerExpired; TimerName PowerRefresh; ValidateUnit BPM_EnergizerShieldBand10" Send="SetScale 0.468750 0.200000"/>
+        <On Terms="TimerExpired; TimerName PowerRefresh; ValidateUnit BPM_EnergizerShieldBand11" Send="SetScale 0.515625 0.200000"/>
+        <On Terms="TimerExpired; TimerName PowerRefresh; ValidateUnit BPM_EnergizerShieldBand12" Send="SetScale 0.562500 0.200000"/>
+        <On Terms="TimerExpired; TimerName PowerRefresh; ValidateUnit BPM_EnergizerShieldBand13" Send="SetScale 0.609375 0.200000"/>
+        <On Terms="TimerExpired; TimerName PowerRefresh; ValidateUnit BPM_EnergizerShieldBand14" Send="SetScale 0.656250 0.200000"/>
+        <On Terms="TimerExpired; TimerName PowerRefresh; ValidateUnit BPM_EnergizerShieldBand15" Send="SetScale 0.703125 0.200000"/>
+        <On Terms="TimerExpired; TimerName PowerRefresh; ValidateUnit BPM_EnergizerShieldBand16" Send="SetScale 0.750000 0.200000"/>
+        <On Terms="TimerExpired; TimerName PowerRefresh" Send="TimerSet 0.125000 PowerRefresh"/>
+        <On Terms="AbilMorph.EnergizerPhasingModeTransportMorph.Start" Send="SetScale 0.010000 0.200000"/>
+        <On Terms="AbilMorph.EnergizerPhasingModeTransportMorph.Finish" Send="Destroy"/>
+        <FogVisibility value="Visible"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpShadow"/>
+        <Model value="BPM_EnergizerPowerAnimated"/>
+        <FadeIn value="0.100000"/>
+        <FadeOut value="0.100000"/>
+        <HoldTime value="-1"/>
+        <Layer value="PowerLayer"/>
+        <Scale value="0.750000"/>
+    </CActorSplat>
+    <!-- Energizer Time Shield Visual Dome -->
+    <CActorModel id="BPM_EnergizerTimeShieldModel" parent="ModelAnimationStyleContinuousUNIT">
+        <On Terms="Behavior.BPM_EnergizerTimeShield.On" Send="Create"/>
+        <On Terms="Behavior.BPM_EnergizerTimeShield.Off" Send="AnimBracketStop BSD"/>
+        <Host Subject="::Parent"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <Model value="GuardianShield"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+        <Scale value="0.65,0.65,0.65"/>
+    </CActorModel>
+    <CModel id="BPM_ScienceVesselSCBW" parent="Unit">
+        <Model value="Assets\Units\Terran\ScienceVesselSCBW\ScienceVesselSCBW.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <Occlusion value="Show"/>
+        <Radius value="0.725"/>
+        <SelectionRadius value="1.0"/>
+        <ShadowRadius value="1.0"/>
+    </CModel>
+    <CActorAction id="BPM_ScienceVesselLockdownAction" parent="GenericAttack" effectImpact="BPM_ScienceVesselLockdown@ImpactSet" effectLaunch="BPM_ScienceVesselLockdown@LaunchMissile">
+        <Missile value="BPM_ScienceVesselLockdownMissile"/>
+        <ImpactMap index="None" Model="BPM_ScienceVesselLockdownImpact"/>
+        <ImpactSiteOps Ops="SOpAttachCenter SOpMoveUpByDot5"/>
+        <ShieldFlashType value="Full"/>
+    </CActorAction>
+    <CActorMissile id="BPM_ScienceVesselLockdownMissile" parent="GenericAttackMissile" unitName="BPM_ScienceVesselLockdownMissile"/>
+    <CActorModel id="BPM_ScienceVesselLockdownStatus" parent="ModelAnimationStyleContinuousUNIT">
+        <On Terms="Behavior.BPM_ScienceVesselLockdown.On" Send="Create"/>
+        <On Terms="Behavior.BPM_ScienceVesselLockdown.Off" Send="Destroy"/>
+        <On Terms="ActorCreation" Target="::Host" Send="SetTintColor 192,192,192 0.125000 OneShot LockdownTint"/>
+        <On Terms="ActorDestruction" Target="::Host" Send="ClearTintColor 0.125000 LockdownTint"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <Model value="BPM_ScienceVesselLockdownStatus"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModel>
+    <CActorSiteOpDeltaSum id="SOpAttachCenterDeltaSum">
+        <Deltas Subject="_Unit">
+            <AttachQuerySource Methods="Origin"/>
+            <AttachQueryTarget Methods="Center"/>
+        </Deltas>
+        <DeltaSumFlags index="ZOffsetOnly" value="1"/>
+    </CActorSiteOpDeltaSum>
+    <CActorEventMacroRunnable id="ShieldColorMacroRunnable">
+        <Do Terms="ScopeContains _ShieldRed" Send="SetTintColor {255,0,0 8.000000}"/>
+        <Do Terms="ScopeContains _ShieldGreen" Send="SetTintColor {0,255,0 3.000000}"/>
+        <Do Terms="ScopeContains _ShieldYellow" Send="SetTintColor {255,80,0 6.000000}"/>
+        <Do Terms="ScopeContains _ShieldBlue" Send="SetTintColor {0,0,255 2.000000}"/>
+        <Do Terms="ScopeContains _ShieldBlack" Send="SetTintColor {255,255,255 -1.000000}"/>
+    </CActorEventMacroRunnable>
+    <CActorEventMacro id="BPM_ScienceVesselDefensiveMatrix@Macro">
+        <!-- Terran -->
+        <On Terms="ActorCreation; ValidateUnit IsBattlecruiser" Send="SetScale 1.200000,1.500000,1.000000"/>
+        <On Terms="ActorCreation; ValidateUnit IsGoliath" Send="SetScale 1.300000"/>
+        <On Terms="ActorCreation; ValidateUnit IsThor" Send="SetScale 1.400000,1.200000,1.200000"/>
+        <On Terms="ActorCreation; ValidateUnit IsHellion" Send="SetScale 1.000000,1.200000,1.200000"/>
+        <On Terms="ActorCreation; ValidateUnit IsHellionTank" Send="SetScale 1.100000"/>
+        <!-- Protoss -->
+        <On Terms="ActorCreation; ValidateUnit IsArchon" Send="SetScale 1.400000"/>
+        <On Terms="ActorCreation; ValidateUnit IsCarrier" Send="SetScale 0.900000,1.100000,0.900000"/>
+        <On Terms="ActorCreation; ValidateUnit IsColossus" Send="SetScale 1.000000,1.000000,3.000000"/>
+        <On Terms="ActorCreation; ValidateUnit IsVoidRay" Send="SetScale 1.200000,1.600000,1.200000"/>
+        <On Terms="ActorCreation; ValidateUnit IsStalker" Send="SetScale 1.100000,1.100000,1.300000"/>
+        <On Terms="ActorCreation; ValidateUnit IsImmortal" Send="SetScale 1.400000"/>
+        <!-- Zerg -->
+        <On Terms="ActorCreation; ValidateUnit IsHydralisk" Send="SetScale 1.100000"/>
+        <On Terms="ActorCreation; ValidateUnit IsZergling" Send="SetScale 1.300000"/>
+        <On Terms="ActorCreation; ValidateUnit IsMutalisk" Send="SetScale 1.300000"/>
+        <On Terms="ActorCreation; ValidateUnit IsBroodLord" Send="SetScale 1.100000"/>
+        <On Terms="ActorCreation; ValidateUnit IsUltralisk" Send="SetScale 1.400000,1.200000,1.200000"/>
+    </CActorEventMacro>
+    <CActorModel id="BPM_ScienceVesselDefensiveMatrixStatus" parent="ModelAddition">
+        <Inherits index="TintColor" value="0"/>
+        <On Terms="Behavior.BPM_ScienceVesselDefensiveMatrix.On" Send="Create"/>
+        <On Terms="Behavior.BPM_ScienceVesselDefensiveMatrix.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation" Send="SetTintColor {0,255,0 3.000000}"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachCenterDeltaSum"/>
+        <AutoScaleFactor value="1.500000"/>
+        <Aliases value="_ShieldGreen"/>
+        <Macros value="BPM_ScienceVesselDefensiveMatrix@Macro"/>
+        <Model value="BPM_ScienceVesselDefensiveMatrixStatus"/>
+    </CActorModel>
+    <CActorSound id="BPM_ScienceVesselDefensiveMatrix@Birth" parent="SoundOneShot">
+        <On Terms="Behavior.BPM_ScienceVesselDefensiveMatrix.On" Send="Create"/>
+        <On Terms="Behavior.BPM_ScienceVesselDefensiveMatrix.Off" Send="Destroy"/>
+        <Terms value="Cap 2"/>
+        <Host Subject="_Selectable"/>
+        <Sound value="BPM_ScienceVesselDefensiveMatrix@Birth"/>
+    </CActorSound>
+    <CActorSound id="BPM_ScienceVesselDefensiveMatrix@Death" parent="SoundOneShot">
+        <On Terms="Behavior.BPM_ScienceVesselDefensiveMatrix.Off" Send="Create"/>
+        <Sound value="BPM_ScienceVesselDefensiveMatrix@Death"/>
+    </CActorSound>
+    <CModel id="BPM_ScienceVesselLockdownMissile" parent="MissileFX">
+        <Model value="Assets\Effects\Terran\Lockdown@Missile\Lockdown@Missile.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <ScaleMax value="0.5,0.5,0.5"/>
+        <ScaleMin value="0.5,0.5,0.5"/>
+    </CModel>
+    <CModel id="BPM_ScienceVesselLockdownImpact" parent="RaceImpactFX" Race="Terran">
+        <Model value="Assets\Effects\Terran\Goliath_Lockdown_Impact\Goliath_Lockdown_Impact.m3"/>
+    </CModel>
+    <CModel id="BPM_ScienceVesselLockdownStatus" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Terran\Lockdown@Effect\Lockdown@Effect.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+    <CModel id="BPM_ScienceVesselDefensiveMatrixStatus" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Terran\BattlecruiserDefensiveMatrix\BattlecruiserDefensiveMatrix.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <Radius value="2.000000"/>
+        <ScaleMax value="0.900000,0.900000,0.900000"/>
+        <ScaleMin value="0.900000,0.900000,0.900000"/>
+        <SelectionRadius value="0.555400"/>
+        <ShadowRadius value="0.555400"/>
+    </CModel>
+    <CActorAction id="BPM_FirebatSCBWWeaponAttack" parent="GenericAttackBase">
+        <On Terms="Effect.BPM_FirebatSCBWWeapon@CP.Start; At Caster" Send="Create"/>
+        <On Terms="Effect.BPM_FirebatSCBWWeapon@DamageAccum.Start; FromEffectTreeDescendant" Send="ActionDamage"/>
+        <LaunchAssets Model="FirebatAttackLaunch" Sound="Firebat_AttackLaunch"/>
+        <ImpactMap index="None" Model="FirebatAttackImpact" Sound="Firebat_AttackImpact"/>
+    </CActorAction>
+    <!-- Basic caster attacks use real missile launch effects so the action
+         actors receive a launch event on every weapon cycle. -->
+    <CActorAction id="BPM_TerranCasterAttackAction" parent="LiberatorAGAttack" effectImpact="BPM_TerranCasterAttackDamage" effectLaunch="BPM_TerranCasterAttackLaunch">
+        <Missile value="LiberatorAGAttackMissile"/>
+    </CActorAction>
+    <CActorAction id="BPM_ViperAttackAction" parent="GenericAttack" effectImpact="BPM_ViperAttackDamage" effectLaunch="BPM_ViperAttackLaunch">
+        <Missile value="BPM_ViperAttackMissile"/>
+        <ImpactMap index="None" Model="BPM_ViperAttackImpact"/>
+        <ImpactSiteOps Ops="SOpAttachCenter SOpMoveUpByDot5"/>
+        <!-- The damage effect has no attack-volume metadata. GenericAttack's
+             inherited directional shield flash is invalid in that case. -->
+        <ShieldFlashType value="None"/>
+    </CActorAction>
+    <CActorMissile id="BPM_ViperAttackMissile" parent="GenericAttackMissile" unitName="BPM_ViperAttackMissile">
+        <Model value="BPM_ViperAttackMissile"/>
+    </CActorMissile>
+    <CModel id="BPM_ViperAttackMissile" parent="MissileFX">
+        <Model value="Assets\Effects\Zerg\FungalGrowthMissile\FungalGrowthMissile.m3"/>
+        <EditorCategories value="Race:Zerg"/>
+    </CModel>
+    <CModel id="BPM_ViperAttackImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Zerg\Fungal_Snare_Missile_Impact\Fungal_Snare_Missile_Impact.m3"/>
+        <EditorCategories value="Race:Zerg"/>
+        <ScaleMax value="0.5,0.5,0.5"/>
+        <ScaleMin value="0.5,0.5,0.5"/>
+    </CModel>
+    <CActorModel id="BPM_FirebatSCBWStimpackStart" parent="ModelAnimationStyleOneShot">
+        <On Terms="Abil.BPM_FirebatSCBWStimpack.SourceCastStart" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOverhead"/>
+        <Model value="StimpackStartImpact"/>
+    </CActorModel>
+    <CActorSound id="BPM_FirebatSCBWStimpackSound" parent="SoundOneShot">
+        <On Terms="Abil.BPM_FirebatSCBWStimpack.SourceCastStart" Send="Create"/>
+        <Sound value="Marine_StimpackLaunch"/>
+    </CActorSound>
+    <!-- Science Vessel Defensive Matrix Range & Cursor Splat -->
+    <CActorRange id="BPM_ScienceVesselDefensiveMatrixRange" parent="RangeAbil" abil="BPM_ScienceVesselDefensiveMatrix">
+        <On Terms="Abil.BPM_ScienceVesselDefensiveMatrix.TargetOn" Send="Create"/>
+        <On Terms="Abil.BPM_ScienceVesselDefensiveMatrix.TargetOff" Send="Destroy"/>
+        <Icon value="Assets\Textures\RadarIcon2.dds"/>
+        <IconArcLength value="3.25"/>
+        <Range value="10"/>
+    </CActorRange>
+    <CActorSplat id="BPM_ScienceVesselDefensiveMatrixCursorSplat" parent="GenericSpellCircle" abil="BPM_ScienceVesselDefensiveMatrix">
+        <On Terms="Abil.BPM_ScienceVesselDefensiveMatrix.TargetOn" Send="Create"/>
+        <On Terms="Abil.BPM_ScienceVesselDefensiveMatrix.TargetOff" Send="Destroy"/>
+        <Model value="ForceFieldCursorSplat"/>
+        <Scale value="3.0,3.0,3.0"/>
+    </CActorSplat>
+    <!-- Reuse PointDefenseDrone stock actor for BPM_RepairDrone -->
+    <CActorUnit id="PointDefenseDrone">
+        <On Terms="UnitBirth.BPM_RepairDrone" Send="Create"/>
+        <On Terms="UnitRevive.BPM_RepairDrone" Send="Create"/>
+        <On Terms="UnitConstruction.BPM_RepairDrone.Start" Send="Create"/>
+    </CActorUnit>
+    <CActorBeamSimple id="BPM_RepairDroneBeam">
+        <On Terms="Effect.BPM_RepairDroneHeal@Healer.Start" Send="Create"/>
+        <On Terms="Effect.BPM_RepairDroneHeal@Healer.Stop" Send="Destroy"/>
+        <On Terms="Abil.BPM_RepairDroneHeal.SourceCastStart" Send="Create"/>
+        <On Terms="Abil.BPM_RepairDroneHeal.SourceCastStop" Send="Destroy"/>
+        <Model value="MedivacHealBeam"/>
+        <HostLaunch Subject="_Unit" Scope="Caster"/>
+        <HostImpact Subject="_Unit" Scope="Target"/>
+    </CActorBeamSimple>
+
+    <!-- Defiler Mound Actors & Models -->
+    <CActorUnit id="BPM_DefilerMound" parent="GenericUnitBase" unitName="BPM_DefilerMound">
+        <Aliases value="_UnitHuge"/>
+        <On Terms="UnitBirth.BPM_DefilerMound" Send="Create"/>
+        <On Terms="UnitRevive.BPM_DefilerMound" Send="Create"/>
+        <On Terms="UnitConstruction.BPM_DefilerMound.Start" Send="Create"/>
+        <On Terms="UnitConstruction.BPM_DefilerMound.Finish" Send="AnimBracketStop BSD"/>
+        <Model value="BPM_DefilerMound"/>
+        <BuildModel value="BPM_DefilerMound@Build"/>
+        <DeathArray index="Normal" ModelLink="BPM_DefilerMound@Death"/>
+        <PlacementModel value="BPM_DefilerMound@Placement"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-zerg-defilermound@scbw.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-building-zerg-defilermound@scbw.dds"/>
+        <UnitIcon value="Assets\Textures\btn-building-zerg-defilermound@scbw.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-zerg-defilermound@scbw.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CModel id="BPM_DefilerMound" parent="Building">
+        <Model value="Assets\Buildings\Zerg\DefilerMoundSCBW\DefilerMoundSCBW.m3"/>
+        <ScaleMax value="1.0,1.0,1.0"/>
+        <ScaleMin value="1.0,1.0,1.0"/>
+        <Radius value="1.4"/>
+        <EditorCategories value="Race:Zerg"/>
+    </CModel>
+    <CModel id="BPM_DefilerMound@Build" parent="Building">
+        <Model value="Assets\Buildings\Zerg\ZergBuildingDeathEx1\ZergBuildingDeathEx1.m3"/>
+        <EditorCategories value="Race:Zerg"/>
+    </CModel>
+    <CModel id="BPM_DefilerMound@Death" parent="Building">
+        <Model value="Assets\Buildings\Zerg\DefilerMoundSCBW\DefilerMoundSCBW@Death.m3"/>
+        <EditorCategories value="Race:Zerg"/>
+    </CModel>
+    <CModel id="BPM_DefilerMound@Placement" parent="Placement">
+        <Model value="Assets\Buildings\Zerg\DefilerMoundSCBW\DefilerMoundSCBW@Placement.m3"/>
+        <ScaleMax value="1.0,1.0,1.0"/>
+        <ScaleMin value="1.0,1.0,1.0"/>
+        <Radius value="1.4"/>
+        <EditorCategories value="Race:Zerg"/>
+    </CModel>
+
+    <!-- Defiler Consume Visual / Sound -->
+    <CActorSound id="BPM_DefilerConsumeSound" parent="SoundOneShot">
+        <On Terms="Abil.BPM_DefilerConsume.SourceCastStart" Send="Create"/>
+        <Sound value="Viper_ConsumeCast"/>
+    </CActorSound>
+    <CActorSound id="BPM_DefilerConsumeImpactSound" parent="SoundOneShot">
+        <On Terms="Effect.BPM_DefilerConsumeKill.Start; At Target" Send="Create"/>
+        <Sound value="Viper_ConsumeImpact"/>
+    </CActorSound>
+    <CActorModel id="BPM_DefilerConsumeImpactModel" parent="ModelAnimationStyleOneShotUNIT">
+        <On Terms="Effect.BPM_DefilerConsumeKill.Start; At Target" Send="Create"/>
+        <Model value="AcidSalivaBloodImpact"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+    </CActorModel>
+</Catalog>

@@ -1,0 +1,115 @@
+Compared BPM_Core_v1.4.3_Fix1.SC2Mod (v1.4.3) with release/bpm-modules (BPM_CoreExtension.SC2Mod, BPM_Core.SC2Mod) (v2.0)
+
+[unit.set] 13
+  + CreepTumorQueen  {}
+  + BPM_NukeCreepBurnMarker  {"hp":1}
+  + BPM_NukeCreepClearer1  {"hp":1}
+  + BPM_NukeCreepClearer2  {"hp":1}
+  + BPM_NukeCreepClearer3  {"hp":1}
+  + BPM_NukeCreepClearer4  {"hp":1}
+  + BPM_NukeCreepClearer5  {"hp":1}
+  + BPM_NukeCreepClearer6  {"hp":1}
+  + BPM_NukeCreepClearer7  {"hp":1}
+  + BPM_NukeCreepClearer8  {"hp":1}
+  + BPM_CycloneRailgunWeapon  {}
+  + Immortal  {}
+  + Mothership  {}
+
+[unit.attrs] 13
+  + CreepTumorQueen  {}
+  + BPM_NukeCreepBurnMarker  {}
+  + BPM_NukeCreepClearer1  {}
+  + BPM_NukeCreepClearer2  {}
+  + BPM_NukeCreepClearer3  {}
+  + BPM_NukeCreepClearer4  {}
+  + BPM_NukeCreepClearer5  {}
+  + BPM_NukeCreepClearer6  {}
+  + BPM_NukeCreepClearer7  {}
+  + BPM_NukeCreepClearer8  {}
+  + BPM_CycloneRailgunWeapon  {}
+  + Immortal  {}
+  + Mothership  {}
+
+[unit.weapons] 13
+  + CreepTumorQueen  ""
+  + BPM_NukeCreepBurnMarker  ""
+  + BPM_NukeCreepClearer1  ""
+  + BPM_NukeCreepClearer2  ""
+  + BPM_NukeCreepClearer3  ""
+  + BPM_NukeCreepClearer4  ""
+  + BPM_NukeCreepClearer5  ""
+  + BPM_NukeCreepClearer6  ""
+  + BPM_NukeCreepClearer7  ""
+  + BPM_NukeCreepClearer8  ""
+  + BPM_CycloneRailgunWeapon  ""
+  + Immortal  ""
+  + Mothership  ""
+
+[effect] 58
+  + BPM_MojoStunVisualAB  {"type":"CEffectApplyBehavior","amount":null,"bonus":[]}
+  + BPM_PurificationNovaDamageSet  {"type":"CEffectSet","amount":null,"bonus":[]}
+  + PurificationNovaSearch  {"type":"CEffectEnumArea","amount":null,"bonus":[]}
+  + PurificationNovaTargettedSearch  {"type":"CEffectEnumArea","amount":null,"bonus":[]}
+  + BPM_NukeCreepBurnCU  {"type":"CEffectCreateUnit","amount":null,"bonus":[]}
+  + BPM_NukeCreepClearCU1  {"type":"CEffectCreateUnit","amount":null,"bonus":[]}
+  + BPM_NukeCreepClearCU2  {"type":"CEffectCreateUnit","amount":null,"bonus":[]}
+  + BPM_NukeCreepClearCU3  {"type":"CEffectCreateUnit","amount":null,"bonus":[]}
+  + BPM_NukeCreepClearCU4  {"type":"CEffectCreateUnit","amount":null,"bonus":[]}
+  + BPM_NukeCreepClearCU5  {"type":"CEffectCreateUnit","amount":null,"bonus":[]}
+  + BPM_NukeCreepClearCU6  {"type":"CEffectCreateUnit","amount":null,"bonus":[]}
+  + BPM_NukeCreepClearCU7  {"type":"CEffectCreateUnit","amount":null,"bonus":[]}
+  + BPM_NukeCreepClearCU8  {"type":"CEffectCreateUnit","amount":null,"bonus":[]}
+  + BPM_NukeCreepBurnRing1c0  {"type":"CEffectCreatePersistent","amount":null,"bonus":[]}
+  + BPM_NukeCreepBurnRing2c0  {"type":"CEffectCreatePersistent","amount":null,"bonus":[]}
+  + BPM_NukeCreepBurnRing3c0  {"type":"CEffectCreatePersistent","amount":null,"bonus":[]}
+  + BPM_NukeCreepBurnRing3c1  {"type":"CEffectCreatePersistent","amount":null,"bonus":[]}
+  + BPM_NukeCreepBurnRing4c0  {"type":"CEffectCreatePersistent","amount":null,"bonus":[]}
+  + BPM_NukeCreepBurnRing4c1  {"type":"CEffectCreatePersistent","amount":null,"bonus":[]}
+  + BPM_NukeCreepBurnRing5c0  {"type":"CEffectCreatePersistent","amount":null,"bonus":[]}
+  + BPM_NukeCreepBurnRing5c1  {"type":"CEffectCreatePersistent","amount":null,"bonus":[]}
+  + BPM_NukeCreepBurnRing5c2  {"type":"CEffectCreatePersistent","amount":null,"bonus":[]}
+  + BPM_NukeCreepBurnRing6c0  {"type":"CEffectCreatePersistent","amount":null,"bonus":[]}
+  + BPM_NukeCreepBurnRing6c1  {"type":"CEffectCreatePersistent","amount":null,"bonus":[]}
+  + BPM_NukeCreepBurnRing6c2  {"type":"CEffectCreatePersistent","amount":null,"bonus":[]}
+  + BPM_NukeCreepBurnRing7c0  {"type":"CEffectCreatePersistent","amount":null,"bonus":[]}
+  + BPM_NukeCreepBurnRing7c1  {"type":"CEffectCreatePersistent","amount":null,"bonus":[]}
+  + BPM_NukeCreepBurnRing7c2  {"type":"CEffectCreatePersistent","amount":null,"bonus":[]}
+  + BPM_NukeCreepBurnRing8c0  {"type":"CEffectCreatePersistent","amount":null,"bonus":[]}
+  + BPM_NukeCreepBurnRing8c1  {"type":"CEffectCreatePersistent","amount":null,"bonus":[]}
+  + BPM_NukeCreepBurnRing8c2  {"type":"CEffectCreatePersistent","amount":null,"bonus":[]}
+  + BPM_NukeCreepBurnRing8c3  {"type":"CEffectCreatePersistent","amount":null,"bonus":[]}
+  + BPM_NukeCreepClearWave1  {"type":"CEffectCreatePersistent","amount":null,"bonus":[]}
+  + BPM_NukeCreepClearWave2  {"type":"CEffectCreatePersistent","amount":null,"bonus":[]}
+  + BPM_NukeCreepClearWave3  {"type":"CEffectCreatePersistent","amount":null,"bonus":[]}
+  + BPM_NukeCreepClearWave4  {"type":"CEffectCreatePersistent","amount":null,"bonus":[]}
+  + BPM_NukeCreepClearWave5  {"type":"CEffectCreatePersistent","amount":null,"bonus":[]}
+  + BPM_NukeCreepClearWave6  {"type":"CEffectCreatePersistent","amount":null,"bonus":[]}
+  + BPM_NukeCreepClearWave7  {"type":"CEffectCreatePersistent","amount":null,"bonus":[]}
+  + BPM_NukeCreepClearWave8  {"type":"CEffectCreatePersistent","amount":null,"bonus":[]}
+  + BPM_NukeCreepClearWaves  {"type":"CEffectSet","amount":null,"bonus":[]}
+  + BPM_NukeCreepBurnRings  {"type":"CEffectSet","amount":null,"bonus":[]}
+  + BPM_NukeDetonateSet  {"type":"CEffectSet","amount":null,"bonus":[]}
+  + NukeDetonate  {"type":"CEffectCreatePersistent","amount":null,"bonus":[]}
+  + BPM_CycloneRailgunGroundLeft  {"type":"CEffectLaunchMissile","amount":null,"bonus":[]}
+  + BPM_CycloneRailgunGroundRight  {"type":"CEffectLaunchMissile","amount":null,"bonus":[]}
+  + BPM_CycloneRailgunAirLeft  {"type":"CEffectLaunchMissile","amount":null,"bonus":[]}
+  + BPM_CycloneRailgunAirRight  {"type":"CEffectLaunchMissile","amount":null,"bonus":[]}
+  + BPM_CycloneLockOnLaunchSwitch  {"type":"CEffectSwitch","amount":null,"bonus":[]}
+  + BPM_CycloneAirLockOnLaunchSwitch  {"type":"CEffectSwitch","amount":null,"bonus":[]}
+  + BPM_CycloneLockOnLaunchWithUpgrade  {"type":"CEffectSwitch","amount":null,"bonus":[]}
+  + BPM_CycloneAirLockOnLaunchWithUpgrade  {"type":"CEffectSwitch","amount":null,"bonus":[]}
+  + LockOnCP  {"type":"CEffectCreatePersistent","amount":null,"bonus":[]}
+  + LockOnAirCP  {"type":"CEffectCreatePersistent","amount":null,"bonus":[]}
+  + OracleWeaponDamage  {"type":"CEffectDamage","amount":null,"bonus":[]}
+  + VoidRaySwarmDamage  {"type":"CEffectDamage","amount":null,"bonus":[]}
+  + VoidRaySwarmEnhancedDamage  {"type":"CEffectDamage","amount":null,"bonus":[]}
+  + BPM_ImmortalBarrierBaseExhausted  {"type":"CEffectRemoveBehavior","amount":null,"bonus":[]}
+
+[behavior] 5
+  + BPM_MojoStunVisual  {"duration":1.4,"speedMult":null,"damageFraction":null}
+  + BPM_CreepClearerLife8  {"duration":8,"speedMult":null,"damageFraction":null}
+  + BPM_NukeCreepBurnLife  {"duration":4.5,"speedMult":null,"damageFraction":null}
+  + BPM_MsBirthRecallVisual  {"duration":4,"speedMult":null,"damageFraction":null}
+  + ImmortalBarrierBase  {"duration":null,"speedMult":null,"damageFraction":null}
+
+102 differences

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>뷰어 시안 C · 대결 화면형</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="viewer-shared.css">
+<style>
+/* C. Versus: two player cards flank the map like a broadcast scoreboard. Everything about one player lives in one column. */
+body{min-height:100vh;display:grid;grid-template-rows:auto 1fr auto}
+@media (min-width:1101px){body{height:100vh;overflow:hidden}}
+.top{display:flex;align-items:center;justify-content:center;gap:14px;padding:12px 16px;border-bottom:1px solid var(--line);background:linear-gradient(90deg,#38bdf81a,transparent 30%,transparent 70%,#f59e0b1a)}
+.top h1{font:900 1.3rem var(--f-display);text-transform:uppercase}.top .meta{font:.76rem var(--f-mono);color:var(--mute)}
+.arena{display:grid;grid-template-columns:330px minmax(0,1fr) 330px;gap:0;min-height:0}
+.arena>*{min-height:0}
+.card{padding:14px;display:grid;gap:12px;align-content:start;background:var(--bg2);overflow:auto;min-height:0}
+.card.l{border-right:1px solid var(--line);border-top:3px solid var(--p1)}.card.r{border-left:1px solid var(--line);border-top:3px solid var(--p2)}
+.card h2{display:flex;align-items:center;gap:10px;font:900 1.9rem var(--f-display);text-transform:uppercase;line-height:1}
+.card h2 .res{margin-left:auto;font:800 .9rem var(--f-mono);padding:3px 10px;border:1px solid currentColor;border-radius:99px}
+.big{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.big div{padding:8px 10px;background:var(--panel);border:1px solid var(--line2);border-radius:var(--r)}
+.big b{display:block;font:800 1.55rem var(--f-display);line-height:1.1}.big span{font:.64rem var(--f-mono);color:var(--mute)}
+.card.l .big b{color:var(--p1)}.card.r .big b{color:var(--p2)}
+.pk{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.bars{display:grid;gap:6px}.bar{display:grid;grid-template-columns:70px 1fr auto;gap:8px;align-items:center;font:.7rem var(--f-mono);color:var(--mute)}
+.bar i{display:block;height:8px;background:var(--panel2);border-radius:2px;overflow:hidden}.bar i s{display:block;height:100%;background:var(--pick)}
+.mid{display:grid;grid-template-rows:minmax(0,1fr) auto;min-height:0}
+.stage{position:relative;min-height:0}
+.stage .hud{position:absolute;left:12px;top:12px;font:.72rem var(--f-mono);background:#07080fcc;border:1px solid var(--line2);padding:4px 10px;border-radius:var(--r)}
+.scoreline{display:flex;justify-content:center;gap:28px;padding:8px;font:800 1.1rem var(--f-display);border-top:1px solid var(--line);background:var(--bg2)}
+.scoreline span{font-family:var(--f-mono);font-size:.8rem;color:var(--mute)}
+.dock{border-top:1px solid var(--line);padding:10px 16px 14px;background:var(--bg2);display:grid;gap:10px}
+.btl{display:flex;gap:8px;flex-wrap:wrap}.btl button{padding:6px 12px;border:1px solid var(--line2);border-top:2px solid var(--ban);background:var(--panel);border-radius:var(--r);font:.74rem var(--f-mono)}
+@media (max-width:1100px){.arena{grid-template-columns:1fr}.card.l{order:2}.card.r{order:3}.mid{order:1}.stage{min-height:70vw}}
+</style>
+</head>
+<body>
+<header class="top"><span class="p1c" style="font-weight:800">P1</span><h1>Rorschach</h1><span class="meta">TvZ · 12:14 · 2026-10-08</span><span class="p2c" style="font-weight:800">P2</span></header>
+<section class="arena">
+  <aside class="card l" id="c1"></aside>
+  <div class="mid"><div class="stage"><canvas id="map"></canvas><div class="hud">근사 위치 · 픽 유닛 = 라임 테두리</div></div>
+    <div class="scoreline"><div>병력 가치 <span class="p1c" data-stat="1.army">0</span> : <span class="p2c" data-stat="2.army">0</span></div><div>손실 <span class="p1c" data-stat="1.lost">0</span> : <span class="p2c" data-stat="2.lost">0</span></div></div></div>
+  <aside class="card r" id="c2"></aside>
+</section>
+<footer class="dock"><div id="tr"></div><div id="tl"></div><div class="btl" id="btl"></div></footer>
+<script src="viewer-data.js"></script><script src="viewer-core.js"></script>
+<script>
+const V = Viewer, D = V.D;
+function card(i) {
+  const p = D.draft[i], h = V.draftHTML(i), o = i + 1, c = document.getElementById("c" + o);
+  c.innerHTML = `<h2 class="${i ? "p2c" : "p1c"}">${V.raceImg(p.race)} P${o}<span class="res ${p.result === "win" ? "res-w" : "res-l"}">${p.result === "win" ? "승" : "패"}</span></h2>
+    <div class="big"><div><b data-stat="${o}.sup">0</b><span>보급</span></div><div><b data-stat="${o}.wk">0</b><span>일꾼</span></div><div><b data-stat="${o}.army">0</b><span>병력 가치</span></div><div><b data-stat="${o}.inc">0</b><span>분당 광물</span></div></div>
+    <p class="vw-k">고른 유닛</p><ul class="vw-list">${h.picks}</ul>
+    <p class="vw-k">받은 밴</p><ul class="vw-list row">${h.bans}</ul>
+    <p class="vw-k">픽 유닛 사용 (지금까지 생산)</p><div class="bars" id="bars${o}"></div>`;
+}
+card(0); card(1);
+function bars(t) { [0, 1].forEach((i) => { const use = V.pickUsage(i, t), max = Math.max(1, ...V.pickUsage(i, D.duration).map((u) => u.total));
+  document.getElementById("bars" + (i + 1)).innerHTML = use.map((u) => `<div class="bar"><span>${(D.meta[u.unit] || {}).ko || u.unit}</span><i><s style="width:${(u.made / max) * 100}%"></s></i><b>${u.made}${u.unused ? " · 미사용" : ""}</b></div>`).join(""); }); }
+V.Clock.on((t) => { const k = Math.floor(t); if (k !== bars.k) { bars.k = k; bars(t); } });
+document.getElementById("btl").innerHTML = `<span class="vw-k" style="align-self:center">교전 바로가기</span>` + V.battles.map((b) => `<button data-t="${b.t0}">${b.id} · ${V.fmt(b.t0)} · ${b.lost[1]}:${b.lost[2]}</button>`).join("");
+document.querySelectorAll("#btl button").forEach((e) => (e.onclick = () => V.Clock.set(+e.dataset.t - 2)));
+V.mountMap(document.getElementById("map")); V.mountTransport(document.getElementById("tr")); V.mountTimeline(document.getElementById("tl")); V.bindStats();
+</script>
+</body>
+</html>

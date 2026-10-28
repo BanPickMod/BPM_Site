@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <!-- Unit actors and Warpable placement actors resolve their base model
+         from the unit token, not only from CActorUnit.Model.  Provide model
+         links matching the BPM unit ids while reusing the stock assets. -->
+    <CModel id="Energizer" parent="SentryPurifier"/>
+    <CModel id="EnergizerPhasingMode" parent="SentryPhasing"/>
+    <!-- Stable alias used by the Immortal actor. Campaign dependencies add
+         faction and barrier presentation paths to the stock model link; keep
+         BPM on the standard multiplayer Immortal model. -->
+    <CModel id="BPM_ImmortalStableModel" parent="Immortal"/>
+    <!-- Locally packaged SC Evo asset: do not depend on campaign model IDs. -->
+    <CModel id="BPM_DragoonModel" parent="Unit">
+        <Model value="Assets\Units\Protoss\DragoonSCBW\DragoonSCBW.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Occlusion value="Show"/>
+        <Radius value="0.75"/>
+        <SelectionRadius value="0.95"/>
+        <ShadowRadius value="0.95"/>
+    </CModel>
+    <CModel id="Dragoon" parent="BPM_DragoonModel"/>
+    <CModel id="BPM_DragoonDeath" parent="UnitDeath" Race="Protoss">
+        <Model value="Assets\Units\Protoss\DragoonSCBW\DragoonSCBW@Death.m3"/>
+        <Radius value="0.75"/>
+    </CModel>
+    <CModel id="BPM_DragoonDeathRagdoll" parent="UnitDeathRagdoll" Race="Protoss">
+        <Model value="Assets\Units\Protoss\DragoonSCBW\DragoonSCBW@DeathRagdoll_00.m3"/>
+        <Radius value="0.75"/>
+    </CModel>
+    <CModel id="BPM_DragoonAttackMissile" parent="MissileFX">
+        <Model value="Assets\Effects\Protoss\DragoonAttackMissile@SCBWEffect\DragoonAttackMissile@SCBWEffect.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+    <CModel id="BPM_DragoonAttackImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Protoss\DragoonAttackImpact@SCBWEffect\DragoonAttackImpact@SCBWEffect.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+
+    <!-- The stock pylon feedback model is authored for a 6.5 power radius.
+         The actor starts at radius 6 and follows the proportional shield curve. -->
+    <CModel id="BPM_EnergizerPowerAnimated" parent="UI">
+        <Model value="Assets/UI/Feedback/PylonRadius_X1/PylonRadius_X1.m3"/>
+        <Lighting value="PowerVisual"/>
+        <ScaleMax value="1.230769,1.230769,1.230769"/>
+        <ScaleMin value="1.230769,1.230769,1.230769"/>
+    </CModel>
+    <CModel id="BPM_DefilerDarkSwarmCloud" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Zerg\DefilerDarkSwarmSCBW\DefilerDarkSwarmSCBW.m3"/>
+        <EditorCategories value="Race:Zerg"/>
+        <Priority value="30"/>
+        <ScaleMax value="1.350000,1.350000,1.350000"/>
+        <ScaleMin value="1.250000,1.250000,1.250000"/>
+    </CModel>
+    <CModel id="BPM_DefilerDarkSwarmSplat" parent="Splat">
+        <EditorCategories value="Race:Zerg"/>
+        <Model value="Assets\Effects\Zerg\DefilerDarkSwarmSCBW@Splat\DefilerDarkSwarmSCBW@Splat.m3"/>
+        <ScaleMax value="0.950000,0.950000,0.950000"/>
+        <ScaleMin value="0.950000,0.950000,0.950000"/>
+    </CModel>
+
+    <!-- Tactical nuke detonation: ground shockwave (visual only). Base: scale 1.8, AnimSpeed 0.5.
+         +180 degrees: scale 2.1, AnimSpeed 0.2 (slower than base). -->
+    <CModel id="BPM_NukeBurrowChargeImpact" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Zerg\BurrowChargeImpact\BurrowChargeImpact.m3"/>
+        <EditorCategories value="Race:Zerg"/>
+        <AnimSpeed value="0.500000"/>
+        <ScaleMax value="1.800000,1.800000,1.800000"/>
+        <ScaleMin value="1.800000,1.800000,1.800000"/>
+    </CModel>
+    <CModel id="BPM_NukeBurrowChargeImpact180Small" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Zerg\BurrowChargeImpact\BurrowChargeImpact.m3"/>
+        <EditorCategories value="Race:Zerg"/>
+        <AnimSpeed value="0.200000"/>
+        <ScaleMax value="2.100000,2.100000,2.100000"/>
+        <ScaleMin value="2.100000,2.100000,2.100000"/>
+    </CModel>
+
+    <!-- Nydus Worm birth: Mengsk artillery impact simultaneous with UnitBirth. -->
+    <CModel id="BPM_NydusArtilleryImpact" parent="OneShotSpellFX">
+        <Model value="Assets\COOP\Mengsk\Effects\Artillery_Mengsk_COOP_Impact\Artillery_Mengsk_COOP_Impact.m3"/>
+        <EditorCategories value="Race:Zerg"/>
+        <RadiusLoose value="1.000000"/>
+        <ScaleMax value="1.600000,1.600000,1.600000"/>
+        <ScaleMin value="1.600000,1.600000,1.600000"/>
+        <AnimSpeed value="0.333333"/>
+    </CModel>
+    <CModel id="BPM_MojoStunGlazeModel" parent="Glaze">
+        <EditorCategories value="Race:Protoss"/>
+        <Model value="Assets\Effects\Glaze\Glaze_Fenix_Scout_StunMissile\Glaze_Fenix_Scout_StunMissile.m3"/>
+        <AnimSpeed value="0.500000"/>
+    </CModel>
+
+    <!-- Skin swaps on the stock units: Artanis Mothership and Umojan MULE. -->
+    <CModel id="Mothership">
+        <Model value="Assets\Units\Protoss\Artanis_Mothership\Artanis_Mothership.m3"/>
+        <AttachProps Id="Ref_TurretZ">
+            <Keys index="Turret" value="0"/>
+        </AttachProps>
+    </CModel>
+    <CModel id="MULE">
+        <Model value="Assets\Units\Terran\MULE_Umojan\MULE_Umojan.m3"/>
+    </CModel>
+    <CModel id="BPM_NukeCreepBurn" parent="ImpactFX">
+        <Model value="Assets\Effects\Protoss\Colossus_FireBeam_GroundFire\Colossus_FireBeam_GroundFire.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ScaleMax value="1.000000,1.000000,1.000000"/>
+        <ScaleMin value="1.000000,1.000000,1.000000"/>
+    </CModel>
+    <CModel id="BPM_PsiStormLightningDashFx" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\Artanis_LightningDash\Artanis_LightningDash.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+    <CModel id="CorruptorAttackImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Zerg\PrimalGuardianMissileImpact\PrimalGuardianMissileImpact.m3"/>
+        <EditorCategories value="Race:Zerg"/>
+        <ScaleMax value="0.700000,0.700000,0.700000"/>
+        <ScaleMin value="0.700000,0.700000,0.700000"/>
+    </CModel>
+    <CModel id="HydraliskAttackImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Zerg\CorruptorMissileImpact\CorruptorMissileImpact.m3"/>
+        <EditorCategories value="Race:Zerg"/>
+        <ScaleMax value="1.000000,1.000000,1.000000"/>
+        <ScaleMin value="1.000000,1.000000,1.000000"/>
+    </CModel>
+    <CModel id="BPM_ChannelSnipeSpikeImpact" parent="LurkerMPAttackSpikeImpact">
+        <ScaleMin value="3.0,3.0,3.0"/>
+        <ScaleMax value="3.0,3.0,3.0"/>
+        <AnimSpeed value="1.0"/>
+    </CModel>
+    <CModel id="ChannelSnipeBeam" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Terran\WarHoundRailGunMissile\WarHoundRailGunMissile.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <Lighting value=""/>
+    </CModel>
+    <CModel id="BPM_CycloneRailgunBeamModel" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Terran\CobraBeam\CobraBeam.m3"/>
+        <!-- Thickness ~1.2x; beam length still follows launch→impact. -->
+        <ScaleMin value="1.2,1.2,1.2"/>
+        <ScaleMax value="1.2,1.2,1.2"/>
+    </CModel>
+
+    <!-- Viper basic attack: co-op Primal Guardian projectile and Corruptor missile impact (x2). -->
+    <CModel id="BPM_ViperPrimalMissile" parent="MissileFX">
+        <Events>
+            <Anim value="Stand,00"/>
+            <Name value="Viper_AirAttack_Missile"/>
+            <Type value="Sound"/>
+            <Time value="0.015"/>
+            <Payload value="Viper_AirAttack_Missile"/>
+        </Events>
+        <Model value="Assets\Effects\Zerg\PrimalGuardianMissile\PrimalGuardianMissile.m3"/>
+        <EditorCategories value="Race:Zerg"/>
+    </CModel>
+    <CModel id="BPM_ViperPrimalImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Zerg\CorruptorMissileImpact\CorruptorMissileImpact.m3"/>
+        <EditorCategories value="Race:Zerg"/>
+        <ScaleMax value="2.000000,2.000000,2.000000"/>
+        <ScaleMin value="2.000000,2.000000,2.000000"/>
+    </CModel>
+
+    <!-- Mothership birth FX: stock TeleportIn/Out at x2 size / 3.5x slower, plus Artanis Resurgence. -->
+    <CModel id="MothershipTeleportIn">
+        <AnimSpeed value="0.285714"/>
+        <ScaleMax value="2.000000,2.000000,2.000000"/>
+        <ScaleMin value="2.000000,2.000000,2.000000"/>
+    </CModel>
+    <CModel id="MothershipTeleportOut">
+        <AnimSpeed value="0.285714"/>
+        <ScaleMax value="0.200000,0.200000,0.200000"/>
+        <ScaleMin value="0.200000,0.200000,0.200000"/>
+    </CModel>
+    <CModel id="BPM_MsArtanisResurgenceFx" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\Artanis_Resurgence\Artanis_Resurgence.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <RadiusLoose value="1.000000"/>
+    </CModel>
+</Catalog>

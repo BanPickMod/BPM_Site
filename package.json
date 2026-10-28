@@ -7,20 +7,34 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit",
-    "validate:data": "node -e \"console.log('BPM data schema validation: OK')\""
+    "typecheck": "next typegen && tsc --noEmit",
+    "test:consent-sql": "node --conditions=react-server --experimental-strip-types --no-warnings scripts/dev/consent-sql-test.mjs",
+    "test:deletion": "node --conditions=react-server --experimental-strip-types --no-warnings scripts/dev/deletion-test.mjs",
+    "test:report-atomic": "node --conditions=react-server --experimental-strip-types --no-warnings scripts/dev/report-atomic-test.mjs",
+    "test:privacy": "node --conditions=react-server --experimental-strip-types --no-warnings scripts/dev/privacy-inventory-test.mjs",
+    "validate:data": "node scripts/validate-data.js",
+    "build:data": "node scripts/wiki/build-wiki-data.js",
+    "media:report": "node scripts/media-report.js"
   },
   "dependencies": {
+    "@types/three": "^0.186.0",
+    "aws4fetch": "^1.0.20",
     "clsx": "^2.1.1",
     "lucide-react": "^1.47.0",
+    "marked": "^18.1.2",
     "next": "16.3.5",
+    "pg": "^8.23.1",
     "react": "19.2.8",
     "react-dom": "19.2.8",
-    "tailwind-merge": "^3.7.0"
+    "server-only": "^0.0.1",
+    "tailwind-merge": "^3.7.0",
+    "three": "^0.186.1"
   },
   "devDependencies": {
+    "@electric-sql/pglite": "^0.5.12",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/pg": "^8.23.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",

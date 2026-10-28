@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <!-- Unit actors and Warpable placement actors resolve their base model
+         from the unit token, not only from CActorUnit.Model.  Provide model
+         links matching the BPM unit ids while reusing the stock assets. -->
+    <CModel id="Energizer" parent="SentryPurifier"/>
+    <CModel id="EnergizerPhasingMode" parent="SentryPhasing"/>
+    <!-- Locally packaged SC Evo asset: do not depend on campaign model IDs. -->
+    <CModel id="BPM_DragoonModel" parent="Unit">
+        <Model value="Assets\Units\Protoss\DragoonSCBW\DragoonSCBW.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Occlusion value="Show"/>
+        <Radius value="0.75"/>
+        <SelectionRadius value="0.95"/>
+        <ShadowRadius value="0.95"/>
+    </CModel>
+    <CModel id="Dragoon" parent="BPM_DragoonModel"/>
+    <CModel id="BPM_DragoonDeath" parent="UnitDeath" Race="Protoss">
+        <Model value="Assets\Units\Protoss\DragoonSCBW\DragoonSCBW@Death.m3"/>
+        <Radius value="0.75"/>
+    </CModel>
+    <CModel id="BPM_DragoonDeathRagdoll" parent="UnitDeathRagdoll" Race="Protoss">
+        <Model value="Assets\Units\Protoss\DragoonSCBW\DragoonSCBW@DeathRagdoll_00.m3"/>
+        <Radius value="0.75"/>
+    </CModel>
+    <CModel id="BPM_DragoonAttackMissile" parent="MissileFX">
+        <Model value="Assets\Effects\Protoss\DragoonAttackMissile@SCBWEffect\DragoonAttackMissile@SCBWEffect.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+    <CModel id="BPM_DragoonAttackImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Protoss\DragoonAttackImpact@SCBWEffect\DragoonAttackImpact@SCBWEffect.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+
+    <!-- The stock pylon feedback model is authored for a 6.5 power radius.
+         The actor starts at radius 6 and follows the proportional shield curve. -->
+    <CModel id="BPM_EnergizerPowerAnimated" parent="UI">
+        <Model value="Assets/UI/Feedback/PylonRadius_X1/PylonRadius_X1.m3"/>
+        <Lighting value="PowerVisual"/>
+        <ScaleMax value="1.230769,1.230769,1.230769"/>
+        <ScaleMin value="1.230769,1.230769,1.230769"/>
+    </CModel>
+    <CModel id="BPM_DefilerDarkSwarmCloud" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Zerg\DefilerDarkSwarmSCBW\DefilerDarkSwarmSCBW.m3"/>
+        <EditorCategories value="Race:Zerg"/>
+        <Priority value="30"/>
+        <ScaleMax value="1.350000,1.350000,1.350000"/>
+        <ScaleMin value="1.250000,1.250000,1.250000"/>
+    </CModel>
+    <CModel id="BPM_DefilerDarkSwarmSplat" parent="Splat">
+        <EditorCategories value="Race:Zerg"/>
+        <Model value="Assets\Effects\Zerg\DefilerDarkSwarmSCBW@Splat\DefilerDarkSwarmSCBW@Splat.m3"/>
+        <ScaleMax value="0.950000,0.950000,0.950000"/>
+        <ScaleMin value="0.950000,0.950000,0.950000"/>
+    </CModel>
+</Catalog>

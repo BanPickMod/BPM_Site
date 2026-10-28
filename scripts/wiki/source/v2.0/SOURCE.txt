@@ -1,0 +1,1 @@
+release/bpm-modules (BPM_CoreExtension.SC2Mod, BPM_Core.SC2Mod)

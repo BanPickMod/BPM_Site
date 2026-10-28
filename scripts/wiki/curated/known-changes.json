@@ -1,0 +1,20 @@
+{
+  "_doc": "Value changes that the patch notes state explicitly, as the value BEFORE the version. build-wiki-data.js checks every 'after' against the resolved mod data and fails on a mismatch. Extend this when a new patch changes unit numbers. Comparing mod XML snapshots directly is not reliable: the base-game export and the mod XML describe some costs differently (for example total versus morph cost), which would show up as false changes.",
+  "v1.4.3": [
+    { "unit": "Marauder", "field": "hp", "before": 125, "after": 100 },
+    { "unit": "Marauder", "field": "attrs", "before": ["Armored", "Biological"], "after": ["Biological", "Light"] },
+    { "unit": "firebat", "field": "hp", "before": 100, "after": 75 },
+    { "unit": "firebat", "field": "attrs", "before": ["Armored"], "after": ["Light"] },
+    { "unit": "aberration", "field": "hp", "before": 275, "after": 200 },
+    { "unit": "aberration", "field": "supply", "before": 3, "after": 2 },
+    { "unit": "Ravager", "field": "hp", "before": 120, "after": 150 },
+    { "unit": "Ravager", "field": "supply", "before": 3, "after": 2 },
+    { "unit": "Ravager", "field": "minerals", "before": 25, "after": 50 },
+    { "unit": "Ravager", "field": "gas", "before": 75, "after": 50 },
+    { "unit": "ravasaur", "field": "attrs", "before": ["Armored"], "after": ["Light"] },
+    { "unit": "defiler", "field": "gas", "before": 150, "after": 200 },
+    { "unit": "defiler", "field": "time", "before": 40, "after": 34 },
+    { "unit": "guardian", "field": "hp", "before": 150, "after": 200 },
+    { "unit": "guardian", "field": "speed", "before": 1.97, "after": 2.2 }
+  ]
+}

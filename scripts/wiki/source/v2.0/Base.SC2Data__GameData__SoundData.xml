@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <!-- Ravasaur attack & voice sound volume reduction (-15.000000 dB ~ -18.000000 dB) -->
+    <CSound id="Ravasaur_AttackLaunch">
+        <Volume value="-16.000000"/>
+    </CSound>
+    <CSound id="Ravasaur_AttackImpact">
+        <Volume value="-16.000000"/>
+    </CSound>
+    <CSound id="Ravasaur_Attack">
+        <Volume value="-16.000000"/>
+    </CSound>
+    <CSound id="RavasaurAttackLaunch">
+        <Volume value="-16.000000"/>
+    </CSound>
+    <CSound id="RavasaurAttackImpact">
+        <Volume value="-16.000000"/>
+    </CSound>
+    <CSound id="AcidSpines_AttackLaunch">
+        <Volume value="-16.000000"/>
+    </CSound>
+    <CSound id="AcidSpines_AttackImpact">
+        <Volume value="-16.000000"/>
+    </CSound>
+    <CSound id="AcidSpinesAttackLaunch">
+        <Volume value="-16.000000"/>
+    </CSound>
+    <CSound id="AcidSpinesAttackImpact">
+        <Volume value="-16.000000"/>
+    </CSound>
+    <CSound id="AcidSpinesWeapon_AttackLaunch">
+        <Volume value="-16.000000"/>
+    </CSound>
+    <CSound id="AcidSpinesWeapon_AttackImpact">
+        <Volume value="-16.000000"/>
+    </CSound>
+    <CSound id="PrimalRavasaur_AttackLaunch">
+        <Volume value="-16.000000"/>
+    </CSound>
+    <CSound id="PrimalRavasaur_AttackImpact">
+        <Volume value="-16.000000"/>
+    </CSound>
+    <CSound id="Ravasaur_What">
+        <Volume value="-12.000000"/>
+    </CSound>
+    <CSound id="Ravasaur_Yes">
+        <Volume value="-12.000000"/>
+    </CSound>
+    <CSound id="Ravasaur_Pissed">
+        <Volume value="-12.000000"/>
+    </CSound>
+    <CSound id="Ravasaur_Death">
+        <Volume value="-14.000000"/>
+    </CSound>
+    <CSound id="PrimalRavasaur_What">
+        <Volume value="-12.000000"/>
+    </CSound>
+    <CSound id="PrimalRavasaur_Yes">
+        <Volume value="-12.000000"/>
+    </CSound>
+    <CSound id="PrimalRavasaur_Death">
+        <Volume value="-14.000000"/>
+    </CSound>
+    <CSound id="BPM_ScienceVesselDefensiveMatrix@Birth" parent="Spell">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Terran\ScienceVesselSCBW\ScienceVesselSCBWDefensiveMatrix@Impact00.ogg"/>
+        <DupeDestroyCount value="8"/>
+        <DupeMuteCount value="8"/>
+    </CSound>
+    <CSound id="BPM_ScienceVesselDefensiveMatrix@Death" parent="Spell">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Terran\Battlecruiser\Battlecruiser_DefensiveMatrixDeath0.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\Battlecruiser\Battlecruiser_DefensiveMatrixDeath1.wav"/>
+        <DupeDestroyCount value="8"/>
+        <DupeMuteCount value="8"/>
+    </CSound>
+
+    <!-- Dragoon SC EVO Sounds -->
+    <CSound id="DragoonSCBWWeapon@Launch" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Protoss\DragoonSCBW\DragoonSCBWWeapon@Launch00.ogg"/>
+        <DupeThresholdPoints Count="16" Volume="-6.000000"/>
+        <Volume value="3.000000,3.000000"/>
+    </CSound>
+    <CSound id="DragoonSCBWWeapon@Impact" parent="Combat">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Protoss\DragoonSCBW\DragoonSCBWWeapon@Impact00.ogg"/>
+        <DupeThresholdPoints Count="16" Volume="-6.000000"/>
+        <Volume value="2.000000,2.000000"/>
+    </CSound>
+    <CSound id="DragoonSCBW@MoveStart" parent="Movement">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\Dragoon_MoveStart01.wav"/>
+        <AssetArray File="Assets\Sounds\Dragoon_MoveStart02.wav"/>
+        <AssetArray File="Assets\Sounds\Dragoon_MoveStart03.wav"/>
+        <Chance value="0"/>
+        <DupeMuteCount value="1"/>
+        <Pitch value="-1.000000,1.000000"/>
+        <PlayDelay value="500,1000"/>
+        <Volume value="-12.000000,-9.000000"/>
+    </CSound>
+    <CSound id="BPM_DefilerDarkSwarmLoopSound" parent="Spell">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Zerg\DefilerSCBW\DefilerSCBWDarkSwarm@SoundLoop00.ogg"/>
+        <LoopCount value="-1"/>
+    </CSound>
+    <CSound id="BPM_DefilerDarkSwarmLaunchSound" parent="Spell">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\Zerg\DefilerSCBW\DefilerSCBWDarkSwarm@Launch00.ogg"/>
+    </CSound>
+
+    <!-- Custom launch SFX mixed into the stock variations: Archon custom 20% / stock 80%,
+         Siege Tank (sieged) custom 10% / stock 90%. -->
+    <CSound id="Archon_AttackLaunch" parent="Combat">
+        <AssetArray File="Assets\Sounds\Protoss\Archon\Archon_AttackLaunch0.wav" Weight="16"/>
+        <AssetArray File="Assets\Sounds\Protoss\Archon\Archon_AttackLaunch1.wav" Weight="16"/>
+        <AssetArray File="Assets\Sounds\Protoss\Archon\Archon_AttackLaunch2.wav" Weight="16"/>
+        <AssetArray File="Assets\Sounds\Protoss\Archon\Archon_AttackLaunch3.wav" Weight="16"/>
+        <AssetArray File="Assets\Sounds\Protoss\Archon\Archon_AttackLaunch4.wav" Weight="16"/>
+        <AssetArray File="Assets\Sounds\Custom\Archon_AttackLaunch_Custom.wav" Weight="20" Volume="0.020600,0.020600"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Pitch value="0.000000,6.000000"/>
+        <Flags index="VariationFallback" value="0"/>
+    </CSound>
+    <CSound id="SiegeTank_SiegedAttackLaunch" parent="Combat">
+        <AssetArray File="Assets\Sounds\Terran\SiegeTank\SiegeTank_SiegeAttackLaunch0.wav" Weight="9"/>
+        <AssetArray File="Assets\Sounds\Terran\SiegeTank\SiegeTank_SiegeAttackLaunch1.wav" Weight="9"/>
+        <AssetArray File="Assets\Sounds\Terran\SiegeTank\SiegeTank_SiegeAttackLaunch2.wav" Weight="9"/>
+        <AssetArray File="Assets\Sounds\Terran\SiegeTank\SiegeTank_SiegeAttackLaunch3.wav" Weight="9"/>
+        <AssetArray File="Assets\Sounds\Terran\SiegeTank\SiegeTank_SiegeAttackLaunch4.wav" Weight="9"/>
+        <AssetArray File="Assets\Sounds\Terran\SiegeTank\SiegeTank_SiegeAttackLaunch5.wav" Weight="9"/>
+        <AssetArray File="Assets\Sounds\Terran\SiegeTank\SiegeTank_SiegeAttackLaunch6.wav" Weight="9"/>
+        <AssetArray File="Assets\Sounds\Terran\SiegeTank\SiegeTank_SiegeAttackLaunch7.wav" Weight="9"/>
+        <AssetArray File="Assets\Sounds\Terran\SiegeTank\SiegeTank_SiegeAttackLaunch8.wav" Weight="9"/>
+        <AssetArray File="Assets\Sounds\Terran\SiegeTank\SiegeTank_SiegeAttackLaunch9.wav" Weight="9"/>
+        <AssetArray File="Assets\Sounds\Custom\SiegeTank_SiegedAttackLaunch_Custom.wav" Weight="10" Volume="1.001825,2.061825"/>
+        <DupeDestroyCount value="8"/>
+        <Pitch value="-6.180000,-1.820000"/>
+        <Volume value="-2.520000,-1.460000"/>
+        <EditorCategories value="Race:Terran"/>
+        <DupeMaximumMethod value="Replace"/>
+    </CSound>
+    <CSound id="BPM_UltraliskAttackSound" parent="Combat">
+        <AssetArray File="Assets\Sounds\Custom\zulAtt00.wav" Volume="5.105450,5.105450"/>
+        <AssetArray File="Assets\Sounds\Custom\zulAtt01.wav" Volume="5.105450,5.105450"/>
+        <AssetArray File="Assets\Sounds\Custom\zulAtt02.wav" Volume="5.105450,5.105450"/>
+        <Select value="Random"/>
+    </CSound>
+    <CSound id="BPM_WarhoundRailGunImpact" parent="Combat">
+        <AssetArray File="Assets\Sounds\HellFire_Shotgun_Impact_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HellFire_Shotgun_Impact_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HellFire_Shotgun_Impact_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HellFire_Shotgun_Impact_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HellFire_Shotgun_Impact_05.wav" FacialGroup=""/>
+        <Volume value="-5.000000,-5.000000"/>
+    </CSound>
+    <CSound id="BPM_WarhoundRailGunLaunch" parent="Combat">
+        <AssetArray File="Assets\Sounds\Eradicator_RailGun_Front_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Eradicator_RailGun_Front_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Eradicator_RailGun_Front_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Eradicator_RailGun_Front_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Eradicator_RailGun_Front_05.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Eradicator_RailGun_Front_06.wav" FacialGroup=""/>
+        <Volume value="-15.000000,-15.000000"/>
+    </CSound>
+    <CSound id="Viper_AirAttack" parent="Combat">
+        <AssetArray index="0" File="Assets\Sounds\PrimalTownHall_Attack_A.wav" Pitch="0.000000,0.000000" FacialGroup=""/>
+        <AssetArray index="1" File="Assets\Sounds\PrimalTownHall_Attack_A1.wav" FacialGroup=""/>
+        <AssetArray index="2" File="Assets\Sounds\PrimalTownHall_Attack_B.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PrimalTownHall_Attack_B1.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PrimalTownHall_Attack_C.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PrimalTownHall_Attack_C1.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PrimalTownHall_Attack_D.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\PrimalTownHall_Attack_D1.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-14.000000,-10.000000"/>
+    </CSound>
+    <CSound id="Viper_AirAttack_Missile" parent="Combat">
+        <EditorCategories value="Race:Zerg"/>
+        <AssetArray File="Assets\Sounds\SM_CS\SoA_MissileEvade_FlyBy_CenterSweet.wav" FacialGroup=""/>
+        <Category value="Spell"/>
+        <Pitch value="-6.000000,1.000000"/>
+        <Volume value="-16.000000,-12.000000"/>
+    </CSound>
+    <CSound id="Viper_AirAttack_Impact" parent="Combat">
+        <AssetArray index="0" File="Assets\Sounds\AC_Viper_AttackImpact_01.wav" FacialGroup=""/>
+        <AssetArray index="1" File="Assets\Sounds\AC_Viper_AttackImpact_02.wav" FacialGroup=""/>
+        <AssetArray index="2" File="Assets\Sounds\AC_Viper_AttackImpact_03.wav" FacialGroup=""/>
+        <AssetArray index="3" File="Assets\Sounds\AC_Viper_AttackImpact_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\AC_Viper_AttackImpact_05.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-17.000000,-14.000000"/>
+    </CSound>
+
+    <!-- Mothership_Birth at 1.5x loudness (-3 dB to +0.522 dB). -->
+    <CSound id="BPM_MothershipBirthLoud" parent="Mothership_Birth">
+        <Volume value="0.522000,0.522000"/>
+    </CSound>
+</Catalog>

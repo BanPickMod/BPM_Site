@@ -26,5 +26,12 @@ internal static class UiSnapshot
             form.DrawToBitmap(bmp, new Rectangle(0, 0, form.Width, form.Height));
             bmp.Save(Path.Combine(outDir, $"settings-tab{i}.png"));
         }
+        using var welcome = new WelcomeForm(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "BanPickModUploader"), linked: false, () => { });
+        welcome.Show();
+        var wait = DateTime.UtcNow.AddSeconds(1);
+        while (DateTime.UtcNow < wait) { Application.DoEvents(); Thread.Sleep(30); }
+        using var shot = new Bitmap(welcome.Width, welcome.Height);
+        welcome.DrawToBitmap(shot, new Rectangle(0, 0, welcome.Width, welcome.Height));
+        shot.Save(Path.Combine(outDir, "welcome.png"));
     }
 }

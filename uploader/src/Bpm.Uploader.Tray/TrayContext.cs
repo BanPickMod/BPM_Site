@@ -29,7 +29,7 @@ internal sealed class TrayContext : ApplicationContext
     private LinkForm? _linkForm;
     private SettingsForm? _settingsForm;
 
-    public TrayContext()
+    public TrayContext(bool firstRun = false)
     {
         _svc = new UploadService(_home);
         _updater = new AppUpdater(_svc.Settings.EffectiveUpdateUrl, _svc.Note);
@@ -59,7 +59,25 @@ internal sealed class TrayContext : ApplicationContext
         _tray.DoubleClick += (_, _) => { if (!_svc.IsLinked) ShowLink(); };
         _svc.Start();
         Refresh();
-        if (!_svc.IsLinked) ShowLink();                                 // first run: go straight to linking
+        if (firstRun) ShowWelcome();                                    // right after the installer: say it is done and where it went
+        else if (!_svc.IsLinked) ShowLink();                            // not linked yet: go straight to linking
+    }
+
+    /// <summary>A second launch (Start menu, shortcut) while this one runs: bring up the window the user most likely wants.</summary>
+    public void ShowFromAnotherLaunch() => _ui.Post(_ =>
+    {
+        if (_svc.IsLinked) ShowSettings(); else ShowLink();
+        _tray.ShowBalloonTip(3000, "BPM Uploader", _statusItem.Text ?? "", ToolTipIcon.Info);
+    }, null);
+
+    private void ShowWelcome()
+    {
+        // the exe sits in <install folder>\current: show the folder the user would recognise
+        var folder = Path.GetDirectoryName(Path.GetDirectoryName(Environment.ProcessPath)) ?? AppContext.BaseDirectory;
+        var welcome = new WelcomeForm(folder, _svc.IsLinked, () => { if (_svc.IsLinked) ShowSettings(); else ShowLink(); });
+        welcome.Show();
+        welcome.Activate();
+        _tray.ShowBalloonTip(5000, "BPM Uploader", T("설치가 완료되었습니다. 트레이에서 실행 중입니다.", "Installed. It is running in the tray."), ToolTipIcon.Info);
     }
 
     private static ToolStripMenuItem Item(string text, Action onClick)

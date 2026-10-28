@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { isLang } from "@/lib/i18n/config";
 import { MediaSlot } from "@/components/MediaSlot";
 
+const UPLOADER_URL = "https://dl.sc2-bpm.net/uploader/BanPickModUploader-win-Setup.exe";
+
 export async function generateMetadata({ params }: PageProps<"/[lang]/replay-analysis">): Promise<Metadata> {
   const { lang } = await params;
   if (!isLang(lang)) return {};
@@ -100,6 +102,20 @@ export default async function ReplayAnalysisPage({ params }: PageProps<"/[lang]/
               </tbody>
             </table>
           </div>
+        </section>
+
+        <section>
+          <h2 className="h2">{t("업로더 설치", "Install the uploader")}</h2>
+          <p>
+            <a className="btn btn-pri" href={UPLOADER_URL}>
+              {t("Windows용 업로더 다운로드", "Download the uploader for Windows")}
+            </a>
+          </p>
+          <ul className="l2-steps">
+            <li>{t("Windows 10 이상 64비트용입니다. 관리자 권한 없이 사용자 폴더에 설치되며, 새 버전은 자동으로 업데이트됩니다.", "For 64-bit Windows 10 or later. It installs into your user folder without administrator rights and updates itself.")}</li>
+            <li>{t("설치 후 트레이 아이콘에서 사이트와 연결하면, 이후 BPM 게임의 리플레이만 올라갑니다. 일반 게임의 리플레이는 PC를 떠나지 않습니다.", "After installing, link it to this site from the tray icon. Only BPM game replays are uploaded; replays of other games never leave your PC.")}</li>
+            <li>{t("아직 코드 서명이 없어 Windows가 “PC를 보호했습니다” 화면을 보여 줄 수 있습니다. “추가 정보”를 누른 뒤 “실행”을 선택하세요.", "The installer is not code-signed yet, so Windows may show “Windows protected your PC”. Choose “More info”, then “Run anyway”.")}</li>
+          </ul>
         </section>
       </div>
     </div>

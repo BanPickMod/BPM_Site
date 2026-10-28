@@ -37,7 +37,8 @@ export async function putObject(key: string, data: Uint8Array): Promise<void> {
   const cfg = s3();
   if (cfg) {
     const c = await client(cfg);
-    const res = await c.aws.fetch(c.url(key), { method: "PUT", body: data as BodyInit, headers: { "content-type": "application/octet-stream" } });
+    // The length is stated outright: inside the Next.js server the body goes out chunked otherwise, and R2 answers 411 to that.
+    const res = await c.aws.fetch(c.url(key), { method: "PUT", body: data as BodyInit, headers: { "content-type": "application/octet-stream", "content-length": String(data.byteLength) } });
     if (!res.ok) throw new Error(`storage put failed: ${res.status}`);
     return;
   }

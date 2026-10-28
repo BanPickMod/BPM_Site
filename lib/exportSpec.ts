@@ -5,7 +5,7 @@
  * when a column is added, and what is left out is stated to the user (the export lists it under `notIncluded`).
  */
 export const EXPORT_COLUMNS: Record<string, string[]> = {
-  app_user: ["id", "provider", "subject", "display_name", "created_at", "age_confirmed_at", "onboarding_completed_at", "onboarding_policy_version", "policy_seen_version"],
+  app_user: ["id", "provider", "subject", "display_name", "created_at", "age_confirmed_at", "onboarding_completed_at", "onboarding_policy_version", "policy_seen_version", "last_active_at", "inactive_notice_at"],
   consent: ["c1", "c2", "c3", "policy_version", "consent_version", "reconsent_pending", "updated_at"],
   consent_log: ["c1", "c2", "c3", "policy_version", "consent_version", "source", "at"],
   policy_ack: ["from_version", "to_version", "kind", "at"],

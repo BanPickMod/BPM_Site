@@ -358,6 +358,17 @@ create table if not exists draft_event (
       );
     `,
   },
+  {
+    version: 12,
+    name: "inactive_accounts",
+    sql: `
+      -- Accounts idle for a long time are marked, then deleted after a grace period (lib/inactiveSql.ts).
+      -- Existing accounts start their two years now.
+      alter table app_user add column if not exists last_active_at timestamptz not null default now();
+      alter table app_user add column if not exists inactive_notice_at timestamptz;
+      create index if not exists app_user_last_active_idx on app_user (last_active_at) where deleted_at is null;
+    `,
+  },
 ];
 
 const LOCK_KEY = 7314201;

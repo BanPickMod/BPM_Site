@@ -4,6 +4,7 @@ import { hourlyRateKey, readSessionValue, signSessionValue, type RateKey } from 
 import { policyVersion } from "@/lib/policyVersions";
 import { pickClientIp } from "@/lib/clientIp";
 import { envDays } from "@/lib/envDays";
+import { TOUCH_ACTIVE_SQL } from "@/lib/inactiveSql";
 import { getDb } from "./db";
 import { HttpError } from "./http";
 
@@ -92,12 +93,20 @@ async function loadUser(id: number): Promise<SessionUser | null> {
   return u ? toSessionUser(u) : null;
 }
 
+/** Use of the account counts against the long-idle deletion (lib/inactiveSql.ts); written at most once a day. */
+async function markActive(userId: number): Promise<void> {
+  const db = await getDb();
+  await db.query(TOUCH_ACTIVE_SQL, [userId]);
+}
+
 /** Browser session (cookie). Returns null when not signed in. */
 export async function sessionUser(cookieValue: string | undefined | null): Promise<SessionUser | null> {
   const s = readSessionValue(secret(), cookieValue, Date.now());
   if (!s) return null;
   const user = await loadUser(s.id);
-  return user && user.sessionVersion === s.version ? user : null;       // an older version means the sessions were ended
+  if (!user || user.sessionVersion !== s.version) return null;          // an older version means the sessions were ended
+  await markActive(user.id);
+  return user;
 }
 
 /** Launcher auth: `Authorization: Bearer <device token>`. Throws 401 when missing, unknown or revoked. */
@@ -113,6 +122,7 @@ export async function requireDeviceUser(req: Request): Promise<SessionUser & { t
   const user = await loadUser(t.user_id);
   if (!user) throw new HttpError(401, "account removed", "BAD_TOKEN");
   await db.query("update device_token set last_used_at = now() where id = $1", [t.id]);
+  await markActive(user.id);
   return { ...user, tokenId: t.id };
 }
 
@@ -122,6 +132,7 @@ export async function upsertUser(provider: string, subject: string, displayName:
     `insert into app_user (provider, subject, display_name, age_confirmed_at)
      values ($1,$2,$3, case when $4 then now() else null end)
      on conflict (provider, subject) do update set display_name = excluded.display_name, deleted_at = null,
+       last_active_at = now(), inactive_notice_at = null,
        age_confirmed_at = case when $4 then coalesce(app_user.age_confirmed_at, now()) else app_user.age_confirmed_at end
      returning ${USER_COLS}`,
     [provider, subject, displayName, ageConfirmed],

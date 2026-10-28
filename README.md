@@ -53,6 +53,7 @@ npm run validate:data  # 생성 데이터, 패치노트 ko/en 구조, 미디어 
 | `PRIVACY_FEEDBACK_RETENTION` | 민원·버그 신고 처리 후 보관기간(처리방침에 표시) |
 | `ADMIN_TOKENS` | 운영자별 이름 붙은 토큰: `이름:역할:토큰,이름:역할:토큰`. 역할은 `readonly`(목록만), `moderator`(스크린샷·결정), `owner`(전부, 보관 배치, 감사 기록). 이름은 소문자·숫자·`_`·`-`, 토큰은 16자 이상. 사람이 그만두면 그 항목을 지우고 배포한다 |
 | `ADMIN_TOKEN` | 예전 단일 토큰. 있으면 이름 `admin`, 역할 `owner`인 운영자 하나로 취급한다(`ADMIN_TOKENS`와 함께 둘 수 있다) |
+| `TRUSTED_PROXY_HOPS` | 사이트 앞에 있는 프록시 수(Railway 단독이면 1, 앞에 Cloudflare 등이 하나 더 있으면 2). 신고·문의의 횟수 제한이 `X-Forwarded-For`의 오른쪽에서 이 개수만큼 떨어진 값(신뢰할 수 있는 위치)을 보낸 사람의 주소로 쓴다. 왼쪽 값은 보내는 사람이 정하므로 쓰지 않는다. 0이면 헤더를 믿지 않고 모두 한 칸을 공유한다. **배포 전에 실제 프록시 수와 맞는지 확인**(틀리면 모든 사용자가 한 칸을 공유하거나 제한이 약해진다) |
 | `PRIVACY_REQUEST_DAYS` | 개인정보 요청(열람·정정·삭제 등)에 답해야 하는 기한 일수(기본 10). 수신함에 답변 기한과 기한 초과가 표시된다. 법정 기한은 운영자가 확인해 이 값을 정한다 |
 | `AUDIT_RETENTION_DAYS` | 운영자 작업 기록(`admin_audit`) 보관 일수(기본 365) |
 | `SOURCE_READY_MAX_DAYS` | 분석·평가가 끝나지 않은 원본 리플레이를 분석 후 최대 며칠 보관할지(기본 7). 끝난 원본은 즉시 삭제된다. 이 외에 `SOURCE_FAILED_MAX_DAYS`(7), `SOURCE_UNSUPPORTED_MAX_DAYS`(30), `SOURCE_STUCK_MAX_DAYS`(14), `LINK_RETENTION_DAYS`(30)가 있다 |

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { POLICY_VERSION } from "@/lib/server/auth";
 import { isLang } from "@/lib/i18n/config";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/terms">): Promise<Metadata> {
@@ -14,16 +15,17 @@ export default async function TermsPage({ params }: PageProps<"/[lang]/terms">) 
   const t = (ko: string, en: string) => (lang === "ko" ? ko : en);
   const operator = (lang === "ko" ? process.env.PRIVACY_OPERATOR_NAME : process.env.PRIVACY_OPERATOR_NAME_EN || process.env.PRIVACY_OPERATOR_NAME)?.trim() || t("[운영자 이름 미정]", "[Operator name pending]");
   const contact = process.env.PRIVACY_CONTACT?.trim() || t("[서비스 문의 이메일 미정]", "[Service contact pending]");
+  const draft = operator.startsWith("[") || contact.startsWith("[");
 
   return (
     <div className="wrap">
       <header className="pg-h">
-        <span className="status">{t("초안", "Draft")}</span>
+        {draft && <span className="status">{t("초안", "Draft")}</span>}
         <h1 className="h1">{t("이용약관", "Terms of Service")}</h1>
-        <p className="lede mono">{t("버전", "Version")} 2026-10-28-draft · {t("시행 예정일", "Proposed effective date")} 2026-10-28</p>
+        <p className="lede mono">{t("버전", "Version")} {POLICY_VERSION} · {draft ? t("시행 예정일", "Proposed effective date") : t("시행일", "Effective date")} 2026-10-28</p>
       </header>
       <div className="info">
-        <section className="danger"><p><b>{t("공개 전 검토용 초안입니다.", "Draft for pre-launch review.")}</b> {t("운영자 정보와 연락처를 확정하고 전문가 검토를 받아야 합니다.", "Operator details and contact information must be finalised and professionally reviewed.")}</p></section>
+        {draft && <section className="danger"><p><b>{t("공개 전 검토용 초안입니다.", "Draft for pre-launch review.")}</b> {t("운영자 정보와 연락처를 확정하고 전문가 검토를 받아야 합니다.", "Operator details and contact information must be finalised and professionally reviewed.")}</p></section>}
 
         <section>
           <h2 className="h2">{t("제1조 목적과 운영자", "1. Purpose and operator")}</h2>

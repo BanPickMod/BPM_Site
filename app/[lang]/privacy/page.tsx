@@ -23,14 +23,16 @@ export default async function PrivacyPage({ params }: PageProps<"/[lang]/privacy
   const r2Location = process.env.PRIVACY_R2_LOCATION?.trim() || t("[R2 버킷 위치·관할 확인 필요]", "[Confirm the R2 bucket location/jurisdiction]");
   const replayRetention = process.env.PRIVACY_REPLAY_RETENTION?.trim() || t("[최대 보관기간 미정]", "[Maximum retention pending]");
   const feedbackRetention = process.env.PRIVACY_FEEDBACK_RETENTION?.trim() || t("[민원 종료 후 보관기간 미정]", "[Post-resolution retention pending]");
-  const draft = [operator, contact, railwayRegion, r2Location, replayRetention, feedbackRetention].some((v) => v.startsWith("["));
+  // Cloudflare R2 is listed only when object storage is actually configured (S3_*) or the location is stated.
+  const usesR2 = Boolean(process.env.S3_ENDPOINT || process.env.PRIVACY_R2_LOCATION?.trim());
+  const draft = [operator, contact, railwayRegion, usesR2 ? r2Location : "", replayRetention, feedbackRetention].some((v) => v.startsWith("["));
 
   return (
     <div className="wrap">
       <header className="pg-h">
         {draft && <span className="status">{t("초안", "Draft")}</span>}
         <h1 className="h1">{t("개인정보 처리방침", "Privacy Policy")}</h1>
-        <p className="lede mono">{t("버전", "Version")} {POLICY_VERSION} · {t("시행 예정일", "Proposed effective date")} 2026-10-28</p>
+        <p className="lede mono">{t("버전", "Version")} {POLICY_VERSION} · {draft ? t("시행 예정일", "Proposed effective date") : t("시행일", "Effective date")} 2026-10-28</p>
       </header>
 
       <div className="info">
@@ -115,12 +117,14 @@ export default async function PrivacyPage({ params }: PageProps<"/[lang]/privacy
                   <td>{t("계정·동의·분석 DB, 서버 로그·세션 정보 / 서비스 이용 시 TLS 네트워크 전송", "Account, consent and analysis database; server logs and session data / transferred over TLS while using the service")}</td>
                   <td>{t("웹·API·Postgres·worker 호스팅 / 회원 탈퇴·처리 목적 달성 또는 위탁계약 종료 시까지", "Web, API, Postgres and worker hosting / until account deletion, purpose completion or end of the processing contract")}</td>
                 </tr>
+                {usesR2 && (
                 <tr>
                   <td>Cloudflare, Inc.<br />dpo@cloudflare.com</td>
                   <td>{r2Location}</td>
                   <td>{t("원본 리플레이, 타임라인, 문의 첨부 이미지 / 서비스 이용 시 TLS 네트워크 전송", "Original replays, timelines and feedback attachments / transferred over TLS while using the service")}</td>
                   <td>{t("R2 비공개 객체 저장 / 삭제·처리 목적 달성 또는 위탁계약 종료 시까지", "Private R2 object storage / until deletion, purpose completion or end of the processing contract")}</td>
                 </tr>
+                )}
               </tbody>
             </table>
           </div>
@@ -171,10 +175,10 @@ export default async function PrivacyPage({ params }: PageProps<"/[lang]/privacy
           <p><b>{t("운영자·개인정보 보호책임자", "Operator and privacy contact")}</b><br />{operator}<br />{contact}</p>
           <p><Link href={`/${lang}/privacy-request`}>{t("열람·정정·삭제·처리정지·국외 이전 거부 요청하기 →", "Make a request to see, correct, delete or restrict your data, or to object to transfer abroad →")}</Link></p>
           <ul className="l2-steps">
-            <li><a href="https://www.kopico.go.kr" rel="noreferrer">{t("개인정보분쟁조정위원회", "Personal Information Dispute Mediation Committee")}</a>: 1833-6972</li>
-            <li><a href="https://privacy.kisa.or.kr" rel="noreferrer">{t("개인정보침해신고센터", "Privacy Infringement Report Center")}</a>: 118</li>
-            <li><a href="https://www.spo.go.kr" rel="noreferrer">{t("대검찰청", "Supreme Prosecutors’ Office")}</a>: 1301</li>
-            <li><a href="https://ecrm.police.go.kr" rel="noreferrer">{t("경찰청 사이버범죄 신고시스템", "Korean National Police cybercrime reporting")}</a>: 182</li>
+            <li><span><a href="https://www.kopico.go.kr" rel="noreferrer">{t("개인정보분쟁조정위원회", "Personal Information Dispute Mediation Committee")}</a> · 1833-6972</span></li>
+            <li><span><a href="https://privacy.kisa.or.kr" rel="noreferrer">{t("개인정보침해신고센터", "Privacy Infringement Report Center")}</a> · 118</span></li>
+            <li><span><a href="https://www.spo.go.kr" rel="noreferrer">{t("대검찰청", "Supreme Prosecutors’ Office")}</a> · 1301</span></li>
+            <li><span><a href="https://ecrm.police.go.kr" rel="noreferrer">{t("경찰청 사이버범죄 신고시스템", "Korean National Police cybercrime reporting")}</a> · 182</span></li>
           </ul>
         </section>
 

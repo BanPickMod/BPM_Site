@@ -2,8 +2,13 @@ import { logError } from "@/lib/server/log";
 import { BATTLE_NET_STATE_COOKIE, exchangeBattleNetCode, fetchBattleNetUser, stateCookie, stateMatches } from "@/lib/server/battlenet";
 import { cookieFromHeader, sessionCookie, signSession, upsertUser } from "@/lib/server/auth";
 
+/** Behind the platform proxy req.url is the internal address (localhost:PORT), so redirects are built on SITE_URL. */
+function siteBase(req: Request): string {
+  return process.env.SITE_URL?.replace(/\/$/, "") ?? req.url;
+}
+
 function destination(req: Request, lang: "ko" | "en", error?: string): URL {
-  const url = new URL(`/${lang}/replay-analysis/mine`, req.url);
+  const url = new URL(`/${lang}/replay-analysis/mine`, siteBase(req));
   if (error) url.searchParams.set("login_error", error);
   return url;
 }
@@ -38,7 +43,7 @@ export async function GET(req: Request) {
     const profile = await fetchBattleNetUser(accessToken);
     const user = await upsertUser("battlenet", profile.subject, profile.battleTag, true);
     const session = signSession(user.id, user.sessionVersion);
-    const dest = user.onboarded ? destination(req, lang) : new URL(`/${lang}/onboarding?next=${encodeURIComponent(`/${lang}/replay-analysis/mine`)}`, req.url);
+    const dest = user.onboarded ? destination(req, lang) : new URL(`/${lang}/onboarding?next=${encodeURIComponent(`/${lang}/replay-analysis/mine`)}`, siteBase(req));
     const response = redirect(dest);
     response.headers.append("set-cookie", stateCookie("", 0));
     response.headers.append("set-cookie", sessionCookie(session.value, session.maxAge));

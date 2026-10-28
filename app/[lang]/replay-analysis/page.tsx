@@ -4,7 +4,9 @@ import { notFound } from "next/navigation";
 import { isLang } from "@/lib/i18n/config";
 import { MediaSlot } from "@/components/MediaSlot";
 
-const UPLOADER_URL = "https://dl.sc2-bpm.net/uploader/BanPickModUploader-win-Setup.exe";
+// Bump the version with each uploader release: the query string gives the new file its own CDN cache entry, so nobody gets the old installer.
+const UPLOADER_VERSION = "0.2.1";
+const UPLOADER_URL = `https://dl.sc2-bpm.net/uploader/BanPickModUploader-win-Setup.exe?v=${UPLOADER_VERSION}`;
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/replay-analysis">): Promise<Metadata> {
   const { lang } = await params;
@@ -110,6 +112,8 @@ export default async function ReplayAnalysisPage({ params }: PageProps<"/[lang]/
             <a className="btn btn-pri" href={UPLOADER_URL}>
               {t("Windows용 업로더 다운로드", "Download the uploader for Windows")}
             </a>
+            {" "}
+            <span className="dim mono">v{UPLOADER_VERSION}</span>
           </p>
           <ul className="l2-steps">
             <li>{t("Windows 10 이상 64비트용입니다. 관리자 권한 없이 사용자 폴더에 설치되며, 새 버전은 자동으로 업데이트됩니다.", "For 64-bit Windows 10 or later. It installs into your user folder without administrator rights and updates itself.")}</li>

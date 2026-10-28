@@ -1,0 +1,247 @@
+{
+ "AnabolicSynthesis": {
+  "games": 16,
+  "seconds": 121.0,
+  "share": 0.69
+ },
+ "BansheeCloak": {
+  "games": 31,
+  "seconds": 79.0,
+  "share": 1.0
+ },
+ "Burrow": {
+  "games": 48,
+  "seconds": 71.0,
+  "share": 0.98
+ },
+ "CentrificalHooks": {
+  "games": 60,
+  "seconds": 71.0,
+  "share": 1.0
+ },
+ "ChitinousPlating": {
+  "games": 23,
+  "seconds": 79.0,
+  "share": 1.0
+ },
+ "DrillClaws": {
+  "games": 21,
+  "seconds": 79.0,
+  "share": 1.0
+ },
+ "EvolveGroovedSpines": {
+  "games": 51,
+  "seconds": 50.0,
+  "share": 0.82
+ },
+ "EvolveMuscularAugments": {
+  "games": 49,
+  "seconds": 64.0,
+  "share": 0.76
+ },
+ "ExtendedThermalLance": {
+  "games": 42,
+  "seconds": 99.0,
+  "share": 0.69
+ },
+ "GlialReconstitution": {
+  "games": 79,
+  "seconds": 79.0,
+  "share": 1.0
+ },
+ "GraviticDrive": {
+  "games": 13,
+  "seconds": 57.0,
+  "share": 0.69
+ },
+ "HighCapacityBarrels": {
+  "games": 17,
+  "seconds": 79.0,
+  "share": 1.0
+ },
+ "InterferenceMatrix": {
+  "games": 40,
+  "seconds": 57.0,
+  "share": 1.0
+ },
+ "LiberatorAGRangeUpgrade": {
+  "games": 13,
+  "seconds": 79.0,
+  "share": 1.0
+ },
+ "LurkerRange": {
+  "games": 29,
+  "seconds": 57.0,
+  "share": 0.62
+ },
+ "PersonalCloaking": {
+  "games": 21,
+  "seconds": 86.0,
+  "share": 1.0
+ },
+ "PunisherGrenades": {
+  "games": 106,
+  "seconds": 43.0,
+  "share": 0.9
+ },
+ "ShieldWall": {
+  "games": 151,
+  "seconds": 79.0,
+  "share": 0.91
+ },
+ "Stimpack": {
+  "games": 165,
+  "seconds": 100.0,
+  "share": 1.0
+ },
+ "TerranBuildingArmor": {
+  "games": 15,
+  "seconds": 100.0,
+  "share": 0.87
+ },
+ "TerranInfantryArmorsLevel1": {
+  "games": 119,
+  "seconds": 114.0,
+  "share": 0.92
+ },
+ "TerranInfantryArmorsLevel2": {
+  "games": 80,
+  "seconds": 136.0,
+  "share": 1.01
+ },
+ "TerranInfantryArmorsLevel3": {
+  "games": 48,
+  "seconds": 157.0,
+  "share": 1.0
+ },
+ "TerranInfantryWeaponsLevel1": {
+  "games": 146,
+  "seconds": 114.0,
+  "share": 0.99
+ },
+ "TerranInfantryWeaponsLevel2": {
+  "games": 86,
+  "seconds": 136.0,
+  "share": 0.98
+ },
+ "TerranInfantryWeaponsLevel3": {
+  "games": 56,
+  "seconds": 157.0,
+  "share": 1.02
+ },
+ "TerranShipWeaponsLevel1": {
+  "games": 27,
+  "seconds": 114.0,
+  "share": 0.89
+ },
+ "TerranShipWeaponsLevel2": {
+  "games": 13,
+  "seconds": 136.0,
+  "share": 1.0
+ },
+ "TerranVehicleAndShipArmorsLevel1": {
+  "games": 37,
+  "seconds": 114.0,
+  "share": 1.0
+ },
+ "TerranVehicleAndShipArmorsLevel2": {
+  "games": 16,
+  "seconds": 136.0,
+  "share": 0.94
+ },
+ "TerranVehicleWeaponsLevel1": {
+  "games": 45,
+  "seconds": 114.0,
+  "share": 1.0
+ },
+ "TerranVehicleWeaponsLevel2": {
+  "games": 19,
+  "seconds": 136.0,
+  "share": 1.0
+ },
+ "TunnelingClaws": {
+  "games": 12,
+  "seconds": 79.0,
+  "share": 1.0
+ },
+ "WarpGateResearch": {
+  "games": 214,
+  "seconds": 100.0,
+  "share": 0.92
+ },
+ "ZergFlyerArmorsLevel1": {
+  "games": 12,
+  "seconds": 114.0,
+  "share": 0.67
+ },
+ "ZergFlyerWeaponsLevel1": {
+  "games": 28,
+  "seconds": 114.0,
+  "share": 1.0
+ },
+ "ZergFlyerWeaponsLevel2": {
+  "games": 15,
+  "seconds": 136.0,
+  "share": 0.87
+ },
+ "ZergGroundArmorsLevel1": {
+  "games": 71,
+  "seconds": 114.0,
+  "share": 0.97
+ },
+ "ZergGroundArmorsLevel2": {
+  "games": 50,
+  "seconds": 136.0,
+  "share": 0.96
+ },
+ "ZergGroundArmorsLevel3": {
+  "games": 29,
+  "seconds": 157.0,
+  "share": 1.0
+ },
+ "ZergMeleeWeaponsLevel1": {
+  "games": 81,
+  "seconds": 114.0,
+  "share": 0.95
+ },
+ "ZergMeleeWeaponsLevel2": {
+  "games": 55,
+  "seconds": 136.0,
+  "share": 1.0
+ },
+ "ZergMeleeWeaponsLevel3": {
+  "games": 27,
+  "seconds": 157.0,
+  "share": 0.96
+ },
+ "ZergMissileWeaponsLevel1": {
+  "games": 81,
+  "seconds": 114.0,
+  "share": 0.88
+ },
+ "ZergMissileWeaponsLevel2": {
+  "games": 43,
+  "seconds": 136.0,
+  "share": 0.98
+ },
+ "ZergMissileWeaponsLevel3": {
+  "games": 14,
+  "seconds": 157.0,
+  "share": 1.0
+ },
+ "overlordspeed": {
+  "games": 64,
+  "seconds": 43.0,
+  "share": 1.02
+ },
+ "zerglingattackspeed": {
+  "games": 45,
+  "seconds": 93.0,
+  "share": 1.0
+ },
+ "zerglingmovementspeed": {
+  "games": 158,
+  "seconds": 79.0,
+  "share": 1.0
+ }
+}

@@ -1,0 +1,73 @@
+{
+ "_comment": "Generated from the mod's unit registry (bpm-ai-engine load_registry). Each pick group swaps a base unit for an extended one. Regenerate when groups change.",
+ "groups": {
+  "HeavyInfantry": {
+   "base": "Marauder",
+   "ext": "Firebat"
+  },
+  "TerranSiegeMech": {
+   "base": "SiegeTank",
+   "ext": "Warhound"
+  },
+  "HeavyAssault": {
+   "base": "Thor",
+   "ext": "Goliath"
+  },
+  "AirSuperiority": {
+   "base": "VikingFighter",
+   "ext": "Wraith"
+  },
+  "TerranAirSupport": {
+   "base": "Raven",
+   "ext": "ScienceVessel"
+  },
+  "RangedAssault": {
+   "base": "Stalker",
+   "ext": "Dragoon"
+  },
+  "ProtossSupport": {
+   "base": "Sentry",
+   "ext": "Energizer"
+  },
+  "ProtossAirSkirmisher": {
+   "base": "Phoenix",
+   "ext": "Corsair"
+  },
+  "AirAssault": {
+   "base": "VoidRay",
+   "ext": "Scout"
+  },
+  "HeavyArtillery": {
+   "base": "Disruptor",
+   "ext": "Reaver"
+  },
+  "ProtossCapitalControl": {
+   "base": "Mothership",
+   "ext": "Arbiter"
+  },
+  "ZergArmoredAssault": {
+   "base": "Roach",
+   "ext": "Aberration"
+  },
+  "ZergAcidArtillery": {
+   "base": "Ravager",
+   "ext": "Ravasaur"
+  },
+  "ZergGroundCaster": {
+   "base": "Infestor",
+   "ext": "Defiler"
+  },
+  "ZergAirCaster": {
+   "ext": "QueenClassic",
+   "base": "Viper"
+  },
+  "ZergHeavyAir": {
+   "base": "BroodLord",
+   "ext": "GuardianMP"
+  },
+  "ZergHeavyAssault": {
+   "base": "Ultralisk",
+   "ext": "Tyrannozor"
+  }
+ }
+}

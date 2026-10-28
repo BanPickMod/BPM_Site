@@ -1,0 +1,1106 @@
+{
+  "schema_id": "bpm-role-map-v1-draft-1",
+  "status": "approved_by_claude_2026-10-07; 모드 전용 17종(needs_review)은 프로 리플레이에 나오지 않으므로 잠정 역할 유지, 3단계 종족 확장 때 재검수",
+  "registry_source_hash": "6e3fc1d00e6f2413",
+  "roles": [
+    "frontline",
+    "firepower",
+    "anti_air",
+    "detector",
+    "splash",
+    "siege",
+    "mobile",
+    "transport",
+    "support",
+    "worker",
+    "structure",
+    "production",
+    "tech"
+  ],
+  "unit_roles": {
+    "SCV": [
+      "worker",
+      "support"
+    ],
+    "Probe": [
+      "worker"
+    ],
+    "Drone": [
+      "worker"
+    ],
+    "MULE": [
+      "worker",
+      "support"
+    ],
+    "Marine": [
+      "frontline",
+      "firepower",
+      "anti_air",
+      "mobile"
+    ],
+    "Marauder": [
+      "frontline",
+      "firepower",
+      "mobile"
+    ],
+    "Firebat": [
+      "frontline",
+      "splash"
+    ],
+    "Reaper": [
+      "firepower",
+      "mobile"
+    ],
+    "Ghost": [
+      "firepower",
+      "support"
+    ],
+    "Hellion": [
+      "firepower",
+      "splash",
+      "mobile"
+    ],
+    "HellionTank": [
+      "frontline",
+      "firepower",
+      "splash"
+    ],
+    "SiegeTank": [
+      "firepower",
+      "splash",
+      "siege"
+    ],
+    "Warhound": [
+      "frontline",
+      "firepower",
+      "anti_air",
+      "mobile"
+    ],
+    "Cyclone": [
+      "firepower",
+      "anti_air",
+      "mobile"
+    ],
+    "Thor": [
+      "frontline",
+      "firepower",
+      "anti_air",
+      "splash"
+    ],
+    "Goliath": [
+      "frontline",
+      "firepower",
+      "anti_air",
+      "mobile"
+    ],
+    "WidowMine": [
+      "splash",
+      "siege",
+      "mobile"
+    ],
+    "VikingFighter": [
+      "firepower",
+      "anti_air",
+      "mobile"
+    ],
+    "Wraith": [
+      "firepower",
+      "anti_air",
+      "mobile"
+    ],
+    "Banshee": [
+      "firepower",
+      "mobile"
+    ],
+    "Medivac": [
+      "mobile",
+      "transport",
+      "support"
+    ],
+    "Raven": [
+      "detector",
+      "mobile",
+      "support"
+    ],
+    "ScienceVessel": [
+      "detector",
+      "mobile",
+      "support"
+    ],
+    "Liberator": [
+      "firepower",
+      "anti_air",
+      "splash",
+      "siege",
+      "mobile"
+    ],
+    "Battlecruiser": [
+      "frontline",
+      "firepower",
+      "anti_air",
+      "mobile"
+    ],
+    "AutoTurret": [
+      "structure",
+      "firepower",
+      "anti_air"
+    ],
+    "PointDefenseDrone": [
+      "support",
+      "anti_air"
+    ],
+    "KD8Charge": [
+      "mobile",
+      "splash"
+    ],
+    "Zealot": [
+      "frontline",
+      "mobile"
+    ],
+    "Stalker": [
+      "frontline",
+      "firepower",
+      "anti_air",
+      "mobile"
+    ],
+    "Sentry": [
+      "firepower",
+      "anti_air",
+      "support"
+    ],
+    "Adept": [
+      "frontline",
+      "firepower",
+      "mobile"
+    ],
+    "Observer": [
+      "detector",
+      "mobile",
+      "support"
+    ],
+    "WarpPrism": [
+      "mobile",
+      "transport",
+      "support"
+    ],
+    "HighTemplar": [
+      "splash",
+      "support"
+    ],
+    "DarkTemplar": [
+      "firepower",
+      "mobile"
+    ],
+    "Immortal": [
+      "frontline",
+      "firepower"
+    ],
+    "Phoenix": [
+      "firepower",
+      "anti_air",
+      "mobile"
+    ],
+    "VoidRay": [
+      "firepower",
+      "anti_air",
+      "mobile"
+    ],
+    "Oracle": [
+      "firepower",
+      "mobile",
+      "support"
+    ],
+    "Colossus": [
+      "firepower",
+      "splash",
+      "siege"
+    ],
+    "Disruptor": [
+      "firepower",
+      "splash",
+      "siege"
+    ],
+    "Carrier": [
+      "frontline",
+      "firepower",
+      "anti_air",
+      "mobile"
+    ],
+    "Tempest": [
+      "firepower",
+      "anti_air",
+      "siege",
+      "mobile"
+    ],
+    "Mothership": [
+      "frontline",
+      "firepower",
+      "anti_air",
+      "mobile",
+      "support"
+    ],
+    "Arbiter": [
+      "firepower",
+      "anti_air",
+      "mobile",
+      "support"
+    ],
+    "Archon": [
+      "frontline",
+      "firepower",
+      "anti_air",
+      "splash"
+    ],
+    "Dragoon": [
+      "frontline",
+      "firepower",
+      "anti_air"
+    ],
+    "Scout": [
+      "firepower",
+      "anti_air",
+      "mobile"
+    ],
+    "Reaver": [
+      "firepower",
+      "splash",
+      "siege"
+    ],
+    "Energizer": [
+      "mobile",
+      "support"
+    ],
+    "Corsair": [
+      "firepower",
+      "anti_air",
+      "splash",
+      "mobile"
+    ],
+    "Interceptor": [
+      "firepower",
+      "anti_air",
+      "mobile"
+    ],
+    "AdeptShade": [
+      "mobile",
+      "support"
+    ],
+    "DisruptorPhased": [
+      "mobile",
+      "splash"
+    ],
+    "OracleStasisTrap": [
+      "structure",
+      "support"
+    ],
+    "ForceField": [
+      "support"
+    ],
+    "Zergling": [
+      "frontline",
+      "mobile"
+    ],
+    "Roach": [
+      "frontline",
+      "firepower"
+    ],
+    "Ravager": [
+      "firepower",
+      "splash",
+      "siege"
+    ],
+    "Ravasaur": [
+      "frontline",
+      "firepower",
+      "anti_air"
+    ],
+    "Hydralisk": [
+      "firepower",
+      "anti_air",
+      "mobile"
+    ],
+    "Baneling": [
+      "splash",
+      "mobile"
+    ],
+    "Infestor": [
+      "splash",
+      "support"
+    ],
+    "SwarmHostMP": [
+      "firepower",
+      "siege"
+    ],
+    "LurkerMP": [
+      "firepower",
+      "splash",
+      "siege"
+    ],
+    "QueenClassic": [
+      "frontline",
+      "firepower",
+      "anti_air",
+      "support"
+    ],
+    "Queen": [
+      "frontline",
+      "firepower",
+      "anti_air",
+      "support"
+    ],
+    "Mutalisk": [
+      "firepower",
+      "anti_air",
+      "mobile"
+    ],
+    "Viper": [
+      "mobile",
+      "support"
+    ],
+    "Corruptor": [
+      "frontline",
+      "firepower",
+      "anti_air",
+      "mobile"
+    ],
+    "BroodLord": [
+      "firepower",
+      "siege",
+      "mobile"
+    ],
+    "Ultralisk": [
+      "frontline",
+      "splash",
+      "mobile"
+    ],
+    "GuardianMP": [
+      "firepower",
+      "siege",
+      "mobile"
+    ],
+    "Aberration": [
+      "frontline",
+      "splash"
+    ],
+    "Defiler": [
+      "splash",
+      "support"
+    ],
+    "Tyrannozor": [
+      "frontline",
+      "firepower",
+      "anti_air",
+      "splash"
+    ],
+    "Overlord": [
+      "mobile",
+      "transport",
+      "support"
+    ],
+    "Overseer": [
+      "detector",
+      "mobile",
+      "support"
+    ],
+    "Broodling": [
+      "frontline",
+      "mobile"
+    ],
+    "LocustMP": [
+      "firepower",
+      "mobile"
+    ],
+    "Changeling": [
+      "mobile",
+      "support"
+    ],
+    "Larva": [
+      "production",
+      "support"
+    ],
+    "Egg": [
+      "production",
+      "support"
+    ],
+    "BanelingCocoon": [
+      "production",
+      "support"
+    ],
+    "RavagerCocoon": [
+      "production",
+      "support"
+    ],
+    "BroodLordCocoon": [
+      "production",
+      "support"
+    ],
+    "OverlordCocoon": [
+      "production",
+      "support"
+    ],
+    "TransportOverlordCocoon": [
+      "production",
+      "support"
+    ],
+    "LurkerMPEgg": [
+      "production",
+      "support"
+    ],
+    "CreepTumor": [
+      "structure",
+      "support"
+    ],
+    "InvisibleTargetDummy": [
+      "support"
+    ],
+    "ReplayBeacon": [
+      "support"
+    ],
+    "ParasiticBombDummy": [
+      "support"
+    ],
+    "CommandCenter": [
+      "structure",
+      "production"
+    ],
+    "OrbitalCommand": [
+      "structure",
+      "production",
+      "support"
+    ],
+    "PlanetaryFortress": [
+      "structure",
+      "frontline",
+      "firepower"
+    ],
+    "SupplyDepot": [
+      "structure"
+    ],
+    "Refinery": [
+      "structure"
+    ],
+    "Barracks": [
+      "structure",
+      "production"
+    ],
+    "Factory": [
+      "structure",
+      "production"
+    ],
+    "Starport": [
+      "structure",
+      "production"
+    ],
+    "EngineeringBay": [
+      "structure",
+      "tech"
+    ],
+    "Armory": [
+      "structure",
+      "tech"
+    ],
+    "GhostAcademy": [
+      "structure",
+      "tech"
+    ],
+    "FusionCore": [
+      "structure",
+      "tech"
+    ],
+    "Bunker": [
+      "structure",
+      "frontline",
+      "firepower"
+    ],
+    "MissileTurret": [
+      "structure",
+      "anti_air",
+      "detector"
+    ],
+    "SensorTower": [
+      "structure",
+      "support"
+    ],
+    "BarracksReactor": [
+      "structure",
+      "production"
+    ],
+    "BarracksTechLab": [
+      "structure",
+      "tech"
+    ],
+    "FactoryReactor": [
+      "structure",
+      "production"
+    ],
+    "FactoryTechLab": [
+      "structure",
+      "tech"
+    ],
+    "StarportReactor": [
+      "structure",
+      "production"
+    ],
+    "StarportTechLab": [
+      "structure",
+      "tech"
+    ],
+    "Reactor": [
+      "structure",
+      "production"
+    ],
+    "TechLab": [
+      "structure",
+      "tech"
+    ],
+    "Nexus": [
+      "structure",
+      "production"
+    ],
+    "Pylon": [
+      "structure"
+    ],
+    "Assimilator": [
+      "structure"
+    ],
+    "Gateway": [
+      "structure",
+      "production"
+    ],
+    "WarpGate": [
+      "structure",
+      "production"
+    ],
+    "CyberneticsCore": [
+      "structure",
+      "tech"
+    ],
+    "Forge": [
+      "structure",
+      "tech"
+    ],
+    "TwilightCouncil": [
+      "structure",
+      "tech"
+    ],
+    "TemplarArchive": [
+      "structure",
+      "tech"
+    ],
+    "DarkShrine": [
+      "structure",
+      "tech"
+    ],
+    "RoboticsFacility": [
+      "structure",
+      "production"
+    ],
+    "RoboticsBay": [
+      "structure",
+      "tech"
+    ],
+    "Stargate": [
+      "structure",
+      "production"
+    ],
+    "FleetBeacon": [
+      "structure",
+      "tech"
+    ],
+    "PhotonCannon": [
+      "structure",
+      "firepower",
+      "anti_air",
+      "detector"
+    ],
+    "ShieldBattery": [
+      "structure",
+      "support"
+    ],
+    "Hatchery": [
+      "structure",
+      "production"
+    ],
+    "Lair": [
+      "structure",
+      "production",
+      "tech"
+    ],
+    "Hive": [
+      "structure",
+      "production",
+      "tech"
+    ],
+    "Extractor": [
+      "structure"
+    ],
+    "SpawningPool": [
+      "structure",
+      "tech"
+    ],
+    "EvolutionChamber": [
+      "structure",
+      "tech"
+    ],
+    "RoachWarren": [
+      "structure",
+      "tech"
+    ],
+    "BanelingNest": [
+      "structure",
+      "tech"
+    ],
+    "HydraliskDen": [
+      "structure",
+      "tech"
+    ],
+    "LurkerDenMP": [
+      "structure",
+      "tech"
+    ],
+    "InfestationPit": [
+      "structure",
+      "tech"
+    ],
+    "Spire": [
+      "structure",
+      "tech"
+    ],
+    "GreaterSpire": [
+      "structure",
+      "tech"
+    ],
+    "UltraliskCavern": [
+      "structure",
+      "tech"
+    ],
+    "NydusNetwork": [
+      "structure",
+      "tech",
+      "transport"
+    ],
+    "NydusCanal": [
+      "structure",
+      "transport"
+    ],
+    "SpineCrawler": [
+      "structure",
+      "frontline",
+      "firepower"
+    ],
+    "SporeCrawler": [
+      "structure",
+      "firepower",
+      "anti_air",
+      "detector"
+    ]
+  },
+  "replay_name_to_unit_id": {
+    "SiegeTankSieged": "SiegeTank",
+    "HellionTank": "HellionTank",
+    "WidowMineBurrowed": "WidowMine",
+    "VikingAssault": "VikingFighter",
+    "LiberatorAG": "Liberator",
+    "LiberatorAAMode": "Liberator",
+    "WarpPrismPhasing": "WarpPrism",
+    "ObserverSiegeMode": "Observer",
+    "AdeptPhaseShift": "AdeptShade",
+    "LurkerMPBurrowed": "LurkerMP",
+    "Queen": "Queen",
+    "QueenBurrowed": "Queen",
+    "SwarmHostBurrowedMP": "SwarmHostMP",
+    "OverlordTransport": "Overlord",
+    "BanelingBurrowed": "Baneling",
+    "DroneBurrowed": "Drone",
+    "InfestorBurrowed": "Infestor",
+    "RoachBurrowed": "Roach",
+    "ZerglingBurrowed": "Zergling",
+    "CreepTumorBurrowed": "CreepTumor",
+    "CreepTumorQueen": "CreepTumor",
+    "ExtractorRich": "Extractor",
+    "OverseerSiegeMode": "Overseer",
+    "ThorAP": "Thor",
+    "ChangelingMarine": "Changeling",
+    "ChangelingMarineShield": "Changeling",
+    "ChangelingZealot": "Changeling",
+    "ChangelingZergling": "Changeling",
+    "ChangelingZerglingWings": "Changeling",
+    "AssimilatorRich": "Assimilator",
+    "ParasiticBombRelayDummy": "ParasiticBombDummy",
+    "BeaconArmy": "ReplayBeacon",
+    "BeaconDefend": "ReplayBeacon",
+    "BeaconAttack": "ReplayBeacon",
+    "BeaconHarass": "ReplayBeacon",
+    "BeaconIdle": "ReplayBeacon",
+    "BeaconAuto": "ReplayBeacon",
+    "BeaconDetect": "ReplayBeacon",
+    "BeaconScout": "ReplayBeacon",
+    "BeaconClaim": "ReplayBeacon",
+    "BeaconExpand": "ReplayBeacon",
+    "BeaconRally": "ReplayBeacon",
+    "BeaconCustom1": "ReplayBeacon",
+    "BeaconCustom2": "ReplayBeacon",
+    "BeaconCustom3": "ReplayBeacon",
+    "BeaconCustom4": "ReplayBeacon",
+    "SupplyDepotLowered": "SupplyDepot",
+    "CommandCenterFlying": "CommandCenter",
+    "OrbitalCommandFlying": "OrbitalCommand",
+    "BarracksFlying": "Barracks",
+    "FactoryFlying": "Factory",
+    "StarportFlying": "Starport",
+    "SpineCrawlerUprooted": "SpineCrawler",
+    "SporeCrawlerUprooted": "SporeCrawler"
+  },
+  "unit_values": {
+    "SCV": {
+      "minerals": 50,
+      "vespene": 0,
+      "supply": 1
+    },
+    "Probe": {
+      "minerals": 50,
+      "vespene": 0,
+      "supply": 1
+    },
+    "Drone": {
+      "minerals": 50,
+      "vespene": 0,
+      "supply": 1
+    },
+    "Marine": {
+      "minerals": 50,
+      "vespene": 0,
+      "supply": 1
+    },
+    "Marauder": {
+      "minerals": 100,
+      "vespene": 25,
+      "supply": 2
+    },
+    "Reaper": {
+      "minerals": 50,
+      "vespene": 50,
+      "supply": 1
+    },
+    "Ghost": {
+      "minerals": 150,
+      "vespene": 125,
+      "supply": 2
+    },
+    "Hellion": {
+      "minerals": 100,
+      "vespene": 0,
+      "supply": 2
+    },
+    "HellionTank": {
+      "minerals": 100,
+      "vespene": 0,
+      "supply": 2
+    },
+    "SiegeTank": {
+      "minerals": 150,
+      "vespene": 125,
+      "supply": 3
+    },
+    "Cyclone": {
+      "minerals": 125,
+      "vespene": 50,
+      "supply": 2
+    },
+    "Thor": {
+      "minerals": 300,
+      "vespene": 200,
+      "supply": 6
+    },
+    "WidowMine": {
+      "minerals": 75,
+      "vespene": 25,
+      "supply": 2
+    },
+    "VikingFighter": {
+      "minerals": 150,
+      "vespene": 75,
+      "supply": 2
+    },
+    "Banshee": {
+      "minerals": 150,
+      "vespene": 100,
+      "supply": 3
+    },
+    "Medivac": {
+      "minerals": 100,
+      "vespene": 100,
+      "supply": 2
+    },
+    "Raven": {
+      "minerals": 100,
+      "vespene": 150,
+      "supply": 2
+    },
+    "Liberator": {
+      "minerals": 150,
+      "vespene": 125,
+      "supply": 3
+    },
+    "Battlecruiser": {
+      "minerals": 400,
+      "vespene": 300,
+      "supply": 6
+    },
+    "Zealot": {
+      "minerals": 100,
+      "vespene": 0,
+      "supply": 2
+    },
+    "Stalker": {
+      "minerals": 125,
+      "vespene": 50,
+      "supply": 2
+    },
+    "Sentry": {
+      "minerals": 50,
+      "vespene": 100,
+      "supply": 2
+    },
+    "Adept": {
+      "minerals": 100,
+      "vespene": 25,
+      "supply": 2
+    },
+    "Observer": {
+      "minerals": 25,
+      "vespene": 75,
+      "supply": 1
+    },
+    "WarpPrism": {
+      "minerals": 200,
+      "vespene": 0,
+      "supply": 2
+    },
+    "HighTemplar": {
+      "minerals": 50,
+      "vespene": 150,
+      "supply": 2
+    },
+    "DarkTemplar": {
+      "minerals": 125,
+      "vespene": 125,
+      "supply": 2
+    },
+    "Immortal": {
+      "minerals": 275,
+      "vespene": 100,
+      "supply": 4
+    },
+    "Phoenix": {
+      "minerals": 150,
+      "vespene": 100,
+      "supply": 2
+    },
+    "VoidRay": {
+      "minerals": 250,
+      "vespene": 150,
+      "supply": 4
+    },
+    "Oracle": {
+      "minerals": 150,
+      "vespene": 150,
+      "supply": 3
+    },
+    "Colossus": {
+      "minerals": 300,
+      "vespene": 200,
+      "supply": 6
+    },
+    "Disruptor": {
+      "minerals": 150,
+      "vespene": 150,
+      "supply": 3
+    },
+    "Carrier": {
+      "minerals": 350,
+      "vespene": 250,
+      "supply": 6
+    },
+    "Tempest": {
+      "minerals": 250,
+      "vespene": 175,
+      "supply": 5
+    },
+    "Mothership": {
+      "minerals": 300,
+      "vespene": 300,
+      "supply": 8
+    },
+    "Archon": {
+      "minerals": 100,
+      "vespene": 300,
+      "supply": 4
+    },
+    "Zergling": {
+      "minerals": 25,
+      "vespene": 0,
+      "supply": 0.5
+    },
+    "Roach": {
+      "minerals": 75,
+      "vespene": 25,
+      "supply": 2
+    },
+    "Ravager": {
+      "minerals": 100,
+      "vespene": 100,
+      "supply": 3
+    },
+    "Hydralisk": {
+      "minerals": 100,
+      "vespene": 50,
+      "supply": 2
+    },
+    "Baneling": {
+      "minerals": 50,
+      "vespene": 25,
+      "supply": 0.5
+    },
+    "Infestor": {
+      "minerals": 100,
+      "vespene": 150,
+      "supply": 2
+    },
+    "SwarmHostMP": {
+      "minerals": 100,
+      "vespene": 75,
+      "supply": 3
+    },
+    "LurkerMP": {
+      "minerals": 150,
+      "vespene": 150,
+      "supply": 3
+    },
+    "Queen": {
+      "minerals": 150,
+      "vespene": 0,
+      "supply": 2
+    },
+    "Mutalisk": {
+      "minerals": 100,
+      "vespene": 100,
+      "supply": 2
+    },
+    "Viper": {
+      "minerals": 100,
+      "vespene": 200,
+      "supply": 3
+    },
+    "Corruptor": {
+      "minerals": 150,
+      "vespene": 100,
+      "supply": 2
+    },
+    "BroodLord": {
+      "minerals": 300,
+      "vespene": 250,
+      "supply": 4
+    },
+    "Ultralisk": {
+      "minerals": 275,
+      "vespene": 200,
+      "supply": 6
+    },
+    "Overlord": {
+      "minerals": 100,
+      "vespene": 0,
+      "supply": 0,
+      "supply_provided": 8
+    },
+    "Overseer": {
+      "minerals": 150,
+      "vespene": 50,
+      "supply": 0,
+      "supply_provided": 8
+    },
+    "CommandCenter": {
+      "minerals": 400,
+      "vespene": 0,
+      "supply": 0,
+      "supply_provided": 15
+    },
+    "OrbitalCommand": {
+      "minerals": 550,
+      "vespene": 0,
+      "supply": 0,
+      "supply_provided": 15
+    },
+    "PlanetaryFortress": {
+      "minerals": 550,
+      "vespene": 150,
+      "supply": 0,
+      "supply_provided": 15
+    },
+    "SupplyDepot": {
+      "minerals": 100,
+      "vespene": 0,
+      "supply": 0,
+      "supply_provided": 8
+    },
+    "Nexus": {
+      "minerals": 400,
+      "vespene": 0,
+      "supply": 0,
+      "supply_provided": 15
+    },
+    "Pylon": {
+      "minerals": 100,
+      "vespene": 0,
+      "supply": 0,
+      "supply_provided": 8
+    },
+    "Hatchery": {
+      "minerals": 300,
+      "vespene": 0,
+      "supply": 0,
+      "supply_provided": 6
+    },
+    "Lair": {
+      "minerals": 450,
+      "vespene": 100,
+      "supply": 0,
+      "supply_provided": 6
+    },
+    "Hive": {
+      "minerals": 650,
+      "vespene": 250,
+      "supply": 0,
+      "supply_provided": 6
+    }
+  },
+  "needs_review": {
+    "Firebat": true,
+    "Warhound": true,
+    "Goliath": true,
+    "Wraith": true,
+    "ScienceVessel": true,
+    "Arbiter": true,
+    "Dragoon": true,
+    "Scout": true,
+    "Reaver": true,
+    "Energizer": true,
+    "Corsair": true,
+    "Ravasaur": true,
+    "QueenClassic": true,
+    "GuardianMP": true,
+    "Aberration": true,
+    "Defiler": true,
+    "Tyrannozor": true
+  },
+  "excluded_from_state": [
+    "InvisibleTargetDummy",
+    "ReplayBeacon",
+    "ParasiticBombDummy"
+  ],
+  "sources": [
+    "UnitRegistry 6e3fc1d00e6f2413",
+    "BPM_DB_UnitMeta.galaxy",
+    "standard melee unit roles and nominal costs"
+  ]
+}

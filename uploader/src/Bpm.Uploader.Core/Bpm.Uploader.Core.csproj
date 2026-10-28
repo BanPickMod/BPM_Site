@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <!-- Site base URL baked into release builds: dotnet build -p:ServerUrl=https://example.org -->
+    <ServerUrl></ServerUrl>
+    <!-- Folder URL that holds the Velopack release files (RELEASES, *.nupkg). Empty: no automatic updates. -->
+    <UpdateUrl></UpdateUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Bpm.Uploader.Tests" />
+    <AssemblyMetadata Include="ServerUrl" Value="$(ServerUrl)" />
+    <AssemblyMetadata Include="UpdateUrl" Value="$(UpdateUrl)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SharpZipLib" Version="1.4.2" />
+    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="10.0.14" />
+  </ItemGroup>
+
+</Project>

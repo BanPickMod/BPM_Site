@@ -54,10 +54,47 @@ function box(src: Float32Array, w: number, h: number, r: number): Float32Array {
   return out;
 }
 
+const RAMP_EASE = 5;       // cells beyond a ramp that are eased into it
+
+/**
+ * The game's ramps are straight slopes that begin and end at a crease, and from the usual camera that reads as a steep wall. This
+ * evens out the ground on and just around every ramp (pathable but not buildable) a few times, so the climb starts and ends gently.
+ * The effect fades out with the distance from the ramp, so the plateaus and everything else keep their exact height.
+ */
+function easeRamps(M: MapGrid, ground: Float32Array): void {
+  const { w, h } = M, weight = new Float32Array(w * h), dist = new Int16Array(w * h).fill(-1), queue: number[] = [];
+  for (let i = 0; i < w * h; i++) if (M.pathable[i] && !M.buildable[i]) { dist[i] = 0; queue.push(i); }
+  for (let head = 0; head < queue.length; head++) {                      // distance from the nearest ramp cell, over ground only
+    const i = queue[head], x = i % w, y = (i - x) / w, d = dist[i];
+    if (d >= RAMP_EASE) continue;
+    for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
+      const xx = x + dx, yy = y + dy;
+      if (xx < 0 || yy < 0 || xx >= w || yy >= h) continue;
+      const j = yy * w + xx;
+      if (dist[j] === -1 && M.pathable[j]) { dist[j] = d + 1; queue.push(j); }
+    }
+  }
+  for (let i = 0; i < w * h; i++) if (dist[i] >= 0) weight[i] = 1 - dist[i] / (RAMP_EASE + 1);
+  for (let pass = 0; pass < 6; pass++) {
+    const next = ground.slice();
+    for (const i of queue) {
+      const x = i % w, y = (i - x) / w;
+      let s = 0, n = 0;
+      for (let dy = -2; dy <= 2; dy++) for (let dx = -2; dx <= 2; dx++) {
+        const xx = x + dx, yy = y + dy;
+        if (xx >= 0 && yy >= 0 && xx < w && yy < h && M.pathable[yy * w + xx]) { s += ground[yy * w + xx]; n++; }
+      }
+      if (n) next[i] = ground[i] + (s / n - ground[i]) * weight[i];
+    }
+    ground.set(next);
+  }
+}
+
 export function buildField(M: MapGrid, relief: number): TerrainField {
   const { w, h } = M, span = Math.max(1, M.hMax - M.hMin);
   const ground = new Float32Array(w * h), target = new Float32Array(w * h);
   for (let i = 0; i < ground.length; i++) if (M.pathable[i]) ground[i] = ((M.height[i] - M.hMin) / span) * relief;
+  easeRamps(M, ground);
   for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
     const i = y * w + x;
     if (M.pathable[i]) { target[i] = ground[i]; continue; }

@@ -25,7 +25,14 @@ export function themeFor(tileSet: string): Theme {
   if (/tarsonis|korhal|portcity|dominion/i.test(tileSet)) return THEMES.city;
   return THEMES.dust;
 }
-const RISE = 3.0;                      // how far unpathable rock stands above the ground beside it (world units)
+/**
+ * Unpathable ground is drawn at the height the map records for it. Most of it is not rock but lower land: in the five maps
+ * 51-78% of the cells deep inside unpathable areas lie 80-240 recorded units below every walkable cell around them, and the border of the
+ * map is at the bottom. So the open ground between plateaus is a drop, not a wall. The drop is cut off at CHASM world units below
+ * the lowest walkable ground (the true depth would push the plateaus into a sliver) and a little rock may stand above the highest ground.
+ */
+export const CHASM = 6.5;
+const BLUFF = 3.0;
 
 const hash = (x: number, y: number) => { const s = Math.sin(x * 127.1 + y * 311.7) * 43758.5453; return s - Math.floor(s); };
 const smooth = (a: number, b: number, v: number) => { const t = Math.min(1, Math.max(0, (v - a) / (b - a))); return t * t * (3 - 2 * t); };
@@ -98,9 +105,8 @@ export function buildField(M: MapGrid, relief: number): TerrainField {
   for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
     const i = y * w + x;
     if (M.pathable[i]) { target[i] = ground[i]; continue; }
-    let s = 0, n = 0;                                            // rock stands above the average of the ground nearby
-    for (let dy = -3; dy <= 3; dy++) for (let dx = -3; dx <= 3; dx++) { const xx = x + dx, yy = y + dy; if (xx >= 0 && yy >= 0 && xx < w && yy < h && M.pathable[yy * w + xx]) { s += ground[yy * w + xx]; n++; } }
-    target[i] = (n ? s / n : 0) + RISE;
+    const own = ((M.height[i] - M.hMin) / span) * relief;         // its own recorded height, on the same scale as the ground
+    target[i] = Math.max(-CHASM, Math.min(relief + BLUFF, own));
   }
   const R = SUBDIV, fw = w * R + 1, fh = h * R + 1;
   let H: Float32Array = new Float32Array(fw * fh);

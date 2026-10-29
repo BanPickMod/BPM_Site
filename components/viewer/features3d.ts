@@ -76,6 +76,11 @@ function shapes(th: Theme): Record<string, G[]> {
   const W = (g: G, tone: C3, amp: number, seed: number, moss = true) => weather(g, { seed, amp, tone, moss: th.grass, mossAmt: moss ? mossAmt : 0 });
   const st = (k: number) => shade(th.stone, k), bd = (k: number) => shade(th.building, k);
   const grass = (n: number, h: number) => merge(Array.from({ length: n }, (_, i) => { const a = (i / n) * Math.PI * 2, r = i === n - 1 ? 0 : 0.55; return cone(i % 2 ? shade(th.grass, 0.8) : th.grass, 5, Math.cos(a) * r, 0.7, Math.sin(a) * r, 0.34, h + (i % 3) * 0.3, 0.34, Math.sin(a) * 0.3, 0, -Math.cos(a) * 0.3); }));
+  // dark floor bands with a few lit windows: a facade instead of a bare block
+  const floors = (x: number, z: number, w: number, d: number, ys: number[]) => ys.flatMap((y, i) => [
+    box(bd(0.38), x, y, z, w, 0.16, d),
+    ...(i % 2 === 0 ? [box(th.glow, x + w / 2 - 0.02, y + 0.28, z + (h3(i, w, 9) - 0.5) * d * 0.5, 0.06, 0.2, 0.34)] : []),
+  ]);
   const small = (seed: number) => Array.from({ length: 5 }, (_, i) => W(place(ico1(), (h3(i, seed, 1) - 0.5) * 2.2, 0.18, (h3(i, seed, 2) - 0.5) * 2.2, 0.5 + h3(i, seed, 3) * 0.5, 0.35 + h3(i, seed, 4) * 0.3, 0.5 + h3(i, seed, 5) * 0.5), st(0.55 + h3(i, seed, 6) * 0.3), 0.05, seed + i));
   return {
     grass: [grass(7, 1.5), grass(5, 2.3)],
@@ -108,14 +113,16 @@ function shapes(th: Theme): Record<string, G[]> {
       merge([W(place(sbox(), 0, 0.2, 0, 2.4, 0.4, 2.4), st(0.7), 0.05, 42), W(place(scyl(0.34, 0.55, 7), 0, 1.3, 0, 1.6, 1.8, 1.6), st(0.88), 0.06, 43), W(place(ico1(), 0.9, 0.3, 0.8, 0.8, 0.5, 0.7), st(0.7), 0.05, 44)]),   // a worn shrine stump
     ],
     building: [
-      merge([box(th.building, 0, 1.0, 0, 2.6, 2.0, 2.6), box(shade(th.building, 0.7), 0, 2.1, 0, 2.85, 0.22, 2.85), box(shade(th.building, 1.2), 0.7, 2.5, 0.5, 0.8, 0.55, 0.8)]),
-      merge([box(bd(0.95), 0, 1.7, 0, 1.9, 3.4, 1.9), box(bd(0.7), 0, 3.5, 0, 2.1, 0.2, 2.1), cyl(bd(1.3), 6, 0.4, 4.2, 0.3, 0.12, 1.4, 0.12)]),     // a tall block with an antenna
-      merge([box(bd(1), -0.7, 0.9, 0, 1.8, 1.8, 2.8), box(bd(0.85), 0.9, 0.6, 0.5, 1.8, 1.2, 1.8), box(bd(0.7), -0.7, 1.9, 0, 2.0, 0.2, 3.0)]),        // two joined low blocks
+      merge([box(th.building, 0, 1.0, 0, 2.6, 2.0, 2.6), box(shade(th.building, 0.7), 0, 2.1, 0, 2.85, 0.22, 2.85), box(shade(th.building, 1.2), 0.7, 2.5, 0.5, 0.8, 0.55, 0.8), ...floors(0, 0, 2.66, 2.66, [0.55, 1.1, 1.65])]),
+      merge([box(bd(0.95), 0, 1.7, 0, 1.9, 3.4, 1.9), box(bd(0.7), 0, 3.5, 0, 2.1, 0.2, 2.1), cyl(bd(1.3), 6, 0.4, 4.2, 0.3, 0.12, 1.4, 0.12), ...floors(0, 0, 1.96, 1.96, [0.5, 1.0, 1.5, 2.0, 2.5, 3.0])]),     // a tall block with an antenna
+      merge([box(bd(1), -0.7, 0.9, 0, 1.8, 1.8, 2.8), box(bd(0.85), 0.9, 0.6, 0.5, 1.8, 1.2, 1.8), box(bd(0.7), -0.7, 1.9, 0, 2.0, 0.2, 3.0), ...floors(-0.7, 0, 1.86, 2.86, [0.5, 1.0, 1.5])]),        // two joined low blocks
     ],
     wall: [
       merge([box(bd(0.85), 0, 0.65, 0, 3.4, 1.3, 0.55), box(bd(0.6), 0, 1.35, 0, 3.6, 0.15, 0.75)]),
       merge([box(bd(0.85), -1.1, 0.65, 0, 1.2, 1.3, 0.55), box(bd(0.85), 1.1, 0.5, 0, 1.2, 1.0, 0.55), box(bd(0.6), -1.1, 1.35, 0, 1.4, 0.15, 0.75)]),   // a gap in it
     ],
+    pebble: [merge([W(place(ico1(), 0, 0.15, 0, 0.5, 0.32, 0.45), st(0.65), 0.04, 50), W(place(ico1(), 0.45, 0.1, 0.2, 0.3, 0.2, 0.28), st(0.8), 0.04, 51)])],
+    tuft: [grass(5, 0.8)],
     crystal: [merge([oct(th.glow, 0, 1.0, 0, 0.8, 2.4, 0.8), oct(shade(th.glow, 0.8), 0.6, 0.6, 0.2, 0.5, 1.5, 0.5), oct(shade(th.glow, 0.9), -0.5, 0.5, -0.3, 0.45, 1.2, 0.45)])],
     prop: [merge([box([0.45, 0.3, 0.2], 0, 0.35, 0, 0.9, 0.7, 0.9), box([0.55, 0.4, 0.25], 0.5, 0.2, 0.4, 0.5, 0.4, 0.5)])],
   };
@@ -187,6 +194,63 @@ export function buildFeatures(M: MapGrid, heightAt: (x: number, y: number) => nu
       mesh.castShadow = CAST.has(cls); mesh.receiveShadow = cls !== "grass"; mesh.frustumCulled = false;
       group.add(mesh);
     });
+  }
+
+  // broken stone along the foot of every cliff: the plateaus end in jagged rock instead of a smooth slope
+  const DIR4: [number, number][] = [[1, 0], [-1, 0], [0, 1], [0, -1]];
+  {
+    const chunks: { x: number; y: number; s: number; rot: number; v: number }[] = [];
+    for (let y = 0; y < M.h; y++) for (let x = 0; x < M.w; x++) {
+      if (M.pathable[y * M.w + x] || hash(x * 1.7, y * 2.9) > 0.5) continue;
+      let nx = 0, ny = 0, n = 0;
+      for (const [dx, dy] of DIR4) { const xx = x + dx, yy = y + dy; if (xx >= 0 && yy >= 0 && xx < M.w && yy < M.h && M.pathable[yy * M.w + xx]) { nx += dx; ny += dy; n++; } }
+      if (!n) continue;
+      const j = hash(x * 3.3 + 1, y * 5.1);
+      chunks.push({ x: x + 0.5 + (nx / n) * 0.4 + (j - 0.5) * 0.5, y: y + 0.5 + (ny / n) * 0.4 + (hash(y, x * 1.9) - 0.5) * 0.5, s: 0.65 + j * 0.95, rot: hash(x, y) * 360, v: Math.floor(hash(y * 2.1, x * 0.7) * 3) });
+    }
+    const stride = Math.max(1, Math.ceil(chunks.length / 3200)), picked = chunks.filter((_, i) => i % stride === 0);
+    const kinds = [0, 3, 4];                                  // round, a small pile and jagged: a slab or a tall standing stone looks wrong set into a cliff
+    kinds.forEach((rockIndex, k) => {
+      const items = picked.filter((c) => c.v === k);
+      if (!items.length || !geos.rock[rockIndex]) return;
+      const mesh = new THREE.InstancedMesh(geos.rock[rockIndex], mat, items.length);
+      items.forEach((c, i) => {
+        dummy.position.set(lx(c.x), heightAt(c.x, c.y) - 0.15 * c.s, lz(c.y));
+        dummy.rotation.set((hash(c.x, c.y) - 0.5) * 0.5, (c.rot * Math.PI) / 180, (hash(c.y, c.x) - 0.5) * 0.5);
+        dummy.scale.set(c.s * 1.1, c.s * (0.8 + hash(c.x * 2, c.y) * 0.45), c.s * 1.1); dummy.updateMatrix(); mesh.setMatrixAt(i, dummy.matrix);
+        const v = 0.62 + hash(c.x * 1.9, c.y * 1.3) * 0.3; tint.setRGB(v, v * 0.98, v * 0.95); mesh.setColorAt(i, tint);
+      });
+      mesh.castShadow = true; mesh.receiveShadow = true; mesh.frustumCulled = false; group.add(mesh);
+    });
+    counts.cliff = picked.length;
+  }
+
+  // pebbles and small tufts on the open ground, left out around bases and resources so nothing hides where a building goes
+  {
+    const anchors: [number, number, number][] = [...M.starts.map(([x, y]) => [x, y, 8.5] as [number, number, number]), ...M.exps.map(([x, y]) => [x, y, 7.5] as [number, number, number]), ...M.res.map(([x, y]) => [x, y, 3.5] as [number, number, number]), ...M.gas.map(([x, y]) => [x, y, 3.5] as [number, number, number])];
+    const open = (x: number, y: number) => !anchors.some(([ax, ay, r]) => Math.hypot(x - ax, y - ay) < r);
+    const urban = /city|tarsonis|korhal|dominion/i.test(M.tileSet);      // no grass growing between the streets: rubble only
+    const spots: { x: number; y: number; kind: "pebble" | "tuft"; s: number; rot: number }[] = [];
+    for (let y = 1; y < M.h - 1; y++) for (let x = 1; x < M.w - 1; x++) {
+      if (!M.pathable[y * M.w + x]) continue;
+      const r = hash(x * 4.1, y * 2.3);
+      if (r > 0.17) continue;
+      const px = x + hash(y, x * 3.7), py = y + hash(x, y * 1.9);
+      if (!open(px, py)) continue;
+      const stone = urban || r < 0.07;
+      spots.push({ x: px, y: py, kind: stone ? "pebble" : "tuft", s: stone ? 0.7 + hash(px, py) * 0.9 : 0.35 + hash(py, px) * 0.35, rot: hash(px * 2, py) * 360 });
+    }
+    for (const kind of ["pebble", "tuft"] as const) {
+      const items = spots.filter((p) => p.kind === kind), geo = geos[kind]?.[0];
+      if (!items.length || !geo) continue;
+      const mesh = new THREE.InstancedMesh(geo, mat, items.length);
+      items.forEach((p, i) => {
+        dummy.position.set(lx(p.x), heightAt(p.x, p.y) - 0.04, lz(p.y)); dummy.rotation.set(0, (p.rot * Math.PI) / 180, 0); dummy.scale.setScalar(p.s); dummy.updateMatrix(); mesh.setMatrixAt(i, dummy.matrix);
+        const v = 0.8 + hash(p.x * 1.3, p.y * 2.1) * 0.35; tint.setRGB(v, v * (0.96 + hash(p.y, p.x) * 0.08), v * 0.95); mesh.setColorAt(i, tint);
+      });
+      mesh.castShadow = false; mesh.receiveShadow = true; mesh.frustumCulled = false; group.add(mesh);
+    }
+    counts.ground = spots.length;
   }
 
   // destructible rocks: a rust-coloured pile on a translucent footprint, so they read as "can be broken"

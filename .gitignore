@@ -50,3 +50,7 @@ uploader/**/obj/
 # Velopack release build output
 uploader/publish/
 uploader/releases/
+
+# python
+__pycache__/
+*.pyc

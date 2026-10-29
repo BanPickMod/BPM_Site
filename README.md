@@ -1,6 +1,6 @@
 # BPM_Site
 
-StarCraft II: BanPickMod(BPM)의 공식 정보·리플레이 사이트입니다. Next.js(App Router) + TypeScript이고 한국어(`/ko`)와 영어(`/en`)를 함께 제공합니다. 제품 방향은 [PRODUCT.md](PRODUCT.md), 실제 기능 기준 현황은 [docs/Implementation_Status.md](docs/Implementation_Status.md), 디자인 결정 기록은 [docs/Redesign_Proposals.md](docs/Redesign_Proposals.md) 상단에 있습니다.
+StarCraft II: BanPickMod(BPM)의 공식 정보·리플레이 사이트입니다. Next.js(App Router) + TypeScript이고 한국어(`/ko`)와 영어(`/en`)를 함께 제공합니다. 앞으로의 계획과 남은 일은 저장소 바깥 `BanPickMod2/docs/BPM_Site_앞으로의_계획.md`에 모아 두었습니다.
 
 > 이 프로젝트는 일반적인 Next.js와 다른 점이 있습니다. 코드를 쓰기 전에 `node_modules/next/dist/docs/`를 먼저 읽으세요([AGENTS.md](AGENTS.md)). 예: 미들웨어 대신 `proxy.ts`를 씁니다.
 
@@ -54,6 +54,7 @@ npm run validate:data  # 생성 데이터, 패치노트 ko/en 구조, 미디어 
 | `ADMIN_TOKENS` | 운영자별 이름 붙은 토큰: `이름:역할:토큰,이름:역할:토큰`. 역할은 `readonly`(목록만), `moderator`(스크린샷·결정), `owner`(전부, 보관 배치, 감사 기록). 이름은 소문자·숫자·`_`·`-`, 토큰은 16자 이상. 사람이 그만두면 그 항목을 지우고 배포한다 |
 | `ADMIN_TOKEN` | 예전 단일 토큰. 있으면 이름 `admin`, 역할 `owner`인 운영자 하나로 취급한다(`ADMIN_TOKENS`와 함께 둘 수 있다) |
 | `TRUSTED_PROXY_HOPS` | 사이트 앞에 있는 프록시 수(Railway 단독이면 1, 앞에 Cloudflare 등이 하나 더 있으면 2). 신고·문의의 횟수 제한이 `X-Forwarded-For`의 오른쪽에서 이 개수만큼 떨어진 값(신뢰할 수 있는 위치)을 보낸 사람의 주소로 쓴다. 왼쪽 값은 보내는 사람이 정하므로 쓰지 않는다. 0이면 헤더를 믿지 않고 모두 한 칸을 공유한다. **배포 전에 실제 프록시 수와 맞는지 확인**(틀리면 모든 사용자가 한 칸을 공유하거나 제한이 약해진다) |
+| `LEDGER_RETENTION_DAYS` | 삭제 원장 파일(DB 복원 뒤 삭제·철회를 다시 적용하는 기록) 보관 일수(기본 90). **DB 백업 보관일보다 길어야 한다.** |
 | `PRIVACY_REQUEST_DAYS` | 개인정보 요청(열람·정정·삭제 등)에 답해야 하는 기한 일수(기본 10). 수신함에 답변 기한과 기한 초과가 표시된다. 법정 기한은 운영자가 확인해 이 값을 정한다 |
 | `AUDIT_RETENTION_DAYS` | 운영자 작업 기록(`admin_audit`) 보관 일수(기본 365) |
 | `SOURCE_READY_MAX_DAYS` | 분석·평가가 끝나지 않은 원본 리플레이를 분석 후 최대 며칠 보관할지(기본 7). 끝난 원본은 즉시 삭제된다. 이 외에 `SOURCE_FAILED_MAX_DAYS`(7), `SOURCE_UNSUPPORTED_MAX_DAYS`(30), `SOURCE_STUCK_MAX_DAYS`(14), `LINK_RETENTION_DAYS`(30)가 있다 |
@@ -69,7 +70,7 @@ npm run validate:data  # 생성 데이터, 패치노트 ko/en 구조, 미디어 
 
 1. `content/media/slots.json`에 슬롯을 등록합니다(없는 슬롯 id를 쓰면 검증이 실패합니다).
 2. 파일을 `public/media/<슬롯id>.png|jpg|webp|gif|mp4|webm`로 넣습니다. 영어 화면용은 `.en.`, 영상 포스터는 `.poster.`를 붙이고, 같은 이름의 `.json`으로 설명 문구나 `{"youtube": "영상ID"}`를 지정합니다.
-3. `npm run media:report`가 `docs/media-slots.md`에 채움 현황을 만듭니다.
+3. `npm run media:report`가 `docs/media-slots.md`에 채움 현황을 만듭니다(파일은 이 명령이 만들며 저장소에는 두지 않습니다).
 
 파일이 없는 슬롯은 공개 빌드에서 아무것도 그리지 않고, 개발 서버에서만 점선 자리표시가 보입니다. 패치마다 `<버전>-cover` 슬롯을 등록하면 제목 오른쪽에 대표 이미지가 붙습니다.
 

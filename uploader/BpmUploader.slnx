@@ -4,7 +4,4 @@
     <Project Path="src/Bpm.Uploader.Core/Bpm.Uploader.Core.csproj" />
     <Project Path="src/Bpm.Uploader.Tray/Bpm.Uploader.Tray.csproj" />
   </Folder>
-  <Folder Name="/tests/">
-    <Project Path="tests/Bpm.Uploader.Tests/Bpm.Uploader.Tests.csproj" />
-  </Folder>
 </Solution>

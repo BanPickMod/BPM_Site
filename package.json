@@ -8,10 +8,6 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "next typegen && tsc --noEmit",
-    "test:consent-sql": "node --conditions=react-server --experimental-strip-types --no-warnings scripts/dev/consent-sql-test.mjs",
-    "test:deletion": "node --conditions=react-server --experimental-strip-types --no-warnings scripts/dev/deletion-test.mjs",
-    "test:report-atomic": "node --conditions=react-server --experimental-strip-types --no-warnings scripts/dev/report-atomic-test.mjs",
-    "test:privacy": "node --conditions=react-server --experimental-strip-types --no-warnings scripts/dev/privacy-inventory-test.mjs",
     "validate:data": "node scripts/validate-data.js",
     "build:data": "node scripts/wiki/build-wiki-data.js",
     "media:report": "node scripts/media-report.js"

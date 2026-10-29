@@ -5,6 +5,7 @@ import type { Lang } from "@/lib/i18n/config";
 import type { Clock } from "@/lib/replay/clock";
 import { buildLog, compSeries, fmtTime, pickUsage, type Model, type Owner } from "@/lib/replay/timeline";
 import { battleReport, type SideReport } from "@/lib/replay/battleReport";
+import { battleNotes } from "@/lib/replay/battleCoach";
 import type { CompEntry } from "@/lib/replay/squads";
 import { unitCost, unitInfo } from "@/lib/replay/units";
 import { CompChart, FormChart, LineChart, OWNER_COLOR } from "./charts";
@@ -223,6 +224,7 @@ function Battles({ model, clock, lang }: P) {
   const t = (ko: string, en: string) => (lang === "ko" ? ko : en);
   const now = useClockTime(clock, 1);
   const reports = useMemo(() => model.battles.map((b) => battleReport(model, b, unitCost)), [model]);
+  const coach = useMemo(() => new Map(model.battles.map((b, i) => [b.id, battleNotes(model, b, unitCost, reports[i])])), [model, reports]);
   if (!model.battles.length) return <p className="dim">{t("뚜렷한 교전이 감지되지 않았습니다.", "No clear battles were detected.")}</p>;
   return (
     <>
@@ -244,12 +246,24 @@ function Battles({ model, clock, lang }: P) {
                 {b.picksLost > 0 && <span className="pk">{t(`고른 유닛 ${b.picksLost}기 손실`, `${b.picksLost} picked lost`)}</span>}
                 <button className="btn" onClick={() => clock.range(Math.max(0, r.t0 - 5), r.t1 + 5, 2)}>{t("보기", "Watch")}</button>
               </div>
+              {(() => {
+                const c = coach.get(r.id);
+                if (!c) return null;
+                const v = c.verdict, top = c.notes.slice(0, 4);
+                const line = v.kind === "win" ? t(`${who(v.owner!, lang)}의 압승`, `Clear win for ${who(v.owner!, lang)}`) : v.kind === "even" ? t("비슷한 손실을 낸 교전", "Both sides paid a similar price") : t("작은 교전", "A small skirmish");
+                return (
+                  <div className="vw-coach">
+                    <b style={v.owner ? { color: OWNER_COLOR[v.owner] } : undefined}>{line}</b>
+                    {top.length > 0 && <ul>{top.map((n) => <li key={n.owner + n.id} className={`n-${n.tone}`}><i style={{ color: OWNER_COLOR[n.owner] }}>{who(n.owner, lang)}</i><span>{lang === "ko" ? n.ko : n.en}</span></li>)}</ul>}
+                  </div>
+                );
+              })()}
               <div className="vw-bsides">{r.sides.map((side) => <SideBlock key={side.owner} side={side} lang={lang} />)}</div>
             </li>
           );
         })}
       </ul>
-      <p className="dim">{t("교전은 사망 이벤트를 시간·거리로 묶어 자동 감지한 것이라 실제와 다를 수 있습니다. 참전 병력은 위치가 기록된 유닛과 교전 중 사망한 유닛만 센 값이라 실제보다 적을 수 있고, 손실 가치는 유닛 비용(광물+가스)과 인구를 더한 것입니다.", "Battles are detected by clustering deaths in time and space, so they can differ from what you would call a fight. Units in the fight are counted from recorded positions and deaths only, so the real number may be higher. Lost value is the units' cost (minerals + gas) and supply.")}</p>
+      <p className="dim">{t("해설은 AI 점수가 아니라 이 보고서의 숫자(교환, 병력, 보유 자원, 파괴된 건물)에서 규칙으로 뽑은 것입니다. 교전은 사망 이벤트를 시간·거리로 묶어 자동 감지한 것이라 실제와 다를 수 있습니다. 참전 병력은 위치가 기록된 유닛과 교전 중 사망한 유닛만 센 값이라 실제보다 적을 수 있고, 손실 가치는 유닛 비용(광물+가스)과 인구를 더한 것입니다.", "The notes are not the AI form read: they are rules applied to this report's numbers (trade, force, bank, buildings). Battles are detected by clustering deaths in time and space, so they can differ from what you would call a fight. Units in the fight are counted from recorded positions and deaths only, so the real number may be higher. Lost value is the units' cost (minerals + gas) and supply.")}</p>
     </>
   );
 }

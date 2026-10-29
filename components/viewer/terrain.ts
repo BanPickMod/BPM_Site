@@ -49,6 +49,8 @@ export function themeFor(tileSet: string): Theme {
  */
 export const CHASM = 6.5;
 const BLUFF = 3.0;
+const CLIFF_STEP = 0.12;    // a height difference between neighbouring cells, as a share of the relief, that counts as a cliff
+const CLIFF_FACE = 0.2;     // half the width of the cliff face, in cells (the drop spans 0.4 of a cell instead of one)
 
 const hash = (x: number, y: number) => { const s = Math.sin(x * 127.1 + y * 311.7) * 43758.5453; return s - Math.floor(s); };
 const smooth = (a: number, b: number, v: number) => { const t = Math.min(1, Math.max(0, (v - a) / (b - a))); return t * t * (3 - 2 * t); };
@@ -128,8 +130,17 @@ export function buildField(M: MapGrid, relief: number): TerrainField {
   let H: Float32Array = new Float32Array(fw * fh);
   const at = (x: number, y: number) => target[Math.max(0, Math.min(h - 1, y)) * w + Math.max(0, Math.min(w - 1, x))];
   for (let j = 0; j < fh; j++) for (let i = 0; i < fw; i++) {
-    const cx = i / R - 0.5, cy = j / R - 0.5, x0 = Math.floor(cx), y0 = Math.floor(cy), fx = cx - x0, fy = cy - y0;
-    H[j * fw + i] = at(x0, y0) * (1 - fx) * (1 - fy) + at(x0 + 1, y0) * fx * (1 - fy) + at(x0, y0 + 1) * (1 - fx) * fy + at(x0 + 1, y0 + 1) * fx * fy;
+    const cx = i / R - 0.5, cy = j / R - 0.5, x0 = Math.floor(cx), y0 = Math.floor(cy);
+    let fx = cx - x0, fy = cy - y0;
+    const c00 = at(x0, y0), c10 = at(x0 + 1, y0), c01 = at(x0, y0 + 1), c11 = at(x0 + 1, y0 + 1);
+    // Where neighbouring cells differ by a cliff's worth the blend between them is pulled towards the middle of the cell, so the drop
+    // is a short steep face with a flat top and foot instead of a bowl; gentle ground keeps its plain blend.
+    const drop = Math.max(c00, c10, c01, c11) - Math.min(c00, c10, c01, c11), sharp = smooth(relief * CLIFF_STEP, relief * CLIFF_STEP * 2, drop);
+    if (sharp > 0) {
+      const pull = (f: number) => f + (smooth(0.5 - CLIFF_FACE, 0.5 + CLIFF_FACE, f) - f) * sharp;
+      fx = pull(fx); fy = pull(fy);
+    }
+    H[j * fw + i] = c00 * (1 - fx) * (1 - fy) + c10 * fx * (1 - fy) + c01 * (1 - fx) * fy + c11 * fx * fy;
   }
   H = box(H, fw, fh, 1);                                          // one light pass rounds off the corners of the grid
 

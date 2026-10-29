@@ -28,6 +28,7 @@ install_imp_compat()                      # Python 3.12+: s2protocol still impor
 
 import mpyq  # noqa: E402
 from s2protocol import versions  # noqa: E402
+from bpm_replay.selection import SelectionTracker  # noqa: E402
 from bpm_replay.timeline import build_timeline  # noqa: E402
 
 _GROUPS = json.loads((Path(__file__).with_name("groups.json")).read_text(encoding="utf8"))["groups"]
@@ -79,23 +80,36 @@ def _started_at(details: dict) -> str | None:
     return when.strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
-def _target_commands(proto, archive) -> list[tuple[int, int, int | None, float, float]]:
-    """Commands that name a point on the map: `(loop, userId, abilityLink, x, y)`. They are where a lifted building was told to land.
+def _target_commands(proto, archive) -> list[tuple[int, int, int | None, float, float, tuple[int, ...] | None]]:
+    """Commands that name a point on the map: `(loop, userId, abilityLink, x, y, selected)`. They are where a lifted building was told to land.
 
-    Streamed, and only these commands are kept, so a long game costs little memory. A replay whose game events cannot be read still
-    gets its timeline, without landing positions: nothing here may fail the analysis.
+    `selected` is the tags of the units the player had selected when giving the command (bpm_replay/selection.py), or None when
+    that could not be followed. Streamed, and only these commands are kept, so a long game costs little memory. A replay whose game
+    events cannot be read still gets its timeline, without landing positions: nothing here may fail the analysis.
     """
-    out: list[tuple[int, int, int | None, float, float]] = []
+    out: list[tuple[int, int, int | None, float, float, tuple[int, ...] | None]] = []
+    follow = SelectionTracker()
+    followed = True
     try:
         for ev in proto.decode_replay_game_events(archive.read_file("replay.game.events")):
-            if not ev["_event"].endswith("SCmdEvent"):
+            kind = ev["_event"]
+            user = int((ev.get("_userid") or {}).get("m_userId", -1))
+            if followed:
+                try:
+                    if kind.endswith("SSelectionDeltaEvent"):
+                        follow.delta(user, ev.get("m_delta") or {})
+                    elif kind.endswith("SControlGroupUpdateEvent"):
+                        follow.group(user, int(ev["m_controlGroupIndex"]), int(ev["m_controlGroupUpdate"]), ev.get("m_mask"))
+                except Exception:  # noqa: BLE001 - a selection that cannot be followed only costs the landing its precise match
+                    followed = False
+            if not kind.endswith("SCmdEvent"):
                 continue
             point = (ev.get("m_data") or {}).get("TargetPoint")
             if not point:
                 continue
             abil = (ev.get("m_abil") or {}).get("m_abilLink")
-            out.append((int(ev["_gameloop"]), int((ev.get("_userid") or {}).get("m_userId", -1)), abil,
-                        round(point["x"] / 4096, 2), round(point["y"] / 4096, 2)))
+            out.append((int(ev["_gameloop"]), user, abil, round(point["x"] / 4096, 2), round(point["y"] / 4096, 2),
+                        follow.of(user) if followed else None))
     except Exception:  # noqa: BLE001 - see the docstring
         return []
     return out
@@ -202,7 +216,7 @@ def decode_draft(path: str | Path) -> dict:
         "warnings": warnings,
     }
     if decoded["isBpm"]:
-        decoded["timeline"] = build_timeline(tracker, decoded, "timeline-4", _target_commands(proto, archive))
+        decoded["timeline"] = build_timeline(tracker, decoded, "timeline-5", _target_commands(proto, archive))
     return decoded
 
 

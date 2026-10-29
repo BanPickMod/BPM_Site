@@ -13,7 +13,7 @@ from pathlib import Path
 from .pseudonym import handle_key
 from .timeline import gzip_timeline
 
-ANALYZER_VERSION = "timeline-4"
+ANALYZER_VERSION = "timeline-5"
 SCHEMA = 1
 DECODER = Path(__file__).with_name("draft_decode.py")
 DEFAULT_TIMEOUT_SEC = 120

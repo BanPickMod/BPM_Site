@@ -126,7 +126,7 @@ FLIGHT_SPEED = 1.5                      # tiles per second, generous: only used 
 FLIGHT_SLACK = 4.0
 
 
-def _landing_points(flights: list[dict], commands: list[tuple[int, int, int | None, float, float]]) -> None:
+def _landing_points(flights: list[dict], commands: list[tuple]) -> None:
     """Fills `end` and `src` of every flight with the point of the landing command it was given.
 
     The tracker stream says that a building lifted and that it landed, but not where. The game-event stream does: the landing is a
@@ -135,30 +135,36 @@ def _landing_points(flights: list[dict], commands: list[tuple[int, int, int | No
     does not), (3) its ability is rare in this game (moves and attacks are used constantly, a landing a handful of times) and
     (4) the point is within reach of where the building was last seen. Each command goes to one building only, so two buildings swapping places do not take the same point.
 
+    A command may also carry the rows of the units that were selected when it was given (bpm_replay/selection.py). When the
+    building was among them the command is its own, which settles buildings lifted together that no distance rule can tell apart
+    (a factory and a starport swapping places). Of such commands the latest counts. Without the selection, or when the building was
+    not in it, the rules below decide.
+
     A landing is ordered with the one ability that every flight of the game used for it, and the last such order before the building
     settled is the one that counts. So the ability that the most flights have a candidate for comes first, then the later order, and
     distance only breaks ties. (Taking the nearest command alone sent a command centre that lifted from the main to a point beside
     the main, because an unrelated order happened to be closer than the natural it landed on.)
     """
-    uses: Counter = Counter(abil for _, _, abil, _, _ in commands if abil is not None)
+    commands = [(*c[:5], c[5] if len(c) > 5 else None) for c in commands]
+    uses: Counter = Counter(c[2] for c in commands if c[2] is not None)
     candidates = []
     for fi, f in enumerate(flights):
         seconds = max(0.0, (f["t1"] - f["t0"]) / LOOPS_PER_SECOND)
         ref = f["ref"]
         if ref is None:
             continue
-        for ci, (loop, _user, abil, x, y) in enumerate(commands):
+        for ci, (loop, _user, abil, x, y, rows) in enumerate(commands):
             if abil is None or uses[abil] > RARE_ABILITY_USES or not (f["t0"] <= loop <= f["t1"]):
                 continue
             distance = math.dist(ref, (x, y))
             if distance <= FLIGHT_SPEED * seconds + FLIGHT_SLACK:
-                candidates.append((abil, loop, distance, fi, ci))
+                candidates.append((abil, loop, distance, fi, ci, rows is not None and f["row"] in rows))
     flights_of: defaultdict[int, set[int]] = defaultdict(set)
-    for abil, _loop, _distance, fi, _ci in candidates:
+    for abil, _loop, _distance, fi, _ci, _own in candidates:
         flights_of[abil].add(fi)
-    pairs = [(-len(flights_of[abil]), distance, -loop, fi, ci) for abil, loop, distance, fi, ci in candidates]
+    pairs = [((0, -loop, distance, 0, fi, ci) if own else (1, -len(flights_of[abil]), distance, -loop, fi, ci)) for abil, loop, distance, fi, ci, own in candidates]
     taken: set[int] = set()
-    for _support, _distance, _neg, fi, ci in sorted(pairs):
+    for *_key, fi, ci in sorted(pairs):
         if flights[fi]["end"] is None and ci not in taken:
             taken.add(ci)
             flights[fi]["end"] = (commands[ci][3], commands[ci][4])
@@ -293,7 +299,9 @@ def build_timeline(tracker: Iterable[Mapping], decoded: Mapping, analyzer_versio
                 build_events.append((loop, pid, "upgrade", upgrade))
 
     done = [f for fl in flights_of.values() for f in fl if f["t1"] is not None]
-    command_list = list(commands or [])
+    # a command's selected tags become the rows of the units they are: the tag is (index << 18 | recycle), like the tracker's
+    command_list = [(*c[:5], frozenset(r for t in c[5] if (r := row_of.get((t >> 18, t & 0x3FFFF))) is not None) if len(c) > 5 and c[5] is not None else None)
+                    for c in (commands or [])]
     for _round in range(2):                         # a building that flew twice: the second flight leaves where the first landed
         for f in done:
             f["end"], f["src"] = None, "unknown"

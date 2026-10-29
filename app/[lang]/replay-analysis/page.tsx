@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { isLang } from "@/lib/i18n/config";
+import Image from "next/image";
 import { MediaSlot } from "@/components/MediaSlot";
 
 // Bump the version with each uploader release: the query string gives the new file its own CDN cache entry, so nobody gets the old installer.
@@ -43,6 +44,12 @@ export default async function ReplayAnalysisPage({ params }: PageProps<"/[lang]/
     ],
   ];
 
+  const shots: [string, string, string][] = [
+    ["rorschach", t("맵 전체를 3D로", "The whole map in 3D"), t("경기 내내 두 선수의 병력과 건물이 움직입니다. 시간을 되감거나 원하는 곳을 확대해 볼 수 있습니다.", "Both players' armies and buildings move through the game. Rewind, or zoom in anywhere.")],
+    ["terran", t("건물이 어디에 있는지", "Where every building stands"), t("날아서 옮긴 건물은 실제로 내린 자리에 보입니다.", "A building that lifted off shows where it landed.")],
+    ["protoss", t("종족마다 다른 모양", "A look for each race"), t("선수별 색과 바닥 표시로 누구의 건물인지 바로 알 수 있습니다.", "Player colours and floor rings show whose building it is at a glance.")],
+  ];
+
   return (
     <div className="wrap">
       <header className="pg-h">
@@ -70,6 +77,21 @@ export default async function ReplayAnalysisPage({ params }: PageProps<"/[lang]/
               {t("밴픽 통계", "Draft statistics")}
             </Link>
           </p>
+        </section>
+
+        <section>
+          <h2 className="h2">{t("이런 화면을 볼 수 있습니다", "What you get")}</h2>
+          <div className="ra-shots">
+            {shots.map(([id, title, text], i) => (
+              <figure key={id} className={i === 0 ? "ra-shot ra-hero" : "ra-shot"}>
+                <Image src={`/replay-previews/${id}.webp`} alt={title} width={1400} height={610} sizes="(min-width: 900px) 50vw, 100vw" priority={i === 0} />
+                <figcaption>
+                  <b>{title}</b>
+                  <span>{text}</span>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
         </section>
 
         <section>

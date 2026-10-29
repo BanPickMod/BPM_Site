@@ -7,7 +7,7 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { mergeGeometries } from "three/examples/jsm/utils/BufferGeometryUtils.js";
 import type { MapGrid } from "@/lib/replay/mapAsset";
-import { bakeTexture, buildField, makeNormalMap, SUBDIV, themeFor } from "./terrain";
+import { bakeTexture, buildField, CHASM, makeNormalMap, SUBDIV, themeFor } from "./terrain";
 import { buildFeatures, type Features } from "./features3d";
 import { posAt, type Model, type Unit } from "@/lib/replay/timeline";
 import { squadsAt, type CostOf, type Squad } from "@/lib/replay/squads";
@@ -205,7 +205,7 @@ export function mountScene(container: HTMLElement, o: SceneOptions): SceneHandle
   }
   /** A wall down from the terrain's outer edge to the slab, so the map reads as a solid board from any angle. */
   function buildSkirt(): G3 {
-    const { fw, fh, H } = field, R = SUBDIV, floor = -0.15, pos: number[] = [];
+    const { fw, fh, H } = field, R = SUBDIV, floor = -CHASM - 1.2, pos: number[] = [];
     const edge = (pts: [number, number, number][]) => { for (let k = 0; k < pts.length - 1; k++) { const [x0, h0, z0] = pts[k], [x1, h1, z1] = pts[k + 1]; pos.push(x0, h0, z0, x1, h1, z1, x1, floor, z1, x0, h0, z0, x1, floor, z1, x0, floor, z0); } };
     edge(Array.from({ length: fw }, (_, i) => [lx(i / R), H[i], lz(0)] as [number, number, number]));
     edge(Array.from({ length: fw }, (_, i) => [lx(i / R), H[(fh - 1) * fw + i], lz(fh / R - 1 / R)] as [number, number, number]));
@@ -270,8 +270,8 @@ export function mountScene(container: HTMLElement, o: SceneOptions): SceneHandle
   const terr = new THREE.Mesh(buildTerrain(), terrMat);
   terr.receiveShadow = true; terr.castShadow = true; scene.add(terr);
   const skirt = new THREE.Mesh(buildSkirt(), new THREE.MeshLambertMaterial({ color: 0x24201f, side: THREE.DoubleSide })); scene.add(skirt);
-  const slab = new THREE.Mesh(new THREE.BoxGeometry(BW + 0.2, 9, BH + 0.2), new THREE.MeshLambertMaterial({ color: 0x0d0f1a })); slab.position.set(0, -4.6, 0); scene.add(slab);
-  const grid = new THREE.GridHelper(Math.max(BW, BH) * 2.6, 52, 0x232a50, 0x151934); grid.position.y = -9.2; scene.add(grid);
+  const slab = new THREE.Mesh(new THREE.BoxGeometry(BW + 0.2, 9, BH + 0.2), new THREE.MeshLambertMaterial({ color: 0x0d0f1a })); slab.position.set(0, -CHASM - 1.25 - 4.5, 0); scene.add(slab);
+  const grid = new THREE.GridHelper(Math.max(BW, BH) * 2.6, 52, 0x232a50, 0x151934); grid.position.y = -CHASM - 10.7; scene.add(grid);
 
   // minerals and gas
   const dummy = new THREE.Object3D();

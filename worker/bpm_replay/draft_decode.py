@@ -202,7 +202,7 @@ def decode_draft(path: str | Path) -> dict:
         "warnings": warnings,
     }
     if decoded["isBpm"]:
-        decoded["timeline"] = build_timeline(tracker, decoded, "timeline-3", _target_commands(proto, archive))
+        decoded["timeline"] = build_timeline(tracker, decoded, "timeline-4", _target_commands(proto, archive))
     return decoded
 
 

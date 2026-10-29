@@ -18,6 +18,22 @@ const THEMES: Record<string, Theme> = {
   aiur: { lo: [0.16, 0.13, 0.1], mid: [0.4, 0.34, 0.24], hi: [0.72, 0.62, 0.42], rockTop: [0.1, 0.09, 0.11], cliff: [0.36, 0.3, 0.26], grass: [0.34, 0.44, 0.2], tree: [0.2, 0.36, 0.18], stone: [0.74, 0.66, 0.5], building: [0.5, 0.46, 0.5], glow: [0.4, 0.72, 1.0] },
   city: { lo: [0.1, 0.11, 0.14], mid: [0.21, 0.22, 0.26], hi: [0.38, 0.39, 0.45], rockTop: [0.06, 0.06, 0.08], cliff: [0.26, 0.27, 0.31], grass: [0.2, 0.42, 0.2], tree: [0.14, 0.34, 0.18], stone: [0.55, 0.56, 0.6], building: [0.36, 0.4, 0.5], glow: [0.5, 0.75, 1.0] },
 };
+/**
+ * The map's colours: its own palette when the asset has one (read from the minimap in the map file), otherwise a guess from the name of
+ * the tile set. The name says little (an Aiur4City map can be dark teal, a desert-sounding one green), so the palette wins. Grass, trees
+ * and glows are not in the minimap; they lean toward the ground so a green tuft does not sit on blue-grey stone.
+ */
+export function themeOf(M: { tileSet: string; palette?: Record<string, RGB> | null }): Theme {
+  const base = themeFor(M.tileSet), p = M.palette;
+  if (!p) return base;
+  const toward = (a: RGB, b: RGB, k: number): RGB => [a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k, a[2] + (b[2] - a[2]) * k];
+  const greener = (c: RGB): RGB => [c[0] * 0.8, Math.min(1, c[1] * 1.15), c[2] * 0.7];
+  return {
+    ...base, lo: p.lo, mid: p.mid, hi: p.hi, cliff: p.cliff, stone: p.stone, building: p.building, rockTop: p.rockTop,
+    grass: toward(base.grass, greener(p.mid), 0.55), tree: toward(base.tree, greener(p.lo), 0.35),
+  };
+}
+
 export function themeFor(tileSet: string): Theme {
   if (/aiur|protoss|shakuras|talDarim|ulnar/i.test(tileSet)) return THEMES.aiur;
   if (/grass|braxis|jungle|agria|belshir|haven/i.test(tileSet)) return THEMES.green;
@@ -160,7 +176,7 @@ export function bakeTexture(M: MapGrid, f: TerrainField): HTMLCanvasElement {
 
   const cv = document.createElement("canvas"); cv.width = TW; cv.height = TH;
   const g = cv.getContext("2d")!, img = g.createImageData(TW, TH), d = img.data;
-  const theme = themeFor(M.tileSet), { lo, mid, hi, rockTop, cliff } = theme;
+  const theme = themeOf(M), { lo, mid, hi, rockTop, cliff } = theme;
   const toSrgb = (v: number) => Math.round(255 * Math.pow(Math.min(1, Math.max(0, v)), 1 / 2.2));
   for (let py = 0; py < TH; py++) {
     const y = h - (py + 0.5) / px;

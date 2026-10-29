@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import { mergeGeometries } from "three/examples/jsm/utils/BufferGeometryUtils.js";
 import type { MapGrid } from "@/lib/replay/mapAsset";
-import { themeFor, type Theme } from "./terrain";
+import { themeOf, type Theme } from "./terrain";
 
 /**
  * What the map maker placed, drawn with our own simple shapes so the layout is recognisable: tall grass and bushes (vision blockers),
@@ -153,6 +153,8 @@ function thin<T extends { x: number; y: number; scale: number }>(items: T[], min
   return kept;
 }
 
+const GEYSER_COLOR = [new THREE.Color(0x5ee08a), new THREE.Color(0xffb52e)];
+
 function pickVariant(cls: string, n: number, r: number): number {
   const w = WEIGHTS[cls] ?? Array.from({ length: n }, () => 1), total = w.slice(0, n).reduce((a, b) => a + b, 0);
   let acc = 0;
@@ -163,7 +165,7 @@ function pickVariant(cls: string, n: number, r: number): number {
 export interface Features { group: THREE.Group; setVisible(v: boolean): void; counts: Record<string, number>; dispose(): void }
 
 export function buildFeatures(M: MapGrid, heightAt: (x: number, y: number) => number, lx: (x: number) => number, lz: (y: number) => number): Features {
-  const th = themeFor(M.tileSet), group = new THREE.Group(), geos = shapes(th), counts: Record<string, number> = {};
+  const th = themeOf(M), group = new THREE.Group(), geos = shapes(th), counts: Record<string, number> = {};
   const mat = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.9, metalness: 0.02 });
   const glowMat = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.4, emissive: new THREE.Color(th.glow[0], th.glow[1], th.glow[2]), emissiveIntensity: 0.55 });
   const dummy = new THREE.Object3D(), tint = new THREE.Color();
@@ -291,11 +293,12 @@ export function buildFeatures(M: MapGrid, heightAt: (x: number, y: number) => nu
   if (M.gas.length) {
     const geo = merge([cyl([0.16, 0.17, 0.2], 10, 0, 0.35, 0, 3.4, 0.7, 3.4), cyl([0.1, 0.1, 0.12], 10, 0, 0.74, 0, 2.2, 0.12, 2.2)]);
     const base = new THREE.InstancedMesh(geo, new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.7 }), M.gas.length);
-    const glow = new THREE.InstancedMesh(new THREE.CircleGeometry(1.0, 20), new THREE.MeshBasicMaterial({ color: 0x5ee08a, transparent: true, opacity: 0.9 }), M.gas.length);
+    const glow = new THREE.InstancedMesh(new THREE.CircleGeometry(1.0, 20), new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.9 }), M.gas.length);
     M.gas.forEach(([x, y], i) => {
       const h = heightAt(x, y);
       dummy.position.set(lx(x), h, lz(y)); dummy.rotation.set(0, 0, 0); dummy.scale.set(1, 1, 1); dummy.updateMatrix(); base.setMatrixAt(i, dummy.matrix);
       dummy.position.set(lx(x), h + 0.82, lz(y)); dummy.rotation.set(-Math.PI / 2, 0, 0); dummy.updateMatrix(); glow.setMatrixAt(i, dummy.matrix);
+      glow.setColorAt(i, GEYSER_COLOR[M.gasRich[i] ? 1 : 0]);                       // a rich geyser glows gold instead of green
     });
     base.castShadow = true; base.frustumCulled = glow.frustumCulled = false; group.add(base, glow);
     // a rim of stones round every vent and a faint plume above it
@@ -311,8 +314,8 @@ export function buildFeatures(M: MapGrid, heightAt: (x: number, y: number) => nu
       });
       stones.castShadow = true; stones.frustumCulled = false; group.add(stones);
     }
-    const plume = new THREE.InstancedMesh(new THREE.ConeGeometry(0.85, 3.4, 10, 1, true), new THREE.MeshBasicMaterial({ color: 0x5ee08a, transparent: true, opacity: 0.17, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide }), M.gas.length);
-    M.gas.forEach(([x, y], i) => { dummy.position.set(lx(x), heightAt(x, y) + 2.4, lz(y)); dummy.rotation.set(0, 0, 0); dummy.scale.set(1, 1, 1); dummy.updateMatrix(); plume.setMatrixAt(i, dummy.matrix); });
+    const plume = new THREE.InstancedMesh(new THREE.ConeGeometry(0.85, 3.4, 10, 1, true), new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.17, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide }), M.gas.length);
+    M.gas.forEach(([x, y], i) => { dummy.position.set(lx(x), heightAt(x, y) + 2.4, lz(y)); dummy.rotation.set(0, 0, 0); dummy.scale.set(1, 1, 1); dummy.updateMatrix(); plume.setMatrixAt(i, dummy.matrix); plume.setColorAt(i, GEYSER_COLOR[M.gasRich[i] ? 1 : 0]); });
     plume.frustumCulled = false; group.add(plume);
     counts.gas = M.gas.length;
   }

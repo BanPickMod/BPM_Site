@@ -298,6 +298,22 @@ export function buildFeatures(M: MapGrid, heightAt: (x: number, y: number) => nu
       dummy.position.set(lx(x), h + 0.82, lz(y)); dummy.rotation.set(-Math.PI / 2, 0, 0); dummy.updateMatrix(); glow.setMatrixAt(i, dummy.matrix);
     });
     base.castShadow = true; base.frustumCulled = glow.frustumCulled = false; group.add(base, glow);
+    // a rim of stones round every vent and a faint plume above it
+    const rim = geos.pebble?.[0];
+    if (rim) {
+      const stones = new THREE.InstancedMesh(rim, mat, M.gas.length * 8);
+      M.gas.forEach(([x, y], i) => {
+        for (let k = 0; k < 8; k++) {
+          const a = (k / 8) * Math.PI * 2 + hash(x, y + k) * 0.5, r = 1.75 + hash(y + k, x) * 0.3, px = x + Math.cos(a) * r, py = y + Math.sin(a) * r, sz = 0.9 + hash(px, py) * 0.8;
+          dummy.position.set(lx(px), heightAt(px, py) - 0.05, lz(py)); dummy.rotation.set(0, a * 3, 0); dummy.scale.setScalar(sz); dummy.updateMatrix(); stones.setMatrixAt(i * 8 + k, dummy.matrix);
+          tint.setRGB(0.6, 0.62, 0.58); stones.setColorAt(i * 8 + k, tint);
+        }
+      });
+      stones.castShadow = true; stones.frustumCulled = false; group.add(stones);
+    }
+    const plume = new THREE.InstancedMesh(new THREE.ConeGeometry(0.85, 3.4, 10, 1, true), new THREE.MeshBasicMaterial({ color: 0x5ee08a, transparent: true, opacity: 0.17, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide }), M.gas.length);
+    M.gas.forEach(([x, y], i) => { dummy.position.set(lx(x), heightAt(x, y) + 2.4, lz(y)); dummy.rotation.set(0, 0, 0); dummy.scale.set(1, 1, 1); dummy.updateMatrix(); plume.setMatrixAt(i, dummy.matrix); });
+    plume.frustumCulled = false; group.add(plume);
     counts.gas = M.gas.length;
   }
 

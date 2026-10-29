@@ -7,7 +7,7 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { mergeGeometries } from "three/examples/jsm/utils/BufferGeometryUtils.js";
 import type { MapGrid } from "@/lib/replay/mapAsset";
-import { bakeTexture, buildField, makeNormalMap, SUBDIV } from "./terrain";
+import { bakeTexture, buildField, makeNormalMap, SUBDIV, themeFor } from "./terrain";
 import { buildFeatures, type Features } from "./features3d";
 import { posAt, type Model, type Unit } from "@/lib/replay/timeline";
 import { squadsAt, type CostOf, type Squad } from "@/lib/replay/squads";
@@ -85,26 +85,31 @@ const box = (...a: P) => T(new THREE.BoxGeometry(1, 1, 1), ...a), cyl = (...a: P
 const GEO_SRC: Record<"building" | "unit", Record<Race, Record<string, G3[]>>> = {
   building: {
     terran: {
-      hall: [box(0, 0.7, 0, 4.6, 1.4, 4.6), box(0, 1.9, 0, 3, 1, 3), cyl(0, 2.9, 0, 1.4, 1.4, 1.4), box(2.6, 0.5, 0, 0.9, 1, 3)],
+      // a command centre: a landing pad, an eight-sided hull, a command dome, an antenna, legs and a side module
+      hall: [box(0, 0.3, 0, 5.2, 0.6, 5.2), box(0, 1.2, 0, 3.8, 1.2, 3.8), box(0, 1.2, 0, 3.8, 1.2, 3.8, 0, 0.785, 0), box(0, 2.05, 0, 3.0, 0.5, 3.0, 0, 0.39, 0), cyl(0, 2.6, 0, 2.6, 0.7, 2.6), sph(0, 3.0, 0, 1.9, 1.5, 1.9),
+        box(2.9, 0.8, 0, 1.0, 1.2, 2.6), cyl(-1.9, 2.3, -1.9, 0.5, 1.8, 0.5), cyl(-1.9, 3.5, -1.9, 0.14, 1.6, 0.14), box(1.9, 0.5, 1.9, 0.7, 1.0, 0.7), box(1.9, 0.5, -1.9, 0.7, 1.0, 0.7), box(-1.9, 0.5, 1.9, 0.7, 1.0, 0.7), box(-1.9, 0.5, -1.9, 0.7, 1.0, 0.7)],
       rax: [box(0, 0.8, 0, 3, 1.6, 3), box(1.9, 0.5, 0.6, 0.9, 1, 1.4), box(0, 1.8, 0, 1.6, 0.4, 1.6)],
       factory: [box(0, 0.8, 0, 3, 1.6, 3), cyl(-0.8, 2.3, -0.8, 0.6, 1.6, 0.6), box(1.9, 0.5, 0.6, 0.9, 1, 1.4)],
       starport: [box(0, 0.7, 0, 3, 1.4, 3), cyl(0, 1.5, 0, 2.4, 0.15, 2.4), box(0, 2.0, 0, 0.5, 0.9, 0.5)],
       depot: [box(0, 0.35, 0, 1.8, 0.7, 1.8), box(0, 0.8, 0, 1.2, 0.2, 1.2)],
-      refinery: [cyl(0, 0.5, 0, 2, 1, 2), cyl(0, 1.2, 0, 0.9, 1.2, 0.9), sph(0.9, 0.8, 0.9, 0.7, 0.7, 0.7)],
+      refinery: [cyl(0, 0.3, 0, 2.6, 0.6, 2.6), cyl(-0.6, 1.3, 0, 1.0, 1.6, 1.0), cyl(0.7, 1.1, 0.2, 0.9, 1.2, 0.9), sph(-0.6, 2.1, 0, 1.0, 0.5, 1.0), box(0, 0.7, 0.95, 0.22, 0.22, 1.4), cyl(0.2, 1.9, -0.9, 0.2, 1.6, 0.2)],
       tech: [box(0, 0.7, 0, 2.4, 1.4, 2.4), cyl(0, 2, 0, 1.8, 0.12, 1.8), cyl(0, 1.5, 0, 0.15, 1.2, 0.15)],
       small: [box(0, 0.5, 0, 1.8, 1, 1.8), box(0, 1.15, 0, 1, 0.3, 1)],
     },
     zerg: {
-      hatch: [sph(0, 0.4, 0, 6, 3.6, 6), cone(-2.2, 2.2, 1, 0.8, 2.6, 0.8), cone(2, 2.4, -1.2, 0.9, 3, 0.9), cone(0.4, 2.8, 2.2, 0.7, 2.2, 0.7), cone(-0.5, 2.6, -2.4, 0.8, 2.6, 0.8)],
+      hatch: [sph(0, 0.4, 0, 6, 3.6, 6), cone(-2.2, 2.2, 1, 0.8, 2.6, 0.8), cone(2, 2.4, -1.2, 0.9, 3, 0.9), cone(0.4, 2.8, 2.2, 0.7, 2.2, 0.7), cone(-0.5, 2.6, -2.4, 0.8, 2.6, 0.8),
+        sph(0, 2.0, 0, 2.6, 0.7, 2.6), cone(-3.2, 1.0, -0.8, 0.8, 2.0, 0.8, 0, 0, 0.9), cone(3.1, 1.1, 1.0, 0.8, 2.2, 0.8, 0, 0, -0.9), cone(0.8, 1.0, -3.2, 0.8, 2.0, 0.8, -0.9, 0, 0), cone(-1.0, 1.0, 3.2, 0.8, 2.0, 0.8, 0.9, 0, 0), sph(2.2, 0.5, -2.8, 1.4, 0.9, 1.4), sph(-2.6, 0.5, 2.2, 1.2, 0.8, 1.2)],
       pool: [sph(0, 0.3, 0, 3.4, 2.2, 3.4), cone(1.2, 1.6, 0.4, 0.6, 1.6, 0.6), cone(-1, 1.5, -0.6, 0.6, 1.4, 0.6), box(0, 0.2, 1.6, 1, 0.4, 1)],
       tower: [sph(0, 0.3, 0, 1.8, 1, 1.8), cone(0, 1.8, 0, 1.1, 3, 1.1)],
       extractor: [sph(0, 0.3, 0, 2.2, 1.2, 2.2), cyl(0, 1.2, 0, 0.8, 1.2, 0.8), sph(0, 1.9, 0, 1, 0.7, 1)],
       small: [sph(0, 0.2, 0, 2, 1.2, 2), cone(0, 1.1, 0, 0.5, 1, 0.5)],
     },
     protoss: {
-      nexus: [cyl(0, 0.5, 0, 5, 1, 5), cyl(0, 1.3, 0, 3.4, 0.7, 3.4), oct(0, 3, 0, 2.2, 4, 2.2)],
+      // a nexus: a wide plinth, a glowing ring, a crystal spire with a second crystal floating above it, and six small pylons round it
+      nexus: [cyl(0, 0.4, 0, 5.4, 0.8, 5.4), cyl(0, 1.0, 0, 4.2, 0.5, 4.2), cyl(0, 1.5, 0, 3.0, 0.4, 3.0), oct(0, 3.4, 0, 2.0, 4.6, 2.0), oct(0, 6.4, 0, 0.8, 1.3, 0.8),
+        ...Array.from({ length: 6 }, (_, i) => oct(Math.cos((i / 6) * 6.283) * 2.35, 1.3, Math.sin((i / 6) * 6.283) * 2.35, 0.5, 1.6, 0.5))],
       gate: [box(1.2, 0.9, 0, 0.8, 1.8, 2.4), box(-1.2, 0.9, 0, 0.8, 1.8, 2.4), box(0, 1.9, 0, 3.2, 0.5, 2.6), oct(0, 1, 0, 0.6, 1, 0.6)],
-      pylon: [cyl(0, 0.3, 0, 1.8, 0.6, 1.8), oct(0, 1.9, 0, 1.3, 2.8, 1.3)],
+      pylon: [cyl(0, 0.3, 0, 1.8, 0.6, 1.8), cyl(0, 0.7, 0, 1.3, 0.3, 1.3), oct(0, 2.2, 0, 1.3, 2.9, 1.3), oct(0.9, 1.6, 0.2, 0.35, 0.8, 0.35), oct(-0.8, 1.9, -0.3, 0.3, 0.7, 0.3)],
       tech: [cyl(0, 0.5, 0, 3, 1, 3), cyl(0, 1.4, 0, 2.4, 0.2, 2.4), oct(0, 2.3, 0, 1, 1.4, 1)],
       small: [cyl(0, 0.35, 0, 1.8, 0.7, 1.8), oct(0, 1.3, 0, 1, 1.6, 1)],
     },
@@ -164,7 +169,7 @@ export function mountScene(container: HTMLElement, o: SceneOptions): SceneHandle
   const { model, map: M, clock } = o;
   const BW = M.w, BH = M.h, k = Math.max(BW, BH) / 140;       // camera and shadow sizes were tuned on a 140-cell map
   const span = Math.max(1, M.hMax - M.hMin);
-  const relief = RELIEF * Math.min(1.5, Math.max(0.35, span / 32));   // flat maps are not stretched into mountains
+  const relief = RELIEF * Math.min(1.2, Math.max(0.35, span / 32));   // flat maps are not stretched into mountains
 
   // ---------- terrain: smooth height field, baked colour texture, skirt ----------
   const field = buildField(M, relief);
@@ -239,7 +244,30 @@ export function mountScene(container: HTMLElement, o: SceneOptions): SceneHandle
   bakedTex.colorSpace = THREE.SRGBColorSpace; bakedTex.anisotropy = aniso; bakedTex.wrapS = bakedTex.wrapT = THREE.ClampToEdgeWrapping;
   const grain = new THREE.CanvasTexture(makeNormalMap());
   grain.wrapS = grain.wrapT = THREE.RepeatWrapping; grain.repeat.set(BW / 5, BH / 5); grain.anisotropy = aniso;
-  const terr = new THREE.Mesh(buildTerrain(), new THREE.MeshStandardMaterial({ map: bakedTex, normalMap: grain, normalScale: new THREE.Vector2(0.7, 0.7), roughness: 0.94, metalness: 0 }));
+  const terrMat = new THREE.MeshStandardMaterial({ map: bakedTex, normalMap: grain, normalScale: new THREE.Vector2(0.7, 0.7), roughness: 0.94, metalness: 0 });
+  // The colour map looks straight down, so on a steep face it is stretched into vertical streaks. Faces that are steep are repainted
+  // with bands that run along the height, wobbling across the face, with chipped patches: layered rock.
+  const cliffTone = themeFor(M.tileSet).cliff, cliffColor = new THREE.Color(cliffTone[0], cliffTone[1], cliffTone[2]).convertSRGBToLinear();
+  terrMat.onBeforeCompile = (sh) => {
+    sh.uniforms.uCliff = { value: cliffColor };
+    sh.vertexShader = sh.vertexShader.replace("#include <common>", "#include <common>\nvarying vec3 vTerrPos;").replace("#include <begin_vertex>", "#include <begin_vertex>\nvTerrPos = position;");
+    sh.fragmentShader = sh.fragmentShader.replace("#include <common>", `#include <common>
+      varying vec3 vTerrPos;
+      uniform vec3 uCliff;
+      float th(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
+      float tn(vec2 p) { vec2 i = floor(p), f = fract(p); f = f * f * (3.0 - 2.0 * f); return mix(mix(th(i), th(i + vec2(1.0, 0.0)), f.x), mix(th(i + vec2(0.0, 1.0)), th(i + vec2(1.0, 1.0)), f.x), f.y); }`)
+      .replace("#include <map_fragment>", `#include <map_fragment>
+      {
+        vec3 fn = normalize(cross(dFdx(vTerrPos), dFdy(vTerrPos)));
+        float steep = smoothstep(0.34, 0.74, 1.0 - abs(fn.y));
+        float along = vTerrPos.x * 0.7 + vTerrPos.z * 0.7;
+        float strata = tn(vec2(vTerrPos.y * 2.4, along * 0.12)) * 0.55 + tn(vec2(vTerrPos.y * 8.5, along * 0.5)) * 0.45;
+        float chip = tn(vec2(along * 1.6, vTerrPos.y * 1.3));
+        vec3 rock = uCliff * (0.55 + 0.7 * strata) * (0.86 + 0.28 * chip);
+        diffuseColor.rgb = mix(diffuseColor.rgb, rock, steep * 0.8);
+      }`);
+  };
+  const terr = new THREE.Mesh(buildTerrain(), terrMat);
   terr.receiveShadow = true; terr.castShadow = true; scene.add(terr);
   const skirt = new THREE.Mesh(buildSkirt(), new THREE.MeshLambertMaterial({ color: 0x24201f, side: THREE.DoubleSide })); scene.add(skirt);
   const slab = new THREE.Mesh(new THREE.BoxGeometry(BW + 0.2, 9, BH + 0.2), new THREE.MeshLambertMaterial({ color: 0x0d0f1a })); slab.position.set(0, -4.6, 0); scene.add(slab);
@@ -247,9 +275,9 @@ export function mountScene(container: HTMLElement, o: SceneOptions): SceneHandle
 
   // minerals and gas
   const dummy = new THREE.Object3D();
-  const crystal = new THREE.InstancedMesh(new THREE.OctahedronGeometry(0.62), new THREE.MeshStandardMaterial({ color: 0x4aa8ff, emissive: 0x1760d0, emissiveIntensity: 0.9, roughness: 0.35, metalness: 0.1 }), Math.max(1, M.res.length));
+  const crystal = new THREE.InstancedMesh(mergeGeometries([oct(0, 0.75, 0, 0.95, 2.0, 0.95), oct(0.6, 0.5, 0.25, 0.65, 1.4, 0.65, 0, 0, -0.28), oct(-0.5, 0.42, -0.3, 0.6, 1.15, 0.6, 0, 0, 0.32)])!, new THREE.MeshStandardMaterial({ color: 0x4aa8ff, emissive: 0x1760d0, emissiveIntensity: 0.9, roughness: 0.35, metalness: 0.1 }), Math.max(1, M.res.length));
   crystal.count = M.res.length;
-  M.res.forEach(([x, y], i) => { dummy.position.set(lx(x), gAt(x, y) + 0.9, lz(y)); dummy.scale.set(0.9, 1.8, 0.9); dummy.rotation.y = hash(x, y) * 6; dummy.updateMatrix(); crystal.setMatrixAt(i, dummy.matrix); });
+  M.res.forEach(([x, y], i) => { dummy.position.set(lx(x), gAt(x, y), lz(y)); dummy.scale.setScalar(0.85 + hash(y, x) * 0.4); dummy.rotation.y = hash(x, y) * 6; dummy.updateMatrix(); crystal.setMatrixAt(i, dummy.matrix); });
   crystal.castShadow = true; scene.add(crystal);
 
   // what the map maker placed: grass, trees, rocks, ruins, buildings, destructibles, towers, geysers

@@ -88,10 +88,24 @@ const GEO_SRC: Record<"building" | "unit", Record<Race, Record<string, G3[]>>> =
       // a command centre: a landing pad, an eight-sided hull, a command dome, an antenna, legs and a side module
       hall: [box(0, 0.3, 0, 5.2, 0.6, 5.2), box(0, 1.2, 0, 3.8, 1.2, 3.8), box(0, 1.2, 0, 3.8, 1.2, 3.8, 0, 0.785, 0), box(0, 2.05, 0, 3.0, 0.5, 3.0, 0, 0.39, 0), cyl(0, 2.6, 0, 2.6, 0.7, 2.6), sph(0, 3.0, 0, 1.9, 1.5, 1.9),
         box(2.9, 0.8, 0, 1.0, 1.2, 2.6), cyl(-1.9, 2.3, -1.9, 0.5, 1.8, 0.5), cyl(-1.9, 3.5, -1.9, 0.14, 1.6, 0.14), box(1.9, 0.5, 1.9, 0.7, 1.0, 0.7), box(1.9, 0.5, -1.9, 0.7, 1.0, 0.7), box(-1.9, 0.5, 1.9, 0.7, 1.0, 0.7), box(-1.9, 0.5, -1.9, 0.7, 1.0, 0.7)],
-      rax: [box(0, 0.8, 0, 3, 1.6, 3), box(1.9, 0.5, 0.6, 0.9, 1, 1.4), box(0, 1.8, 0, 1.6, 0.4, 1.6)],
-      factory: [box(0, 0.8, 0, 3, 1.6, 3), cyl(-0.8, 2.3, -0.8, 0.6, 1.6, 0.6), box(1.9, 0.5, 0.6, 0.9, 1, 1.4)],
-      starport: [box(0, 0.7, 0, 3, 1.4, 3), cyl(0, 1.5, 0, 2.4, 0.15, 2.4), box(0, 2.0, 0, 0.5, 0.9, 0.5)],
-      depot: [box(0, 0.35, 0, 1.8, 0.7, 1.8), box(0, 0.8, 0, 1.2, 0.2, 1.2)],
+      // barracks: a plinth, a hull with a roof lip, a door, a chimney and a vent, and the socket an add-on fits into
+      rax: [box(0, 0.35, 0, 3.2, 0.7, 3.2), box(0, 1.2, 0, 2.8, 1.1, 2.8), box(0, 1.9, 0, 3.0, 0.28, 3.0), box(0, 0.95, 1.43, 1.1, 1.2, 0.12), cyl(-0.9, 2.5, -0.7, 0.5, 1.0, 0.5), cyl(0.5, 2.3, 0.6, 0.7, 0.5, 0.7), box(1.8, 0.4, 0.2, 0.7, 0.8, 1.8)],
+      // factory: wider and heavier, a big door, two stacks and a gantry over the roof
+      factory: [box(0, 0.35, 0, 3.2, 0.7, 3.2), box(0, 1.15, 0, 3.0, 1.0, 2.8), box(0, 1.9, 0, 3.2, 0.3, 3.0), box(0, 0.85, 1.43, 1.8, 1.1, 0.12), cyl(-0.9, 2.8, -0.8, 0.55, 1.6, 0.55), cyl(-0.9, 3.7, -0.8, 0.8, 0.18, 0.8), cyl(0.2, 2.7, -0.8, 0.45, 1.4, 0.45), box(1.5, 2.3, 0.4, 0.2, 0.2, 2.2), box(1.9, 0.4, 0.2, 0.7, 0.8, 1.8)],
+      // starport: a landing pad on the roof, a control tower and a mast
+      starport: [box(0, 0.35, 0, 3.2, 0.7, 3.2), box(0, 1.1, 0, 2.6, 0.9, 2.6), cyl(0, 1.7, 0, 3.0, 0.18, 3.0), cyl(0, 1.82, 0, 2.0, 0.08, 2.0), box(1.1, 2.5, -1.0, 0.7, 1.6, 0.7), box(1.1, 3.4, -1.0, 1.0, 0.3, 1.0), cyl(-1.0, 2.2, -1.0, 0.2, 1.2, 0.2), box(1.9, 0.4, 0.2, 0.7, 0.8, 1.8)],
+      // supply depot: a ribbed lid on a base
+      depot: [box(0, 0.3, 0, 1.9, 0.6, 1.9), box(0, 0.75, 0, 1.5, 0.3, 1.5), box(0, 0.98, 0, 1.1, 0.12, 1.1), box(0, 0.98, 0, 0.12, 0.2, 1.7), box(0, 0.98, 0, 1.7, 0.2, 0.12)],
+      turret: [cyl(0, 0.35, 0, 1.3, 0.7, 1.3), cyl(0, 1.0, 0, 0.7, 0.7, 0.7), sph(0, 1.6, 0, 0.9, 0.7, 0.9), box(0.4, 1.7, 0.4, 0.22, 0.22, 1.2), box(-0.4, 1.7, 0.4, 0.22, 0.22, 1.2), box(0, 1.5, -0.4, 0.5, 0.4, 0.5)],
+      bunker: [box(0, 0.4, 0, 2.8, 0.8, 2.8), box(0, 1.0, 0, 2.4, 0.5, 2.4), box(0, 1.4, 0, 2.0, 0.2, 2.0), box(0, 0.8, 1.45, 1.0, 0.18, 0.1), box(0, 0.8, -1.45, 1.0, 0.18, 0.1), box(1.45, 0.8, 0, 0.1, 0.18, 1.0)],
+      eng: [box(0, 0.5, 0, 2.6, 1.0, 2.6), box(0, 1.15, 0, 2.9, 0.3, 2.9), sph(0, 1.7, 0, 1.8, 1.2, 1.8), cyl(1.0, 2.3, 1.0, 0.1, 1.2, 0.1)],
+      armory: [box(0, 0.6, 0, 3.0, 1.2, 2.4), box(0, 1.35, 0, 3.2, 0.3, 2.6), box(0, 1.85, 0, 0.4, 0.8, 2.0), cyl(-1.0, 2.0, 0.4, 0.5, 1.4, 0.5), box(-0.2, 2.7, 0.4, 1.8, 0.2, 0.2)],
+      fusion: [cyl(0, 0.35, 0, 3.0, 0.7, 3.0), cyl(0, 1.4, 0, 2.0, 1.4, 2.0), cyl(0, 2.3, 0, 2.4, 0.2, 2.4), sph(0, 2.8, 0, 1.2, 1.0, 1.2), cyl(1.3, 0.9, 0, 0.3, 1.4, 0.3), cyl(-1.3, 0.9, 0, 0.3, 1.4, 0.3)],
+      sensor: [box(0, 0.3, 0, 1.6, 0.6, 1.6), cyl(0, 1.9, 0, 0.35, 3.2, 0.35), cyl(0, 3.55, 0, 2.2, 0.12, 2.2, 0.4, 0, 0.2), cone(0, 3.95, 0, 0.3, 0.6, 0.3)],
+      ghost: [box(0, 0.8, 0, 2.4, 1.6, 2.4), box(0, 1.7, 0, 2.7, 0.25, 2.7), cone(0, 2.6, 0, 1.0, 1.6, 1.0), cyl(0.9, 2.2, -0.9, 0.2, 1.0, 0.2)],
+      reactor: [box(0, 0.3, 0, 1.6, 0.6, 1.6), cyl(-0.4, 1.0, 0, 0.6, 1.2, 0.6), cyl(0.4, 1.0, 0, 0.6, 1.2, 0.6), sph(-0.4, 1.7, 0, 0.5, 0.4, 0.5), sph(0.4, 1.7, 0, 0.5, 0.4, 0.5)],
+      techlab: [box(0, 0.5, 0, 1.7, 1.0, 1.7), box(0, 1.15, 0, 1.1, 0.3, 1.1), cyl(0.5, 1.7, 0.5, 0.15, 1.0, 0.15), box(-0.4, 1.3, 0.7, 0.5, 0.5, 0.1)],
+      fortress: [cyl(0, 0.4, 0, 5.0, 0.8, 5.0), cyl(0, 1.4, 0, 3.8, 1.2, 3.8), cyl(0, 2.3, 0, 3.0, 0.6, 3.0), sph(0, 2.9, 0, 2.2, 1.4, 2.2), box(1.5, 3.1, 0, 0.4, 0.4, 1.8), box(-1.5, 3.1, 0, 0.4, 0.4, 1.8), box(2.3, 0.7, 2.3, 0.8, 1.2, 0.8), box(-2.3, 0.7, 2.3, 0.8, 1.2, 0.8), box(2.3, 0.7, -2.3, 0.8, 1.2, 0.8), box(-2.3, 0.7, -2.3, 0.8, 1.2, 0.8)],
       refinery: [cyl(0, 0.3, 0, 2.6, 0.6, 2.6), cyl(-0.6, 1.3, 0, 1.0, 1.6, 1.0), cyl(0.7, 1.1, 0.2, 0.9, 1.2, 0.9), sph(-0.6, 2.1, 0, 1.0, 0.5, 1.0), box(0, 0.7, 0.95, 0.22, 0.22, 1.4), cyl(0.2, 1.9, -0.9, 0.2, 1.6, 0.2)],
       tech: [box(0, 0.7, 0, 2.4, 1.4, 2.4), cyl(0, 2, 0, 1.8, 0.12, 1.8), cyl(0, 1.5, 0, 0.15, 1.2, 0.15)],
       small: [box(0, 0.5, 0, 1.8, 1, 1.8), box(0, 1.15, 0, 1, 0.3, 1)],
@@ -101,6 +115,12 @@ const GEO_SRC: Record<"building" | "unit", Record<Race, Record<string, G3[]>>> =
         sph(0, 2.0, 0, 2.6, 0.7, 2.6), cone(-3.2, 1.0, -0.8, 0.8, 2.0, 0.8, 0, 0, 0.9), cone(3.1, 1.1, 1.0, 0.8, 2.2, 0.8, 0, 0, -0.9), cone(0.8, 1.0, -3.2, 0.8, 2.0, 0.8, -0.9, 0, 0), cone(-1.0, 1.0, 3.2, 0.8, 2.0, 0.8, 0.9, 0, 0), sph(2.2, 0.5, -2.8, 1.4, 0.9, 1.4), sph(-2.6, 0.5, 2.2, 1.2, 0.8, 1.2)],
       pool: [sph(0, 0.3, 0, 3.4, 2.2, 3.4), cone(1.2, 1.6, 0.4, 0.6, 1.6, 0.6), cone(-1, 1.5, -0.6, 0.6, 1.4, 0.6), box(0, 0.2, 1.6, 1, 0.4, 1)],
       tower: [sph(0, 0.3, 0, 1.8, 1, 1.8), cone(0, 1.8, 0, 1.1, 3, 1.1)],
+      spine: [sph(0, 0.3, 0, 2.0, 0.8, 2.0), cone(0, 1.6, 0, 0.9, 3.2, 0.9), cone(0.6, 0.9, 0, 0.4, 1.4, 0.4, 0, 0, -0.5), cone(-0.6, 0.9, 0, 0.4, 1.4, 0.4, 0, 0, 0.5), cone(0, 0.9, 0.6, 0.4, 1.4, 0.4, 0.5, 0, 0)],
+      spore: [sph(0, 0.3, 0, 2.0, 0.8, 2.0), cyl(0, 1.0, 0, 0.7, 1.4, 0.7), sph(0, 2.0, 0, 1.4, 1.4, 1.4), cone(0.5, 2.6, 0, 0.3, 0.6, 0.3)],
+      den: [sph(0, 0.5, 0, 3.0, 2.6, 3.0), sph(0, 1.6, 0, 1.8, 1.2, 1.8), cone(1.1, 1.2, 1.0, 0.5, 1.4, 0.5, 0, 0, -0.4), cone(-1.1, 1.2, -1.0, 0.5, 1.4, 0.5, 0, 0, 0.4), cone(0, 2.3, 0, 0.6, 1.2, 0.6)],
+      spire: [sph(0, 0.3, 0, 3.0, 1.0, 3.0), cone(0, 1.8, 0, 2.2, 3.4, 2.2), cone(0.9, 1.2, 0.6, 0.7, 2.0, 0.7, 0, 0, -0.2), cone(-0.8, 1.0, -0.6, 0.7, 1.8, 0.7, 0, 0, 0.2)],
+      evo: [sph(0, 0.4, 0, 2.8, 1.4, 2.8), cone(0.9, 1.2, 0.3, 0.7, 1.3, 0.7), cone(-0.9, 1.1, -0.3, 0.6, 1.1, 0.6), sph(0, 1.3, 0, 1.0, 0.8, 1.0)],
+      nydus: [sph(0, 0.3, 0, 3.2, 1.0, 3.2), cyl(0, 1.0, 0, 1.8, 1.4, 1.8), sph(0, 1.8, 0, 1.4, 0.5, 1.4)],
       extractor: [sph(0, 0.3, 0, 2.2, 1.2, 2.2), cyl(0, 1.2, 0, 0.8, 1.2, 0.8), sph(0, 1.9, 0, 1, 0.7, 1)],
       small: [sph(0, 0.2, 0, 2, 1.2, 2), cone(0, 1.1, 0, 0.5, 1, 0.5)],
     },
@@ -108,7 +128,17 @@ const GEO_SRC: Record<"building" | "unit", Record<Race, Record<string, G3[]>>> =
       // a nexus: a wide plinth, a glowing ring, a crystal spire with a second crystal floating above it, and six small pylons round it
       nexus: [cyl(0, 0.4, 0, 5.4, 0.8, 5.4), cyl(0, 1.0, 0, 4.2, 0.5, 4.2), cyl(0, 1.5, 0, 3.0, 0.4, 3.0), oct(0, 3.4, 0, 2.0, 4.6, 2.0), oct(0, 6.4, 0, 0.8, 1.3, 0.8),
         ...Array.from({ length: 6 }, (_, i) => oct(Math.cos((i / 6) * 6.283) * 2.35, 1.3, Math.sin((i / 6) * 6.283) * 2.35, 0.5, 1.6, 0.5))],
-      gate: [box(1.2, 0.9, 0, 0.8, 1.8, 2.4), box(-1.2, 0.9, 0, 0.8, 1.8, 2.4), box(0, 1.9, 0, 3.2, 0.5, 2.6), oct(0, 1, 0, 0.6, 1, 0.6)],
+      // a gateway: two pillars under a lintel round a glowing crystal
+      gate: [cyl(0, 0.2, 0, 3.6, 0.4, 3.2), box(1.3, 1.1, 0, 0.8, 1.8, 2.4), box(-1.3, 1.1, 0, 0.8, 1.8, 2.4), box(0, 2.15, 0, 3.4, 0.5, 2.6), oct(0, 1.1, 0, 0.6, 1.2, 0.6)],
+      stargate: [cyl(0, 0.4, 0, 4.0, 0.8, 4.0), cyl(0, 1.35, 0, 3.0, 0.2, 3.0), cyl(0, 1.6, 0, 3.4, 0.25, 3.4), oct(0, 2.3, 0, 1.0, 2.0, 1.0), box(1.6, 0.9, 0, 0.5, 1.8, 1.0), box(-1.6, 0.9, 0, 0.5, 1.8, 1.0)],
+      robo: [box(0, 0.5, 0, 3.2, 1.0, 3.0), sph(0, 1.7, 0, 2.2, 1.4, 2.2), oct(0, 2.7, 0, 0.6, 1.0, 0.6), box(1.7, 0.6, 0, 0.5, 1.2, 2.0), box(-1.7, 0.6, 0, 0.5, 1.2, 2.0)],
+      cannon: [cyl(0, 0.3, 0, 1.6, 0.6, 1.6), cyl(0, 0.9, 0, 0.9, 0.6, 0.9), oct(0, 1.9, 0, 0.9, 1.8, 0.9), oct(0.7, 1.4, 0.2, 0.3, 0.8, 0.3)],
+      battery: [cyl(0, 0.3, 0, 1.8, 0.6, 1.8), cyl(0, 0.95, 0, 1.0, 0.7, 1.0), sph(0, 1.6, 0, 1.1, 0.9, 1.1), oct(0.8, 1.1, 0, 0.3, 0.7, 0.3), oct(-0.8, 1.1, 0, 0.3, 0.7, 0.3)],
+      assimilator: [cyl(0, 0.4, 0, 2.6, 0.8, 2.6), cyl(0, 1.0, 0, 1.8, 0.5, 1.8), sph(0, 1.7, 0, 1.3, 1.1, 1.3), oct(0, 2.5, 0, 0.5, 0.9, 0.5), oct(1.0, 1.0, 0.6, 0.3, 0.7, 0.3)],
+      cyber: [cyl(0, 0.4, 0, 3.0, 0.8, 3.0), box(0, 1.4, 0, 2.0, 1.2, 2.0), oct(0, 2.6, 0, 1.1, 1.6, 1.1), box(1.2, 1.0, 0, 0.35, 1.6, 0.35)],
+      forge: [box(0, 0.5, 0, 2.8, 1.0, 2.4), box(0, 1.2, 0, 1.8, 0.5, 1.4), cone(0, 2.0, 0, 1.2, 1.2, 1.2), box(1.3, 0.7, 0.9, 0.3, 1.0, 0.3)],
+      twilight: [cyl(0, 0.4, 0, 3.0, 0.8, 3.0), oct(-0.7, 2.0, 0, 0.8, 3.0, 0.8), oct(0.7, 1.8, 0.2, 0.7, 2.6, 0.7), oct(0, 1.6, -0.7, 0.6, 2.2, 0.6)],
+      templar: [cyl(0, 0.4, 0, 3.0, 0.8, 3.0), oct(0, 2.8, 0, 1.4, 4.4, 1.4), oct(1.2, 1.3, 0.4, 0.5, 1.6, 0.5), oct(-1.1, 1.4, -0.4, 0.5, 1.8, 0.5)],
       pylon: [cyl(0, 0.3, 0, 1.8, 0.6, 1.8), cyl(0, 0.7, 0, 1.3, 0.3, 1.3), oct(0, 2.2, 0, 1.3, 2.9, 1.3), oct(0.9, 1.6, 0.2, 0.35, 0.8, 0.35), oct(-0.8, 1.9, -0.3, 0.3, 0.7, 0.3)],
       tech: [cyl(0, 0.5, 0, 3, 1, 3), cyl(0, 1.4, 0, 2.4, 0.2, 2.4), oct(0, 2.3, 0, 1, 1.4, 1)],
       small: [cyl(0, 0.35, 0, 1.8, 0.7, 1.8), oct(0, 1.3, 0, 1, 1.6, 1)],
@@ -144,9 +174,11 @@ const GEO_SRC: Record<"building" | "unit", Record<Race, Record<string, G3[]>>> =
   },
 };
 const BARCH: Record<Race, [RegExp, string][]> = {
-  terran: [[/techlab|reactor/i, "small"], [/commandcenter|orbital|planetary/i, "hall"], [/barracks/i, "rax"], [/factory/i, "factory"], [/starport/i, "starport"], [/depot/i, "depot"], [/refinery/i, "refinery"], [/engineering|armory|fusion|ghostacademy|sensor/i, "tech"]],
-  zerg: [[/hatchery|^lair|^hive/i, "hatch"], [/spawningpool|roachwarren|hydraliskden|spire|evolution|infestation|banelingnest|ultralisk|nydus/i, "pool"], [/spore|spine/i, "tower"], [/extractor/i, "extractor"]],
-  protoss: [[/nexus/i, "nexus"], [/gateway|warpgate|stargate|robotics/i, "gate"], [/pylon/i, "pylon"], [/cyber|twilight|templar|dark|fleet|forge/i, "tech"]],
+  terran: [[/techlab/i, "techlab"], [/reactor/i, "reactor"], [/planetary/i, "fortress"], [/commandcenter|orbital/i, "hall"], [/barracks/i, "rax"], [/factory/i, "factory"], [/starport/i, "starport"], [/depot/i, "depot"], [/refinery/i, "refinery"],
+    [/missileturret|autoturret|turret/i, "turret"], [/bunker/i, "bunker"], [/engineering/i, "eng"], [/armory/i, "armory"], [/fusion/i, "fusion"], [/sensor/i, "sensor"], [/ghostacademy/i, "ghost"]],
+  zerg: [[/hatchery|^lair|^hive/i, "hatch"], [/spawningpool|roachwarren/i, "pool"], [/hydraliskden|banelingnest|infestation|lurkerden/i, "den"], [/spire|ultralisk/i, "spire"], [/evolution/i, "evo"], [/spine/i, "spine"], [/spore/i, "spore"], [/nydus/i, "nydus"], [/extractor/i, "extractor"]],
+  protoss: [[/nexus/i, "nexus"], [/gateway|warpgate/i, "gate"], [/stargate/i, "stargate"], [/roboticsbay/i, "tech"], [/robotics/i, "robo"], [/photoncannon/i, "cannon"], [/shieldbattery/i, "battery"], [/assimilator/i, "assimilator"], [/pylon/i, "pylon"],
+    [/cybernetics/i, "cyber"], [/forge/i, "forge"], [/twilight/i, "twilight"], [/templararchive|darkshrine|fleetbeacon/i, "templar"], [/cyber|templar|dark|fleet/i, "tech"]],
 };
 const UARCH: Record<Race, [RegExp, string][]> = {
   terran: [[/tank/i, "tank"], [/goliath|warhound|thor/i, "walker"], [/marauder|firebat/i, "heavy"], [/hellion|hellbat|widowmine|cyclone/i, "vehicle"], [/medivac|liberator/i, "dropship"], [/viking|wraith|banshee/i, "fighter"], [/battlecruiser|raven|sciencevessel/i, "capital"]],

@@ -4,6 +4,9 @@ import { useMemo, useState } from "react";
 import type { Lang } from "@/lib/i18n/config";
 import type { Clock } from "@/lib/replay/clock";
 import { buildLog, compSeries, fmtTime, pickUsage, type Model, type Owner } from "@/lib/replay/timeline";
+import { battleReport, type SideReport } from "@/lib/replay/battleReport";
+import type { CompEntry } from "@/lib/replay/squads";
+import { unitCost, unitInfo } from "@/lib/replay/units";
 import { CompChart, FormChart, LineChart, OWNER_COLOR } from "./charts";
 import { swings, type Evaluation } from "@/lib/replay/evaluation";
 import { useClockTime } from "./useClock";
@@ -166,32 +169,87 @@ function Build({ model, clock, lang }: P) {
   );
 }
 
+function UnitChip({ entry, lang, tone }: { entry: CompEntry; lang: Lang; tone?: "lost" }) {
+  const info = unitInfo(entry.type, lang), name = typeName(entry.type, lang);
+  return (
+    <span className={`vw-uc${tone === "lost" ? " lost" : ""}${entry.pick ? " pick" : ""}`} title={`${name} ×${entry.count}`}>
+      {info.icon ? <img src={info.icon} alt="" width={26} height={26} loading="lazy" /> : <b>{name.slice(0, 2)}</b>}
+      <em>×{entry.count}</em>
+    </span>
+  );
+}
+
+const RESOURCE_ICON = { mineral: "/images/icons/resource-mineral.png", gas: "/images/icons/resource-gas.png", supply: "/images/icons/resource-supply.png" } as const;
+
+function ResourceFigure({ kind, value, label }: { kind: keyof typeof RESOURCE_ICON; value: string; label: string }) {
+  return (
+    <span className="vw-rf" title={label}>
+      {/* eslint-disable-next-line @next/next/no-img-element -- small static icon */}
+      <img src={RESOURCE_ICON[kind]} alt={label} width={16} height={16} />{value}
+    </span>
+  );
+}
+
+const n0 = (n: number) => Math.round(n).toLocaleString();
+const supplyText = (n: number) => (Number.isInteger(n) ? String(n) : n.toFixed(1));
+
+function SideBlock({ side, lang }: { side: SideReport; lang: Lang }) {
+  const t = (ko: string, en: string) => (lang === "ko" ? ko : en);
+  const color = OWNER_COLOR[side.owner], lv = side.lostValue;
+  return (
+    <div className="vw-bs" style={{ borderTopColor: color }}>
+      <div className="vw-bs-h"><strong style={{ color }}>{who(side.owner, lang)}</strong>
+        {side.share !== null && <span className="dim">{t(`병력의 ${Math.round(side.share * 100)}% 참전`, `${Math.round(side.share * 100)}% of army`)}</span>}
+      </div>
+      <div className="vw-bs-row"><span className="vw-bs-k">{t("참전", "In the fight")}</span>
+        <span className="vw-ucs">{side.engaged.length ? side.engaged.slice(0, 9).map((c) => <UnitChip key={c.type} entry={c} lang={lang} />) : <span className="dim">{t("관측된 병력 없음", "none seen")}</span>}</span></div>
+      <div className="vw-bs-row"><span className="vw-bs-k">{t("손실", "Lost")}</span>
+        <span className="vw-ucs">{side.lost.length ? side.lost.slice(0, 9).map((c) => <UnitChip key={c.type} entry={c} lang={lang} tone="lost" />) : <span className="dim">{t("없음", "none")}</span>}</span></div>
+      <div className="vw-val">
+        <ResourceFigure kind="mineral" value={n0(lv.minerals)} label={t("광물", "Minerals")} />
+        <ResourceFigure kind="gas" value={n0(lv.gas)} label={t("가스", "Gas")} />
+        <ResourceFigure kind="supply" value={supplyText(lv.supply)} label={t("인구", "Supply")} />
+        <b>{t("손실 가치", "lost")} {n0(lv.total)}</b>
+      </div>
+      {side.buildingsLost.length > 0 && (
+        <div className="vw-bs-row"><span className="vw-bs-k">{t("건물", "Buildings")}</span>
+          <span className="vw-ucs">{side.buildingsLost.slice(0, 9).map((c) => <UnitChip key={c.type} entry={c} lang={lang} tone="lost" />)}</span></div>
+      )}
+    </div>
+  );
+}
+
 function Battles({ model, clock, lang }: P) {
   const t = (ko: string, en: string) => (lang === "ko" ? ko : en);
   const now = useClockTime(clock, 1);
+  const reports = useMemo(() => model.battles.map((b) => battleReport(model, b, unitCost)), [model]);
   if (!model.battles.length) return <p className="dim">{t("뚜렷한 교전이 감지되지 않았습니다.", "No clear battles were detected.")}</p>;
   return (
     <>
-      <ul className="vw-battles">
-        {model.battles.map((b) => {
-          const active = now >= b.t0 - 3 && now <= b.t1 + 6;
-          const top = Object.entries(b.units).sort((x, y) => y[1] - x[1]).slice(0, 4);
+      <ul className="vw-brep">
+        {reports.map((r) => {
+          const b = model.battles.find((x) => x.id === r.id)!, active = now >= r.t0 - 3 && now <= r.t1 + 6;
+          const x = r.exchange;
           return (
-            <li key={b.id} className={active ? "on" : ""}>
-              <span className="vw-bl">{b.label}</span>
-              <div>
-                <strong>{fmtTime(b.t0)}–{fmtTime(b.t1)}</strong>
-                <span className="dim"> · {t("손실", "lost")} <b style={{ color: OWNER_COLOR[1] }}>{b.lost[0]}</b> : <b style={{ color: OWNER_COLOR[2] }}>{b.lost[1]}</b>
-                  {b.winner !== 0 && <> · {t("우세", "ahead")} {who(b.winner, lang)}</>}
-                  {b.picksLost > 0 && <> · <span className="pk">{t(`고른 유닛 ${b.picksLost}기 손실`, `${b.picksLost} picked lost`)}</span></>}</span>
-                <div className="vw-chips">{top.map(([ty, n]) => <span key={ty}>{typeName(ty, lang)} ×{n}</span>)}</div>
+            <li key={r.id} className={active ? "on" : ""}>
+              <div className="vw-bh">
+                <span className="vw-bl">{r.label}</span>
+                <strong>{fmtTime(r.t0)}–{fmtTime(r.t1)}</strong>
+                {r.forceRatio !== null && <span className="vw-pill" title={t("참전한 병력의 자원 가치 비율", "Ratio of the resource value that took part")}>{t("병력비", "Force")} {r.forceRatio >= 1 ? `${r.forceRatio} : 1` : `1 : ${Math.round((1 / r.forceRatio) * 100) / 100}`}</span>}
+                {x.aKilledPerLoss !== null && x.bKilledPerLoss !== null && (
+                  <span className="vw-pill" title={t("상대에게 입힌 손실 ÷ 내 손실(자원 가치)", "Value dealt ÷ value lost")}>
+                    {t("교환", "Trade")} <b style={{ color: OWNER_COLOR[1] }}>{x.aKilledPerLoss}</b> : <b style={{ color: OWNER_COLOR[2] }}>{x.bKilledPerLoss}</b>
+                  </span>
+                )}
+                {b.picksLost > 0 && <span className="pk">{t(`고른 유닛 ${b.picksLost}기 손실`, `${b.picksLost} picked lost`)}</span>}
+                <button className="btn" onClick={() => clock.range(Math.max(0, r.t0 - 5), r.t1 + 5, 2)}>{t("보기", "Watch")}</button>
               </div>
-              <button className="btn" onClick={() => clock.range(Math.max(0, b.t0 - 5), b.t1 + 5, 2)}>{t("보기", "Watch")}</button>
+              <div className="vw-bsides">{r.sides.map((side) => <SideBlock key={side.owner} side={side} lang={lang} />)}</div>
             </li>
           );
         })}
       </ul>
-      <p className="dim">{t("교전은 사망 이벤트를 시간·거리로 묶어 자동 감지한 것이라 실제와 다를 수 있습니다.", "Battles are detected automatically by clustering deaths in time and space, so they can differ from what you would call a fight.")}</p>
+      <p className="dim">{t("교전은 사망 이벤트를 시간·거리로 묶어 자동 감지한 것이라 실제와 다를 수 있습니다. 참전 병력은 위치가 기록된 유닛과 교전 중 사망한 유닛만 센 값이라 실제보다 적을 수 있고, 손실 가치는 유닛 비용(광물+가스)과 인구를 더한 것입니다.", "Battles are detected by clustering deaths in time and space, so they can differ from what you would call a fight. Units in the fight are counted from recorded positions and deaths only, so the real number may be higher. Lost value is the units' cost (minerals + gas) and supply.")}</p>
     </>
   );
 }

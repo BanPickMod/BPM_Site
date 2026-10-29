@@ -212,7 +212,15 @@ def build_timeline(tracker: Iterable[Mapping], decoded: Mapping, analyzer_versio
             owner = int(event.get("m_controlPlayerId") or 0)
             unit_type = _canon(event.get("m_unitTypeName"))
             row = len(units)
-            kind = "structure" if name == "SUnitInitEvent" or unit_type in TOWNHALLS | GAS else ("worker" if unit_type in WORKERS else "army" if unit_type in ARMY else "other")
+            # A unit warped in (Zealot, Archon, ...) starts with an Init event like a building does, but it is still a unit.
+            if unit_type in WORKERS:
+                kind = "worker"
+            elif unit_type in ARMY:
+                kind = "army"
+            elif name == "SUnitInitEvent" or unit_type in TOWNHALLS | GAS:
+                kind = "structure"
+            else:
+                kind = "other"
             rest_of[len(units)] = (round(float(event.get("m_x", 0)), 1), round(float(event.get("m_y", 0)), 1))
             units.append({"tag": _tag(idx, rec), "type": unit_type, "owner": owner, "kind": kind,
                           "bornT": _sec(loop), "doneT": _sec(loop) if name == "SUnitBornEvent" else None,

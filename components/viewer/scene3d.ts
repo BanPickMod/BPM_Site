@@ -10,6 +10,8 @@ import type { MapGrid } from "@/lib/replay/mapAsset";
 import { bakeTexture, buildField, makeNormalMap, SUBDIV } from "./terrain";
 import { buildFeatures, type Features } from "./features3d";
 import { posAt, type Model, type Unit } from "@/lib/replay/timeline";
+import { squadsAt, type CostOf, type Squad } from "@/lib/replay/squads";
+import { drawBadge, imageCache } from "./squadBadge";
 import type { Clock } from "@/lib/replay/clock";
 
 const OWNER: Record<number, number> = { 1: 0x38bdf8, 2: 0xf59e0b };
@@ -26,6 +28,9 @@ export interface SceneOptions {
   clock: Clock;
   races: Record<number, string>;
   iconOf: (u: Unit) => string | null;
+  /** Icon of a unit type, for the squad badges. */
+  iconOfType: (type: string) => string | null;
+  costOf: CostOf;
   onHover: (h: HoverInfo | null) => void;
   onSelect: (u: Unit | null) => void;
 }
@@ -33,6 +38,8 @@ export interface SceneHandle {
   resetView(): void; topView(): void; setFollow(v: boolean): void; dispose(): void;
   /** Slide the camera to a map position (full-map cells), keeping the zoom. */
   focus(x: number, y: number): void;
+  /** Show or hide the squad badges (what each army group is made of). */
+  setSquads(v: boolean): void;
   /** Show or hide the map's placed features (grass, trees, rocks...) to see the bare ground. */
   setFeatures(v: boolean): void;
   /** Ring around a unit. */
@@ -294,6 +301,45 @@ export function mountScene(container: HTMLElement, o: SceneOptions): SceneHandle
     return sp;
   });
 
+  // squad badges: for each army group that was seen recently, the two unit types that make up most of its value, with their counts
+  const BADGE_W = 256, BADGE_H = 88, BADGES_PER_SIDE = 8;
+  const badgeCache = new Map<string, THREE.CanvasTexture>();
+  const iconImage = imageCache(() => { badgeCache.forEach((t) => t.dispose()); badgeCache.clear(); squadT = -1; update(); });   // an icon that arrives late replaces its letter even while paused
+  const badgeKey = (q: Squad) => `${q.owner}|${q.comp.slice(0, 2).map((c) => `${c.type}:${c.count}:${c.pick ? 1 : 0}`).join(",")}`;
+  function badgeTexture(q: Squad): THREE.CanvasTexture {
+    const key = badgeKey(q);
+    let tex = badgeCache.get(key);
+    if (!tex) {
+      const cv = document.createElement("canvas"); cv.width = BADGE_W; cv.height = BADGE_H;
+      drawBadge(cv.getContext("2d")!, BADGE_W, BADGE_H, q, (type) => iconImage(o.iconOfType(type)));
+      tex = new THREE.CanvasTexture(cv); tex.colorSpace = THREE.SRGBColorSpace;
+      if (badgeCache.size >= 160) { const first = badgeCache.keys().next().value!; badgeCache.get(first)!.dispose(); badgeCache.delete(first); }
+      badgeCache.set(key, tex);
+    }
+    return tex;
+  }
+  const badgeSprites = Array.from({ length: BADGES_PER_SIDE * 2 }, () => {
+    const sp = new THREE.Sprite(new THREE.SpriteMaterial({ transparent: true, depthWrite: false })); sp.scale.set(19, 19 * BADGE_H / BADGE_W, 1); sp.visible = false; sp.renderOrder = 6; scene.add(sp); return sp;
+  });
+  let squadsOn = true, squadT = -1, squadList: Squad[] = [];
+  function updateSquads(t: number) {
+    if (!squadsOn) { badgeSprites.forEach((sp) => (sp.visible = false)); return; }
+    if (squadT < 0 || Math.abs(t - squadT) >= 0.4) {                 // grouping a few dozen units is cheap, but not worth doing sixty times a second
+      squadT = t;
+      squadList = [...squadsAt(model, 1, t, o.costOf).slice(0, BADGES_PER_SIDE), ...squadsAt(model, 2, t, o.costOf).slice(0, BADGES_PER_SIDE)];
+      badgeSprites.forEach((sp, i) => {
+        const q = squadList[i];
+        if (!q) { sp.visible = false; return; }
+        sp.material.map = badgeTexture(q); sp.material.needsUpdate = true;
+      });
+    }
+    badgeSprites.forEach((sp, i) => {
+      const q = squadList[i];
+      if (!q) { sp.visible = false; return; }
+      sp.visible = true; sp.position.set(wx(q.x), gAtFull(q.x, q.y) + 9.5, wz(q.y));
+    });
+  }
+
   // deaths and battle zones
   const sparkTex = glowTexture("rgba(255,244,214,1)", "rgba(255,120,60,0)");
   const sparks = Array.from({ length: 110 }, () => {
@@ -354,8 +400,9 @@ export function mountScene(container: HTMLElement, o: SceneOptions): SceneHandle
       const gy = gAtFull(p.x, p.y);
       tmp.position.set(wx(p.x), gy + 0.15, wz(p.y)); tmp.rotation.set(-Math.PI / 2, 0, 0); tmp.scale.setScalar(0.9 + s * 0.55); tmp.updateMatrix(); ring.setMatrixAt(i, tmp.matrix);
       tmp.position.set(wx(p.x), gy + 3.2 + air, wz(p.y)); tmp.rotation.set(0, 0, 0); tmp.scale.setScalar(1); tmp.updateMatrix(); beam.setMatrixAt(i, tmp.matrix);
-      const sp = pickIcons[i]; if (sp) { sp.visible = true; sp.position.set(wx(p.x), gy + air + 7.4, wz(p.y)); sp.material.opacity = 0.4 + 0.6 * p.a; }
+      const sp = pickIcons[i]; if (sp) { sp.visible = !squadsOn; sp.position.set(wx(p.x), gy + air + 7.4, wz(p.y)); sp.material.opacity = 0.4 + 0.6 * p.a; }
     });
+    updateSquads(t);
     ring.instanceMatrix.needsUpdate = beam.instanceMatrix.needsUpdate = true;
     // death sparks: a short flash for deaths in the last 2.2 s
     let n = 0;
@@ -444,6 +491,7 @@ export function mountScene(container: HTMLElement, o: SceneOptions): SceneHandle
     setFollow(v: boolean) { follow = v; needs = true; },
     focus(x: number, y: number) { moved = true; followTarget = null; focusGoal = new THREE.Vector3(wx(x), gAtFull(x, y), wz(y)); },
     setFeatures(v: boolean) { features.setVisible(v); needs = true; },
+    setSquads(v: boolean) { squadsOn = v; squadT = -1; update(); },
     select(u: Unit | null) { selected = u; update(); },
     followUnit(u: Unit | null) { followTarget = u; if (u) { moved = true; focusGoal = null; } },
     dispose() {
@@ -458,6 +506,7 @@ export function mountScene(container: HTMLElement, o: SceneOptions): SceneHandle
         (Array.isArray(mat) ? mat : mat ? [mat] : []).forEach((x) => { (x as THREE.MeshBasicMaterial).map?.dispose(); x.dispose(); });
       });
       iconTex.forEach((t) => t.dispose());
+      badgeCache.forEach((t) => t.dispose()); badgeCache.clear();
       features.dispose();
       renderer.dispose(); renderer.domElement.remove();
     },

@@ -9,7 +9,7 @@ import type { Lang } from "@/lib/i18n/config";
 import { Clock } from "@/lib/replay/clock";
 import { decodeMap, type MapGrid, type RawMapAsset } from "@/lib/replay/mapAsset";
 import { buildModel, fmtTime, pickUsage, type Model, type Owner, type RawTimeline, type Unit } from "@/lib/replay/timeline";
-import { unitInfo } from "@/lib/replay/units";
+import { unitCost, unitInfo } from "@/lib/replay/units";
 import { OWNER_COLOR } from "./charts";
 import { Map2D, type Hover } from "./Map2D";
 import { BattleBanner, Legend, Minimap, Roster, StatCard, UnitCard } from "./Hud";
@@ -112,6 +112,7 @@ function Player({ data, lang, shareable, evaluation, evaluationPending }: { data
   const [hover, setHover] = useState<Hover | null>(null);
   const [follow, setFollow] = useState(false);
   const [features, setFeatures] = useState(true);
+  const [squads, setSquads] = useState(true);
   const [selected, setSelected] = useState<Unit | null>(null);
   const [followingUnit, setFollowingUnit] = useState(false);
   const select = useCallback((u: Unit | null) => { setSelected(u); setFollowingUnit(false); api.current?.followUnit(null); }, []);
@@ -122,6 +123,7 @@ function Player({ data, lang, shareable, evaluation, evaluationPending }: { data
     const pk = draft?.picks.find((p) => unitInfo(u.type, lang).wikiId === unitInfo(p.unit, lang).wikiId && unitInfo(p.unit, lang).wikiId);
     return pk ? unitInfo(pk.unit, lang).icon : null;
   }, [model, lang]);
+  const iconOfType = useCallback((type: string) => unitInfo(type, lang).icon, [lang]);
   const fail3d = useCallback(() => setMode("2d"), []);
 
   const trackedShare = useMemo(() => {
@@ -144,9 +146,9 @@ function Player({ data, lang, shareable, evaluation, evaluationPending }: { data
       <DraftBoard model={model} clock={clock} lang={lang} />
       <div className="vw-stage">
         {mode === "3d" && map ? (
-          <Map3D model={model} map={map} clock={clock} races={races} iconOf={iconOf} onHover={setHover} onSelect={select} selected={selected} onFail={fail3d} api={api} />
+          <Map3D model={model} map={map} clock={clock} races={races} iconOf={iconOf} iconOfType={iconOfType} costOf={unitCost} squads={squads} onHover={setHover} onSelect={select} selected={selected} onFail={fail3d} api={api} />
         ) : (
-          <Map2D model={model} map={map} clock={clock} onHover={setHover} onSelect={select} selected={selected} />
+          <Map2D model={model} map={map} clock={clock} onHover={setHover} onSelect={select} selected={selected} squads={squads} iconOfType={iconOfType} costOf={unitCost} />
         )}
         <div className="hud-col left"><StatCard model={model} clock={clock} owner={1} lang={lang} /><Roster model={model} clock={clock} owner={1} lang={lang} /></div>
         <div className="hud-col right"><StatCard model={model} clock={clock} owner={2} lang={lang} /><Roster model={model} clock={clock} owner={2} lang={lang} /></div>
@@ -164,6 +166,7 @@ function Player({ data, lang, shareable, evaluation, evaluationPending }: { data
         )}
         <div className="vw-tools">
           {map && <button className="btn" onClick={() => setMode(mode === "3d" ? "2d" : "3d")} aria-pressed={mode === "3d"}>{mode === "3d" ? "2D" : "3D"}</button>}
+          <button className="btn" aria-pressed={squads} onClick={() => setSquads(!squads)}>{t("부대 구성", "Squads")}</button>
           {mode === "3d" && (
             <>
               <button className="btn" onClick={() => api.current?.resetView()}>{t("시점 초기화", "Reset view")}</button>
@@ -185,8 +188,8 @@ function Player({ data, lang, shareable, evaluation, evaluationPending }: { data
       <Transport clock={clock} model={model} lang={lang} onShare={shareable ? copyLink : undefined} copied={copied} />
       </div>
       <p className="dim vw-note">
-        {t(`군대 유닛의 ${trackedShare}%만 이동 경로가 기록됩니다. 나머지는 생성·사망 지점에서만 잠깐 나타납니다(리플레이에 남는 위치 표본이 적습니다). 건물은 완공 위치에 고정입니다.`,
-          `Movement was recorded for only ${trackedShare}% of army units. The rest only appear briefly where they were created or died (replays keep few position samples). Buildings are fixed at their location.`)}
+        {t(`군대 유닛의 ${trackedShare}%만 이동 경로가 기록됩니다. 나머지는 생성·사망 지점에서만 잠깐 나타납니다(리플레이에 남는 위치 표본이 적습니다). 건물은 지은 자리에 있고, 띄웠다 내린 건물은 착륙 명령의 위치로 옮겨 그립니다(옛 분석은 지은 자리에 고정).`,
+          `Movement was recorded for only ${trackedShare}% of army units. The rest only appear briefly where they were created or died (replays keep few position samples). Buildings stand where they were built; a lifted building moves to where it was told to land (older analyses keep it where it was built).`)}
         {" "}<Link href={`/${lang}/feedback?${new URLSearchParams({ from: here })}`}>{t("재생기 문제 신고", "Report a viewer problem")}</Link>
       </p>
       <Panels model={model} clock={clock} lang={lang} evaluation={evaluation} evaluationPending={evaluationPending} />

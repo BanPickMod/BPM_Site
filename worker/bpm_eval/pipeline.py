@@ -31,8 +31,37 @@ from .replay_data import (
 
 HERE = Path(__file__).resolve().parent
 BUNDLE = "M1_v_priv_v0_r16"
-EVAL_VERSION = "eval-1"
+EVAL_VERSION = "eval-2"
 STEP_SEC = 10
+CAUSE_WINDOW_SEC = 60            # the change of the form is explained over this window, like the site's "biggest swings"
+CAUSES = ("army", "econ", "tech")
+_ARMY_ROLES = {"anti_air", "detector", "firepower", "frontline", "mobile", "siege", "splash", "support", "transport"}
+_TECH_ROLES = {"production", "tech", "structure"}
+_ARMY_METRICS = {"supply_used", "army_value", "army_dispersion", "army_dist_opp_start", "army_dist_own_start", "log_army_ratio"}
+_ECON_METRICS = {"workers", "mineral_rate", "gas_rate", "bases", "supply_cap", "farthest_base_from_start", "nearest_base_to_enemy_start"}
+_TECH_METRICS = {"n_production", "n_production_types", "n_tech", "upgrades_done", "research_running"}
+_SIDES = ("self.", "obs_enemy.", "priv_enemy.", "priv_diff.", "mem_max.", "delta60.")
+
+
+def feature_cause(name: str) -> str | None:
+    """Which of army / econ / tech a model input belongs to, or None when it is about something else (time, race, what was seen)."""
+    if name.startswith("econ."):
+        rest = name.split(".", 1)[1]
+        return "army" if rest == "free_supply" else "econ" if rest in {"minerals", "gas", "workers_created", "worker_seconds", "income_per_base"} else None
+    for side in _SIDES:
+        if not name.startswith(side):
+            continue
+        rest = name[len(side):]
+        if rest.startswith("role."):
+            role = rest.split(".")[1]
+            return "army" if role in _ARMY_ROLES else "tech" if role in _TECH_ROLES else "econ" if role == "worker" else None
+        if rest in _ARMY_METRICS:
+            return "army"
+        if rest in _ECON_METRICS:
+            return "econ"
+        if rest in _TECH_METRICS:
+            return "tech"
+    return None
 
 RACE_NAMES = {
     "Terran": "Terran", "Protoss": "Protoss", "Zerg": "Zerg",
@@ -254,7 +283,45 @@ def form_curve(path: str | Path) -> dict:
     if not times:
         raise Skip("no sample for both players")
     adv = [max(-1.0, min(1.0, by[1][t] - by[2][t])) for t in times]
-    return {
+    causes = _causes(b, rows, X, p, times)
+    out = {
         "schema": 1, "model": BUNDLE, "evalVersion": EVAL_VERSION, "stepSec": STEP_SEC, "validated": False,
         "t": times, "a": [round(v, 3) for v in adv], "lengthSec": round(r["length"], 1),
     }
+    if causes:
+        out["causes"] = causes
+    return out
+
+
+def _causes(b, rows, X, p, times) -> dict | None:
+    """For every sample, how much of the change of the form over the next CAUSE_WINDOW_SEC came from the army, the economy, the tech.
+
+    Each player's model reading at the later sample is recomputed with one kind of inputs (all the army inputs, say) put back to
+    their earlier values; what that changes is that kind's share of the change. The shares of the two players are subtracted the same
+    way as the form itself (player 1 minus player 2), so a positive share favours player 1. Shares do not add up to the full change:
+    the model is not additive and some of it is other inputs; the site shows the rest as "other". Nothing here changes the curve.
+    """
+    idx = {(x["pid"], round(x["t"])): k for k, x in enumerate(rows)}
+    names = list(b.feature_names)
+    cols = {c: [i for i, n in enumerate(names) if feature_cause(n) == c] for c in CAUSES}
+    pairs = []
+    for i, t in enumerate(times):
+        j = i
+        while j + 1 < len(times) and times[j + 1] - t <= CAUSE_WINDOW_SEC:
+            j += 1
+        pairs.append((i, j))
+    out = {c: [0.0] * len(times) for c in CAUSES}
+    for pid, sign in ((1, 1.0), (2, -1.0)):
+        a_rows = [idx[(pid, times[i])] for i, _ in pairs]
+        b_rows = [idx[(pid, times[j])] for _, j in pairs]
+        base = p[b_rows]
+        for c, cs in cols.items():
+            if not cs:
+                continue
+            mod = X[b_rows].copy()
+            mod[:, cs] = X[a_rows][:, cs]
+            shift = base - np.asarray(b.predict(mod))[:, 0]
+            for n, (i, j) in enumerate(pairs):
+                if j > i:
+                    out[c][i] += sign * float(shift[n])
+    return {c: [round(v, 3) for v in vals] for c, vals in out.items()}

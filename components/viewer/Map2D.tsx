@@ -47,9 +47,11 @@ export function Map2D({ model, map, clock, onHover, onSelect, selected }: { mode
       }
       for (const u of model.units) {
         if (u.kind !== "structure") continue;
-        if (!(t >= u.born && t < u.died)) continue;
+        const p = posAt(u, t, W); if (!p) continue;
         g.fillStyle = OWNER_CSS[u.owner]; const r = /commandcenter|orbital|planetary|hatchery|lair|hive|nexus/i.test(u.type) ? 3.2 : 1.7;
-        g.fillRect(sx(u.x0) - r * s, sy(u.y0) - r * s, r * 2 * s, r * 2 * s);
+        g.globalAlpha = 1 - 0.45 * (p.air ?? 0);          // a building in the air is drawn paler
+        g.fillRect(sx(p.x) - r * s, sy(p.y) - r * s, r * 2 * s, r * 2 * s);
+        g.globalAlpha = 1;
       }
       for (const u of model.units) {
         if (u.kind !== "army") continue;
@@ -61,7 +63,7 @@ export function Map2D({ model, map, clock, onHover, onSelect, selected }: { mode
         g.globalAlpha = 1;
       }
       if (selected) {
-        const sp = selected.kind === "structure" ? (t >= selected.born && t < selected.died ? { x: selected.x0, y: selected.y0 } : null) : posAt(selected, t, W);
+        const sp = posAt(selected, t, W);
         if (sp) { g.strokeStyle = "#fff"; g.lineWidth = 2; g.beginPath(); g.arc(sx(sp.x), sy(sp.y), Math.max(7, 3 * s), 0, 6.283); g.stroke(); }
       }
       for (const d of model.units) {                                         // death flashes
@@ -86,7 +88,7 @@ export function Map2D({ model, map, clock, onHover, onSelect, selected }: { mode
       let best: Unit | null = null, bd = 144;
       for (const u of model.units) {
         if (u.kind === "worker") continue;
-        const p = u.kind === "structure" ? (t >= u.born && t < u.died ? { x: u.x0, y: u.y0 } : null) : posAt(u, t, model.windowSec);
+        const p = posAt(u, t, model.windowSec);
         if (!p) continue;
         const d = (sx(p.x) - mx) ** 2 + (sy(p.y) - my) ** 2;
         if (d < bd) { bd = d; best = u; }

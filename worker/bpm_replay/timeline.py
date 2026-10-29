@@ -15,6 +15,7 @@ from typing import Iterable, Mapping
 from .pseudonym import handle_key
 
 LOOPS_PER_SECOND = 22.4
+RARE_ABILITY_USES = 40  # an ability used more often than this in one game is a move or an attack, not a landing
 TIMELINE_SCHEMA = 1
 TRACK_SCALE = 10  # 시간과 좌표를 0.1 단위 정수로 양자화
 SITE_ROOT = Path(__file__).resolve().parents[2]
@@ -120,6 +121,42 @@ def _series_point(loop: int, pid: int, stats: Mapping) -> dict:
     }
 
 
+FLIGHT_MARKS = ("Flying", "Uprooted")   # a lifted Terran building, an uprooted Zerg crawler: both leave and settle somewhere else
+FLIGHT_SPEED = 1.5                      # tiles per second, generous: only used to rule out commands too far away to be this landing
+FLIGHT_SLACK = 4.0
+
+
+def _landing_points(flights: list[dict], commands: list[tuple[int, int, int | None, float, float]]) -> None:
+    """Fills `end` and `src` of every flight with the point of the landing command it was given.
+
+    The tracker stream says that a building lifted and that it landed, but not where. The game-event stream does: the landing is a
+    command with a target point, issued while the building was in the air. The ability ids differ between game builds and a move
+    order looks the same, so a command only counts if (1) it falls inside the flight, (2) it names an ability (a plain right-click
+    does not), (3) its ability is rare in this game (moves and attacks are used constantly, a landing a handful of times) and
+    (4) the point is within reach of where the building was last seen. Among those, the nearest to where the building was last seen
+    is taken, each command for one building only, so two buildings swapping places do not take the same point.
+    """
+    uses: Counter = Counter(abil for _, _, abil, _, _ in commands if abil is not None)
+    pairs = []
+    for fi, f in enumerate(flights):
+        seconds = max(0.0, (f["t1"] - f["t0"]) / LOOPS_PER_SECOND)
+        ref = f["ref"]
+        if ref is None:
+            continue
+        for ci, (loop, _user, abil, x, y) in enumerate(commands):
+            if abil is None or uses[abil] > RARE_ABILITY_USES or not (f["t0"] <= loop <= f["t1"]):
+                continue
+            distance = math.dist(ref, (x, y))
+            if distance <= FLIGHT_SPEED * seconds + FLIGHT_SLACK:
+                pairs.append((distance, -loop, fi, ci))
+    taken: set[int] = set()
+    for _distance, _neg, fi, ci in sorted(pairs):
+        if flights[fi]["end"] is None and ci not in taken:
+            taken.add(ci)
+            flights[fi]["end"] = (commands[ci][3], commands[ci][4])
+            flights[fi]["src"] = "command"
+
+
 def _battles(units: list[dict]) -> list[dict]:
     deaths = sorted((u for u in units if u["diedT"] is not None and u.get("deathPos")), key=lambda u: u["diedT"])
     groups: list[list[dict]] = []
@@ -149,8 +186,13 @@ def _battles(units: list[dict]) -> list[dict]:
     return out
 
 
-def build_timeline(tracker: Iterable[Mapping], decoded: Mapping, analyzer_version: str) -> dict:
-    """L0 이벤트로 timeline 스키마 v1 객체를 만든다."""
+def build_timeline(tracker: Iterable[Mapping], decoded: Mapping, analyzer_version: str,
+                   commands: Iterable[tuple[int, int, int | None, float, float]] | None = None) -> dict:
+    """L0 이벤트로 timeline 스키마 v1 객체를 만든다.
+
+    `commands`는 게임 이벤트에서 목표 지점이 있는 명령 `(loop, userId, abilityLink, x, y)`다. 없으면(읽지 못했거나 넘기지 않으면)
+    띄웠다 내린 건물의 착륙 위치를 명령에서 알 수 없어, 마지막으로 본 위치 또는 출발 위치를 쓰고 `src`에 그 사실을 적는다.
+    """
     units: list[dict] = []
     row_of: dict[tuple[int, int], int] = {}
     live_by_index: dict[int, int] = {}
@@ -158,6 +200,9 @@ def build_timeline(tracker: Iterable[Mapping], decoded: Mapping, analyzer_versio
     stats_at: defaultdict[int, list[tuple[int, float]]] = defaultdict(list)
     build_events: list[tuple[int, int, str, str]] = []
     upgrades: list[tuple[int, int, str]] = []
+    flying: dict[int, dict] = {}                    # row -> the flight in progress
+    flights_of: defaultdict[int, list[dict]] = defaultdict(list)
+    rest_of: dict[int, tuple[float, float]] = {}    # row -> where the building was first placed
 
     for event in tracker:
         name = event["_event"].rsplit(".", 1)[-1]
@@ -168,6 +213,7 @@ def build_timeline(tracker: Iterable[Mapping], decoded: Mapping, analyzer_versio
             unit_type = _canon(event.get("m_unitTypeName"))
             row = len(units)
             kind = "structure" if name == "SUnitInitEvent" or unit_type in TOWNHALLS | GAS else ("worker" if unit_type in WORKERS else "army" if unit_type in ARMY else "other")
+            rest_of[len(units)] = (round(float(event.get("m_x", 0)), 1), round(float(event.get("m_y", 0)), 1))
             units.append({"tag": _tag(idx, rec), "type": unit_type, "owner": owner, "kind": kind,
                           "bornT": _sec(loop), "doneT": _sec(loop) if name == "SUnitBornEvent" else None,
                           "diedT": None, "killerOwner": None, "killerType": None,
@@ -184,8 +230,17 @@ def build_timeline(tracker: Iterable[Mapping], decoded: Mapping, analyzer_versio
         elif name == "SUnitTypeChangeEvent":
             row = row_of.get((int(event["m_unitTagIndex"]), int(event["m_unitTagRecycle"])))
             if row is not None:
-                units[row]["type"] = _canon(event.get("m_unitTypeName"))
+                raw = _text(event.get("m_unitTypeName"))
+                units[row]["type"] = _canon(raw)
                 build_events.append((loop, units[row]["owner"], "morph", units[row]["type"]))
+                airborne = any(raw.endswith(mark) for mark in FLIGHT_MARKS)
+                if airborne and row not in flying and units[row]["kind"] == "structure":
+                    here = rest_of.get(row)                  # a later flight starts where the earlier one landed: set below
+                    flight = {"row": row, "t0": loop, "t1": None, "start": here, "ref": here, "end": None, "src": "unknown"}
+                    flying[row] = flight
+                    flights_of[row].append(flight)
+                elif not airborne and row in flying:
+                    flying.pop(row)["t1"] = loop
         elif name == "SUnitDiedEvent":
             key = (int(event["m_unitTagIndex"]), int(event.get("m_unitTagRecycle", 0)))
             row = row_of.get(key)
@@ -208,6 +263,9 @@ def build_timeline(tracker: Iterable[Mapping], decoded: Mapping, analyzer_versio
                 row = live_by_index.get(idx)
                 if row is not None:
                     tracks[row].append((loop, float(items[pos + 1]), float(items[pos + 2])))
+                    if row in flying:
+                        flying[row]["ref"] = (float(items[pos + 1]), float(items[pos + 2]))
+                        flying[row].setdefault("path", []).append((loop, round(float(items[pos + 1]), 1), round(float(items[pos + 2]), 1)))
         elif name == "SPlayerStatsEvent":
             pid = int(event["m_playerId"])
             st = event["m_stats"]
@@ -217,6 +275,45 @@ def build_timeline(tracker: Iterable[Mapping], decoded: Mapping, analyzer_versio
             upgrades.append((loop, pid, upgrade))
             if not upgrade.startswith(("BPM_Ban_", "BPM_Pick_", "BPM_Upgrade_")):
                 build_events.append((loop, pid, "upgrade", upgrade))
+
+    done = [f for fl in flights_of.values() for f in fl if f["t1"] is not None]
+    command_list = list(commands or [])
+    for _round in range(2):                         # a building that flew twice: the second flight leaves where the first landed
+        for f in done:
+            f["end"], f["src"] = None, "unknown"
+        for row, fl in flights_of.items():
+            before = rest_of.get(row)
+            for f in fl:
+                f["start"] = before
+                if not f.get("path"):
+                    f["ref"] = before
+                if f["end"] is not None:
+                    before = f["end"]
+        _landing_points(done, command_list)
+        for row, fl in flights_of.items():
+            for earlier, later in zip(fl, fl[1:]):
+                if earlier["end"] is not None:
+                    later["start"] = earlier["end"]
+                    if not later.get("path"):
+                        later["ref"] = earlier["end"]
+    for f in done:
+        if f["end"] is None:                         # no landing command found: the last place it was seen, or where it left from
+            f["end"] = f["ref"]
+            f["src"] = "track" if f.get("path") else "unknown"
+    relocations: dict[int, list[dict]] = {}
+    for row, fl in flights_of.items():
+        moves = []
+        for f in fl:
+            if f["t1"] is None or f["end"] is None:  # still in the air when the replay ended: nothing to show as landed
+                continue
+            move = {"t0": _sec(f["t0"]), "t1": _sec(f["t1"]), "x": round(float(f["end"][0]), 1), "y": round(float(f["end"][1]), 1), "src": f["src"]}
+            if f["start"] is not None:
+                move["fromX"], move["fromY"] = f["start"]
+            if f.get("path"):
+                move["path"] = [[_sec(t), x, y] for t, x, y in f["path"]]
+            moves.append(move)
+        if moves:
+            relocations[row] = moves
 
     series = []
     for event in tracker:
@@ -242,6 +339,8 @@ def build_timeline(tracker: Iterable[Mapping], decoded: Mapping, analyzer_versio
         else:
             mode = "birth-only"
         unit["positionMode"] = mode
+        if row in relocations:
+            unit["moves"] = relocations[row]          # stands at x0,y0 until the first move, then at the last landing
         mode_counts[mode] += 1
         output_units.append(unit)
 

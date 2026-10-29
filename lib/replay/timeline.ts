@@ -7,6 +7,19 @@
 export type Owner = 1 | 2;
 export type PositionMode = "tracked" | "static" | "event-endpoints" | "birth-only";
 
+/** A lift and landing of a building (the worker's `moves`): where it left from, where it landed, and what it was seen passing. */
+export interface RawMove {
+  t0: number;
+  t1: number;
+  x: number;
+  y: number;
+  fromX?: number;
+  fromY?: number;
+  /** "command" = the landing command's point, "track" = the last place it was seen in the air, "unknown" = it left and we do not know where it landed. */
+  src: "command" | "track" | "unknown";
+  path?: [number, number, number][];
+}
+
 export interface RawUnit {
   tag: number;
   type: string;
@@ -23,6 +36,7 @@ export interface RawUnit {
   /** First point absolute [t, x, y], then [dt, dx, dy]; all times and coordinates multiplied by meta.timeScale. */
   track: number[][];
   positionMode: PositionMode;
+  moves?: RawMove[];
 }
 
 export interface RawSeriesPoint {
@@ -87,6 +101,7 @@ export interface Unit {
   death: [number, number] | null;
   killer: { owner: number; type: string } | null;
   mode: PositionMode;
+  moves: RawMove[];
   ts: Float32Array;
   xs: Float32Array;
   ys: Float32Array;
@@ -143,7 +158,7 @@ export function buildModel(raw: RawTimeline): Model {
     const tr = decodeTrack(u.track, timeScale, coordinateScale);
     units.push({
       row, type: u.type, owner: u.owner, kind: u.kind, born: u.bornT ?? 0, died: u.diedT ?? Infinity, x0: u.x0, y0: u.y0, death: u.deathPos,
-      killer: u.killerType ? { owner: u.killerOwner ?? 0, type: u.killerType } : null, mode: u.positionMode, ...tr, pick: u.kind === "army" && (pickSets[u.owner] ?? []).some((n) => norm(u.type).includes(n)),
+      killer: u.killerType ? { owner: u.killerOwner ?? 0, type: u.killerType } : null, mode: u.positionMode, moves: u.moves ?? [], ...tr, pick: u.kind === "army" && (pickSets[u.owner] ?? []).some((n) => norm(u.type).includes(n)),
     });
   });
 
@@ -158,12 +173,34 @@ export function buildModel(raw: RawTimeline): Model {
   return { raw, duration: raw.meta.durationSec, units, series, battles, windowSec: raw.meta.positionPolicy.endpointWindowSec ?? 3 };
 }
 
+const LIFT_SEC = 1.6;   // how long the rise and the descent take on screen
+const ease = (v: number) => { const c = Math.min(1, Math.max(0, v)); return c * c * (3 - 2 * c); };
+
+/**
+ * A building that lifted off: it stands where it was first placed, flies from there to where it landed (through the places it was
+ * seen on the way), then stands at the landing. `air` is 0 on the ground and 1 at full height; the 3D view lifts the model by it.
+ */
+function movedPos(u: Unit, t: number): { x: number; y: number; a: number; air: number } {
+  let x = u.x0, y = u.y0;
+  for (const m of u.moves) {
+    if (t < m.t0) break;
+    const from = { x: m.fromX ?? x, y: m.fromY ?? y };
+    if (t >= m.t1) { x = m.x; y = m.y; continue; }
+    const pts: [number, number, number][] = [[m.t0, from.x, from.y], ...(m.path ?? []).filter((p) => p[0] > m.t0 && p[0] < m.t1), [m.t1, m.x, m.y]];
+    let k = 1;
+    while (k < pts.length - 1 && pts[k][0] <= t) k++;
+    const [ta, xa, ya] = pts[k - 1], [tb, xb, yb] = pts[k], f = Math.min(1, Math.max(0, (t - ta) / Math.max(0.01, tb - ta)));
+    return { x: xa + (xb - xa) * f, y: ya + (yb - ya) * f, a: 1, air: Math.min(ease((t - m.t0) / LIFT_SEC), ease((m.t1 - t) / LIFT_SEC)) };
+  }
+  return { x, y, a: 1, air: 0 };
+}
+
 /** Where a unit is drawn at time t and how opaque (0..1), or null when it should not be drawn. Follows meta.positionPolicy. */
-export function posAt(u: Unit, t: number, windowSec: number): { x: number; y: number; a: number } | null {
+export function posAt(u: Unit, t: number, windowSec: number): { x: number; y: number; a: number; air?: number } | null {
   if (t < u.born || t >= u.died) return null;
   switch (u.mode) {
     case "static":
-      return { x: u.x0, y: u.y0, a: 1 };
+      return u.moves.length ? movedPos(u, t) : { x: u.x0, y: u.y0, a: 1 };
     case "tracked": {
       const { ts, xs, ys } = u, n = ts.length;
       if (n === 0 || t <= ts[0]) return { x: n ? u.x0 : u.x0, y: u.y0, a: 1 };

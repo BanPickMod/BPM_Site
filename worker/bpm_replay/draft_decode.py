@@ -79,6 +79,28 @@ def _started_at(details: dict) -> str | None:
     return when.strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
+def _target_commands(proto, archive) -> list[tuple[int, int, int | None, float, float]]:
+    """Commands that name a point on the map: `(loop, userId, abilityLink, x, y)`. They are where a lifted building was told to land.
+
+    Streamed, and only these commands are kept, so a long game costs little memory. A replay whose game events cannot be read still
+    gets its timeline, without landing positions: nothing here may fail the analysis.
+    """
+    out: list[tuple[int, int, int | None, float, float]] = []
+    try:
+        for ev in proto.decode_replay_game_events(archive.read_file("replay.game.events")):
+            if not ev["_event"].endswith("SCmdEvent"):
+                continue
+            point = (ev.get("m_data") or {}).get("TargetPoint")
+            if not point:
+                continue
+            abil = (ev.get("m_abil") or {}).get("m_abilLink")
+            out.append((int(ev["_gameloop"]), int((ev.get("_userid") or {}).get("m_userId", -1)), abil,
+                        round(point["x"] / 4096, 2), round(point["y"] / 4096, 2)))
+    except Exception:  # noqa: BLE001 - see the docstring
+        return []
+    return out
+
+
 def decode_draft(path: str | Path) -> dict:
     """Return the draft result and basic game facts. Raises ReplayError for unreadable replays."""
     # Newer game builds than the installed s2protocol: the latest protocol still decodes details and tracker events.
@@ -180,7 +202,7 @@ def decode_draft(path: str | Path) -> dict:
         "warnings": warnings,
     }
     if decoded["isBpm"]:
-        decoded["timeline"] = build_timeline(tracker, decoded, "timeline-1")
+        decoded["timeline"] = build_timeline(tracker, decoded, "timeline-3", _target_commands(proto, archive))
     return decoded
 
 

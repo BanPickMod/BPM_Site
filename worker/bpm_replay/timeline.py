@@ -133,11 +133,15 @@ def _landing_points(flights: list[dict], commands: list[tuple[int, int, int | No
     command with a target point, issued while the building was in the air. The ability ids differ between game builds and a move
     order looks the same, so a command only counts if (1) it falls inside the flight, (2) it names an ability (a plain right-click
     does not), (3) its ability is rare in this game (moves and attacks are used constantly, a landing a handful of times) and
-    (4) the point is within reach of where the building was last seen. Among those, the nearest to where the building was last seen
-    is taken, each command for one building only, so two buildings swapping places do not take the same point.
+    (4) the point is within reach of where the building was last seen. Each command goes to one building only, so two buildings swapping places do not take the same point.
+
+    A landing is ordered with the one ability that every flight of the game used for it, and the last such order before the building
+    settled is the one that counts. So the ability that the most flights have a candidate for comes first, then the later order, and
+    distance only breaks ties. (Taking the nearest command alone sent a command centre that lifted from the main to a point beside
+    the main, because an unrelated order happened to be closer than the natural it landed on.)
     """
     uses: Counter = Counter(abil for _, _, abil, _, _ in commands if abil is not None)
-    pairs = []
+    candidates = []
     for fi, f in enumerate(flights):
         seconds = max(0.0, (f["t1"] - f["t0"]) / LOOPS_PER_SECOND)
         ref = f["ref"]
@@ -148,9 +152,13 @@ def _landing_points(flights: list[dict], commands: list[tuple[int, int, int | No
                 continue
             distance = math.dist(ref, (x, y))
             if distance <= FLIGHT_SPEED * seconds + FLIGHT_SLACK:
-                pairs.append((distance, -loop, fi, ci))
+                candidates.append((abil, loop, distance, fi, ci))
+    flights_of: defaultdict[int, set[int]] = defaultdict(set)
+    for abil, _loop, _distance, fi, _ci in candidates:
+        flights_of[abil].add(fi)
+    pairs = [(-len(flights_of[abil]), distance, -loop, fi, ci) for abil, loop, distance, fi, ci in candidates]
     taken: set[int] = set()
-    for _distance, _neg, fi, ci in sorted(pairs):
+    for _support, _distance, _neg, fi, ci in sorted(pairs):
         if flights[fi]["end"] is None and ci not in taken:
             taken.add(ci)
             flights[fi]["end"] = (commands[ci][3], commands[ci][4])

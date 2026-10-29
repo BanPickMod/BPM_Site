@@ -174,3 +174,10 @@
 .vw-val b{margin-left:auto;color:var(--text)}
 .vw-bs-b{font-size:.78rem}
 @media (max-width:760px){.vw-bsides{grid-template-columns:1fr}}
+
+.vw-coach{align-self:start;margin:0;padding:8px 10px;border-radius:8px;background:var(--panel2);border:1px solid var(--line2)}
+.vw-coach ul{margin:6px 0 0;padding:0;list-style:none;display:grid;gap:4px}
+.vw-coach li{display:flex;gap:8px;align-items:baseline;font-size:.88rem;line-height:1.45}
+.vw-coach li i{flex:none;font:700 .74rem var(--f-mono);font-style:normal;min-width:4.2em}
+.vw-coach li.n-bad{color:var(--text)}
+.vw-coach li.n-info{color:var(--dim,var(--text));opacity:.85}

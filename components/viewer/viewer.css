@@ -147,3 +147,30 @@
 }
 .vw-legend li.feat i{border-radius:2px}
 .hud-bl .vw-legend{max-width:300px}
+
+/* battle reports: both sides' units as icons, what was lost, and what it was worth */
+.vw-brep{display:grid;gap:10px}
+.vw-brep>li{display:grid;gap:10px;padding:10px 12px;border:1px solid var(--line2);border-radius:var(--r);background:var(--panel)}
+.vw-brep>li.on{border-color:var(--ban)}
+.vw-bh{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+.vw-bh .btn{margin-left:auto}
+.vw-pill{padding:2px 8px;border:1px solid var(--line2);border-radius:999px;font:600 .8rem var(--f-mono);color:var(--text);background:var(--panel2)}
+.vw-bsides{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.vw-bs{display:grid;gap:6px;align-content:start;padding:8px 10px;border:1px solid var(--line2);border-top:3px solid var(--line2);border-radius:var(--r);background:var(--panel2)}
+.vw-bs-h{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.vw-bs-row{display:grid;grid-template-columns:44px 1fr;gap:6px;align-items:center}
+.vw-bs-k{font-size:.74rem;color:var(--mute)}
+.vw-ucs{display:flex;flex-wrap:wrap;gap:4px}
+.vw-uc{display:inline-flex;align-items:center;gap:2px;padding:1px 5px 1px 1px;border:1px solid var(--line2);border-radius:4px;background:var(--panel)}
+.vw-uc img{display:block;border-radius:3px}
+.vw-uc b{display:grid;place-items:center;width:26px;height:26px;font-size:.7rem;color:var(--mute)}
+.vw-uc em{font:700 .8rem var(--f-mono);font-style:normal}
+.vw-uc.lost{border-color:color-mix(in oklab,var(--ban) 60%,var(--line2));background:color-mix(in oklab,var(--ban) 10%,var(--panel))}
+.vw-uc.lost em{color:var(--ban)}
+.vw-uc.pick{box-shadow:0 0 0 1px var(--pick)}
+.vw-val{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center;font:600 .82rem var(--f-mono)}
+.vw-rf{display:inline-flex;align-items:center;gap:4px}
+.vw-rf img{display:block}
+.vw-val b{margin-left:auto;color:var(--text)}
+.vw-bs-b{font-size:.78rem}
+@media (max-width:760px){.vw-bsides{grid-template-columns:1fr}}

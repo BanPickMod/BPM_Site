@@ -4,7 +4,9 @@ import { useEffect, useRef } from "react";
 import type { Clock } from "@/lib/replay/clock";
 import type { MapGrid } from "@/lib/replay/mapAsset";
 import { posAt, type Model, type Unit } from "@/lib/replay/timeline";
+import { squadsAt, type CostOf, type Squad } from "@/lib/replay/squads";
 import { flatMapCanvas } from "./terrain";
+import { drawBadge, imageCache } from "./squadBadge";
 
 export interface Hover { unit: Unit; x: number; y: number }
 
@@ -12,7 +14,7 @@ const OWNER_CSS = { 1: "#38bdf8", 2: "#f59e0b" } as const;
 const PICK_CSS = "#d6f542";
 
 /** Flat top-down map on a canvas: the fallback for phones, weak GPUs and replays whose map has no terrain asset. */
-export function Map2D({ model, map, clock, onHover, onSelect, selected }: { model: Model; map: MapGrid | null; clock: Clock; onHover: (h: Hover | null) => void; onSelect: (u: Unit | null) => void; selected: Unit | null }) {
+export function Map2D({ model, map, clock, onHover, onSelect, selected, squads = false, iconOfType, costOf }: { squads?: boolean; iconOfType?: (type: string) => string | null; costOf?: CostOf; model: Model; map: MapGrid | null; clock: Clock; onHover: (h: Hover | null) => void; onSelect: (u: Unit | null) => void; selected: Unit | null }) {
   const wrap = useRef<HTMLDivElement>(null);
   const cv = useRef<HTMLCanvasElement>(null);
 
@@ -30,6 +32,22 @@ export function Map2D({ model, map, clock, onHover, onSelect, selected }: { mode
     const terrain: HTMLCanvasElement | null = map ? flatMapCanvas(map, 4) : null;   // drawn once, with the map's features marked
     let cw = 0, ch = 0, s = 1, ox = 0, oy = 0, dpr = 1;
     const sx = (x: number) => ox + (x - bx0) * s, sy = (y: number) => oy + (bh - (y - by0)) * s;
+
+    const iconImage = imageCache(() => { squadAt = -1; draw(); });
+    let squadAt = -1, squadList: Squad[] = [];
+    const badge = document.createElement("canvas"); badge.width = 256; badge.height = 88;
+    function drawSquads(t: number) {
+      if (!squads || !costOf || !iconOfType) return;
+      if (squadAt < 0 || Math.abs(t - squadAt) >= 0.4) {
+        squadAt = t;
+        squadList = [...squadsAt(model, 1, t, costOf).slice(0, 8), ...squadsAt(model, 2, t, costOf).slice(0, 8)];
+      }
+      const bw2 = Math.min(104, Math.max(70, cw * 0.1)), bh2 = bw2 * 88 / 256;
+      for (const q of squadList) {
+        drawBadge(badge.getContext("2d")!, 256, 88, q, (type) => iconImage(iconOfType(type)));
+        g.drawImage(badge, sx(q.x) - bw2 / 2, sy(q.y) - bh2 - 8, bw2, bh2);
+      }
+    }
 
     function draw() {
       const t = clock.t, W = model.windowSec;
@@ -62,6 +80,7 @@ export function Map2D({ model, map, clock, onHover, onSelect, selected }: { mode
         if (u.pick) { g.strokeStyle = PICK_CSS; g.lineWidth = 1.5; g.beginPath(); g.arc(px, py, r + 2.2, 0, 6.283); g.stroke(); }
         g.globalAlpha = 1;
       }
+      drawSquads(t);
       if (selected) {
         const sp = posAt(selected, t, W);
         if (sp) { g.strokeStyle = "#fff"; g.lineWidth = 2; g.beginPath(); g.arc(sx(sp.x), sy(sp.y), Math.max(7, 3 * s), 0, 6.283); g.stroke(); }
@@ -105,7 +124,7 @@ export function Map2D({ model, map, clock, onHover, onSelect, selected }: { mode
     const onClick = (e: MouseEvent) => onSelect(nearest(e as PointerEvent).best);
     canvas.addEventListener("pointermove", onMove); canvas.addEventListener("pointerleave", onLeave); canvas.addEventListener("click", onClick);
     return () => { unsub(); ro.disconnect(); canvas.removeEventListener("pointermove", onMove); canvas.removeEventListener("pointerleave", onLeave); canvas.removeEventListener("click", onClick); };
-  }, [model, map, clock, onHover, onSelect, selected]);
+  }, [model, map, clock, onHover, onSelect, selected, squads, iconOfType, costOf]);
 
   return (
     <div ref={wrap} className="vw-canvas">

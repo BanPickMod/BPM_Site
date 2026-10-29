@@ -148,6 +148,12 @@ export function decodeTrack(track: number[][], timeScale: number, coordScale: nu
 
 const letter = (id: number) => (id >= 1 && id <= 26 ? String.fromCharCode(64 + id) : String(id));
 
+/**
+ * Units that a Protoss warps in start with the same event as a building, so analyses made before the worker told them apart list them
+ * as buildings. They are units: read them as army, placed from their recorded positions or the places they were seen.
+ */
+const WARPED_IN = /^(Zealot|Stalker|Sentry|Adept|HighTemplar|DarkTemplar|Archon|Dragoon|Energizer)$/;
+
 export function buildModel(raw: RawTimeline): Model {
   const { timeScale, coordinateScale } = raw.meta;
   const pickSets: Record<number, string[]> = {};
@@ -156,9 +162,12 @@ export function buildModel(raw: RawTimeline): Model {
   raw.units.forEach((u, row) => {
     if (u.kind === "other" || (u.owner !== 1 && u.owner !== 2)) return;
     const tr = decodeTrack(u.track, timeScale, coordinateScale);
+    const warped = u.kind === "structure" && WARPED_IN.test(u.type);
+    const kind = warped ? "army" : u.kind;
+    const mode: PositionMode = warped ? (tr.ts.length ? "tracked" : u.deathPos ? "event-endpoints" : "birth-only") : u.positionMode;
     units.push({
-      row, type: u.type, owner: u.owner, kind: u.kind, born: u.bornT ?? 0, died: u.diedT ?? Infinity, x0: u.x0, y0: u.y0, death: u.deathPos,
-      killer: u.killerType ? { owner: u.killerOwner ?? 0, type: u.killerType } : null, mode: u.positionMode, moves: u.moves ?? [], ...tr, pick: u.kind === "army" && (pickSets[u.owner] ?? []).some((n) => norm(u.type).includes(n)),
+      row, type: u.type, owner: u.owner, kind, born: u.bornT ?? 0, died: u.diedT ?? Infinity, x0: u.x0, y0: u.y0, death: u.deathPos,
+      killer: u.killerType ? { owner: u.killerOwner ?? 0, type: u.killerType } : null, mode, moves: u.moves ?? [], ...tr, pick: kind === "army" && (pickSets[u.owner] ?? []).some((n) => norm(u.type).includes(n)),
     });
   });
 

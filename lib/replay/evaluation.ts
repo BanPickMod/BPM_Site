@@ -10,9 +10,17 @@
 export const HIDE_BEFORE_SEC = 240;
 export const LOW_UNTIL_SEC = 480;
 
+export type Cause = "army" | "econ" | "tech";
+export const CAUSES: Cause[] = ["army", "econ", "tech"];
+
 export interface Evaluation {
   t: number[];
   a: number[];
+  /**
+   * For each sample, how much of the change of `a` over the following minute the model attributes to the army, the economy and the
+   * tech (positive favours player 1). Only evaluations from eval-2 on have it; null before.
+   */
+  causes: Record<Cause, number[]> | null;
   model: string;
   evalVersion: string;
   validated: boolean;
@@ -37,14 +45,27 @@ export function parseEvaluation(raw: unknown): Evaluation | null {
     if (ti <= prev || ti < 0 || ti > 86_400 || ai < -1 || ai > 1) return null;
     prev = ti;
   }
+  let causes: Record<Cause, number[]> | null = null;
+  const c = e.causes as Record<string, unknown> | undefined;
+  if (c && typeof c === "object") {
+    const ok = CAUSES.every((k) => Array.isArray(c[k]) && (c[k] as unknown[]).length === t.length && (c[k] as unknown[]).every((v) => typeof v === "number" && Number.isFinite(v) && Math.abs(v) <= 2));
+    if (!ok) return null;
+    causes = { army: c.army as number[], econ: c.econ as number[], tech: c.tech as number[] };
+  }
   if (typeof e.model !== "string" || typeof e.evalVersion !== "string") return null;
   return {
-    t: t as number[], a: a as number[], model: e.model.slice(0, 60), evalVersion: e.evalVersion.slice(0, 40),
+    t: t as number[], a: a as number[], causes, model: e.model.slice(0, 60), evalVersion: e.evalVersion.slice(0, 40),
     validated: e.validated === true, lengthSec: typeof e.lengthSec === "number" && Number.isFinite(e.lengthSec) ? e.lengthSec : (t.at(-1) as number),
   };
 }
 
-export interface Swing { t: number; delta: number; toward: 1 | 2 }
+export interface Swing {
+  t: number;
+  delta: number;
+  toward: 1 | 2;
+  /** Shares of the change by kind and what the model's reading of them leaves over ("other"); null for evaluations without causes. */
+  parts: (Record<Cause, number> & { other: number }) | null;
+}
 
 /**
  * Where the form changed most: for each point from 4 minutes on, the change over the following `windowSec`, largest first.
@@ -58,7 +79,11 @@ export function swings(ev: Evaluation, count = 3, windowSec = 60, gapSec = 90): 
     while (j + 1 < ev.t.length && ev.t[j + 1] - ev.t[i] <= windowSec) j++;
     if (j === i) continue;
     const d = ev.a[j] - ev.a[i];
-    if (Math.abs(d) >= 0.15) cands.push({ t: ev.t[i], delta: d, toward: d > 0 ? 1 : 2 });
+    if (Math.abs(d) >= 0.15) {
+      const parts = ev.causes ? { army: ev.causes.army[i], econ: ev.causes.econ[i], tech: ev.causes.tech[i], other: 0 } : null;
+      if (parts) parts.other = d - parts.army - parts.econ - parts.tech;
+      cands.push({ t: ev.t[i], delta: d, toward: d > 0 ? 1 : 2, parts });
+    }
   }
   cands.sort((x, y) => Math.abs(y.delta) - Math.abs(x.delta));
   const out: Swing[] = [];

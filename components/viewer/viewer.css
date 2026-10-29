@@ -181,3 +181,11 @@
 .vw-coach li i{flex:none;font:700 .74rem var(--f-mono);font-style:normal;min-width:4.2em}
 .vw-coach li.n-bad{color:var(--text)}
 .vw-coach li.n-info{color:var(--dim,var(--text));opacity:.85}
+.vw-causes{display:grid;gap:8px;margin-top:10px}
+.vw-cause{display:grid;grid-template-columns:3.4em 1fr;gap:4px 10px;font-size:.86rem;line-height:1.4}
+.vw-cause>b{font-family:var(--f-mono)}
+.vw-cbars{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.vw-cbars>div{display:grid;gap:3px;font-size:.74rem}
+.vw-cbars i{position:relative;height:7px;border-radius:4px;background:var(--panel2);border:1px solid var(--line2);overflow:hidden}
+.vw-cbars i::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--line2)}
+.vw-cbars u{position:absolute;top:0;bottom:0;display:block}

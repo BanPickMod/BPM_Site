@@ -9,7 +9,7 @@ import { battleNotes } from "@/lib/replay/battleCoach";
 import type { CompEntry } from "@/lib/replay/squads";
 import { unitCost, unitInfo } from "@/lib/replay/units";
 import { CompChart, FormChart, LineChart, OWNER_COLOR } from "./charts";
-import { swings, type Evaluation } from "@/lib/replay/evaluation";
+import { CAUSES, swings, type Cause, type Evaluation, type Swing } from "@/lib/replay/evaluation";
 import { useClockTime } from "./useClock";
 import { typeName } from "./names";
 
@@ -41,6 +41,31 @@ export function Panels({ model, clock, lang, evaluation = null, evaluationPendin
 interface P { model: Model; clock: Clock; lang: Lang }
 const who = (o: Owner, lang: Lang) => (lang === "ko" ? `플레이어 ${o}` : `Player ${o}`);
 
+const CAUSE_LABEL: Record<Cause | "other", [string, string]> = { army: ["병력", "Army"], econ: ["경제", "Economy"], tech: ["기술·생산", "Tech & production"], other: ["그 밖", "Other"] };
+
+/** What moved the form at a swing, as bars pointing toward the player the change favoured. The model's reading, not a verdict. */
+function SwingCauses({ m, lang }: { m: Swing; lang: Lang }) {
+  const t = (ko: string, en: string) => (lang === "ko" ? ko : en);
+  if (!m.parts) return null;
+  const parts = m.parts, size = Math.max(0.05, ...[...CAUSES, "other" as const].map((k) => Math.abs(parts[k])));
+  const lead = CAUSES.reduce((best, k) => (Math.abs(parts[k]) > Math.abs(parts[best]) ? k : best), CAUSES[0]);
+  const toward: 1 | 2 = parts[lead] >= 0 ? 1 : 2;
+  return (
+    <div className="vw-cause">
+      <b>{fmtTime(m.t)}</b>
+      <span>{t(`${CAUSE_LABEL[lead][0]} 쪽 변화가 가장 컸고 ${who(toward, lang)}에게 유리하게 움직였습니다.`, `${CAUSE_LABEL[lead][1]} moved it most, in favour of ${who(toward, lang)}.`)}</span>
+      <div className="vw-cbars">
+        {[...CAUSES, "other" as const].map((k) => (
+          <div key={k} title={`${parts[k] >= 0 ? "+" : ""}${parts[k].toFixed(2)}`}>
+            <span>{t(...CAUSE_LABEL[k])}</span>
+            <i><u style={{ left: parts[k] >= 0 ? "50%" : `${50 - (Math.abs(parts[k]) / size) * 50}%`, width: `${(Math.abs(parts[k]) / size) * 50}%`, background: OWNER_COLOR[parts[k] >= 0 ? 1 : 2] }} /></i>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 /** The AI form curve with the moments it moved most. Honest about what it is: a model score, faded early, not calibrated on BPM games. */
 function FormCard({ ev, model, clock, lang }: { ev: Evaluation; model: Model; clock: Clock; lang: Lang }) {
   const t = (ko: string, en: string) => (lang === "ko" ? ko : en);
@@ -58,6 +83,12 @@ function FormCard({ ev, model, clock, lang }: { ev: Evaluation; model: Model; cl
               {fmtTime(m.t)} → {t(`플레이어 ${m.toward} 쪽`, `toward player ${m.toward}`)}
             </button>
           ))}
+        </div>
+      )}
+      {moves.some((x) => x.parts) && (
+        <div className="vw-causes">
+          <span className="vw-sub">{t("왜 바뀌었나 (모델이 본 원인)", "Why it moved (the model's reading)")}</span>
+          {moves.map((x) => <SwingCauses key={x.t} m={x} lang={lang} />)}
         </div>
       )}
       <p className="vw-fine">

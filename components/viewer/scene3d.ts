@@ -7,7 +7,7 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { mergeGeometries } from "three/examples/jsm/utils/BufferGeometryUtils.js";
 import type { MapGrid } from "@/lib/replay/mapAsset";
-import { bakeTexture, buildField, CHASM, makeNormalMap, SUBDIV, themeFor } from "./terrain";
+import { bakeTexture, buildField, CHASM, makeNormalMap, SUBDIV, themeOf } from "./terrain";
 import { buildFeatures, type Features } from "./features3d";
 import { posAt, type Model, type Unit } from "@/lib/replay/timeline";
 import { squadsAt, type CostOf, type Squad } from "@/lib/replay/squads";
@@ -247,7 +247,7 @@ export function mountScene(container: HTMLElement, o: SceneOptions): SceneHandle
   const terrMat = new THREE.MeshStandardMaterial({ map: bakedTex, normalMap: grain, normalScale: new THREE.Vector2(0.7, 0.7), roughness: 0.94, metalness: 0 });
   // The colour map looks straight down, so on a steep face it is stretched into vertical streaks. Faces that are steep are repainted
   // with bands that run along the height, wobbling across the face, with chipped patches: layered rock.
-  const cliffTone = themeFor(M.tileSet).cliff, cliffColor = new THREE.Color(cliffTone[0], cliffTone[1], cliffTone[2]).convertSRGBToLinear();
+  const cliffTone = themeOf(M).cliff, cliffColor = new THREE.Color(cliffTone[0], cliffTone[1], cliffTone[2]).convertSRGBToLinear();
   terrMat.onBeforeCompile = (sh) => {
     sh.uniforms.uCliff = { value: cliffColor };
     sh.vertexShader = sh.vertexShader.replace("#include <common>", "#include <common>\nvarying vec3 vTerrPos;").replace("#include <begin_vertex>", "#include <begin_vertex>\nvTerrPos = position;");
@@ -275,10 +275,23 @@ export function mountScene(container: HTMLElement, o: SceneOptions): SceneHandle
 
   // minerals and gas
   const dummy = new THREE.Object3D();
-  const crystal = new THREE.InstancedMesh(mergeGeometries([oct(0, 0.75, 0, 0.95, 2.0, 0.95), oct(0.6, 0.5, 0.25, 0.65, 1.4, 0.65, 0, 0, -0.28), oct(-0.5, 0.42, -0.3, 0.6, 1.15, 0.6, 0, 0, 0.32)])!, new THREE.MeshStandardMaterial({ color: 0x4aa8ff, emissive: 0x1760d0, emissiveIntensity: 0.9, roughness: 0.35, metalness: 0.1 }), Math.max(1, M.res.length));
-  crystal.count = M.res.length;
-  M.res.forEach(([x, y], i) => { dummy.position.set(lx(x), gAt(x, y), lz(y)); dummy.scale.setScalar(0.85 + hash(y, x) * 0.4); dummy.rotation.y = hash(x, y) * 6; dummy.updateMatrix(); crystal.setMatrixAt(i, dummy.matrix); });
-  crystal.castShadow = true; scene.add(crystal);
+  const crystalGeo = mergeGeometries([oct(0, 0.75, 0, 0.95, 2.0, 0.95), oct(0.6, 0.5, 0.25, 0.65, 1.4, 0.65, 0, 0, -0.28), oct(-0.5, 0.42, -0.3, 0.6, 1.15, 0.6, 0, 0, 0.32)])!;
+  // Rich mineral fields are gold, a little larger, with a warm glow on the ground so they are seen from across the map.
+  const goldGlow = glowTexture("rgba(255,236,120,1)", "rgba(255,200,40,0)");
+  for (const rich of [false, true]) {
+    const at = M.res.map((p, i) => ({ p, i })).filter(({ i }) => !!M.resRich[i] === rich);
+    if (!at.length) continue;
+    const mat = new THREE.MeshStandardMaterial(rich ? { color: 0xffe660, emissive: 0xe0ae00, emissiveIntensity: 1.35, roughness: 0.25, metalness: 0.45 } : { color: 0x4aa8ff, emissive: 0x1760d0, emissiveIntensity: 0.9, roughness: 0.35, metalness: 0.1 });
+    const mesh = new THREE.InstancedMesh(crystalGeo, mat, at.length);
+    at.forEach(({ p: [x, y] }, k) => {
+      dummy.position.set(lx(x), gAt(x, y), lz(y)); dummy.scale.setScalar((0.85 + hash(y, x) * 0.4) * (rich ? 1.25 : 1)); dummy.rotation.y = hash(x, y) * 6; dummy.updateMatrix(); mesh.setMatrixAt(k, dummy.matrix);
+      if (rich) {
+        const glow = new THREE.Mesh(new THREE.PlaneGeometry(9, 9), new THREE.MeshBasicMaterial({ map: goldGlow, transparent: true, opacity: 0.95, blending: THREE.AdditiveBlending, depthWrite: false }));
+        glow.rotation.x = -Math.PI / 2; glow.position.set(lx(x), gAt(x, y) + 0.12, lz(y)); scene.add(glow);
+      }
+    });
+    mesh.castShadow = true; scene.add(mesh);
+  }
 
   // what the map maker placed: grass, trees, rocks, ruins, buildings, destructibles, towers, geysers
   const features: Features = buildFeatures(M, gAt, lx, lz);

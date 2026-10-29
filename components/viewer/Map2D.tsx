@@ -57,7 +57,7 @@ export function Map2D({ model, map, clock, onHover, onSelect, selected, squads =
       else { g.strokeStyle = "#242a4a"; g.strokeRect(ox, oy, bw * s, bh * s); }
       if (map) {
         g.fillStyle = "#4aa8ff";
-        for (const [x, y] of map.res) g.fillRect(sx(x + map.x0) - 1, sy(y + map.y0) - 1, 2, 2);
+        map.res.forEach(([x, y], i) => { g.fillStyle = map.resRich[i] ? "#ffe660" : "#4aa8ff"; g.fillRect(sx(x + map.x0) - 1, sy(y + map.y0) - 1, map.resRich[i] ? 3 : 2, map.resRich[i] ? 3 : 2); });
       }
       for (const b of model.battles) {
         if (t < b.t0 - 3 || t > b.t1 + 6) continue;

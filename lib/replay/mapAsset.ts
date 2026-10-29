@@ -20,6 +20,11 @@ export interface RawMapAsset {
   classes?: string[];
   doodads?: [number, number, number, number, number][];
   units?: [string, number, number, number, number, number][];
+  /** The map's own colours, read from the minimap in the map file (scripts/maps/export_palettes.py). Each is [r, g, b] in 0..1. */
+  /** Positions (full-map cells) of the rich mineral fields and rich geysers (scripts/maps/export_palettes.py). */
+  rich?: [number, number][];
+  richGas?: [number, number][];
+  palette?: Record<"lo" | "mid" | "hi" | "cliff" | "stone" | "building" | "rockTop", [number, number, number]>;
 }
 
 /** What the map maker placed, classified (grass, tree, rock, column, ruin, building, wall, crystal, prop). Positions are crop cells. */
@@ -47,6 +52,10 @@ export interface MapGrid {
   tileSet: string;
   doodads: Doodad[];
   special: SpecialUnit[];
+  palette: RawMapAsset["palette"] | null;
+  /** Same order as `res` and `gas`: true for a rich mineral field or a rich geyser, which the viewer draws in gold. */
+  resRich: boolean[];
+  gasRich: boolean[];
 }
 
 function b64(s: string): Uint8Array {
@@ -55,6 +64,9 @@ function b64(s: string): Uint8Array {
   for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
   return out;
 }
+
+/** Whether a listed position is on this one: the object lists and the engine's grids disagree by a fraction of a cell. */
+const near = (list: [number, number][] | undefined, x: number, y: number) => !!list?.some(([a, b]) => Math.hypot(a - x, b - y) < 1.6);
 
 export function decodeMap(raw: RawMapAsset): MapGrid {
   const n = raw.w * raw.h;
@@ -73,5 +85,6 @@ export function decodeMap(raw: RawMapAsset): MapGrid {
     starts: raw.starts.map(local), exps: raw.exps.map(local), res: raw.res.map(local), hMin, hMax,
     gas: (raw.gas ?? []).map(local), tileSet: raw.tileSet ?? "",
     doodads: (raw.doodads ?? []).map(([c, x, y, rot, scale]) => ({ cls: raw.classes?.[c] ?? "prop", x: x - raw.x0, y: y - raw.y0, rot, scale })),
-    special: (raw.units ?? []).map(([kind, x, y, w, h, d]) => ({ kind: kind as SpecialUnit["kind"], x: x - raw.x0, y: y - raw.y0, w, h, diagonal: d === 1 })) };
+    special: (raw.units ?? []).map(([kind, x, y, w, h, d]) => ({ kind: kind as SpecialUnit["kind"], x: x - raw.x0, y: y - raw.y0, w, h, diagonal: d === 1 })), palette: raw.palette ?? null,
+    resRich: raw.res.map(([x, y]) => near(raw.rich, x, y)), gasRich: (raw.gas ?? []).map(([x, y]) => near(raw.richGas, x, y)) };
 }

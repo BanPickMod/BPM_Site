@@ -180,6 +180,8 @@ export function Legend({ lang, map }: { lang: Lang; map: MapGrid | null }) {
     ["#ff8c3c", t("파괴 가능 바위", "Destructible rocks"), map.special.some((u) => u.kind === "dest")],
     ["#5af0e6", t("쐐기 탑", "Xel'Naga tower"), map.special.some((u) => u.kind === "tower")],
     ["#5ee08a", t("가스", "Geyser"), map.gas.length > 0],
+    ["#ffe660", t("풍부한 광물", "Rich minerals"), map.resRich.some(Boolean)],
+    ["#ffb52e", t("풍부한 가스", "Rich geyser"), map.gasRich.some(Boolean)],
   ] : [];
   return (
     <ul className="vw-legend">

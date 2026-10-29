@@ -110,12 +110,12 @@ export function Minimap({ model, map, clock, selected, onFocus, lang }: { model:
       for (const b of model.battles) { if (now < b.t0 - 3 || now > b.t1 + 6) continue; g.beginPath(); g.arc(sx(b.cx), sy(b.cy), 9, 0, 6.283); g.fillStyle = "rgba(255,68,88,.35)"; g.fill(); }
       for (const u of model.units) {
         if (u.kind === "worker") continue;
-        if (u.kind === "structure") { if (now >= u.born && now < u.died) { g.fillStyle = OWNER_COLOR[u.owner]; g.fillRect(sx(u.x0) - 1.6, sy(u.y0) - 1.6, 3.2, 3.2); } continue; }
+        if (u.kind === "structure") { const p = posAt(u, now, model.windowSec); if (p) { g.fillStyle = OWNER_COLOR[u.owner]; g.fillRect(sx(p.x) - 1.6, sy(p.y) - 1.6, 3.2, 3.2); } continue; }
         const p = posAt(u, now, model.windowSec); if (!p) continue;
         g.globalAlpha = 0.4 + 0.6 * p.a; g.fillStyle = u.pick ? "#d6f542" : OWNER_COLOR[u.owner]; g.beginPath(); g.arc(sx(p.x), sy(p.y), u.pick ? 2.2 : 1.5, 0, 6.283); g.fill(); g.globalAlpha = 1;
       }
       if (selected) {
-        const p = selected.kind === "structure" ? (now >= selected.born && now < selected.died ? { x: selected.x0, y: selected.y0 } : null) : posAt(selected, now, model.windowSec);
+        const p = posAt(selected, now, model.windowSec);
         if (p) { g.strokeStyle = "#fff"; g.lineWidth = 1.5; g.beginPath(); g.arc(sx(p.x), sy(p.y), 5, 0, 6.283); g.stroke(); }
       }
     };

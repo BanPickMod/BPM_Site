@@ -311,7 +311,6 @@ export function mountScene(container: HTMLElement, o: SceneOptions): SceneHandle
   selRing.rotation.x = -Math.PI / 2; selRing.visible = false; selRing.renderOrder = 10; scene.add(selRing);
   let selected: Unit | null = null, followTarget: Unit | null = null, focusGoal: THREE.Vector3 | null = null;
   const unitPos = (u: Unit, t: number): { x: number; y: number } | null => {
-    if (u.kind === "structure") return t >= u.born && t < u.died ? { x: u.x0, y: u.y0 } : null;
     const p = posAt(u, t, model.windowSec);
     return p ? { x: p.x, y: p.y } : null;
   };
@@ -323,13 +322,13 @@ export function mountScene(container: HTMLElement, o: SceneOptions): SceneHandle
   function update() {
     const t = clock.t;
     for (const b of bases) {
-      const th = townhalls.find((u) => u.born <= t && t < u.died && Math.abs(u.x0 - b.x) < 7 && Math.abs(u.y0 - b.y) < 7);
+      const th = townhalls.find((u) => { const p = posAt(u, t, W); return !!p && (p.air ?? 0) < 0.5 && Math.abs(p.x - b.x) < 7 && Math.abs(p.y - b.y) < 7; });
       if (th) { b.m.material.color.setHex(OWNER[th.owner]); b.m.material.opacity = 0.85; } else b.m.material.opacity = 0;
     }
     for (const B of buildings) {
       B.list.forEach((u, i) => {
-        const live = t >= u.born && t < u.died;
-        tmp.position.set(wx(u.x0), gAtFull(u.x0, u.y0), wz(u.y0)); tmp.scale.setScalar(live ? 1 : 0);
+        const p = posAt(u, t, W), live = !!p, px = p ? p.x : u.x0, py = p ? p.y : u.y0;
+        tmp.position.set(wx(px), gAtFull(px, py) + (p?.air ?? 0) * 3.2, wz(py)); tmp.scale.setScalar(live ? 1 : 0);   // a lifted building rises off the ground
         tmp.rotation.set(0, ["hall", "hatch", "nexus"].includes(B.kind) ? 0 : hash(u.x0, u.y0) * 1.2, 0); tmp.updateMatrix(); B.mesh.setMatrixAt(i, tmp.matrix);
       });
       B.mesh.instanceMatrix.needsUpdate = true;

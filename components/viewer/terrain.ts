@@ -14,9 +14,12 @@ const THEMES: Record<string, Theme> = {
   dust: { lo: [0.17, 0.135, 0.11], mid: [0.34, 0.275, 0.21], hi: [0.62, 0.53, 0.42], rockTop: [0.085, 0.078, 0.095], cliff: [0.30, 0.25, 0.235], grass: [0.26, 0.42, 0.18], tree: [0.14, 0.32, 0.16], stone: [0.62, 0.55, 0.45], building: [0.42, 0.40, 0.44], glow: [0.35, 0.8, 0.9] },
   green: { lo: [0.09, 0.13, 0.07], mid: [0.2, 0.28, 0.12], hi: [0.4, 0.46, 0.24], rockTop: [0.07, 0.09, 0.07], cliff: [0.28, 0.27, 0.22], grass: [0.22, 0.5, 0.16], tree: [0.1, 0.34, 0.13], stone: [0.55, 0.53, 0.46], building: [0.4, 0.4, 0.38], glow: [0.4, 0.9, 0.6] },
   sand: { lo: [0.27, 0.2, 0.12], mid: [0.52, 0.41, 0.25], hi: [0.78, 0.68, 0.48], rockTop: [0.16, 0.12, 0.1], cliff: [0.42, 0.32, 0.24], grass: [0.45, 0.5, 0.2], tree: [0.3, 0.42, 0.16], stone: [0.7, 0.62, 0.5], building: [0.62, 0.55, 0.45], glow: [0.9, 0.7, 0.4] },
+  // the protoss homeland: sun-warmed gold stone under a pale blue energy glow
+  aiur: { lo: [0.16, 0.13, 0.1], mid: [0.4, 0.34, 0.24], hi: [0.72, 0.62, 0.42], rockTop: [0.1, 0.09, 0.11], cliff: [0.36, 0.3, 0.26], grass: [0.34, 0.44, 0.2], tree: [0.2, 0.36, 0.18], stone: [0.74, 0.66, 0.5], building: [0.5, 0.46, 0.5], glow: [0.4, 0.72, 1.0] },
   city: { lo: [0.1, 0.11, 0.14], mid: [0.21, 0.22, 0.26], hi: [0.38, 0.39, 0.45], rockTop: [0.06, 0.06, 0.08], cliff: [0.26, 0.27, 0.31], grass: [0.2, 0.42, 0.2], tree: [0.14, 0.34, 0.18], stone: [0.55, 0.56, 0.6], building: [0.36, 0.4, 0.5], glow: [0.5, 0.75, 1.0] },
 };
 export function themeFor(tileSet: string): Theme {
+  if (/aiur|protoss|shakuras|talDarim|ulnar/i.test(tileSet)) return THEMES.aiur;
   if (/grass|braxis|jungle|agria|belshir|haven/i.test(tileSet)) return THEMES.green;
   if (/desert|purification|elsecaro|marsara|sand/i.test(tileSet)) return THEMES.sand;
   if (/tarsonis|korhal|portcity|dominion/i.test(tileSet)) return THEMES.city;

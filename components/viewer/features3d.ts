@@ -32,24 +32,126 @@ const oct = (c: [number, number, number], ...a: number[]) => paint(place(new THR
 const merge = (parts: G[]): G => mergeGeometries(parts.map((p) => { if (p.index) p = p.toNonIndexed(); return p; }))!;
 const shade = (c: [number, number, number], k: number): [number, number, number] => [c[0] * k, c[1] * k, c[2] * k];
 
-function shapes(th: Theme): Record<string, G> {
-  const dark = shade(th.tree, 0.7), trunk: [number, number, number] = [0.22, 0.14, 0.09];
+type C3 = [number, number, number];
+const h3 = (x: number, y: number, z: number) => { const s = Math.sin(x * 127.1 + y * 311.7 + z * 74.7) * 43758.5453; return s - Math.floor(s); };
+
+/**
+ * Makes a clean primitive look worn. Corners wander a little (identically for every vertex that shares a corner, so nothing splits),
+ * each face gets its own shade, the foot is darker than the top, and faces that look up pick up moss (`mossAmt`, 0 for a dry map).
+ * The foot stays flat so a piece sits on the ground.
+ */
+function weather(src: G, o: { seed: number; amp: number; tone: C3; moss?: C3; mossAmt?: number }): G {
+  const g = (src.index ? src.toNonIndexed() : src.clone()) as G;
+  g.deleteAttribute("uv"); g.deleteAttribute("color");
+  const p = g.attributes.position as THREE.BufferAttribute;
+  g.computeBoundingBox();
+  const minY = g.boundingBox!.min.y, spanY = Math.max(1e-3, g.boundingBox!.max.y - minY);
+  for (let i = 0; i < p.count; i++) {
+    const x = p.getX(i), y = p.getY(i), z = p.getZ(i), kx = Math.round(x * 50), ky = Math.round(y * 50), kz = Math.round(z * 50);
+    const foot = y - minY < 1e-4;
+    p.setXYZ(i, x + (h3(kx, ky + o.seed, kz) - 0.5) * 2 * o.amp, foot ? y : y + (h3(kx + 7.1, ky, kz + o.seed) - 0.5) * 2 * o.amp, z + (h3(kx, ky + 3.3, kz + o.seed * 1.7) - 0.5) * 2 * o.amp);
+  }
+  g.computeVertexNormals();
+  const n = g.attributes.normal as THREE.BufferAttribute, col = new Float32Array(p.count * 3), moss = o.moss ?? o.tone;
+  for (let f = 0; f + 2 < p.count; f += 3) {
+    const jitter = 0.88 + h3(f, o.seed, 1.3) * 0.24, mossy = (o.mossAmt ?? 0) * Math.max(0, n.getY(f) - 0.55) / 0.45;
+    for (let k = 0; k < 3; k++) {
+      const grade = 0.72 + 0.4 * Math.min(1, (p.getY(f + k) - minY) / spanY);
+      for (let c = 0; c < 3; c++) col[(f + k) * 3 + c] = (o.tone[c] * grade * (1 - mossy) + moss[c] * mossy) * jitter;
+    }
+  }
+  g.setAttribute("color", new THREE.BufferAttribute(col, 3));
+  return g;
+}
+
+const ico1 = () => new THREE.IcosahedronGeometry(0.5, 1);
+const sbox = () => new THREE.BoxGeometry(1, 1, 1, 2, 2, 2);
+const scyl = (top = 0.5, bottom = 0.5, seg = 8) => new THREE.CylinderGeometry(top, bottom, 1, seg, 2);
+
+/** Several shapes per kind of thing, so a field of them does not repeat. The viewer picks one for each placed item. */
+function shapes(th: Theme): Record<string, G[]> {
+  const dark = shade(th.tree, 0.7), trunk: C3 = [0.22, 0.14, 0.09];
+  const lush = th.grass[1] - th.grass[0] > 0.2, mossAmt = lush ? 0.55 : 0.12;
+  // a weathered part: k darkens or lightens the kind's own tone
+  const W = (g: G, tone: C3, amp: number, seed: number, moss = true) => weather(g, { seed, amp, tone, moss: th.grass, mossAmt: moss ? mossAmt : 0 });
+  const st = (k: number) => shade(th.stone, k), bd = (k: number) => shade(th.building, k);
+  const grass = (n: number, h: number) => merge(Array.from({ length: n }, (_, i) => { const a = (i / n) * Math.PI * 2, r = i === n - 1 ? 0 : 0.55; return cone(i % 2 ? shade(th.grass, 0.8) : th.grass, 5, Math.cos(a) * r, 0.7, Math.sin(a) * r, 0.34, h + (i % 3) * 0.3, 0.34, Math.sin(a) * 0.3, 0, -Math.cos(a) * 0.3); }));
+  const small = (seed: number) => Array.from({ length: 5 }, (_, i) => W(place(ico1(), (h3(i, seed, 1) - 0.5) * 2.2, 0.18, (h3(i, seed, 2) - 0.5) * 2.2, 0.5 + h3(i, seed, 3) * 0.5, 0.35 + h3(i, seed, 4) * 0.3, 0.5 + h3(i, seed, 5) * 0.5), st(0.55 + h3(i, seed, 6) * 0.3), 0.05, seed + i));
   return {
-    // a clump of blades: reads as tall grass / a bush from above
-    grass: merge([0, 1, 2, 3, 4, 5, 6].map((i) => { const a = (i / 7) * Math.PI * 2, r = i === 6 ? 0 : 0.55; return cone(i % 2 ? shade(th.grass, 0.8) : th.grass, 5, Math.cos(a) * r, 0.7, Math.sin(a) * r, 0.34, 1.5 + (i % 3) * 0.3, 0.34, Math.sin(a) * 0.3, 0, -Math.cos(a) * 0.3); })),
-    tree: merge([cyl(trunk, 6, 0, 0.8, 0, 0.36, 1.6, 0.36), cone(th.tree, 7, 0, 2.2, 0, 2.6, 2.0, 2.6), cone(shade(th.tree, 1.15), 7, 0, 3.4, 0, 2.0, 1.8, 2.0), cone(dark, 7, 0, 4.4, 0, 1.3, 1.5, 1.3)]),
-    rock: merge([ico(shade(th.stone, 0.55), 0, 0.45, 0, 1.7, 1.1, 1.4), ico(shade(th.stone, 0.7), 0.7, 0.25, 0.3, 0.9, 0.6, 0.8)]),
-    column: merge([box(shade(th.stone, 0.8), 0, 0.25, 0, 1.4, 0.5, 1.4), cyl(th.stone, 6, 0, 2.0, 0, 0.9, 3.2, 0.9), box(shade(th.stone, 0.9), 0, 3.75, 0, 1.3, 0.35, 1.3)]),
-    ruin: merge([box(shade(th.stone, 0.75), 0, 0.3, 0, 3.0, 0.6, 2.2), box(th.stone, -0.4, 1.3, 0.1, 1.5, 1.6, 1.2), box(shade(th.stone, 1.1), 0.9, 0.9, -0.3, 0.8, 1.0, 0.8), box(th.glow, -0.4, 2.15, 0.1, 0.5, 0.1, 0.5)]),
-    building: merge([box(th.building, 0, 1.0, 0, 2.6, 2.0, 2.6), box(shade(th.building, 0.7), 0, 2.1, 0, 2.85, 0.22, 2.85), box(shade(th.building, 1.2), 0.7, 2.5, 0.5, 0.8, 0.55, 0.8)]),
-    wall: merge([box(shade(th.building, 0.85), 0, 0.65, 0, 3.4, 1.3, 0.55), box(shade(th.building, 0.6), 0, 1.35, 0, 3.6, 0.15, 0.75)]),
-    crystal: merge([oct(th.glow, 0, 1.0, 0, 0.8, 2.4, 0.8), oct(shade(th.glow, 0.8), 0.6, 0.6, 0.2, 0.5, 1.5, 0.5), oct(shade(th.glow, 0.9), -0.5, 0.5, -0.3, 0.45, 1.2, 0.45)]),
-    prop: merge([box([0.45, 0.3, 0.2], 0, 0.35, 0, 0.9, 0.7, 0.9), box([0.55, 0.4, 0.25], 0.5, 0.2, 0.4, 0.5, 0.4, 0.5)]),
+    grass: [grass(7, 1.5), grass(5, 2.3)],
+    tree: [
+      // a pine: trunk and three stacked cones
+      merge([cyl(trunk, 6, 0, 0.8, 0, 0.36, 1.6, 0.36), W(place(new THREE.ConeGeometry(0.5, 1, 7, 2), 0, 2.2, 0, 2.6, 2.0, 2.6), th.tree, 0.12, 21, false), W(place(new THREE.ConeGeometry(0.5, 1, 7, 2), 0, 3.4, 0, 2.0, 1.8, 2.0), shade(th.tree, 1.15), 0.1, 22, false), W(place(new THREE.ConeGeometry(0.5, 1, 7, 2), 0, 4.4, 0, 1.3, 1.5, 1.3), dark, 0.08, 23, false)]),
+      // a broadleaf: a short trunk and a rounded crown
+      merge([cyl(trunk, 6, 0, 0.9, 0, 0.5, 1.8, 0.5), W(place(ico1(), 0, 3.0, 0, 3.0, 2.3, 3.0), th.tree, 0.2, 24, false), W(place(ico1(), 0.7, 3.9, -0.3, 1.9, 1.5, 1.9), shade(th.tree, 1.2), 0.15, 25, false)]),
+      // a tall jungle tree: a long bare trunk under a flat crown
+      merge([cyl(trunk, 6, 0, 2.2, 0, 0.42, 4.4, 0.42), W(place(ico1(), 0, 5.0, 0, 4.0, 1.1, 4.0), shade(th.tree, 0.95), 0.2, 26, false), W(place(ico1(), -1.2, 4.3, 0.6, 2.0, 0.8, 2.0), dark, 0.15, 27, false)]),
+    ],
+    rock: [
+      merge([W(place(ico1(), 0, 0.5, 0, 1.7, 1.2, 1.5), st(0.62), 0.07, 1)]),                                                       // round boulder
+      merge([W(place(ico1(), 0, 0.28, 0, 2.5, 0.62, 1.8, 0, 0.5, 0.06), st(0.7), 0.05, 2)]),                                          // flat slab
+      merge([W(place(ico1(), 0, 1.25, 0, 0.95, 2.5, 0.9, 0.08, 0, -0.1), st(0.58), 0.09, 3)]),                                        // standing stone
+      merge([W(place(ico1(), 0, 0.45, 0, 1.4, 0.95, 1.2), st(0.6), 0.07, 4), W(place(ico1(), 0.95, 0.3, 0.35, 0.9, 0.6, 0.8), st(0.72), 0.07, 5), W(place(ico1(), -0.6, 0.25, 0.7, 0.7, 0.5, 0.65), st(0.82), 0.07, 6)]),   // pile of three
+      merge([W(place(new THREE.OctahedronGeometry(0.5, 1), 0, 0.9, 0, 1.0, 1.9, 0.85, 0.12, 0.4, 0.2), st(0.55), 0.11, 7)]),          // jagged shard
+      merge(small(40)),                                                                                                                  // scatter of small stones
+    ],
+    column: [
+      merge([W(place(sbox(), 0, 0.25, 0, 1.4, 0.5, 1.4), st(0.8), 0.04, 31), W(place(scyl(0.5, 0.5, 8), 0, 2.0, 0, 0.9, 3.2, 0.9), st(1), 0.03, 32), W(place(sbox(), 0, 3.75, 0, 1.3, 0.35, 1.3), st(0.9), 0.04, 33)]),
+      merge([W(place(sbox(), 0, 0.25, 0, 1.4, 0.5, 1.4), st(0.8), 0.04, 34), W(place(scyl(0.46, 0.5, 8), 0, 1.0, 0, 0.9, 1.6, 0.9, 0.04, 0, 0.05), st(0.95), 0.05, 35), W(place(scyl(0.5, 0.5, 8), 1.2, 0.45, 0.7, 0.8, 1.5, 0.8, 0, 0, Math.PI / 2), st(0.85), 0.05, 36)]),   // snapped, a piece fallen
+      merge([W(place(sbox(), -0.9, 0.2, 0, 1.0, 0.4, 1.0), st(0.8), 0.04, 37), W(place(sbox(), 0.9, 0.2, 0, 1.0, 0.4, 1.0), st(0.8), 0.04, 38), W(place(scyl(0.5, 0.5, 8), -0.9, 1.7, 0, 0.7, 2.6, 0.7), st(1), 0.03, 39), W(place(scyl(0.5, 0.5, 8), 0.9, 1.7, 0, 0.7, 2.6, 0.7), st(1), 0.03, 40), W(place(sbox(), 0, 3.15, 0, 3.0, 0.45, 0.9), st(0.9), 0.04, 41)]),   // a pair with a lintel
+    ],
+    ruin: [
+      merge([W(place(sbox(), 0, 0.5, 0, 3.0, 1.0, 0.7), st(0.75), 0.06, 11), W(place(sbox(), -1.0, 1.3, 0, 0.9, 1.6, 0.7), st(0.9), 0.07, 12), W(place(sbox(), 1.3, 0.25, 0.7, 0.7, 0.5, 0.6, 0, 0.4, 0), st(0.7), 0.06, 13)]),     // a broken wall
+      merge([W(place(sbox(), 0, 0.2, 0, 3.0, 0.4, 2.4), st(0.7), 0.05, 14), W(place(scyl(0.5, 0.5, 8), -0.2, 0.75, 0.2, 0.8, 2.8, 0.8, 0, 0.3, Math.PI / 2), st(0.95), 0.05, 15), W(place(scyl(0.5, 0.5, 8), 0.6, 0.75, -0.6, 0.8, 1.6, 0.8, 0, 1.0, Math.PI / 2), st(0.85), 0.05, 16)]),   // fallen columns on a slab
+      merge([W(place(sbox(), 0, 0.25, 0, 3.4, 0.5, 3.4), st(0.7), 0.05, 17), W(place(sbox(), 0, 0.75, 0, 2.5, 0.5, 2.5), st(0.8), 0.05, 18), W(place(sbox(), 0, 1.25, 0, 1.6, 0.5, 1.6), st(0.9), 0.05, 19), box(th.glow, 0, 1.55, 0, 0.5, 0.1, 0.5)]),   // steps with a lit stone
+      merge([W(place(sbox(), -1.2, 1.3, 0, 0.7, 2.6, 0.7), st(0.85), 0.05, 20), W(place(sbox(), 1.2, 0.9, 0, 0.7, 1.8, 0.7), st(0.8), 0.06, 28), W(place(sbox(), -0.55, 2.75, 0, 1.9, 0.55, 0.7, 0, 0, 0.06), st(0.95), 0.05, 29), W(place(sbox(), 0.3, 0.2, 0.8, 0.9, 0.4, 0.8), st(0.7), 0.05, 30)]),   // an arch that did not survive
+      merge([W(place(sbox(), 0, 0.2, 0, 2.4, 0.4, 2.4), st(0.7), 0.05, 42), W(place(scyl(0.34, 0.55, 7), 0, 1.3, 0, 1.6, 1.8, 1.6), st(0.88), 0.06, 43), W(place(ico1(), 0.9, 0.3, 0.8, 0.8, 0.5, 0.7), st(0.7), 0.05, 44)]),   // a worn shrine stump
+    ],
+    building: [
+      merge([box(th.building, 0, 1.0, 0, 2.6, 2.0, 2.6), box(shade(th.building, 0.7), 0, 2.1, 0, 2.85, 0.22, 2.85), box(shade(th.building, 1.2), 0.7, 2.5, 0.5, 0.8, 0.55, 0.8)]),
+      merge([box(bd(0.95), 0, 1.7, 0, 1.9, 3.4, 1.9), box(bd(0.7), 0, 3.5, 0, 2.1, 0.2, 2.1), cyl(bd(1.3), 6, 0.4, 4.2, 0.3, 0.12, 1.4, 0.12)]),     // a tall block with an antenna
+      merge([box(bd(1), -0.7, 0.9, 0, 1.8, 1.8, 2.8), box(bd(0.85), 0.9, 0.6, 0.5, 1.8, 1.2, 1.8), box(bd(0.7), -0.7, 1.9, 0, 2.0, 0.2, 3.0)]),        // two joined low blocks
+    ],
+    wall: [
+      merge([box(bd(0.85), 0, 0.65, 0, 3.4, 1.3, 0.55), box(bd(0.6), 0, 1.35, 0, 3.6, 0.15, 0.75)]),
+      merge([box(bd(0.85), -1.1, 0.65, 0, 1.2, 1.3, 0.55), box(bd(0.85), 1.1, 0.5, 0, 1.2, 1.0, 0.55), box(bd(0.6), -1.1, 1.35, 0, 1.4, 0.15, 0.75)]),   // a gap in it
+    ],
+    crystal: [merge([oct(th.glow, 0, 1.0, 0, 0.8, 2.4, 0.8), oct(shade(th.glow, 0.8), 0.6, 0.6, 0.2, 0.5, 1.5, 0.5), oct(shade(th.glow, 0.9), -0.5, 0.5, -0.3, 0.45, 1.2, 0.45)])],
+    prop: [merge([box([0.45, 0.3, 0.2], 0, 0.35, 0, 0.9, 0.7, 0.9), box([0.55, 0.4, 0.25], 0.5, 0.2, 0.4, 0.5, 0.4, 0.5)])],
   };
 }
 
 const CAST = new Set(["tree", "rock", "column", "ruin", "building", "wall"]);
 const SIZE: Record<string, [number, number]> = { grass: [0.8, 2.0], tree: [0.8, 1.8], rock: [0.7, 2.2], column: [0.8, 1.6], ruin: [0.8, 1.8], building: [0.7, 1.3], wall: [0.8, 1.8], crystal: [0.8, 1.8], prop: [0.8, 1.5] };
+/** How often each shape is chosen: the plain ones are common, the striking ones rare. */
+const WEIGHTS: Record<string, number[]> = { rock: [3, 3, 1.4, 2, 1, 2], ruin: [3, 2, 2, 1.6, 1.4], tree: [3, 2, 1.4], column: [3, 1.6, 1], building: [3, 1.5, 2], wall: [3, 1.4], grass: [3, 2] };
+const SINK: Record<string, number> = { rock: 0.1, ruin: 0.06, column: 0.04, wall: 0.04 };
+
+/** Items nearer than this (cells) to a bigger one of the same kind are dropped: piles that read as clutter, most of all in the city maps. */
+const THIN: Record<string, number> = { building: 2.4, wall: 1.5, ruin: 1.6, column: 1.3, rock: 0.9, tree: 1.0 };
+
+function thin<T extends { x: number; y: number; scale: number }>(items: T[], minDist: number): T[] {
+  const kept: T[] = [], grid = new Map<string, T[]>(), cell = (v: number) => Math.floor(v / minDist);
+  for (const d of [...items].sort((a, b) => b.scale - a.scale || a.x - b.x || a.y - b.y)) {
+    const cx = cell(d.x), cy = cell(d.y);
+    let free = true;
+    for (let gx = cx - 1; gx <= cx + 1 && free; gx++) for (let gy = cy - 1; gy <= cy + 1 && free; gy++) {
+      for (const k of grid.get(`${gx},${gy}`) ?? []) if (Math.hypot(d.x - k.x, d.y - k.y) < minDist) { free = false; break; }
+    }
+    if (!free) continue;
+    kept.push(d);
+    const key = `${cx},${cy}`;
+    (grid.get(key) ?? grid.set(key, []).get(key)!).push(d);
+  }
+  return kept;
+}
+
+function pickVariant(cls: string, n: number, r: number): number {
+  const w = WEIGHTS[cls] ?? Array.from({ length: n }, () => 1), total = w.slice(0, n).reduce((a, b) => a + b, 0);
+  let acc = 0;
+  for (let i = 0; i < n; i++) { acc += w[i] ?? 1; if (r * total < acc) return i; }
+  return n - 1;
+}
 
 export interface Features { group: THREE.Group; setVisible(v: boolean): void; counts: Record<string, number>; dispose(): void }
 
@@ -60,21 +162,31 @@ export function buildFeatures(M: MapGrid, heightAt: (x: number, y: number) => nu
   const dummy = new THREE.Object3D(), tint = new THREE.Color();
 
   for (const cls of Object.keys(geos)) {
-    const list = M.doodads.filter((d) => d.cls === cls && d.x >= 0 && d.y >= 0 && d.x < M.w && d.y < M.h);
+    const placed = M.doodads.filter((d) => d.cls === cls && d.x >= 0 && d.y >= 0 && d.x < M.w && d.y < M.h);
+    const list = THIN[cls] ? thin(placed, THIN[cls]) : placed;
     if (!list.length) continue;
     counts[cls] = list.length;
-    const mesh = new THREE.InstancedMesh(geos[cls], cls === "crystal" ? glowMat : mat, list.length);
+    const variants = geos[cls], byVariant: (typeof list)[] = variants.map(() => []);
+    list.forEach((d) => byVariant[pickVariant(cls, variants.length, hash(d.x * 9.1 + 3.7, d.y * 4.7 + 1.3))].push(d));
     const [lo, hi] = SIZE[cls];
-    list.forEach((d, i) => {
-      const j = hash(d.x * 3.1, d.y * 1.7), s = Math.min(hi, Math.max(lo, d.scale * (0.85 + j * 0.3)));
-      dummy.position.set(lx(d.x), heightAt(d.x, d.y), lz(d.y));
-      dummy.rotation.set(0, (d.rot * Math.PI) / 180, 0);
-      dummy.scale.set(s * (cls === "rock" ? 0.8 + j * 0.6 : 1), s * (cls === "building" ? 0.8 + j * 0.8 : cls === "rock" ? 0.7 + j * 0.7 : 1), s * (cls === "rock" ? 0.8 + (1 - j) * 0.6 : 1));
-      dummy.updateMatrix(); mesh.setMatrixAt(i, dummy.matrix);
-      const v = 0.82 + hash(d.x, d.y * 2.3) * 0.34; tint.setRGB(v, v, v); mesh.setColorAt(i, tint);
+    variants.forEach((geo, vi) => {
+      const items = byVariant[vi];
+      if (!items.length) return;
+      const mesh = new THREE.InstancedMesh(geo, cls === "crystal" ? glowMat : mat, items.length);
+      items.forEach((d, i) => {
+        const j = hash(d.x * 3.1, d.y * 1.7), s = Math.min(hi, Math.max(lo, d.scale * (0.8 + j * 0.4))), stretch = 0.9 + hash(d.y * 2.9, d.x * 1.1) * 0.25;
+        // stand on the lowest ground under the piece, a little sunk in, so nothing hovers on a slope
+        const r = 0.5 * s, ground = Math.min(heightAt(d.x, d.y), heightAt(d.x + r, d.y), heightAt(d.x - r, d.y), heightAt(d.x, d.y + r), heightAt(d.x, d.y - r));
+        dummy.position.set(lx(d.x), ground - (SINK[cls] ?? 0) * s * 2, lz(d.y));
+        const tilt = cls === "rock" ? (hash(d.x, d.y * 5.1) - 0.5) * 0.35 : 0;
+        dummy.rotation.set(tilt, (d.rot * Math.PI) / 180, cls === "rock" ? (hash(d.y, d.x * 2.3) - 0.5) * 0.35 : 0);
+        dummy.scale.set(s * (cls === "rock" || cls === "ruin" ? stretch : 1), s * (cls === "building" ? 0.8 + j * 0.6 : cls === "rock" ? 0.85 + j * 0.4 : 1), s * (cls === "rock" || cls === "ruin" ? 2 - stretch : 1));
+        dummy.updateMatrix(); mesh.setMatrixAt(i, dummy.matrix);
+        const v = 0.84 + hash(d.x, d.y * 2.3) * 0.3; tint.setRGB(v * (0.95 + hash(d.x * 1.3, d.y) * 0.1), v * (0.97 + hash(d.y * 1.9, d.x) * 0.06), v * (0.93 + hash(d.x, d.y * 3.3) * 0.12)); mesh.setColorAt(i, tint);
+      });
+      mesh.castShadow = CAST.has(cls); mesh.receiveShadow = cls !== "grass"; mesh.frustumCulled = false;
+      group.add(mesh);
     });
-    mesh.castShadow = CAST.has(cls); mesh.receiveShadow = cls !== "grass"; mesh.frustumCulled = false;
-    group.add(mesh);
   }
 
   // destructible rocks: a rust-coloured pile on a translucent footprint, so they read as "can be broken"

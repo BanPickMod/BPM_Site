@@ -344,7 +344,14 @@ export function mountScene(container: HTMLElement, o: SceneOptions): SceneHandle
     for (const [key, parts] of Object.entries(GEO_SRC[kind][race])) GEO[kind][race][key] = mergeGeometries(parts)!;
   const skins = [1, 2].map((owner) => {
     const race = raceKey(o.races[owner]), S = SKIN[race], tint = new THREE.Color(OWNER[owner]).lerp(new THREE.Color(0xffffff), 0.55);
-    return { owner, race, mat: new THREE.MeshStandardMaterial({ map: S.tex(), color: tint, emissive: OWNER[owner], emissiveIntensity: S.emis, roughness: S.rough, metalness: S.metal }) };
+    // Units are told apart by their colour, so theirs is strong. A building keeps the look of its race (grey plating, purple flesh, gold
+    // stone) with only a hint of the team colour; the team is shown by the ring under it instead.
+    const soft = new THREE.Color(OWNER[owner]).lerp(new THREE.Color(0xffffff), 0.86);
+    return {
+      owner, race,
+      mat: new THREE.MeshStandardMaterial({ map: S.tex(), color: tint, emissive: OWNER[owner], emissiveIntensity: S.emis, roughness: S.rough, metalness: S.metal }),
+      bmat: new THREE.MeshStandardMaterial({ map: S.tex(), color: soft, emissive: OWNER[owner], emissiveIntensity: S.emis * 0.3, roughness: S.rough, metalness: S.metal }),
+    };
   });
   interface Group { list: Unit[]; mesh: THREE.InstancedMesh; kind: string }
   const groupsOf = (building: boolean): Group[] => skins.flatMap((s) => {
@@ -352,12 +359,23 @@ export function mountScene(container: HTMLElement, o: SceneOptions): SceneHandle
     return Object.keys(geos).flatMap((kind) => {
       const list = model.units.filter((u) => u.owner === s.owner && (building ? u.kind === "structure" : u.kind === "army") && pick1(table, u.type, dflt) === kind);
       if (!list.length) return [];
-      const mesh = new THREE.InstancedMesh(geos[kind], s.mat, list.length);
+      const mesh = new THREE.InstancedMesh(geos[kind], building ? s.bmat : s.mat, list.length);
       mesh.castShadow = true; mesh.receiveShadow = building; mesh.frustumCulled = false; mesh.userData.list = list; scene.add(mesh);
       return [{ list, mesh, kind }];
     });
   });
   const buildings = groupsOf(true), movers = groupsOf(false);
+
+  // A ring in the owner's colour on the ground under every building: whose it is, without painting the whole building.
+  const RING_R: Record<string, number> = { hall: 3.9, hatch: 3.9, nexus: 3.9, fortress: 3.9, gate: 2.5, stargate: 2.6, robo: 2.5, rax: 2.4, factory: 2.4, starport: 2.4, pool: 2.4, den: 2.2, spire: 2.2, nydus: 2.2 };
+  const ringOf = new Map<Unit, { mesh: THREE.InstancedMesh; i: number; r: number }>(), ringMeshes: THREE.InstancedMesh[] = [];
+  for (const sk of skins) {
+    const list = model.units.filter((u) => u.owner === sk.owner && u.kind === "structure");
+    if (!list.length) continue;
+    const mesh = new THREE.InstancedMesh(new THREE.RingGeometry(0.84, 1, 40), new THREE.MeshBasicMaterial({ color: OWNER[sk.owner], transparent: true, opacity: 0.9, depthWrite: false, side: THREE.DoubleSide }), list.length);
+    mesh.frustumCulled = false; scene.add(mesh); ringMeshes.push(mesh);
+    list.forEach((u, i) => ringOf.set(u, { mesh, i, r: RING_R[pick1(BARCH[sk.race], u.type, "small")] ?? 1.7 }));
+  }
 
   // picked units: lime ring on the ground, a beam, and the pick's portrait above
   const pickList = model.units.filter((u) => u.pick);
@@ -449,9 +467,12 @@ export function mountScene(container: HTMLElement, o: SceneOptions): SceneHandle
         const p = posAt(u, t, W), live = !!p, px = p ? p.x : u.x0, py = p ? p.y : u.y0;
         tmp.position.set(wx(px), gAtFull(px, py) + (p?.air ?? 0) * 3.2, wz(py)); tmp.scale.setScalar(live ? 1 : 0);   // a lifted building rises off the ground
         tmp.rotation.set(0, ["hall", "hatch", "nexus"].includes(B.kind) ? 0 : hash(u.x0, u.y0) * 1.2, 0); tmp.updateMatrix(); B.mesh.setMatrixAt(i, tmp.matrix);
+        const ring = ringOf.get(u);
+        if (ring) { tmp.position.set(wx(px), gAtFull(px, py) + 0.14, wz(py)); tmp.rotation.set(-Math.PI / 2, 0, 0); tmp.scale.setScalar(live ? ring.r : 0); tmp.updateMatrix(); ring.mesh.setMatrixAt(ring.i, tmp.matrix); }
       });
       B.mesh.instanceMatrix.needsUpdate = true;
     }
+    for (const m of ringMeshes) m.instanceMatrix.needsUpdate = true;
     for (const Mv of movers) {
       Mv.list.forEach((u, i) => {
         const p = posAt(u, t, W);

@@ -13,8 +13,8 @@ export const EVENT_ART: Record<string, { name: Record<Lang, string>; alt: Record
   "challenge-s1": {
     name: { ko: "BPM AI 챌린지 S1", en: "BPM AI Challenge S1" },
     alt: {
-      ko: "BPM AI 챌린지 S1 배너. 사람 대 AI, 어려움에서 프로를 거쳐 챌린지까지",
-      en: "BPM AI Challenge S1 banner. Human vs AI, from Hard through Pro to Challenge",
+      ko: "BPM AI 챌린지 S1 배너. 사람 대 AI, 어려움에서 프로를 거쳐 챌린저까지",
+      en: "BPM AI Challenge S1 banner. Human vs AI, from Hard through Pro to Challenger",
     },
   },
 };

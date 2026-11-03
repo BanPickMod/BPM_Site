@@ -14,7 +14,7 @@ export default async function AiPage({ params }: PageProps<"/[lang]/ai">) {
   if (!isLang(lang)) notFound();
   const t = (ko: string, en: string) => (lang === "ko" ? ko : en);
 
-  const levels = [t("쉬움", "Easy"), t("중간", "Medium"), t("어려움", "Hard"), t("프로", "Pro"), t("챌린지", "Challenge")];
+  const levels = [t("쉬움", "Easy"), t("중간", "Medium"), t("어려움", "Hard"), t("프로", "Pro"), t("챌린저", "Challenger")];
 
   return (
     <div className="wrap">
@@ -59,8 +59,8 @@ export default async function AiPage({ params }: PageProps<"/[lang]/ai">) {
           <h2 className="h2">{t("난이도", "Difficulties")}</h2>
           <p>
             {t(
-              "난이도에 따라 APM, EAPM, 시야 정보, 반응 지연이 조절됩니다.",
-              "APM, EAPM, vision and reaction delay scale with the difficulty.",
+              "난이도에 따라 APM, 시야 정보, 반응 지연이 조절됩니다.",
+              "APM, vision and reaction delay scale with the difficulty.",
             )}
           </p>
           <div className="seg-row">
@@ -72,8 +72,8 @@ export default async function AiPage({ params }: PageProps<"/[lang]/ai">) {
           </div>
           <p className="note">
             {t(
-              "프로는 AI 학습의 기준 난이도이고, 챌린지는 가장 높은 난이도입니다. 챌린지는 사람 대 AI 이벤트의 최종 관문으로 쓰입니다.",
-              "Pro is the difficulty the AI was trained at; Challenge is the highest, used as the final gate of the human-vs-AI event.",
+              "프로는 AI 학습의 기준 난이도이고, 챌린저는 가장 높은 난이도입니다. 챌린저는 사람 대 AI 이벤트의 최종 관문으로 쓰입니다.",
+              "Pro is the difficulty the AI was trained at; Challenger is the highest, used as the final gate of the human-vs-AI event.",
             )}
           </p>
           <MediaRow ids={["ai-difficulty", "ai-match"]} lang={lang} />
@@ -83,26 +83,34 @@ export default async function AiPage({ params }: PageProps<"/[lang]/ai">) {
           <h2 className="h2">{t("프로 난이도의 제한", "Pro difficulty limits")}</h2>
           <p>
             {t(
-              "아래 수치는 프로 리플레이 2,000여 판을 분석해 얻은 값입니다. 시야는 정찰로 알아낸 정보만을 바탕으로, 사전 학습 자료와 시뮬레이션을 더해 판단합니다.",
-              "These numbers come from analysing about 2,000 pro replays. Vision is based only on what scouting reveals, supplemented by pre-trained knowledge and simulation.",
+              "아래 수치는 프로 리플레이 2,000여 판의 실측 중앙값을 기준으로, 프로 난이도는 그보다 약간 높게 잡은 값입니다. 시야는 정찰로 알아낸 정보만을 바탕으로, 사전 학습 자료와 시뮬레이션을 더해 판단합니다.",
+              "These numbers are based on measured medians from about 2,000 pro replays, with Pro set slightly above them. Vision is based only on what scouting reveals, supplemented by pre-trained knowledge and simulation.",
             )}
           </p>
           <div className="facts">
             <div className="fact">
-              <b>650</b>
-              <span>Peak APM</span>
+              <b>294</b>
+              <span>{t("평균 APM 상한 · 테란", "Average APM cap · Terran")}</span>
             </div>
             <div className="fact">
-              <b>450</b>
-              <span>{t("평균 APM", "Average APM")}</span>
+              <b>227</b>
+              <span>{t("평균 APM 상한 · 프로토스", "Average APM cap · Protoss")}</span>
             </div>
             <div className="fact">
-              <b>250</b>
-              <span>EAPM</span>
+              <b>359</b>
+              <span>{t("평균 APM 상한 · 저그", "Average APM cap · Zerg")}</span>
             </div>
             <div className="fact">
-              <b>5-8ms</b>
-              <span>{t("반응 지연", "Reaction delay")}</span>
+              <b>700</b>
+              <span>{t("순간 최대 APM (5초 구간)", "Peak APM (5-second window)")}</span>
+            </div>
+            <div className="fact">
+              <b>0.57s</b>
+              <span>{t("반응 지연 · 보고 있던 곳", "Reaction delay · watched area")}</span>
+            </div>
+            <div className="fact">
+              <b>2.05s</b>
+              <span>{t("반응 지연 · 화면 밖", "Reaction delay · off screen")}</span>
             </div>
           </div>
         </section>

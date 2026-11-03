@@ -11,7 +11,7 @@
 
   { "id": "v2.0-observer-shortcuts", "area": "patch-v2.0", "hint": "옵저버 단축키(Shift+B, Shift+D)로 요약 바와 상세 결과를 켠 화면", "caption": {"ko": "옵저버 단축키", "en": "Observer hotkeys"} },
   { "id": "v2.0-observer-full-review", "area": "patch-v2.0", "hint": "인게임 밴픽 전체 확인 창 (각 유닛이 무엇을 대신해 선택되었는지 보이는 화면)", "caption": {"ko": "인게임 밴픽 전체 확인 창", "en": "In-game full ban-pick review window"} },
-  { "id": "v2.0-ai-lobby", "area": "patch-v2.0", "hint": "AI 난이도(쉬움~챌린지)를 고르는 화면", "caption": {"ko": "AI 난이도 선택", "en": "Choosing the AI difficulty"} },
+  { "id": "v2.0-ai-lobby", "area": "patch-v2.0", "hint": "AI 난이도(쉬움~챌린저)를 고르는 화면", "caption": {"ko": "AI 난이도 선택", "en": "Choosing the AI difficulty"} },
   { "id": "v2.0-production-queen", "area": "patch-v2.0", "hint": "부화장에서 여왕을 생산하면 생산 패널에 아이콘이 표시되는 화면", "caption": {"ko": "부화장 여왕 생산 아이콘", "en": "Queen production icon from the Hatchery"} },
   { "id": "v2.0-effects-upgrades", "area": "patch-v2.0", "hint": "모드에서 추가된 업그레이드 이펙트 (GIF 또는 영상)", "caption": {"ko": "추가 업그레이드 이펙트", "en": "Effects for the added upgrades"} },
   { "id": "v2.0-effect-nuke", "area": "patch-v2.0", "hint": "전술핵 폭발: 땅 충격파, 저그 점막이 불타며 사라지는 장면, 카메라 흔들림 (GIF 또는 영상)", "caption": {"ko": "전술핵", "en": "Tactical Nuke"} },
@@ -27,7 +27,7 @@
   { "id": "v2.0-site-replay-analysis", "area": "patch-v2.0", "hint": "SC2 BPM Replay Analysis 분석 결과 화면", "caption": {"ko": "SC2 BPM Replay Analysis", "en": "SC2 BPM Replay Analysis"} },
   { "id": "v2.0-site-ban-pick-rates", "area": "patch-v2.0", "hint": "실시간 AI 밴픽 비율 화면", "caption": {"ko": "실시간 AI 밴픽 비율", "en": "Live AI ban-pick rates"} },
 
-  { "id": "ai-difficulty", "area": "ai", "hint": "AI 난이도(쉬움~챌린지)를 고르는 대기실 화면. 16:9 권장", "caption": {"ko": "AI 난이도 선택", "en": "Choosing the AI difficulty"} },
+  { "id": "ai-difficulty", "area": "ai", "hint": "AI 난이도(쉬움~챌린저)를 고르는 대기실 화면. 16:9 권장", "caption": {"ko": "AI 난이도 선택", "en": "Choosing the AI difficulty"} },
   { "id": "ai-match", "area": "ai", "hint": "AI와 대전 중인 경기 화면 (GIF 또는 영상)", "caption": {"ko": "AI와의 대전", "en": "A match against the AI"} },
 
   { "id": "replay-analysis-preview", "area": "replay", "hint": "SC2 BPM Replay Analysis 분석 결과 화면 (서비스 시작 후)", "caption": {"ko": "리플레이 분석 화면", "en": "A replay analysis"} },

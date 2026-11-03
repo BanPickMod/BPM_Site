@@ -38,16 +38,16 @@ summary: Start a game just by creating a room, with observer hotkeys, a full ban
 - The AI was trained on more than 2,000 pro replays (the dataset we provide) and more than 3,000 self-play games (AI versus AI).
 - You can play as Terran, Zerg, or Protoss.
 
-1. APM, EAPM, vision information, and reaction delay scale with difficulty. The levels are Easy, Medium, Hard, Pro, and Challenge.
+1. APM, vision information, and reaction delay scale with difficulty. The levels are Easy, Medium, Hard, Pro, and Challenger.
 
     ![Choosing the AI difficulty](media:v2.0-ai-lobby)
 
 2. Pro difficulty
     - This is the baseline difficulty the AI was trained against.
     - Vision information is based on what the AI has learned from scouting, combined with pre-trained material and simulation.
-    - Limits: Peak APM 650, average APM 450, EAPM 250.
-    - Reaction delay: 5-8 ms
-    - All of these limits come from analyzing more than 2,000 pro replays.
+    - Average APM is capped per race at about 294 for Terran, 227 for Protoss and 359 for Zerg, and the peak over a 5-second window at 700 per minute.
+    - Reaction delay: about 0.57 s for events in an area the AI is already watching, and about 2 s for events off screen. Shifting attention takes time, like a human.
+    - These limits are based on measured medians from more than 2,000 pro replays, with the Pro difficulty set slightly above them.
 
 ## Quality of Life
 
@@ -139,11 +139,11 @@ The website we previewed earlier is officially opening, along with several new f
 - Fixed missing icons such as the Queen in the Convenience Mode production panel
 - Fixed the Immortal's barrier effect not appearing
 
-## BPM Events
+## BPM Events (Coming Soon)
 
-Along with launching the mod properly, we are planning the following events to collect data for balance work.
+Events are currently in preparation. Along with launching the mod properly, we are preparing the following events to collect data for balance work. Specific schedules and details will be announced once finalized.
 
-1. BPM AI Colosseum 1 (Nov 1 - Nov 2, KST)
+1. BPM AI Colosseum 1 (Coming Soon)
     - Think of this as a showcase of AI play.
     - AIs that received additional training with the persona method face each other.
         1. All six matchups (TvT, TvZ, TvP, PvZ, PvP, ZvZ) run as a Bo3 full league.
@@ -151,13 +151,13 @@ Along with launching the mod properly, we are planning the following events to c
         3. Every replay will be published on the BanPickMod website.
         4. Any creator may make replay-commentary content.
             - The site publishes brief AI analysis for each replay, so you can pick out only the games that look interesting.
-        5. The event is split across two days because there are many rounds, and we will upload them in batches.
+        5. Uploads will be split across multiple batches due to the large number of rounds.
 
-2. BPM AI Challenge S1 (TBD)
-    - This two-day event is a literal challenge: clear the AI's Challenge difficulty.
-    - Play human versus AI, clear Hard through Pro, then clear the top difficulty, Challenge.
+2. BPM AI Challenge S1 (Coming Soon)
+    - This two-day event is a literal challenge: clear the AI's Challenger difficulty.
+    - Play human versus AI, clear Hard through Pro, then clear the top difficulty, Challenger.
         1. Only runs with replay sharing enabled are counted, and the system tallies them automatically.
         2. For Hard through Pro, clearing with any race is fine.
-        3. For Challenge, you must clear it as Terran, Protoss, and Zerg.
+        3. For Challenger, you must clear it as Terran, Protoss, and Zerg.
         4. Any 1v1 ladder map is allowed. Games use the default setting: Snake, 3 Bans.
         5. Prizes: to be announced later

@@ -19,11 +19,12 @@ export default async function EventsPage({ params }: PageProps<"/[lang]/events">
   return (
     <div className="wrap">
       <header className="pg-h">
+        <span className="status">{t("준비 중", "Coming soon")}</span>
         <h1 className="h1">BPM Events</h1>
         <p className="lede">
           {t(
-            "제대로 된 모드로 출시하면서, 밸런스에 쓸 자료를 모으기 위해 기획 중인 이벤트입니다. 일정과 내용은 바뀔 수 있습니다.",
-            "Events we are planning alongside the release to gather data for balance. Dates and details may change.",
+            "제대로 된 모드로 출시하면서, 밸런스에 쓸 자료를 모으기 위해 준비 중인 이벤트입니다. 구체적인 일정과 내용은 확정되는 대로 안내해 드립니다.",
+            "Events we are preparing alongside the release to gather data for balance. Detailed dates and specifics will follow once finalized.",
           )}
         </p>
       </header>
@@ -34,11 +35,11 @@ export default async function EventsPage({ params }: PageProps<"/[lang]/events">
           <div className="ev-h">
             <EventLogo slug="colosseum-1" />
             <div>
-              <span className="status on">{t("예정", "Planned")}</span>
+              <span className="status">{t("준비 중", "Coming soon")}</span>
               <h2 className="ev-t">{t("BPM AI 콜로세움 1", "BPM AI Colosseum 1")}</h2>
             </div>
           </div>
-          <p className="mono">{t("11/1 ~ 11/2 (KST)", "Nov 1 – Nov 2 (KST)")}</p>
+          <p className="mono">{t("준비 중 (일정 추후 공지)", "Coming soon (Date TBD)")}</p>
           <p>
             {t(
               "AI가 플레이하는 모습을 선보이는 쇼케이스입니다. 페르소나 방식으로 추가 학습된 AI끼리 붙습니다.",
@@ -69,20 +70,20 @@ export default async function EventsPage({ params }: PageProps<"/[lang]/events">
           <div className="ev-h">
             <EventLogo slug="challenge-s1" />
             <div>
-              <span className="status">{t("일정 미정", "Date TBD")}</span>
+              <span className="status">{t("준비 중", "Coming soon")}</span>
               <h2 className="ev-t">BPM AI Challenge S1</h2>
             </div>
           </div>
           <p>
             {t(
-              "이틀간 진행되는 챌린지입니다. 사람 대 AI로 어려움부터 프로까지 클리어하고, 최고 난이도인 챌린지 난이도를 클리어하면 됩니다.",
-              "A two-day challenge. Play humans vs AI, clear Hard through Pro, then clear the top Challenge difficulty.",
+              "이틀간 진행되는 챌린지입니다. 사람 대 AI로 어려움부터 프로까지 클리어하고, 최고 난이도인 챌린저 난이도를 클리어하면 됩니다.",
+              "A two-day challenge. Play humans vs AI, clear Hard through Pro, then clear the top Challenger difficulty.",
             )}
           </p>
           <ul className="bul">
             <li>{t("리플레이 제공에 동의한 경우에만 집계되며, 시스템이 자동으로 집계합니다.", "Counted only if you agreed to share replays; the system tallies automatically.")}</li>
             <li>{t("어려움~프로는 어느 종족으로 클리어해도 됩니다.", "Hard to Pro can be cleared with any race.")}</li>
-            <li>{t("챌린지 난이도는 테란, 프로토스, 저그를 모두 클리어해야 합니다.", "Challenge must be cleared with Terran, Protoss and Zerg.")}</li>
+            <li>{t("챌린저 난이도는 테란, 프로토스, 저그를 모두 클리어해야 합니다.", "Challenger must be cleared with Terran, Protoss and Zerg.")}</li>
             <li>{t("1:1 래더 맵이면 무엇이든 가능하며, 스네이크 밴, 3밴(기본 설정)으로 진행합니다.", "Any 1v1 ladder map; Snake, 3 bans (the default setup).")}</li>
           </ul>
           <p className="note">

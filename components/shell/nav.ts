@@ -19,6 +19,6 @@ export const primaryNav: NavItem[] = [
 export const secondaryNav: NavItem[] = [
   { key: "ai", path: "/ai", live: true },
   { key: "replay", path: "/replay-analysis", live: true },
-  { key: "events", path: "/events", live: true },
+  { key: "events", path: "/events", live: false },
   { key: "ladder", path: "/ladder", live: true },
 ];
